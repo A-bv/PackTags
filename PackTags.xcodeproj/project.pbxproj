@@ -72,7 +72,6 @@
 		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
-		02EB1D3D275E4B2D005AC307 /* GJs+GetId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB1D3C275E4B2D005AC307 /* GJs+GetId.swift */; };
 		02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE29E260A9BA900324724 /* SettingsCell.swift */; };
 		02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE2A4260AC79C00324724 /* SettingsCell2.swift */; };
 		02FB530325AD3A310063038C /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 02FB530225AD3A310063038C /* data.json */; };
@@ -168,7 +167,6 @@
 		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		02EB1D3C275E4B2D005AC307 /* GJs+GetId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+GetId.swift"; sourceTree = "<group>"; };
 		02FAE29E260A9BA900324724 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		02FAE2A4260AC79C00324724 /* SettingsCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell2.swift; sourceTree = "<group>"; };
 		02FB530225AD3A310063038C /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
@@ -253,15 +251,32 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		021AFD542787857B0008735E /* SmartIG */ = {
+			isa = PBXGroup;
+			children = (
+				021D76162759A00D00F54054 /* SmartIG_SwiftUI.swift */,
+				02188595275FF7AF00E87868 /* SmartG+Fill.swift */,
+				02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */,
+				02B104A627697B6C00C9EC6C /* ViewModel.swift */,
+			);
+			path = SmartIG;
+			sourceTree = "<group>";
+		};
+		021AFD552787A8100008735E /* GJS Tools */ = {
+			isa = PBXGroup;
+			children = (
+				021D7623275A9EE900F54054 /* GJs+RefreshRate.swift */,
+				0274DB2F26848948005F9C9C /* GJs+Dir.swift */,
+			);
+			path = "GJS Tools";
+			sourceTree = "<group>";
+		};
 		021D7621275A9BBB00F54054 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				0231AB1326849F4A007F4FC8 /* Import */,
 				02E4B9D325CC97C700949213 /* Analytics */,
-				021D76162759A00D00F54054 /* SmartIG_SwiftUI.swift */,
-				02188595275FF7AF00E87868 /* SmartG+Fill.swift */,
-				02B104A627697B6C00C9EC6C /* ViewModel.swift */,
-				02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */,
+				021AFD542787857B0008735E /* SmartIG */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -505,11 +520,9 @@
 			isa = PBXGroup;
 			children = (
 				02062152266503490072C404 /* GJs.swift */,
-				02EB1D3C275E4B2D005AC307 /* GJs+GetId.swift */,
 				0213D9F4275D2F8A002A54ED /* GJs+Analytics.swift */,
 				0213D9F2275D2F08002A54ED /* GJs+SmartIG.swift */,
-				021D7623275A9EE900F54054 /* GJs+RefreshRate.swift */,
-				0274DB2F26848948005F9C9C /* GJs+Dir.swift */,
+				021AFD552787A8100008735E /* GJS Tools */,
 			);
 			path = GetJson;
 			sourceTree = "<group>";
@@ -688,7 +701,6 @@
 				02B104A727697B6C00C9EC6C /* ViewModel.swift in Sources */,
 				02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */,
 				02FB552F24FFA78B00174E34 /* ThemeTVC.swift in Sources */,
-				02EB1D3D275E4B2D005AC307 /* GJs+GetId.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* External.swift in Sources */,
 				0269E2AC2564B838005FE14B /* AnalyticsView.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,

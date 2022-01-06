@@ -30,11 +30,16 @@ class GenericJSONParser {
     }
     
     class func ParseJs2<T: Decodable>(of type: T.Type, data: Data) -> Any? {
-   
+        
         do {
-            //let decodedData: T = try JSONDecoder().decode(T.self, from: data) //PLLL
-            let decodedData = try JSONDecoder().decode([T].self, from: data) //PLLL
-            return decodedData
+            //PLLL
+            if T.Type.self == Profile.Type.self {
+                let decodedData: T = try JSONDecoder().decode(T.self, from: data)
+                return decodedData
+            } else {
+                let decodedData = try JSONDecoder().decode([T].self, from: data)
+                return decodedData
+            }
         }
         catch {
             print("decode error: ",error)

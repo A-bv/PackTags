@@ -29,27 +29,24 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         
         if ((error) != nil){}
+        let uD = UserDefaults.standard
         
         //Detects first time login
-        UserDefaults.standard.set(true, forKey: "pressedFBLoginButton")
+        uD.set(true, forKey: "pressedFBLoginButton")
         
-        //Checks Setup
+        //Checks Setup and save Instagram Business Account ID
         if AccessToken.current != nil {
-            GetJson.apiGraphIgBHub(of: Profile.self, token: result?.token?.tokenString, smartGString: nil, Completion: {
-                _ in
-                    Foundation.UserDefaults.standard.set(true, forKey: "isCorrectSetup")
+            verifySetupFbPages(Completion: {[weak self] _ in
+                self?.verifySetupIgBAndGetIgBId(Completion: {(IgBId) in
+                    uD.set(true, forKey: "isCorrectSetup")
+                    uD.set(IgBId, forKey: "IgBId")
+                    Utility.simpleShortAlert(title: "Connected!", message: "You can now access analytics and generate hashtags.", vc: self, okDismissVc: true)
+                })
             })
-            
-        }
-        
-        
-        if AccessToken.current != nil {
-            Utility.simpleShortAlert(title: "Connected!", message: "You can now access analytics and generate hashtags.", vc: self, okDismissVc: true)
-            
         } else {
-            print("cancelled")
+            uD.set(false, forKey: "isCorrectSetup")
+            Utility.setupTroubleShootingAlert(arr: [])
         }
-        
     }
     
     
@@ -81,7 +78,68 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
     }
 }
 
+extension FBLoginVC {
+    
+    private func verifySetupFbPages (Completion block: @escaping (([String]) -> ())) {
+        // 0. Fb acc gives a token
+        // Request 1. Get facebook business page of the facebook account
+        let fbPageRequest = GraphRequest(graphPath: "/me/accounts", httpMethod: .get)
+    
+        fbPageRequest.start(completion: {connection,result,error in
+            
+            if let error = error {
+                print("fbPageRequest error :", error)
+                return
+            }
 
+            guard let response1 = result as? NSDictionary else {
+                return } //
+            //id page fb packtags.app 107298991584829
+            // ----- CAUTION ----- only works with one associated page (takes the first in array)
+            guard let pages = (response1.value(forKeyPath: "data.name") as? [String]) else {return}
+            
+            if pages == [] {
+                // Exit if no IGPro or wrong linked FB page(s)
+                print("No page")
+                Utility.setupTroubleShootingAlert(arr: [])
+                return
+            }
+            // ----- CAUTION -----
+            
+            block(pages)
+        })
+    }
+
+    private func verifySetupIgBAndGetIgBId (Completion block: @escaping ((String) -> ())){
+        
+        // Required: Fb acc + Fb business page + IG Business or creator
+           let igBRequest = GraphRequest(graphPath: "/me/accounts", parameters: ["fields":"instagram_business_account"], httpMethod: .get)
+            
+           igBRequest.start(completion: {connection,result,error in
+          
+               if let error = error {
+                   print("igBRequest error :", error)
+                   return
+               }
+               
+               guard let response2 = result as? NSDictionary else { return } //
+               guard let igBIds = (response2.value(forKeyPath: "data.instagram_business_account.id") as? [String])
+               else {
+                   //No business account linked
+                   Utility.setupTroubleShootingAlert(arr: [])
+                   return
+               }
+               print(igBIds)
+               if igBIds.count >= 1 {
+                   block(igBIds[0])
+                   //17841446788403615
+               } else {
+                   return
+               }
+           })
+    }
+    
+}
 
 
 

@@ -19,32 +19,35 @@ class GetJson: NSObject {
         
         guard let token = token else {return}
             
-            getIgBId(Completion: { (igBId) in
-                
-                if T.self == Profile.self {
-                    load_Profile(igBId: igBId, token: token, completion: {
-                        (profile) in block(profile)
-                    })
-                } else if T.self == Media.self {
-                    ig_hashtag_search(IgBId: igBId, token: token, s_Hashtag: "travel", Completion: { (media) in
-                        block(media)
-                    })
-                } else if T.self == Discovery.self {
-                    print(business_discovery_url(IgBId: igBId, token: token, account: "nike") ?? "nil")
-                    
-                } else if T.self == Course.self {
-                    //PLLL
-                    ig_hashtag_search2(IgBId: igBId, token: "", s_Hashtag: "travel", Completion: { (course) in
-                        block(course)
-                    })
-                } else {
-                    return
-                }
-                
+        guard let igBId = UserDefaults.standard.string(forKey: "IgBId") else {
+            Utility.setupTroubleShootingAlert(arr: [])
+            return }
+        
+        if UserDefaults.standard.bool(forKey: "isCorrectSetup") == false {
+            Utility.setupTroubleShootingAlert(arr: [])
+            return
+        }
+        
+        if T.self == Profile.self {
+            load_Profile(igBId: igBId, token: token, completion: {
+                (profile) in block(profile)
             })
+        } else if T.self == Media.self {
+            ig_hashtag_search(IgBId: igBId, token: token, s_Hashtag: "travel", Completion: { (media) in
+                block(media)
+            })
+        } else if T.self == Discovery.self {
+            print(business_discovery_url(IgBId: igBId, token: token, account: "nike") ?? "nil")
+            
+        } else if T.self == Course.self {
+            //PLLL
+            ig_hashtag_search2(IgBId: igBId, token: "", s_Hashtag: "travel", Completion: { (course) in
+                block(course)
+            })
+        } else {
+            return
+        }
     }
-    
-    
 }
 
 
