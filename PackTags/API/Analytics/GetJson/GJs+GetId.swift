@@ -9,26 +9,10 @@
 import UIKit
 import FBSDKLoginKit
 
-struct IGID1: Decodable {
-    let data: [IGID2?]
-}
-
-struct IGID2: Decodable {
-    let id: String?
-}
-
 extension GetJson {
     
     //PLLL BLOCKAGE
     class func getIgBId (Completion block: @escaping ((String) -> ())){
-        
-        
-     
-        
-        
-        
-        
-        
         
         // Required: Fb acc + Fb business page + IG Business or creator
         // 0. Fb acc gives a token
@@ -37,18 +21,14 @@ extension GetJson {
         let fbPageRequest = GraphRequest(graphPath: "/me/accounts", httpMethod: .get)
     
         fbPageRequest.start(completion: {connection,result,error in
-
             
             if let error = error {
                 print("fbPageRequest error :", error)
                 return
             }
-            
 
             guard let response1 = result as? NSDictionary else {
                 return } //
-            
-            
             
             // ----- CAUTION ----- only works with one associated page (takes the first in array)
             let pages = (response1.value(forKeyPath: "data.name") as? [String])
@@ -60,20 +40,11 @@ extension GetJson {
             }
             //let pageId = (response1.value(forKeyPath: "data.id") as? [String])?[0] ?? "n/a"
             // ----- CAUTION -----
-          
-           
             
             // Request 2. Get the business IG account associated to the business page
            let igBRequest = GraphRequest(graphPath: "/me/accounts", parameters: ["fields":"instagram_business_account"], httpMethod: .get)
             
-            
-            
            igBRequest.start(completion: {connection,result,error in
-          
-          
-               
-              
-          
           
                if let error = error {
                    print("igBRequest error :", error)
@@ -93,20 +64,9 @@ extension GetJson {
                } else {
                    return
                }
-          
-          
-               
            })
-             
-          
-          
-            
         })
-        
-        
-      
     }
-    
 }
 
 
