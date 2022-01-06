@@ -1,0 +1,161 @@
+//
+//  NeuMphSwiftUI.swift
+//  PackTags
+//
+//  Created by Alexandre Bevilacqua on 19/06/2021.
+//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
+//
+
+#if canImport(SwiftUI)
+import SwiftUI
+#endif
+
+#if (arch(arm64) || arch(x86_64))
+
+//MARK: - Styles
+
+@available(iOS 13.0, *)
+struct ColorfulButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .padding(10)
+            .contentShape(Circle())
+            .background(
+                ColorfulBackground(isHighlighted: configuration.isPressed,
+                                   shape: RoundedRectangle(cornerRadius: 10)
+                                   //shape: Circle())
+                )
+            )
+            .animation(nil)
+    }
+}
+
+@available(iOS 13.0, *)
+struct DarkToggleStyle: ToggleStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        Button(action: {
+            configuration.isOn.toggle()
+        }) {
+            configuration.label
+                .padding(10)
+                .contentShape(Circle())
+        }
+        .background(
+            ColorfulBackground(isHighlighted: configuration.isOn,
+                               shape: RoundedRectangle(cornerRadius: 10)
+                               
+            )
+        )
+    }
+}
+
+
+//MARK: - Styles tools
+
+@available(iOS 13.0, *)
+
+struct ColorfulBackground<S: Shape>: View {
+    var isHighlighted: Bool
+    var shape: S
+
+    var body: some View {
+        ZStack {
+            if isHighlighted {
+                shape
+                    .fill(LinearGradient(Color.mphEnd, Color.mphStart))
+                    //
+                    //.overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
+                    .overlay(shape.stroke(LinearGradient(Color("Color4"), Color("Color1")), lineWidth: 4))
+                
+                    //
+                    .shadow(color: Color.mphStart, radius: 10, x: 5, y: 5)
+                    .shadow(color: Color.mphEnd, radius: 10, x: -5, y: -5)
+                    
+            } else {
+                shape
+                    .fill(LinearGradient(Color.mphStart, Color.mphEnd))
+                    //
+                    //.overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
+                    .overlay(shape.stroke(Color("Color-Bkgd"), lineWidth: 4))
+                    //
+                    .shadow(color: Color.mphStart, radius: 10, x: -10, y: -10)
+                    .shadow(color: Color.mphEnd, radius: 10, x: 10, y: 10)
+            }
+        }
+        .padding(5)
+    }
+}
+
+
+
+
+
+
+
+
+// MARK: - Extension for shapes
+
+
+@available(iOS 13.0, *)
+extension Shape {
+    
+    public func outerNeumorphism<S:ShapeStyle>
+    (_ fillContent: S) -> some View
+    {
+        
+        self.fill(fillContent)
+            //DOCK
+            .shadow(color: Color.lowerShadow, radius: 10, x: 10, y: 10)
+            .shadow(color: Color.upperShadow, radius: 10, x: -5, y: -5)
+            
+    }
+    
+    public func innerNeumorphism<S:ShapeStyle>
+    (_ fillContent: S) -> some View
+    {
+        ZStack {
+            self.fill(fillContent)
+                .overlay(
+                    self
+                        //.stroke(Color.gray, lineWidth: 4)
+                        .stroke(Color.lowerShadow, lineWidth: 4)
+                        .blur(radius: 4)
+                        .offset(x: 2, y: 2)
+                        .mask(self.fill(LinearGradient(Color.black, Color.clear)))
+                        
+                )
+                .overlay(
+                    self
+                        .stroke(Color.upperShadow, lineWidth: 8)
+                        .blur(radius: 4)
+                        .offset(x: -2, y: -2)
+                        .mask(self.fill(LinearGradient(Color.clear, Color.black)))
+                )
+        }
+    }
+    
+}
+
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+//
+//  Import.swift
+//  PackTags
+//
+//  Created by Alexandre Bevilacqua on 24/06/2021.
+//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
+//
+
+import UIKit
+import FBSDKLoginKit
+
+#if (arch(arm64) || arch(x86_64))
+@available(iOS 13.0, *)
+
+//AnalyticsNew's importation function: Functions for init() {}
+extension ANewVCDataSUI {
+
+    //1 local import (called when refreshing data without web)
+    func getJsonFromDir () {
+        DispatchQueue.main.async {
+            guard let jsonData = GetJson.getJsonDataFromDir() else { return } //data
+            guard let json = GenericJSONParser.ParseJs2(of: Profile.self, data: jsonData) as? Profile else { return }
+     
+            self.jsonOfficial = json
+            self.processedJson = ProcessJson.processJsApiGraph(decodedJson: json)
+            
+            //VARR Entry (dir)
+            //self.getEngagementVariations(isFromSave: true)
+            
+            // fill (update)
+            self.fillGraphData ()
+            self.fillData()
+        }
+    }
+    
+    //2 web import
+    func getOnlineJsonAPIGraph () {
+        if let token = AccessToken.current, !token.isExpired {
+            print("active token")
+            GetJson.apiGraphIgBHub (of: Profile.self, token: token.tokenString, smartGString: nil) {(Json) in
+                
+                DispatchQueue.main.async{
+                    self.jsonOfficial = Json as? Profile
+                    self.processedJson = ProcessJson.processJsApiGraph(decodedJson: Json as! Profile)
+                    self.fillGraphData ()
+                    self.fillData()
+                    
+                    //self.getEngagementVariations(isFromSave: false) //VARR
+                }
+            }
+        }
+    }
+}
+#endif
+
+//AnalyticsOld's importation functions
+extension AnalyticsOld {
+
+    //1 local import
+    func getJsonFromDir () {
+        guard let jsonData = GetJson.getJsonDataFromDir() else { return }   //type data
+        guard let json = GenericJSONParser.ParseJs2(of: Profile.self, data: jsonData) as? Profile else { return }
+
+        displayDataComingFromApiGraph(Json: json)
+    }
+    
+    //2 web import
+    func getOnlineJsonApiGraphOld () {
+        if let token = AccessToken.current, !token.isExpired {
+            print("active token")
+            loginSpinner.startAnimating()
+            GetJson.apiGraphIgBHub (of: Profile.self, token: token.tokenString, smartGString: nil) {(Json) in
+                DispatchQueue.main.async{
+                    self.loginSpinner.stopAnimating()
+                    self.displayDataComingFromApiGraph(Json: Json as! Profile )
+                }
+            }
+        }
+    }
+}
