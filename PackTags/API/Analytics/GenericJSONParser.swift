@@ -32,8 +32,8 @@ class GenericJSONParser {
     class func ParseJs2<T: Decodable>(of type: T.Type, data: Data) -> Any? {
         
         do {
-            //PLLLLL
-            if T.Type.self == Profile.Type.self {
+            //PLLLL
+            if T.Type.self == Profile.Type.self || T.Type.self == Media.Type.self {
                 let decodedData: T = try JSONDecoder().decode(T.self, from: data)
                 return decodedData
             } else {

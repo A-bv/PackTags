@@ -40,14 +40,14 @@ extension ANewVCDataSUI {
     }
     
     func fillGraphData () {
-        let rates = processedJson?.rates
+        guard let rates = processedJson?.rates else {return}
         let maxR = getMaxRate()
         
         if graph_Data != nil {
             graph_Data?.removeAll()
         }
         
-        if (rates!.count) > 0 && rates != nil {
+        if (rates.count) > 0 {
            
             //VARR
             // A 0 variation array will not show
@@ -57,21 +57,21 @@ extension ANewVCDataSUI {
             // if somehow there is a variation array count that is no equal to a rates array count
             // or if rate variation is inexistant
             var ratesVr = engagementVariations?.ratesVr
-            if ratesVr == nil || ratesVr?.count != rates?.count {
+            if ratesVr == nil || ratesVr?.count != rates.count {
                 // Initialise a new 0 variation array, lenght: rates count
-                ratesVr = [CGFloat?](repeating: 0, count: rates!.count)
+                ratesVr = [CGFloat?](repeating: 0, count: rates.count)
             }
             
             
             //Graph data
-            for i in 0 ... (rates?.count)!-1 {
+            for i in 0 ... (rates.count)-1 {
                 
                 graph_Data?.append(
                     Post(
                         id: i,
                         post: "\(i+1)",
-                        r: CGFloat(rates![i]!),
-                        barHeight:  ((rates![i]!) / maxR) * 50 + 5, //80
+                        r: CGFloat(rates[i]!),
+                        barHeight:  ((rates[i]!) / maxR) * 50 + 5, //80
                         rVr: ratesVr?[i]! ?? 0     //VARR
                     )
                 )

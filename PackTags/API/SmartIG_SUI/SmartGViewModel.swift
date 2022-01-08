@@ -13,13 +13,14 @@ import FBSDKLoginKit
 @available(iOS 14.0.0, *)
 class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
-    @Published var courses: [Course] = [] //PLLLLL
+    @Published var courses: [Course] = [] //PLLLL
     
     func fetch() {
         let S = Media.self
         if let token = AccessToken.current, !token.isExpired {
             
-            GetJson.apiGraphIgBHub (of: S, token: token.tokenString, smartGString: "travel") {[weak self](decodedJson) in
+            GetJson.apiGraphIgBHub (of: S, token: token.tokenString, smartGString: "travel")
+            {[weak self](decodedJson) in
 
                 let D = decodedJson as? Media
                 guard let d = D?.data else {return}
@@ -31,15 +32,34 @@ class SmartGViewModel: ObservableObject {
         }
     }
     
-    //PLLLLL
+    //PLLLL
     func fetch2() {
-        let S = Course.self
+        
         //if let token = AccessToken.current, !token.isExpired {
+        
+        let S = Course.self
+        GetJson.apiGraphIgBHub (of: S, token: "", smartGString: "travel")
+        {[weak self](decodedJson) in
             
-            GetJson.apiGraphIgBHub (of: S, token: "", smartGString: "travel") {[weak self](decodedJson) in
                 let D = decodedJson as! [Course]
                 self?.courses = D
-            }
+        }
+        
+        /* //FETCH 3
+        let igBId = ""
+        GetJson.ig_hashtag_search2(IgBId: igBId, token: "", s_Hashtag: "travel", Completion: { [weak self] (course) in
+            let D = course as! [Course]
+            self?.courses = D
+        })
+        */
+       
+        /*
+        let S = Course.self
+        GetJson.apiGraphIgBHub (of: S, token: "", smartGString: "travel") {[weak self](decodedJson) in
+                let D = decodedJson as! [Course]
+                self?.courses = D
+        }*/
+            
         //}
     }
 }

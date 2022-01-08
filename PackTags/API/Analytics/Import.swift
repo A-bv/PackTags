@@ -37,11 +37,13 @@ extension ANewVCDataSUI {
     func getOnlineJsonAPIGraph () {
         if let token = AccessToken.current, !token.isExpired {
             print("active token")
-            GetJson.apiGraphIgBHub (of: Profile.self, token: token.tokenString, smartGString: nil) {(Json) in
+            GetJson.apiGraphIgBHub (of: Profile.self, token: token.tokenString, smartGString: nil) {(result) in
                 
                 DispatchQueue.main.async{
-                    self.jsonOfficial = Json as? Profile
-                    self.processedJson = ProcessJson.processJsApiGraph(decodedJson: Json as! Profile)
+                    guard let json = result as? Profile else {return}
+                    self.jsonOfficial = json
+                    
+                    self.processedJson = ProcessJson.processJsApiGraph(decodedJson: json)
                     self.fillGraphData ()
                     self.fillData()
                     
