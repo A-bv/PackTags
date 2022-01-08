@@ -9,18 +9,11 @@
 import Foundation
 import FBSDKLoginKit
 
-//PLLL
-struct Course: Hashable, Codable{
-    let name: String
-    let image: String
-}
-
 #if !arch(arm)
-
 @available(iOS 14.0.0, *)
-class ViewModel: ObservableObject {
+class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
-    @Published var courses: [Course] = [] //PLLL
+    @Published var courses: [Course] = [] //PLLLL
     
     func fetch() {
         let S = Media.self
@@ -38,7 +31,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    //PLLL
+    //PLLLL
     func fetch2() {
         let S = Course.self
         //if let token = AccessToken.current, !token.isExpired {

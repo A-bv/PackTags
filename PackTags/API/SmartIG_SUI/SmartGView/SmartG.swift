@@ -16,7 +16,7 @@ struct SmartG_SwiftUI: View {
     @State private var igHash: String =  "top travel hashtags"
     @State private var textstyle = UIFont.TextStyle.body
     
-    @StateObject var viewModel = ViewModel()
+    @StateObject var viewModel = SmartGViewModel()
     
     var body: some View {
         ZStack{
@@ -36,7 +36,7 @@ struct SmartG_SwiftUI: View {
                     }
                     
                     ScrollView(.horizontal, showsIndicators: false){
-                    HStack { //PLLL
+                    HStack { //PLLLL
                         ForEach(viewModel.courses, id: \.self) { course in
                             
                             StoryCard(url: course.image, title: "3")
@@ -64,16 +64,11 @@ struct SmartG_SwiftUI: View {
         }
         .onAppear {
             
-            viewModel.fetch2() //PLLL
-            //viewModel.fetch() //PLLL
+            viewModel.fetch2() //PLLLL
+            //viewModel.fetch() //PLLLL
         }
     }
 }
-
-
-
-
-
 
 
 

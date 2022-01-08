@@ -40,7 +40,7 @@ class GetJson: NSObject {
             print(business_discovery_url(IgBId: igBId, token: token, account: "nike") ?? "nil")
             
         } else if T.self == Course.self {
-            //PLLL
+            //PLLLL
             ig_hashtag_search2(IgBId: igBId, token: "", s_Hashtag: "travel", Completion: { (course) in
                 block(course)
             })

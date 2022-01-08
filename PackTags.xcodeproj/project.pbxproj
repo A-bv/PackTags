@@ -10,7 +10,7 @@
 		0206214E2663A2AE0072C404 /* JsonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0206214D2663A2AE0072C404 /* JsonModels.swift */; };
 		02062153266503490072C404 /* GJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062152266503490072C404 /* GJs.swift */; };
 		02062155266550D70072C404 /* PrJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062154266550D70072C404 /* PrJs.swift */; };
-		020621572666DBCC0072C404 /* ANVCVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* ANVCVar.swift */; };
+		020621572666DBCC0072C404 /* AnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* AnModel.swift */; };
 		021044F626446AEF00408CEB /* PrJs+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* PrJs+Tools.swift */; };
 		0213D9F3275D2F08002A54ED /* GJs+SmartIG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213D9F2275D2F08002A54ED /* GJs+SmartIG.swift */; };
 		0213D9F5275D2F8A002A54ED /* GJs+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213D9F4275D2F8A002A54ED /* GJs+Analytics.swift */; };
@@ -21,7 +21,8 @@
 		02188596275FF7AF00E87868 /* SmartG+Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02188595275FF7AF00E87868 /* SmartG+Fill.swift */; };
 		021AFD5127877CC50008735E /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 021AFD5027877CC50008735E /* FacebookCore */; };
 		021AFD5327877CC50008735E /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 021AFD5227877CC50008735E /* FacebookLogin */; };
-		021D76172759A00D00F54054 /* SmartIG_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartIG_SwiftUI.swift */; };
+		021AFD582789F2590008735E /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD572789F2590008735E /* SmartGModel.swift */; };
+		021D76172759A00D00F54054 /* SmartG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartG.swift */; };
 		021D7620275A99D500F54054 /* PrModel_Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D761F275A99D500F54054 /* PrModel_Analytics.swift */; };
 		021D7624275A9EE900F54054 /* GJs+RefreshRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D7623275A9EE900F54054 /* GJs+RefreshRate.swift */; };
 		022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022479C4250D1ED900E0E489 /* CoreDataHelper.swift */; };
@@ -45,11 +46,11 @@
 		02491C692680883800F98E17 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C682680883700F98E17 /* AppColors.swift */; };
 		025479DF26C7EEA000E28724 /* SeedData in Resources */ = {isa = PBXBuildFile; fileRef = 025479DE26C7EEA000E28724 /* SeedData */; };
 		026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */; };
-		0264B817264A7CE900E1EEFA /* ANVCGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* ANVCGet.swift */; };
+		0264B817264A7CE900E1EEFA /* AnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* AnViewModel.swift */; };
 		0264B837264B25E100E1EEFA /* LoadingInd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B836264B25E100E1EEFA /* LoadingInd.swift */; };
 		0269E2AC2564B838005FE14B /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269E2AB2564B838005FE14B /* AnalyticsView.swift */; };
 		0274105826207D2100D82F6D /* PackTVC+Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274105726207D2000D82F6D /* PackTVC+Instagram.swift */; };
-		0274DB2E26848492005F9C9C /* ANVCFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2D26848492005F9C9C /* ANVCFill.swift */; };
+		0274DB2E26848492005F9C9C /* AnViewModel+Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2D26848492005F9C9C /* AnViewModel+Fill.swift */; };
 		0274DB3026848948005F9C9C /* GJs+Dir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* GJs+Dir.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */; };
 		029BEDE625F907B200980870 /* PackTVC+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BEDE525F907B100980870 /* PackTVC+Interface.swift */; };
@@ -58,7 +59,7 @@
 		02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AEA58625B630B10063076F /* PackTVC+NavBar.swift */; };
 		02AEA61F25BB2CFE0063076F /* TVC+OldMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AEA61E25BB2CFE0063076F /* TVC+OldMenu.swift */; };
 		02B02AC52594238100586352 /* ThemeVC+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B02AC42594238100586352 /* ThemeVC+Search.swift */; };
-		02B104A727697B6C00C9EC6C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* ViewModel.swift */; };
+		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
 		02B104A9276A630E00C9EC6C /* Url_img_SUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */; };
 		02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */; };
 		02BC8D592602B79900441349 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsVC.swift */; };
@@ -107,7 +108,7 @@
 		0206214D2663A2AE0072C404 /* JsonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModels.swift; sourceTree = "<group>"; };
 		02062152266503490072C404 /* GJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJs.swift; sourceTree = "<group>"; };
 		02062154266550D70072C404 /* PrJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrJs.swift; sourceTree = "<group>"; };
-		020621562666DBCC0072C404 /* ANVCVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANVCVar.swift; sourceTree = "<group>"; };
+		020621562666DBCC0072C404 /* AnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnModel.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* PrJs+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrJs+Tools.swift"; sourceTree = "<group>"; };
 		0213D9F2275D2F08002A54ED /* GJs+SmartIG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+SmartIG.swift"; sourceTree = "<group>"; };
 		0213D9F4275D2F8A002A54ED /* GJs+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+Analytics.swift"; sourceTree = "<group>"; };
@@ -116,7 +117,8 @@
 		0216111A25D46EFA0098CE5E /* TVC+OldMenu_objc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+OldMenu_objc.swift"; sourceTree = "<group>"; };
 		0216112625D6BF050098CE5E /* TVC+TBarTapTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+TBarTapTag.swift"; sourceTree = "<group>"; };
 		02188595275FF7AF00E87868 /* SmartG+Fill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartG+Fill.swift"; sourceTree = "<group>"; };
-		021D76162759A00D00F54054 /* SmartIG_SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartIG_SwiftUI.swift; sourceTree = "<group>"; };
+		021AFD572789F2590008735E /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
+		021D76162759A00D00F54054 /* SmartG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartG.swift; sourceTree = "<group>"; };
 		021D761F275A99D500F54054 /* PrModel_Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrModel_Analytics.swift; sourceTree = "<group>"; };
 		021D7623275A9EE900F54054 /* GJs+RefreshRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+RefreshRate.swift"; sourceTree = "<group>"; };
 		022479C4250D1ED900E0E489 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
@@ -139,12 +141,12 @@
 		02491C682680883700F98E17 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		025479DE26C7EEA000E28724 /* SeedData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SeedData; sourceTree = "<group>"; };
 		026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
-		0264B816264A7CE900E1EEFA /* ANVCGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANVCGet.swift; sourceTree = "<group>"; };
+		0264B816264A7CE900E1EEFA /* AnViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnViewModel.swift; sourceTree = "<group>"; };
 		0264B836264B25E100E1EEFA /* LoadingInd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInd.swift; sourceTree = "<group>"; };
 		0269E2AB2564B838005FE14B /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		0273D1512655A9BB0043011C /* PrJs+Varr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrJs+Varr.swift"; sourceTree = "<group>"; };
 		0274105726207D2000D82F6D /* PackTVC+Instagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Instagram.swift"; sourceTree = "<group>"; };
-		0274DB2D26848492005F9C9C /* ANVCFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANVCFill.swift; sourceTree = "<group>"; };
+		0274DB2D26848492005F9C9C /* AnViewModel+Fill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnViewModel+Fill.swift"; sourceTree = "<group>"; };
 		0274DB2F26848948005F9C9C /* GJs+Dir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+Dir.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerVC.swift; sourceTree = "<group>"; };
 		029BEDE525F907B100980870 /* PackTVC+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Interface.swift"; sourceTree = "<group>"; };
@@ -153,7 +155,7 @@
 		02AEA58625B630B10063076F /* PackTVC+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+NavBar.swift"; sourceTree = "<group>"; };
 		02AEA61E25BB2CFE0063076F /* TVC+OldMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+OldMenu.swift"; sourceTree = "<group>"; };
 		02B02AC42594238100586352 /* ThemeVC+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeVC+Search.swift"; sourceTree = "<group>"; };
-		02B104A627697B6C00C9EC6C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
 		02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url_img_SUI.swift; sourceTree = "<group>"; };
 		02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Navigation.swift"; sourceTree = "<group>"; };
 		02BC8D582602B79900441349 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -251,15 +253,14 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
-		021AFD542787857B0008735E /* SmartIG */ = {
+		021AFD542787857B0008735E /* SmartIG_SUI */ = {
 			isa = PBXGroup;
 			children = (
-				021D76162759A00D00F54054 /* SmartIG_SwiftUI.swift */,
-				02188595275FF7AF00E87868 /* SmartG+Fill.swift */,
-				02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */,
-				02B104A627697B6C00C9EC6C /* ViewModel.swift */,
+				021AFD572789F2590008735E /* SmartGModel.swift */,
+				02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */,
+				021AFD592789F3720008735E /* SmartGView */,
 			);
-			path = SmartIG;
+			path = SmartIG_SUI;
 			sourceTree = "<group>";
 		};
 		021AFD552787A8100008735E /* GJS Tools */ = {
@@ -271,12 +272,30 @@
 			path = "GJS Tools";
 			sourceTree = "<group>";
 		};
+		021AFD592789F3720008735E /* SmartGView */ = {
+			isa = PBXGroup;
+			children = (
+				021D76162759A00D00F54054 /* SmartG.swift */,
+				02188595275FF7AF00E87868 /* SmartG+Fill.swift */,
+			);
+			path = SmartGView;
+			sourceTree = "<group>";
+		};
+		021AFD5A2789F44F0008735E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				02491C5A26779AE400F98E17 /* Setup */,
+				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		021D7621275A9BBB00F54054 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				0231AB1326849F4A007F4FC8 /* Import */,
 				02E4B9D325CC97C700949213 /* Analytics */,
-				021AFD542787857B0008735E /* SmartIG */,
+				021AFD542787857B0008735E /* SmartIG_SUI */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -305,21 +324,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0231AB1126849DFA007F4FC8 /* ANViewData */ = {
+		0231AB1126849DFA007F4FC8 /* AnViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				020621562666DBCC0072C404 /* ANVCVar.swift */,
-				0264B816264A7CE900E1EEFA /* ANVCGet.swift */,
-				0274DB2D26848492005F9C9C /* ANVCFill.swift */,
+				0264B816264A7CE900E1EEFA /* AnViewModel.swift */,
+				0274DB2D26848492005F9C9C /* AnViewModel+Fill.swift */,
 			);
-			path = ANViewData;
+			path = AnViewModel;
 			sourceTree = "<group>";
 		};
 		0231AB1326849F4A007F4FC8 /* Import */ = {
 			isa = PBXGroup;
 			children = (
-				02491C5A26779AE400F98E17 /* Setup */,
-				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
+				021AFD5A2789F44F0008735E /* Login */,
 				021D7622275A9E6200F54054 /* Models */,
 				02FEF5C92638951C0001B525 /* GenericJSONParser.swift */,
 				0231AB152684B973007F4FC8 /* Import.swift */,
@@ -369,6 +386,7 @@
 				02FEF5B6263304EC0001B525 /* External.swift */,
 				0247E585257FEFB900C65245 /* Utility.swift */,
 				02CEFB6C25CB945000FB70E4 /* Image.swift */,
+				02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */,
 				02D1A118255387590045E56F /* UniqueTags.swift */,
 				02491C52267147AF00F98E17 /* ModalUI.swift */,
 				02FD6CB326D8178800AB16E4 /* Rating */,
@@ -426,7 +444,8 @@
 		02E4B9D325CC97C700949213 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				0231AB1126849DFA007F4FC8 /* ANViewData */,
+				020621562666DBCC0072C404 /* AnModel.swift */,
+				0231AB1126849DFA007F4FC8 /* AnViewModel */,
 				02FB530C25AD3DD00063038C /* AnalyticsVC */,
 			);
 			path = Analytics;
@@ -651,7 +670,7 @@
 				022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */,
 				0216110E25D46C180098CE5E /* TVC+NewMenu.swift in Sources */,
-				0274DB2E26848492005F9C9C /* ANVCFill.swift in Sources */,
+				0274DB2E26848492005F9C9C /* AnViewModel+Fill.swift in Sources */,
 				02FBAFE325A93C3300E32D73 /* AnalyticsOld.swift in Sources */,
 				0231AB162684B973007F4FC8 /* Import.swift in Sources */,
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,
@@ -660,7 +679,7 @@
 				0226F19C259EAB93006E086C /* PackCell.swift in Sources */,
 				021D7620275A99D500F54054 /* PrModel_Analytics.swift in Sources */,
 				0216111525D46D9C0098CE5E /* OldMenuCell.swift in Sources */,
-				021D76172759A00D00F54054 /* SmartIG_SwiftUI.swift in Sources */,
+				021D76172759A00D00F54054 /* SmartG.swift in Sources */,
 				0213D9F5275D2F8A002A54ED /* GJs+Analytics.swift in Sources */,
 				02CEFB6D25CB945000FB70E4 /* Image.swift in Sources */,
 				0247E586257FEFB900C65245 /* Utility.swift in Sources */,
@@ -685,12 +704,12 @@
 				02491C55267799BD00F98E17 /* IgApiSetupVC+UI.swift in Sources */,
 				02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */,
 				02491C692680883800F98E17 /* AppColors.swift in Sources */,
-				020621572666DBCC0072C404 /* ANVCVar.swift in Sources */,
+				020621572666DBCC0072C404 /* AnModel.swift in Sources */,
 				02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */,
 				02AEA61F25BB2CFE0063076F /* TVC+OldMenu.swift in Sources */,
 				0216112725D6BF050098CE5E /* TVC+TBarTapTag.swift in Sources */,
 				02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */,
-				0264B817264A7CE900E1EEFA /* ANVCGet.swift in Sources */,
+				0264B817264A7CE900E1EEFA /* AnViewModel.swift in Sources */,
 				024347D827119E2100F86A64 /* TextRecognition.swift in Sources */,
 				02CAC9B32591047D00BE5E57 /* ThemeVC+TxtV.swift in Sources */,
 				0226F197259AB231006E086C /* TVC+TapTag.swift in Sources */,
@@ -698,12 +717,13 @@
 				02FD6CB026D8006400AB16E4 /* RateAndReview.swift in Sources */,
 				0213D9F3275D2F08002A54ED /* GJs+SmartIG.swift in Sources */,
 				02CAC9B7259105B400BE5E57 /* ThemeVC.swift in Sources */,
-				02B104A727697B6C00C9EC6C /* ViewModel.swift in Sources */,
+				02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */,
 				02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */,
 				02FB552F24FFA78B00174E34 /* ThemeTVC.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* External.swift in Sources */,
 				0269E2AC2564B838005FE14B /* AnalyticsView.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
+				021AFD582789F2590008735E /* SmartGModel.swift in Sources */,
 				02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */,
 				02B02AC52594238100586352 /* ThemeVC+Search.swift in Sources */,
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
