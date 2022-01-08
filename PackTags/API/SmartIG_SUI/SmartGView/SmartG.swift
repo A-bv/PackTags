@@ -22,7 +22,6 @@ struct SmartG_SwiftUI: View {
         ZStack{
             Color.bgFillColor.ignoresSafeArea()
             
-            
             VStack{
                 
                 Header()
@@ -36,7 +35,7 @@ struct SmartG_SwiftUI: View {
                     }
                     
                     ScrollView(.horizontal, showsIndicators: false){
-                    HStack { //PLLLL
+                    HStack { //PLLLLL
                         ForEach(viewModel.courses, id: \.self) { course in
                             
                             StoryCard(url: course.image, title: "3")
@@ -64,8 +63,8 @@ struct SmartG_SwiftUI: View {
         }
         .onAppear {
             
-            viewModel.fetch2() //PLLLL
-            //viewModel.fetch() //PLLLL
+            viewModel.fetch2() //PLLLLL
+            //viewModel.fetch() //PLLLLL
         }
     }
 }

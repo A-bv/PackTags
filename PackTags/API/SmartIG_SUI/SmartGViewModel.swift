@@ -13,7 +13,7 @@ import FBSDKLoginKit
 @available(iOS 14.0.0, *)
 class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
-    @Published var courses: [Course] = [] //PLLLL
+    @Published var courses: [Course] = [] //PLLLLL
     
     func fetch() {
         let S = Media.self
@@ -31,7 +31,7 @@ class SmartGViewModel: ObservableObject {
         }
     }
     
-    //PLLLL
+    //PLLLLL
     func fetch2() {
         let S = Course.self
         //if let token = AccessToken.current, !token.isExpired {

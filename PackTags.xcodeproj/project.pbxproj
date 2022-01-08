@@ -22,6 +22,7 @@
 		021AFD5127877CC50008735E /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 021AFD5027877CC50008735E /* FacebookCore */; };
 		021AFD5327877CC50008735E /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 021AFD5227877CC50008735E /* FacebookLogin */; };
 		021AFD582789F2590008735E /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD572789F2590008735E /* SmartGModel.swift */; };
+		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
 		021D76172759A00D00F54054 /* SmartG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartG.swift */; };
 		021D7620275A99D500F54054 /* PrModel_Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D761F275A99D500F54054 /* PrModel_Analytics.swift */; };
 		021D7624275A9EE900F54054 /* GJs+RefreshRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D7623275A9EE900F54054 /* GJs+RefreshRate.swift */; };
@@ -118,6 +119,7 @@
 		0216112625D6BF050098CE5E /* TVC+TBarTapTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+TBarTapTag.swift"; sourceTree = "<group>"; };
 		02188595275FF7AF00E87868 /* SmartG+Fill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartG+Fill.swift"; sourceTree = "<group>"; };
 		021AFD572789F2590008735E /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
+		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		021D76162759A00D00F54054 /* SmartG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartG.swift; sourceTree = "<group>"; };
 		021D761F275A99D500F54054 /* PrModel_Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrModel_Analytics.swift; sourceTree = "<group>"; };
 		021D7623275A9EE900F54054 /* GJs+RefreshRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+RefreshRate.swift"; sourceTree = "<group>"; };
@@ -338,8 +340,8 @@
 			children = (
 				021AFD5A2789F44F0008735E /* Login */,
 				021D7622275A9E6200F54054 /* Models */,
-				02FEF5C92638951C0001B525 /* GenericJSONParser.swift */,
 				0231AB152684B973007F4FC8 /* Import.swift */,
+				02FEF5C92638951C0001B525 /* GenericJSONParser.swift */,
 				02FEF5C626382A250001B525 /* GetJson */,
 				021044F926446B5700408CEB /* ProcessJson */,
 			);
@@ -385,6 +387,7 @@
 				0264B836264B25E100E1EEFA /* LoadingInd.swift */,
 				02FEF5B6263304EC0001B525 /* External.swift */,
 				0247E585257FEFB900C65245 /* Utility.swift */,
+				021AFD5B278A1BE40008735E /* Alerts.swift */,
 				02CEFB6C25CB945000FB70E4 /* Image.swift */,
 				02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */,
 				02D1A118255387590045E56F /* UniqueTags.swift */,
@@ -716,6 +719,7 @@
 				0274DB3026848948005F9C9C /* GJs+Dir.swift in Sources */,
 				02FD6CB026D8006400AB16E4 /* RateAndReview.swift in Sources */,
 				0213D9F3275D2F08002A54ED /* GJs+SmartIG.swift in Sources */,
+				021AFD5C278A1BE40008735E /* Alerts.swift in Sources */,
 				02CAC9B7259105B400BE5E57 /* ThemeVC.swift in Sources */,
 				02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */,
 				02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */,

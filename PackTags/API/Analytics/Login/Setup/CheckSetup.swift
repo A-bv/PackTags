@@ -27,34 +27,26 @@ extension UIViewController {
         
         //Alert if already pressed fb login button and if wrong setup
         if b == false && UserDefaults.standard.object(forKey: "pressedFBLoginButton") != nil {
-            Utility.setupTroubleShootingAlert(arr: [])
+            Alerts.setupTroubleShootingAlert(arr: [], presenterVc: self)
         }
     }
     
-    func isCorrectSetup () -> Bool {
+    func shouldShowFBLogin () -> Bool {
         let b: Bool? = UserDefaults.standard.bool(forKey: "isCorrectSetup")
         
-        if b == nil || b == false {
-            
-            let vc1 = FBLoginVC()
-            vc1.modalPresentationStyle = .overFullScreen
-            vc1.modalTransitionStyle = .coverVertical
-                    
-            self.present(vc1, animated: true, completion: nil)
+        let vc = FBLoginVC()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .coverVertical
         
-            return false
+        if b == nil || b == false {
+            self.present(vc, animated: true, completion: nil)
+            return true
         } else {
-            
-            
             if AccessToken.current == nil {
-                let vc = FBLoginVC()
-                vc.modalPresentationStyle = .overFullScreen
-                vc.modalTransitionStyle = .coverVertical
                 self.present(vc, animated: true, completion: nil)
-                return false
-                
-            } else {
                 return true
+            } else {
+                return false
             }
         }
     }

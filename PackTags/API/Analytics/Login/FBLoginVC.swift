@@ -40,12 +40,12 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
                 self?.verifySetupIgBAndGetIgBId(Completion: {(IgBId) in
                     uD.set(true, forKey: "isCorrectSetup")
                     uD.set(IgBId, forKey: "IgBId")
-                    Utility.simpleShortAlert(title: "Connected!", message: "You can now access analytics and generate hashtags.", vc: self, okDismissVc: true)
+                    Alerts.simpleShortAlert(title: "Connected!", message: "You can now access analytics and generate hashtags.", vc: self, okDismissVc: true)
                 })
             })
         } else {
             uD.set(false, forKey: "isCorrectSetup")
-            Utility.setupTroubleShootingAlert(arr: [])
+            Alerts.setupTroubleShootingAlert(arr: [], presenterVc: self)
         }
     }
     
@@ -101,7 +101,7 @@ extension FBLoginVC {
             if pages == [] {
                 // Exit if no IGPro or wrong linked FB page(s)
                 print("No page")
-                Utility.setupTroubleShootingAlert(arr: [])
+                Alerts.setupTroubleShootingAlert(arr: [], presenterVc: self)
                 return
             }
             // ----- CAUTION -----
@@ -125,11 +125,10 @@ extension FBLoginVC {
                guard let response2 = result as? NSDictionary else { return } //
                guard let igBIds = (response2.value(forKeyPath: "data.instagram_business_account.id") as? [String])
                else {
-                   //No business account linked
-                   Utility.setupTroubleShootingAlert(arr: [])
+                   print("No business account linked or wrong pages selected")
+                   Alerts.setupTroubleShootingAlert(arr: [], presenterVc: self)
                    return
                }
-               print(igBIds)
                if igBIds.count >= 1 {
                    block(igBIds[0])
                    //17841446788403615
@@ -140,7 +139,6 @@ extension FBLoginVC {
     }
     
 }
-
 
 
 

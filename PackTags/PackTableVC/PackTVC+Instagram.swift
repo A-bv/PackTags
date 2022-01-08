@@ -33,7 +33,7 @@ extension PackTableVC {
         let Username = UserDefaults.standard.string(forKey: "Instagram Username")  ?? ""
         
         if Username == "" {
-            Utility.alertTitle(targetVC: self, title: "Instagram" , message: "Username", placeholder: "Enter Username") { (inputName) in
+            Alerts.alertTitle(targetVC: self, title: "Instagram" , message: "Username", placeholder: "Enter Username") { (inputName) in
                 let name = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
                 UserDefaults.standard.set(name, forKey: "Instagram Username")
                 UserDefaults.standard.set(true, forKey: "goInsta")

@@ -33,12 +33,16 @@ extension ThemeVC{
         #if !arch(arm)
         let smartGen = UIAction(title: "Smart hashtags", image: UIImage(systemName: "chart.bar.doc.horizontal.fill")) { [weak vc = self] action in
             
-            let logged = vc?.isCorrectSetup()
-            if logged == false {return}
+            guard let blockNavigation = vc?.shouldShowFBLogin() else { return }
             
-            let hostingController = UIHostingController(rootView: SmartG_SwiftUI())
-            hostingController.modalPresentationStyle = .overFullScreen
-            vc?.present(hostingController, animated: true, completion: nil)
+            if blockNavigation {
+                return
+            } else {
+                let hostingController = UIHostingController(rootView: SmartG_SwiftUI())
+                hostingController.modalPresentationStyle = .overFullScreen
+                vc?.present(hostingController, animated: true, completion: nil)
+            }
+        
         }
         #endif
         

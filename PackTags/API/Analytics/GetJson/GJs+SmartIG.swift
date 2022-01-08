@@ -46,7 +46,7 @@ extension GetJson {
     }
     
     
-    class func ig_hashtag_search2 (IgBId: Any, token:String, s_Hashtag:String, Completion block: @escaping((Any) -> ())) { //PLLLL
+    class func ig_hashtag_search2 (IgBId: Any, token:String, s_Hashtag:String, Completion block: @escaping((Any) -> ())) { //PLLLLL
             let url =  "https://iosacademy.io/api/v1/courses/index.php"
     
             GenericJSONParser.download(fromURLString: url) { (result) in

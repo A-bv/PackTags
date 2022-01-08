@@ -19,14 +19,15 @@ class GetJson: NSObject {
         
         guard let token = token else {return}
             
-        guard let igBId = UserDefaults.standard.string(forKey: "IgBId") else {
-            Utility.setupTroubleShootingAlert(arr: [])
-            return }
-        
-        if UserDefaults.standard.bool(forKey: "isCorrectSetup") == false {
-            Utility.setupTroubleShootingAlert(arr: [])
+        guard let igBId = UserDefaults.standard.string(forKey: "IgBId") else
+        {
+            if UserDefaults.standard.bool(forKey: "isCorrectSetup") == false {
+                Alerts.setupTroubleShootingAlert(arr: [], presenterVc: nil)
+                return
+            }
             return
         }
+
         
         if T.self == Profile.self {
             load_Profile(igBId: igBId, token: token, completion: {
@@ -40,7 +41,7 @@ class GetJson: NSObject {
             print(business_discovery_url(IgBId: igBId, token: token, account: "nike") ?? "nil")
             
         } else if T.self == Course.self {
-            //PLLLL
+            //PLLLLL
             ig_hashtag_search2(IgBId: igBId, token: "", s_Hashtag: "travel", Completion: { (course) in
                 block(course)
             })

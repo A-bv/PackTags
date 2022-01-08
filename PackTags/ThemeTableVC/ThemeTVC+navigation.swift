@@ -56,19 +56,11 @@ extension ThemeTableViewController {
         //Checks if insta user is defined before performing segue to analytics
         if identifier == "ShowAnalytics" {
             
-            /*
-            if UserDefaults.standard.string(forKey: "Instagram Username") == nil {
-                self.setInstaUser()
-                return false
-            } else {
+            //->SetupCheck //JKK
+            if !self.shouldShowFBLogin() {
                 return true
-            }*/
-            
-            //->SetupCheck
-            
-            //JKK
-            return self.isCorrectSetup()
-            
+            }
+            return false
             
         }
 

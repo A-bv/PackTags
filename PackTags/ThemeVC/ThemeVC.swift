@@ -233,7 +233,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         let placeholder = themeTitle.isEmpty == true ? "Enter Name" : "Enter New Name"
         
         //Shows alert pop up
-        Utility.alertTitle(targetVC: self, title: title, message: message, placeholder: placeholder) {[weak vc = self] //avoid retained cycle
+        Alerts.alertTitle(targetVC: self, title: title, message: message, placeholder: placeholder) {[weak vc = self] //avoid retained cycle
             (inputName) in
             // continue your logic
             vc?.themeTitle = inputName

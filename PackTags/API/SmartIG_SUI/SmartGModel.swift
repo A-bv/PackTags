@@ -8,7 +8,7 @@
 
 import Foundation
 
-//PLLLL
+//PLLLLL
 struct Course: Hashable, Codable{
     let name: String
     let image: String
