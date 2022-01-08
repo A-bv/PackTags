@@ -13,18 +13,17 @@ import FBSDKLoginKit
 @available(iOS 14.0.0, *)
 class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
-    @Published var courses: [Course] = [] //PLLLL
+    @Published var courses: [Course] = [] //PLLLLL
     
     func fetch() {
         let S = Media.self
         if let token = AccessToken.current, !token.isExpired {
             
             GetJson.apiGraphIgBHub (of: S, token: token.tokenString, smartGString: "travel")
-            {[weak self](decodedJson) in
+            {[weak self](result) in
 
-                let D = decodedJson as? Media
+                let D = result as? Media
                 guard let d = D?.data else {return}
-                
                 self?.dataMedias = d.compactMap { $0 }
                 //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
                 
@@ -32,16 +31,16 @@ class SmartGViewModel: ObservableObject {
         }
     }
     
-    //PLLLL
+    //PLLLLL
     func fetch2() {
         
         //if let token = AccessToken.current, !token.isExpired {
         
         let S = Course.self
         GetJson.apiGraphIgBHub (of: S, token: "", smartGString: "travel")
-        {[weak self](decodedJson) in
+        {[weak self](result) in
             
-                let D = decodedJson as! [Course]
+                let D = result as! [Course]
                 self?.courses = D
         }
         

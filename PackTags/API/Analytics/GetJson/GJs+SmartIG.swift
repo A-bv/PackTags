@@ -46,21 +46,21 @@ extension GetJson {
     }
     
     
-    class func ig_hashtag_search2 (IgBId: Any, token:String, s_Hashtag:String, Completion block: @escaping((Any) -> ())) { //PLLLL
+    class func ig_hashtag_search2 (IgBId: Any, token:String, s_Hashtag:String, Completion block: @escaping((Any) -> ())) { //PLLLLL
             let url =  "https://iosacademy.io/api/v1/courses/index.php"
     
             GenericJSONParser.download(fromURLString: url) { (result) in
     
                 switch result {
-                    case .success(let data):
-                    if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
+                    case .success( _ ):
+                    
 
                         guard let e_htg_url = encode_url (url: url) else {return}
                 
                         GenericJSONParser.cURL2(of: Course.self, from: e_htg_url, Completion: { (result) in
                             block(result)
                         })
-                    }
+                    
             
                 case .failure(let error):
                     print("loadJson error:", error)

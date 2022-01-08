@@ -18,7 +18,7 @@ class GetJson: NSObject {
     class func apiGraphIgBHub<T: Decodable> (of type: T.Type, token:String?, smartGString:String?, Completion block: @escaping ((Any) -> ())) {
         
         
-            //PLLLL
+            //PLLLLL
         DispatchQueue.main.async {
             ig_hashtag_search2(IgBId: "", token: "", s_Hashtag: "travel", Completion: { (course) in
                     block(course)

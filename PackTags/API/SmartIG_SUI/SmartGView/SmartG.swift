@@ -34,8 +34,9 @@ struct SmartG_SwiftUI: View {
                         }
                     }
                     
+                    //PLLLLL
                     ScrollView(.horizontal, showsIndicators: false){
-                    HStack { //PLLLL
+                    HStack {
                         ForEach(viewModel.courses, id: \.self) { course in
                             
                             StoryCard(url: course.image, title: "3")
@@ -63,8 +64,8 @@ struct SmartG_SwiftUI: View {
         }
         .onAppear {
             
-            //viewModel.fetch2() //PLLLL
-            viewModel.fetch() //PLLLL
+            //viewModel.fetch2() //PLLLLL
+            viewModel.fetch() //PLLLLL
         }
     }
 }
