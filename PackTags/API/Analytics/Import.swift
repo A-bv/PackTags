@@ -35,20 +35,17 @@ extension ANewVCDataSUI {
     
     //2 web import
     func getOnlineJsonAPIGraph () {
-        if let token = AccessToken.current, !token.isExpired {
-            print("active token")
-            GetJson.apiGraphIgBHub (of: Profile.self, token: token.tokenString, smartGString: nil) {(result) in
+        GetJson.apiGraphIgBHub (of: Profile.self, smartGString: nil) {(result) in
                 
-                DispatchQueue.main.async{
-                    guard let json = result as? Profile else {return}
-                    self.jsonOfficial = json
+            DispatchQueue.main.async{
+                guard let json = result as? Profile else {return}
+                self.jsonOfficial = json
                     
-                    self.processedJson = ProcessJson.processJsApiGraph(decodedJson: json)
-                    self.fillGraphData ()
-                    self.fillData()
+                self.processedJson = ProcessJson.processJsApiGraph(decodedJson: json)
+                self.fillGraphData ()
+                self.fillData()
                     
-                    //self.getEngagementVariations(isFromSave: false) //VARR
-                }
+                //self.getEngagementVariations(isFromSave: false) //VARR
             }
         }
     }
@@ -68,14 +65,11 @@ extension AnalyticsOld {
     
     //2 web import
     func getOnlineJsonApiGraphOld () {
-        if let token = AccessToken.current, !token.isExpired {
-            print("active token")
-            loginSpinner.startAnimating()
-            GetJson.apiGraphIgBHub (of: Profile.self, token: token.tokenString, smartGString: nil) {(Json) in
-                DispatchQueue.main.async{
-                    self.loginSpinner.stopAnimating()
-                    self.displayDataComingFromApiGraph(Json: Json as! Profile )
-                }
+        loginSpinner.startAnimating()
+        GetJson.apiGraphIgBHub (of: Profile.self, smartGString: nil) {(Json) in
+            DispatchQueue.main.async{
+                self.loginSpinner.stopAnimating()
+                self.displayDataComingFromApiGraph(Json: Json as! Profile )
             }
         }
     }

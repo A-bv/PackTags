@@ -11,8 +11,9 @@ import Foundation
 //Functions for SmartG
 extension GetJson {
     
-    class func ig_hashtag_search (IgBId: Any, token:String, s_Hashtag:String, Completion block: @escaping((Media) -> ())) {
+    class func ig_hashtag_search (s_Hashtag:String, Completion block: @escaping((Media) -> ())) {
         //Hashtags search
+        
         let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(IgBId)&q=\(s_Hashtag)&access_token=\(token)"
         guard let e_url = encode_url (url: url) else {return}
         
@@ -40,13 +41,11 @@ extension GetJson {
                 print("loadJson error:", error)
             }
         }
-        
-         
-        
     }
     
     
-    class func ig_hashtag_search2 (IgBId: Any, token:String, s_Hashtag:String, Completion block: @escaping((Any) -> ())) { //PLLLLL
+    class func ig_hashtag_search2 (s_Hashtag:String, Completion block: @escaping((Any) -> ())) { //PLLLLL
+        
             let url =  "https://iosacademy.io/api/v1/courses/index.php"
     
             GenericJSONParser.download(fromURLString: url) { (result) in
@@ -68,9 +67,10 @@ extension GetJson {
             }
     }
     
-    class func business_discovery_url (IgBId: Any, token:String,account:String) -> String? {
+    class func business_discovery_url (account:String) -> String? {
         //Business discovery
         //
+        
         let limit = 12
         let url = "https://graph.facebook.com/\(apiGph_version)/\(IgBId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(token)"
         

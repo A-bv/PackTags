@@ -31,7 +31,7 @@ extension UIViewController {
         }
     }
     
-    func shouldShowFBLogin () -> Bool {
+    func saveTokenOrShowFBLogin () -> Bool {
         let b: Bool? = UserDefaults.standard.bool(forKey: "isCorrectSetup")
         
         let vc = FBLoginVC()
@@ -42,13 +42,17 @@ extension UIViewController {
             self.present(vc, animated: true, completion: nil)
             return true
         } else {
-            if AccessToken.current == nil {
+            guard let token = AccessToken.current, !token.isExpired
+            else {
                 self.present(vc, animated: true, completion: nil)
                 return true
-            } else {
-                return false
             }
+            UserDefaults.standard.set( token.tokenString, forKey: "fbToken")
+            return false
         }
     }
 
 }
+
+
+

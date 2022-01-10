@@ -7,45 +7,37 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 let apiGph_version = "v12.0" //Api graph version
+let token = UserDefaults.standard.string(forKey: "fbToken") ?? ""
+let IgBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
 // MARK: - API Calls to get IG Business data
 class GetJson: NSObject {
     
     typealias result<T> = (Result<T, Error>) -> Void
     
-    class func apiGraphIgBHub<T: Decodable> (of type: T.Type, token:String?, smartGString:String?, Completion block: @escaping ((Any) -> ())) {
+    class func apiGraphIgBHub<T: Decodable> (of type: T.Type, smartGString:String?, Completion block: @escaping ((Any) -> ())) {
         
         
-            //PLLLLL
         DispatchQueue.main.async {
-            ig_hashtag_search2(IgBId: "", token: "", s_Hashtag: "travel", Completion: { (course) in
-                    block(course)
-            })
             
-            guard let token = token else {return}
-                
-            guard let igBId = UserDefaults.standard.string(forKey: "IgBId") else
-            {
-                if UserDefaults.standard.bool(forKey: "isCorrectSetup") == false {
-                    Alerts.setupTroubleShootingAlert(arr: [], presenterVc: nil)
-                    return
-                }
-                return
-            }
-
-            
-            if T.self == Profile.self {
-                load_Profile(igBId: igBId, token: token, completion: {
+            if T.self == Course.self {
+                //PLLLLL
+                ig_hashtag_search2(s_Hashtag: "travel", Completion: { (course) in
+                        block(course)
+                })
+            } else if T.self == Profile.self {
+                load_Profile(completion: {
                     (profile) in block(profile)
                 })
             } else if T.self == Media.self {
-                ig_hashtag_search(IgBId: igBId, token: token, s_Hashtag: "travel", Completion: { (media) in
+                ig_hashtag_search(s_Hashtag: "travel", Completion: { (media) in
                     block(media)
                 })
             } else if T.self == Discovery.self {
-                print(business_discovery_url(IgBId: igBId, token: token, account: "nike") ?? "nil")
+                print(business_discovery_url( account: "nike") ?? "nil")
             } else {
                 return
             }
