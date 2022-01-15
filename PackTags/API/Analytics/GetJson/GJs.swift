@@ -20,27 +20,20 @@ class GetJson: NSObject {
     
     class func apiGraphIgBHub<T: Decodable> (of type: T.Type, smartGString:String?, Completion block: @escaping ((Any) -> ())) {
         
-        
         DispatchQueue.main.async {
-            
             
             if T.self == DataMedia.self {
             //PLLLLL
-                ig_hashtag_search2(s_Hashtag: "travel", Completion: { (course) in
-                        block(course)
-                })
-            } else if T.self == Course.self {
-                //PLLLLL
-                ig_hashtag_search2(s_Hashtag: "travel", Completion: { (course) in
-                        block(course)
-                })
-            } else if T.self == Profile.self {
-                load_Profile(completion: {
-                    (profile) in block(profile)
+                ig_hashtag_search2(s_Hashtag: "travel", Completion: { (datamedia) in
+                        block(datamedia)
                 })
             } else if T.self == Media.self {
                 ig_hashtag_search(s_Hashtag: "travel", Completion: { (media) in
                     block(media)
+                })
+            } else if T.self == Profile.self {
+                load_Profile(completion: {
+                    (profile) in block(profile)
                 })
             } else if T.self == Discovery.self {
                 print(business_discovery_url( account: "nike") ?? "nil")

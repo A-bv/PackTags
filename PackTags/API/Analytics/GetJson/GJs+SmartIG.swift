@@ -11,7 +11,7 @@ import Foundation
 
 extension GetJson {
     
-    class func ig_hashtag_search (s_Hashtag:String, Completion block: @escaping((Media) -> ())) {
+    class func findHashtagUrl (s_Hashtag:String, Completion block: @escaping((String) -> ())) {
         let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(IgBId)&q=\(s_Hashtag)&access_token=\(token)"
         guard let e_url = encode_url (url: url) else {
             return
@@ -27,36 +27,29 @@ extension GetJson {
                     guard let e_htg_url = encode_url (url: htg_url) else {
                         return
                     }
-                    GenericJSONParser.cURL2(of: Media.self, from: e_htg_url, Completion: { (result) in
-                        block(result as! Media)
-                    })
+                    block(e_htg_url)
                 }
             case .failure(let error):
-                print("loadJson error:", error)
+                print("download json:", error)
             }
         }
     }
     
+    class func ig_hashtag_search (s_Hashtag:String, Completion block: @escaping((Any) -> ())) {
+        
+        findHashtagUrl(s_Hashtag: "travel", Completion: { (url) in
+            GenericJSONParser.cURL2(of: Media.self, from: url, Completion: { (result) in
+                block(result)
+            })
+        })
+    }
     
     class func ig_hashtag_search2 (s_Hashtag:String, Completion block: @escaping((Any) -> ())) { //PLLLLL
-        //let url =  "https://iosacademy.io/api/v1/courses/index.php"
         let url = "https://mocki.io/v1/1d148d4a-4e32-48cc-acd7-c721576c0005"
-        //let S = Course.self
         let S = DataMedia.self
-    
-        GenericJSONParser.download(fromURLString: url) { (result) in
-            switch result {
-            case .success( _ ):
-                guard let e_htg_url = encode_url (url: url) else {
-                    return
-                }
-                GenericJSONParser.cURL2(of: S, from: e_htg_url, Completion: { (result) in
-                    block(result)
-                })
-            case .failure(let error):
-                print("loadJson error:", error)
-            }
-        }
+        GenericJSONParser.cURL2(of: S, from: url, Completion: { (result) in
+            block(result)
+        })
     }
     
     class func business_discovery_url (account:String) -> String? {

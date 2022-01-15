@@ -59,18 +59,25 @@ extension GenericJSONParser {
                 print(error)
             case .success(let data):
                 
+                //Necessary for packtags
+                //----------
                 if T.self == Profile.self {
-                    //Necessary for packtags
-                    //----------
+                    
                     if  GetJson.isOkToSaveJsonDataInDir == true {
                         //Save Json data localy
                         GetJson.saveJsonDataToDir(jsonString: data)
                         GetJson.isOkToSaveJsonDataInDir = false
                     }
-                    //----------
+                    
+                }
+                
+                if T.self == Media.self {
+                    
                 } else {
                     
                 }
+                //----------
+                
                 DispatchQueue.main.async {
                     guard let decoded = ParseJs2(of: T.self, data: data ) else {return}
                     block(decoded)

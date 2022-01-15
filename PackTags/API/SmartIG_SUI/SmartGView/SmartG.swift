@@ -23,24 +23,20 @@ struct SmartG_SwiftUI: View {
             Color.bgFillColor.ignoresSafeArea()
             
             VStack{
-                
                 Header()
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack {
                         ForEach(viewModel.dataMedias, id: \.self){
                         media in
                             StoryCard(url: media.media_url ?? "", title: "\(media.comments_count ?? 0)")
-                        
                         }
                     }
                     
                     //PLLLLL
                     ScrollView(.horizontal, showsIndicators: false){
                     HStack {
-                        ForEach(viewModel.courses, id: \.self) { course in
-                            
-                            StoryCard(url: course.image, title: "3")
-                            
+                        ForEach(viewModel.dataMedias, id: \.self) { media in
+                            StoryCard(url: media.media_url ?? "", title: "\(media.comments_count ?? 0)")
                         }
                     }
                     }
@@ -48,7 +44,6 @@ struct SmartG_SwiftUI: View {
                 
                 .padding(.leading)
                 .padding(.vertical, 5)
-                
                 
                 List {
                     ForEach(viewModel.dataMedias, id: \.self){

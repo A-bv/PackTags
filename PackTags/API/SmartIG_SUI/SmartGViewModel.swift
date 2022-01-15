@@ -12,7 +12,6 @@ import Foundation
 @available(iOS 14.0.0, *)
 class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
-    @Published var courses: [Course] = [] //PLLLLL
     
     func fetch() {
         let S = Media.self
@@ -23,16 +22,6 @@ class SmartGViewModel: ObservableObject {
                 self?.dataMedias = d.compactMap { $0 }
                 //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
             }
-    }
-    
-    //PLLLLL
-    func fetch2() {
-        let S = Course.self
-        GetJson.apiGraphIgBHub (of: S, smartGString: "travel")
-        {[weak self](result) in
-            let D = result as! [Course]
-            self?.courses = D
-        }
     }
     
     //PLLLLL
