@@ -32,14 +32,17 @@ class GenericJSONParser {
     class func ParseJs2<T: Decodable>(of type: T.Type, data: Data) -> Any? {
         
         do {
-            //PLLLLL
-            if T.Type.self == Profile.Type.self || T.Type.self == Media.Type.self {
-                let decodedData: T = try JSONDecoder().decode(T.self, from: data)
-                return decodedData
-            } else {
-                let decodedData = try JSONDecoder().decode([T].self, from: data)
-                return decodedData
-            }
+            return try JSONDecoder().decode([T].self, from: data)
+        }
+        catch {
+            print("decode error: ",error)
+        }
+        return nil
+    }
+    
+    class func ParseJs<T: Decodable>(of type: T.Type, data: Data) -> Any? {
+        do {
+            return try JSONDecoder().decode(T.self, from: data)
         }
         catch {
             print("decode error: ",error)
@@ -62,30 +65,27 @@ extension GenericJSONParser {
                 //Necessary for packtags
                 //----------
                 if T.self == Profile.self {
-                    
                     if  GetJson.isOkToSaveJsonDataInDir == true {
                         //Save Json data localy
                         GetJson.saveJsonDataToDir(jsonString: data)
                         GetJson.isOkToSaveJsonDataInDir = false
                     }
-                    
-                }
-                
-                if T.self == Media.self {
-                    
-                } else {
-                    
                 }
                 //----------
                 
                 DispatchQueue.main.async {
-                    guard let decoded = ParseJs2(of: T.self, data: data ) else {return}
-                    block(decoded)
+                    if T.Type.self == Profile.Type.self || T.Type.self == Media.Type.self {
+                        guard let decoded = ParseJs(of: T.self, data: data ) else {return}
+                        block(decoded)
+                    } else {
+                        guard let decoded = ParseJs2(of: T.self, data: data ) else {return}
+                        block(decoded)
+                    }
                 }
+                
             }
         }
     }
-    
 }
 
 
