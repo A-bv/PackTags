@@ -23,7 +23,13 @@ class GetJson: NSObject {
         
         DispatchQueue.main.async {
             
-            if T.self == Course.self {
+            
+            if T.self == DataMedia.self {
+            //PLLLLL
+                ig_hashtag_search2(s_Hashtag: "travel", Completion: { (course) in
+                        block(course)
+                })
+            } else if T.self == Course.self {
                 //PLLLLL
                 ig_hashtag_search2(s_Hashtag: "travel", Completion: { (course) in
                         block(course)

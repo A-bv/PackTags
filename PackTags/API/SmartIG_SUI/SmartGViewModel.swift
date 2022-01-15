@@ -34,6 +34,16 @@ class SmartGViewModel: ObservableObject {
             self?.courses = D
         }
     }
+    
+    //PLLLLL
+    func fetch3() {
+        let S = DataMedia.self
+        GetJson.apiGraphIgBHub (of: S, smartGString: "travel")
+        {[weak self](result) in
+            let D = result as! [DataMedia]
+            self?.dataMedias = D
+        }
+    }
 }
 
 #endif

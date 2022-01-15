@@ -64,7 +64,8 @@ struct SmartG_SwiftUI: View {
         }
         .onAppear {
             
-            viewModel.fetch2() //PLLLLL
+            //viewModel.fetch2() //PLLLLL
+            viewModel.fetch3() //PLLLLL
             viewModel.fetch() //PLLLLL
         }
     }

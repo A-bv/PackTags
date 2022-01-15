@@ -53,7 +53,6 @@ extension GenericJSONParser {
                              from url: String,
                              Completion block: @escaping ((Any) -> ()) ) {
         
-        //1
         download(fromURLString: url) { (result) in
             switch result {
             case .failure(let error):
