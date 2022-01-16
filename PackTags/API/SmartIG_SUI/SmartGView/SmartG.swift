@@ -31,20 +31,9 @@ struct SmartG_SwiftUI: View {
                             StoryCard(url: media.media_url ?? "", title: "\(media.comments_count ?? 0)")
                         }
                     }
-                    
-                    //PLLLLL
-                    ScrollView(.horizontal, showsIndicators: false){
-                    HStack {
-                        ForEach(viewModel.dataMedias, id: \.self) { media in
-                            StoryCard(url: media.media_url ?? "", title: "\(media.comments_count ?? 0)")
-                        }
-                    }
-                    }
                 }
-                
                 .padding(.leading)
                 .padding(.vertical, 5)
-                
                 List {
                     ForEach(viewModel.dataMedias, id: \.self){
                         media in
@@ -53,15 +42,10 @@ struct SmartG_SwiftUI: View {
                         }
                     }
                 }
-                
             }
-            
         }
         .onAppear {
-            
-            //viewModel.fetch2() //PLLLLL
-            viewModel.fetch3() //PLLLLL
-            viewModel.fetch() //PLLLLL
+            viewModel.fetch()
         }
     }
 }

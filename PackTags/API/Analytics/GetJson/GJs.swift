@@ -10,8 +10,8 @@ import UIKit
 import FBSDKLoginKit
 
 let apiGph_version = "v12.0" //Api graph version
-let token = UserDefaults.standard.string(forKey: "fbToken") ?? ""
-let IgBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
+let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
+let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
 // MARK: - API Calls to get IG Business data
 class GetJson: NSObject {
@@ -21,13 +21,7 @@ class GetJson: NSObject {
     class func apiGraphIgBHub<T: Decodable> (of type: T.Type, smartGString:String?, Completion block: @escaping ((Any) -> ())) {
         
         DispatchQueue.main.async {
-            
-            if T.self == DataMedia.self {
-            //PLLLLL
-                ig_hashtag_search2(s_Hashtag: "travel", Completion: { (datamedia) in
-                        block(datamedia)
-                })
-            } else if T.self == Media.self {
+            if T.self == Media.self {
                 ig_hashtag_search(s_Hashtag: "travel", Completion: { (media) in
                     block(media)
                 })

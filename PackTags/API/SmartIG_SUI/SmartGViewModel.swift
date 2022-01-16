@@ -23,16 +23,6 @@ class SmartGViewModel: ObservableObject {
                 //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
             }
     }
-    
-    //PLLLLL
-    func fetch3() {
-        let S = DataMedia.self
-        GetJson.apiGraphIgBHub (of: S, smartGString: "travel")
-        {[weak self](result) in
-            let D = result as! [DataMedia]
-            self?.dataMedias = D
-        }
-    }
 }
 
 #endif

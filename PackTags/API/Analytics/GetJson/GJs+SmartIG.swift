@@ -12,23 +12,36 @@ import Foundation
 extension GetJson {
     
     class func findHashtagUrl (s_Hashtag:String, Completion block: @escaping((String) -> ())) {
-        let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(IgBId)&q=\(s_Hashtag)&access_token=\(token)"
+        let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(s_Hashtag)&access_token=\(fbToken)"
         guard let e_url = encode_url (url: url) else {
             return
         }
         GenericJSONParser.download(fromURLString: e_url) { (result) in
             switch result {
             case .success(let data):
+                
                 if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
+                    
                     let hashtag_id = JSONString.filter { "0"..."9" ~= $0 }
                     let limit = "25" //max value
                     let m_type = "top_media" //recent_media
-                    let htg_url = "https://graph.facebook.com/\(apiGph_version)/\(hashtag_id)/\(m_type)?fields=caption,comments_count,like_count,media_type,media_url,timestamp,id,media_product_type&user_id=\(IgBId)&limit=\(limit)&access_token=\(token)"
-                    guard let e_htg_url = encode_url (url: htg_url) else {
+                    
+                    let htg_url = "https://graph.facebook.com/\(apiGph_version)/\(hashtag_id)/\(m_type)?fields=caption,comments_count,like_count,media_type,media_url,timestamp,id,media_product_type&user_id=\(igBId)&limit=\(limit)&access_token=\(fbToken)"
+                    
+                    /*
+                    let htg_url = "https://graph.facebook.com/\(apiGph_version)/17843819167049166/\(m_type)?fields=caption,comments_count,like_count,media_type,media_url,timestamp,id,media_product_type&user_id=\(igBId)&limit=\(limit)&access_token=\(fbToken)"
+                    
+                    let htg_url = "https://graph.facebook.com/v12.0/17843819167049166/top_media?fields=caption%2Ccomments_count%2Clike_count%2Cmedia_type%2Cmedia_url%2Ctimestamp%2Cid%2Cmedia_product_type&user_id=17841446788403615&limit=25&access_token=***REMOVED***"*/
+                    
+                    guard let e_htg_url = encode_url (url:htg_url)
+                    else {
                         return
                     }
+                    
+                    //block(htg_url)
                     block(e_htg_url)
-                }
+                    
+                 }
             case .failure(let error):
                 print("download json:", error)
             }
@@ -44,19 +57,12 @@ extension GetJson {
         })
     }
     
-    class func ig_hashtag_search2 (s_Hashtag:String, Completion block: @escaping((Any) -> ())) { //PLLLLL
-        let url = "https://mocki.io/v1/1d148d4a-4e32-48cc-acd7-c721576c0005"
-        let S = DataMedia.self
-        GenericJSONParser.cURL2(of: S, from: url, Completion: { (result) in
-            block(result)
-        })
-    }
     
     class func business_discovery_url (account:String) -> String? {
         //Business discovery
         //
         let limit = 12
-        let url = "https://graph.facebook.com/\(apiGph_version)/\(IgBId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(token)"
+        let url = "https://graph.facebook.com/\(apiGph_version)/\(igBId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(fbToken)"
         
         return encode_url (url: url)
     }
