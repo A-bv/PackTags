@@ -28,19 +28,11 @@ extension GetJson {
                     
                     let htg_url = "https://graph.facebook.com/\(apiGph_version)/\(hashtag_id)/\(m_type)?fields=caption,comments_count,like_count,media_type,media_url,timestamp,id,media_product_type&user_id=\(igBId)&limit=\(limit)&access_token=\(fbToken)"
                     
-                    /*
-                    let htg_url = "https://graph.facebook.com/\(apiGph_version)/17843819167049166/\(m_type)?fields=caption,comments_count,like_count,media_type,media_url,timestamp,id,media_product_type&user_id=\(igBId)&limit=\(limit)&access_token=\(fbToken)"
-                    
-                    let htg_url = "https://graph.facebook.com/v12.0/17843819167049166/top_media?fields=caption%2Ccomments_count%2Clike_count%2Cmedia_type%2Cmedia_url%2Ctimestamp%2Cid%2Cmedia_product_type&user_id=17841446788403615&limit=25&access_token=***REMOVED***"*/
-                    
                     guard let e_htg_url = encode_url (url:htg_url)
                     else {
                         return
                     }
-                    
-                    //block(htg_url)
                     block(e_htg_url)
-                    
                  }
             case .failure(let error):
                 print("download json:", error)
