@@ -14,14 +14,11 @@ class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
     
     func fetch() {
-        let S = Media.self
-            GetJson.apiGraphIgBHub (of: S, smartGString: "travel")
-            {[weak self](result) in
-                let D = result as? Media
-                guard let d = D?.data else {return}
-                self?.dataMedias = d.compactMap { $0 }
-                //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
-            }
+        GetJson.ig_hashtag_search(s_Hashtag: "travel", Completion: { (result) in
+            guard let result = result as? [DataMedia] else {return}
+            self.dataMedias = result
+        })
+        //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
     }
 }
 

@@ -43,13 +43,14 @@ extension GetJson {
     class func ig_hashtag_search (s_Hashtag:String, Completion block: @escaping((Any) -> ())) {
         
         findHashtagUrl(s_Hashtag: "travel", Completion: { (url) in
-            GenericJSONParser.cURL2(of: Media.self, from: url, Completion: { (result) in
+            GetJson.cURL2(of: Media.self, from: url, Completion: { (result) in
                 block(result)
             })
         })
     }
-    
-    
+}
+
+extension GetJson {
     class func business_discovery_url (account:String) -> String? {
         //Business discovery
         //
@@ -58,5 +59,4 @@ extension GetJson {
         
         return encode_url (url: url)
     }
-    
 }

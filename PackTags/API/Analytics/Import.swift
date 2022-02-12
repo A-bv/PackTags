@@ -35,19 +35,17 @@ extension ANewVCDataSUI {
     
     //2 web import
     func getOnlineJsonAPIGraph () {
-        GetJson.apiGraphIgBHub (of: Profile.self, smartGString: nil) {(result) in
-                
+        
+        GetJson.load_Profile(completion: {
+            (json) in
             DispatchQueue.main.async{
-                guard let json = result as? Profile else {return}
                 self.jsonOfficial = json
-                    
                 self.processedJson = ProcessJson.processJsApiGraph(decodedJson: json)
                 self.fillGraphData ()
                 self.fillData()
-                    
                 //self.getEngagementVariations(isFromSave: false) //VARR
             }
-        }
+        })
     }
 }
 #endif
@@ -66,11 +64,13 @@ extension AnalyticsOld {
     //2 web import
     func getOnlineJsonApiGraphOld () {
         loginSpinner.startAnimating()
-        GetJson.apiGraphIgBHub (of: Profile.self, smartGString: nil) {(Json) in
+        
+        GetJson.load_Profile(completion: {
+            (Json) in
             DispatchQueue.main.async{
                 self.loginSpinner.stopAnimating()
-                self.displayDataComingFromApiGraph(Json: Json as! Profile )
+                self.displayDataComingFromApiGraph(Json: Json )
             }
-        }
+        })
     }
 }

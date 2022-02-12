@@ -19,7 +19,7 @@ extension GetJson {
             
             GetJson.isOkToSaveJsonDataInDir = true //local save
             
-            GenericJSONParser.cURL2(of: Profile.self, from: encodedUrl, Completion: {(Json) in
+            GetJson.cURL2(of: Profile.self, from: encodedUrl, Completion: {(Json) in
                 block(Json as! Profile)
             })
         }
@@ -36,9 +36,9 @@ extension GetJson {
           
             group.enter()
             
-            GenericJSONParser.cURL2(of: Profile.self, from: encodedUrl, Completion: {(Json) in
+            GetJson.cURL2(of: Profile.self, from: encodedUrl, Completion: {(Json) in
                 
-                let js = (Json as! Profile)
+                guard let js = (Json as? Profile) else {return}
                 if js.username != nil { //means no error returned
                     
                     /*Hack: Api sometimes fail to return an error and returns a json,

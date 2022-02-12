@@ -6,8 +6,7 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-import UIKit
-
+import Foundation
 
 struct Profile: Hashable, Decodable {
     let biography: String?
@@ -38,7 +37,6 @@ struct Values: Hashable, Decodable {
     let value: Int?
     let end_time: String?
 }
-
 
 struct Media: Hashable, Decodable {
     let data: [DataMedia?]
