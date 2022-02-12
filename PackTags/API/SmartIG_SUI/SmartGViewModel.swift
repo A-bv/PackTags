@@ -21,5 +21,4 @@ class SmartGViewModel: ObservableObject {
         //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
     }
 }
-
 #endif
