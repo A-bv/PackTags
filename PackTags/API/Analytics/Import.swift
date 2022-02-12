@@ -35,7 +35,6 @@ extension ANewVCDataSUI {
     
     //2 web import
     func getOnlineJsonAPIGraph () {
-        
         GetJson.load_Profile(completion: {
             (json) in
             DispatchQueue.main.async{

@@ -5,23 +5,19 @@
 //  Created by Alexandre Bevilacqua on 26/11/2021.
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
-#if !arch(arm)
 
+#if !arch(arm)
 import SwiftUI
-import Combine
 
 @available(iOS 14.0.0, *)
 struct SmartG_SwiftUI: View {
-    
     @State private var igHash: String =  "top travel hashtags"
     @State private var textstyle = UIFont.TextStyle.body
-    
     @StateObject var viewModel = SmartGViewModel()
     
     var body: some View {
         ZStack{
             Color.bgFillColor.ignoresSafeArea()
-            
             VStack{
                 Header()
                 ScrollView(.horizontal, showsIndicators: false){
@@ -50,8 +46,6 @@ struct SmartG_SwiftUI: View {
     }
 }
 
-
-
 @available(iOS 14.0.0, *)
 struct StoryCard: View{
     
@@ -66,7 +60,6 @@ struct StoryCard: View{
         }
     }
 }
-
 
 @available(iOS 14.0.0, *)
 struct Header: View {
@@ -107,7 +100,6 @@ struct SmartG_SwiftUI_Previews: PreviewProvider {
         SmartG_SwiftUI()
     }
 }
-
 #endif
 
 

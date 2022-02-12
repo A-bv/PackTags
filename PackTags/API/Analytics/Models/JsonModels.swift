@@ -22,17 +22,16 @@ struct Profile: Hashable, Decodable {
     let media: Media?
 }
 
-//
 struct InsightsIG: Hashable, Decodable {
     let data: [DataIG?]
 }
-//
+
 struct DataIG: Hashable, Decodable {
     let name: String?
     let period: String?
     let values: [Values?]
 }
-//
+
 struct Values: Hashable, Decodable {
     let value: Int?
     let end_time: String?
