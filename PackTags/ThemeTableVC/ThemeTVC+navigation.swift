@@ -57,7 +57,7 @@ extension ThemeTableViewController {
         if identifier == "ShowAnalytics" {
             
             //->SetupCheck //JKK
-            if !self.saveTokenOrShowFBLogin() {
+            if !self.shouldShowFBLogin() {
                 return true
             }
             return false

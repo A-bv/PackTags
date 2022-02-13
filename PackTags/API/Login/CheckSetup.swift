@@ -24,14 +24,19 @@ extension UIViewController {
              self.present(vc1, animated: true, completion: nil)
         }
         
-        
         //Alert if already pressed fb login button and if wrong setup
         if b == false && UserDefaults.standard.object(forKey: "pressedFBLoginButton") != nil {
             Alerts.setupTroubleShootingAlert(arr: [], presenterVc: self)
         }
     }
     
-    func saveTokenOrShowFBLogin () -> Bool {
+    func isFbTokenValid () -> Bool {
+        guard let token = AccessToken.current, !token.isExpired else {return false}
+        UserDefaults.standard.set( token.tokenString, forKey: "fbToken")
+        return true
+    }
+    
+    func shouldShowFBLogin () -> Bool {
         let b: Bool? = UserDefaults.standard.bool(forKey: "isCorrectSetup")
         
         let vc = FBLoginVC()
@@ -42,16 +47,14 @@ extension UIViewController {
             self.present(vc, animated: true, completion: nil)
             return true
         } else {
-            guard let token = AccessToken.current, !token.isExpired
-            else {
+            if !isFbTokenValid() {
                 self.present(vc, animated: true, completion: nil)
                 return true
+            } else {
+                return false
             }
-            UserDefaults.standard.set( token.tokenString, forKey: "fbToken")
-            return false
         }
     }
-
 }
 
 

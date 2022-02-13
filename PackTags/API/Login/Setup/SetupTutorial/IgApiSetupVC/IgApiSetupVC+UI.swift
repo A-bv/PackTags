@@ -18,7 +18,7 @@ extension IgApiSetupVC  {
                 
             label.clipsToBounds = true
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "Analytics Setup"
+            label.text = "Instagram Setup"
             return label
         }()
         

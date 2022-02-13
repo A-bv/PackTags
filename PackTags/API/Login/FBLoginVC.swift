@@ -23,7 +23,6 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
         return button
     }()
     
-    
     // Delegates
     // triggered when just after login
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
@@ -35,7 +34,7 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
         uD.set(true, forKey: "pressedFBLoginButton")
         
         //Checks Setup and save Instagram Business Account ID
-        if AccessToken.current != nil {
+        if isFbTokenValid() {
             verifySetupFbPages(Completion: {[weak self] _ in
                 self?.verifySetupIgBAndGetIgBId(Completion: {(IgBId) in
                     uD.set(true, forKey: "isCorrectSetup")
@@ -49,9 +48,7 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
         }
     }
     
-    
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,17 +61,10 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
         loginButton.delegate = self
         loginButton.center = view.center
         view.addSubview(loginButton)
-        
-        
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         shouldShowIgApiSetupVC ()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
     }
 }
 
@@ -131,7 +121,6 @@ extension FBLoginVC {
                }
                if igBIds.count >= 1 {
                    block(igBIds[0])
-                   //17841446788403615
                } else {
                    return
                }

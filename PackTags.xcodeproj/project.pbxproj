@@ -285,6 +285,7 @@
 			children = (
 				02491C5A26779AE400F98E17 /* Setup */,
 				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
+				02491C5C267BA40500F98E17 /* CheckSetup.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -292,6 +293,8 @@
 		021D7621275A9BBB00F54054 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				021AFD5A2789F44F0008735E /* Login */,
+				021D7622275A9E6200F54054 /* Models */,
 				0231AB1326849F4A007F4FC8 /* Import */,
 				02E4B9D325CC97C700949213 /* Analytics */,
 				021AFD542787857B0008735E /* SmartIG_SUI */,
@@ -335,10 +338,7 @@
 		0231AB1326849F4A007F4FC8 /* Import */ = {
 			isa = PBXGroup;
 			children = (
-				021AFD5A2789F44F0008735E /* Login */,
-				021D7622275A9E6200F54054 /* Models */,
 				0231AB152684B973007F4FC8 /* Import.swift */,
-				02FEF5C92638951C0001B525 /* GenericJSONParser.swift */,
 				02FEF5C626382A250001B525 /* GetJson */,
 				021044F926446B5700408CEB /* ProcessJson */,
 			);
@@ -349,9 +349,7 @@
 		02491C5A26779AE400F98E17 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
-				02491C5B26779B1100F98E17 /* IgApiSetupVC */,
-				02491C5826779A4900F98E17 /* HowToSetupProIGVC.swift */,
-				02491C5C267BA40500F98E17 /* CheckSetup.swift */,
+				02AB39A927B894D600335131 /* SetupTutorial */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -379,6 +377,7 @@
 		0273D1532655B9260043011C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				02FEF5C92638951C0001B525 /* GenericJSONParser.swift */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
 				024347D727119E2100F86A64 /* TextRecognition.swift */,
 				0264B836264B25E100E1EEFA /* LoadingInd.swift */,
@@ -402,6 +401,15 @@
 				02BC8D582602B79900441349 /* SettingsVC.swift */,
 			);
 			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		02AB39A927B894D600335131 /* SetupTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				02491C5B26779B1100F98E17 /* IgApiSetupVC */,
+				02491C5826779A4900F98E17 /* HowToSetupProIGVC.swift */,
+			);
+			path = SetupTutorial;
 			sourceTree = "<group>";
 		};
 		02AEA5E725B9D2B00063076F /* PackTableVC */ = {

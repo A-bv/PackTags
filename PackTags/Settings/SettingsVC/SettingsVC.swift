@@ -149,7 +149,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }),
             
             .staticCell(model:
-            SettingsOption(title: "Analytics Setup", icon: icon, iconBackgroundColor: .systemPurple) {[weak vc = self] in
+            SettingsOption(title: "Instagram Setup", icon: icon, iconBackgroundColor: .systemPurple) {[weak vc = self] in
                 
                 let vwc = IgApiSetupVC()
                 vwc.modalPresentationStyle = .overFullScreen
