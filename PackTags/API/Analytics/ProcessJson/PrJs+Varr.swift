@@ -43,7 +43,6 @@ extension ANewVCDataSUI {
 #endif
 
 extension ProcessJson {
-    
     class func removeAllSavedVarData () {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "Historical engagement rates")
@@ -60,7 +59,6 @@ extension ProcessJson {
         defaults.set(times, forKey: "Post times")
     }
     
-    
     // 2.   Exit ->
     class func getSavedVariationsForLocal() -> engagementVariations? {
         let defaults = UserDefaults.standard
@@ -74,11 +72,9 @@ extension ProcessJson {
         return nil
         
     }
-    
-    
-    
+
     // Operations
-    class func buildEngagementRatesVariations (pj:processedStruct) -> engagementVariations? {
+    class func buildEngagementRatesVariations (pj:processedProfileModel) -> engagementVariations? {
         
         let defaults = UserDefaults.standard
         
@@ -157,7 +153,6 @@ extension ProcessJson {
         
         return (avg2Vr, ratesVr)
     }
- 
 }
 
 

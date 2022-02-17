@@ -19,7 +19,7 @@ import Combine
 class ANewVCDataSUI: ObservableObject {
     
     //MARK: - Live Variables
-    @Published var processedJson : processedStruct?
+    @Published var processedJson : processedProfileModel?
     @Published var jsonOfficial : Profile? //Api Graph
     @Published var stats_Data = [
         Stats(id: 0, title: "Likes", currentData: "0", goal: 0, color: Color("running"), image: Image(systemName: "suit.heart.fill")),

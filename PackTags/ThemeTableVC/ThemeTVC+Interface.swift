@@ -10,7 +10,7 @@ import UIKit
 
 extension ThemeTableViewController {
     func updateLogo (){
-        if Utility.isDarkMode() == true {
+        if DarkMode.isDarkMode() == true {
             self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoBlack"))
         }  else {
             self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoWhite"))

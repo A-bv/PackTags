@@ -20,7 +20,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     //ThemeVC elements **
     @IBOutlet weak var themeTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    var themeImageView = Utility.isDarkMode() ? UIImage(named: "Logo-BlackLong") : UIImage(named: "Logo-PurpleLong")
+    var themeImageView = DarkMode.isDarkMode() ? UIImage(named: "Logo-BlackLong") : UIImage(named: "Logo-PurpleLong")
     var themeTitle = String()
     var theme: ThemeCD?
     var isNotNewTheme = false

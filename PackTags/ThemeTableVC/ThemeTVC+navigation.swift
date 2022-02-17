@@ -59,9 +59,10 @@ extension ThemeTableViewController {
             //->SetupCheck //JKK
             if !self.shouldShowFBLogin() {
                 return true
+            } else {
+                showFBLoginScreen()
+                return false
             }
-            return false
-            
         }
 
         // by default, transition

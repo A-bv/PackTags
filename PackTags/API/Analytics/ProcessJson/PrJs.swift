@@ -18,7 +18,7 @@ var rawInsights = true
 // Additional operations on the obtained Json data
 
 class ProcessJson: NSObject {
-    class func processJsApiGraph (decodedJson: Profile) -> processedStruct
+    class func processJsApiGraph (decodedJson: Profile) -> processedProfileModel
     {
         
         let top = decodedJson
@@ -58,7 +58,7 @@ class ProcessJson: NSObject {
         }
         
         
-        let data = processedStruct(usr: usr, isPv: isPv, sum0: (sum0 as! Int), sum1: (sum1 as! Int), avg0: avg0, avg1: avg1, rates: rates[mode], pTimes: times, avg2: avg2[mode], maxR: maxR[mode], captions: captions)
+        let data = processedProfileModel(usr: usr, isPv: isPv, sum0: (sum0 as! Int), sum1: (sum1 as! Int), avg0: avg0, avg1: avg1, rates: rates[mode], pTimes: times, avg2: avg2[mode], maxR: maxR[mode], captions: captions)
         
         
         return data

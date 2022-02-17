@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct processedStruct {
+struct processedProfileModel {
     
     let usr: String?                //. Basic: username
     let isPv: Bool?                 //. Basic: is private?
@@ -22,8 +22,6 @@ struct processedStruct {
     let avg2: CGFloat?              //6. Avg Engagement
     let maxR: CGFloat?              //7. Max Engagement
     let captions: [String?]         //8. Caption
-
-    
     
     init(usr: String? = nil,
          isPv: Bool? = nil,
@@ -36,8 +34,6 @@ struct processedStruct {
          avg2: CGFloat? = nil,
          maxR: CGFloat? = nil,
          captions: [String?] = [nil]
-
-         
          ) {
         
         self.usr = usr
@@ -51,6 +47,5 @@ struct processedStruct {
         self.avg2 = avg2
         self.maxR = maxR
         self.captions = captions
-
     }
 }

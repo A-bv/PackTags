@@ -100,15 +100,15 @@ extension UIColor {
 extension UIColor {
     
     static var darkShadowColor: UIColor {
-        return  Utility.isDarkMode() == true ? UIColor.black : UIColor.shadowWhite
+        return  DarkMode.isDarkMode() == true ? UIColor.black : UIColor.shadowWhite
     }
     
     static var lightShadowColor: UIColor {
-        return  Utility.isDarkMode() == true ? UIColor.shadowDark1 : UIColor.white
+        return  DarkMode.isDarkMode() == true ? UIColor.shadowDark1 : UIColor.white
     }
     
     static var bottomColor: UIColor {
-        return  Utility.isDarkMode() == true ? UIColor.black : UIColor.white
+        return  DarkMode.isDarkMode() == true ? UIColor.black : UIColor.white
     }
     
 }

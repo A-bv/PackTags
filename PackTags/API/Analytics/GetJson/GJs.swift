@@ -8,10 +8,6 @@
 
 import UIKit
 
-let apiGph_version = "v12.0" //Api graph version
-let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""// "17841446788403615&limit=25&access_token=***REMOVED***"
-let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""// "17841446788403615"
-
 // MARK: - API Calls to get IG Business data
 class GetJson: NSObject {
     typealias result<T> = (Result<T, Error>) -> Void

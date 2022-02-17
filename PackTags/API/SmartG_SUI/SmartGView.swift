@@ -24,17 +24,19 @@ struct SmartG_SwiftUI: View {
                     HStack {
                         ForEach(viewModel.dataMedias, id: \.self){
                         media in
-                            StoryCard(url: media.media_url ?? "", title: "\(media.comments_count ?? 0)")
+                            if let stringUrl = media.media_url, let url = URL(string: stringUrl) {
+                                StoryCard(url: url, title: "\(media.comments_count ?? 0)")
+                            }
                         }
                     }
                 }
                 .padding(.leading)
                 .padding(.vertical, 5)
                 List {
-                    ForEach(viewModel.dataMedias, id: \.self){
-                        media in
+                    ForEach(viewModel.computedData, id: \.self){
+                        item in
                         HStack{
-                            Text("\(media.media_url ?? "no url")")
+                            Text("1")
                         }
                     }
                 }
@@ -49,12 +51,21 @@ struct SmartG_SwiftUI: View {
 @available(iOS 14.0.0, *)
 struct StoryCard: View{
     
-    let url: String
+    let url: URL
     let title: String
     
     var body: some View{
         VStack(alignment: .leading){
-            URLImage(urlString: url)
+            //URLImage(urlString: url)
+            AsyncImage(
+                url: url,
+                placeholder: { Text("Loading ...") },
+                image: { Image(uiImage: $0).resizable() }
+            )
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 160, height: 190)
+                
+                .clipShape(RoundedRectangle(cornerRadius: 15))
                 Text(title)
                     .font(.system(size: 12, weight: .semibold))
         }

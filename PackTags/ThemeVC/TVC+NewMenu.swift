@@ -33,7 +33,10 @@ extension ThemeVC{
         #if !arch(arm)
         let smartGen = UIAction(title: "Smart hashtags", image: UIImage(systemName: "chart.bar.doc.horizontal.fill")) { [weak vc = self] action in
             
-            guard let blockNavigation = vc?.shouldShowFBLogin() else { return }
+            guard let blockNavigation = vc?.shouldShowFBLogin() else {
+                vc?.showFBLoginScreen()
+                return
+            }
             
             if blockNavigation {
                 return

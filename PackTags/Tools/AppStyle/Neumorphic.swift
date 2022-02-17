@@ -45,7 +45,7 @@ extension UIView {
                 
             for item in self.layer.sublayers ?? [] where item.name == "lightShadow" {
                 item.backgroundColor = UIColor.darkShadowColor.cgColor
-                if Utility.isDarkMode() == false {
+                if DarkMode.isDarkMode() == false {
                     item.shadowColor = UIColor.darkShadowColor.withAlphaComponent(0.50).cgColor
                 } else {
                     item.shadowColor = UIColor.darkShadowColor.cgColor

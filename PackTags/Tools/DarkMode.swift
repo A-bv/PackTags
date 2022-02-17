@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Utility: NSObject {
+class DarkMode: NSObject {
     
     deinit {
         print("deinit utility")

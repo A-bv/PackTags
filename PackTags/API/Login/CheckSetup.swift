@@ -38,22 +38,22 @@ extension UIViewController {
     
     func shouldShowFBLogin () -> Bool {
         let b: Bool? = UserDefaults.standard.bool(forKey: "isCorrectSetup")
-        
-        let vc = FBLoginVC()
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .coverVertical
-        
         if b == nil || b == false {
-            self.present(vc, animated: true, completion: nil)
             return true
         } else {
             if !isFbTokenValid() {
-                self.present(vc, animated: true, completion: nil)
                 return true
             } else {
                 return false
             }
         }
+    }
+    
+    func showFBLoginScreen () {
+        let vc = FBLoginVC()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .coverVertical
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
