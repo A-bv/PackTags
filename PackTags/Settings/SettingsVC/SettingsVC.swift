@@ -137,15 +137,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             .staticCell(model:
             SettingsOption(title: "Tricks & Tips", icon: icon, iconBackgroundColor: .systemBlue) { [weak self] in
-                /*
-                [weak self] in
-                currentPDF = "TipsPDF"
-                self?.pdfPage()
-                */
-                
                 self?.showTricksPage()
-
-                
             }),
             
             .staticCell(model:
@@ -193,8 +185,6 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         models.append(Section(title: "Legal", options: [
             .staticCell(model:
                             SettingsOption(title: "Privacy", icon: icon, iconBackgroundColor: .systemPurple) { [weak self] in
-                //currentPDF = "PrivacyPDF"
-                //self?.pdfPage()
                                 
                 if let url = URL(string: "https://sites.google.com/view/packtags-privacy-policy/accueil") {
                                     
@@ -208,8 +198,6 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             .staticCell(model:
                             SettingsOption(title: "Terms & Conditions", icon: icon, iconBackgroundColor: .systemYellow) { [weak self] in
-                //currentPDF = "TermsPDF"
-                //self?.pdfPage()
                                 
                 if let url = URL(string: "https://sites.google.com/view/packtagstc/accueil") {
                                                     
@@ -313,12 +301,6 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } else {
             return UIColor.white
         }
-    }
-    
-    func pdfPage () {
-        let vc = PdfVC()
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
     }
 }
 

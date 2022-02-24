@@ -70,16 +70,13 @@
 		02CAC9B7259105B400BE5E57 /* ThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B6259105B400BE5E57 /* ThemeVC.swift */; };
 		02CEFB6D25CB945000FB70E4 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEFB6C25CB945000FB70E4 /* Image.swift */; };
 		02D1A119255387590045E56F /* UniqueTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D1A118255387590045E56F /* UniqueTags.swift */; };
-		02D407892651245000F11F0F /* PdfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D407882651245000F11F0F /* PdfVC.swift */; };
 		02DECA5E2796EC51003F48B5 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02DECA5D2796EC51003F48B5 /* FacebookCore */; };
 		02DECA602796EC51003F48B5 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02DECA5F2796EC51003F48B5 /* FacebookLogin */; };
-		02E451AD265D570A00582025 /* PrivacyPDF.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 02E451AA265D570A00582025 /* PrivacyPDF.pdf */; };
 		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
 		02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE29E260A9BA900324724 /* SettingsCell.swift */; };
 		02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE2A4260AC79C00324724 /* SettingsCell2.swift */; };
-		02FB530325AD3A310063038C /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 02FB530225AD3A310063038C /* data.json */; };
 		02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550924FFA2AA00174E34 /* AppDelegate.swift */; };
 		02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */; };
 		02FB551124FFA2AA00174E34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FB550F24FFA2AA00174E34 /* Main.storyboard */; };
@@ -172,14 +169,11 @@
 		02CAC9B6259105B400BE5E57 /* ThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVC.swift; sourceTree = "<group>"; };
 		02CEFB6C25CB945000FB70E4 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		02D1A118255387590045E56F /* UniqueTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueTags.swift; sourceTree = "<group>"; };
-		02D407882651245000F11F0F /* PdfVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfVC.swift; sourceTree = "<group>"; };
-		02E451AA265D570A00582025 /* PrivacyPDF.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PrivacyPDF.pdf; sourceTree = "<group>"; };
 		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02FAE29E260A9BA900324724 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		02FAE2A4260AC79C00324724 /* SettingsCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell2.swift; sourceTree = "<group>"; };
-		02FB530225AD3A310063038C /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		02FB550624FFA2AA00174E34 /* PackTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02FB550924FFA2AA00174E34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -319,8 +313,6 @@
 				02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */,
 				02FB551724FFA2AC00174E34 /* LaunchScreen.storyboard */,
 				02FB551A24FFA2AC00174E34 /* Info.plist */,
-				02E451AA265D570A00582025 /* PrivacyPDF.pdf */,
-				02FB530225AD3A310063038C /* data.json */,
 				025479DE26C7EEA000E28724 /* SeedData */,
 			);
 			name = "Supporting Files";
@@ -523,13 +515,12 @@
 		02FB550824FFA2AA00174E34 /* PackTags */ = {
 			isa = PBXGroup;
 			children = (
+				029FDDC0264E75600063DF1D /* OnBoardingVC.swift */,
 				02AEA5EA25B9D2F10063076F /* ThemeTableVC */,
 				02AEA5E725B9D2B00063076F /* PackTableVC */,
 				02CAC9B82591061B00BE5E57 /* ThemeVC */,
 				02FAE2AB260ADA9200324724 /* Settings */,
 				021D7621275A9BBB00F54054 /* API */,
-				029FDDC0264E75600063DF1D /* OnBoardingVC.swift */,
-				02D407882651245000F11F0F /* PdfVC.swift */,
 				0273D1532655B9260043011C /* Tools */,
 				0226F19A259E0346006E086C /* Supporting Files */,
 				02FB550F24FFA2AA00174E34 /* Main.storyboard */,
@@ -658,8 +649,6 @@
 				02FB551924FFA2AC00174E34 /* LaunchScreen.storyboard in Resources */,
 				02FB551624FFA2AC00174E34 /* Assets.xcassets in Resources */,
 				02FB551124FFA2AA00174E34 /* Main.storyboard in Resources */,
-				02E451AD265D570A00582025 /* PrivacyPDF.pdf in Resources */,
-				02FB530325AD3A310063038C /* data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,7 +708,6 @@
 				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
 				02CAC9B52591054400BE5E57 /* ThemeVC+ImgPicker.swift in Sources */,
 				0231AB1826872C47007F4FC8 /* PrJs+Varr.swift in Sources */,
-				02D407892651245000F11F0F /* PdfVC.swift in Sources */,
 				02491C5926779A4900F98E17 /* HowToSetupProIGVC.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsNew.swift in Sources */,
 				02491C55267799BD00F98E17 /* IgApiSetupVC+UI.swift in Sources */,
