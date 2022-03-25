@@ -9,9 +9,9 @@
 import UIKit
 import FBSDKLoginKit
 
-let apiGph_version = "v12.0" //Api graph version
-let fbToken = UserDefaults.standard.string(forKey: "fbToken") ??  "17841446788403615&limit=25&access_token=***REMOVED***"
-let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? "17841446788403615"
+let apiGph_version = "v13.0" //Api graph version
+let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
+let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
 #if (arch(arm64) || arch(x86_64))
 @available(iOS 13.0, *)
