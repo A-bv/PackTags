@@ -69,10 +69,6 @@ struct AnalyticsNew : View {
     }
     
     
-    
-    
-    
-    
 //MARK: - Body
     var body: some View{
         

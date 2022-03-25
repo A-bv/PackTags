@@ -13,8 +13,6 @@ import SwiftUI
 #endif
 import UIKit
 
-
-
 class AnalyticsView: UIViewController {
     
     deinit {
