@@ -11,12 +11,11 @@ import UIKit
 //MARK: - Find tapped word in textView
 extension ThemeVC {
     
-    func tappedTagRecognizer () {
+    func addTappedTagRecognizer () {
         tap = UITapGestureRecognizer(target: self, action: #selector(tapResponse(recognizer:)))
         tap.delegate = self as? UIGestureRecognizerDelegate
         themeTextView.addGestureRecognizer(tap)
     }
-    
     
     @objc private func tapResponse(recognizer: UITapGestureRecognizer) {
         let location: CGPoint = recognizer.location(in: themeTextView)

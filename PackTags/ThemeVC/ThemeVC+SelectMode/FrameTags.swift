@@ -77,11 +77,3 @@ extension UIView {
             .forEach({$0.removeFromSuperview()})
     }
 }
-
-
-
-//let paragraphStyle = NSMutableParagraphStyle()
-//paragraphStyle.lineHeightMultiple = 1.3 //param
-//let textAttributes = [NSMutableAttributedString.Key.paragraphStyle: paragraphStyle,NSAttributedString.Key.font: UIFont(name: "Helvetica", size: 15)]//
-//myString.addAttributes(textAttributes as [NSAttributedString.Key : Any], range: NSMakeRange(0, self.text.count))
-//self.attributedText = myString.copy() as? NSAttributedString

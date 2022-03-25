@@ -9,7 +9,6 @@
 import UIKit
 extension ThemeVC {
     
-    
     //SlideUpMenu (iOS < 14) 4/4
     @objc func showMenu(sender: AnyObject) {
         themeTextView.resignFirstResponder()
@@ -30,13 +29,6 @@ extension ThemeVC {
     @objc func searchTags (sender: AnyObject) {
         doneTagSelection()
         startToSearchTags()
-    }
-    
-    //Tag selection
-    @objc func getTag(sender: AnyObject) {
-        themeTextView.resignFirstResponder()
-        searchBarOK((Any).self)
-        startTagSelection ()
     }
     
     @objc func shuffleTags(sender: AnyObject) {

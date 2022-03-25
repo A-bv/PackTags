@@ -15,36 +15,9 @@ extension ThemeVC {
     }
 }
 
-//toolbar for tag selection
 extension ThemeVC {
-    
-    //enter tag selection
-    func startTagSelection () {
-        navigationController?.setToolbarHidden(false, animated: false)
-        tap.isEnabled = true
-        tB.isEnabled = false
-        themeTextView.isEditable = false
-        themeTextView.isSelectable = false
-        
-        //cleaning
-        let cleanText = Unique.cleanList(t: themeTextView.text, x:theme, shuffle:false)
-        themeTextView.text = Unique.packBy(t: cleanText.components(separatedBy:" "))
-    }
-    
-    //exit tag selection
-    @objc func doneTagSelection(){
-        navigationController?.setToolbarHidden(true, animated: false)
-        cleanTagSelection()
-        tap.isEnabled = false
-        tB.isEnabled = true
-        themeTextView.isEditable = true
-        themeTextView.isSelectable = true
-        firstTimeGrouped = false
-    }
-    
-    //create the toolBar
-    func createTagSelectorToolBar (){
-        tappedTagRecognizer()
+    func addTagSelectorToolBar (){
+        addTappedTagRecognizer()
         tap.isEnabled = false
         
         var toolbarIcons = [UIImage?]()
@@ -67,7 +40,6 @@ extension ThemeVC {
         }
         
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTagSelection))
-        
         //
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -95,6 +67,35 @@ extension ThemeVC {
                         spacer, info,
                         done]
         
+    }
+}
+
+extension ThemeVC {
+    //enter tag selection
+    func startTagSelection() {
+        navigationController?.setToolbarHidden(false, animated: false)
+        tap.isEnabled = true
+        tB.isEnabled = false
+        themeTextView.isEditable = false
+        themeTextView.isSelectable = false
+        
+        //cleaning
+        let cleanText = Unique.cleanList(t: themeTextView.text, x:theme, shuffle:false)
+        themeTextView.text = Unique.packBy(t: cleanText.components(separatedBy:" "))
+    }
+}
+
+//toolbar for tag selection
+extension ThemeVC {
+    //exit tag selection
+    @objc func doneTagSelection(){
+        navigationController?.setToolbarHidden(true, animated: false)
+        cleanTagSelection()
+        tap.isEnabled = false
+        tB.isEnabled = true
+        themeTextView.isEditable = true
+        themeTextView.isSelectable = true
+        firstTimeGrouped = false
     }
     
     //toolBar actions

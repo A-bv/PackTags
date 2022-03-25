@@ -6,7 +6,6 @@
 //  Copyright © 2020 Alexandre Bevilacqua. All rights reserved.
 //
 
-import os.log
 import UIKit
 
 class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate {
@@ -97,7 +96,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
    
         setupKeyboardNotifications() //Keyboard doesn't hide textView
         
-        createTagSelectorToolBar ()
+        addTagSelectorToolBar ()
         
         if isFromShow == true {
             isScreenLoadedFromShowButton ()
@@ -149,14 +148,13 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         
         //Menu
         if #available(iOS 14.0, *) {
-            navigationItem.rightBarButtonItems = [saveButton, buttonMenu (),tB]
+            navigationItem.rightBarButtonItems = [saveButton, buttonMenu(), tB]
         } else {
             //SlideUpMenu (iOS < 14) 3/4
             MenuButton = UIBarButtonItem(image: UIImage(named: "ellipsis.circle"), style: .plain, target: self, action: #selector(showMenu(sender:)))
-            self.navigationItem.rightBarButtonItems  = [saveButton,MenuButton,tB]
+            self.navigationItem.rightBarButtonItems  = [saveButton, MenuButton, tB]
        }
     }
-    
    
     
    //MARK: - Navigation
@@ -212,15 +210,11 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
          }
     }
     
-   
-    
-    
     //MARK: - UITextViewDelegate
     //Placeholder
     func textViewDidChange(_ textView: UITextView) {
         themeTextView.checkPlaceholder()
     }
-    
     
     //MARK: - Alerts
     //Works with Utility.swift
@@ -240,9 +234,16 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
             vc?.updateSaveButtonState()
         }
     }
-    
-}
 
+    //MARK: - Actions
+    //Tag selection
+    @objc func getTag(sender: AnyObject) {
+        themeTextView.resignFirstResponder()
+        searchBarOK((Any).self)
+        startTagSelection()
+    }
+
+}
 /*
 extension UITextView {
     //MARK: - toolbar
@@ -258,11 +259,3 @@ extension UITextView {
     }
 }
 */
-
-
-
-
-
-
-
-
