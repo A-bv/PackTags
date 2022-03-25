@@ -32,8 +32,6 @@ public struct ActivityIndicatorView: View {
     }
 }
 
-
-
 @available(iOS 13, *)
 struct RotatingDotsIndicatorView: View {
 
