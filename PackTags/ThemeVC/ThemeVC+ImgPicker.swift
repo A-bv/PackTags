@@ -16,9 +16,10 @@ extension ThemeVC {
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
-        
-    //MARK: - UIImagePickerControllerDelegate
-    
+}
+
+//MARK: - UIImagePickerControllerDelegate
+extension ThemeVC {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any])
     {
         guard let selectedImage = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage

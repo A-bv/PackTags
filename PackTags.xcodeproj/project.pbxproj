@@ -63,6 +63,7 @@
 		02B02AC52594238100586352 /* ThemeVC+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B02AC42594238100586352 /* ThemeVC+Search.swift */; };
 		02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */; };
 		02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1727F8BFBF000026B8 /* TapTextView.swift */; };
+		02B05C1A27F90333000026B8 /* TextViewPlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1927F90333000026B8 /* TextViewPlaceHolder.swift */; };
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
 		02B104A9276A630E00C9EC6C /* Url_img_SUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */; };
 		02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */; };
@@ -164,6 +165,7 @@
 		02B02AC42594238100586352 /* ThemeVC+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeVC+Search.swift"; sourceTree = "<group>"; };
 		02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapTV+AddGesture.swift"; sourceTree = "<group>"; };
 		02B05C1727F8BFBF000026B8 /* TapTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTextView.swift; sourceTree = "<group>"; };
+		02B05C1927F90333000026B8 /* TextViewPlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceHolder.swift; sourceTree = "<group>"; };
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
 		02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url_img_SUI.swift; sourceTree = "<group>"; };
 		02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Navigation.swift"; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				02F60AA926809FD5004022CA /* AppStyle */,
 				02FD6CB326D8178800AB16E4 /* Rating */,
 				0204B61A25C2BFFF00F2DD21 /* TapTextView */,
+				02B05C1927F90333000026B8 /* TextViewPlaceHolder.swift */,
 				0229864027BD6E070048F9E9 /* AsyncImage */,
 				02CEFB6C25CB945000FB70E4 /* Image.swift */,
 				02FEF5C92638951C0001B525 /* GenericJSONParser.swift */,
@@ -674,6 +677,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */,
+				02B05C1A27F90333000026B8 /* TextViewPlaceHolder.swift in Sources */,
 				02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */,
 				02491C67267E3FED00F98E17 /* NeuMphSwiftUI.swift in Sources */,
 				02062155266550D70072C404 /* PrJs.swift in Sources */,
