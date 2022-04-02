@@ -38,13 +38,6 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     @IBOutlet weak var searchCountLabel: UILabel!
     // **
     
-    //Tag Selection variables
-    var selectionDict = [String:Int]()
-    var viewTagCount = Int()
-    var tap = UIGestureRecognizer()
-    var tB = UIBarButtonItem()
-    var firstTimeGrouped = false
-    
     //Text Recognition in images (iOS < 11) 1/2
     var recognizeText = false
     
@@ -135,21 +128,19 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     }
     
     private func loadbuttons () {
-        
         //Menu
         if #available(iOS 14.0, *) {
-            navigationItem.rightBarButtonItems = [saveButton, buttonMenu(), tB]
+            navigationItem.rightBarButtonItems = [saveButton, buttonMenu(), themeTextView.tapStartBarButtonItem()]
         } else {
             //SlideUpMenu (iOS < 14) 3/4
             MenuButton = UIBarButtonItem(image: UIImage(named: "ellipsis.circle"), style: .plain, target: self, action: #selector(showMenu(sender:)))
-            self.navigationItem.rightBarButtonItems  = [saveButton, MenuButton, tB]
+            self.navigationItem.rightBarButtonItems  = [saveButton, MenuButton, themeTextView.tapStartBarButtonItem()]
        }
     }
     
     private func configureTextView() {
         themeTextView.tagDelegate = self
         themeTextView.setPlaceholder()
-        navigationItem.rightBarButtonItems = [themeTextView.tapStartBarButtonItem()]
         themeTextView.addTagSelectorToolBar (vc: self)
     }
    

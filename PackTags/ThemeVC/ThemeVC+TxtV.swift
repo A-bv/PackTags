@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 //Avoid Keyboard hiding textview
 extension ThemeVC {
     func setupKeyboardNotifications(){
