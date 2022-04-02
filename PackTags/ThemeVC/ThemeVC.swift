@@ -17,7 +17,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     //MARK: - Properties
     
     //ThemeVC elements **
-    @IBOutlet weak var themeTextView: UITextView!
+    @IBOutlet weak var themeTextView: TapTextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var themeImageView = DarkMode.isDarkMode() ? UIImage(named: "Logo-BlackLong") : UIImage(named: "Logo-PurpleLong")
     var themeTitle = String()
@@ -90,13 +90,11 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         
         initMenu() //SlideUpMenu (iOS < 14) 2/4
         
-        themeTextView.setPlaceholder()
+        configureTextView()
         
         updateSaveButtonState() //Enable save button when text
    
         setupKeyboardNotifications() //Keyboard doesn't hide textView
-        
-        addTagSelectorToolBar ()
         
         if isFromShow == true {
             isScreenLoadedFromShowButton ()
@@ -108,10 +106,10 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         self.view.endEditing(true)
     }
     
-    //MARK: - Preparation
+    //MARK: - Setup
     private func updateSaveButtonState() {saveButton.isEnabled = !themeTitle.isEmpty}
     
-    func loadEntries (){
+    private func loadEntries (){
         if let theme = theme {
             themeTitle = theme.name ?? ""
             
@@ -131,20 +129,12 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         }
     }
     
-    func loadProcessingSpinner() {
+    private func loadProcessingSpinner() {
         spinner.center = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
         self.view.addSubview(spinner)
     }
     
-    func loadbuttons () {
-        
-        var img = UIImage()
-        if #available(iOS 13.0, *) {
-            img = UIImage(systemName: "hand.point.up.left")!
-        } else {
-            img = UIImage(named: "tap")!
-        }
-        tB = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(getTag(sender:)))
+    private func loadbuttons () {
         
         //Menu
         if #available(iOS 14.0, *) {
@@ -154,6 +144,13 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
             MenuButton = UIBarButtonItem(image: UIImage(named: "ellipsis.circle"), style: .plain, target: self, action: #selector(showMenu(sender:)))
             self.navigationItem.rightBarButtonItems  = [saveButton, MenuButton, tB]
        }
+    }
+    
+    private func configureTextView() {
+        themeTextView.tagDelegate = self
+        themeTextView.setPlaceholder()
+        navigationItem.rightBarButtonItems = [themeTextView.tapStartBarButtonItem()]
+        themeTextView.addTagSelectorToolBar (vc: self)
     }
    
     
@@ -234,15 +231,6 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
             vc?.updateSaveButtonState()
         }
     }
-
-    //MARK: - Actions
-    //Tag selection
-    @objc func getTag(sender: AnyObject) {
-        themeTextView.resignFirstResponder()
-        searchBarOK((Any).self)
-        startTagSelection()
-    }
-
 }
 /*
 extension UITextView {

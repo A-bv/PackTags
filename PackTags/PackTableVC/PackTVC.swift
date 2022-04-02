@@ -104,7 +104,7 @@ class PackTableVC: UITableViewController {
         // -- SUB Button --
         cell.subButtonTapCallback = {[weak self] in
             let message = pack == "" ? "Tap the Pencil button to add Hashtags" : pack
-            self?.subBtnAlert(vc: self, title: "", message: message)
+            self?.subBtnAlert(title: "", message: message)
         }
         
         if indexPath.row == 0{

@@ -27,7 +27,7 @@ extension ThemeVC {
     
     //Search
     @objc func searchTags (sender: AnyObject) {
-        doneTagSelection()
+        self.themeTextView.doneTagSelection()
         startToSearchTags()
     }
     

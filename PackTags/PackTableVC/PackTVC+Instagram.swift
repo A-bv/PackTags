@@ -39,7 +39,6 @@ extension PackTableVC {
                 UserDefaults.standard.set(true, forKey: "goInsta")
                 
                 self.subBtnAlert(
-                    vc: self,
                     title: Username,
                     message: "PackTags will redirect to this account each time copy is tapped.  \n\n Tap the button again to undo."
                 )
@@ -50,7 +49,6 @@ extension PackTableVC {
         if status == true {
             UserDefaults.standard.set(false, forKey: "goInsta")
             self.subBtnAlert(
-                vc: self,
                 title: Username,
                 message: "PackTags will stop redirecting to this account after copy is tapped."
             )
@@ -59,7 +57,6 @@ extension PackTableVC {
                 UserDefaults.standard.set(true, forKey: "goInsta")
                 
                 self.subBtnAlert(
-                    vc: self,
                     title: Username,
                     message: "PackTags will redirect to this account each time copy is tapped."
                 )

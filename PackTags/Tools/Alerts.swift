@@ -113,7 +113,7 @@ extension UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func subBtnAlert(vc:UIViewController?,title:String,message:String){
+    func subBtnAlert(title:String, message:String){
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -123,7 +123,7 @@ extension UIViewController {
         }
     }
     
-    func simpleAlert (vc:UIViewController?,title:String,message:String,btnText:String,btnText2:String?)
+    func simpleAlert (title:String,message:String,btnText:String,btnText2:String?)
     {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -175,7 +175,6 @@ extension UIViewController {
 extension UIViewController {
     //Shown only once
     func showTipsAlert() {
-        
         if !UserDefaults.standard.bool(forKey: "showTipsAlertShown") {
             UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
 
@@ -183,7 +182,7 @@ extension UIViewController {
             if numberOfTimesLaunched == 1 {
                 let message = "\nDiscover PackTags and its purpose with \"Tricks & Tips\" in settings."
                 let rvc = UIApplication.shared.keyWindow?.rootViewController
-                rvc?.simpleAlert(vc: self, title: "Tricks & Tips", message: message,btnText: "View later", btnText2: "Let's go!")
+                rvc?.simpleAlert(title: "Tricks & Tips", message: message,btnText: "View later", btnText2: "Let's go!")
                 
             }
         }

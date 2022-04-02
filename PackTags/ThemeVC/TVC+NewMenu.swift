@@ -52,7 +52,7 @@ extension ThemeVC{
         let search = UIAction(title: "Search hashtags", image: UIImage(systemName: "magnifyingglass")) { [weak vc = self] action in
             
             //resign
-            vc?.doneTagSelection()
+            vc?.themeTextView.doneTagSelection()
             
             //action
             vc?.startToSearchTags()
