@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// MARK: - Alerts
 class Alerts: NSObject {
     
     class func alertTitle(
@@ -59,7 +60,6 @@ class Alerts: NSObject {
     }
 }
 
-
 extension Alerts {
     class func simpleShortAlert(title:String,message:String,vc:UIViewController?,okDismissVc:Bool){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -108,6 +108,15 @@ extension Alerts {
     }
 }
 
+extension String {
+    var isValidName: Bool {
+       let RegEx = "^(?=.{1,30}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9._]+(?<![.])$" //"^\\w{7,18}$"
+       let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
+       return Test.evaluate(with: self)
+    }
+}
+
+// MARK: - More alerts
 extension UIViewController {
     @objc func dismissAlertController(){
         self.dismiss(animated: true, completion: nil)
@@ -186,13 +195,5 @@ extension UIViewController {
                 
             }
         }
-    }
-}
-
-extension String {
-    var isValidName: Bool {
-       let RegEx = "^(?=.{1,30}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9._]+(?<![.])$" //"^\\w{7,18}$"
-       let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
-       return Test.evaluate(with: self)
     }
 }
