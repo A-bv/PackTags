@@ -103,10 +103,9 @@ extension ThemeVC {
         themeTextView.becomeFirstResponder()
     }
     
-    func startToSearchTags() {
+    func startToSearch() {
         searchView.isHidden = false
         setCursorPositionAtStart()
-        MenuButton.isEnabled = false
         toolBarSearch.becomeFirstResponder()
     }
     

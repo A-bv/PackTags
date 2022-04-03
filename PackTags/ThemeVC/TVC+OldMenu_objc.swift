@@ -28,7 +28,8 @@ extension ThemeVC {
     //Search
     @objc func searchTags (sender: AnyObject) {
         self.themeTextView.doneTagSelection()
-        startToSearchTags()
+        MenuButton.isEnabled = false
+        startToSearch()
     }
     
     @objc func shuffleTags(sender: AnyObject) {

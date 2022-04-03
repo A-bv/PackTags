@@ -55,7 +55,7 @@ extension ThemeVC{
             vc?.themeTextView.doneTagSelection()
             
             //action
-            vc?.startToSearchTags()
+            vc?.startToSearch()
         }
         
         let shuffle = UIAction(title: "Shuffle hashtags", image: UIImage(systemName: "shuffle.circle")) { [weak vc = self] action in
