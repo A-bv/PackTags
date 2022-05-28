@@ -40,7 +40,7 @@ extension ThemeVC {
         themeTextView.isEditable = true
         //setCursorPositionAtStart()
         searchCountLabel.isHidden = true //!
-        MenuButton.isEnabled = true
+        slideUpMenu.MenuButton.isEnabled = true
         view.endEditing(true)
     }
     

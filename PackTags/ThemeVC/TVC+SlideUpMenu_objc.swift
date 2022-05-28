@@ -7,28 +7,29 @@
 //
 
 import UIKit
+
+extension ThemeVC : SlideUpMenuDelegate {
+   func tableRowDidSelect(_ indexPath: IndexPath) {
+       perform(buttonSelectorArray[indexPath.row], with: nil)
+   }
+}
+
+//SlideUpMenu (iOS < 14) 3/3
 extension ThemeVC {
-    
-    //SlideUpMenu (iOS < 14) 4/4
-    @objc func showMenu(sender: AnyObject) {
-        themeTextView.resignFirstResponder()
-        showMenu()
-    }
-    
-    //MARK: - Actions menu
-    //Show title popup
     @objc func showAlert(sender: AnyObject) {
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
         alertTitle()
     }
     
     @objc func selectImageFromPhotoLibrary(sender: AnyObject) {
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
         setImagePicker()
     }
     
-    //Search
     @objc func searchTags (sender: AnyObject) {
         self.themeTextView.doneTagSelection()
-        MenuButton.isEnabled = false
+        slideUpMenu.MenuButton.isEnabled = false
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
         startToSearch()
     }
     
