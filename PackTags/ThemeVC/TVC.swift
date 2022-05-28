@@ -72,7 +72,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         
         updateSaveButtonState() //Enable save button when text
    
-        //themeTextView.setupKeyboardNotifications() //Keyboard doesn't hide textView
+        setupKeyboardNotifications() //Keyboard doesn't hide textView
         
         if isFromShow == true {
             isScreenLoadedFromShowButton ()
