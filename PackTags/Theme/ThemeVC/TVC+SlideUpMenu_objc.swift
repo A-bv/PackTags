@@ -18,7 +18,7 @@ extension ThemeVC : SlideUpMenuDelegate {
 extension ThemeVC {
     @objc func showAlert(sender: AnyObject) {
         self.presentedViewController?.dismiss(animated: true, completion: nil)
-        alertTitle()
+        showGiveThemeNameAlert()
     }
     
     @objc func selectImageFromPhotoLibrary(sender: AnyObject) {
@@ -28,7 +28,7 @@ extension ThemeVC {
     
     @objc func searchTags (sender: AnyObject) {
         self.themeTextView.doneTagSelection()
-        slideUpMenu.MenuButton.isEnabled = false
+        isSearchMode = true
         self.presentedViewController?.dismiss(animated: true, completion: nil)
         startToSearch()
     }

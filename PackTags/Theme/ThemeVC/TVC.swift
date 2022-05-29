@@ -35,7 +35,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     @IBOutlet weak var searchView: UIStackView!
     @IBOutlet weak var searchEditButton: UIButton!
     @IBOutlet weak var searchLockLabel: UILabel!
-    @IBOutlet weak var searchCountLabel: UILabel!
+    @IBOutlet weak var searchCountLabel: UILabel! // TODO: Not showing
     // **
     
     //Text Recognition in images (iOS < 11) 1/2
@@ -51,7 +51,24 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
                                #selector(shuffleTags(sender:))]
     var slideUpMenu: SlideUpMenu!
     
-    //MARK: - ThemeVC
+    var buttonMenuThemeOptions: UIBarButtonItem {
+        var button = UIBarButtonItem()
+        if #available(iOS 14.0, *) {
+            button = buttonMenu()
+        } else {
+            slideUpMenu = SlideUpMenu(controller: self)
+            button = slideUpMenu.MenuButton
+        }
+        return button
+    }
+    
+    var isSearchMode: Bool = false {
+        didSet {
+            // buttonMenuThemeOptions.isEnabled = !isSearchMode
+            // TODO: issue can't disable button in search mode
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         themeTextView.delegate = self
@@ -59,7 +76,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         
         self.navigationController?.view.tintColor = UITextView.appearance().tintColor
         
-        if isNotNewTheme == false {alertTitle()} else {}
+        if isNotNewTheme == false {showGiveThemeNameAlert()} else {}
         
         loadbuttons()
         loadEntries ()
@@ -70,7 +87,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         
         configureTextView()
         
-        updateSaveButtonState() //Enable save button when text
+        updateSaveButtonState() //Enable save button when title
    
         setupKeyboardNotifications() //Keyboard doesn't hide textView
         
@@ -85,7 +102,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     }
     
     //MARK: - Setup
-    private func updateSaveButtonState() {saveButton.isEnabled = !themeTitle.isEmpty}
+    func updateSaveButtonState() {saveButton.isEnabled = !themeTitle.isEmpty}
     
     private func loadEntries (){
         if let theme = theme {
@@ -98,12 +115,8 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
             }
             
             //image
-            if theme.image == nil {
-                print("could not find an image")
-            }
-            else{
-                themeImageView = UIImage(data: theme.image!)
-            }
+            if theme.image == nil { print("could not find an image") }
+            else { themeImageView = UIImage(data: theme.image!) }
         }
     }
     
@@ -113,12 +126,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     }
     
     private func loadbuttons () {
-        if #available(iOS 14.0, *) {
-            navigationItem.rightBarButtonItems = [saveButton, buttonMenu(), themeTextView.tapStartBarButtonItem()]
-        } else {
-            // SlideUpMenu (iOS < 14) 2/3
-            self.navigationItem.rightBarButtonItems  = [saveButton, slideUpMenu.MenuButton, themeTextView.tapStartBarButtonItem()]
-       }
+        navigationItem.rightBarButtonItems = [saveButton, buttonMenuThemeOptions, themeTextView.tapStartBarButtonItem()]
     }
     
     private func configureTextView() {
@@ -126,32 +134,8 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         themeTextView.setPlaceholder()
         themeTextView.addTagSelectorToolBar (vc: self)
     }
-    
-    //MARK: - UITextViewDelegate
-    //Placeholder
-    func textViewDidChange(_ textView: UITextView) {
-        themeTextView.checkPlaceholder()
-    }
-    
-    //MARK: - Alerts
-    //Works with Utility.swift
-    func alertTitle () {
-        
-        let tips = ""
-        
-        let title = themeTitle.isEmpty == true ? "New Theme" : themeTitle
-        let message = themeTitle.isEmpty == true ? tips : "Edit Name"
-        let placeholder = themeTitle.isEmpty == true ? "Enter Name" : "Enter New Name"
-        
-        //Shows alert pop up
-        Alerts.alertTitle(targetVC: self, title: title, message: message, placeholder: placeholder) {[weak vc = self] //avoid retained cycle
-            (inputName) in
-            // continue your logic
-            vc?.themeTitle = inputName
-            vc?.updateSaveButtonState()
-        }
-    }
 }
+
 /*
 extension UITextView {
     //MARK: - toolbar
@@ -167,3 +151,11 @@ extension UITextView {
     }
 }
 */
+
+extension ThemeVC {
+    //MARK: - UITextViewDelegate
+    //Placeholder
+    func textViewDidChange(_ textView: UITextView) {
+        themeTextView.checkPlaceholder()
+    }
+}

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 extension ThemeVC {
     func initSearchToolbar() {
@@ -38,9 +39,8 @@ extension ThemeVC {
         themeTextView.highlightColorsForSearchedWords(keyword: [""])
         searchView.isHidden = true
         themeTextView.isEditable = true
-        //setCursorPositionAtStart()
-        searchCountLabel.isHidden = true //!
-        slideUpMenu.MenuButton.isEnabled = true
+        searchCountLabel.isHidden = true // !
+        isSearchMode = false
         view.endEditing(true)
     }
     

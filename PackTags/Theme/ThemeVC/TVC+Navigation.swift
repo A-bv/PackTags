@@ -9,7 +9,6 @@
 import UIKit
 
 extension ThemeVC {
-    //MARK: - Navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          guard let identifier = segue.identifier else { return }
          if identifier == "cancel" {return}
@@ -19,7 +18,11 @@ extension ThemeVC {
          
          //Downsampling
          let image = themeImageView?.jpegData(compressionQuality: 0.8)
-         let thumbnail = themeImageView?.resized(to: CGSize(width: 135.333,height: 135.333)).jpegData(compressionQuality: 0.8)
+         let thumbnail = themeImageView?.resized(
+            to: CGSize(
+                width: 135.333,
+                height: 135.333)
+         ).jpegData(compressionQuality: 0.8)
          //135.33 = tableView.frame.size.height/6
          
          //OPTIONAL: Reorder tableView

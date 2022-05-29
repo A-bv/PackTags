@@ -9,9 +9,7 @@
 import UIKit
 
 extension PackTableVC {
-    
     func goInsta(packIdx: Int) {
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             let goInstagram = UserDefaults.standard.bool(forKey: "goInsta")
             let Username = UserDefaults.standard.string(forKey: "Instagram Username")  ?? ""

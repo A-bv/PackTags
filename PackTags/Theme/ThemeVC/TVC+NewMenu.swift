@@ -5,19 +5,16 @@
 //  Created by Alexandre Bevilacqua on 10/02/2021.
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
+// Menu iOS 14+
 
 import UIKit
 import SwiftUI
-//MARK: - POP MENU FOR IOS > 14
-//UINavigationBarMenuButton
-@available(iOS 14.0, *)
 
+@available(iOS 14.0, *)
 extension ThemeVC{
-    
     func buttonMenu () -> UIBarButtonItem {
-        //MARK: - Buttons
-        let editName = UIAction(title: "Rename", image: UIImage(systemName: "tag")) { [weak vc = self] action in //to avoid retained cycles
-            vc?.alertTitle()
+        let editName = UIAction(title: "Rename", image: UIImage(systemName: "tag")) { [weak vc = self] action in
+            vc?.showGiveThemeNameAlert()
         }
         
         let editPicture = UIAction(title: "Edit picture", image: UIImage(systemName: "photo.on.rectangle.angled")) { [weak vc = self] action in
@@ -45,17 +42,13 @@ extension ThemeVC{
                 hostingController.modalPresentationStyle = .overFullScreen
                 vc?.present(hostingController, animated: true, completion: nil)
             }
-        
         }
         #endif
         
         let search = UIAction(title: "Search hashtags", image: UIImage(systemName: "magnifyingglass")) { [weak vc = self] action in
-            
-            //resign
             vc?.themeTextView.doneTagSelection()
-            
-            //action
             vc?.startToSearch()
+            vc?.isSearchMode = true
         }
         
         let shuffle = UIAction(title: "Shuffle hashtags", image: UIImage(systemName: "shuffle.circle")) { [weak vc = self] action in
@@ -65,8 +58,6 @@ extension ThemeVC{
             }
         }
         
-        
-        //MARK: - Menu
         let edit = UIMenu(title: "Edit...",options: .displayInline, children: [editName,editPicture])
         
         #if !arch(arm)
@@ -75,12 +66,14 @@ extension ThemeVC{
         let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon])
         #endif
         
-        let manage = UIMenu(title: "Manage...",options: .displayInline, children: [shuffle, search])//,select])
+        let manage = UIMenu(title: "Manage...",options: .displayInline, children: [shuffle, search])
         
         let barButtonMenu = UIMenu(title: "",children: [edit,htgImport,manage])
         
         let symbol = UIImage(systemName: "ellipsis.circle")
+        
         let optionsBarItem = UIBarButtonItem(image:symbol, primaryAction: nil, menu: barButtonMenu)
+        
         return optionsBarItem
     }
 }

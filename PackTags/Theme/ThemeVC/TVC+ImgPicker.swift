@@ -9,7 +9,6 @@
 import UIKit
 
 extension ThemeVC {
-    
     func setImagePicker () {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
@@ -69,8 +68,4 @@ extension ThemeVC {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         picker.dismiss(animated: true, completion: nil) // Dismiss the picker
     }
-    
-    
 }
-
-
