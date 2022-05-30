@@ -122,9 +122,6 @@ var customTextColor: UIColor {
     }
 }
 
-
-
-
 var customPurple: UIColor {
     if #available(iOS 11, *)  {
         return UIColor(named: "customPurple") ?? UIColor.systemPurple

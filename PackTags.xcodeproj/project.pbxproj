@@ -62,6 +62,8 @@
 		02A42353284297B400A25067 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A42352284297B400A25067 /* PresentationController.swift */; };
 		02A423552842C1D000A25067 /* TVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423542842C1D000A25067 /* TVC+Navigation.swift */; };
 		02A423572843E9D800A25067 /* TVC+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423562843E9D800A25067 /* TVC+Alerts.swift */; };
+		02A4236028454EE800A25067 /* ThemeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4235F28454EE800A25067 /* ThemeTableViewModel.swift */; };
+		02A423642845564900A25067 /* ThemeTVC+reorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423632845564900A25067 /* ThemeTVC+reorder.swift */; };
 		02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5EB6925C054440063A315 /* FrameTags.swift */; };
 		02AEA58725B630B10063076F /* PackTbVC+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AEA58625B630B10063076F /* PackTbVC+NavBar.swift */; };
 		02B02AC52594238100586352 /* TVC+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B02AC42594238100586352 /* TVC+Search.swift */; };
@@ -169,6 +171,8 @@
 		02A42352284297B400A25067 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		02A423542842C1D000A25067 /* TVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Navigation.swift"; sourceTree = "<group>"; };
 		02A423562843E9D800A25067 /* TVC+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Alerts.swift"; sourceTree = "<group>"; };
+		02A4235F28454EE800A25067 /* ThemeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewModel.swift; sourceTree = "<group>"; };
+		02A423632845564900A25067 /* ThemeTVC+reorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeTVC+reorder.swift"; sourceTree = "<group>"; };
 		02A5EB6925C054440063A315 /* FrameTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameTags.swift; sourceTree = "<group>"; };
 		02AEA58625B630B10063076F /* PackTbVC+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTbVC+NavBar.swift"; sourceTree = "<group>"; };
 		02B02AC42594238100586352 /* TVC+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Search.swift"; sourceTree = "<group>"; };
@@ -396,12 +400,11 @@
 				02B05C1F27F90BB9000026B8 /* Image */,
 				02FEF5C92638951C0001B525 /* GenericJSONParser.swift */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
-				024347D727119E2100F86A64 /* TextRecognition.swift */,
 				0264B836264B25E100E1EEFA /* LoadIndicator.swift */,
+				024347D727119E2100F86A64 /* TextRecognition.swift */,
 				02FEF5B6263304EC0001B525 /* ExternalActions.swift */,
 				02491C52267147AF00F98E17 /* ModalUI.swift */,
 				021AFD5B278A1BE40008735E /* Alerts.swift */,
-				0247E585257FEFB900C65245 /* DarkMode.swift */,
 				02D1A118255387590045E56F /* UniqueTags.swift */,
 			);
 			path = Tools;
@@ -439,6 +442,7 @@
 		02A4235B2844002600A25067 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				02A4235E28454EC500A25067 /* ThemeTableViewModel */,
 				02AEA5EA25B9D2F10063076F /* ThemeTableVC */,
 			);
 			path = Themes;
@@ -458,6 +462,14 @@
 				02CAC9B82591061B00BE5E57 /* ThemeVC */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		02A4235E28454EC500A25067 /* ThemeTableViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02A4235F28454EE800A25067 /* ThemeTableViewModel.swift */,
+			);
+			path = ThemeTableViewModel;
 			sourceTree = "<group>";
 		};
 		02AB39A927B894D600335131 /* SetupTutorial */ = {
@@ -489,6 +501,7 @@
 				02FB552E24FFA78B00174E34 /* ThemeTVC.swift */,
 				022688B22628BCCC007DBD98 /* ThemeTVC+Interface.swift */,
 				02FEF535262B86620001B525 /* ThemeTVC+navigation.swift */,
+				02A423632845564900A25067 /* ThemeTVC+reorder.swift */,
 			);
 			path = ThemeTableVC;
 			sourceTree = "<group>";
@@ -542,6 +555,7 @@
 				02491C682680883700F98E17 /* AppColors.swift */,
 				0226889C2626F332007DBD98 /* Neumorphic.swift */,
 				02491C66267E3FED00F98E17 /* NeuMphSwiftUI.swift */,
+				0247E585257FEFB900C65245 /* DarkMode.swift */,
 			);
 			path = AppStyle;
 			sourceTree = "<group>";
@@ -790,6 +804,7 @@
 				02BC8D3025FD7DC800441349 /* PackTbVC+Navigation.swift in Sources */,
 				02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */,
 				02491C692680883800F98E17 /* AppColors.swift in Sources */,
+				02A4236028454EE800A25067 /* ThemeTableViewModel.swift in Sources */,
 				02A4234F2842978A00A25067 /* SlideUpMenuTableViewCell.swift in Sources */,
 				020621572666DBCC0072C404 /* AnModel.swift in Sources */,
 				02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */,
@@ -825,6 +840,7 @@
 				0274105826207D2100D82F6D /* PackTbVC+Instagram.swift in Sources */,
 				022688B32628BCCC007DBD98 /* ThemeTVC+Interface.swift in Sources */,
 				02A423552842C1D000A25067 /* TVC+Navigation.swift in Sources */,
+				02A423642845564900A25067 /* ThemeTVC+reorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

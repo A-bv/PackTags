@@ -16,6 +16,8 @@ class ThemeTableViewController: UITableViewController {
     
     var isTableViewEditMode = false
     
+    let viewModel = ThemeTableViewModel()
+    
     var themes = [ThemeCD](){
         didSet {
             //reloadeding after adding a new theme (safe)
@@ -23,13 +25,6 @@ class ThemeTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
-    }
-    
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        //showOnboardingScreen()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,25 +42,20 @@ class ThemeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Initial UI
-        TTVCsetUI()
-        
-        //Content
+        configureNavBar ()
         themes = CoreDataHelper.retrieveThemes()
         
-        
+        self.tableView.rowHeight = viewModel.TTVCrowHeight(vc: self)
+        addLongPressToTableView() //reorder
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //OnBoarding
         if Core.shared.isNewUser() {
             self.showOnboardingScreen()
         }
-        
     }
 
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //(fix p1)
@@ -79,7 +69,6 @@ class ThemeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return themes.count
     }
-   
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -141,9 +130,6 @@ class ThemeTableViewController: UITableViewController {
         CoreDataHelper.saveTheme()
     }
     // - *
-    
-    
-    
 }
 
 
@@ -159,14 +145,13 @@ extension ThemeTableViewController {
     func presentDeletionFailsafe(indexPath: IndexPath) {
             let alert = UIAlertController(title: nil, message: "Delete this theme?\n\nThis action is unreversible", preferredStyle: .alert)
 
-            let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
-                
+            let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
                 //Delete row code
-                let themeToDelete = self.themes[indexPath.row]
+                guard let themeToDelete = self?.themes[indexPath.row]
+                else { return }
                 CoreDataHelper.delete(theme: themeToDelete)
-                self.themes = CoreDataHelper.retrieveThemes()
-                self.tableView.deleteRows(at: [indexPath], with: .none)
-                
+                self?.themes = CoreDataHelper.retrieveThemes()
+                self?.tableView.deleteRows(at: [indexPath], with: .none)
             }
 
             alert.addAction(yesAction)
@@ -176,7 +161,6 @@ extension ThemeTableViewController {
 
             present(alert, animated: true, completion: nil)
         }
-
 }
 
 
