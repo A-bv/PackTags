@@ -71,7 +71,6 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        themeTextView.delegate = self
         toolBarSearch.delegate = self
         
         self.navigationController?.view.tintColor = UITextView.appearance().tintColor
@@ -80,16 +79,13 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         
         loadbuttons()
         loadEntries ()
+        configureTextView()
         
         loadProcessingSpinner()
         
-        initSearchToolbar() //Search toolbar 2/2
+        initSearchToolbar() // Search toolbar 2/2
         
-        configureTextView()
-        
-        updateSaveButtonState() //Enable save button when title
-   
-        setupKeyboardNotifications() //Keyboard doesn't hide textView
+        updateSaveButtonState() // Enable save button if title != empty
         
         if isFromShow == true {
             isScreenLoadedFromShowButton ()
@@ -130,9 +126,11 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     }
     
     private func configureTextView() {
+        themeTextView.delegate = self
         themeTextView.tagDelegate = self
         themeTextView.setPlaceholder()
         themeTextView.addTagSelectorToolBar (vc: self)
+        themeTextView.notHiddenByKeyboard()
     }
 }
 
