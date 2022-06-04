@@ -57,9 +57,7 @@ class ThemeTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //(fix p1)
-        self.view.isUserInteractionEnabled = false
+        self.view.isUserInteractionEnabled = false //(fix p1)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,9 +80,8 @@ class ThemeTableViewController: UITableViewController {
         
         cell.nameLabel.text = theme.name
             
-        if theme.thumbnail == nil {} else {
-            let new = UIImage(data: theme.thumbnail!)
-            cell.themeImageView.image = new
+        if theme.thumbnail != nil {
+            cell.themeImageView.image = UIImage(data: theme.thumbnail!)
         }
            
         return cell
@@ -95,12 +92,10 @@ class ThemeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if editingStyle == .delete
-            {
-                presentDeletionFailsafe(indexPath: indexPath)
-            }   else if editingStyle == .insert {}
-        }
+        if editingStyle == .delete
+        {
+            presentDeletionFailsafe(indexPath: indexPath)
+        } else if editingStyle == .insert {}
     }
 }
 
@@ -115,18 +110,12 @@ extension ThemeTableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool { return false }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        
-        return self.tableView.isEditing == true ? .none : .delete
-    }
+        return self.tableView.isEditing == true ? .none : .delete }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = bkgdColor
-    }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) { cell.backgroundColor = bkgdColor }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedObject = self.themes[sourceIndexPath.row]
