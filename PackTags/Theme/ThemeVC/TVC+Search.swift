@@ -51,10 +51,14 @@ extension ThemeVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         themeTextView.highlightColorsForSearchedWords(keyword: [searchText])
         themeTextView.scrollToSubstring (substring: searchText)
+        let values = themeTextView.getEveryHighlightedWordPosition (word: toolBarSearch.text ?? "")
+        if toolBarSearch.text?.isEmpty == false {
+            searchCountLabel.isHidden = false //!
+            searchCountLabel.text = "\(values.count) results" //!
+        }
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchCountLabel.isHidden = true //!
         searchLockLabel.text = "\u{1F512}"
         searchEditButton.isEnabled = true
         themeTextView.isEditable = false
@@ -64,13 +68,6 @@ extension ThemeVC: UISearchBarDelegate {
         view.endEditing(true)
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
-        let values = themeTextView.getEveryHighlightedWordPosition (word: toolBarSearch.text ?? "")
-        if toolBarSearch.text?.isEmpty != true {
-            searchCountLabel.isHidden = false //!
-            searchCountLabel.text = "\(values.count) results" //!
-        }
-    }
 }
 
 //MARK: - Find pack from show button (PackTableVC)
