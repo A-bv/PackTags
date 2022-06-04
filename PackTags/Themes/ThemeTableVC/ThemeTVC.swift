@@ -46,7 +46,7 @@ class ThemeTableViewController: UITableViewController {
         themes = CoreDataHelper.retrieveThemes()
         
         self.tableView.rowHeight = viewModel.TTVCrowHeight(vc: self)
-        addLongPressToTableView() //reorder
+        self.addLongPressToTableView() //reorder
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,8 +102,19 @@ class ThemeTableViewController: UITableViewController {
             }   else if editingStyle == .insert {}
         }
     }
+}
+
+// Reorder cells
+extension ThemeTableViewController {
+    override func setEditing (_ editing:Bool, animated:Bool) {
+        super.setEditing(editing,animated:animated)
+        if self.isEditing {
+            navigationItem.rightBarButtonItems = [editButtonItem, addThemeButton]
+        } else {
+            navigationItem.rightBarButtonItems = [addThemeButton]
+        }
+    }
     
-    //OPTIONAL: Reorder tableView * -
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
     }
@@ -122,23 +133,13 @@ class ThemeTableViewController: UITableViewController {
         themes.remove(at: sourceIndexPath.row)
         themes.insert(movedObject, at: destinationIndexPath.row)
         
-        //tableView.reloadData()
-        
         for (index, element) in themes.enumerated() {
             element.orderIndex = Int32(index)
         }
         CoreDataHelper.saveTheme()
     }
-    // - *
 }
 
-
-//custom status bar in all view controllers (csb)
-extension UINavigationController {
-    open override var childForStatusBarStyle: UIViewController? {
-        return topViewController
-    }
-}
 
 //Confirm row deletion
 extension ThemeTableViewController {
@@ -163,7 +164,12 @@ extension ThemeTableViewController {
         }
 }
 
-
+//custom status bar in all view controllers (csb)
+extension UINavigationController {
+    open override var childForStatusBarStyle: UIViewController? {
+        return topViewController
+    }
+}
 
 
 

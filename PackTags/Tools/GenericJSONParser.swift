@@ -5,6 +5,7 @@
 //  Created by Alexandre Bevilacqua on 12.01.21.
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
+
 import UIKit
 
 class GenericJSONParser {
