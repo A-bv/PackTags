@@ -26,8 +26,8 @@
 		0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* Neumorphic.swift */; };
 		022688B32628BCCC007DBD98 /* TTVC+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688B22628BCCC007DBD98 /* TTVC+Interface.swift */; };
 		0226F197259AB231006E086C /* TapTV+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F196259AB231006E086C /* TapTV+Selection.swift */; };
-		0226F19C259EAB93006E086C /* PackTbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19B259EAB93006E086C /* PackTbCell.swift */; };
-		0226F19E259EABB4006E086C /* PackTbVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19D259EABB4006E086C /* PackTbVC.swift */; };
+		0226F19C259EAB93006E086C /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19B259EAB93006E086C /* PackCell.swift */; };
+		0226F19E259EABB4006E086C /* PackTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19D259EABB4006E086C /* PackTVC.swift */; };
 		0229863C27BD6DF60048F9E9 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229863827BD6DF40048F9E9 /* ImageLoader.swift */; };
 		0229863D27BD6DF60048F9E9 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229863927BD6DF40048F9E9 /* AsyncImage.swift */; };
 		0229863E27BD6DF60048F9E9 /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229863A27BD6DF50048F9E9 /* EnvironmentValues+ImageCache.swift */; };
@@ -50,12 +50,12 @@
 		0264B817264A7CE900E1EEFA /* AnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* AnViewModel.swift */; };
 		0264B837264B25E100E1EEFA /* LoadIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B836264B25E100E1EEFA /* LoadIndicator.swift */; };
 		0269E2AC2564B838005FE14B /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269E2AB2564B838005FE14B /* AnalyticsView.swift */; };
-		0274105826207D2100D82F6D /* PackTbVC+Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274105726207D2000D82F6D /* PackTbVC+Instagram.swift */; };
+		0274105826207D2100D82F6D /* PackTVC+Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274105726207D2000D82F6D /* PackTVC+Instagram.swift */; };
 		0274DB2E26848492005F9C9C /* AnViewModel+Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2D26848492005F9C9C /* AnViewModel+Fill.swift */; };
 		0274DB3026848948005F9C9C /* GJs+Dir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* GJs+Dir.swift */; };
 		02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */; };
-		029BEDE625F907B200980870 /* PackTbVC+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BEDE525F907B100980870 /* PackTbVC+Interface.swift */; };
+		029BEDE625F907B200980870 /* PackTVC+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BEDE525F907B100980870 /* PackTVC+Interface.swift */; };
 		029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnBoardingVC.swift */; };
 		02A4234D2842976A00A25067 /* SlideUpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4234C2842976A00A25067 /* SlideUpMenu.swift */; };
 		02A4234F2842978A00A25067 /* SlideUpMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4234E2842978A00A25067 /* SlideUpMenuTableViewCell.swift */; };
@@ -66,7 +66,7 @@
 		02A4236028454EE800A25067 /* ThemeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4235F28454EE800A25067 /* ThemeTableViewModel.swift */; };
 		02A423642845564900A25067 /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423632845564900A25067 /* LongPressReorder.swift */; };
 		02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5EB6925C054440063A315 /* FrameTags.swift */; };
-		02AEA58725B630B10063076F /* PackTbVC+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AEA58625B630B10063076F /* PackTbVC+NavBar.swift */; };
+		02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AEA58625B630B10063076F /* PackTVC+NavBar.swift */; };
 		02B02AC52594238100586352 /* TVC+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B02AC42594238100586352 /* TVC+Search.swift */; };
 		02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */; };
 		02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1727F8BFBF000026B8 /* TapTextView.swift */; };
@@ -74,7 +74,7 @@
 		02B05C232809CD76000026B8 /* SearcheableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C222809CD76000026B8 /* SearcheableTextView.swift */; };
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
 		02B104A9276A630E00C9EC6C /* Url_img_SUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */; };
-		02BC8D3025FD7DC800441349 /* PackTbVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D2F25FD7DC800441349 /* PackTbVC+Navigation.swift */; };
+		02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */; };
 		02BC8D592602B79900441349 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsVC.swift */; };
 		02CAC9B32591047D00BE5E57 /* TextViewKbNoHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B22591047D00BE5E57 /* TextViewKbNoHide.swift */; };
 		02CAC9B52591054400BE5E57 /* TVC+ImgPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B42591054400BE5E57 /* TVC+ImgPicker.swift */; };
@@ -136,8 +136,8 @@
 		0226889C2626F332007DBD98 /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
 		022688B22628BCCC007DBD98 /* TTVC+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Interface.swift"; sourceTree = "<group>"; };
 		0226F196259AB231006E086C /* TapTV+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapTV+Selection.swift"; sourceTree = "<group>"; };
-		0226F19B259EAB93006E086C /* PackTbCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackTbCell.swift; sourceTree = "<group>"; };
-		0226F19D259EABB4006E086C /* PackTbVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackTbVC.swift; sourceTree = "<group>"; };
+		0226F19B259EAB93006E086C /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
+		0226F19D259EABB4006E086C /* PackTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackTVC.swift; sourceTree = "<group>"; };
 		0229863827BD6DF40048F9E9 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		0229863927BD6DF40048F9E9 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		0229863A27BD6DF50048F9E9 /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
@@ -160,12 +160,12 @@
 		0264B836264B25E100E1EEFA /* LoadIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadIndicator.swift; sourceTree = "<group>"; };
 		0269E2AB2564B838005FE14B /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		0273D1512655A9BB0043011C /* PrJs+Varr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrJs+Varr.swift"; sourceTree = "<group>"; };
-		0274105726207D2000D82F6D /* PackTbVC+Instagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTbVC+Instagram.swift"; sourceTree = "<group>"; };
+		0274105726207D2000D82F6D /* PackTVC+Instagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Instagram.swift"; sourceTree = "<group>"; };
 		0274DB2D26848492005F9C9C /* AnViewModel+Fill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnViewModel+Fill.swift"; sourceTree = "<group>"; };
 		0274DB2F26848948005F9C9C /* GJs+Dir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+Dir.swift"; sourceTree = "<group>"; };
 		02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerVC.swift; sourceTree = "<group>"; };
-		029BEDE525F907B100980870 /* PackTbVC+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTbVC+Interface.swift"; sourceTree = "<group>"; };
+		029BEDE525F907B100980870 /* PackTVC+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Interface.swift"; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
 		02A4234C2842976A00A25067 /* SlideUpMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpMenu.swift; sourceTree = "<group>"; };
 		02A4234E2842978A00A25067 /* SlideUpMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		02A4235F28454EE800A25067 /* ThemeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewModel.swift; sourceTree = "<group>"; };
 		02A423632845564900A25067 /* LongPressReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressReorder.swift; sourceTree = "<group>"; };
 		02A5EB6925C054440063A315 /* FrameTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameTags.swift; sourceTree = "<group>"; };
-		02AEA58625B630B10063076F /* PackTbVC+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTbVC+NavBar.swift"; sourceTree = "<group>"; };
+		02AEA58625B630B10063076F /* PackTVC+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+NavBar.swift"; sourceTree = "<group>"; };
 		02B02AC42594238100586352 /* TVC+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Search.swift"; sourceTree = "<group>"; };
 		02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapTV+AddGesture.swift"; sourceTree = "<group>"; };
 		02B05C1727F8BFBF000026B8 /* TapTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTextView.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		02B05C222809CD76000026B8 /* SearcheableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcheableTextView.swift; sourceTree = "<group>"; };
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
 		02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url_img_SUI.swift; sourceTree = "<group>"; };
-		02BC8D2F25FD7DC800441349 /* PackTbVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTbVC+Navigation.swift"; sourceTree = "<group>"; };
+		02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Navigation.swift"; sourceTree = "<group>"; };
 		02BC8D582602B79900441349 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		02CAC9B22591047D00BE5E57 /* TextViewKbNoHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewKbNoHide.swift; sourceTree = "<group>"; };
 		02CAC9B42591054400BE5E57 /* TVC+ImgPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+ImgPicker.swift"; sourceTree = "<group>"; };
@@ -495,12 +495,12 @@
 		02AEA5E725B9D2B00063076F /* PackTableVC */ = {
 			isa = PBXGroup;
 			children = (
-				0226F19B259EAB93006E086C /* PackTbCell.swift */,
-				0226F19D259EABB4006E086C /* PackTbVC.swift */,
-				02BC8D2F25FD7DC800441349 /* PackTbVC+Navigation.swift */,
-				029BEDE525F907B100980870 /* PackTbVC+Interface.swift */,
-				02AEA58625B630B10063076F /* PackTbVC+NavBar.swift */,
-				0274105726207D2000D82F6D /* PackTbVC+Instagram.swift */,
+				0226F19B259EAB93006E086C /* PackCell.swift */,
+				0226F19D259EABB4006E086C /* PackTVC.swift */,
+				02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */,
+				029BEDE525F907B100980870 /* PackTVC+Interface.swift */,
+				02AEA58625B630B10063076F /* PackTVC+NavBar.swift */,
+				0274105726207D2000D82F6D /* PackTVC+Instagram.swift */,
 			);
 			path = PackTableVC;
 			sourceTree = "<group>";
@@ -773,8 +773,8 @@
 				02D1A119255387590045E56F /* UniqueTags.swift in Sources */,
 				0216111B25D46EFA0098CE5E /* TVC+SlideUpMenu_objc.swift in Sources */,
 				02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */,
-				0226F19E259EABB4006E086C /* PackTbVC.swift in Sources */,
-				029BEDE625F907B200980870 /* PackTbVC+Interface.swift in Sources */,
+				0226F19E259EABB4006E086C /* PackTVC.swift in Sources */,
+				029BEDE625F907B200980870 /* PackTVC+Interface.swift in Sources */,
 				022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */,
 				0216110E25D46C180098CE5E /* TVC+NewMenu.swift in Sources */,
@@ -785,7 +785,7 @@
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,
 				02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */,
 				0264B837264B25E100E1EEFA /* LoadIndicator.swift in Sources */,
-				0226F19C259EAB93006E086C /* PackTbCell.swift in Sources */,
+				0226F19C259EAB93006E086C /* PackCell.swift in Sources */,
 				021D7620275A99D500F54054 /* PrModel_Analytics.swift in Sources */,
 				021D76172759A00D00F54054 /* SmartGView.swift in Sources */,
 				0213D9F5275D2F8A002A54ED /* GJs+Analytics.swift in Sources */,
@@ -813,7 +813,7 @@
 				02491C5926779A4900F98E17 /* HowToSetupProIGVC.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsNew.swift in Sources */,
 				02491C55267799BD00F98E17 /* IgApiSetupVC+UI.swift in Sources */,
-				02BC8D3025FD7DC800441349 /* PackTbVC+Navigation.swift in Sources */,
+				02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */,
 				02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */,
 				02491C692680883800F98E17 /* AppColors.swift in Sources */,
 				02A4236028454EE800A25067 /* ThemeTableViewModel.swift in Sources */,
@@ -847,9 +847,9 @@
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
 				0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */,
 				02491C512671212400F98E17 /* IgApiSetupVC.swift in Sources */,
-				02AEA58725B630B10063076F /* PackTbVC+NavBar.swift in Sources */,
+				02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */,
 				021D7624275A9EE900F54054 /* GJs+RefreshRate.swift in Sources */,
-				0274105826207D2100D82F6D /* PackTbVC+Instagram.swift in Sources */,
+				0274105826207D2100D82F6D /* PackTVC+Instagram.swift in Sources */,
 				022688B32628BCCC007DBD98 /* TTVC+Interface.swift in Sources */,
 				02A423552842C1D000A25067 /* TVC+Navigation.swift in Sources */,
 				02A423642845564900A25067 /* LongPressReorder.swift in Sources */,

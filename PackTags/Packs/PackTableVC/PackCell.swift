@@ -69,10 +69,7 @@ class PackCell: UITableViewCell {
         return btn
     }()
     
-    
-    
     @objc func startTap(sender: UIButton) {
-        
         sender.updateNeumorphicButton(hold: true, delay:true)
     }
     

@@ -37,15 +37,13 @@ class PackTableVC: UITableViewController {
     // MARK: - Content
     //Different cell content
     func pack(){
-        if theme?.content != nil{
-            if let array = theme?.content?.components(separatedBy:" ")
-            {
-                let string = Unique.packBy(t:array)
-                packs = string.components(separatedBy: "\n\n")
-            }
-        } else {
+        guard let content = theme?.content else {
             packs=[]
+            return
         }
+        
+        let string = Unique.packBy(t: content.components(separatedBy:" "))
+        packs = string.components(separatedBy: "\n\n")
     }
     
     //If redirected to instagram after copy, move pack to bottom
