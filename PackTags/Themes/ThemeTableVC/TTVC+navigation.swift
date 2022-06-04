@@ -68,7 +68,6 @@ extension ThemeTableViewController {
         // by default, transition
         return true
     }
-    
 }
 
 

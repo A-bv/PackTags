@@ -31,6 +31,11 @@ extension ThemeTableViewController {
         updateLogo()
     }
     
+    func configureTableView () {
+        self.tableView.rowHeight = viewModel.TTVCrowHeight(vc: self)
+        self.addLongPressToTableView() //reorder
+    }
+    
     func TTVCrefreshUI () {
         self.navigationController?.setNavbarTransparent()
         self.neumorphicNavBar()

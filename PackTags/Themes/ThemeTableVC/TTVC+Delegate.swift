@@ -1,61 +1,15 @@
 //
-//  ThemeTableViewController.swift
+//  ThemeTVC+Delegate.swift
 //  PackTags
 //
-//  Created by Alexandre Bevilacqua on 02.09.20.
-//  Copyright © 2020 Alexandre Bevilacqua. All rights reserved.
+//  Created by Alexandre Bevilacqua on 04.06.22.
+//  Copyright © 2022 Alexandre Bevilacqua. All rights reserved.
 //
 
 import UIKit
 
-class ThemeTableViewController: UITableViewController {
-    
-    @IBOutlet weak var addThemeButton: UIBarButtonItem!
-    @IBOutlet weak var settingsButton: UIBarButtonItem!
-    @IBOutlet weak var analyticsButton: UIBarButtonItem!
-    
-    var isTableViewEditMode = false
-    
-    let viewModel = ThemeTableViewModel()
-    
-    var themes = [ThemeCD](){
-        didSet {
-            //reloadeding after adding a new theme (safe)
-            OperationQueue.main.addOperation {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        TTVCrefreshUI()
-        
-        //(fix p1)
-        self.view.isUserInteractionEnabled = true
-        
-        OperationQueue.main.addOperation {
-            //(p1): fast clicks opens views multiple times
-            self.tableView.reloadData()
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureNavBar ()
-        themes = CoreDataHelper.retrieveThemes()
-        
-        self.tableView.rowHeight = viewModel.TTVCrowHeight(vc: self)
-        self.addLongPressToTableView() //reorder
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if Core.shared.isNewUser() {
-            self.showOnboardingScreen()
-        }
-    }
-
-    // MARK: - Table view data source
+// MARK: - Table view delegate/ dataSource
+extension ThemeTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.isUserInteractionEnabled = false //(fix p1)
     }
@@ -99,7 +53,7 @@ class ThemeTableViewController: UITableViewController {
     }
 }
 
-// Reorder cells
+// MARK: - Reorder cells
 extension ThemeTableViewController {
     override func setEditing (_ editing:Bool, animated:Bool) {
         super.setEditing(editing,animated:animated)
@@ -130,7 +84,7 @@ extension ThemeTableViewController {
 }
 
 
-//Confirm row deletion
+// MARK: - Confirm row deletion
 extension ThemeTableViewController {
     func presentDeletionFailsafe(indexPath: IndexPath) {
             let alert = UIAlertController(title: nil, message: "Delete this theme?\n\nThis action is unreversible", preferredStyle: .alert)
@@ -152,13 +106,3 @@ extension ThemeTableViewController {
             present(alert, animated: true, completion: nil)
         }
 }
-
-//custom status bar in all view controllers (csb)
-extension UINavigationController {
-    open override var childForStatusBarStyle: UIViewController? {
-        return topViewController
-    }
-}
-
-
-
