@@ -437,9 +437,9 @@
 		02A4234B2842973B00A25067 /* SlideUpMenu */ = {
 			isa = PBXGroup;
 			children = (
+				02A4234E2842978A00A25067 /* SlideUpMenuTableViewCell.swift */,
 				02A4234C2842976A00A25067 /* SlideUpMenu.swift */,
 				02A423502842979300A25067 /* SlideUpMenuViewController.swift */,
-				02A4234E2842978A00A25067 /* SlideUpMenuTableViewCell.swift */,
 				02A42352284297B400A25067 /* PresentationController.swift */,
 			);
 			path = SlideUpMenu;
