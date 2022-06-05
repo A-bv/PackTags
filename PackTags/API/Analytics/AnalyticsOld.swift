@@ -130,7 +130,6 @@ extension AnalyticsOld {
 
 //MARK: - Layout
 extension UIViewController {
-    
     func addSpinner(spinner:UIActivityIndicatorView) {
         self.view.addSubview(spinner)
         spinner.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true

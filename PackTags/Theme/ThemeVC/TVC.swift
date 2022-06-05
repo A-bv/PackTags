@@ -39,7 +39,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     @IBOutlet weak var searchView: UIStackView!
     @IBOutlet weak var searchEditButton: UIButton!
     @IBOutlet weak var searchLockLabel: UILabel!
-    @IBOutlet weak var searchCountLabel: UILabel! // TODO: Not showing
+    @IBOutlet weak var searchCountLabel: UILabel!
     // **
     
     //Text Recognition in images (iOS < 11) 1/2

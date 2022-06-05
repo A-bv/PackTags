@@ -13,7 +13,7 @@ import SwiftUI
 #endif
 import UIKit
 
-class AnalyticsView: UIViewController {
+class AnalyticsViewController: UIViewController {
     
     deinit {
         print("deinit")
@@ -32,9 +32,7 @@ class AnalyticsView: UIViewController {
     func createViewController() -> UIViewController {
         if #available(iOS 14, *) {
             #if !arch(arm) //compatible SwiftUI IOS <10
-            let VC = AnalyticsNew()
-            let host = UIHostingController(rootView: AnyView(VC))
-            return host
+            return UIHostingController(rootView: AnyView(AnalyticsNew()))
             #else
             return AnalyticsOld()
             #endif

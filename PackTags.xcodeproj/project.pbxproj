@@ -49,7 +49,7 @@
 		026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */; };
 		0264B817264A7CE900E1EEFA /* AnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* AnViewModel.swift */; };
 		0264B837264B25E100E1EEFA /* LoadIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B836264B25E100E1EEFA /* LoadIndicator.swift */; };
-		0269E2AC2564B838005FE14B /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269E2AB2564B838005FE14B /* AnalyticsView.swift */; };
+		0269E2AC2564B838005FE14B /* AnalyticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269E2AB2564B838005FE14B /* AnalyticsVC.swift */; };
 		0274105826207D2100D82F6D /* PackTVC+Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274105726207D2000D82F6D /* PackTVC+Instagram.swift */; };
 		0274DB2E26848492005F9C9C /* AnViewModel+Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2D26848492005F9C9C /* AnViewModel+Fill.swift */; };
 		0274DB3026848948005F9C9C /* GJs+Dir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* GJs+Dir.swift */; };
@@ -86,6 +86,7 @@
 		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
+		02EE53B2284CBF18004E7D5C /* Import+Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EE53B1284CBF18004E7D5C /* Import+Old.swift */; };
 		02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE29E260A9BA900324724 /* SettingsCell.swift */; };
 		02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE2A4260AC79C00324724 /* SettingsCell2.swift */; };
 		02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550924FFA2AA00174E34 /* AppDelegate.swift */; };
@@ -158,7 +159,7 @@
 		026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0264B816264A7CE900E1EEFA /* AnViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnViewModel.swift; sourceTree = "<group>"; };
 		0264B836264B25E100E1EEFA /* LoadIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadIndicator.swift; sourceTree = "<group>"; };
-		0269E2AB2564B838005FE14B /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		0269E2AB2564B838005FE14B /* AnalyticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsVC.swift; sourceTree = "<group>"; };
 		0273D1512655A9BB0043011C /* PrJs+Varr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrJs+Varr.swift"; sourceTree = "<group>"; };
 		0274105726207D2000D82F6D /* PackTVC+Instagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Instagram.swift"; sourceTree = "<group>"; };
 		0274DB2D26848492005F9C9C /* AnViewModel+Fill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnViewModel+Fill.swift"; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02EE53B1284CBF18004E7D5C /* Import+Old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Import+Old.swift"; sourceTree = "<group>"; };
 		02FAE29E260A9BA900324724 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		02FAE2A4260AC79C00324724 /* SettingsCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell2.swift; sourceTree = "<group>"; };
 		02FB550624FFA2AA00174E34 /* PackTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -354,19 +356,20 @@
 			path = AsyncImage_SUI;
 			sourceTree = "<group>";
 		};
-		0231AB1126849DFA007F4FC8 /* AnViewModel */ = {
+		0231AB1126849DFA007F4FC8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				0264B816264A7CE900E1EEFA /* AnViewModel.swift */,
 				0274DB2D26848492005F9C9C /* AnViewModel+Fill.swift */,
 			);
-			path = AnViewModel;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0231AB1326849F4A007F4FC8 /* Import */ = {
 			isa = PBXGroup;
 			children = (
 				0231AB152684B973007F4FC8 /* Import.swift */,
+				02EE53B1284CBF18004E7D5C /* Import+Old.swift */,
 				02FEF5C626382A250001B525 /* GetJson */,
 				021044F926446B5700408CEB /* ProcessJson */,
 			);
@@ -553,11 +556,29 @@
 		02E4B9D325CC97C700949213 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				020621562666DBCC0072C404 /* AnModel.swift */,
-				0231AB1126849DFA007F4FC8 /* AnViewModel */,
-				02FB530C25AD3DD00063038C /* AnalyticsVC */,
+				0269E2AB2564B838005FE14B /* AnalyticsVC.swift */,
+				02EE53B4284CCD9F004E7D5C /* AnalyticsSUI */,
+				02FBAFE225A93C3300E32D73 /* AnalyticsOld.swift */,
 			);
 			path = Analytics;
+			sourceTree = "<group>";
+		};
+		02EE53B3284CCB86004E7D5C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				020621562666DBCC0072C404 /* AnModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02EE53B4284CCD9F004E7D5C /* AnalyticsSUI */ = {
+			isa = PBXGroup;
+			children = (
+				02EE53B3284CCB86004E7D5C /* Model */,
+				0231AB1126849DFA007F4FC8 /* ViewModel */,
+				02FB530C25AD3DD00063038C /* UI */,
+			);
+			path = AnalyticsSUI;
 			sourceTree = "<group>";
 		};
 		02F60AA926809FD5004022CA /* AppStyle */ = {
@@ -580,14 +601,12 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		02FB530C25AD3DD00063038C /* AnalyticsVC */ = {
+		02FB530C25AD3DD00063038C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0269E2AB2564B838005FE14B /* AnalyticsView.swift */,
 				02FBAFE425A93C6100E32D73 /* AnalyticsNew.swift */,
-				02FBAFE225A93C3300E32D73 /* AnalyticsOld.swift */,
 			);
-			path = AnalyticsVC;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		02FB54FD24FFA2AA00174E34 = {
@@ -786,6 +805,7 @@
 				02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */,
 				0264B837264B25E100E1EEFA /* LoadIndicator.swift in Sources */,
 				0226F19C259EAB93006E086C /* PackCell.swift in Sources */,
+				02EE53B2284CBF18004E7D5C /* Import+Old.swift in Sources */,
 				021D7620275A99D500F54054 /* PrModel_Analytics.swift in Sources */,
 				021D76172759A00D00F54054 /* SmartGView.swift in Sources */,
 				0213D9F5275D2F8A002A54ED /* GJs+Analytics.swift in Sources */,
@@ -839,7 +859,7 @@
 				02FB552F24FFA78B00174E34 /* TTVC.swift in Sources */,
 				0229863E27BD6DF60048F9E9 /* EnvironmentValues+ImageCache.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* ExternalActions.swift in Sources */,
-				0269E2AC2564B838005FE14B /* AnalyticsView.swift in Sources */,
+				0269E2AC2564B838005FE14B /* AnalyticsVC.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
 				0229863C27BD6DF60048F9E9 /* ImageLoader.swift in Sources */,
 				02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */,

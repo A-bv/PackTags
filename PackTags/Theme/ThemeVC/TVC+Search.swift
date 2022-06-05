@@ -6,7 +6,6 @@
 //  Copyright © 2020 Alexandre Bevilacqua. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import SwiftUI
 

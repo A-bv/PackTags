@@ -12,9 +12,7 @@ import Foundation
 extension GetJson {
     
     class func load_Profile (completion block: @escaping ((Profile) -> ())) {
-        
         findMediaLimit() { (value) in
-        
             guard let encodedUrl = self.buildURLAPIGraph(i: value) else { return }
             
             GetJson.isOkToSaveJsonDataInDir = true //local save
