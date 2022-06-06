@@ -92,9 +92,6 @@ class PackCell: UITableViewCell {
         subButtonTapCallback()
     }
     
-    
-    
-    
     //Initialisation
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -140,11 +137,7 @@ class PackCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.roundCorners(corners: [.topLeft,.topRight], radius: 0)
+        self.roundCorners([.topLeft,.topRight], radius: 0)
         self.copyButton.updateNeumorphicButton(hold: false, delay:false)
     }
 }
-
-
-
-

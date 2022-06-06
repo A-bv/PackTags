@@ -8,9 +8,8 @@
 
 import UIKit
 
+// MARK: - Navigation
 extension PackTableVC {
-    
-    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         switch(segue.identifier ?? "") {
@@ -63,5 +62,4 @@ extension PackTableVC {
         
         return true //true = unwind segue stops here
     }
-    
 }

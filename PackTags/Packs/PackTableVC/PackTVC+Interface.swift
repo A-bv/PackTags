@@ -12,10 +12,14 @@ extension PackTableVC {
     func willAppear() {
         //Large title color
         if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 31, weight: UIFont.Weight.bold) ]
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.font: UIFont.systemFont(
+                    ofSize: 31,
+                    weight: UIFont.Weight.bold)]
         }
         
-        self.tableView.backgroundColor = bkgdColor 
+        self.tableView.backgroundColor = bkgdColor
 
         //nav bar color
         self.navigationController?.navigationBar.tintColor = .white
@@ -76,40 +80,3 @@ extension PackTableVC {
         //tableView.tableHeaderView = iv
     }
  }
-
-extension UIView {
-    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        
-        let path = UIBezierPath(
-            roundedRect: self.bounds,
-            byRoundingCorners: corners,
-            cornerRadii: CGSize(width: radius, height: radius))
-        
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        
-        self.layer.mask = mask
-    }
-}
-
-/*
-extension UIView{
-    func blurImage()
-    {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.bounds
-
-        self.addSubview(blurEffectView)
-    }
-}
-*/
-
-
-
-
-
-
-
-
-

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020584D1284D6F8100020FB8 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* RoundedCorners.swift */; };
+		020584D3284D6FFC00020FB8 /* TextViewKbToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D2284D6FFC00020FB8 /* TextViewKbToolBar.swift */; };
+		020584D5284D715D00020FB8 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* BlurView.swift */; };
+		020584D7284D7B4E00020FB8 /* PackTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */; };
 		0206214E2663A2AE0072C404 /* JsonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0206214D2663A2AE0072C404 /* JsonModels.swift */; };
 		02062153266503490072C404 /* GJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062152266503490072C404 /* GJs.swift */; };
 		02062155266550D70072C404 /* PrJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062154266550D70072C404 /* PrJs.swift */; };
@@ -118,6 +122,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020584D0284D6F8100020FB8 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		020584D2284D6FFC00020FB8 /* TextViewKbToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewKbToolBar.swift; sourceTree = "<group>"; };
+		020584D4284D715D00020FB8 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0206214D2663A2AE0072C404 /* JsonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModels.swift; sourceTree = "<group>"; };
 		02062152266503490072C404 /* GJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJs.swift; sourceTree = "<group>"; };
 		02062154266550D70072C404 /* PrJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrJs.swift; sourceTree = "<group>"; };
@@ -249,6 +257,15 @@
 				02A5EB6925C054440063A315 /* FrameTags.swift */,
 			);
 			path = TapTextView;
+			sourceTree = "<group>";
+		};
+		020584CF284D6F5A00020FB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				020584D0284D6F8100020FB8 /* RoundedCorners.swift */,
+				020584D4284D715D00020FB8 /* BlurView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		021044F926446B5700408CEB /* ProcessJson */ = {
@@ -401,6 +418,7 @@
 				02F60AA926809FD5004022CA /* AppStyle */,
 				02FD6CB326D8178800AB16E4 /* Rating */,
 				02A4234B2842973B00A25067 /* SlideUpMenu */,
+				020584CF284D6F5A00020FB8 /* View */,
 				02B05C1E27F90BA3000026B8 /* TextView */,
 				02962683284BA65E009B0F58 /* TableView */,
 				02B05C1F27F90BB9000026B8 /* Image */,
@@ -500,6 +518,7 @@
 			children = (
 				0226F19B259EAB93006E086C /* PackCell.swift */,
 				0226F19D259EABB4006E086C /* PackTVC.swift */,
+				020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */,
 				02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */,
 				029BEDE525F907B100980870 /* PackTVC+Interface.swift */,
 				02AEA58625B630B10063076F /* PackTVC+NavBar.swift */,
@@ -513,9 +532,9 @@
 			children = (
 				022688922624F9B1007DBD98 /* ThemeCell.swift */,
 				02FB552E24FFA78B00174E34 /* TTVC.swift */,
+				02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */,
 				02FEF535262B86620001B525 /* TTVC+navigation.swift */,
 				022688B22628BCCC007DBD98 /* TTVC+Interface.swift */,
-				02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */,
 			);
 			path = ThemeTableVC;
 			sourceTree = "<group>";
@@ -526,6 +545,7 @@
 				0204B61A25C2BFFF00F2DD21 /* TapTextView */,
 				02B05C1927F90333000026B8 /* TextViewPlaceHolder.swift */,
 				02CAC9B22591047D00BE5E57 /* TextViewKbNoHide.swift */,
+				020584D2284D6FFC00020FB8 /* TextViewKbToolBar.swift */,
 			);
 			path = TextView;
 			sourceTree = "<group>";
@@ -794,6 +814,7 @@
 				02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackTVC.swift in Sources */,
 				029BEDE625F907B200980870 /* PackTVC+Interface.swift in Sources */,
+				020584D7284D7B4E00020FB8 /* PackTVC+Delegate.swift in Sources */,
 				022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */,
 				0216110E25D46C180098CE5E /* TVC+NewMenu.swift in Sources */,
@@ -830,8 +851,11 @@
 				02CAC9B52591054400BE5E57 /* TVC+ImgPicker.swift in Sources */,
 				0231AB1826872C47007F4FC8 /* PrJs+Varr.swift in Sources */,
 				02A4234D2842976A00A25067 /* SlideUpMenu.swift in Sources */,
+				020584D5284D715D00020FB8 /* BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* HowToSetupProIGVC.swift in Sources */,
+				020584D1284D6F8100020FB8 /* RoundedCorners.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsNew.swift in Sources */,
+				020584D3284D6FFC00020FB8 /* TextViewKbToolBar.swift in Sources */,
 				02491C55267799BD00F98E17 /* IgApiSetupVC+UI.swift in Sources */,
 				02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */,
 				02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */,

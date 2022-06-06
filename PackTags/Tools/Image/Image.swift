@@ -59,24 +59,3 @@ extension UIImageView {
         self.image = newImage
     }
 }
-
-extension UIView {
-    func applyBlur() {
-        if !UIAccessibility.isReduceTransparencyEnabled {
-            self.backgroundColor = .clear
-
-            let  blurEffect = UIBlurEffect(style: .regular)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = self.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-            self.addSubview(blurEffectView)
-        } else {
-            if #available(iOS 13.0, *) {
-                self.backgroundColor = .systemBackground
-            } else {
-                self.backgroundColor = .white
-            }
-        }
-    }
-}
