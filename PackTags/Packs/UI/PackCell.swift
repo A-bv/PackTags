@@ -10,8 +10,6 @@ import UIKit
 
 class PackCell: UITableViewCell {
     
-    //MARK: - Properties
-    
     let containerView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +90,6 @@ class PackCell: UITableViewCell {
         subButtonTapCallback()
     }
     
-    //Initialisation
     override func awakeFromNib() {
         super.awakeFromNib()
         self.contentView.backgroundColor = bkgdColor
@@ -137,6 +134,7 @@ class PackCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         self.roundTopCorners(radius: 0)
         self.copyButton.updateNeumorphicButton(hold: false, delay:false)
     }

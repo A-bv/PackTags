@@ -17,8 +17,11 @@ class PackTableVC: UITableViewController {
     
     @IBOutlet weak var composeButton: UIBarButtonItem!
     
+    //Models
     var theme: ThemeCD?
     var packs = [""]
+    
+    
     let pasteboard = UIPasteboard.general
     var chosenPack = String()
     
