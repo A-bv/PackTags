@@ -137,7 +137,7 @@ class PackCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.roundCorners([.topLeft,.topRight], radius: 0)
+        self.roundTopCorners(radius: 0)
         self.copyButton.updateNeumorphicButton(hold: false, delay:false)
     }
 }

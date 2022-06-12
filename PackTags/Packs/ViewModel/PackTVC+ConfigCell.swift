@@ -36,12 +36,7 @@ extension PackTableVC {
         }
         
         if indexPath.row == 0{
-            if #available(iOS 11.0, *) {
-                cell.layer.cornerRadius = cR
-                cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-            } else {
-                cell.roundCorners([.topLeft,.topRight], radius: cR)
-            }
+            cell.roundTopCorners(radius: cR)
         }
         
         return cell

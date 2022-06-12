@@ -22,6 +22,17 @@ extension UIView {
     }
 }
 
+extension UIView {
+    func roundTopCorners (radius: CGFloat) {
+        if #available(iOS 11.0, *) {
+            layer.cornerRadius = radius
+            layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        } else {
+            roundCorners([.topLeft,.topRight], radius: radius)
+        }
+    }
+}
+
 /*
 extension UIView{
     func blurImage()
