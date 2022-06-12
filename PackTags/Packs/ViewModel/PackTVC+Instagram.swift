@@ -62,5 +62,3 @@ extension PackTableVC {
         }
     }
 }
-
-

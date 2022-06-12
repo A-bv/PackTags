@@ -39,6 +39,12 @@
 		0229864227BD9CBA0048F9E9 /* PrModel_SmartG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* PrModel_SmartG.swift */; };
 		0231AB162684B973007F4FC8 /* Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0231AB152684B973007F4FC8 /* Import.swift */; };
 		0231AB1826872C47007F4FC8 /* PrJs+Varr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273D1512655A9BB0043011C /* PrJs+Varr.swift */; };
+		023A2F7A2856493C00EE6CDE /* PackTVC+AutoReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F792856493C00EE6CDE /* PackTVC+AutoReorder.swift */; };
+		023A2F7C2856495800EE6CDE /* PackTVC+ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7B2856495800EE6CDE /* PackTVC+ConfigCell.swift */; };
+		023A2F7E2856497800EE6CDE /* PackTVC+TVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7D2856497800EE6CDE /* PackTVC+TVHeader.swift */; };
+		023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7F285649B900EE6CDE /* PackTVC+Loading.swift */; };
+		023A2F822856554600EE6CDE /* PackTVC+CellSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F812856554600EE6CDE /* PackTVC+CellSwipe.swift */; };
+		023A2F842856566000EE6CDE /* PackTVC+Navi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F832856566000EE6CDE /* PackTVC+Navi.swift */; };
 		024347D827119E2100F86A64 /* TextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024347D727119E2100F86A64 /* TextRecognition.swift */; };
 		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
 		02491C512671212400F98E17 /* IgApiSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C502671212400F98E17 /* IgApiSetupVC.swift */; };
@@ -59,7 +65,7 @@
 		0274DB3026848948005F9C9C /* GJs+Dir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* GJs+Dir.swift */; };
 		02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */; };
-		029BEDE625F907B200980870 /* PackTVC+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BEDE525F907B100980870 /* PackTVC+Interface.swift */; };
+		029BEDE625F907B200980870 /* PackTVC+SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BEDE525F907B100980870 /* PackTVC+SetUp.swift */; };
 		029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnBoardingVC.swift */; };
 		02A4234D2842976A00A25067 /* SlideUpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4234C2842976A00A25067 /* SlideUpMenu.swift */; };
 		02A4234F2842978A00A25067 /* SlideUpMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4234E2842978A00A25067 /* SlideUpMenuTableViewCell.swift */; };
@@ -153,6 +159,12 @@
 		0229863B27BD6DF60048F9E9 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0229864127BD9CBA0048F9E9 /* PrModel_SmartG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrModel_SmartG.swift; sourceTree = "<group>"; };
 		0231AB152684B973007F4FC8 /* Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Import.swift; sourceTree = "<group>"; };
+		023A2F792856493C00EE6CDE /* PackTVC+AutoReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+AutoReorder.swift"; sourceTree = "<group>"; };
+		023A2F7B2856495800EE6CDE /* PackTVC+ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+ConfigCell.swift"; sourceTree = "<group>"; };
+		023A2F7D2856497800EE6CDE /* PackTVC+TVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+TVHeader.swift"; sourceTree = "<group>"; };
+		023A2F7F285649B900EE6CDE /* PackTVC+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Loading.swift"; sourceTree = "<group>"; };
+		023A2F812856554600EE6CDE /* PackTVC+CellSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+CellSwipe.swift"; sourceTree = "<group>"; };
+		023A2F832856566000EE6CDE /* PackTVC+Navi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Navi.swift"; sourceTree = "<group>"; };
 		024347D727119E2100F86A64 /* TextRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognition.swift; sourceTree = "<group>"; };
 		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		02491C502671212400F98E17 /* IgApiSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgApiSetupVC.swift; sourceTree = "<group>"; };
@@ -174,7 +186,7 @@
 		0274DB2F26848948005F9C9C /* GJs+Dir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+Dir.swift"; sourceTree = "<group>"; };
 		02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerVC.swift; sourceTree = "<group>"; };
-		029BEDE525F907B100980870 /* PackTVC+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Interface.swift"; sourceTree = "<group>"; };
+		029BEDE525F907B100980870 /* PackTVC+SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+SetUp.swift"; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
 		02A4234C2842976A00A25067 /* SlideUpMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpMenu.swift; sourceTree = "<group>"; };
 		02A4234E2842978A00A25067 /* SlideUpMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -394,6 +406,31 @@
 			path = Analytics;
 			sourceTree = "<group>";
 		};
+		023A2F772856486D00EE6CDE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0226F19B259EAB93006E086C /* PackCell.swift */,
+				02AEA5E725B9D2B00063076F /* PackTableVC */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		023A2F782856487400EE6CDE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				023A2F7D2856497800EE6CDE /* PackTVC+TVHeader.swift */,
+				029BEDE525F907B100980870 /* PackTVC+SetUp.swift */,
+				02AEA58625B630B10063076F /* PackTVC+NavBar.swift */,
+				0274105726207D2000D82F6D /* PackTVC+Instagram.swift */,
+				023A2F7B2856495800EE6CDE /* PackTVC+ConfigCell.swift */,
+				023A2F792856493C00EE6CDE /* PackTVC+AutoReorder.swift */,
+				023A2F7F285649B900EE6CDE /* PackTVC+Loading.swift */,
+				023A2F812856554600EE6CDE /* PackTVC+CellSwipe.swift */,
+				023A2F832856566000EE6CDE /* PackTVC+Navi.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		02491C5A26779AE400F98E17 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,7 +520,8 @@
 		02A4235C2844007200A25067 /* Packs */ = {
 			isa = PBXGroup;
 			children = (
-				02AEA5E725B9D2B00063076F /* PackTableVC */,
+				023A2F782856487400EE6CDE /* ViewModel */,
+				023A2F772856486D00EE6CDE /* UI */,
 			);
 			path = Packs;
 			sourceTree = "<group>";
@@ -516,13 +554,9 @@
 		02AEA5E725B9D2B00063076F /* PackTableVC */ = {
 			isa = PBXGroup;
 			children = (
-				0226F19B259EAB93006E086C /* PackCell.swift */,
 				0226F19D259EABB4006E086C /* PackTVC.swift */,
 				020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */,
 				02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */,
-				029BEDE525F907B100980870 /* PackTVC+Interface.swift */,
-				02AEA58625B630B10063076F /* PackTVC+NavBar.swift */,
-				0274105726207D2000D82F6D /* PackTVC+Instagram.swift */,
 			);
 			path = PackTableVC;
 			sourceTree = "<group>";
@@ -813,13 +847,15 @@
 				0216111B25D46EFA0098CE5E /* TVC+SlideUpMenu_objc.swift in Sources */,
 				02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackTVC.swift in Sources */,
-				029BEDE625F907B200980870 /* PackTVC+Interface.swift in Sources */,
+				029BEDE625F907B200980870 /* PackTVC+SetUp.swift in Sources */,
 				020584D7284D7B4E00020FB8 /* PackTVC+Delegate.swift in Sources */,
 				022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */,
+				023A2F822856554600EE6CDE /* PackTVC+CellSwipe.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */,
 				0216110E25D46C180098CE5E /* TVC+NewMenu.swift in Sources */,
 				02B05C232809CD76000026B8 /* SearcheableTextView.swift in Sources */,
 				0274DB2E26848492005F9C9C /* AnViewModel+Fill.swift in Sources */,
+				023A2F7A2856493C00EE6CDE /* PackTVC+AutoReorder.swift in Sources */,
 				02FBAFE325A93C3300E32D73 /* AnalyticsOld.swift in Sources */,
 				0231AB162684B973007F4FC8 /* Import.swift in Sources */,
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,
@@ -834,6 +870,8 @@
 				0229863F27BD6DF60048F9E9 /* ImageCache.swift in Sources */,
 				02CEFB6D25CB945000FB70E4 /* Image.swift in Sources */,
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
+				023A2F7C2856495800EE6CDE /* PackTVC+ConfigCell.swift in Sources */,
+				023A2F842856566000EE6CDE /* PackTVC+Navi.swift in Sources */,
 				02FEF536262B86620001B525 /* TTVC+navigation.swift in Sources */,
 				02491C53267147AF00F98E17 /* ModalUI.swift in Sources */,
 				02491C5726779A2800F98E17 /* IgApiSetupVC+acts.swift in Sources */,
@@ -850,6 +888,7 @@
 				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
 				02CAC9B52591054400BE5E57 /* TVC+ImgPicker.swift in Sources */,
 				0231AB1826872C47007F4FC8 /* PrJs+Varr.swift in Sources */,
+				023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */,
 				02A4234D2842976A00A25067 /* SlideUpMenu.swift in Sources */,
 				020584D5284D715D00020FB8 /* BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* HowToSetupProIGVC.swift in Sources */,
@@ -858,6 +897,7 @@
 				020584D3284D6FFC00020FB8 /* TextViewKbToolBar.swift in Sources */,
 				02491C55267799BD00F98E17 /* IgApiSetupVC+UI.swift in Sources */,
 				02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */,
+				023A2F7E2856497800EE6CDE /* PackTVC+TVHeader.swift in Sources */,
 				02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */,
 				02491C692680883800F98E17 /* AppColors.swift in Sources */,
 				02A4236028454EE800A25067 /* ThemeTableViewModel.swift in Sources */,

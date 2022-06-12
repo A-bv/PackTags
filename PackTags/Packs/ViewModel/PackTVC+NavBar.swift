@@ -8,45 +8,39 @@
 
 import UIKit
 
+// Fade Navigation Bar
 extension PackTableVC {
-    
     //Scroll operations
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //Fade of navigationbar
-        let pos = navBarHeight()
-        let denominator: CGFloat = 50 //offset treshold
         let offset = scrollView.contentOffset.y
-        let value = (offset + CGFloat(pos)) / denominator
-        alpha = min(1, value)
-        self.setNavbar(alpha: alpha)
+        // PPP
+        let alpha = getNavigationBarAlphaForNavBarOpacity(offset: offset)
+    
+        setNavBarOpacityAndColors(alpha: alpha)
+        bounceImage(offset: offset)
         
-        //Image bounce
-        if offset < -UIScreen.main.bounds.height/2 {
-            iv.frame.size.height = -offset + cR
-        } else {
-            iv.frame.size.height = iv.frame.height
-        }
     }
     
-}
+    func bounceImage(offset: CGFloat) {
+        if offset < -UIScreen.main.bounds.height/2 {
+            uiiv.frame.size.height = -offset + cR
+        } else {
+            uiiv.frame.size.height = uiiv.frame.height
+        }
+    }
 
-extension PackTableVC {
-    
-    //MARK: - Custom navigation bar
     func navBarHeight() -> CGFloat {
         if self.navigationController != nil {
             let value = self.navigationController!.navigationBar.intrinsicContentSize.height + self.navigationController!.topLayoutGuide.length
-
             return  value
         } else {return CGFloat(0)}
     }
     
     //color and opacity variations
-    private func setNavbar(alpha: CGFloat) {
+    func setNavBarOpacityAndColors(alpha: CGFloat) {
         let nc = self.navigationController?.navigationBar
         
         //Colors
-        //let NBarColors = navBarMorphicColors ()
         var navBarNewColor = bkgdColor
         var navBarContentNewColor = labelColor
         
@@ -77,6 +71,14 @@ extension PackTableVC {
         //works with statusBarUIView added in appdelegate:
         UIApplication.shared.statusBarUIView?.backgroundColor = navBarNewColor
     }
+    
+    func getNavigationBarAlphaForNavBarOpacity(offset:CGFloat) -> CGFloat {
+        let pos = navBarHeight()
+        let denominator: CGFloat = 50 //offset treshold
+        let value = (offset + CGFloat(pos)) / denominator
+        let alpha = min(1, value) //PPP
+        return alpha
+    }
 }
 
 //MARK: - Status bar
@@ -92,6 +94,3 @@ extension PackTableVC {
         }
     }
 }
-
-
-
