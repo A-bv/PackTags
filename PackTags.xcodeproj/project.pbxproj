@@ -410,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				0226F19B259EAB93006E086C /* PackCell.swift */,
+				023A2F7B2856495800EE6CDE /* PackTVC+ConfigCell.swift */,
 				02AEA5E725B9D2B00063076F /* PackTableVC */,
 			);
 			path = UI;
@@ -422,7 +423,6 @@
 				029BEDE525F907B100980870 /* PackTVC+SetUp.swift */,
 				02AEA58625B630B10063076F /* PackTVC+NavBar.swift */,
 				0274105726207D2000D82F6D /* PackTVC+Instagram.swift */,
-				023A2F7B2856495800EE6CDE /* PackTVC+ConfigCell.swift */,
 				023A2F792856493C00EE6CDE /* PackTVC+AutoReorder.swift */,
 				023A2F7F285649B900EE6CDE /* PackTVC+Loading.swift */,
 				023A2F812856554600EE6CDE /* PackTVC+CellSwipe.swift */,

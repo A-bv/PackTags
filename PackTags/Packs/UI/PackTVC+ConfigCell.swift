@@ -1,5 +1,5 @@
 //
-//  PackVCConfigureCell.swift
+//  PackTVC+ConfigCell.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 11.06.22.
@@ -41,4 +41,14 @@ extension PackTableVC {
         
         return cell
     }
+}
+
+extension PackCell {
+    func configure(with viewModel: PackCellViewModel) {
+        
+    }
+}
+
+struct PackCellViewModel {
+    let pack: [String]
 }
