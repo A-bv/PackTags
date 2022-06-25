@@ -9,8 +9,7 @@
 import UIKit
 
 extension PackTableVC {
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return configureCell(indexPath: indexPath)
     }
     
