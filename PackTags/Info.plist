@@ -33,10 +33,10 @@
 	<false/>
 	<key>FacebookAppID</key>
 	<string>266313591941737</string>
-    <key>FacebookClientToken</key>
-    <string>***REMOVED***</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<false/>
+	<key>FacebookClientToken</key>
+	<string>***REMOVED***</string>
 	<key>FacebookDisplayName</key>
 	<string>PackTags</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
