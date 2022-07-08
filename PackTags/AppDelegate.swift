@@ -191,4 +191,3 @@ var statusBarUIView: UIView? {
     }
   }
 }
-

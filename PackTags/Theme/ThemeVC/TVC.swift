@@ -57,6 +57,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     
     var buttonMenuThemeOptions: UIBarButtonItem {
         var button = UIBarButtonItem()
+        
         if #available(iOS 14.0, *) {
             button = buttonMenu()
         } else {

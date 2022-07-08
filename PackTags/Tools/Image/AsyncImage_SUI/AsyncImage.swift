@@ -5,7 +5,6 @@
 
 import SwiftUI
 
-#if !arch(arm)
 @available(iOS 14.0, *)
 struct AsyncImage<Placeholder: View>: View {
     @StateObject private var loader: ImageLoader
@@ -37,4 +36,3 @@ struct AsyncImage<Placeholder: View>: View {
         }
     }
 }
-#endif

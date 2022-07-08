@@ -8,8 +8,7 @@
 
 import Foundation
 import Network
-   
-#if (arch(arm64) || arch(x86_64))
+
 @available(iOS 13.0, *)
 final class NetworkMonitor: ObservableObject {
     let monitor = NWPathMonitor()
@@ -26,4 +25,3 @@ final class NetworkMonitor: ObservableObject {
         monitor.start(queue: queue)
     }
 }
-#endif

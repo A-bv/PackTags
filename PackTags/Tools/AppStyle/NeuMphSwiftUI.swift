@@ -6,11 +6,7 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-#if canImport(SwiftUI)
 import SwiftUI
-#endif
-
-#if (arch(arm64) || arch(x86_64))
 
 //MARK: - Styles
 
@@ -117,12 +113,12 @@ extension Shape {
             self.fill(fillContent)
                 .overlay(
                     self
-                        //.stroke(Color.gray, lineWidth: 4)
+                    //.stroke(Color.gray, lineWidth: 4)
                         .stroke(Color.lowerShadow, lineWidth: 4)
                         .blur(radius: 4)
                         .offset(x: 2, y: 2)
                         .mask(self.fill(LinearGradient(Color.black, Color.clear)))
-                        
+                    
                 )
                 .overlay(
                     self
@@ -133,29 +129,4 @@ extension Shape {
                 )
         }
     }
-    
 }
-
-#endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

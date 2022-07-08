@@ -5,7 +5,7 @@
 //  Created by Alexandre Bevilacqua on 15/12/2021.
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
-#if !arch(arm)
+
 import SwiftUI
 
 @available(iOS 14.0.0, *)
@@ -47,5 +47,3 @@ struct URLImage: View {
         task.resume()
     }
 }
-
-#endif

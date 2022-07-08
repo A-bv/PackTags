@@ -7,25 +7,16 @@
 //
 
 import UIKit
-#if canImport(SwiftUI)
 import SwiftUI
-#endif
-
-#if (arch(arm64) || arch(x86_64))
-
-//
-
 //MARK: - Analytics New Colors
 
 @available(iOS 13.0, *)
 extension Color {
     //static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
 
-    
     // blue for gradient
     static let lightStart = Color(red: 60 / 255, green: 160 / 255, blue: 240 / 255)
     static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
-    
     
     // morphic color for gradient
     /*
@@ -37,7 +28,6 @@ extension Color {
     static let mphStart = Color("Color-BkgdGrad1")
     static let mphEnd = Color("Color-BkgdGrad2")
     
-    
     // Shadows
     //static let lowerShadow = Color(UIColor(named: "Color-MphWebSh1")!)
     //static let upperShadow = Color(UIColor(named: "Color-MphWebSh2")!)
@@ -46,7 +36,6 @@ extension Color {
     
     static let upperShadow = Color(UIColor(named: "Color-BkgdSh2")!)
     
-    
     // Fill bg
     //static let barChartFillColor = LinearGradient(Color.mphStart, Color.mphEnd)
     //static let bgFillColor = Color(UIColor(named:"Color-MphWebBg")!)
@@ -54,7 +43,6 @@ extension Color {
     
     static let chartFillColor = bgFillColor
     static let statsFillColor = bgFillColor
-  
 }
 
 @available(iOS 13.0, *)
@@ -76,8 +64,6 @@ extension UIColor {
     }
 }*/
 
-#endif
-
 //MARK: - Neumorphic
 
 var bkgdColor: UIColor {
@@ -87,7 +73,6 @@ var bkgdColor: UIColor {
         return UIColor.morphicWhite
     }
 }
-
 
 extension UIColor {
     static let morphicWhite = UIColor(red: 235/255, green: 235/255, blue: 250/255, alpha: 1)
@@ -145,5 +130,3 @@ var welcomeScreenColor: UIColor {
         return bkgdColor
     }
 }
-
-

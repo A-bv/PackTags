@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 
 class AnalyticsOld: UIViewController {
     
@@ -41,11 +40,10 @@ class AnalyticsOld: UIViewController {
         
         //Load data for AnalyticsOld (AnalyticsOld's func list)
         if GetJson.canRefresh() == true {
-            getOnlineJsonApiGraphOld()
+            //getOnlineJsonApiGraphOld()
         } else {
             getJsonFromDir()
         }
-        
         //YYY getOnlineJson()
     }
 }

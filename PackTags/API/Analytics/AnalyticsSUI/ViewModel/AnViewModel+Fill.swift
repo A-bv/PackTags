@@ -7,7 +7,7 @@
 //
 
 import UIKit
-#if (arch(arm64) || arch(x86_64))
+
 @available(iOS 13.0, *)
 extension ANewVCDataSUI {
     static var lastSelected = 0
@@ -77,14 +77,10 @@ extension ANewVCDataSUI {
                 )
             }
         }
-        
-        
     }
     
     func getMaxRate () -> CGFloat {
         let maxR = processedJson?.maxR == nil || processedJson?.maxR == 0 ? 1 : processedJson?.maxR
         return maxR!
     }
-    
 }
-#endif

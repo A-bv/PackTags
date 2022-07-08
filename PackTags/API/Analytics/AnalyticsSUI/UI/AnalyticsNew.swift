@@ -8,8 +8,6 @@
 //(U) = data loading operations
 // D = dismiss view operations
 
-
-#if !arch(arm)
 import SwiftUI
 
 @available(iOS 14, *)
@@ -605,6 +603,3 @@ struct RoundedShape : Shape {
         return Path(path.cgPath)
     }
 }
-
-#endif
-

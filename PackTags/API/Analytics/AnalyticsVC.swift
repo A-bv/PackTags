@@ -7,11 +7,8 @@
 //
 //Display the rigth VC according to iOS version
 
-
-#if canImport(SwiftUI)
-import SwiftUI
-#endif
 import UIKit
+import SwiftUI
 
 class AnalyticsViewController: UIViewController {
     
@@ -31,17 +28,11 @@ class AnalyticsViewController: UIViewController {
     
     func createViewController() -> UIViewController {
         if #available(iOS 14, *) {
-            #if !arch(arm) //compatible SwiftUI IOS <10
             return UIHostingController(rootView: AnyView(AnalyticsNew()))
-            #else
-            return AnalyticsOld()
-            #endif
-        } else {
-            return AnalyticsOld()
         }
+        return AnalyticsOld()
     }
 }
-
 
 extension UIViewController {
     func add(_ child: UIViewController) {

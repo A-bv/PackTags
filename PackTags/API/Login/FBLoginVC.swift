@@ -7,7 +7,6 @@
 //
 //User needs to have a Facebook User account that can perform Tasks on the Page connected to the targeted Instagram Business or Creator Account
 
-
 import UIKit
 import FBSDKLoginKit
 
@@ -126,42 +125,4 @@ extension FBLoginVC {
                }
            })
     }
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-

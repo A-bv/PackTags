@@ -27,7 +27,6 @@ extension ThemeVC{
             vc?.setImagePicker()
         }
         
-        #if !arch(arm)
         let smartGen = UIAction(title: "Smart hashtags", image: UIImage(systemName: "chart.bar.doc.horizontal.fill")) { [weak vc = self] action in
             
             guard let blockNavigation = vc?.shouldShowFBLogin() else {
@@ -43,7 +42,6 @@ extension ThemeVC{
                 vc?.present(hostingController, animated: true, completion: nil)
             }
         }
-        #endif
         
         let search = UIAction(title: "Search hashtags", image: UIImage(systemName: "magnifyingglass")) { [weak vc = self] action in
             vc?.themeTextView.doneTagSelection()
@@ -61,11 +59,9 @@ extension ThemeVC{
         let edit = UIMenu(title: "Edit...",options: .displayInline, children: [editName,editPicture])
         
         /*
-        #if !arch(arm)
         let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon,smartGen])
         #else
         let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon])
-        #endif
         */
         let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon])
         

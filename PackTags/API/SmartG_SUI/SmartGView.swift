@@ -6,7 +6,6 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-#if !arch(arm)
 import SwiftUI
 
 @available(iOS 14.0.0, *)
@@ -111,12 +110,3 @@ struct SmartG_SwiftUI_Previews: PreviewProvider {
         SmartG_SwiftUI()
     }
 }
-#endif
-
-
-
-
-
-
-
-

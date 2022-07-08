@@ -6,13 +6,7 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-import FBSDKLoginKit
 import SwiftUI
-
-#if canImport(Combine)
-import Combine
-#if (arch(x86_64) || arch(arm64))
-
 
 // stats Data...
 @available(iOS 13, *)
@@ -37,6 +31,3 @@ struct Circles : Identifiable {
     var color : Color
     var variation : CGFloat
 }
-
-#endif
-#endif

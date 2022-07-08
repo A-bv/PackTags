@@ -18,11 +18,10 @@ extension AnalyticsOld {
 
         displayDataComingFromApiGraph(Json: json)
     }
-    
+    /*
     //2 web import
     func getOnlineJsonApiGraphOld () {
         loginSpinner.startAnimating()
-        
         GetJson.load_Profile(completion: {
             (Json) in
             DispatchQueue.main.async{
@@ -30,5 +29,5 @@ extension AnalyticsOld {
                 self.displayDataComingFromApiGraph(Json: Json )
             }
         })
-    }
+    }*/
 }

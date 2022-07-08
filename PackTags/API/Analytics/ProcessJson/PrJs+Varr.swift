@@ -7,8 +7,6 @@
 //
 
 import UIKit
-
-
 //MARK: - Varr core
 
 struct engagementVariations {
@@ -24,7 +22,6 @@ struct engagementVariations {
     }
 }
 
-#if (arch(arm64) || arch(x86_64))
 @available(iOS 13.0, *)
 extension ANewVCDataSUI {
     //VARR Entry
@@ -40,7 +37,6 @@ extension ANewVCDataSUI {
         }
     }
 }
-#endif
 
 extension ProcessJson {
     class func removeAllSavedVarData () {
@@ -154,6 +150,3 @@ extension ProcessJson {
         return (avg2Vr, ratesVr)
     }
 }
-
-
-

@@ -8,7 +8,6 @@
 
 import Foundation
 
-#if !arch(arm)
 @available(iOS 14.0.0, *)
 class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
@@ -41,4 +40,3 @@ extension SmartGViewModel {
         print(self.computedData)
     }
 }
-#endif

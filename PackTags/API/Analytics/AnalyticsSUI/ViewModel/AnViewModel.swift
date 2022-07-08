@@ -6,14 +6,8 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-//For swift UI
-
-import FBSDKLoginKit
 import SwiftUI
-
-#if canImport(Combine)
 import Combine
-#if (arch(x86_64) || arch(arm64))
 
 @available(iOS 13.0, *)
 class ANewVCDataSUI: ObservableObject {
@@ -40,7 +34,3 @@ class ANewVCDataSUI: ObservableObject {
     //init() { runGetTests ()}
     //init() {self.getJsonFromDir()}
 }
-
-#endif
-#endif
-

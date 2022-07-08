@@ -7,9 +7,7 @@
 //
 
 import SwiftUI
-#if canImport(Combine)
 import Combine
-#if (arch(x86_64) || arch(arm64))
 
 @available(iOS 13, *)
 public struct ActivityIndicatorView: View {
@@ -75,6 +73,3 @@ struct RotatingDotsIndicatorItemView: View {
             }
     }
 }
-
-#endif
-#endif
