@@ -96,8 +96,6 @@ class ProcessJson: NSObject {
                 sumLC.append(CGFloat(top?.media?.data[i]?.insights?.data[2]?.values[0]?.value ?? 0))
                 impressions.append(top?.media?.data[i]?.insights?.data[1]?.values[0]?.value ?? 0)
                 reach.append(top?.media?.data[i]?.insights?.data[0]?.values[0]?.value ?? 0)
-            } else {
-                return nil
             }
             
             //time_stamp
@@ -109,7 +107,6 @@ class ProcessJson: NSObject {
                 times.append(date?.timeIntervalSince1970)
             }
         }
-        
         
         if rawInsights == true {
             engFollowers = sumLC.map { ($0) }
@@ -142,8 +139,10 @@ class ProcessJson: NSObject {
         } else {
             //Engagement by Reach
             reach.indices.forEach {
-                if reach[$0] == 0 { engReach.append(0) } //append 0 when Nan
-                else {
+                if reach[$0] == 0 {
+                    engReach.append(0)
+                    //append 0 when Nan
+                } else {
                     engReach.append(sumLC[$0]*100/CGFloat(reach[$0]))
                 }
             }
@@ -160,10 +159,3 @@ class ProcessJson: NSObject {
                 engReach: engReach))
     }
 }
-
-
-
-
-
-
-

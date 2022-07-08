@@ -60,11 +60,14 @@ extension ThemeVC{
         
         let edit = UIMenu(title: "Edit...",options: .displayInline, children: [editName,editPicture])
         
+        /*
         #if !arch(arm)
         let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon,smartGen])
         #else
         let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon])
         #endif
+        */
+        let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon])
         
         let manage = UIMenu(title: "Manage...",options: .displayInline, children: [shuffle, search])
         
