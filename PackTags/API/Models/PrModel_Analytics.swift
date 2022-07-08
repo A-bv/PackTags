@@ -49,3 +49,13 @@ struct processedProfileModel {
         self.captions = captions
     }
 }
+
+struct subProcessedProfileModel {
+    let likeArray: [Int]
+    let commentArray: [Int]
+    let engFollowers: [CGFloat]
+    let times: [Double?]
+    let captions: [String?]
+    let engImpressions: [CGFloat]
+    let engReach: [CGFloat]
+}

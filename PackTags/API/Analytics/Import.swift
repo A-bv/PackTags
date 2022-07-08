@@ -23,13 +23,13 @@ extension ANewVCDataSUI {
     func getJsonFromDir () {
         DispatchQueue.main.async {
             guard let jsonData = GetJson.getJsonDataFromDir() else { return } //data
-            guard let json = GenericJSONParser.ParseJs(of: Profile.self, data: jsonData) as? Profile else { return }
+            guard let profileJson = GenericJSONParser.ParseJs(of: Profile.self, data: jsonData) as? Profile else { return }
      
-            self.jsonOfficial = json
-            self.processedJson = ProcessJson.processJsApiGraph(decodedJson: json)
+            self.jsonOfficial = profileJson
+            self.processedJson = ProcessJson.processJsApiGraph(decodedJson: profileJson)
             
             //VARR Entry (dir)
-            //self.getEngagementVariations(isFromSave: true)
+            self.getEngagementVariations(isFromSave: true)
             
             // fill (update)
             self.fillGraphData ()
@@ -40,10 +40,10 @@ extension ANewVCDataSUI {
     //2 web import
     func getOnlineJsonAPIGraph () {
         GetJson.load_Profile(completion: {
-            (json) in
+            (profileJson) in
             DispatchQueue.main.async{
-                self.jsonOfficial = json
-                self.processedJson = ProcessJson.processJsApiGraph(decodedJson: json)
+                self.jsonOfficial = profileJson
+                self.processedJson = ProcessJson.processJsApiGraph(decodedJson: profileJson)
                 self.fillGraphData ()
                 self.fillData()
                 //self.getEngagementVariations(isFromSave: false) //VARR

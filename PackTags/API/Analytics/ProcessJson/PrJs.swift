@@ -13,39 +13,36 @@ import UIKit
 var mode: Int = 0
 var rawInsights = true
 
-
 //MARK: - Process
 // Additional operations on the obtained Json data
 
 class ProcessJson: NSObject {
-    class func processJsApiGraph (decodedJson: Profile) -> processedProfileModel
+    class func processJsApiGraph (decodedJson: Profile) -> processedProfileModel?
     {
-        
         let top = decodedJson
-        let n = top.media?.data.count //number of medias
         
-        let arrays = buildArraysApiGraph(top: top, n: n)
+        guard let metrics = buildArraysApiGraph(top: decodedJson) else { return nil }
         
         // 0: likes 1:comments
-        let sum0 = (arrays.0 as NSArray).value(forKeyPath: "@sum.floatValue")
-        let sum1 = (arrays.1 as NSArray).value(forKeyPath: "@sum.floatValue")
+        let sum0 = (metrics.likeArray as NSArray).value(forKeyPath: "@sum.floatValue")
+        let sum1 = (metrics.commentArray as NSArray).value(forKeyPath: "@sum.floatValue")
         
-        let avg0 = ProcessJson.averageElementsOfArray(a: arrays.likeArray)
-        let avg1 = ProcessJson.averageElementsOfArray(a: arrays.commentArray)
+        let avg0 = ProcessJson.averageElementsOfArray(a: metrics.likeArray)
+        let avg1 = ProcessJson.averageElementsOfArray(a: metrics.commentArray)
         
-        let captions = arrays.captions
+        let captions = metrics.captions
         
         //VARR
-        let times = arrays.times
+        let times = metrics.times
         
         //Basic
         let usr = top.username
         let isPv = false
         
         //Engagement rates
-        let erFw = arrays.engFollowers
-        let erReach = arrays.engReach
-        let erImpr = arrays.engImpressions
+        let erFw = metrics.engFollowers
+        let erReach = metrics.engReach
+        let erImpr = metrics.engImpressions
         
         let rates = [erFw, erReach, erImpr]
         
@@ -57,23 +54,23 @@ class ProcessJson: NSObject {
             maxR.append(er.reduce(CGFloat.leastNormalMagnitude, { max($0, CGFloat($1)) }))
         }
         
-        
-        let data = processedProfileModel(usr: usr, isPv: isPv, sum0: (sum0 as! Int), sum1: (sum1 as! Int), avg0: avg0, avg1: avg1, rates: rates[mode], pTimes: times, avg2: avg2[mode], maxR: maxR[mode], captions: captions)
-        
+        let data = processedProfileModel(
+            usr: usr,
+            isPv: isPv,
+            sum0: (sum0 as! Int),
+            sum1: (sum1 as! Int),
+            avg0: avg0,
+            avg1: avg1,
+            rates: rates[mode],
+            pTimes: times,
+            avg2: avg2[mode],
+            maxR: maxR[mode],
+            captions: captions)
         
         return data
     }
     
-    class func buildArraysApiGraph (top:Profile?, n: Int?) -> (
-        likeArray: [Int],
-        commentArray: [Int],
-        engFollowers: [CGFloat],
-        times: [Double?],
-        captions: [String?],
-        engImpressions: [CGFloat],
-        engReach: [CGFloat]
-    )
-    {
+    class func buildArraysApiGraph (top:Profile?) -> (subProcessedProfileModel?) {
         var likeArray = [Int]()
         var commentArray = [Int]()
         var sumLC = [CGFloat]()
@@ -86,31 +83,31 @@ class ProcessJson: NSObject {
         var engImpressions  = [CGFloat]()
         var engReach  = [CGFloat]()
         
-        if n != nil {
-            for i in 0..<n! {
-                likeArray.append(top?.media?.data[i]?.like_count ?? 0)
-                commentArray.append(top?.media?.data[i]?.comments_count ?? 0)
-                captions.append(top?.media?.data[i]?.caption ?? "")
+        guard let n = top?.media?.data.count else { return nil } //number of medias
+        
+        for i in 0..<n {
+            likeArray.append(top?.media?.data[i]?.like_count ?? 0)
+            commentArray.append(top?.media?.data[i]?.comments_count ?? 0)
+            captions.append(top?.media?.data[i]?.caption ?? "")
+            
+            guard let data = top?.media?.data[i]?.insights?.data else { return nil }
+            
+            if data.indices.contains(2) {
                 sumLC.append(CGFloat(top?.media?.data[i]?.insights?.data[2]?.values[0]?.value ?? 0))
                 impressions.append(top?.media?.data[i]?.insights?.data[1]?.values[0]?.value ?? 0)
                 reach.append(top?.media?.data[i]?.insights?.data[0]?.values[0]?.value ?? 0)
-                
-                
-                //time_stamp
-                
-                let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-                    dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
-                if let stringDate = top?.media?.data[i]?.timestamp {
-                    let date = dateFormatter.date(from:(stringDate))
-                    times.append(date?.timeIntervalSince1970)
-                }
-                
+            } else {
+                return nil
             }
             
-            
-        } else {
-            print("buildArraysApiGraph can't compute")
+            //time_stamp
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
+            if let stringDate = top?.media?.data[i]?.timestamp {
+                let date = dateFormatter.date(from:(stringDate))
+                times.append(date?.timeIntervalSince1970)
+            }
         }
         
         
@@ -152,15 +149,15 @@ class ProcessJson: NSObject {
             }
         }
 
-        
-        return (likeArray,          //0
-                commentArray,       //1
-                engFollowers,       //2
-                times,              //3
-                captions,           //4
-                engImpressions,     //5
-                engReach            //6
-        )
+        return(
+            .init(
+                likeArray: likeArray,
+                commentArray: commentArray,
+                engFollowers: engFollowers,
+                times: times,
+                captions: captions,
+                engImpressions: engImpressions,
+                engReach: engReach))
     }
 }
 

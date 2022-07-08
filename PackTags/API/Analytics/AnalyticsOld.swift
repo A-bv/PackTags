@@ -82,7 +82,7 @@ extension AnalyticsOld {
     }*/
 
     func displayDataComingFromApiGraph (Json: Profile) {
-        var data = ProcessJson.processJsApiGraph(decodedJson: Json)
+        guard let data = ProcessJson.processJsApiGraph(decodedJson: Json) else { return }
         
         if data.usr != nil {
             let st = (data.rates.count == 1) ? "": "Last \(data.rates.count) Posts "
@@ -92,7 +92,6 @@ extension AnalyticsOld {
             
             for i in 1...2 {
                 mode = i
-                data = ProcessJson.processJsApiGraph(decodedJson: Json)
                 aEngRates.append(data.avg2)
             }
             mode = 0
