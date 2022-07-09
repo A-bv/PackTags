@@ -50,7 +50,7 @@ extension UITextView {
                 v.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
                 
             } else if isSelected == true {
-                textColorAttribute = [NSAttributedString.Key.foregroundColor: labelColor]//
+                textColorAttribute = [NSAttributedString.Key.foregroundColor: .label]//
                 
                 // *** delete a frame view ***
                 self.removeSpecificView(tag: tag)

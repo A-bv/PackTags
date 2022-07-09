@@ -30,7 +30,7 @@ class ThemeCell: UITableViewCell {
     let nameLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 19)
-        label.textColor = labelColor
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

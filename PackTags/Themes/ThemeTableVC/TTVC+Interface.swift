@@ -34,7 +34,7 @@ extension ThemeTableViewController {
     
     func setupNavigationControllerAppearance () {
         //self.navigationController?.setNavbarTransparent()
-        //self.neumorphicNavBar()
+        self.neumorphicNavBar()
         self.navigationController?.navigationBar.tintColor = UITextView.appearance().tintColor
     }
 }

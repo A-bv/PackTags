@@ -11,33 +11,19 @@ import SwiftUI
 //MARK: - Analytics New Colors
 
 extension Color {
-    //static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
-
     // blue for gradient
     static let lightStart = Color(red: 60 / 255, green: 160 / 255, blue: 240 / 255)
     static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
-    
-    // morphic color for gradient
-    /*
-    static let mphStart = Color(UIColor(named: "Color-MorphicStart")!)
-    //static let mphEnd = Color(UIColor(named: "Color-MorphicEnd")!)
-    static let mphEnd = Color(UIColor(named: "Color-MorphicEnd2")!)
-    */
     
     static let mphStart = Color("Color-BkgdGrad1")
     static let mphEnd = Color("Color-BkgdGrad2")
     
     // Shadows
-    //static let lowerShadow = Color(UIColor(named: "Color-MphWebSh1")!)
-    //static let upperShadow = Color(UIColor(named: "Color-MphWebSh2")!)
-    //static let lowerShadow = Color(UIColor(named: "Color-BkgdSh1")!)
     static let lowerShadow = Color((UIColor(named: "Color-BkgdSh1")?.withAlphaComponent(0.5))!)
     
     static let upperShadow = Color(UIColor(named: "Color-BkgdSh2")!)
     
-    // Fill bg
-    //static let barChartFillColor = LinearGradient(Color.mphStart, Color.mphEnd)
-    //static let bgFillColor = Color(UIColor(named:"Color-MphWebBg")!)
+    // Fill background
     static let bgFillColor = Color(bkgdColor)
     
     static let chartFillColor = bgFillColor
@@ -50,20 +36,8 @@ extension LinearGradient {
     }
 }
 
-/*
-extension UIColor {
-    static var random: UIColor {
-        return UIColor(
-            red: .random(in: 0...1),
-            green: .random(in: 0...1),
-            blue: .random(in: 0...1),
-            alpha: 1.0
-        )
-    }
-}*/
 
-//MARK: - Neumorphic
-
+//MARK: - Neumorphic colors
 var bkgdColor: UIColor {
     return UIColor(named: "Color-Bkgd") ?? UIColor.morphicWhite
 }
@@ -98,10 +72,6 @@ var customTextColor: UIColor {
 
 var customPurple: UIColor {
     return UIColor(named: "customPurple") ?? UIColor.systemPurple
-}
-
-var labelColor: UIColor {
-    return UIColor.label
 }
 
 var welcomeScreenColor: UIColor {

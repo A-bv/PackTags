@@ -30,7 +30,7 @@ class PackCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 19)
         //label.font = UIFont(name: "PingFangTC-Semibold", size:19)
-        label.textColor = labelColor
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

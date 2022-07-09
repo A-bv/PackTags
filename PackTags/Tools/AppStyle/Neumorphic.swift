@@ -82,7 +82,7 @@ extension CALayer {
 
 extension UIViewController {
     func neumorphicNavBar () {
-        self.navigationController?.navigationBar.backgroundColor = bkgdColor
+        self.applyNavBarAppearance(color: bkgdColor)
         navigationController?.navigationBar.putShadow(put: true)
     }
 }

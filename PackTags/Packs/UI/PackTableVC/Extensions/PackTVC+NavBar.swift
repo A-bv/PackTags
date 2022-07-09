@@ -35,7 +35,7 @@ extension PackTableVC {
         
         //Colors
         var navBarNewColor = bkgdColor
-        var navBarContentNewColor = labelColor
+        var navBarContentNewColor = UIColor.label
         
         //Nav and status bar color and transparency
         navBarNewColor = navBarNewColor.withAlphaComponent(alpha)
@@ -43,24 +43,25 @@ extension PackTableVC {
             //nav bar background color
             navBarContentNewColor = navBarContentNewColor.withAlphaComponent(alpha)
             
-            //nav bar title
+            //nav bar title color
             nc?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: navBarContentNewColor]
-            
-            //nav bar buttons
+            //nav bar buttons color
             nc?.tintColor = navBarContentNewColor
             
-            //status bar
+            //status bar color
             currentStatusBarStyle = .default
             setNeedsStatusBarAppearanceUpdate()
         } else {
             nc?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            
             nc?.tintColor = .white
+            
             currentStatusBarStyle = .lightContent
             setNeedsStatusBarAppearanceUpdate()
         }
         
-        nc?.backgroundColor = navBarNewColor
+        self.applyNavBarAppearance(color: navBarNewColor, textColor: .red)
+        setNeedsStatusBarAppearanceUpdate()
+        //nc?.backgroundColor = navBarNewColor
     }
     
     func getNavigationBarAlphaForNavBarOpacity(offset:CGFloat) -> CGFloat {

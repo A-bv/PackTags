@@ -47,16 +47,7 @@ class PackTableVC: UITableViewController {
         setupTableViewBackgroundImage()
         tableView.backgroundColor = bkgdColor
         
-        //Zeb
-        /*
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.clear
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.lightText] // With a red background, make the title more readable.
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
-        */
+        self.applyNavBarAppearance(color: .clear, textColor: .white)
     }
     
     @IBAction func autoInstagram(_ sender: Any) {

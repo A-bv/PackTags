@@ -69,6 +69,7 @@
 		0281B9832879CA7900344D3E /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9822879CA7900344D3E /* Core.swift */; };
 		0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */; };
 		0281B9882879D60700344D3E /* TransparentNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* TransparentNavigation.swift */; };
+		0281B98B287A007200344D3E /* NavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* NavigationBarAppearance.swift */; };
 		02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */; };
 		029BEDE625F907B200980870 /* PackTVC+SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BEDE525F907B100980870 /* PackTVC+SetUp.swift */; };
@@ -193,6 +194,7 @@
 		0281B9822879CA7900344D3E /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Seed.swift"; sourceTree = "<group>"; };
 		0281B9872879D60700344D3E /* TransparentNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentNavigation.swift; sourceTree = "<group>"; };
+		0281B98A287A007200344D3E /* NavigationBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearance.swift; sourceTree = "<group>"; };
 		02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerVC.swift; sourceTree = "<group>"; };
 		029BEDE525F907B100980870 /* PackTVC+SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+SetUp.swift"; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				0281B9862879D5D700344D3E /* Dimensions */,
+				0281B98A287A007200344D3E /* NavigationBarAppearance.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -939,6 +942,7 @@
 				020621572666DBCC0072C404 /* AnModel.swift in Sources */,
 				0281B9882879D60700344D3E /* TransparentNavigation.swift in Sources */,
 				02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */,
+				0281B98B287A007200344D3E /* NavigationBarAppearance.swift in Sources */,
 				0229863D27BD6DF60048F9E9 /* AsyncImage.swift in Sources */,
 				0216112725D6BF050098CE5E /* TapTV+AddToolbar.swift in Sources */,
 				02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */,
