@@ -13,7 +13,6 @@ extension PackTableVC {
         let segueIdentifier = segue.identifier ?? ""
         switch(segueIdentifier) {
         case "ShowDetail":
-            statusBarTextColor(alpha:1)
             
             guard let navigationVC = segue.destination as? UINavigationController, let themeDetailViewController = navigationVC.topViewController as? ThemeVC
             else{

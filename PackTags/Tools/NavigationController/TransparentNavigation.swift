@@ -8,15 +8,6 @@
 
 import UIKit
 
-extension UINavigationController {
-    func setNavbarTransparent() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.isTranslucent = true
-        
-    }
-}
-
 extension UINavigationBar {
     func putShadow (put:Bool) {
         

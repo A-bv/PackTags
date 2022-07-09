@@ -47,7 +47,7 @@ class PackTableVC: UITableViewController {
         setupTableViewBackgroundImage()
         tableView.backgroundColor = bkgdColor
         
-        self.applyNavBarAppearance(color: .clear, textColor: .white)
+        self.setNavBarTransparent(alpha: 0)
     }
     
     @IBAction func autoInstagram(_ sender: Any) {

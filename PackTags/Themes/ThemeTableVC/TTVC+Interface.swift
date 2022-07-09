@@ -32,8 +32,8 @@ extension ThemeTableViewController {
         self.addLongPressToTableView() // reorder cells
     }
     
-    func setupNavigationControllerAppearance () {
-        //self.navigationController?.setNavbarTransparent()
+    func setupNavigationBarAppearance () {
+        self.setNavBarAppearance(color: bkgdColor)
         self.neumorphicNavBar()
         self.navigationController?.navigationBar.tintColor = UITextView.appearance().tintColor
     }

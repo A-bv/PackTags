@@ -9,14 +9,34 @@
 import UIKit
 
 extension UIViewController {
-    func applyNavBarAppearance(color: UIColor, textColor: UIColor = .label) {
+    func setNavBarTransparent(alpha: CGFloat) {
+        
+        let textColor: UIColor = alpha >= 0 ? .label.withAlphaComponent(alpha) : .white
+        let backgroundColor: UIColor = alpha >= 0 ? bkgdColor.withAlphaComponent(alpha) : .clear
+        // let statusBarStyle: UIUserInterfaceStyle = alpha >= 0 ? .dark : .unspecified
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = backgroundColor
+        appearance.shadowColor = .clear
+        appearance.titleTextAttributes = [.foregroundColor: textColor]
+        appearance.largeTitleTextAttributes = [.foregroundColor: textColor]
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance
+        
+        // navigationController?.navigationBar.overrideUserInterfaceStyle = statusBarStyle
+        navigationController?.navigationBar.tintColor = textColor
+
+    }
+    
+    func setNavBarAppearance(color: UIColor) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = color
         appearance.shadowColor = .clear
-        appearance.titleTextAttributes = [.foregroundColor: textColor]
-        appearance.largeTitleTextAttributes = [.foregroundColor: textColor]
-        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.label]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance

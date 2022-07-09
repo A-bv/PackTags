@@ -31,37 +31,8 @@ extension PackTableVC {
     
     //color and opacity variations
     func setNavBarOpacityAndColors(alpha: CGFloat) {
-        let nc = self.navigationController?.navigationBar
-        
-        //Colors
-        var navBarNewColor = bkgdColor
-        var navBarContentNewColor = UIColor.label
-        
-        //Nav and status bar color and transparency
-        navBarNewColor = navBarNewColor.withAlphaComponent(alpha)
-        if alpha >= 0 {
-            //nav bar background color
-            navBarContentNewColor = navBarContentNewColor.withAlphaComponent(alpha)
-            
-            //nav bar title color
-            nc?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: navBarContentNewColor]
-            //nav bar buttons color
-            nc?.tintColor = navBarContentNewColor
-            
-            //status bar color
-            currentStatusBarStyle = .default
-            setNeedsStatusBarAppearanceUpdate()
-        } else {
-            nc?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            nc?.tintColor = .white
-            
-            currentStatusBarStyle = .lightContent
-            setNeedsStatusBarAppearanceUpdate()
-        }
-        
-        self.applyNavBarAppearance(color: navBarNewColor, textColor: .red)
+        self.setNavBarTransparent(alpha: alpha)
         setNeedsStatusBarAppearanceUpdate()
-        //nc?.backgroundColor = navBarNewColor
     }
     
     func getNavigationBarAlphaForNavBarOpacity(offset:CGFloat) -> CGFloat {
@@ -73,6 +44,7 @@ extension PackTableVC {
     }
 
     //MARK: - Status bar
+    /*
     func statusBarTextColor(alpha:CGFloat){
         if alpha >= 0 {
             currentStatusBarStyle = .default
@@ -81,5 +53,5 @@ extension PackTableVC {
             currentStatusBarStyle = .lightContent
             setNeedsStatusBarAppearanceUpdate()
         }
-    }
+    }*/
 }

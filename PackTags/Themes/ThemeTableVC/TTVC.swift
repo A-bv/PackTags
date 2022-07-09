@@ -24,7 +24,7 @@ class ThemeTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupNavigationControllerAppearance()
+        setupNavigationBarAppearance()
         
         self.view.isUserInteractionEnabled = true //(fix p1)
         
