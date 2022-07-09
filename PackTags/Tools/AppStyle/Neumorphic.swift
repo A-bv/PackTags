@@ -73,9 +73,6 @@ extension UIView {
     }
 }
 
-
-
-
 extension CALayer {
     func shadowPerformanceBoost() {
         self.shouldRasterize = true
@@ -83,46 +80,12 @@ extension CALayer {
     }
 }
 
-
-extension UINavigationBar {
-    func putShadow (put:Bool) {
-        
-        let nbl = self.layer
-        nbl.shadowOffset = CGSize(width: 5, height: 5)
-        nbl.shadowColor = UIColor.darkShadowColor.cgColor
-        
-        if put == true {
-            nbl.shadowRadius = 5
-            nbl.shadowOpacity = 0.4 //0.35
-        } else {
-            nbl.shadowRadius = 0
-            nbl.shadowOpacity = 0.0
-        }
-    }
-}
-
-extension UINavigationController {
-    func setNavbarTransparent() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-        //self.navigationBar.isTranslucent = true
-    }
-}
-
-
-
-
 extension UIViewController {
     func neumorphicNavBar () {
         self.navigationController?.navigationBar.backgroundColor = bkgdColor
         navigationController?.navigationBar.putShadow(put: true)
-        // UIApplication.shared.statusBarUIView?.backgroundColor = bkgdColor
     }
 }
-
-
-
-
 
 //MARK: - Update colors when light/dark mode
 extension ThemeCell {
@@ -155,7 +118,6 @@ extension SettingsVC {
         super.traitCollectionDidChange(previousTraitCollection)
         
         self.navigationController?.navigationBar.backgroundColor = bkgdColor
-        // UIApplication.shared.statusBarUIView?.backgroundColor = bkgdColor
     }
 }
 

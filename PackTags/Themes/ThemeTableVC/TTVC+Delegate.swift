@@ -69,8 +69,6 @@ extension ThemeTableViewController {
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return self.tableView.isEditing == true ? .none : .delete }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) { cell.backgroundColor = bkgdColor }
-    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedObject = self.themes[sourceIndexPath.row]
         themes.remove(at: sourceIndexPath.row)

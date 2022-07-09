@@ -31,9 +31,10 @@ extension PackTableVC {
 extension PackTableVC {
     func TVinset () {
         let demiS = UIScreen.main.bounds.height/2
+        let navheight = 96.0
         
-        let topInset = demiS - (navBarHeight + statusBarHeight)
-        let topInset2 = (demiS - navBarHeight) + cR + 20
+        let topInset = demiS - (navheight + statusBarHeight)
+        let topInset2 = (demiS - navheight) + cR + 20
         
         tableView.applyTableViewTopInset(tableViewTopInset: topInset, scrollIndicatorsTopInset: topInset2)
     }

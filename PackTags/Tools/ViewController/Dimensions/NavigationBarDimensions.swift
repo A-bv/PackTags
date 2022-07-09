@@ -9,8 +9,7 @@
 import UIKit
 
 extension UIViewController {
-
-    var navBarHeight: CGFloat {
+    var currentNavBarHeight: CGFloat {
         return self.navigationController?.navigationBar.frame.height ?? 0.0
     }
     

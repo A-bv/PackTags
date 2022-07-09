@@ -24,7 +24,7 @@ class ThemeTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        TTVCrefreshUI()
+        setupNavigationControllerAppearance()
         
         self.view.isUserInteractionEnabled = true //(fix p1)
         
@@ -49,12 +49,3 @@ class ThemeTableViewController: UITableViewController {
         }
     }
 }
-
-/*
-//custom status bar in all view controllers (csb)
-extension UINavigationController {
-    open override var childForStatusBarStyle: UIViewController? {
-        return topViewController
-    }
-}
-*/

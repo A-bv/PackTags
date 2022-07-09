@@ -27,14 +27,14 @@ extension ThemeTableViewController {
     }
     
     func configureTableView () {
+        self.tableView.backgroundColor = bkgdColor
         self.tableView.rowHeight = self.ThemeTableViewControllerCellAndThumbnailDimensions()
         self.addLongPressToTableView() // reorder cells
     }
     
-    func TTVCrefreshUI () {
-        self.navigationController?.setNavbarTransparent()
-        self.neumorphicNavBar()
+    func setupNavigationControllerAppearance () {
+        //self.navigationController?.setNavbarTransparent()
+        //self.neumorphicNavBar()
         self.navigationController?.navigationBar.tintColor = UITextView.appearance().tintColor
-        self.tableView.backgroundColor = bkgdColor
     }
 }

@@ -61,12 +61,10 @@ extension PackTableVC {
         }
         
         nc?.backgroundColor = navBarNewColor
-        //works with statusBarUIView added in appdelegate:
-        //UIApplication.shared.statusBarUIView?.backgroundColor = navBarNewColor
     }
     
     func getNavigationBarAlphaForNavBarOpacity(offset:CGFloat) -> CGFloat {
-        let pos = navBarHeight + 2*statusBarHeight
+        let pos = currentNavBarHeight + 2*statusBarHeight
         let denominator: CGFloat = 50 //offset treshold
         let value = (offset + CGFloat(pos)) / denominator
         let alpha = min(1, value)

@@ -30,7 +30,7 @@ extension UIViewController {
         let vc = self
         
         let paddingBottom = CGFloat(14)
-        let navigationBarHeight = vc.navBarHeight + vc.statusBarHeight
+        let navigationBarHeight = vc.currentNavBarHeight + vc.statusBarHeight
  
         let iPhoneSEWidth: CGFloat = 320
         

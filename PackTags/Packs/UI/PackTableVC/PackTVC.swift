@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import os.log
 
 class PackTableVC: UITableViewController {
     
@@ -30,15 +29,13 @@ class PackTableVC: UITableViewController {
     //Image header
     var uiiv = UIImageView()
     
-    //Nav Bar
-    var currentStatusBarStyle = UIStatusBarStyle.lightContent //status bar
+    //Status Bar
+    var currentStatusBarStyle = UIStatusBarStyle.lightContent
     
-    //corner radius table view
+    //Corner radius table view
     let cR = CGFloat(22)
     
     // MARK: - Interface
-    //works with (csb) in root controller
-    // override var preferredStatusBarStyle: UIStatusBarStyle {return currentStatusBarStyle}
     override func viewWillAppear(_ animated: Bool) {willAppear()}
     override func viewWillDisappear(_ animated: Bool) {willDisappear()}
     override func viewDidLoad(){
@@ -50,6 +47,16 @@ class PackTableVC: UITableViewController {
         setupTableViewBackgroundImage()
         tableView.backgroundColor = bkgdColor
         
+        //Zeb
+        /*
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.clear
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.lightText] // With a red background, make the title more readable.
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
+        */
     }
     
     @IBAction func autoInstagram(_ sender: Any) {
