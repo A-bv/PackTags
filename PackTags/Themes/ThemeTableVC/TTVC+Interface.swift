@@ -21,7 +21,7 @@ extension ThemeTableViewController {
         analyticsButton.image = UIImage(systemName: "chart.pie")
         addThemeButton.image = UIImage(systemName: "plus")
 
-        navigationController?.navigationBar.putShadow(put: true)
+        navigationController?.navigationBar.putShadow(true)
         navigationItem.rightBarButtonItems = [addThemeButton]
         updateLogo()
     }

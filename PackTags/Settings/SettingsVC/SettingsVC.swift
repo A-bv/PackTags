@@ -56,7 +56,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.putShadow(put: false)
+        self.navigationController?.navigationBar.putShadow(false)
        
         configure()
         

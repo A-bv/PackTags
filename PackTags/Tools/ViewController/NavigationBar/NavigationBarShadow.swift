@@ -9,7 +9,7 @@
 import UIKit
 
 extension UINavigationBar {
-    func putShadow (put:Bool) {
+    func putShadow (_ put:Bool) {
         
         let nbl = self.layer
         nbl.shadowOffset = CGSize(width: 5, height: 5)

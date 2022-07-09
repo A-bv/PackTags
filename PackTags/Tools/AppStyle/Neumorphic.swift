@@ -82,7 +82,7 @@ extension CALayer {
 
 extension UIViewController {
     func neumorphicNavBar () {
-        navigationController?.navigationBar.putShadow(put: true)
+        navigationController?.navigationBar.putShadow(true)
     }
 }
 
@@ -108,7 +108,7 @@ extension PackCell {
         super.traitCollectionDidChange(previousTraitCollection)
         
         self.contentView.backgroundColor = bkgdColor
-        copyButton.updateNeumorphicButton(hold: false,delay:false)
+        copyButton.updateNeumorphicButton(hold: false, delay:false)
     }
 }
 
@@ -124,6 +124,6 @@ extension PackTableVC {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
-        self.navigationController?.navigationBar.putShadow(put: true)
+        self.navigationController?.navigationBar.putShadow(true)
     }
 }

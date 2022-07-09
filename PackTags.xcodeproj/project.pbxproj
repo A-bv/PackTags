@@ -68,8 +68,8 @@
 		0281B9812879C5E600344D3E /* CellsAndThumbnailsDimentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9802879C5E600344D3E /* CellsAndThumbnailsDimentions.swift */; };
 		0281B9832879CA7900344D3E /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9822879CA7900344D3E /* Core.swift */; };
 		0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */; };
-		0281B9882879D60700344D3E /* TransparentNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* TransparentNavigation.swift */; };
-		0281B98B287A007200344D3E /* NavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* NavigationBarAppearance.swift */; };
+		0281B9882879D60700344D3E /* NavigationBarShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* NavigationBarShadow.swift */; };
+		0281B98B287A007200344D3E /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* Appearance.swift */; };
 		02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */; };
 		029BEDE625F907B200980870 /* PackTVC+SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029BEDE525F907B100980870 /* PackTVC+SetUp.swift */; };
@@ -193,8 +193,8 @@
 		0281B9802879C5E600344D3E /* CellsAndThumbnailsDimentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsAndThumbnailsDimentions.swift; sourceTree = "<group>"; };
 		0281B9822879CA7900344D3E /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Seed.swift"; sourceTree = "<group>"; };
-		0281B9872879D60700344D3E /* TransparentNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentNavigation.swift; sourceTree = "<group>"; };
-		0281B98A287A007200344D3E /* NavigationBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearance.swift; sourceTree = "<group>"; };
+		0281B9872879D60700344D3E /* NavigationBarShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarShadow.swift; sourceTree = "<group>"; };
+		0281B98A287A007200344D3E /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerVC.swift; sourceTree = "<group>"; };
 		029BEDE525F907B100980870 /* PackTVC+SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+SetUp.swift"; sourceTree = "<group>"; };
@@ -457,7 +457,6 @@
 				02FD6CB326D8178800AB16E4 /* Rating */,
 				02A4234B2842973B00A25067 /* SlideUpMenu */,
 				020584CF284D6F5A00020FB8 /* View */,
-				0281B9892879D61600344D3E /* NavigationController */,
 				0281B9782879874900344D3E /* ViewController */,
 				02B05C1E27F90BA3000026B8 /* TextView */,
 				02962683284BA65E009B0F58 /* TableView */,
@@ -477,8 +476,9 @@
 		0281B9782879874900344D3E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0281B98F287A344C00344D3E /* NavigationBar */,
+				0281B98C287A33B900344D3E /* Apperance */,
 				0281B9862879D5D700344D3E /* Dimensions */,
-				0281B98A287A007200344D3E /* NavigationBarAppearance.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -507,12 +507,20 @@
 			path = Dimensions;
 			sourceTree = "<group>";
 		};
-		0281B9892879D61600344D3E /* NavigationController */ = {
+		0281B98C287A33B900344D3E /* Apperance */ = {
 			isa = PBXGroup;
 			children = (
-				0281B9872879D60700344D3E /* TransparentNavigation.swift */,
+				0281B98A287A007200344D3E /* Appearance.swift */,
 			);
-			path = NavigationController;
+			path = Apperance;
+			sourceTree = "<group>";
+		};
+		0281B98F287A344C00344D3E /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				0281B9872879D60700344D3E /* NavigationBarShadow.swift */,
+			);
+			path = NavigationBar;
 			sourceTree = "<group>";
 		};
 		02962683284BA65E009B0F58 /* TableView */ = {
@@ -940,9 +948,9 @@
 				02491C692680883800F98E17 /* AppColors.swift in Sources */,
 				02A4234F2842978A00A25067 /* SlideUpMenuTableViewCell.swift in Sources */,
 				020621572666DBCC0072C404 /* AnModel.swift in Sources */,
-				0281B9882879D60700344D3E /* TransparentNavigation.swift in Sources */,
+				0281B9882879D60700344D3E /* NavigationBarShadow.swift in Sources */,
 				02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */,
-				0281B98B287A007200344D3E /* NavigationBarAppearance.swift in Sources */,
+				0281B98B287A007200344D3E /* Appearance.swift in Sources */,
 				0229863D27BD6DF60048F9E9 /* AsyncImage.swift in Sources */,
 				0216112725D6BF050098CE5E /* TapTV+AddToolbar.swift in Sources */,
 				02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */,
