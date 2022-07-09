@@ -13,7 +13,6 @@ extension UIViewController {
         
         let textColor: UIColor = alpha >= 0 ? .label.withAlphaComponent(alpha) : .white
         let backgroundColor: UIColor = alpha >= 0 ? bkgdColor.withAlphaComponent(alpha) : .clear
-        // let statusBarStyle: UIUserInterfaceStyle = alpha >= 0 ? .dark : .unspecified
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -24,10 +23,7 @@ extension UIViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
-        
-        // navigationController?.navigationBar.overrideUserInterfaceStyle = statusBarStyle
         navigationController?.navigationBar.tintColor = textColor
-
     }
     
     func setNavBarAppearance(color: UIColor) {
