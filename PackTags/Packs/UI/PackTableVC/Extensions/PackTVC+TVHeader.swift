@@ -9,28 +9,22 @@
 import UIKit
 
 extension PackTableVC {
-    func setupTableViewImageHeader() {
-        if let theme = theme, let image = theme.image {
-            imageHeader(image: UIImage(data: image)!)
+    func setupTableViewBackgroundImage() {
+        if let theme = theme, let imageData = theme.image, let image = UIImage(data: imageData) {
+            uiiv = UIImageView(image: image)
+            uiiv.contentMode = .scaleAspectFill
+            uiiv.clipsToBounds = true
+            uiiv.layer.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: UIScreen.main.bounds.width,
+                height: self.view.frame.midY + cR)
+            
+                let tableViewBackgroundView = UIView()
+                tableViewBackgroundView.addSubview(self.uiiv)
+                tableView.backgroundView = tableViewBackgroundView
+                uiiv.putFilter()
         }
-    }
-}
-
-extension PackTableVC {
-    
-    func imageHeader (image:UIImage) {
-        uiiv = UIImageView(image: image)
-        uiiv.contentMode = .scaleAspectFill
-        uiiv.clipsToBounds = true
-        uiiv.layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height:
-                                    self.view.frame.midY + cR)
-        
-        //DispatchQueue.main.async {
-            let tableViewBackgroundView = UIView()
-            tableViewBackgroundView.addSubview(self.uiiv)
-            self.tableView.backgroundView = tableViewBackgroundView
-            self.uiiv.putFilter()
-        //}
     }
 }
 
@@ -57,11 +51,3 @@ extension UITableView {
             top: scrollIndicatorsTopInset, left: 0, bottom: 0, right: 0)
     }
 }
-
-
-/* func tableViewHeader()
- {
-    //image as a TV header
-    iv.image = image
-    tableView.tableHeaderView = iv
- }*/

@@ -116,7 +116,7 @@ extension UIViewController {
     func neumorphicNavBar () {
         self.navigationController?.navigationBar.backgroundColor = bkgdColor
         navigationController?.navigationBar.putShadow(put: true)
-        UIApplication.shared.statusBarUIView?.backgroundColor = bkgdColor
+        // UIApplication.shared.statusBarUIView?.backgroundColor = bkgdColor
     }
 }
 
@@ -155,7 +155,7 @@ extension SettingsVC {
         super.traitCollectionDidChange(previousTraitCollection)
         
         self.navigationController?.navigationBar.backgroundColor = bkgdColor
-        UIApplication.shared.statusBarUIView?.backgroundColor = bkgdColor
+        // UIApplication.shared.statusBarUIView?.backgroundColor = bkgdColor
     }
 }
 

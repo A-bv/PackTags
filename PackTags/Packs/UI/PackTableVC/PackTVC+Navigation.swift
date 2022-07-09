@@ -20,9 +20,7 @@ extension PackTableVC {
         setPackTableVC()
     }
     
-    @IBAction func unwindFromCancel(segue: UIStoryboardSegue) {
-        //PPP statusBarTextColor(alpha:alpha)
-    }
+    @IBAction func unwindFromCancel(segue: UIStoryboardSegue) {}
     
     override func canPerformUnwindSegueAction(_ action: Selector,
         from fromViewController: UIViewController,

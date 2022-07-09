@@ -164,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-
+/*
 // MARK: - Safe area properties (added for PackTags)
 extension UIApplication {
     
@@ -182,3 +182,4 @@ extension UIApplication {
         }
     }
 }
+*/

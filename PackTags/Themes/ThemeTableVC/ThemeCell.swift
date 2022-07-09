@@ -9,9 +9,6 @@
 
 import UIKit
 
-//public var thumbnailDim = CGFloat(145.33)
-public var thumbnailDim = CGFloat(140.00)
-
 class ThemeCell: UITableViewCell {
         
     let containerView:UIView = {
@@ -33,7 +30,6 @@ class ThemeCell: UITableViewCell {
     let nameLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 19)
-        //label.font = UIFont(name: "PingFangTC-Semibold", size:19)
         label.textColor = labelColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

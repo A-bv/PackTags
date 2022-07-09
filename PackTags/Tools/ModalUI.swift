@@ -11,7 +11,6 @@ import SafariServices
 
 // Close modal view button
 extension UIViewController {
-    
     func modalUI (arrowButton: Bool) {
         
         let btn: UIButton = {

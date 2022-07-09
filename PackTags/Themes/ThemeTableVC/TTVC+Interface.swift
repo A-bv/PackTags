@@ -27,8 +27,8 @@ extension ThemeTableViewController {
     }
     
     func configureTableView () {
-        self.tableView.rowHeight = viewModel.TTVCrowHeight(vc: self)
-        self.addLongPressToTableView() //reorder
+        self.tableView.rowHeight = self.ThemeTableViewControllerCellAndThumbnailDimensions()
+        self.addLongPressToTableView() // reorder cells
     }
     
     func TTVCrefreshUI () {

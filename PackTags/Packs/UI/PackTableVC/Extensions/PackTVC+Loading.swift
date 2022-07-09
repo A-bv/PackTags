@@ -19,3 +19,11 @@ extension PackTableVC {
         packs = string.components(separatedBy: "\n\n")
     }
 }
+
+extension PackTableVC {
+    func setPackTableVC() {
+        loadPack()
+        tableView.reloadData()
+        self.navigationItem.title = theme?.name
+    }
+}

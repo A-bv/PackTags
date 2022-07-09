@@ -14,8 +14,6 @@ class ThemeTableViewController: UITableViewController {
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var analyticsButton: UIBarButtonItem!
     
-    let viewModel = ThemeTableViewModel()
-    
     var themes = [ThemeCD](){
         didSet {
             //reloadeding after adding a new theme (safe)
@@ -52,12 +50,11 @@ class ThemeTableViewController: UITableViewController {
     }
 }
 
+/*
 //custom status bar in all view controllers (csb)
 extension UINavigationController {
     open override var childForStatusBarStyle: UIViewController? {
         return topViewController
     }
 }
-
-
-
+*/

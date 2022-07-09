@@ -56,11 +56,8 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
             let slide = UIView(frame: frame)
 
             //subviews
-            let imageView = UIImageView.init(image:
-                                                
-                                                UIImage.init(named: imgs[index])!
-                                                
-            )
+            let imageView = UIImageView.init(
+                image:  UIImage.init(named: imgs[index])!)
             
             //Iphone5 adatation
             //under 320: iphones 5, smaller image
@@ -69,16 +66,35 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
             let fontSize1: CGFloat = sW <= 320 ? 15.0 : 20.0
             //
             
-            imageView.frame = CGRect(x:0,y:0,width: dim,height: dim)
+            imageView.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: dim,
+                height: dim)
+            
             imageView.contentMode = .scaleAspectFit
-            imageView.center = CGPoint(x:scrollWidth/2,y: scrollHeight/2 - 50)
+            imageView.center = CGPoint(
+                x: scrollWidth/2,
+                y: scrollHeight/2 - 50)
           
-            let txt1 = UILabel.init(frame: CGRect(x:32,y:imageView.frame.maxY+30,width:scrollWidth-64,height:30))
+            let txt1 = UILabel.init(
+                frame: CGRect(
+                    x: 32,
+                    y: imageView.frame.maxY + 30,
+                    width: scrollWidth - 64,
+                    height: 30))
+            
             txt1.textAlignment = .center
             txt1.font = UIFont.boldSystemFont(ofSize: fontSize1)
             txt1.text = titles[index]
 
-            let txt2 = UILabel.init(frame: CGRect(x:32,y:txt1.frame.maxY+10,width:scrollWidth-64,height:50))
+            let txt2 = UILabel.init(
+                frame: CGRect(
+                    x: 32,
+                    y: txt1.frame.maxY + 10,
+                    width: scrollWidth - 64,
+                    height: 50))
+            
             txt2.textAlignment = .center
             txt2.numberOfLines = 3
             txt2.font = UIFont.systemFont(ofSize: fontSize1 - 2)
@@ -88,11 +104,12 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
             slide.addSubview(txt1)
             slide.addSubview(txt2)
             scrollView.addSubview(slide)
-            
         }
 
         //set width of scrollview to accomodate all the slides
-        scrollView.contentSize = CGSize(width: scrollWidth * CGFloat(titles.count), height: scrollHeight)
+        scrollView.contentSize = CGSize(
+            width: scrollWidth * CGFloat(titles.count),
+            height: scrollHeight)
 
         //disable vertical scroll/bounce
         self.scrollView.contentSize.height = 1.0
@@ -121,42 +138,20 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
         } else {
             btnGetStarted.isHidden = true
         }
-         
-
     }
     
     @objc func didTap(_ sender: UIButton) {
         Core.shared.setIsNotNewUser()
         self.dismiss(animated: true)
-        
         showTipsAlert()
-
     }
-    
-}
-
-
-class Core {
-    
-    static let shared = Core()
-    
-    func isNewUser () -> Bool {
-        return !UserDefaults.standard.bool(forKey: "isNewUser")
-    }
-    
-    func setIsNotNewUser () {
-        UserDefaults.standard.setValue(true, forKey: "isNewUser")
-    }
-    
 }
 
 extension UIViewController {
     func showOnboardingScreen() {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "welcome") as! OnBoardingController
-           
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true) 
+        let vc = storyboard?.instantiateViewController(withIdentifier: "welcome") as! OnBoardingController
+        
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
-
-

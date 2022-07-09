@@ -21,6 +21,8 @@ class PackTableVC: UITableViewController {
     var theme: ThemeCD?
     var packs = [""]
     
+    //ViewModel
+    let viewModel = PackTableViewModel()
     
     let pasteboard = UIPasteboard.general
     var chosenPack = String()
@@ -36,18 +38,16 @@ class PackTableVC: UITableViewController {
     
     // MARK: - Interface
     //works with (csb) in root controller
-    override var preferredStatusBarStyle: UIStatusBarStyle {return currentStatusBarStyle}
+    // override var preferredStatusBarStyle: UIStatusBarStyle {return currentStatusBarStyle}
     override func viewWillAppear(_ animated: Bool) {willAppear()}
     override func viewWillDisappear(_ animated: Bool) {willDisappear()}
-    override func viewDidDisappear(_ animated: Bool) {didDisappear()}
-    
     override func viewDidLoad(){
         super.viewDidLoad()
         self.title = theme?.name
     
         loadPack() //load
         TVinset()
-        setupTableViewImageHeader()
+        setupTableViewBackgroundImage()
         tableView.backgroundColor = bkgdColor
         
     }

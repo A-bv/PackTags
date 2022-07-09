@@ -13,13 +13,14 @@ extension PackTableVC {
     //Scroll operations
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
-        // PPP
         let alpha = getNavigationBarAlphaForNavBarOpacity(offset: offset)
     
         setNavBarOpacityAndColors(alpha: alpha)
         bounceImage(offset: offset)
     }
-    
+}
+
+extension PackTableVC {
     func bounceImage(offset: CGFloat) {
         if offset < -UIScreen.main.bounds.height/2 {
             uiiv.frame.size.height = -offset + cR
@@ -61,21 +62,18 @@ extension PackTableVC {
         
         nc?.backgroundColor = navBarNewColor
         //works with statusBarUIView added in appdelegate:
-        UIApplication.shared.statusBarUIView?.backgroundColor = navBarNewColor
+        //UIApplication.shared.statusBarUIView?.backgroundColor = navBarNewColor
     }
     
     func getNavigationBarAlphaForNavBarOpacity(offset:CGFloat) -> CGFloat {
         let pos = navBarHeight + 2*statusBarHeight
         let denominator: CGFloat = 50 //offset treshold
         let value = (offset + CGFloat(pos)) / denominator
-        let alpha = min(1, value) //PPP
+        let alpha = min(1, value)
         return alpha
     }
-}
 
-//MARK: - Status bar
-extension PackTableVC {
-    //Function used after modal screen dismissed
+    //MARK: - Status bar
     func statusBarTextColor(alpha:CGFloat){
         if alpha >= 0 {
             currentStatusBarStyle = .default
