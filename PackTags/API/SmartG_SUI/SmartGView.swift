@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0.0, *)
 struct SmartG_SwiftUI: View {
     @State private var igHash: String =  "top travel hashtags"
     @State private var textstyle = UIFont.TextStyle.body
@@ -47,7 +46,6 @@ struct SmartG_SwiftUI: View {
     }
 }
 
-@available(iOS 14.0.0, *)
 struct StoryCard: View{
     
     let url: URL
@@ -71,7 +69,6 @@ struct StoryCard: View{
     }
 }
 
-@available(iOS 14.0.0, *)
 struct Header: View {
     @Environment(\.presentationMode) var presentationMode
     
@@ -103,7 +100,6 @@ struct Header: View {
     }
 }
 
-@available(iOS 14.0.0, *)
 struct SmartG_SwiftUI_Previews: PreviewProvider {
     
     static var previews: some View {

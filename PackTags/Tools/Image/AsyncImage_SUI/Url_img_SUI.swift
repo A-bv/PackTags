@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0.0, *)
 struct URLImage: View {
     let urlString: String
     @State var data: Data?

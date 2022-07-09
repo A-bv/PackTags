@@ -5,7 +5,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct AsyncImage<Placeholder: View>: View {
     @StateObject private var loader: ImageLoader
     private let placeholder: Placeholder

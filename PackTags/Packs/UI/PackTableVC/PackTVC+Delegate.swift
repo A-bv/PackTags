@@ -13,9 +13,9 @@ extension PackTableVC {
         return configureCell(indexPath: indexPath)
     }
     
-    override func tableView(_ tableView:UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        return addSCellSwipeAccessory()
-    }
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+      return addSCellSwipeAccessory(indexPath: indexPath)
+  }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

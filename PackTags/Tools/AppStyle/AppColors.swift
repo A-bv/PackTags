@@ -10,7 +10,6 @@ import UIKit
 import SwiftUI
 //MARK: - Analytics New Colors
 
-@available(iOS 13.0, *)
 extension Color {
     //static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
 
@@ -45,7 +44,6 @@ extension Color {
     static let statsFillColor = bgFillColor
 }
 
-@available(iOS 13.0, *)
 extension LinearGradient {
     init(_ colors: Color...) {
         self.init(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -67,18 +65,13 @@ extension UIColor {
 //MARK: - Neumorphic
 
 var bkgdColor: UIColor {
-    if #available(iOS 11, *)  {
-        return UIColor(named: "Color-Bkgd") ?? UIColor.morphicWhite
-    } else {
-        return UIColor.morphicWhite
-    }
+    return UIColor(named: "Color-Bkgd") ?? UIColor.morphicWhite
 }
 
 extension UIColor {
     static let morphicWhite = UIColor(red: 235/255, green: 235/255, blue: 250/255, alpha: 1)
     static let shadowWhite = UIColor(red: 187/255, green: 190/255, blue: 205/255, alpha: 1)
     static let shadowDark1 = UIColor(red: 45/255, green: 45/255, blue: 45/255, alpha: 1)
-    @available(iOS 13.0, *)
     static let darkMBkgdColor = UIColor.secondarySystemBackground
 }
 
@@ -100,33 +93,17 @@ extension UIColor {
 
 //Color of text and symbols
 var customTextColor: UIColor {
-    if #available(iOS 11, *)  {
-        return UIColor(named: "customTextColor") ?? UIColor.darkGray
-    } else {
-        return UIColor.darkGray
-    }
+    return UIColor(named: "customTextColor") ?? UIColor.darkGray
 }
 
 var customPurple: UIColor {
-    if #available(iOS 11, *)  {
-        return UIColor(named: "customPurple") ?? UIColor.systemPurple
-    } else {
-        return UIColor.purple
-    }
+    return UIColor(named: "customPurple") ?? UIColor.systemPurple
 }
 
 var labelColor: UIColor {
-    if #available(iOS 13, *)  {
-        return UIColor.label
-    } else {
-        return UIColor.black
-    }
+    return UIColor.label
 }
 
 var welcomeScreenColor: UIColor {
-    if #available(iOS 11, *)  {
-        return UIColor(named: "Color-OnBoardBg" ) ?? bkgdColor
-    } else {
-        return bkgdColor
-    }
+    return UIColor(named: "Color-OnBoardBg" ) ?? bkgdColor
 }

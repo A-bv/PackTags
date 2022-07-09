@@ -22,7 +22,6 @@ struct engagementVariations {
     }
 }
 
-@available(iOS 13.0, *)
 extension ANewVCDataSUI {
     //VARR Entry
     func getEngagementVariations(isFromSave: Bool) {

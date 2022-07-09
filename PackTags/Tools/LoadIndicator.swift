@@ -9,7 +9,6 @@
 import SwiftUI
 import Combine
 
-@available(iOS 13, *)
 public struct ActivityIndicatorView: View {
 
     public enum IndicatorType {
@@ -30,7 +29,6 @@ public struct ActivityIndicatorView: View {
     }
 }
 
-@available(iOS 13, *)
 struct RotatingDotsIndicatorView: View {
 
     private let count: Int = 5
@@ -44,7 +42,6 @@ struct RotatingDotsIndicatorView: View {
     }
 }
 
-@available(iOS 13, *)
 struct RotatingDotsIndicatorItemView: View {
 
     let index: Int

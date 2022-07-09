@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 14.0.0, *)
 class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
     @Published var computedData: [processedSmartGModel] = []
@@ -24,7 +23,6 @@ class SmartGViewModel: ObservableObject {
     }
 }
 
-@available(iOS 14.0.0, *)
 extension SmartGViewModel {
     func processSmartGModel ()
     {

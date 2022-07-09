@@ -9,7 +9,6 @@
 import SwiftUI
 import Combine
 
-@available(iOS 13.0, *)
 class ANewVCDataSUI: ObservableObject {
     
     //MARK: - Live Variables

@@ -9,7 +9,6 @@
 import SwiftUI
 
 // stats Data...
-@available(iOS 13, *)
 struct Stats : Identifiable {
     
     var id : Int
@@ -21,7 +20,6 @@ struct Stats : Identifiable {
 }
 
 //Circles
-@available(iOS 13, *)
 struct Circles : Identifiable {
     
     var id : Int

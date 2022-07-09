@@ -70,13 +70,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func configure () {
         
-        var icon = UIImage()
-        
-        if #available(iOS 13.0, *) {
-            icon = UIImage(systemName: "gearshape")!
-        } else {
-            icon = UIImage(named: "gearshape1")!
-        }
+        let icon = UIImage(systemName: "gearshape")!
         
         self.tableView.backgroundColor = bkgdColor
       
@@ -188,7 +182,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                 
                 if let url = URL(string: "https://sites.google.com/view/packtags-privacy-policy/accueil") {
                                     
-                    let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+                    let vc = SFSafariViewController(url: url)
                     vc.modalTransitionStyle = .crossDissolve
                     vc.modalPresentationStyle = .overFullScreen
                     self?.present(vc, animated: true)
@@ -201,7 +195,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                 
                 if let url = URL(string: "https://sites.google.com/view/packtagstc/accueil") {
                                                     
-                let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+                let vc = SFSafariViewController(url: url)
                     vc.modalTransitionStyle = .crossDissolve
                     vc.modalPresentationStyle = .overFullScreen
                     self?.present(vc, animated: true)
@@ -214,7 +208,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                 
                 if let url = URL(string: "https://sites.google.com/view/packtagsdisclaimer/accueil") {
                                                                     
-                    let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+                    let vc = SFSafariViewController(url: url)
                     vc.modalTransitionStyle = .crossDissolve
                     vc.modalPresentationStyle = .overFullScreen
                     self?.present(vc, animated: true)
@@ -258,7 +252,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             cell.configure(with: model)
             
-            cell.backgroundColor = cellColor ()
+            cell.backgroundColor = UIColor.systemBackground
             
             return cell
             
@@ -273,7 +267,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.name = model.title
             cell.configure(with: model)
             
-            cell.backgroundColor = cellColor ()
+            cell.backgroundColor = UIColor.systemBackground
             
             return cell
         // --
@@ -294,21 +288,13 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         //--
     }
-    
-    func cellColor () -> UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemBackground
-        } else {
-            return UIColor.white
-        }
-    }
 }
 
 extension UIViewController {
     func showTricksPage () {
         if let url = URL(string: "https://sites.google.com/view/packtags-tricks-tips/accueil") {
             
-            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: false)
+            let vc = SFSafariViewController(url: url)
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true)

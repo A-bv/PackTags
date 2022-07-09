@@ -152,15 +152,10 @@ class Core {
 
 extension UIViewController {
     func showOnboardingScreen() {
-        
-            
             let vc = storyboard?.instantiateViewController(withIdentifier: "welcome") as! OnBoardingController
            
             vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
-            
-            
-        
+            present(vc, animated: true) 
     }
 }
 

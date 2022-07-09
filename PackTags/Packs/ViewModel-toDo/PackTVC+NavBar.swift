@@ -18,7 +18,6 @@ extension PackTableVC {
     
         setNavBarOpacityAndColors(alpha: alpha)
         bounceImage(offset: offset)
-        
     }
     
     func bounceImage(offset: CGFloat) {
@@ -27,13 +26,6 @@ extension PackTableVC {
         } else {
             uiiv.frame.size.height = uiiv.frame.height
         }
-    }
-
-    func navBarHeight() -> CGFloat {
-        if self.navigationController != nil {
-            let value = self.navigationController!.navigationBar.intrinsicContentSize.height + self.navigationController!.topLayoutGuide.length
-            return  value
-        } else {return CGFloat(0)}
     }
     
     //color and opacity variations
@@ -73,7 +65,7 @@ extension PackTableVC {
     }
     
     func getNavigationBarAlphaForNavBarOpacity(offset:CGFloat) -> CGFloat {
-        let pos = navBarHeight()
+        let pos = navBarHeight + 2*statusBarHeight
         let denominator: CGFloat = 50 //offset treshold
         let value = (offset + CGFloat(pos)) / denominator
         let alpha = min(1, value) //PPP

@@ -82,11 +82,7 @@ class PackCell: UITableViewCell {
     }
     
     @objc func showMore(sender: UIButton) {
-        if #available(iOS 13.0, *) {
-            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-        } else {
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        }
+        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         subButtonTapCallback()
     }
     

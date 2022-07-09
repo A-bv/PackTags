@@ -10,22 +10,8 @@ import Foundation
 import UIKit
 
 class DarkMode: NSObject {
-    
-    deinit {
-        print("deinit utility")
-    }
-    
     class func isDarkMode () -> Bool {
-        if #available(iOS 13.0, *) {
-            if UITraitCollection.current.userInterfaceStyle == .dark {
-                return true
-            }
-            else {
-                return false
-            }
-        } else {
-            return false
-        }
+        return UITraitCollection.current.userInterfaceStyle == .dark
     }
 }
 

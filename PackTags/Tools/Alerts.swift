@@ -61,7 +61,13 @@ class Alerts: NSObject {
 }
 
 extension Alerts {
-    class func simpleShortAlert(title:String,message:String,vc:UIViewController?,okDismissVc:Bool){
+    class func simpleShortAlert(
+        title: String,
+        message: String,
+        vc: UIViewController?,
+        okDismissVc: Bool)
+    {
+    
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
     
         alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: {_ in
@@ -71,14 +77,14 @@ extension Alerts {
         }))
         
         if vc == nil {
-            let rootVC = UIApplication.shared.keyWindow?.rootViewController
+            let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            let rootVC = keyWindow?.rootViewController
             rootVC?.presentedViewController?.present(alertController, animated: true)
             print("Alert from root vc")
         } else {
             vc?.present(alertController, animated: true)
             print("Short Alert")
         }
-        
     }
 }
 
@@ -184,15 +190,19 @@ extension UIViewController {
 extension UIViewController {
     //Shown only once
     func showTipsAlert() {
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         if !UserDefaults.standard.bool(forKey: "showTipsAlertShown") {
             UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
 
             let numberOfTimesLaunched: Int = UserDefaults.standard.integer(forKey: StoreKitHelper.numberOfTimesLaunchedKey)
             if numberOfTimesLaunched == 1 {
                 let message = "\nDiscover PackTags and its purpose with \"Tricks & Tips\" in settings."
-                let rvc = UIApplication.shared.keyWindow?.rootViewController
-                rvc?.simpleAlert(title: "Tricks & Tips", message: message,btnText: "View later", btnText2: "Let's go!")
-                
+                let rvc = keyWindow?.rootViewController
+                rvc?.simpleAlert(
+                    title: "Tricks & Tips",
+                    message: message,
+                    btnText: "View later",
+                    btnText2: "Let's go!")
             }
         }
     }

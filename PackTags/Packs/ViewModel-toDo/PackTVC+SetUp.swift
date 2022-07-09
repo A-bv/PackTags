@@ -34,24 +34,16 @@ extension PackTableVC {
 extension PackTableVC {
     func setupNavigationBarStyle (isWhite: Bool) {
         if isWhite {
-            if #available(iOS 11.0, *) {
-                let color = UIColor.white
-                let font = UIFont.systemFont(
-                    ofSize: 31,
-                    weight: UIFont.Weight.bold)
-                
-                self.navigationController?.navigationBar.largeTitleTextAttributes = [
-                    NSAttributedString.Key.foregroundColor: color,
-                    NSAttributedString.Key.font: font]
-            } else {
-                self.navigationController?.navigationBar.tintColor = .white
-            }
+            let color = UIColor.white
+            let font = UIFont.systemFont(
+                ofSize: 31,
+                weight: UIFont.Weight.bold)
+            
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: color,
+                NSAttributedString.Key.font: font]
         } else {
-            if #available(iOS 11.0, *) {
-                self.navigationController?.navigationBar.largeTitleTextAttributes = nil
-            } else {
-                self.navigationController?.navigationBar.titleTextAttributes = nil
-            }
+            self.navigationController?.navigationBar.largeTitleTextAttributes = nil
         }
     }
 }

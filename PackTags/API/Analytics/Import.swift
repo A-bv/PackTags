@@ -13,7 +13,6 @@ let apiGph_version = "v13.0" //Api graph version
 let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
 let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
-@available(iOS 13.0, *)
 //AnalyticsNew's importation function: Functions for init() {}
 extension ANewVCDataSUI {
     //1 local import (called when refreshing data without web)

@@ -56,15 +56,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     var slideUpMenu: SlideUpMenu!
     
     var buttonMenuThemeOptions: UIBarButtonItem {
-        var button = UIBarButtonItem()
-        
-        if #available(iOS 14.0, *) {
-            button = buttonMenu()
-        } else {
-            slideUpMenu = SlideUpMenu(controller: self)
-            button = slideUpMenu.MenuButton
-        }
-        return button
+        return buttonMenu()
     }
     
     var isSearchMode: Bool = false {

@@ -10,7 +10,6 @@ import SwiftUI
 
 //MARK: - Styles
 
-@available(iOS 13.0, *)
 struct ColorfulButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -26,7 +25,6 @@ struct ColorfulButtonStyle: ButtonStyle {
     }
 }
 
-@available(iOS 13.0, *)
 struct DarkToggleStyle: ToggleStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         Button(action: {
@@ -47,8 +45,6 @@ struct DarkToggleStyle: ToggleStyle {
 
 
 //MARK: - Styles tools
-
-@available(iOS 13.0, *)
 
 struct ColorfulBackground<S: Shape>: View {
     var isHighlighted: Bool
@@ -91,8 +87,6 @@ struct ColorfulBackground<S: Shape>: View {
 
 // MARK: - Extension for shapes
 
-
-@available(iOS 13.0, *)
 extension Shape {
     
     public func outerNeumorphism<S:ShapeStyle>

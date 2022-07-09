@@ -25,7 +25,7 @@ extension PackTableVC {
             themeDetailViewController.isNotNewTheme = true
             
             //checks if segue is triggered "show" button
-            if sender as? Any.Type == UITableViewRowAction.self {
+            if sender as? Any.Type == UISwipeActionsConfiguration.self {
                 themeDetailViewController.isFromShow = true
                 themeDetailViewController.packFromShow = chosenPack
             }

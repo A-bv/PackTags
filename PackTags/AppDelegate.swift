@@ -55,12 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - UISceneSession Lifecycle
-    @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    @available(iOS 13.0, *)
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
     
     // MARK: - Core Data data visualisation
@@ -164,17 +162,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 
 
 // MARK: - Safe area properties (added for PackTags)
 extension UIApplication {
-var statusBarUIView: UIView? {
-    if #available(iOS 13.0, *) {
-        let tag = 38482
+    
+    var statusBarUIView: UIView? {
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-
+        let tag = 38482
         if let statusBar = keyWindow?.viewWithTag(tag) {
             return statusBar
         } else {
@@ -184,10 +180,5 @@ var statusBarUIView: UIView? {
             keyWindow?.addSubview(statusBarView)
             return statusBarView
         }
-    } else if responds(to: Selector(("statusBar"))) {
-        return value(forKey: "statusBar") as? UIView
-    } else {
-        return nil
     }
-  }
 }

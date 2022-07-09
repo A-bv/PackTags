@@ -41,25 +41,20 @@ extension ThemeVC {
         } else {
             spinner.startAnimating()
             DispatchQueue.main.async {
-                if #available(iOS 13.0, *) {
-                    let tempImageForRecon = selectedImage.upOrientationImage()
-                    self.themeTextView.hidePlaceholder()
-            
-                    self.recognizeText(image: tempImageForRecon!)
-                    { [weak self] (text) in
-                        if let initialText = self?.themeTextView.text {
-                            self?.themeTextView.text = text + "\n\n" + initialText
-                        } else {
-                            self?.themeTextView.text = text
-                        }
+                let tempImageForRecon = selectedImage.upOrientationImage()
+                self.themeTextView.hidePlaceholder()
+                
+                self.recognizeText(image: tempImageForRecon!)
+                { [weak self] (text) in
+                    if let initialText = self?.themeTextView.text {
+                        self?.themeTextView.text = text + "\n\n" + initialText
+                    } else {
+                        self?.themeTextView.text = text
                     }
-                    
-                    self.spinner.stopAnimating()
-                    self.recognizeText = false
                 }
-           
+                self.spinner.stopAnimating()
+                self.recognizeText = false
             }
-
         }
         picker.dismiss(animated: true, completion: nil)
         

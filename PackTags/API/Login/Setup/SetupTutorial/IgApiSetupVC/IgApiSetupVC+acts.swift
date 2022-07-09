@@ -15,7 +15,7 @@ extension IgApiSetupVC  {
         
         if let url = URL(string: "https://www.facebook.com") {
             
-            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+            let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
             
          }
@@ -26,7 +26,7 @@ extension IgApiSetupVC  {
         
         if let url = URL(string: "https://www.facebook.com/pages/create") {
             
-            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+            let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
             
          }

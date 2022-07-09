@@ -10,7 +10,6 @@
 
 import SwiftUI
 
-@available(iOS 14, *)
 struct AnalyticsNew_Previews: PreviewProvider {
     static var previews: some View {
         
@@ -18,8 +17,6 @@ struct AnalyticsNew_Previews: PreviewProvider {
     }
 }
 
-
-@available(iOS 14, *)
 struct AnalyticsNew : View {
     
     //
@@ -586,7 +583,6 @@ struct AnalyticsNew : View {
 //MARK: - Elements
 
 // graph Data...
-@available(iOS 13, *)
 struct Post : Identifiable {
     var id : Int
     var post : String
@@ -594,8 +590,6 @@ struct Post : Identifiable {
     var barHeight: CGFloat
     var rVr: CGFloat
 }
-
-@available(iOS 14, *)
 
 struct RoundedShape : Shape {
     func path(in rect: CGRect) -> Path {

@@ -38,7 +38,11 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
                 self?.verifySetupIgBAndGetIgBId(Completion: {(IgBId) in
                     uD.set(true, forKey: "isCorrectSetup")
                     uD.set(IgBId, forKey: "IgBId")
-                    Alerts.simpleShortAlert(title: "Connected!", message: "You can now access analytics and generate hashtags.", vc: self, okDismissVc: true)
+                    Alerts.simpleShortAlert(
+                        title: "Connected!",
+                        message: "You can now access analytics and generate hashtags.",
+                        vc: self,
+                        okDismissVc: true)
                 })
             })
         } else {

@@ -16,11 +16,8 @@ extension UIViewController {
         
         let btn: UIButton = {
             let btn = UIButton()
-            if #available(iOS 13.0, *) {
-                btn.tintColor = UIColor.label
-            } else {
-                btn.tintColor = UIColor.black
-            }
+            btn.tintColor = UIColor.label
+            
             //btn.backgroundColor = UITextView.appearance().tintColor
             let image = arrowButton == true ? UIImage(named: "ciDown") : UIImage(named: "close_round")
             let tintedImage = image?.withRenderingMode(.alwaysTemplate)
@@ -39,14 +36,7 @@ extension UIViewController {
         
         btn.translatesAutoresizingMaskIntoConstraints = false
         
-        
-        if #available(iOS 11.0, *) {
-            //Safe area
-            btn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cstW).isActive = true
-        } else {
-            //Status bar heigth
-            btn.topAnchor.constraint(equalTo: view.topAnchor, constant: UIApplication.shared.statusBarFrame.height + cstW).isActive = true
-        }
+        btn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cstW).isActive = true
         
         // -- button --
         btn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -cstW).isActive = true
@@ -108,14 +98,7 @@ extension UIViewController {
         
         btn.translatesAutoresizingMaskIntoConstraints = false
         
-        
-        if #available(iOS 11.0, *) {
-            //Safe area
-            btn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cstW).isActive = true
-        } else {
-            //Status bar heigth
-            btn.topAnchor.constraint(equalTo: view.topAnchor, constant: UIApplication.shared.statusBarFrame.height + cstW).isActive = true
-        }
+        btn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cstW).isActive = true
         
         // -- button --
         btn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: cstW).isActive = true
@@ -124,15 +107,12 @@ extension UIViewController {
     }
     
     @objc func showWebSetBusinessIG (_ sender: Any) {
-        
         if let url = URL(string: "https://www.facebook.com/business/help/502981923235522") {
-            
-            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: false)
+            let vc = SFSafariViewController(url: url)
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true)
-            
-         }
+        }
     }
     
     @objc func showHowToSetupProIGVC (_ sender: Any) {
@@ -141,15 +121,12 @@ extension UIViewController {
         vwc.modalTransitionStyle = .crossDissolve
         self.present(vwc, animated: true, completion: nil)
     }
-    
-    
 }
 
 
 // Add a textview
 extension UIViewController {
     func placeTextView (textView: UITextView) {
-        
         // Def TextView
         textView.font = UIFont.preferredFont(forTextStyle: .body)
         textView.adjustsFontForContentSizeCategory = true
@@ -162,12 +139,8 @@ extension UIViewController {
         
         let cstW = view.frame.width/10
         let btnSize = CGFloat(22)
-        if #available(iOS 11.0, *) {
-            textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cstW + btnSize + 16).isActive = true
-        } else {
-            textView.topAnchor.constraint(equalTo: view.topAnchor, constant: UIApplication.shared.statusBarFrame.height + cstW + btnSize + 16).isActive = true
-        }
         
+        textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cstW + btnSize + 16).isActive = true
         textView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         textView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         textView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true

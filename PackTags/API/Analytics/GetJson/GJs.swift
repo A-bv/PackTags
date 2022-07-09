@@ -25,26 +25,20 @@ extension GetJson {
 }
 
 extension GetJson {
-    class func cURL2<T: Decodable>(of type: T.Type,
-                             from url: String,
-                             Completion block: @escaping ((Any) -> ()) ) {
+    
+    class func cURL2<T: Decodable>(
+        of type: T.Type,
+        from url: String,
+        Completion block: @escaping ((Any) -> ()) )
+    {
         
         GenericJSONParser.download(fromURLString: url) { (result) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let data):
-                
-                //Necessary for packtags
-                //----------
-                if T.self == Profile.self {
-                    if  GetJson.isOkToSaveJsonDataInDir == true {
-                        //Save Json data localy
-                        GetJson.saveJsonDataToDir(jsonString: data)
-                        GetJson.isOkToSaveJsonDataInDir = false
-                    }
-                }
-                //----------
+ 
+                if T.self == Profile.self { saveJsonDataLocally(data: data) } // Necessary for packtags
                 
                 DispatchQueue.main.async {
                     if T.Type.self == Profile.Type.self {
@@ -66,15 +60,11 @@ extension GetJson {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+extension GetJson {
+    class private func saveJsonDataLocally(data: Data) {
+        if  GetJson.isOkToSaveJsonDataInDir == true {
+            GetJson.saveJsonDataToDir(jsonString: data)
+            GetJson.isOkToSaveJsonDataInDir = false
+        }
+    }
+}

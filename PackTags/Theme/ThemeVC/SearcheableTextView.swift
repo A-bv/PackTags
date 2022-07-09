@@ -12,8 +12,7 @@ import UIKit
 extension UITextView {
     func highlightColorsForSearchedWords (keyword:[String])
     {
-        var color1 = UIColor.black
-        if #available(iOS 13.0, *) {color1 = UIColor.label} else {}
+        let color1 = UIColor.label
         let color2 = self.tintColor
         let color3 = UIColor.white
         let base = self.text

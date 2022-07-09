@@ -22,15 +22,7 @@ class AnalyticsViewController: UIViewController {
         //view under blur adjustment
         self.view.backgroundColor = UIColor.morphicWhite.withAlphaComponent(0.70)
         
-        self.add(createViewController())
-        
-    }
-    
-    func createViewController() -> UIViewController {
-        if #available(iOS 14, *) {
-            return UIHostingController(rootView: AnyView(AnalyticsNew()))
-        }
-        return AnalyticsOld()
+        self.add(UIHostingController(rootView: AnyView(AnalyticsNew())))
     }
 }
 

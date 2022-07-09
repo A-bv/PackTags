@@ -20,11 +20,7 @@ extension UIView {
 
             self.addSubview(blurEffectView)
         } else {
-            if #available(iOS 13.0, *) {
-                self.backgroundColor = .systemBackground
-            } else {
-                self.backgroundColor = .white
-            }
+            self.backgroundColor = .systemBackground
         }
     }
 }

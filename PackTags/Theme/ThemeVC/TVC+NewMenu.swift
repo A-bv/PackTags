@@ -10,7 +10,6 @@
 import UIKit
 import SwiftUI
 
-@available(iOS 14.0, *)
 extension ThemeVC{
     func buttonMenu () -> UIBarButtonItem {
         let editName = UIAction(title: "Rename", image: UIImage(systemName: "tag")) { [weak vc = self] action in
@@ -58,12 +57,7 @@ extension ThemeVC{
         
         let edit = UIMenu(title: "Edit...",options: .displayInline, children: [editName,editPicture])
         
-        /*
         let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon,smartGen])
-        #else
-        let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon])
-        */
-        let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon])
         
         let manage = UIMenu(title: "Manage...",options: .displayInline, children: [shuffle, search])
         

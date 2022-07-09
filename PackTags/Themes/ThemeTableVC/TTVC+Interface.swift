@@ -17,15 +17,10 @@ extension ThemeTableViewController {
     }
     
     func configureNavBar () {
-        if #available(iOS 13.0, *) {
-            settingsButton.image = UIImage(systemName: "gearshape")
-            analyticsButton.image = UIImage(systemName: "chart.pie")
-            addThemeButton.image = UIImage(systemName: "plus")
-        } else {
-            settingsButton.image = UIImage(named: "gearshape")
-            analyticsButton.image = UIImage(named: "chart.bar.xaxis")
-            addThemeButton.image = UIImage(named: "add-Btn")
-        }
+        settingsButton.image = UIImage(systemName: "gearshape")
+        analyticsButton.image = UIImage(systemName: "chart.pie")
+        addThemeButton.image = UIImage(systemName: "plus")
+
         navigationController?.navigationBar.putShadow(put: true)
         navigationItem.rightBarButtonItems = [addThemeButton]
         updateLogo()

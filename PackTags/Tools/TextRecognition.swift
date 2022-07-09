@@ -9,7 +9,6 @@
 import UIKit
 import Vision
 
-@available(iOS 13.0, *)
 extension UIViewController {
     func recognizeText(image: UIImage?, returnCompletion: @escaping (String) -> () ) {
         guard let cgImage = image?.cgImage else {

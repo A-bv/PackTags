@@ -12,11 +12,8 @@ extension TapTextView {
     func processTappedWord (tappedWord: String?) {
         
         //Vibrates
-        if #available(iOS 13.0, *) {
-            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-        } else {
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        }
+        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        
         if tappedWord != nil {
             if selectionDict[tappedWord!] == nil { // = not selected yet
                 

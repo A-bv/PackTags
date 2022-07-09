@@ -92,17 +92,10 @@ extension UIViewController {
         
         //icons
         var imagesArr = [UIImage()]
-        if #available(iOS 13.0, *) {
             imagesArr = [
                 UIImage(systemName: "arrow.up")!,
                 UIImage(systemName: "arrow.down")!
             ]
-        } else {
-            imagesArr = [
-                UIImage(named: "upAr")!,
-                UIImage(named: "downAr")!
-            ]
-        }
         
         //selector
         let segmentedControl = UISegmentedControl(items: imagesArr)

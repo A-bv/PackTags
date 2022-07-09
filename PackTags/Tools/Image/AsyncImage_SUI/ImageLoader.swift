@@ -9,7 +9,6 @@
 import Combine
 import UIKit
 
-@available(iOS 14.0, *)
 class ImageLoader: ObservableObject {
     @Published var image: UIImage?
     

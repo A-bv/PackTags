@@ -97,23 +97,14 @@ extension TapTextView {
 extension TapTextView {
     func addTagSelectorToolBar (vc : UIViewController){
         var toolbarIcons = [UIImage?]()
-        if #available(iOS 13.0, *) {
-            toolbarIcons = [
-                                UIImage(systemName: "doc.on.doc"),
-                                UIImage(systemName: "scissors"),
-                                UIImage(systemName: "square.grid.2x2"),
-                                UIImage(systemName: "clear"),
-                                UIImage(systemName: "delete.right"),
-                                UIImage(systemName: "questionmark.circle.fill")]
-        } else {
-            toolbarIcons = [UIImage(named:"copy2clipboard"),
-                                UIImage(named: "scissors"),
-                                UIImage(named: "2x2grid"),
-                                UIImage(named: "clear"),
-                                UIImage(named: "delete"),
-                                UIImage(named: "ImageQuestion")
-            ]
-        }
+        
+        toolbarIcons = [
+            UIImage(systemName: "doc.on.doc"),
+            UIImage(systemName: "scissors"),
+            UIImage(systemName: "square.grid.2x2"),
+            UIImage(systemName: "clear"),
+            UIImage(systemName: "delete.right"),
+            UIImage(systemName: "questionmark.circle.fill")]
         
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTagSelection(sender:)))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -142,12 +133,7 @@ extension TapTextView {
     }
     
     func tapStartBarButtonItem () -> UIBarButtonItem {
-        var img = UIImage()
-        if #available(iOS 13.0, *) {
-            img = UIImage(systemName: "hand.point.up.left")!
-        } else {
-            img = UIImage(named: "tap")!
-        }
+        let img = UIImage(systemName: "hand.point.up.left")!
         tB = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(getTag(sender:)))
         return tB
     }

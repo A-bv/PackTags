@@ -126,17 +126,14 @@ extension UIViewController {
 
 //MARK: - Update colors when light/dark mode
 extension ThemeCell {
-    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         self.contentView.backgroundColor = bkgdColor
-        
-        if #available(iOS 13, *)  { view.updateNeumorphicButton(hold: false,delay:false) }
+        view.updateNeumorphicButton(hold: false, delay:false)
     }
 }
 
 extension ThemeTableViewController {
-    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateLogo ()
@@ -145,17 +142,15 @@ extension ThemeTableViewController {
 }
 
 extension PackCell {
-    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
         self.contentView.backgroundColor = bkgdColor
-        if #available(iOS 13, *)  { copyButton.updateNeumorphicButton(hold: false,delay:false) }
+        copyButton.updateNeumorphicButton(hold: false,delay:false)
     }
 }
 
 extension SettingsVC {
-    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         

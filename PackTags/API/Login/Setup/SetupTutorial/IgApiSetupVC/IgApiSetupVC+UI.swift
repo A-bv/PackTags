@@ -37,21 +37,11 @@ extension IgApiSetupVC  {
         self.view.addSubview(l1)
         self.view.addSubview(continueBtn)
         
-        
-        
+
         
         //MARK: - Title & Continue part
         
-        if #available(iOS 11.0, *) {
-            //Safe area
-            l1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cstW).isActive = true
-            
-        } else {
-            //Status bar heigth
-            l1.topAnchor.constraint(equalTo: view.topAnchor, constant: UIApplication.shared.statusBarFrame.height + cstW).isActive = true
-            
-        }
-        
+        l1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cstW).isActive = true
         l1.heightAnchor.constraint(equalToConstant: 44 + titleTopDistance).isActive = true
         l1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -cstW).isActive = true
         l1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: cstW).isActive = true
