@@ -19,7 +19,7 @@ extension UIViewController {
         appearance.backgroundColor = backgroundColor
         appearance.shadowColor = .clear
         appearance.titleTextAttributes = [.foregroundColor: textColor]
-        appearance.largeTitleTextAttributes = [.foregroundColor: textColor]
+        appearance.largeTitleTextAttributes = getClearNavigationBarAttributes()
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
@@ -36,5 +36,15 @@ extension UIViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
+    }
+}
+
+extension UIViewController {
+    func getClearNavigationBarAttributes () -> [NSAttributedString.Key : Any] {
+        let font = UIFont.systemFont(
+            ofSize: 31,
+            weight: UIFont.Weight.bold)
+        
+        return [ .foregroundColor: UIColor.white, .font: font ]
     }
 }

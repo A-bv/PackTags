@@ -20,9 +20,6 @@ class PackTableVC: UITableViewController {
     var theme: ThemeCD?
     var packs = [""]
     
-    //ViewModel
-    let viewModel = PackTableViewModel()
-    
     let pasteboard = UIPasteboard.general
     var chosenPack = String()
     
@@ -36,8 +33,6 @@ class PackTableVC: UITableViewController {
     let cR = CGFloat(22)
     
     // MARK: - Interface
-    override func viewWillAppear(_ animated: Bool) {willAppear()}
-    override func viewWillDisappear(_ animated: Bool) {willDisappear()}
     override func viewDidLoad(){
         super.viewDidLoad()
         self.title = theme?.name
