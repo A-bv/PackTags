@@ -13,14 +13,18 @@ extension PackTableVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         navigationToThemeDetails(segue: segue, sender: sender)
+        resetStatusBarColor = true
     }
     
     //MARK: - Unwind
     @IBAction func unwindToThemeList(sender: UIStoryboardSegue) {
         setPackTableVC()
+        resetStatusBarColor = false
     }
     
-    @IBAction func unwindFromCancel(segue: UIStoryboardSegue) {}
+    @IBAction func unwindFromCancel(segue: UIStoryboardSegue) {
+        resetStatusBarColor = false
+    }
     
     override func canPerformUnwindSegueAction(_ action: Selector,
         from fromViewController: UIViewController,

@@ -7,7 +7,7 @@
 //https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
 
 import UIKit
-//Downsampling UIKIT
+// Downsampling UIKIT
 extension UIImage {
     func resized(to newSize: CGSize) -> UIImage {
         return UIGraphicsImageRenderer(size: newSize).image { _ in
@@ -28,7 +28,7 @@ extension UIImage {
     }
 }
 
-//Avoid upside down image
+// Avoid upside down image
 extension UIImage {
     func upOrientationImage() -> UIImage? {
         switch imageOrientation {
@@ -44,7 +44,7 @@ extension UIImage {
     }
 }
 
-//add a filter
+// Add a filter
 extension UIImageView {
     func putFilter ()
     {
@@ -57,5 +57,18 @@ extension UIImageView {
     
         let newImage = UIImage(ciImage: edgeDetectFilter.outputImage!)
         self.image = newImage
+    }
+}
+
+// Bounce effect
+extension UIImageView {
+    func bounceImage(offset: CGFloat, constant: CGFloat) {
+        let offsetToBounceFrom = -UIScreen.main.bounds.height/2
+        
+        if offset < offsetToBounceFrom {
+            self.frame.size.height = -offset + constant
+        } else {
+            self.frame.size.height = self.frame.height
+        }
     }
 }

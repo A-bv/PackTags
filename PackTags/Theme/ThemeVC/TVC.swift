@@ -138,3 +138,10 @@ extension ThemeVC {
         themeTextView.checkPlaceholder()
     }
 }
+
+// Status Bar color
+extension ThemeVC {
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return  .default
+    }
+}

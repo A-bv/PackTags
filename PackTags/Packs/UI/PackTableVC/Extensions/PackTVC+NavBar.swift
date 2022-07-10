@@ -13,45 +13,33 @@ extension PackTableVC {
     //Scroll operations
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
-        let alpha = getNavigationBarAlphaForNavBarOpacity(offset: offset)
-    
-        setNavBarOpacityAndColors(alpha: alpha)
-        bounceImage(offset: offset)
+        updateAlphaForNavBarOpacity(offset: offset)
+        setNavBarOpacityAndColors()
+        uiiv.bounceImage(offset: offset, constant: cR)
     }
 }
-
+    
+// Navigation Bar Color and opacity variations
 extension PackTableVC {
-    func bounceImage(offset: CGFloat) {
-        if offset < -UIScreen.main.bounds.height/2 {
-            uiiv.frame.size.height = -offset + cR
-        } else {
-            uiiv.frame.size.height = uiiv.frame.height
-        }
-    }
-    
-    //color and opacity variations
-    func setNavBarOpacityAndColors(alpha: CGFloat) {
+    func setNavBarOpacityAndColors() {
         self.setNavBarTransparent(alpha: alpha)
-        setNeedsStatusBarAppearanceUpdate()
     }
     
-    func getNavigationBarAlphaForNavBarOpacity(offset:CGFloat) -> CGFloat {
+    func updateAlphaForNavBarOpacity(offset:CGFloat) {
         let pos = currentNavBarHeight + 2*statusBarHeight
         let denominator: CGFloat = 50 //offset treshold
         let value = (offset + CGFloat(pos)) / denominator
-        let alpha = min(1, value)
-        return alpha
+        alpha = min(1, value)
     }
+}
 
-    //MARK: - Status bar
-    /*
-    func statusBarTextColor(alpha:CGFloat){
-        if alpha >= 0 {
-            currentStatusBarStyle = .default
-            setNeedsStatusBarAppearanceUpdate()
+// Status Bar color
+extension PackTableVC {
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        if resetStatusBarColor {
+            return .default
         } else {
-            currentStatusBarStyle = .lightContent
-            setNeedsStatusBarAppearanceUpdate()
+            return  alpha < 0 ? .lightContent : .default
         }
-    }*/
+    }
 }

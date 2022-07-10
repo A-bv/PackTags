@@ -26,11 +26,20 @@ class PackTableVC: UITableViewController {
     //Image header
     var uiiv = UIImageView()
     
-    //Status Bar
-    var currentStatusBarStyle = UIStatusBarStyle.lightContent
-    
     //Corner radius table view
     let cR = CGFloat(22)
+    
+    // Status Bar color && Navigation Bar
+    var alpha = CGFloat(0) {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    var resetStatusBarColor = false {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
     
     // MARK: - Interface
     override func viewDidLoad(){
@@ -42,7 +51,7 @@ class PackTableVC: UITableViewController {
         setupTableViewBackgroundImage()
         tableView.backgroundColor = bkgdColor
         
-        self.setNavBarTransparent(alpha: 0)
+        self.setNavBarTransparent(alpha: alpha)
     }
     
     @IBAction func autoInstagram(_ sender: Any) {

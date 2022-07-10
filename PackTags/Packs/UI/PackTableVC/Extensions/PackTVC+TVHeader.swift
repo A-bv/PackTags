@@ -31,10 +31,11 @@ extension PackTableVC {
 extension PackTableVC {
     func TVinset () {
         let demiS = UIScreen.main.bounds.height/2
-        let navheight = 96.0
+        let navheight = 96.0 // TODO: Get max height constant
+        let insetPadding = 20.0
         
         let topInset = demiS - (navheight + statusBarHeight)
-        let topInset2 = (demiS - navheight) + cR + 20
+        let topInset2 = (demiS - navheight) + cR + insetPadding
         
         tableView.applyTableViewTopInset(tableViewTopInset: topInset, scrollIndicatorsTopInset: topInset2)
     }
