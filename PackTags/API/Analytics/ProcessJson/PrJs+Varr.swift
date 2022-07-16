@@ -65,9 +65,10 @@ extension ProcessJson {
             
         }
         return nil
-        
     }
+}
 
+extension ProcessJson {
     // Operations
     class func buildEngagementRatesVariations (pj:processedProfileModel) -> engagementVariations? {
         

@@ -17,12 +17,23 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
     var scrollHeight: CGFloat! = 0.0
 
     //data for the slides
-    var titles = ["WELCOME TO PACKTAGS","UNIQUE PACKS","ANALYTICS"]
-    var descs = ["The smart notebook for your hashtags",
-                 "Automatically removes duplicates or invalid hashtags",
-                 "Tracks your results for the best strategy"]
-    var imgs = ["intro1","intro4","intro5"]
-    var btnsHide = [true,true,false]
+    var titles = [
+        "WELCOME TO PACKTAGS",
+        "UNIQUE PACKS",
+        "ANALYTICS"
+    ]
+    
+    var descs = [
+        "The smart notebook for your hashtags",
+        "Automatically removes duplicates or invalid hashtags",
+        "Tracks your results for the best strategy"
+    ]
+    
+    var imgs = [
+        "intro1",
+        "intro4",
+        "intro5"
+    ]
 
     //get dynamic width and height of scrollview and save it
     override func viewDidLayoutSubviews() {
@@ -38,8 +49,6 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
         btnGetStarted.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
         btnGetStarted.isHidden = true
         
-        
-
         self.view.backgroundColor = welcomeScreenColor
         self.scrollView.delegate = self
         scrollView.isPagingEnabled = true
@@ -122,7 +131,10 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
 
     //indicator
     @IBAction func pageChanged(_ sender: Any) {
-        scrollView!.scrollRectToVisible(CGRect(x: scrollWidth * CGFloat ((pageControl?.currentPage)!), y: 0, width: scrollWidth, height: scrollHeight), animated: true)
+        scrollView!.scrollRectToVisible(
+            CGRect(
+                x: scrollWidth * CGFloat ((pageControl?.currentPage)!),
+                y: 0, width: scrollWidth, height: scrollHeight), animated: true)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -133,7 +145,7 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
         let page = (scrollView?.contentOffset.x)!/scrollWidth
         pageControl?.currentPage = Int(page)
         
-        if Int(page) == 2 {
+        if Int(page) == titles.count - 1 {
             btnGetStarted.isHidden = false
         } else {
             btnGetStarted.isHidden = true
