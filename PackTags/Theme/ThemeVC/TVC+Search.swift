@@ -78,7 +78,7 @@ extension ThemeVC {
         
             themeTextView.scrollToSubstring(substring: firstTag+" ")
             
-            themeTextView.text = themeTextView.text + "\n" //last for highlight
+            themeTextView.text = themeTextView.text + "\n" // Last for highlight
             themeTextView.highlightColorsForSearchedWords(keyword: ["\(packFromShow)\n"])
         }
     }

@@ -48,7 +48,7 @@ extension ThemeTableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete
         {
-            presentDeletionFailsafe(indexPath: indexPath)
+            presentDeletionFailsafeAlert(indexPath: indexPath)
         } else if editingStyle == .insert {}
     }
 }
@@ -79,28 +79,4 @@ extension ThemeTableViewController {
         }
         CoreDataHelper.saveTheme()
     }
-}
-
-
-// MARK: - Confirm row deletion
-extension ThemeTableViewController {
-    func presentDeletionFailsafe(indexPath: IndexPath) {
-            let alert = UIAlertController(title: nil, message: "Delete this theme?\n\nThis action is unreversible", preferredStyle: .alert)
-
-            let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
-                //Delete row code
-                guard let themeToDelete = self?.themes[indexPath.row]
-                else { return }
-                CoreDataHelper.delete(theme: themeToDelete)
-                self?.themes = CoreDataHelper.retrieveThemes()
-                self?.tableView.deleteRows(at: [indexPath], with: .none)
-            }
-
-            alert.addAction(yesAction)
-
-            // cancel action
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-            present(alert, animated: true, completion: nil)
-        }
 }

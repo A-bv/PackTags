@@ -19,6 +19,26 @@ struct AnalyticsNew_Previews: PreviewProvider {
 
 struct AnalyticsNew : View {
     
+    private enum Strings {
+        static let average = "Average"
+        static let lastPost = "Last post"
+        // static let lastCountedPosts = ""
+        static let noMedia = "No media have been posted yet\nas a Business/Creator account"
+        static let dataUnavailable = "Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account"
+        static let engagement = "Engagement"
+        static let reach = "Reach"
+        static let impressions = "Impressions"
+        static let eR = "Engagement Rate (ER)"
+        static let eRR = "Engagement Rate by Reach (ERR)"
+        static let eRI = "Engagement Rate by Impressions (ER Impressions)"
+        static let engagementInfo = "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives."
+        static let reachInfo = "Reach is the total number of people (single accounts) who saw your content."
+        static let impressionsInfo = "Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not."
+        static let analyticsTitle = "Analytics"
+        static let notConnected = "Not connected"
+        static let privateProfile = "Profile is private"
+    }
+    
     //
     @ObservedObject var swiftUIData = ANewVCDataSUI()
     
@@ -37,17 +57,22 @@ struct AnalyticsNew : View {
     var columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 2)
     
     //
-    @State var titles = ["Engagement","Reach","Impressions"]
-    @State var subtitles = [" "," "," "]
-    @State var infoTitles = ["Engagement Rate (ER)","Engagement Rate by Reach (ERR)", "Engagement Rate by Impressions (ER Impressions)"]
-    @State var infoMessages =
-        ["Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives.",
-                               
-         "\nReach is the total number of people (single accounts) who saw your content.",
-                               
-         "\nImpressions represents how many times your content appeared on a screen, no matter if it was clicked or not."]
-    
-    
+    @State var titles = [
+        Strings.engagement,
+        Strings.reach,
+        Strings.impressions]
+    @State var subtitles = [
+        " ",
+        " ",
+        " "]
+    @State var infoTitles = [
+        Strings.eR,
+        Strings.eRR,
+        Strings.eRI]
+    @State var infoMessages = [
+        Strings.engagementInfo,
+        "\n\(Strings.reachInfo)",
+        "\n\(Strings.impressionsInfo)"]
     
     @State var loading = true
     
@@ -82,7 +107,7 @@ struct AnalyticsNew : View {
             
             VStack(alignment: .leading, spacing: 5) {
             
-                Text("Analytics")
+                Text(Strings.analyticsTitle)
                     .font(.largeTitle)
                     .foregroundColor(Color(UIColor.label))
                     .fontWeight(.bold)
@@ -118,7 +143,7 @@ struct AnalyticsNew : View {
                 VStack {
                     Image(systemName: "wifi.slash")
                         .font(.system(size:56))
-                    Text("Not connected")
+                    Text(Strings.notConnected)
                 }
                         
             }
@@ -144,7 +169,7 @@ struct AnalyticsNew : View {
                 ZStack {
                     Color.bgFillColor
                         .edgesIgnoringSafeArea(.all)
-                    Text("Profile is private")
+                    Text(Strings.privateProfile)
                 }
              
             //Screen when data is invalid
@@ -154,10 +179,10 @@ struct AnalyticsNew : View {
                     Color.bgFillColor
                         .edgesIgnoringSafeArea(.all)
                     if swiftUIData.processedJson?.usr != nil {
-                        Text("No media have been posted yet\nas a Business/Creator account")
+                        Text(Strings.noMedia)
                             .multilineTextAlignment(.center)
                     } else {
-                        Text("Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account")
+                        Text(Strings.dataUnavailable)
                             .multilineTextAlignment(.center)
                     }
                 }
@@ -452,7 +477,7 @@ struct AnalyticsNew : View {
                             Spacer()
                             
                             
-                            let text2 = num != 1 ? "Last \(num ?? 0) Posts" : "Last post"
+                            let text2 = num != 1 ? "Last \(num ?? 0) Posts" : Strings.lastPost
                             Text(text2)
                                 .font(.caption)
                                 .foregroundColor(Color(UIColor.label).opacity(0.6))
@@ -477,7 +502,7 @@ struct AnalyticsNew : View {
                             VStack(spacing: 20){
             
                                 HStack{
-                                    Text(swiftUIData.processedJson?.rates.count == 1 ? "" : "Average")
+                                    Text(swiftUIData.processedJson?.rates.count == 1 ? "" : Strings.average)
                                         .font(.body)
                                         //.font(.system(size: 20))
                                         //.fontWeight(.bold)

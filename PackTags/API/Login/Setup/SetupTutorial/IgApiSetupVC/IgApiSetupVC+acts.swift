@@ -10,30 +10,26 @@ import UIKit
 import SafariServices
 
 extension IgApiSetupVC  {
+    private enum Links {
+        static let facebookLink = "https://www.facebook.com"
+        static let facebookCreatePageLink = "https://www.facebook.com/pages/create"
+    }
     
     @objc func loginFunc (_ sender: Any) {
-        
-        if let url = URL(string: "https://www.facebook.com") {
-            
+        if let url = URL(string: Links.facebookLink) {
             let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
-            
          }
-        
     }
     
     @objc func createPageFunc (_ sender: Any) {
-        
-        if let url = URL(string: "https://www.facebook.com/pages/create") {
-            
+        if let url = URL(string: Links.facebookCreatePageLink) {
             let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
-            
          }
     }
     
     @objc func convertIGFunc (_ sender: Any) {
-        
         let vwc = HowToSetupProIGVC()
         vwc.modalPresentationStyle = .overFullScreen
         vwc.modalTransitionStyle = .coverVertical
@@ -41,7 +37,6 @@ extension IgApiSetupVC  {
     }
     
     @objc func continueFunc (_ sender: Any) {
-        
         if UserDefaults.standard.object(forKey: "continued_IgApiSetupVC") == nil {
             UserDefaults.standard.set("true", forKey: "continued_IgApiSetupVC")
         }
@@ -49,4 +44,3 @@ extension IgApiSetupVC  {
         self.dismiss(animated: true, completion: nil)
     }
 }
-

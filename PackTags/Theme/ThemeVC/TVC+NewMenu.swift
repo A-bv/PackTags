@@ -11,22 +11,43 @@ import UIKit
 import SwiftUI
 
 extension ThemeVC{
+    private enum Strings {
+        static let rename = "Rename"
+        static let editPicture = "Edit picture"
+        static let textRecognition = "Text Recognition"
+        static let smartHashtags = "Smart hashtags"
+        static let searchHashtags = "Search hashtags"
+        static let shuffleHashtags = "Shuffle hashtags"
+    }
+    
     func buttonMenu () -> UIBarButtonItem {
-        let editName = UIAction(title: "Rename", image: UIImage(systemName: "tag")) { [weak vc = self] action in
+        let editName = UIAction(
+            title: Strings.rename,
+            image: UIImage(systemName: "tag")
+        ) { [weak vc = self] action in
             vc?.showGiveThemeNameAlert()
         }
         
-        let editPicture = UIAction(title: "Edit picture", image: UIImage(systemName: "photo.on.rectangle.angled")) { [weak vc = self] action in
+        let editPicture = UIAction(
+            title: Strings.editPicture,
+            image: UIImage(systemName: "photo.on.rectangle.angled")
+        ) { [weak vc = self] action in
             vc?.recognizeText = false
             vc?.setImagePicker()
         }
         
-        let textRecon = UIAction(title: "Text Recognition", image: UIImage(systemName: "doc.text.viewfinder")) { [weak vc = self] action in
+        let textRecon = UIAction(
+            title: Strings.textRecognition,
+            image: UIImage(systemName: "doc.text.viewfinder")
+        ) { [weak vc = self] action in
             vc?.recognizeText = true
             vc?.setImagePicker()
         }
         
-        let smartGen = UIAction(title: "Smart hashtags", image: UIImage(systemName: "chart.bar.doc.horizontal.fill")) { [weak vc = self] action in
+        let smartGen = UIAction(
+            title: Strings.smartHashtags,
+            image: UIImage(systemName: "chart.bar.doc.horizontal.fill")
+        ) { [weak vc = self] action in
             
             guard let blockNavigation = vc?.shouldShowFBLogin() else {
                 vc?.showFBLoginScreen()
@@ -42,13 +63,19 @@ extension ThemeVC{
             }
         }
         
-        let search = UIAction(title: "Search hashtags", image: UIImage(systemName: "magnifyingglass")) { [weak vc = self] action in
+        let search = UIAction(
+            title: Strings.searchHashtags,
+            image: UIImage(systemName: "magnifyingglass")
+        ) { [weak vc = self] action in
             vc?.themeTextView.doneTagSelection()
             vc?.startToSearch()
             vc?.isSearchMode = true
         }
         
-        let shuffle = UIAction(title: "Shuffle hashtags", image: UIImage(systemName: "shuffle.circle")) { [weak vc = self] action in
+        let shuffle = UIAction(
+            title: Strings.shuffleHashtags,
+            image: UIImage(systemName: "shuffle.circle")
+        ) { [weak vc = self] action in
             if let textToShuffle = vc?.themeTextView.text {
                 let array = Unique.cleanList(t: textToShuffle, x:vc?.theme, shuffle: true).components(separatedBy:" ")
                 vc?.themeTextView.text = Unique.packBy(t: array)

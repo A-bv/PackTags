@@ -9,6 +9,15 @@
 import UIKit
 
 extension PackTableVC {
+    private enum Strings {
+        static let instagram = "Instagram"
+        static let username = "Username"
+        static let enterUsername = "Enter Username"
+        static let redirectionAlertMessage = "PackTags will redirect to this account each time copy is tapped."
+        static let stopRedirectionAlertMessage = "PackTags will stop redirecting to this account after copy is tapped."
+        static let undoRedirection = "Tap the button again to undo."
+    }
+    
     func goInsta(packIdx: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             let goInstagram = UserDefaults.standard.bool(forKey: "goInsta")
@@ -31,14 +40,19 @@ extension PackTableVC {
         let Username = UserDefaults.standard.string(forKey: "Instagram Username")  ?? ""
         
         if Username == "" {
-            Alerts.alertTitle(targetVC: self, title: "Instagram" , message: "Username", placeholder: "Enter Username") { (inputName) in
+            Alerts.alertTitle(
+                targetVC: self,
+                title: Strings.instagram,
+                message: Strings.username,
+                placeholder: Strings.enterUsername
+            ) { (inputName) in
                 let name = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
                 UserDefaults.standard.set(name, forKey: "Instagram Username")
                 UserDefaults.standard.set(true, forKey: "goInsta")
                 
                 self.subBtnAlert(
                     title: Username,
-                    message: "PackTags will redirect to this account each time copy is tapped.  \n\n Tap the button again to undo."
+                    message: Strings.redirectionAlertMessage + "  \n\n " + Strings.undoRedirection
                 )
             }
         }
@@ -48,7 +62,7 @@ extension PackTableVC {
             UserDefaults.standard.set(false, forKey: "goInsta")
             self.subBtnAlert(
                 title: Username,
-                message: "PackTags will stop redirecting to this account after copy is tapped."
+                message: Strings.stopRedirectionAlertMessage
             )
         } else {
             if Username != "" {
@@ -56,7 +70,7 @@ extension PackTableVC {
                 
                 self.subBtnAlert(
                     title: Username,
-                    message: "PackTags will redirect to this account each time copy is tapped."
+                    message: Strings.redirectionAlertMessage
                 )
             }
         }

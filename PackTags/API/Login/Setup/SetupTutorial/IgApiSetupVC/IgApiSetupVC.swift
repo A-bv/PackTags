@@ -14,6 +14,13 @@ class IgApiSetupVC: UIViewController {
         print("deinit igApiSetupVC")
     }
     
+    private enum Strings {
+        static let switchAccount = "Switch account"
+        static let createAPage = "Create a page"
+        static let login = "login"
+        static let accountLinkingTitle = "Account Linking"
+    }
+    
     let actions =  [#selector(loginFunc(_:)),
                     #selector(createPageFunc(_:)),
                     #selector(convertIGFunc(_:))]
@@ -21,21 +28,21 @@ class IgApiSetupVC: UIViewController {
     static var businessAccAttributedString: NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: "")
         attributedString.append(NSAttributedString(attachment: instagramIconAttachment))
-        attributedString.append(NSAttributedString(string: "  Switch type"))
+        attributedString.append(NSAttributedString(string: "   \(Strings.switchAccount)"))
         return attributedString
     }
     
     static var facebookPageAttributedString: NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: "")
         attributedString.append(NSAttributedString(attachment: facebookIconAttachment))
-        attributedString.append(NSAttributedString(string: "  Create a page"))
+        attributedString.append(NSAttributedString(string: "  \(Strings.createAPage)"))
         return attributedString
     }
     
     static var loginAttributedString: NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: "")
         attributedString.append(NSAttributedString(attachment: facebookIconAttachment))
-        attributedString.append(NSAttributedString(string: "  Login"))
+        attributedString.append(NSAttributedString(string: "  \(Strings.login)"))
         return attributedString
     }
     

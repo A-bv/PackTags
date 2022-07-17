@@ -9,8 +9,12 @@
 import UIKit
 
 extension PackTableVC {
+    private enum Strings {
+        static let show = "Show"
+    }
+    
     func addSCellSwipeAccessory (indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let contextItem = UIContextualAction(style: .normal, title: "Show") {  (contextualAction, view, boolValue) in
+        let contextItem = UIContextualAction(style: .normal, title: Strings.show) {  (contextualAction, view, boolValue) in
             self.chosenPack = self.packs[indexPath.row]
             self.performSegue(withIdentifier: "ShowDetail", sender: UISwipeActionsConfiguration.self)
         }

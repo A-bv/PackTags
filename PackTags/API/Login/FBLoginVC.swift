@@ -16,9 +16,17 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
         print("deinit FBLoginVC")
     }
     
+    private enum Strings {
+        static let connectedAlertTitle = "Connected!"
+        static let accessAnalyticsConfirm = "You can now access analytics and generate hashtags."
+    }
+    
     let loginButton: FBLoginButton = {
         let button = FBLoginButton()
-        button.permissions = ["instagram_basic","pages_show_list","instagram_manage_insights"]
+        button.permissions = [
+            "instagram_basic",
+            "pages_show_list",
+            "instagram_manage_insights"]
         return button
     }()
     
@@ -39,8 +47,8 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
                     uD.set(true, forKey: "isCorrectSetup")
                     uD.set(IgBId, forKey: "IgBId")
                     Alerts.simpleShortAlert(
-                        title: "Connected!",
-                        message: "You can now access analytics and generate hashtags.",
+                        title: Strings.connectedAlertTitle,
+                        message: Strings.accessAnalyticsConfirm,
                         vc: self,
                         okDismissVc: true)
                 })

@@ -9,6 +9,13 @@
 import UIKit
 
 extension PackTableVC {
+    private enum Strings {
+        static let oneHashtag = "1 Hashtag"
+        static let more = "more"
+        static let zeroHashtags = "0 Hashtags"
+        static let tapPencil = "Tap the Pencil button to add Hashtags"
+    }
+    
     func configureCell(indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PackCell", for: indexPath) as? PackCell
         else {
@@ -20,8 +27,8 @@ extension PackTableVC {
         // -- Labels --
         let tags = packs[indexPath.row].components(separatedBy:" ")
         cell.nameLabel.text = tags.first
-        let btnLabel = tags.count != 1 ? " + \(tags.count - 1) more " : " 1 Hashtag "
-        cell.subButton.setTitle(pack == "" ? " 0 Hashtags " : btnLabel, for: .normal)
+        let btnLabel = tags.count != 1 ? " + \(tags.count - 1) \(Strings.more) " : " \(Strings.oneHashtag) "
+        cell.subButton.setTitle(pack == "" ? " \(Strings.zeroHashtags) " : btnLabel, for: .normal)
         
         // -- COPY Button --
         cell.buttonTapCallback = {[weak self] in
@@ -31,7 +38,7 @@ extension PackTableVC {
         
         // -- SUB Button --
         cell.subButtonTapCallback = {[weak self] in
-            let message = pack == "" ? "Tap the Pencil button to add Hashtags" : pack
+            let message = pack == "" ? Strings.tapPencil : pack
             self?.subBtnAlert(title: "", message: message)
         }
         

@@ -11,15 +11,47 @@ import Combine
 
 class ANewVCDataSUI: ObservableObject {
     
+    private enum Strings {
+        static let likes = "Likes"
+        static let comments = "Comments"
+        static let average = "Average"
+        static let selection = "Selection"
+    }
+    
     //MARK: - Live Variables
     @Published var processedJson : processedProfileModel?
     @Published var jsonOfficial : Profile? //Api Graph
     @Published var stats_Data = [
-        Stats(id: 0, title: "Likes", currentData: "0", goal: 0, color: Color("running"), image: Image(systemName: "suit.heart.fill")),
-        Stats(id: 1, title: "Comments", currentData: "0", goal: 0, color: Color("water"), image: Image(systemName: "text.bubble.fill"))]
+        Stats(
+            id: 0,
+            title: Strings.likes,
+            currentData: "0",
+            goal: 0,
+            color: Color("running"),
+            image: Image(systemName: "suit.heart.fill")),
+        Stats(
+            id: 1,
+            title: Strings.comments,
+            currentData: "0",
+            goal: 0,
+            color: Color("water"),
+            image: Image(systemName: "text.bubble.fill"))]
+    
     @Published var circles_Data = [
-        Circles(id: 0, title: "Average", currentData: 0, goal: 0, color: Color("running"), variation: 0),
-        Circles(id: 1, title: "Selection", currentData: 0, goal: 0, color: Color("water"), variation: 0)
+        Circles(
+            id: 0,
+            title: Strings.average,
+            currentData: 0,
+            goal: 0,
+            color: Color("running"),
+            variation: 0),
+        Circles(
+            id: 1,
+            title: Strings.selection,
+            currentData: 0,
+            goal: 0,
+            color: Color("water"),
+            variation: 0)
     ]
     @Published var graph_Data: [Post]? = [Post(id: 0, post: "", r: 0, barHeight: 0, rVr: 0)]
     @Published var engagementVariations : engagementVariations? //VARR

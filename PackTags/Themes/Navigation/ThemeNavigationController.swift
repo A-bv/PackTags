@@ -15,7 +15,8 @@ class ThemeNavigationController: UINavigationController {
     }
     
     // Status bar color in navigation controller
-    // to use this set in infoPlist: "UIViewControllerBasedStatusBarAppearance" to YES
+    // Set in infoPlist: "UIViewControllerBasedStatusBarAppearance" to YES
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if let topVC = viewControllers.last {
             return topVC.preferredStatusBarStyle

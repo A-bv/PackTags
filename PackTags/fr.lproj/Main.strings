@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "AnalyticsView"; ObjectID = "3QI-he-kpP"; */
+"3QI-he-kpP.text" = "AnalyticsView";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "CVx-7P-LCQ"; */
+"CVx-7P-LCQ.normalTitle" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "Pnd-1y-xsw"; */
+"Pnd-1y-xsw.normalTitle" = "Done";
+
+/* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "RjL-Mi-pzh"; */
+"RjL-Mi-pzh.normalTitle" = "Get Started";
+
+/* Class = "UINavigationItem"; title = "Themes"; ObjectID = "bbI-w9-2Ss"; */
+"bbI-w9-2Ss.title" = "Themes";
+
+/* Class = "UIViewController"; title = "ThemeViewController"; ObjectID = "ejf-rU-4pm"; */
+"ejf-rU-4pm.title" = "ThemeViewController";
+
+/* Class = "UITableViewController"; title = "ThemeTableViewController"; ObjectID = "g5o-SH-Iyg"; */
+"g5o-SH-Iyg.title" = "ThemeTableViewController";
+
+/* Class = "UILabel"; text = "Lk"; ObjectID = "hrh-Ne-Sjb"; */
+"hrh-Ne-Sjb.text" = "Lk";
+
+/* Class = "UISearchBar"; placeholder = "Search ..."; ObjectID = "rwj-XC-JJg"; */
+"rwj-XC-JJg.placeholder" = "Search ...";

@@ -9,6 +9,11 @@
 import UIKit
 
 extension IgApiSetupVC  {
+    private enum Strings {
+        static let accountLinkingTitle = "Account Linking"
+        static let continueString = "Continue"
+    }
+    
     func buildUI() {
         
         // UI1
@@ -20,7 +25,7 @@ extension IgApiSetupVC  {
             
             let attributedString = NSMutableAttributedString(string: "")
             attributedString.append(NSAttributedString(attachment: instagramIconAttachment))
-            attributedString.append(NSAttributedString(string: " Account Linking"))
+            attributedString.append(NSAttributedString(string: " \(Strings.accountLinkingTitle)"))
             
             label.attributedText = attributedString
             label.textColor = customPurple
@@ -30,7 +35,7 @@ extension IgApiSetupVC  {
         let continueBtn: UIButton  = {
             let btn = UIButton()
             btn.setTitleColor(customPurple, for: .normal)
-            btn.setTitle("Continue", for: .normal)
+            btn.setTitle(Strings.continueString, for: .normal)
             btn.translatesAutoresizingMaskIntoConstraints = false
             btn.addTarget(self, action: #selector(continueFunc(_:)), for: .touchUpInside)
             return btn

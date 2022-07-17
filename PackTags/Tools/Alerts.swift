@@ -6,7 +6,6 @@
 //  Copyright © 2022 Alexandre Bevilacqua. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 // MARK: - Alerts
@@ -204,6 +203,51 @@ extension UIViewController {
                     btnText: "View later",
                     btnText2: "Let's go!")
             }
+        }
+    }
+}
+
+// MARK: - Confirm row deletion
+extension ThemeTableViewController {
+    func presentDeletionFailsafeAlert(indexPath: IndexPath) {
+            let alert = UIAlertController(
+                title: nil,
+                message: "Delete this theme?\n\nThis action is unreversible",
+                preferredStyle: .alert)
+
+            let yesAction = UIAlertAction(
+                title: "Yes",
+                style: .default
+            ) { [weak self] _ in
+                //Delete row code
+                guard let themeToDelete = self?.themes[indexPath.row]
+                else { return }
+                CoreDataHelper.delete(theme: themeToDelete)
+                self?.themes = CoreDataHelper.retrieveThemes()
+                self?.tableView.deleteRows(at: [indexPath], with: .none)
+            }
+
+            alert.addAction(yesAction)
+
+            // cancel action
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+            present(alert, animated: true, completion: nil)
+        }
+}
+
+extension ThemeVC {
+    func showGiveThemeNameAlert () {
+        let tips = ""
+        let title = themeTitle.isEmpty == true ? "New Theme" : themeTitle
+        let message = themeTitle.isEmpty == true ? tips : "Edit Name"
+        let placeholder = themeTitle.isEmpty == true ? "Enter Name" : "Enter New Name"
+        
+        Alerts.alertTitle(targetVC: self, title: title, message: message, placeholder: placeholder) {[weak vc = self]
+            (inputName) in
+            
+            vc?.themeTitle = inputName
+            vc?.updateSaveButtonState()
         }
     }
 }

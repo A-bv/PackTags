@@ -41,18 +41,18 @@ class HowToSetupProIGVC: UIViewController {
     private enum Strings {
         static let appURL = "instagram://app"
         static let webURL = "https://instagram.com"
-        static let topLabelText = "  Switch to Creator or Buisness:"
+        static let topLabelText = "  Switch to Creator /Business:"
         static let topTextViewText = """
                   • On your profile tap  ≡
-                  • Tap Settings
-                  • Tap Accounts
+                  • Tap "Settings"
+                  • Tap "Accounts"
                   • Switch Account Type
             
              
             """
         static let bottomTextViewText = """
                   • On your profile tap "Edit Profile"
-                  • Link your page to your account
+                  • Link your Facebook page
             """
         static let bottomLabelText = "🔗    If your page is not linked:"
         static let buttonTitle = "Open Instagram"
