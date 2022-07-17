@@ -14,11 +14,16 @@ extension IgApiSetupVC  {
         // UI1
         let l1: UILabel  = {
             let label = UILabel()
-            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title1)
-                
+            label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title2)
             label.clipsToBounds = true
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "Instagram Setup"
+            
+            let attributedString = NSMutableAttributedString(string: "")
+            attributedString.append(NSAttributedString(attachment: instagramIconAttachment))
+            attributedString.append(NSAttributedString(string: " Account Linking"))
+            
+            label.attributedText = attributedString
+            label.textColor = customPurple
             return label
         }()
         
@@ -55,15 +60,15 @@ extension IgApiSetupVC  {
         //MARK: - StackView part
         
         //buttons
-        for i in 0...numberOfButtons-1 {
+        for i in 0...labels.count-1 {
             let btn: UIButton = {
                 let button = UIButton.init()
-                button.setTitleColor(clr2, for: .normal)
-                button.setTitle(labels[i], for: .normal)
-                button.backgroundColor = clr //.clear //bkgdColor
+                button.setTitleColor(.white, for: .normal)
+                button.setAttributedTitle(labels[i], for: .normal)
+                button.backgroundColor = UITextView.appearance().tintColor.withAlphaComponent(0.5) //.clear //bkgdColor
                 button.layer.cornerRadius = 22
                 //button.layer.borderWidth = 0.5
-                button.layer.borderColor = clr2.cgColor
+                button.layer.borderColor = UIColor.white.cgColor
                 button.translatesAutoresizingMaskIntoConstraints = false
                 button.addTarget(self, action: actions[i], for: .touchUpInside)
                 button.heightAnchor.constraint(equalToConstant: 44).isActive = true
@@ -82,7 +87,7 @@ extension IgApiSetupVC  {
         stackA.spacing = cstH
         
         //Add StackView + elements
-        for i in 0...numberOfButtons-1 {
+        for i in 0...labels.count-1 {
             stackA.addArrangedSubview(buttons[i])
         }
         
@@ -93,7 +98,7 @@ extension IgApiSetupVC  {
         stackA.translatesAutoresizingMaskIntoConstraints  = false
         stackA.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 20).isActive = true
         stackA.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        stackA.heightAnchor.constraint(equalToConstant: CGFloat(numberOfButtons*44) + CGFloat(numberOfButtons-1)*cstH ).isActive = true
+        stackA.heightAnchor.constraint(equalToConstant: CGFloat(labels.count*44) + CGFloat(labels.count-1)*cstH ).isActive = true
     }
 }
 

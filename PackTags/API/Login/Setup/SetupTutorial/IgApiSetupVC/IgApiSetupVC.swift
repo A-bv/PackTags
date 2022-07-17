@@ -14,19 +14,37 @@ class IgApiSetupVC: UIViewController {
         print("deinit igApiSetupVC")
     }
     
-    let clr = UITextView.appearance().tintColor.withAlphaComponent(0.6)
-    let clr2  = UIColor.white
     let actions =  [#selector(loginFunc(_:)),
                     #selector(createPageFunc(_:)),
                     #selector(convertIGFunc(_:))]
     
-    let labels = ["Login with FB",
-                  "Create a FB Page",
-                  "Convert your IG"]
+    static var businessAccAttributedString: NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: "")
+        attributedString.append(NSAttributedString(attachment: instagramIconAttachment))
+        attributedString.append(NSAttributedString(string: "  Switch type"))
+        return attributedString
+    }
+    
+    static var facebookPageAttributedString: NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: "")
+        attributedString.append(NSAttributedString(attachment: facebookIconAttachment))
+        attributedString.append(NSAttributedString(string: "  Create a page"))
+        return attributedString
+    }
+    
+    static var loginAttributedString: NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: "")
+        attributedString.append(NSAttributedString(attachment: facebookIconAttachment))
+        attributedString.append(NSAttributedString(string: "  Login"))
+        return attributedString
+    }
+    
+    var labels = [
+        loginAttributedString,
+        facebookPageAttributedString,
+        businessAccAttributedString]
     
     var buttons: [UIButton] = []
-    
-    var numberOfButtons = 3
     
     let cstH = UIScreen.main.bounds.height >= 600.0 ? CGFloat(80.0) : CGFloat(65.0)
     
@@ -36,14 +54,5 @@ class IgApiSetupVC: UIViewController {
         self.view.applyBlur()
         self.modalUI(arrowButton: false)
         self.buildUI()
-        
     }
-    
-
 }
-
-
-
-
-
-
