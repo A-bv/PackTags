@@ -31,12 +31,18 @@ struct AnalyticsNew : View {
         static let eR = "Engagement Rate (ER)"
         static let eRR = "Engagement Rate by Reach (ERR)"
         static let eRI = "Engagement Rate by Impressions (ER Impressions)"
-        static let engagementInfo = "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives."
-        static let reachInfo = "Reach is the total number of people (single accounts) who saw your content."
-        static let impressionsInfo = "Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not."
         static let analyticsTitle = "Analytics"
         static let notConnected = "Not connected"
         static let privateProfile = "Profile is private"
+        static let ratioToFollower = "Per Follower"
+        static let ratioByReach = "By Reach"
+        static let ratioByImpressions = "By Impressions"
+        static let engagementDefinition = "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives."
+        static let reachDefinition = "Reach is the total number of people (single accounts) who saw your content."
+        static let impressionsDefinition = "Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not."
+        static let eRDefiniton = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, proportionally to your followers."
+        static let eRRDefiniton = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, proportionally to your followers."
+        static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times."
     }
     
     //
@@ -70,9 +76,9 @@ struct AnalyticsNew : View {
         Strings.eRR,
         Strings.eRI]
     @State var infoMessages = [
-        Strings.engagementInfo,
-        "\n\(Strings.reachInfo)",
-        "\n\(Strings.impressionsInfo)"]
+        Strings.engagementDefinition,
+        "\n\(Strings.reachDefinition)",
+        "\n\(Strings.impressionsDefinition)"]
     
     @State var loading = true
     
@@ -243,10 +249,12 @@ struct AnalyticsNew : View {
                             
                             Spacer()
                             
+                            
                             HStack {
                                 // Insights - Rates button toggle
                                 Toggle(isOn: $isToggled) {
-                                    Image(systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
+                                    Image(
+                                        systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
                                         .foregroundColor(Color("Color4"))
                                     
                                 }
@@ -289,6 +297,7 @@ struct AnalyticsNew : View {
                                 .buttonStyle(ColorfulButtonStyle())
                                 .padding(.trailing,0)
                             }
+                            
                         }
                                             
                   
@@ -382,9 +391,12 @@ struct AnalyticsNew : View {
             
                                         Circle()
                                             .trim(from: 0, to: (circle.currentData / circle.goal))
-                                            .stroke(LinearGradient(Color("Color4"), Color("Color1")),
-                                                    style: StrokeStyle(lineWidth: 10, lineCap: .round))
-                                            .frame(width: (UIScreen.main.bounds.width - 150) / 2, height: (UIScreen.main.bounds.width - 150) / 2)
+                                            .stroke(
+                                                LinearGradient(Color("Color4"), Color("Color1")),
+                                                style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                                            .frame(
+                                                width: (UIScreen.main.bounds.width - 150) / 2,
+                                                height: (UIScreen.main.bounds.width - 150) / 2)
                                             
                                         
                                         
@@ -500,7 +512,6 @@ struct AnalyticsNew : View {
      
                             //ZStack{
                             VStack(spacing: 20){
-            
                                 HStack{
                                     Text(swiftUIData.processedJson?.rates.count == 1 ? "" : Strings.average)
                                         .font(.body)
@@ -512,7 +523,6 @@ struct AnalyticsNew : View {
                 
                                     stat.image
                                         .font(Font.system(.title2))
-                                
                                 }
             
                                 Text(stat.currentData)
@@ -531,21 +541,15 @@ struct AnalyticsNew : View {
             
                             }
                             .padding()
-                            
                             //.background(Color(UIColor.label).opacity(0.06))
                             .cornerRadius(15)
-                            
                             .background(
                                 RoundedRectangle(cornerRadius: 15)
-                                    
-                                    .outerNeumorphism(Color.statsFillColor)
-                            )
-
+                                    .outerNeumorphism(Color.statsFillColor))
                         }
                     }
                     .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                     .padding(.bottom,30)
-                            
                             
                 } //ScrollView - End
 
@@ -577,31 +581,41 @@ struct AnalyticsNew : View {
     }
     
     func updateLabels () -> Bool {
-        titles = rawInsights == true ? ["Engagement","Reach","Impressions"] : ["Engagement","Engagement","Engagement"]
-        subtitles = rawInsights == true ? [" "," "," "] : ["Per Follower","By Reach", "By Impressions"]
+        let rawMetricsLabels = [
+            Strings.engagement,
+            Strings.reach,
+            Strings.impressions
+        ]
         
+        titles = rawInsights == true ? rawMetricsLabels : [
+            Strings.engagement,
+            Strings.engagement,
+            Strings.engagement]
         
-        infoTitles = rawInsights == true ? ["Engagement","Reach", "Impressions"] : ["Engagement Rate (ER)","Engagement Rate by Reach (ERR)", "Engagement Rate by Impressions (ER Impressions)"]
+        subtitles = rawInsights == true ? [" "," "," "] : [
+            Strings.ratioToFollower,
+            Strings.ratioByReach,
+            Strings.ratioByImpressions
+        ]
+        
+        infoTitles = rawInsights == true ? rawMetricsLabels : [
+            Strings.eR,
+            Strings.eRR,
+            Strings.eRI
+        ]
             
         infoMessages = rawInsights == true ?
-        ["\nEngagement is a metric used to determine the number of interactions. your content receives\n\nEngagement = Likes + Comments",
-         
-         "\nReach is the total number of people (single accounts) who saw your content.",
-         
-         "\nImpressions represents how many times your content appeared on a screen, no matter if it was clicked or not."] :
-            
-        ["\nER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, proportionally to your followers.",
-                
-        "\nERR = Likes and Comments / Reach * 100\n\nERR is more accurate than an Engagement Rate on a follower basis since not all them will see your posts, and some non-followers may see your posts through shares or hashtags.",
-                
-        "\nER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times."]
-        
-        
-        
+        [
+            "\n\(Strings.engagementDefinition)",
+            "\n\(Strings.reachDefinition)",
+            "\n\(Strings.impressionsDefinition)"
+        ] : [
+            "\n\(Strings.eRDefiniton)",
+            "\n\(Strings.eRRDefiniton)",
+            "\n\(Strings.eRIDefinition)"
+        ]
         return true
     }
-    
-  
 }
 
 
@@ -618,7 +632,10 @@ struct Post : Identifiable {
 
 struct RoundedShape : Shape {
     func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 5, height: 5))
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: [.topLeft,.topRight],
+            cornerRadii: CGSize(width: 5, height: 5))
         return Path(path.cgPath)
     }
 }
