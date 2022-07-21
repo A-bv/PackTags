@@ -38,9 +38,42 @@ struct SettingsOption {
 }
 
 class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
+    
     deinit {
         print("deinit")
+    }
+    
+    private enum Strings {
+        static let settingsTitle = "Settings"
+        static let settingsSectionTitleAccount = "Account"
+        static let settingsTitleInstagram = "Instagram"
+        static let settingsTitleFacebookLogin = "Facebook Login"
+        static let settingsSectionTitleHashtags = "Hastags"
+        static let settingsTitleQuantityPerPack = "Quantity Per Pack"
+        static let settingsTitleSaveAndShuffle = "Save & Shuffle"
+        static let settingsTitleKeepPackOrder = "Keep Packs Order"
+        static let settingsSectionTitleHelp = "Help"
+        static let settingsTitleOnBoard = "On Board"
+        static let settingsTitleTricksAndTips = "Tricks & Tips"
+        static let settingsTitleInstaSetup = "Instagram Setup"
+        static let settingsSectionTitleAboutUs = "About us"
+        static let settingsSectionTitleOurInstagram = "Our Instagram"
+        static let settingsTitleShare = "Share"
+        static let settingsTitleRateAndReview = "Rate & Review"
+        static let settingsTitleContactUs = "Contact Us"
+        static let settingsSectionTitleLegal = "Legal"
+        static let settingsTitlePrivacy = "Privacy"
+        static let settingsTitleTermsAndConditions = "Terms & Conditions"
+        static let settingsTitleDisclaimer = "Disclaimer"
+    }
+    
+    private enum Links {
+        static let settingsInstagramAppUrl = "instagram://user?username=packtags.app"
+        static let settingsInstagramWebUrl = "https://instagram.com/packtags.app"
+        static let settingsPrivacyPolicyUrl = "https://sites.google.com/view/packtags-privacy-policy/accueil"
+        static let settingsTermsAndConditionsUrl = "https://sites.google.com/view/packtagstc/accueil"
+        static let settingsDisclaimerUrl = "https://sites.google.com/view/packtagsdisclaimer/accueil"
+        static let settingsTricksAndTipsUrl = "https://sites.google.com/view/packtags-tricks-tips/accueil"
     }
     
     private let tableView: UITableView = {
@@ -53,14 +86,14 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }()
     
     var models = [Section]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.putShadow(false)
-       
+        
         configure()
         
-        title = "Settings"
+        title = Strings.settingsTitle
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -69,159 +102,185 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func configure () {
-        
         let icon = UIImage(systemName: "gearshape")!
-        
         self.tableView.backgroundColor = bkgdColor
-      
         
-        models.append(Section(title: "Account", options: [
-            
-            .staticCell(model:
-            SettingsOption(title: "Instagram", icon: icon, iconBackgroundColor: .systemRed) { [weak self] in
-                
-                self?.setInstaUser ()
-                
-            }),
-            
-            .staticCell(model:
-            SettingsOption(title: "Facebook Login", icon: icon, iconBackgroundColor: .systemOrange) { [weak vc = self] in
-                
-                let vwc = FBLoginVC()
-                vwc.modalPresentationStyle = .overFullScreen
-                vwc.modalTransitionStyle = .crossDissolve
-                vc?.present(vwc, animated: true, completion: nil)
-                
-            })
-        ]))
+        models.append(
+            Section(
+                title: Strings.settingsSectionTitleAccount,
+                options: [
+                    .staticCell(
+                        model:
+                            SettingsOption(
+                                title: Strings.settingsTitleInstagram,
+                                icon: icon,
+                                iconBackgroundColor: .systemRed
+                            ) { [weak self] in
+                                self?.setInstaUserAlert ()
+                            }),
+                    
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitleFacebookLogin,
+                            icon: icon,
+                            iconBackgroundColor: .systemOrange
+                        ) { [weak self] in
+                            let vwc = FBLoginVC()
+                            self?.showPage(vc: vwc)
+                        })]))
         
-        models.append(Section(title: "Hastags", options: [
-            
-            .staticCell(model:
-            SettingsOption(title: "Quantity Per Pack", icon: icon, iconBackgroundColor: .systemPink) { [weak vc = self] in
+        models.append(
+            Section(
+                title: Strings.settingsSectionTitleHashtags,
+                options: [
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitleQuantityPerPack,
+                            icon: icon,
+                            iconBackgroundColor: .systemPink
+                        ) { [weak self] in
+                            let vwc = QuantityPickerVC()
+                            self?.showPage(vc: vwc)
+                        }),
+                    .switchCell(
+                        model: SettingsSwitchOption(
+                            title: Strings.settingsTitleSaveAndShuffle,
+                            icon: icon,
+                            iconBackgroundColor: .systemYellow,
+                            handler: {}, isOn: false)),
+                    .switchCell(
+                        model: SettingsSwitchOption(
+                            title: Strings.settingsTitleKeepPackOrder,
+                            icon: icon,
+                            iconBackgroundColor: .systemRed,
+                            handler: {}, isOn: false))]))
         
-                let vwc = QuantityPickerVC()
-                vwc.modalPresentationStyle = .overFullScreen
-                vwc.modalTransitionStyle = .crossDissolve
-                vc?.present(vwc, animated: true, completion: nil)
-                
-                
-            }),
-            
-            .switchCell(model:
-                            SettingsSwitchOption(title: "Save & Shuffle", icon: icon, iconBackgroundColor: .systemYellow, handler: {
-            
-                }, isOn: false)),
-            
-            .switchCell(model:
-                            SettingsSwitchOption(title: "Keep Packs Order", icon: icon, iconBackgroundColor: .systemRed, handler: {
-            
-                }, isOn: false)),
-            
-        ]))
+        models.append(
+            Section(
+                title: Strings.settingsSectionTitleHelp,
+                options: [
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitleOnBoard,
+                            icon: icon,
+                            iconBackgroundColor: .systemTeal
+                        ) {[weak self] in
+                            UserDefaults.standard.setValue(false, forKey: "isNewUser")
+                            self?.showOnboardingScreen()
+                        }),
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitleTricksAndTips,
+                            icon: icon,
+                            iconBackgroundColor: .systemBlue
+                        ) { [weak self] in
+                            guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
+                            let vc = SFSafariViewController(url: url)
+                            self?.showPage(vc: vc)
+                        }),
+                    .staticCell(
+                        model: SettingsOption(
+                            title: "Instagram Setup",
+                            icon: icon,
+                            iconBackgroundColor: .systemPurple
+                        ) {[weak self] in
+                            let vc = IgApiSetupVC()
+                            self?.showPage(vc: vc)
+                        })]))
         
-        models.append(Section(title: "Help", options: [
-            
-            .staticCell(model:
-            SettingsOption(title: "On Board", icon: icon, iconBackgroundColor: .systemTeal) {[weak self] in
-                
-                UserDefaults.standard.setValue(false, forKey: "isNewUser")
-                self?.showOnboardingScreen()
-            }),
-            
-            .staticCell(model:
-            SettingsOption(title: "Tricks & Tips", icon: icon, iconBackgroundColor: .systemBlue) { [weak self] in
-                self?.showTricksPage()
-            }),
-            
-            .staticCell(model:
-            SettingsOption(title: "Instagram Setup", icon: icon, iconBackgroundColor: .systemPurple) {[weak vc = self] in
-                
-                let vwc = IgApiSetupVC()
-                vwc.modalPresentationStyle = .overFullScreen
-                vwc.modalTransitionStyle = .crossDissolve
-                vc?.present(vwc, animated: true, completion: nil)
-                
-            })
-            
-        ]))
+        models.append(
+            Section(
+                title: Strings.settingsSectionTitleAboutUs,
+                options: [
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsSectionTitleOurInstagram,
+                            icon: icon,
+                            iconBackgroundColor: .systemPink
+                        ) { [weak self] in
+                            self?.openAppURL(
+                                appURL: Links.settingsInstagramAppUrl,
+                                webURL: Links.settingsInstagramWebUrl,
+                                completion: {_ in})
+                        }),
+                    
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitleShare,
+                            icon: icon,
+                            iconBackgroundColor: .systemGreen
+                        ) { [weak self] in
+                            self?.shareApp()
+                        }),
+                    
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitleRateAndReview,
+                            icon: icon,
+                            iconBackgroundColor: .systemYellow
+                        ) { [weak self] in
+                            self?.showReviewPopUp ()
+                            //self?.writeReview()
+                        }),
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitleContactUs,
+                            icon: icon,
+                            iconBackgroundColor: .systemOrange
+                        ) {[weak self] in
+                            self?.sendEmail()
+                        })]))
         
-        models.append(Section(title: "About us", options: [
-            
-            .staticCell(model:
-            SettingsOption(title: "Our Instagram", icon: icon, iconBackgroundColor: .systemPink) {
-                [weak self] in
-                self?.openAppURL(appURL: "instagram://user?username=packtags.app", webURL: "https://instagram.com/packtags.app", completion: {_ in})
-            }),
-            
-            .staticCell(model:
-            SettingsOption(title: "Share", icon: icon, iconBackgroundColor: .systemGreen) { [weak self] in
-                
-                self?.shareApp()
-                
-            }),
-            
-            .staticCell(model:
-             SettingsOption(title: "Rate & Review", icon: icon, iconBackgroundColor: .systemYellow) { [weak self] in
-    
-                    self?.showReviewPopUp ()
-                    //self?.writeReview()
-                 
-            }),
-            
-            
-            .staticCell(model:
-            SettingsOption(title: "Contact Us", icon: icon, iconBackgroundColor: .systemOrange) {[weak self] in
-                self?.sendEmail()
-            })
-        ]))
-        
-        models.append(Section(title: "Legal", options: [
-            .staticCell(model:
-                            SettingsOption(title: "Privacy", icon: icon, iconBackgroundColor: .systemPurple) { [weak self] in
-                                
-                if let url = URL(string: "https://sites.google.com/view/packtags-privacy-policy/accueil") {
-                                    
-                    let vc = SFSafariViewController(url: url)
-                    vc.modalTransitionStyle = .crossDissolve
-                    vc.modalPresentationStyle = .overFullScreen
-                    self?.present(vc, animated: true)
-                                    
-                }
-            }),
-            
-            .staticCell(model:
-                            SettingsOption(title: "Terms & Conditions", icon: icon, iconBackgroundColor: .systemYellow) { [weak self] in
-                                
-                if let url = URL(string: "https://sites.google.com/view/packtagstc/accueil") {
-                                                    
-                let vc = SFSafariViewController(url: url)
-                    vc.modalTransitionStyle = .crossDissolve
-                    vc.modalPresentationStyle = .overFullScreen
-                    self?.present(vc, animated: true)
-                                                    
-                }
-            }),
-            
-            .staticCell(model:
-                            SettingsOption(title: "Disclaimer", icon: icon, iconBackgroundColor: .systemRed) { [weak self] in
-                                
-                if let url = URL(string: "https://sites.google.com/view/packtagsdisclaimer/accueil") {
-                                                                    
-                    let vc = SFSafariViewController(url: url)
-                    vc.modalTransitionStyle = .crossDissolve
-                    vc.modalPresentationStyle = .overFullScreen
-                    self?.present(vc, animated: true)
-    
-                }
-                
-            })
-        ]))
+        models.append(
+            Section(
+                title: Strings.settingsSectionTitleLegal,
+                options: [
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitlePrivacy,
+                            icon: icon,
+                            iconBackgroundColor: .systemPurple
+                        ) { [weak self] in
+                            guard let url = URL(string: Links.settingsPrivacyPolicyUrl) else { return }
+                            let vc = SFSafariViewController(url: url)
+                            self?.showPage(vc: vc)
+                        }),
+                    
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitleTermsAndConditions,
+                            icon: icon,
+                            iconBackgroundColor: .systemYellow
+                        ) { [weak self] in
+                            guard let url = URL(string: Links.settingsTermsAndConditionsUrl) else { return }
+                            let vc = SFSafariViewController(url: url)
+                            self?.showPage(vc: vc)
+                        }),
+                    
+                    .staticCell(
+                        model: SettingsOption(
+                            title: Strings.settingsTitleDisclaimer,
+                            icon: icon,
+                            iconBackgroundColor: .systemRed
+                        ) { [weak self] in
+                            guard let url = URL(string: Links.settingsDisclaimerUrl) else { return }
+                            let vc = SFSafariViewController(url: url)
+                            self?.showPage(vc: vc)
+                        })
+                ]))
         
     }
-    
-    //MARK: -
-    
+}
+
+extension UIViewController {
+    func showPage (vc: UIViewController) {
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true)
+    }
+}
+
+extension SettingsVC {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let section = models[section]
         return section.title
@@ -236,27 +295,20 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let model = models[indexPath.section].options[indexPath.row]
-        
         switch model.self{//mod
-        
         case .staticCell(let model):
-            
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SettingsCell.identifier,
                 for: indexPath
             ) as? SettingsCell else {
                 return UITableViewCell()
             }
-            
             cell.configure(with: model)
-            
             cell.backgroundColor = UIColor.systemBackground
-            
             return cell
             
-        //mod --
+            //mod --
         case .switchCell(let model):
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SettingsCell2.identifier,
@@ -270,9 +322,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = UIColor.systemBackground
             
             return cell
-        // --
-        
-        
+            // --
         }
     }
     
@@ -287,18 +337,5 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             model.handler()
         }
         //--
-    }
-}
-
-extension UIViewController {
-    func showTricksPage () {
-        if let url = URL(string: "https://sites.google.com/view/packtags-tricks-tips/accueil") {
-            
-            let vc = SFSafariViewController(url: url)
-            vc.modalPresentationStyle = .overFullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true)
-            
-         }
     }
 }

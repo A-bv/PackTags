@@ -27,7 +27,13 @@ extension UIViewController: TapTextViewDelegate {
     }
     
     func tapTextViewShowInfoAlert(_ title: String, _ message: String) {
-        self.simpleAlert(title: title, message: message, btnText: "OK", btnText2: nil)
+        let action = UIAlertAction(
+            title: "OK",
+            style: .default)
+        self.simpleAlert(
+            title: title,
+            message: message,
+            btnAction1: action)
     }
 }
 

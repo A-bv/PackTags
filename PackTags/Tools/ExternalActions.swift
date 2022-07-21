@@ -39,7 +39,7 @@ extension UIViewController:  MFMailComposeViewControllerDelegate {
 
             present(mail, animated: true)
         } else {
-            // show failure alert
+            print("No Email associated with this device")
         }
     }
 

@@ -26,7 +26,11 @@ class SlideUpMenu: NSObject {
     init(controller: UIViewController?) {
         super.init()
         presenter = controller
-        MenuButton = UIBarButtonItem(image: UIImage(named: "ellipsis.circle"), style: .plain, target: self, action: #selector(onClickMenu))
+        MenuButton = UIBarButtonItem(
+            image: UIImage(named: "ellipsis.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(onClickMenu))
     }
     
     @objc func onClickMenu() {

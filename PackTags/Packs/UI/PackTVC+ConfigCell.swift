@@ -39,7 +39,9 @@ extension PackTableVC {
         // -- SUB Button --
         cell.subButtonTapCallback = {[weak self] in
             let message = pack == "" ? Strings.tapPencil : pack
-            self?.subBtnAlert(title: "", message: message)
+            self?.subBtnAlert(
+                title: "",
+                message: message)
         }
         
         if indexPath.row == 0{

@@ -7,72 +7,86 @@
 //
 
 import UIKit
+import SafariServices
 
 // MARK: - Alerts
 class Alerts: NSObject {
+    private enum Links {
+        static let settingsTricksAndTipsUrl = "https://sites.google.com/view/packtags-tricks-tips/accueil"
+    }
     
     class func alertTitle(
         targetVC: UIViewController,
         title: String,
         message: String,
         placeholder: String,
-        completion: @escaping (String) -> Void){
-    
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-       
+        completion: @escaping (String) -> Void
+    ) {
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+        
         // add the buttons/actions to the view controller
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let saveAction = UIAlertAction(title: "Done", style: .default) { _ in
+        let cancelAction = UIAlertAction(
+            title: "Cancel",
+            style: .cancel,
+            handler: nil)
+        
+        let saveAction = UIAlertAction(
+            title: "Done",
+            style: .default
+        ) { _ in
             // this code runs when the user hits the "Done" button
             let inputName = alertController.textFields![0].text
             completion(inputName ?? "was nil")
         }
-       
+        
         saveAction.isEnabled = false
-
+        
         alertController.addTextField { (textField) in
-            // configure the properties of the text field
             textField.placeholder = placeholder
-            //textField.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
-           
-            // Enables button if textfield is not empty
-            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
-            {_ in
-                let text = textField.text
-                if placeholder.contains("Username") == true && title == "Instagram" {
-                    saveAction.isEnabled =  text?.isValidName ?? false //Valid user
-                } else {
-                    let textCount = text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
-                    let textIsNotEmpty = textCount > 0
-                    saveAction.isEnabled = textIsNotEmpty
-                }
-                
-            })
             
+            // Enables button if textfield is not empty
+            NotificationCenter.default.addObserver(
+                forName: UITextField.textDidChangeNotification,
+                object: textField,
+                queue: OperationQueue.main,
+                using: { _ in
+                    let text = textField.text
+                    if placeholder.contains("Username") == true && title == "Instagram" {
+                        saveAction.isEnabled =  text?.isValidName ?? false //Valid user
+                    } else {
+                        let textCount = text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                        let textIsNotEmpty = textCount > 0
+                        saveAction.isEnabled = textIsNotEmpty
+                    }
+                })
         }
-       
+        
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
-    
+        
         //present controller
         targetVC.present(alertController, animated: true, completion: nil)
     }
-}
-
-extension Alerts {
+    
     class func simpleShortAlert(
         title: String,
         message: String,
         vc: UIViewController?,
         okDismissVc: Bool)
     {
-    
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    
-        alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: {_ in
-            if okDismissVc == true {
-                vc?.dismiss(animated: true, completion: nil)
-            } else {}
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+        
+        alertController.addAction(
+            UIAlertAction(
+                title: "Ok",
+                style: .cancel,
+                handler: { _ in if okDismissVc {vc?.dismiss(animated: true, completion: nil) }
         }))
         
         if vc == nil {
@@ -85,15 +99,12 @@ extension Alerts {
             print("Short Alert")
         }
     }
-}
 
-extension Alerts {
     class func setupTroubleShootingAlert(arr:[String?], presenterVc: UIViewController?) {
         var m = String()
-        
         if arr == [] || arr.count >= 1 {
             m = """
-
+                
                 Login again and edit your settings:
                 
                 • A Creator/Business Instagram account is needed.
@@ -105,21 +116,51 @@ extension Alerts {
                 
                 """
         }
-
-        simpleShortAlert(title: "Edit Your Setup", message: m, vc: presenterVc, okDismissVc: false)
-
+        
+        simpleShortAlert(
+            title: "Edit Your Setup",
+            message: m,
+            vc: presenterVc,
+            okDismissVc: false)
+        
         UserDefaults.standard.set(false, forKey: "isCorrectSetup")
-
+    }
+    
+    class func showFirstTimeTipsAlert(presentingVc: UIViewController) {
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        let rootVC = keyWindow?.rootViewController
+        
+        if !UserDefaults.standard.bool(forKey: "showTipsAlertShown") {
+            UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
+            
+            let numberOfTimesLaunched: Int = UserDefaults.standard.integer(forKey: StoreKitHelper.numberOfTimesLaunchedKey)
+            if numberOfTimesLaunched == 1 {
+                let message = "\nDiscover PackTags and its purpose with \"Tricks & Tips\" in settings."
+                let rvc = keyWindow?.rootViewController
+                
+                guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
+                let vc = SFSafariViewController(url: url)
+                
+                let action1 = UIAlertAction(
+                    title: "View later",
+                    style: .default)
+                
+                let action2 = UIAlertAction(
+                    title: "Let's go!",
+                    style: .default,
+                    handler: { _ in rootVC?.present(vc, animated: true)}
+                )
+                
+                rvc?.simpleAlert(
+                    title: "Tricks & Tips",
+                    message: message,
+                    btnAction1: action1,
+                    btnAction2: action2)
+            }
+        }
     }
 }
 
-extension String {
-    var isValidName: Bool {
-       let RegEx = "^(?=.{1,30}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9._]+(?<![.])$" //"^\\w{7,18}$"
-       let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
-       return Test.evaluate(with: self)
-    }
-}
 
 // MARK: - More alerts
 extension UIViewController {
@@ -127,53 +168,58 @@ extension UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func subBtnAlert(title:String, message:String){
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    func subBtnAlert(
+        title: String,
+        message: String
+    ) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
         
         self.present(alert, animated: true) {
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertController))
-                alert.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+            let tapGesture = UITapGestureRecognizer(
+                target: self,
+                action: #selector(self.dismissAlertController))
+            alert.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
         }
     }
     
-    func simpleAlert (title:String,message:String,btnText:String,btnText2:String?)
-    {
+    func simpleAlert(
+        title: String,
+        message: String,
+        btnAction1: UIAlertAction? = nil,
+        btnAction2: UIAlertAction? = nil
+    ) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: btnText, style: UIAlertAction.Style.default, handler: nil))
-        
-        if btnText2 != nil {
-            let boldAction = UIAlertAction(title: btnText2, style: UIAlertAction.Style.default, handler: { _ in self.showTricksPage()
-            })
-            alert.addAction(boldAction)
-            alert.preferredAction = boldAction
+        if let btnAction1 = btnAction1 {
+            alert.addAction(btnAction1)
         }
-                
-        // show the alert
+        
+        if let btnAction2 = btnAction2 {
+            alert.addAction(btnAction2)
+            alert.preferredAction = btnAction2
+        }
+        
         self.present(alert, animated: true, completion: nil)
-            
     }
-}
-
-extension UIViewController {
-    func setInstaUser () {
+    
+    func setInstaUserAlert () {
         let username = UserDefaults.standard.string(forKey: "Instagram Username")  ?? ""
+        let message = username == "" ? "Username" : username
+        let placeholder = username == "" ? "Enter Username" : "Edit Username"
         
-        var message = String()
-        var placeholder = String()
-        
-        if username == "" {
-            message = "Username"
-            placeholder = "Enter Username"
-        } else {
-            message = username
-            placeholder = "Edit Username"
-        }
-
         //Shows alert pop up
-        Alerts.alertTitle(targetVC: self, title: "Instagram" , message: message, placeholder: placeholder) {
+        Alerts.alertTitle(
+            targetVC: self,
+            title: "Instagram" ,
+            message: message,
+            placeholder: placeholder
+        ) {
             (inputName) in
             
             let defaults = UserDefaults.standard
@@ -186,54 +232,33 @@ extension UIViewController {
     }
 }
 
-extension UIViewController {
-    //Shown only once
-    func showTipsAlert() {
-        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        if !UserDefaults.standard.bool(forKey: "showTipsAlertShown") {
-            UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
-
-            let numberOfTimesLaunched: Int = UserDefaults.standard.integer(forKey: StoreKitHelper.numberOfTimesLaunchedKey)
-            if numberOfTimesLaunched == 1 {
-                let message = "\nDiscover PackTags and its purpose with \"Tricks & Tips\" in settings."
-                let rvc = keyWindow?.rootViewController
-                rvc?.simpleAlert(
-                    title: "Tricks & Tips",
-                    message: message,
-                    btnText: "View later",
-                    btnText2: "Let's go!")
-            }
-        }
-    }
-}
-
 // MARK: - Confirm row deletion
 extension ThemeTableViewController {
     func presentDeletionFailsafeAlert(indexPath: IndexPath) {
-            let alert = UIAlertController(
-                title: nil,
-                message: "Delete this theme?\n\nThis action is unreversible",
-                preferredStyle: .alert)
-
-            let yesAction = UIAlertAction(
-                title: "Yes",
-                style: .default
-            ) { [weak self] _ in
-                //Delete row code
-                guard let themeToDelete = self?.themes[indexPath.row]
-                else { return }
-                CoreDataHelper.delete(theme: themeToDelete)
-                self?.themes = CoreDataHelper.retrieveThemes()
-                self?.tableView.deleteRows(at: [indexPath], with: .none)
-            }
-
-            alert.addAction(yesAction)
-
-            // cancel action
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-            present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(
+            title: nil,
+            message: "Delete this theme?\n\nThis action is unreversible",
+            preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(
+            title: "Yes",
+            style: .default
+        ) { [weak self] _ in
+            //Delete row code
+            guard let themeToDelete = self?.themes[indexPath.row]
+            else { return }
+            CoreDataHelper.delete(theme: themeToDelete)
+            self?.themes = CoreDataHelper.retrieveThemes()
+            self?.tableView.deleteRows(at: [indexPath], with: .none)
         }
+        
+        alert.addAction(yesAction)
+        
+        // cancel action
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension ThemeVC {
@@ -249,5 +274,13 @@ extension ThemeVC {
             vc?.themeTitle = inputName
             vc?.updateSaveButtonState()
         }
+    }
+}
+
+extension String {
+    var isValidName: Bool {
+        let RegEx = "^(?=.{1,30}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9._]+(?<![.])$" //"^\\w{7,18}$"
+        let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
+        return Test.evaluate(with: self)
     }
 }

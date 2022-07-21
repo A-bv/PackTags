@@ -15,18 +15,27 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
 
     var scrollWidth: CGFloat! = 0.0
     var scrollHeight: CGFloat! = 0.0
+    
+    private enum Strings {
+        static let onBoardingPageTitle1  = "WELCOME TO PACKTAGS"
+        static let onBoardingPageTitle2  = "UNIQUE PACKS"
+        static let onBoardingPageTitle3  = "ANALYTICS"
+        static let onBoardingPageSubtitle1  = "The smart notebook for your hashtags"
+        static let onBoardingPageSubtitle2  = "Automatically removes duplicates or invalid hashtags"
+        static let onBoardingPageSubtitle3  = "Tracks your results for the best strategy"
+    }
 
     //data for the slides
     var titles = [
-        "WELCOME TO PACKTAGS",
-        "UNIQUE PACKS",
-        "ANALYTICS"
+        Strings.onBoardingPageTitle1,
+        Strings.onBoardingPageTitle2,
+        Strings.onBoardingPageTitle3
     ]
     
     var descs = [
-        "The smart notebook for your hashtags",
-        "Automatically removes duplicates or invalid hashtags",
-        "Tracks your results for the best strategy"
+        Strings.onBoardingPageSubtitle1,
+        Strings.onBoardingPageSubtitle2,
+        Strings.onBoardingPageSubtitle3
     ]
     
     var imgs = [
@@ -155,7 +164,7 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
     @objc func didTap(_ sender: UIButton) {
         Core.shared.setIsNotNewUser()
         self.dismiss(animated: true)
-        showTipsAlert()
+        Alerts.showFirstTimeTipsAlert(presentingVc: self)
     }
 }
 

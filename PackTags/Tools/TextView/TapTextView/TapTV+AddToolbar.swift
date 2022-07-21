@@ -10,6 +10,24 @@ import UIKit
 
 //toolbar functions
 extension TapTextView {
+    private enum Strings {
+        static let tapTextViewToolBarDescriptionMessage = """
+            
+            • Copy •
+            • Cut •
+            • Group On Top •
+            • Clear •
+            • Delete •
+            
+            To undo changes, exit the hashtag
+            edition mode with cancel.
+            
+            You may want to do a save before using this feature.
+            
+            """
+        static let tapTextViewToolBarDescriptionTitle = "Actions on selected hashtags"
+    }
+    
     @objc func doneTagSelection() {
         cleanTagSelection()
         tap.isEnabled = false
@@ -53,9 +71,8 @@ extension TapTextView {
                 }
        
                 self.scrollRangeToVisible(NSRange(location:0, length:0))
-    
-                print("number of views after tap:", self.numberOfViewsOnTextView(superView: self))
-                print("count:", viewTagCount)
+                // print("number of views after tap:", self.numberOfViewsOnTextView(superView: self))
+                // print("count:", viewTagCount)
             }
         }
     }
@@ -74,21 +91,8 @@ extension TapTextView {
     }
     
     @objc func toolbarInfo(){
-        let message = """
-            
-            • Copy •
-            • Cut •
-            • Group On Top •
-            • Clear •
-            • Delete •
-            
-            To undo changes, exit the hashtag
-            edition mode with cancel.
-            
-            You may want to do a save before using this feature.
-            
-            """
-        let title = "Actions on selected hashtags"
+        let message = Strings.tapTextViewToolBarDescriptionMessage
+        let title = Strings.tapTextViewToolBarDescriptionTitle
         tagDelegate?.tapTextViewShowInfoAlert(title, message)
     }
 }

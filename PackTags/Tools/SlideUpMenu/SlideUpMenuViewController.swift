@@ -9,9 +9,24 @@
 import UIKit
 
 class SlideUpMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    private enum Strings {
+        static let themeMenuEditName = "Edit name"
+        static let themeMenuEditPicture = "Edit name"
+        static let themeMenuSearchHashtags = "Search hashtags"
+        static let themeMenuShuffleHashtags = "Shuffle hashtags"
+    }
     
-    var buttonLabelArray = ["Edit name","Edit picture","Search hashtags","Shuffle hashtags"]
-    var buttonIconsArray = ["titleTag","imageLib","mglassIcon","shuffle"]
+    var buttonLabelArray = [
+        Strings.themeMenuEditName,
+        Strings.themeMenuEditName,
+        Strings.themeMenuSearchHashtags,
+        Strings.themeMenuShuffleHashtags]
+    
+    var buttonIconsArray = [
+        "titleTag",
+        "imageLib",
+        "mglassIcon",
+        "shuffle"]
     
     var tableView: UITableView {
         let tableView = UITableView()

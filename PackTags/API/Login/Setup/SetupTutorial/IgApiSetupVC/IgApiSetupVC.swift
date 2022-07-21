@@ -59,7 +59,7 @@ class IgApiSetupVC: UIViewController {
         super.viewDidLoad()
         
         self.view.applyBlur()
-        self.modalUI(arrowButton: false)
+        self.placeTopRightButton(arrowButton: false)
         self.buildUI()
     }
 }

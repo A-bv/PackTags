@@ -5,40 +5,57 @@
 //  Created by Alexandre Bevilacqua on 26/08/2021.
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
-
 import UIKit
 
-
-
 extension UIViewController {
+    private enum Strings {
+        static let rateAndReviewYourFeedback = "Your feedback"
+        static let rateAndReviewEnjoyingQuestion = "Are you enjoying PackTags?"
+        static let rateAndReviewDismiss = "Dismiss"
+        static let rateAndReviewRateUsOnAppStore = "Yes! Rate us on the App Store."
+        static let rateAndReviewTellUsWhyQuestion = "No! Tell us why."
+    }
+    
+    private enum Links {
+        static let packTagsAppStoreUrl = "https://apps.apple.com/app/id1579377025"
+    }
     
     func showReviewPopUp () {
+        let alert = UIAlertController(
+            title: Strings.rateAndReviewYourFeedback,
+            message: Strings.rateAndReviewEnjoyingQuestion,
+            preferredStyle: .alert)
         
-        let alert = UIAlertController(title: "Your feedback", message: "Are you enjoying PackTags?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Yes! Rate us on the App Store.", style: .default, handler: {  [weak self] _ in
-            
+        alert.addAction(
+            UIAlertAction(
+                title: Strings.rateAndReviewDismiss,
+                style: .cancel,
+                handler: nil))
+        
+        alert.addAction(
+            UIAlertAction(
+                title: Strings.rateAndReviewRateUsOnAppStore,
+                style: .default, handler: {  [weak self] _ in
             self?.writeReview ()
-            
         }))
-        alert.addAction(UIAlertAction(title: "No! Tell us why.", style: .default, handler: {  [weak self] _ in
-            self?.sendEmail()
-            
-        }))
-        present(alert, animated: true)
         
+        alert.addAction(
+            UIAlertAction(
+                title: Strings.rateAndReviewTellUsWhyQuestion,
+                style: .default, handler: {  [weak self] _ in
+            self?.sendEmail()
+        }))
+        
+        present(alert, animated: true)
     }
     
     func shareApp () {
-        
-        guard let productURL = URL(string:"https://apps.apple.com/app/id1579377025")
-        else {
-            return
-        }
+        guard let productURL = URL(
+            string: Links.packTagsAppStoreUrl) else { return }
         
         let activityViewController = UIActivityViewController(
-          activityItems: [productURL],
-          applicationActivities: nil)
+            activityItems: [productURL],
+            applicationActivities: nil)
         
         //For iPad, popover
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -52,27 +69,19 @@ extension UIViewController {
         
     }
     
-    
     func writeReview () {
-        
-        guard let productURL = URL(string:"https://apps.apple.com/app/id1579377025")
-        else {
-            return
-        }
+        guard let productURL = URL(
+            string: Links.packTagsAppStoreUrl) else { return }
         var components = URLComponents(url: productURL, resolvingAgainstBaseURL: false)
-
         
         components?.queryItems = [
           URLQueryItem(name: "action", value: "write-review")
         ]
 
-        
         guard let writeReviewURL = components?.url else {
           return
         }
-
         
         UIApplication.shared.open(writeReviewURL)
     }
-    
 }

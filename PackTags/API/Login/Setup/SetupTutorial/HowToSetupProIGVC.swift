@@ -85,7 +85,7 @@ class HowToSetupProIGVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.modalUI(arrowButton: false)
+        self.placeTopRightButton(arrowButton: false)
         self.view.backgroundColor = bkgdColor
         self.placeHelpButton (isHelpSetupIgPro: false)
         

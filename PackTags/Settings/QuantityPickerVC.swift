@@ -20,7 +20,7 @@ class QuantityPickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
         super.viewDidLoad()
         
         self.view.applyBlur()
-        self.modalUI (arrowButton: false)
+        self.placeTopRightButton (arrowButton: false)
         
         let UIPicker: UIPickerView = UIPickerView()
         UIPicker.delegate = self as UIPickerViewDelegate
