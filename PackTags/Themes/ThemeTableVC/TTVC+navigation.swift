@@ -69,5 +69,3 @@ extension ThemeTableViewController {
         return true
     }
 }
-
-

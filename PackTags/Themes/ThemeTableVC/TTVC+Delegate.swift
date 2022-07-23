@@ -8,7 +8,6 @@
 
 import UIKit
 
-// MARK: - Table view delegate/ dataSource
 extension ThemeTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.isUserInteractionEnabled = false //(fix p1)
@@ -46,22 +45,8 @@ extension ThemeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete
-        {
-            presentDeletionSafeAlert(indexpath: indexPath)
-        } else if editingStyle == .insert {}
-    }
-}
-
-// MARK: - Reorder theme
-extension ThemeTableViewController {
-    override func setEditing (_ editing:Bool, animated:Bool) {
-        super.setEditing(editing,animated:animated)
-        if self.isEditing {
-            navigationItem.rightBarButtonItems = [editButtonItem, addThemeButton]
-        } else {
-            navigationItem.rightBarButtonItems = [addThemeButton]
-        }
+        if editingStyle == .delete { presentDeletionSafeAlert(indexpath: indexPath) }
+        else if editingStyle == .insert {}
     }
     
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool { return false }
@@ -70,47 +55,11 @@ extension ThemeTableViewController {
         return self.tableView.isEditing == true ? .none : .delete }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedObject = self.themes[sourceIndexPath.row]
-        themes.remove(at: sourceIndexPath.row)
-        themes.insert(movedObject, at: destinationIndexPath.row)
-        
-        for (index, element) in themes.enumerated() {
-            element.orderIndex = Int32(index)
-        }
-        CoreDataHelper.saveTheme()
-    }
-}
-
-// MARK: - Delete theme + alert
-extension ThemeTableViewController {
-    private enum Strings {
-        static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is unreversible"
-        static let yes = "Yes"
-        static let cancel = "Cancel"
+        reorderRow(initial: sourceIndexPath, final: destinationIndexPath)
     }
     
-    private func presentDeletionSafeAlert(indexpath: IndexPath) {
-        let deleteAction = UIAlertAction(
-            title: Strings.yes,
-            style: .default
-        ) { [weak self] _ in self?.deleteRow(indexPath: indexpath) }
-
-        let cancelAction = UIAlertAction(
-            title: Strings.cancel,
-            style: .cancel,
-            handler: nil)
-        
-        self.simpleAlert(
-            title: "",
-            message: Strings.deleteConfirmationMessage,
-            btnAction1: deleteAction,
-            btnAction2: cancelAction)
-    }
-
-    private func deleteRow(indexPath: IndexPath) {
-        let themeToDelete = self.themes[indexPath.row]
-        CoreDataHelper.delete(theme: themeToDelete)
-        themes = CoreDataHelper.retrieveThemes()
-        tableView.deleteRows(at: [indexPath], with: .none)
+    override func setEditing (_ editing:Bool, animated:Bool) {
+        super.setEditing(editing,animated:animated)
+        showEditButton()
     }
 }
