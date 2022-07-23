@@ -48,12 +48,12 @@ extension ThemeTableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete
         {
-            presentDeletionFailsafeAlert(indexPath: indexPath)
+            presentDeletionSafeAlert(indexpath: indexPath)
         } else if editingStyle == .insert {}
     }
 }
 
-// MARK: - Reorder cells
+// MARK: - Reorder theme
 extension ThemeTableViewController {
     override func setEditing (_ editing:Bool, animated:Bool) {
         super.setEditing(editing,animated:animated)
@@ -78,5 +78,39 @@ extension ThemeTableViewController {
             element.orderIndex = Int32(index)
         }
         CoreDataHelper.saveTheme()
+    }
+}
+
+// MARK: - Delete theme + alert
+extension ThemeTableViewController {
+    private enum Strings {
+        static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is unreversible"
+        static let yes = "Yes"
+        static let cancel = "Cancel"
+    }
+    
+    private func presentDeletionSafeAlert(indexpath: IndexPath) {
+        let deleteAction = UIAlertAction(
+            title: Strings.yes,
+            style: .default
+        ) { [weak self] _ in self?.deleteRow(indexPath: indexpath) }
+
+        let cancelAction = UIAlertAction(
+            title: Strings.cancel,
+            style: .cancel,
+            handler: nil)
+        
+        self.simpleAlert(
+            title: "",
+            message: Strings.deleteConfirmationMessage,
+            btnAction1: deleteAction,
+            btnAction2: cancelAction)
+    }
+
+    private func deleteRow(indexPath: IndexPath) {
+        let themeToDelete = self.themes[indexPath.row]
+        CoreDataHelper.delete(theme: themeToDelete)
+        themes = CoreDataHelper.retrieveThemes()
+        tableView.deleteRows(at: [indexPath], with: .none)
     }
 }

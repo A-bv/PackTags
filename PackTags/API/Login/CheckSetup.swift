@@ -6,7 +6,6 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-import UIKit
 import Foundation
 import FBSDKLoginKit
 
@@ -26,7 +25,7 @@ extension UIViewController {
         
         //Alert if already pressed fb login button and if wrong setup
         if b == false && UserDefaults.standard.object(forKey: "pressedFBLoginButton") != nil {
-            Alerts.setupTroubleShootingAlert(arr: [], presenterVc: self)
+            Alerts.setupTroubleShootingAlert(presenterVc: self)
         }
     }
     

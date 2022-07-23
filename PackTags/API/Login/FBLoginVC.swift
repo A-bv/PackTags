@@ -55,7 +55,7 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
             })
         } else {
             uD.set(false, forKey: "isCorrectSetup")
-            Alerts.setupTroubleShootingAlert(arr: [], presenterVc: self)
+            Alerts.setupTroubleShootingAlert(presenterVc: self)
         }
     }
     
@@ -102,7 +102,7 @@ extension FBLoginVC {
             if pages == [] {
                 // Exit if no IGPro or wrong linked FB page(s)
                 print("No page")
-                Alerts.setupTroubleShootingAlert(arr: [], presenterVc: self)
+                Alerts.setupTroubleShootingAlert(presenterVc: self)
                 return
             }
             // ----- CAUTION -----
@@ -127,7 +127,7 @@ extension FBLoginVC {
                guard let igBIds = (response2.value(forKeyPath: "data.instagram_business_account.id") as? [String])
                else {
                    print("No business account linked or wrong pages selected")
-                   Alerts.setupTroubleShootingAlert(arr: [], presenterVc: self)
+                   Alerts.setupTroubleShootingAlert(presenterVc: self)
                    return
                }
                if igBIds.count >= 1 {

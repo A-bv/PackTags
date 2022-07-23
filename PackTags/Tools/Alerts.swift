@@ -32,6 +32,9 @@ class Alerts: NSObject {
                 
                 """
         static let discoverPacktagsWithTricksAndTips = "\nDiscover PackTags and its purpose with \"Tricks & Tips\" in settings."
+        static let viewLater = "View later"
+        static let letsGo = "Let's go!"
+        static let tricksAndTips = "Tricks & Tips"
     }
     
     class func alertTitle(
@@ -46,7 +49,6 @@ class Alerts: NSObject {
             message: message,
             preferredStyle: .alert)
         
-        // add the buttons/actions to the view controller
         let cancelAction = UIAlertAction(
             title: Strings.cancel,
             style: .cancel,
@@ -56,7 +58,6 @@ class Alerts: NSObject {
             title: Strings.done,
             style: .default
         ) { _ in
-            // this code runs when the user hits the "Done" button
             let inputName = alertController.textFields![0].text
             completion(inputName ?? "was nil")
         }
@@ -86,7 +87,6 @@ class Alerts: NSObject {
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         
-        //present controller
         targetVC.present(alertController, animated: true, completion: nil)
     }
     
@@ -105,7 +105,10 @@ class Alerts: NSObject {
             UIAlertAction(
                 title: "Ok",
                 style: .cancel,
-                handler: { _ in if okDismissVc {vc?.dismiss(animated: true, completion: nil) }
+                handler: { _ in
+                    if okDismissVc {
+                        vc?.dismiss(animated: true, completion: nil)
+                    }
         }))
         
         if vc == nil {
@@ -119,18 +122,12 @@ class Alerts: NSObject {
         }
     }
 
-    class func setupTroubleShootingAlert(arr:[String?], presenterVc: UIViewController?) {
-        var m = String()
-        if arr == [] || arr.count >= 1 {
-            m = Strings.troubleShootingAlertMessage
-        }
-        
+    class func setupTroubleShootingAlert(presenterVc: UIViewController?) {
         simpleShortAlert(
             title: Strings.editYourSetup,
-            message: m,
+            message: Strings.troubleShootingAlertMessage,
             vc: presenterVc,
             okDismissVc: false)
-        
         UserDefaults.standard.set(false, forKey: "isCorrectSetup")
     }
     
@@ -150,17 +147,17 @@ class Alerts: NSObject {
                 let vc = SFSafariViewController(url: url)
                 
                 let action1 = UIAlertAction(
-                    title: "View later",
+                    title: Strings.viewLater,
                     style: .default)
                 
                 let action2 = UIAlertAction(
-                    title: "Let's go!",
+                    title: Strings.letsGo,
                     style: .default,
                     handler: { _ in rootVC?.present(vc, animated: true)}
                 )
                 
                 rvc?.simpleAlert(
-                    title: "Tricks & Tips",
+                    title: Strings.tricksAndTips,
                     message: message,
                     btnAction1: action1,
                     btnAction2: action2)
@@ -173,9 +170,6 @@ class Alerts: NSObject {
 // MARK: - More alerts
 extension UIViewController {
     private enum Strings {
-        static let viewLater = "View later"
-        static let letsGo = "Let's go!"
-        static let tricksAndTips = "Tricks & Tips"
         static let username = "Username"
         static let enterUsername = "Enter Username"
         static let editUsername = "Edit Username"
@@ -220,8 +214,9 @@ extension UIViewController {
         
         if let btnAction2 = btnAction2 {
             alert.addAction(btnAction2)
-            alert.preferredAction = btnAction2
         }
+        
+        alert.preferredAction = btnAction2
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -247,45 +242,6 @@ extension UIViewController {
             //VARR
             ProcessJson.removeAllSavedVarData()
         }
-    }
-}
-
-// MARK: - Confirm row deletion
-extension ThemeTableViewController {
-    private enum Strings {
-        static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is unreversible"
-        static let yes = "Yes"
-        static let cancel = "Cancel"
-    }
-    
-    func presentDeletionFailsafeAlert(indexPath: IndexPath) {
-        let alert = UIAlertController(
-            title: nil,
-            message: Strings.deleteConfirmationMessage,
-            preferredStyle: .alert)
-        
-        let yesAction = UIAlertAction(
-            title: Strings.yes,
-            style: .default
-        ) { [weak self] _ in
-            //Delete row code
-            guard let themeToDelete = self?.themes[indexPath.row]
-            else { return }
-            CoreDataHelper.delete(theme: themeToDelete)
-            self?.themes = CoreDataHelper.retrieveThemes()
-            self?.tableView.deleteRows(at: [indexPath], with: .none)
-        }
-        
-        alert.addAction(yesAction)
-        
-        // cancel action
-        alert.addAction(
-            UIAlertAction(
-                title: Strings.cancel,
-                style: .cancel,
-                handler: nil))
-        
-        present(alert, animated: true, completion: nil)
     }
 }
 
