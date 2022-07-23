@@ -8,8 +8,14 @@
 
 import SwiftUI
 
+private enum Strings {
+    static let loading3Dots = "Loading..."
+    static let smartHashtags = "Smart Hashtags"
+    static let hashtagsPageSearch = "Hashtag page search"
+}
+
 struct SmartG_SwiftUI: View {
-    @State private var igHash: String =  "top travel hashtags"
+    // @State private var igHash: String =  "hashtag theme?"
     @State private var textstyle = UIFont.TextStyle.body
     @StateObject var viewModel = SmartGViewModel()
     
@@ -56,7 +62,9 @@ struct StoryCard: View{
             //URLImage(urlString: url)
             AsyncImage(
                 url: url,
-                placeholder: { Text("Loading ...") },
+                placeholder: {
+                    Text(Strings.loading3Dots)
+                },
                 image: { Image(uiImage: $0).resizable() }
             )
                     .aspectRatio(contentMode: .fill)
@@ -75,13 +83,12 @@ struct Header: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
-                
-                Text("Smart hashtags")
+                Text(Strings.smartHashtags)
                     .font(.largeTitle)
                     .foregroundColor(Color(UIColor.label))
                     .fontWeight(.bold)
             
-                Text("Hashtag page search")
+                Text(Strings.hashtagsPageSearch)
                     .font(.subheadline)
                     .foregroundColor(Color(UIColor.label))
 
@@ -89,7 +96,6 @@ struct Header: View {
             Spacer()
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
-                
             }) {
                 Image(systemName: "chevron.down.circle")
                     .font(Font.system(.title))
@@ -101,7 +107,6 @@ struct Header: View {
 }
 
 struct SmartG_SwiftUI_Previews: PreviewProvider {
-    
     static var previews: some View {
         SmartG_SwiftUI()
     }

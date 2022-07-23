@@ -37,8 +37,11 @@ extension IgApiSetupVC  {
     }
     
     @objc func continueFunc (_ sender: Any) {
-        if UserDefaults.standard.object(forKey: "continued_IgApiSetupVC") == nil {
-            UserDefaults.standard.set("true", forKey: "continued_IgApiSetupVC")
+        if UserDefaults.standard.object(
+            forKey: "continued_IgApiSetupVC") == nil {
+            UserDefaults.standard.set(
+                "true",
+                forKey: "continued_IgApiSetupVC")
         }
         
         self.dismiss(animated: true, completion: nil)

@@ -19,7 +19,6 @@
 		0213D9F3275D2F08002A54ED /* GJs+SmartIG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213D9F2275D2F08002A54ED /* GJs+SmartIG.swift */; };
 		0213D9F5275D2F8A002A54ED /* GJs+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213D9F4275D2F8A002A54ED /* GJs+Analytics.swift */; };
 		0216110E25D46C180098CE5E /* TVC+NewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216110D25D46C180098CE5E /* TVC+NewMenu.swift */; };
-		0216111B25D46EFA0098CE5E /* TVC+SlideUpMenu_objc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216111A25D46EFA0098CE5E /* TVC+SlideUpMenu_objc.swift */; };
 		0216112725D6BF050098CE5E /* TapTV+AddToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216112625D6BF050098CE5E /* TapTV+AddToolbar.swift */; };
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
 		021D76172759A00D00F54054 /* SmartGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartGView.swift */; };
@@ -75,10 +74,6 @@
 		02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */; };
 		029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnBoardingVC.swift */; };
-		02A4234D2842976A00A25067 /* SlideUpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4234C2842976A00A25067 /* SlideUpMenu.swift */; };
-		02A4234F2842978A00A25067 /* SlideUpMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A4234E2842978A00A25067 /* SlideUpMenuTableViewCell.swift */; };
-		02A423512842979300A25067 /* SlideUpMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423502842979300A25067 /* SlideUpMenuViewController.swift */; };
-		02A42353284297B400A25067 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A42352284297B400A25067 /* PresentationController.swift */; };
 		02A423552842C1D000A25067 /* TVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423542842C1D000A25067 /* TVC+Navigation.swift */; };
 		02A423642845564900A25067 /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423632845564900A25067 /* LongPressReorder.swift */; };
 		02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5EB6925C054440063A315 /* FrameTags.swift */; };
@@ -144,7 +139,6 @@
 		0213D9F2275D2F08002A54ED /* GJs+SmartIG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+SmartIG.swift"; sourceTree = "<group>"; };
 		0213D9F4275D2F8A002A54ED /* GJs+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+Analytics.swift"; sourceTree = "<group>"; };
 		0216110D25D46C180098CE5E /* TVC+NewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+NewMenu.swift"; sourceTree = "<group>"; };
-		0216111A25D46EFA0098CE5E /* TVC+SlideUpMenu_objc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+SlideUpMenu_objc.swift"; sourceTree = "<group>"; };
 		0216112625D6BF050098CE5E /* TapTV+AddToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapTV+AddToolbar.swift"; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		021D76162759A00D00F54054 /* SmartGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGView.swift; sourceTree = "<group>"; };
@@ -202,10 +196,6 @@
 		02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerVC.swift; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
-		02A4234C2842976A00A25067 /* SlideUpMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpMenu.swift; sourceTree = "<group>"; };
-		02A4234E2842978A00A25067 /* SlideUpMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpMenuTableViewCell.swift; sourceTree = "<group>"; };
-		02A423502842979300A25067 /* SlideUpMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpMenuViewController.swift; sourceTree = "<group>"; };
-		02A42352284297B400A25067 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		02A423542842C1D000A25067 /* TVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Navigation.swift"; sourceTree = "<group>"; };
 		02A423632845564900A25067 /* LongPressReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressReorder.swift; sourceTree = "<group>"; };
 		02A5EB6925C054440063A315 /* FrameTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameTags.swift; sourceTree = "<group>"; };
@@ -298,15 +288,6 @@
 				0273D1512655A9BB0043011C /* PrJs+Varr.swift */,
 			);
 			path = ProcessJson;
-			sourceTree = "<group>";
-		};
-		0216111125D46CAD0098CE5E /* TVC+Menu */ = {
-			isa = PBXGroup;
-			children = (
-				0216110D25D46C180098CE5E /* TVC+NewMenu.swift */,
-				0216111A25D46EFA0098CE5E /* TVC+SlideUpMenu_objc.swift */,
-			);
-			name = "TVC+Menu";
 			sourceTree = "<group>";
 		};
 		0216113D25D864860098CE5E /* CoreData */ = {
@@ -458,7 +439,6 @@
 			children = (
 				02F60AA926809FD5004022CA /* AppStyle */,
 				02FD6CB326D8178800AB16E4 /* Rating */,
-				02A4234B2842973B00A25067 /* SlideUpMenu */,
 				020584CF284D6F5A00020FB8 /* View */,
 				0281B9782879874900344D3E /* ViewController */,
 				02B05C1E27F90BA3000026B8 /* TextView */,
@@ -542,17 +522,6 @@
 				02BC8D582602B79900441349 /* SettingsVC.swift */,
 			);
 			path = SettingsVC;
-			sourceTree = "<group>";
-		};
-		02A4234B2842973B00A25067 /* SlideUpMenu */ = {
-			isa = PBXGroup;
-			children = (
-				02A4234E2842978A00A25067 /* SlideUpMenuTableViewCell.swift */,
-				02A4234C2842976A00A25067 /* SlideUpMenu.swift */,
-				02A423502842979300A25067 /* SlideUpMenuViewController.swift */,
-				02A42352284297B400A25067 /* PresentationController.swift */,
-			);
-			path = SlideUpMenu;
 			sourceTree = "<group>";
 		};
 		02A4235A2843FFF300A25067 /* OnBoarding */ = {
@@ -647,7 +616,7 @@
 				02CAC9B6259105B400BE5E57 /* TVC.swift */,
 				02A423542842C1D000A25067 /* TVC+Navigation.swift */,
 				02CAC9B42591054400BE5E57 /* TVC+ImgPicker.swift */,
-				0216111125D46CAD0098CE5E /* TVC+Menu */,
+				0216110D25D46C180098CE5E /* TVC+NewMenu.swift */,
 				02B02AC42594238100586352 /* TVC+Search.swift */,
 				02B05C222809CD76000026B8 /* SearcheableTextView.swift */,
 			);
@@ -892,7 +861,6 @@
 				02062155266550D70072C404 /* PrJs.swift in Sources */,
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
 				02D1A119255387590045E56F /* UniqueTags.swift in Sources */,
-				0216111B25D46EFA0098CE5E /* TVC+SlideUpMenu_objc.swift in Sources */,
 				02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackTVC.swift in Sources */,
 				0281B9832879CA7900344D3E /* Core.swift in Sources */,
@@ -930,12 +898,10 @@
 				02B104A9276A630E00C9EC6C /* Url_img_SUI.swift in Sources */,
 				021044F626446AEF00408CEB /* PrJs+Tools.swift in Sources */,
 				02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */,
-				02A42353284297B400A25067 /* PresentationController.swift in Sources */,
 				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
 				02CAC9B52591054400BE5E57 /* TVC+ImgPicker.swift in Sources */,
 				0231AB1826872C47007F4FC8 /* PrJs+Varr.swift in Sources */,
 				023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */,
-				02A4234D2842976A00A25067 /* SlideUpMenu.swift in Sources */,
 				020584D5284D715D00020FB8 /* BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* HowToSetupProIGVC.swift in Sources */,
 				0281B97E2879B14A00344D3E /* PackTVC+NaviLogic.swift in Sources */,
@@ -949,7 +915,6 @@
 				0281B9812879C5E600344D3E /* CellsAndThumbnailsDimentions.swift in Sources */,
 				02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */,
 				02491C692680883800F98E17 /* AppColors.swift in Sources */,
-				02A4234F2842978A00A25067 /* SlideUpMenuTableViewCell.swift in Sources */,
 				020621572666DBCC0072C404 /* AnModel.swift in Sources */,
 				0281B9882879D60700344D3E /* NavigationBarShadow.swift in Sources */,
 				02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */,
@@ -961,7 +926,6 @@
 				024347D827119E2100F86A64 /* TextRecognition.swift in Sources */,
 				02CAC9B32591047D00BE5E57 /* TextViewKbNoHide.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
-				02A423512842979300A25067 /* SlideUpMenuViewController.swift in Sources */,
 				0226F197259AB231006E086C /* TapTV+Selection.swift in Sources */,
 				0274DB3026848948005F9C9C /* GJs+Dir.swift in Sources */,
 				02FD6CB026D8006400AB16E4 /* RateAndReview.swift in Sources */,

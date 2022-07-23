@@ -47,14 +47,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     
     // Processing spinner
     let spinner = UIActivityIndicatorView()
-    
-    // SlideUpMenu variables (iOS < 14) 1/3
-    var buttonSelectorArray = [#selector(showAlert(sender:)),
-                               #selector(selectImageFromPhotoLibrary(sender:)),
-                               #selector(searchTags(sender:)),
-                               #selector(shuffleTags(sender:))]
-    var slideUpMenu: SlideUpMenu!
-    
+        
     var buttonMenuThemeOptions: UIBarButtonItem {
         return buttonMenu()
     }

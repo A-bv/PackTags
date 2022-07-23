@@ -10,9 +10,7 @@ import UIKit
 
 //MARK: - Save/read Json to document directory
 extension GetJson {
-    
     static var isOkToSaveJsonDataInDir = false
-    
     
     class func getJsonDataFromDir() -> Data? {
         let fm = FileManager.default
@@ -51,8 +49,6 @@ extension GetJson {
                 print("saveJsonDataToDir error:", error.localizedDescription)
             }
         }
-        
         print("Json saved in document directory")
     }
-    
 }

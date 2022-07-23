@@ -180,7 +180,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         }),
                     .staticCell(
                         model: SettingsOption(
-                            title: "Instagram Setup",
+                            title: Strings.settingsTitleInstaSetup,
                             icon: icon,
                             iconBackgroundColor: .systemPurple
                         ) {[weak self] in

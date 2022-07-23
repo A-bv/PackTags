@@ -22,6 +22,8 @@ struct AnalyticsNew : View {
     private enum Strings {
         static let average = "Average"
         static let lastPost = "Last post"
+        static let latest = "Latest"
+        //TODO: Find the right string
         // static let lastCountedPosts = ""
         static let noMedia = "No media have been posted yet\nas a Business/Creator account"
         static let dataUnavailable = "Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account"
@@ -331,15 +333,10 @@ struct AnalyticsNew : View {
                             
                             .background(
                                 Circle()
-                                    
-                                    .outerNeumorphism(Color.statsFillColor)
-                            )
+                                    .outerNeumorphism(Color.statsFillColor))
                             
                             
-                            
-                            
-                            
-                            
+
                             
                         //More then 1 post
                             
@@ -355,7 +352,6 @@ struct AnalyticsNew : View {
                                                 .font(.system(size: 20))
                                                 .foregroundColor(Color(UIColor.label))
                                                 .frame(maxWidth: .infinity, alignment: .leading)
-
                                         }
                                         
                                         //VARR
@@ -482,13 +478,13 @@ struct AnalyticsNew : View {
                             Image(systemName: "circle")
                                 .font(.caption)
                                 .foregroundColor(Color(UIColor.label).opacity(0.6))
-                            Text("Latest")
+                                Text(Strings.latest)
                                 .font(.caption)
                                 .foregroundColor(Color(UIColor.label).opacity(0.6))
                             }
                             Spacer()
                             
-                            
+                            // TODO: lastCountedPosts
                             let text2 = num != 1 ? "Last \(num ?? 0) Posts" : Strings.lastPost
                             Text(text2)
                                 .font(.caption)

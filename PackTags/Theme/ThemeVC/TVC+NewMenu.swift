@@ -18,6 +18,9 @@ extension ThemeVC{
         static let smartHashtags = "Smart hashtags"
         static let searchHashtags = "Search hashtags"
         static let shuffleHashtags = "Shuffle hashtags"
+        static let menuSectionEdit = "Edit..."
+        static let menuSectionImport = "Import..."
+        static let menuSectionManage = "Manage..."
     }
     
     func buttonMenu () -> UIBarButtonItem {
@@ -82,13 +85,22 @@ extension ThemeVC{
             }
         }
         
-        let edit = UIMenu(title: "Edit...",options: .displayInline, children: [editName,editPicture])
+        let edit = UIMenu(
+            title: Strings.menuSectionEdit,
+            options: .displayInline,
+            children: [editName,editPicture])
         
-        let htgImport = UIMenu(title: "Edit...",options: .displayInline, children: [textRecon,smartGen])
+        let htgImport = UIMenu(
+            title: Strings.menuSectionImport,
+            options: .displayInline,
+            children: [textRecon,smartGen])
         
-        let manage = UIMenu(title: "Manage...",options: .displayInline, children: [shuffle, search])
+        let manage = UIMenu(
+            title: Strings.menuSectionManage,
+            options: .displayInline,
+            children: [shuffle, search])
         
-        let barButtonMenu = UIMenu(title: "",children: [edit,htgImport,manage])
+        let barButtonMenu = UIMenu(title:"", children: [edit,htgImport,manage])
         
         let symbol = UIImage(systemName: "ellipsis.circle")
         

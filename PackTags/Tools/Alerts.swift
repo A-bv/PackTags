@@ -15,6 +15,25 @@ class Alerts: NSObject {
         static let settingsTricksAndTipsUrl = "https://sites.google.com/view/packtags-tricks-tips/accueil"
     }
     
+    private enum Strings {
+        static let cancel = "Cancel"
+        static let done = "Done"
+        static let editYourSetup = "Edit Your Setup"
+        static let troubleShootingAlertMessage = """
+                
+                Login again and edit your settings:
+                
+                • A Creator/Business Instagram account is needed.
+                
+                • Only select the Facebook page that
+                  is linked to your Instagram account.
+                
+                Tap "Setup" for more information.
+                
+                """
+        static let discoverPacktagsWithTricksAndTips = "\nDiscover PackTags and its purpose with \"Tricks & Tips\" in settings."
+    }
+    
     class func alertTitle(
         targetVC: UIViewController,
         title: String,
@@ -29,12 +48,12 @@ class Alerts: NSObject {
         
         // add the buttons/actions to the view controller
         let cancelAction = UIAlertAction(
-            title: "Cancel",
+            title: Strings.cancel,
             style: .cancel,
             handler: nil)
         
         let saveAction = UIAlertAction(
-            title: "Done",
+            title: Strings.done,
             style: .default
         ) { _ in
             // this code runs when the user hits the "Done" button
@@ -103,22 +122,11 @@ class Alerts: NSObject {
     class func setupTroubleShootingAlert(arr:[String?], presenterVc: UIViewController?) {
         var m = String()
         if arr == [] || arr.count >= 1 {
-            m = """
-                
-                Login again and edit your settings:
-                
-                • A Creator/Business Instagram account is needed.
-                
-                • Only select the Facebook page that
-                  is linked to your Instagram account.
-                
-                Tap "Setup" for more information.
-                
-                """
+            m = Strings.troubleShootingAlertMessage
         }
         
         simpleShortAlert(
-            title: "Edit Your Setup",
+            title: Strings.editYourSetup,
             message: m,
             vc: presenterVc,
             okDismissVc: false)
@@ -135,7 +143,7 @@ class Alerts: NSObject {
             
             let numberOfTimesLaunched: Int = UserDefaults.standard.integer(forKey: StoreKitHelper.numberOfTimesLaunchedKey)
             if numberOfTimesLaunched == 1 {
-                let message = "\nDiscover PackTags and its purpose with \"Tricks & Tips\" in settings."
+                let message = Strings.discoverPacktagsWithTricksAndTips
                 let rvc = keyWindow?.rootViewController
                 
                 guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
@@ -164,6 +172,16 @@ class Alerts: NSObject {
 
 // MARK: - More alerts
 extension UIViewController {
+    private enum Strings {
+        static let viewLater = "View later"
+        static let letsGo = "Let's go!"
+        static let tricksAndTips = "Tricks & Tips"
+        static let username = "Username"
+        static let enterUsername = "Enter Username"
+        static let editUsername = "Edit Username"
+        static let instagram = "Instagram"
+    }
+    
     @objc func dismissAlertController(){
         self.dismiss(animated: true, completion: nil)
     }
@@ -210,13 +228,13 @@ extension UIViewController {
     
     func setInstaUserAlert () {
         let username = UserDefaults.standard.string(forKey: "Instagram Username")  ?? ""
-        let message = username == "" ? "Username" : username
-        let placeholder = username == "" ? "Enter Username" : "Edit Username"
+        let message = username == "" ? Strings.username : username
+        let placeholder = username == "" ? Strings.enterUsername : Strings.editUsername
         
         //Shows alert pop up
         Alerts.alertTitle(
             targetVC: self,
-            title: "Instagram" ,
+            title: Strings.instagram,
             message: message,
             placeholder: placeholder
         ) {
@@ -234,14 +252,20 @@ extension UIViewController {
 
 // MARK: - Confirm row deletion
 extension ThemeTableViewController {
+    private enum Strings {
+        static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is unreversible"
+        static let yes = "Yes"
+        static let cancel = "Cancel"
+    }
+    
     func presentDeletionFailsafeAlert(indexPath: IndexPath) {
         let alert = UIAlertController(
             title: nil,
-            message: "Delete this theme?\n\nThis action is unreversible",
+            message: Strings.deleteConfirmationMessage,
             preferredStyle: .alert)
         
         let yesAction = UIAlertAction(
-            title: "Yes",
+            title: Strings.yes,
             style: .default
         ) { [weak self] _ in
             //Delete row code
@@ -255,20 +279,36 @@ extension ThemeTableViewController {
         alert.addAction(yesAction)
         
         // cancel action
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(
+            UIAlertAction(
+                title: Strings.cancel,
+                style: .cancel,
+                handler: nil))
         
         present(alert, animated: true, completion: nil)
     }
 }
 
 extension ThemeVC {
+    private enum Strings {
+        static let editName = "Edit Name"
+        static let enterName = "Enter Name"
+        static let enterNewName = "Enter New Name"
+        static let newTheme = "New Theme"
+    }
+    
     func showGiveThemeNameAlert () {
         let tips = ""
-        let title = themeTitle.isEmpty == true ? "New Theme" : themeTitle
-        let message = themeTitle.isEmpty == true ? tips : "Edit Name"
-        let placeholder = themeTitle.isEmpty == true ? "Enter Name" : "Enter New Name"
+        let title = themeTitle.isEmpty == true ? Strings.newTheme : themeTitle
+        let message = themeTitle.isEmpty == true ? tips : Strings.editName
+        let placeholder = themeTitle.isEmpty == true ? Strings.enterName : Strings.enterNewName
         
-        Alerts.alertTitle(targetVC: self, title: title, message: message, placeholder: placeholder) {[weak vc = self]
+        Alerts.alertTitle(
+            targetVC: self,
+            title: title,
+            message: message,
+            placeholder: placeholder
+        ) { [weak vc = self]
             (inputName) in
             
             vc?.themeTitle = inputName

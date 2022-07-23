@@ -47,13 +47,17 @@ extension ThemeVC {
 
 //MARK: - UISearchBarDelegate
 extension ThemeVC: UISearchBarDelegate {
+    private enum Strings {
+        static let results = "results"
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         themeTextView.highlightColorsForSearchedWords(keyword: [searchText])
         themeTextView.scrollToSubstring (substring: searchText)
         let values = themeTextView.getEveryHighlightedWordPosition (word: toolBarSearch.text ?? "")
         if toolBarSearch.text?.isEmpty == false {
             searchCountLabel.isHidden = false //!
-            searchCountLabel.text = "\(values.count) results" //!
+            searchCountLabel.text = "\(values.count) " + Strings.results //!
         }
     }
     
