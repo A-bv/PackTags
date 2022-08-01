@@ -15,13 +15,13 @@ class StringFormatter: NSObject {
         return formatNum(value: avgDbl ?? 0) //String(format: "%.2f", avgDbl ?? 0)
     }
     
-    class func formatNum (value : Double) -> String {
+    class func formatNum (value : Double, noDecimal: Bool = false) -> String {
         var text = String()
         switch value {
         case  ..<0.01:
             text = String(format: "%.0f",value)
         case 0.01 ..< 100:
-            text = String(format: "%.1f",value)
+            text = !noDecimal ? String(format: "%.1f",value) : String(format: "%.0f",value)
         case 100  ..< 1_000:
             text = String(format: "%.0f",value)
         case 1_000 ..< 999_999:

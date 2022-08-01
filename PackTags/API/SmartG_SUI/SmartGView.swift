@@ -33,7 +33,10 @@ struct SmartG_SwiftUI: View {
                                 StoryCard(
                                     url: url,
                                     title1: "\(media.comments_count ?? 0)",
-                                    title2: "\(media.like_count ?? 0)")
+                                    title2: StringFormatter.formatNum(
+                                        value: Double(media.like_count ?? Int(0.0)),
+                                        noDecimal: true),
+                                    title3: "\(viewModel.computedData.count)")
                             }
                         }
                     }
@@ -44,7 +47,7 @@ struct SmartG_SwiftUI: View {
                     ForEach(viewModel.computedData, id: \.self){
                         item in
                         HStack{
-                            Text("1")
+                            Text("hashtags: \(item.hashtags.joined(separator: " "))")
                         }
                     }
                 }
@@ -54,12 +57,19 @@ struct SmartG_SwiftUI: View {
             viewModel.fetch()
         }
     }
+    
+    //AAA - Just a function to print out values
+    func printdd (value: Any) -> Bool {
+        print(value)
+        return true
+    }
 }
 
 struct StoryCard: View{
     let url: URL
     let title1: String
     let title2: String
+    let title3: String
     
     var body: some View{
         VStack(alignment: .leading){
@@ -78,9 +88,14 @@ struct StoryCard: View{
                 Image(systemName: "text.bubble.fill")
                 Text(title1)
                     .font(.system(size: 12, weight: .semibold))
+                if title2 != "0" {
+                    Image(systemName: "suit.heart.fill")
+                    Text(title2)
+                        .font(.system(size: 12, weight: .semibold))
+                }
                 Spacer()
-                Image(systemName: "suit.heart.fill")
-                Text(title2)
+                Image(systemName: "number.circle.fill")
+                Text(title3)
                     .font(.system(size: 12, weight: .semibold))
             }
         }

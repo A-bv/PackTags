@@ -12,7 +12,6 @@ import SwiftUI
 
 struct AnalyticsNew_Previews: PreviewProvider {
     static var previews: some View {
-        
         AnalyticsNew()
     }
 }
@@ -565,12 +564,6 @@ struct AnalyticsNew : View {
     
     
 //MARK: - Functions
-    
-    //AAA - Just a function to print out values
-    func printdd (value:Bool) -> Bool {
-        print(value)
-        return true
-    }
     
     //AAA 2
     func updateCircle (v1:CGFloat,v2:CGFloat) -> Bool {
