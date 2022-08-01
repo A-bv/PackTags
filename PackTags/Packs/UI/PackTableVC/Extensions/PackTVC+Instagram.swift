@@ -10,12 +10,12 @@ import UIKit
 
 extension PackTableVC {
     private enum Strings {
-        static let instagram = "Instagram"
-        static let username = "Username"
-        static let enterUsername = "Enter Username"
-        static let redirectionAlertMessage = "PackTags will redirect to this account each time copy is tapped."
-        static let stopRedirectionAlertMessage = "PackTags will stop redirecting to this account after copy is tapped."
-        static let undoRedirection = "Tap the button again to undo."
+        static let instagram = "Instagram".localized()
+        static let username = "Username".localized()
+        static let enterUsername = "Enter Username".localized()
+        static let redirectionAlertMessage = "PackTags will redirect you to this account each, time the copy button is tapped.".localized()
+        static let stopRedirectionAlertMessage = "PackTags will stop redirecting you to this account, each time the copy button is tapped.".localized()
+        static let undoRedirection = "Tap the button again to undo.".localized()
     }
     
     func goInsta(packIdx: Int) {

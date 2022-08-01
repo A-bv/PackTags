@@ -9,9 +9,9 @@
 import SwiftUI
 
 private enum Strings {
-    static let loading3Dots = "Loading..."
-    static let smartHashtags = "Smart Hashtags"
-    static let hashtagsPageSearch = "Hashtag page search"
+    static let loading3Dots = "Loading...".localized()
+    static let smartHashtags = "Smart Hashtags".localized()
+    static let hashtagsPageSearch = "Hashtag page search".localized()
 }
 
 struct SmartG_SwiftUI: View {

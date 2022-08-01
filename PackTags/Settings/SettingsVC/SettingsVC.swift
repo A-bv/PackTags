@@ -44,27 +44,27 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     private enum Strings {
-        static let settingsTitle = "Settings"
-        static let settingsSectionTitleAccount = "Account"
-        static let settingsTitleInstagram = "Instagram"
-        static let settingsTitleFacebookLogin = "Facebook Login"
-        static let settingsSectionTitleHashtags = "Hastags"
-        static let settingsTitleQuantityPerPack = "Quantity Per Pack"
-        static let settingsTitleSaveAndShuffle = "Save & Shuffle"
-        static let settingsTitleKeepPackOrder = "Keep Packs Order"
-        static let settingsSectionTitleHelp = "Help"
-        static let settingsTitleOnBoard = "On Board"
-        static let settingsTitleTricksAndTips = "Tricks & Tips"
-        static let settingsTitleInstaSetup = "Instagram Setup"
-        static let settingsSectionTitleAboutUs = "About us"
-        static let settingsSectionTitleOurInstagram = "Our Instagram"
-        static let settingsTitleShare = "Share"
-        static let settingsTitleRateAndReview = "Rate & Review"
-        static let settingsTitleContactUs = "Contact Us"
-        static let settingsSectionTitleLegal = "Legal"
-        static let settingsTitlePrivacy = "Privacy"
-        static let settingsTitleTermsAndConditions = "Terms & Conditions"
-        static let settingsTitleDisclaimer = "Disclaimer"
+        static let settingsTitle = "Settings".localized()
+        static let settingsSectionTitleAccount = "Account".localized()
+        static let settingsTitleInstagram = "Instagram".localized()
+        static let settingsTitleFacebookLogin = "Facebook Login".localized()
+        static let settingsSectionTitleHashtags = "Hastags".localized()
+        static let settingsTitleQuantityPerPack = "Quantity Per Pack".localized()
+        static let settingsTitleSaveAndShuffle = "Save & Shuffle".localized()
+        static let settingsTitleKeepPackOrder = "Keep Packs Order".localized()
+        static let settingsSectionTitleHelp = "Help".localized()
+        static let settingsTitleOnBoard = "On Board".localized()
+        static let settingsTitleTricksAndTips = "Tricks & Tips".localized()
+        static let settingsTitleInstaSetup = "Instagram Setup".localized()
+        static let settingsSectionTitleAboutUs = "About us".localized()
+        static let settingsSectionTitleOurInstagram = "Our Instagram".localized()
+        static let settingsTitleShare = "Share".localized()
+        static let settingsTitleRateAndReview = "Rate & Review".localized()
+        static let settingsTitleContactUs = "Contact Us".localized()
+        static let settingsSectionTitleLegal = "Legal".localized()
+        static let settingsTitlePrivacy = "Privacy".localized()
+        static let settingsTitleTermsAndConditions = "Terms & Conditions".localized()
+        static let settingsTitleDisclaimer = "Disclaimer".localized()
     }
     
     private enum Links {

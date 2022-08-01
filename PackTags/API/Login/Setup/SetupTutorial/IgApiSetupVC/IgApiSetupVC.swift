@@ -15,10 +15,10 @@ class IgApiSetupVC: UIViewController {
     }
     
     private enum Strings {
-        static let switchAccount = "Switch account"
-        static let createAPage = "Create a page"
-        static let login = "login"
-        static let accountLinkingTitle = "Account Linking"
+        static let switchAccount = "Switch".localized()
+        static let createAPage = "Create a page".localized()
+        static let login = "login".localized()
+        static let accountLinkingTitle = "Account Linking".localized()
     }
     
     let actions =  [#selector(loginFunc(_:)),

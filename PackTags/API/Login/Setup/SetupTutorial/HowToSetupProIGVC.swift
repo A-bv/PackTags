@@ -38,10 +38,13 @@ class HowToSetupProIGVC: UIViewController {
         static let stackViewHeight = Constants.stackViewSpacing*3 + Constants.LH*2 + Constants.TH + textViewHeight
     }
     
-    private enum Strings {
+    private enum Links {
         static let appURL = "instagram://app"
         static let webURL = "https://instagram.com"
-        static let topLabelText = "  Switch to Creator /Business:"
+    }
+    
+    private enum Strings {
+        static let topLabelText = "Switch to Creator /Business:".localized()
         static let topTextViewText = """
                   • On your profile tap  ≡
                   • Tap "Settings"
@@ -54,8 +57,8 @@ class HowToSetupProIGVC: UIViewController {
                   • On your profile tap "Edit Profile"
                   • Link your Facebook page
             """
-        static let bottomLabelText = "🔗    If your page is not linked:"
-        static let buttonTitle = "Open Instagram"
+        static let bottomLabelText = "🔗    If your page is not linked:".localized()
+        static let buttonTitle = "Open Instagram".localized()
     }
     
     var l0: UILabel {
@@ -95,8 +98,8 @@ class HowToSetupProIGVC: UIViewController {
     
     @objc func goProfile (_ sender: Any) {
         self.openAppURL(
-            appURL: Strings.appURL,
-            webURL: Strings.webURL,
+            appURL: Links.appURL,
+            webURL: Links.webURL,
             completion: {_ in})
     }
 }
@@ -160,7 +163,7 @@ extension HowToSetupProIGVC {
         // Fill text
         let attributedString = NSMutableAttributedString(string: "")
         attributedString.append(NSAttributedString(attachment: instagramIconAttachment))
-        attributedString.append(NSAttributedString(string: Strings.topLabelText))
+        attributedString.append(NSAttributedString(string: "  " + Strings.topLabelText))
         topLabel.attributedText = attributedString
         
         topTextView.text = Strings.topTextViewText

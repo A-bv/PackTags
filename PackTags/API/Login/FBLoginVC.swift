@@ -17,8 +17,8 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
     }
     
     private enum Strings {
-        static let connectedAlertTitle = "Connected!"
-        static let accessAnalyticsConfirm = "You can now access analytics and generate hashtags."
+        static let connectedAlertTitle = "Connected!".localized()
+        static let accessAnalyticsConfirm = "You can now access analytics and generate hashtags.".localized()
     }
     
     let loginButton: FBLoginButton = {

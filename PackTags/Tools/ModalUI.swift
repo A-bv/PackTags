@@ -15,8 +15,8 @@ extension UIViewController {
     }
     
     private enum Strings {
-        static let setupHelpQuestion = "Help?"
-        static let setupTitle = "Setup"
+        static let setupHelpQuestion = "Help?".localized()
+        static let setupTitle = "Setup".localized()
     }
     
     private enum Constants {

@@ -10,8 +10,8 @@ import UIKit
 
 extension IgApiSetupVC  {
     private enum Strings {
-        static let accountLinkingTitle = "Account Linking"
-        static let continueString = "Continue"
+        static let accountLinkingTitle = "Account Linking".localized()
+        static let continueString = "Continue".localized()
     }
     
     func buildUI() {

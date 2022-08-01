@@ -16,9 +16,9 @@ class Alerts: NSObject {
     }
     
     private enum Strings {
-        static let cancel = "Cancel"
-        static let done = "Done"
-        static let editYourSetup = "Edit Your Setup"
+        static let cancel = "Cancel".localized()
+        static let done = "Done".localized()
+        static let editYourSetup = "Edit Your Setup".localized()
         static let troubleShootingAlertMessage = """
                 
                 Login again and edit your settings:
@@ -31,10 +31,10 @@ class Alerts: NSObject {
                 Tap "Setup" for more information.
                 
                 """
-        static let discoverPacktagsWithTricksAndTips = "\nDiscover PackTags and its purpose with \"Tricks & Tips\" in settings."
-        static let viewLater = "View later"
-        static let letsGo = "Let's go!"
-        static let tricksAndTips = "Tricks & Tips"
+        static let discoverPacktagsWithTricksAndTips = "Discover PackTags and its features with \"Tricks & Tips\" in settings.".localized()
+        static let viewLater = "View later".localized()
+        static let letsGo = "Let's go!".localized()
+        static let tricksAndTips = "Tricks & Tips".localized()
     }
     
     class func alertTitle(
@@ -140,7 +140,7 @@ class Alerts: NSObject {
             
             let numberOfTimesLaunched: Int = UserDefaults.standard.integer(forKey: StoreKitHelper.numberOfTimesLaunchedKey)
             if numberOfTimesLaunched == 1 {
-                let message = Strings.discoverPacktagsWithTricksAndTips
+                let message = "\n" + Strings.discoverPacktagsWithTricksAndTips
                 let rvc = keyWindow?.rootViewController
                 
                 guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
@@ -170,10 +170,10 @@ class Alerts: NSObject {
 // MARK: - More alerts
 extension UIViewController {
     private enum Strings {
-        static let username = "Username"
-        static let enterUsername = "Enter Username"
-        static let editUsername = "Edit Username"
-        static let instagram = "Instagram"
+        static let username = "Username".localized()
+        static let enterUsername = "Enter Username".localized()
+        static let editUsername = "Edit Username".localized()
+        static let instagram = "Instagram".localized()
     }
     
     @objc func dismissAlertController(){
@@ -247,10 +247,10 @@ extension UIViewController {
 
 extension ThemeVC {
     private enum Strings {
-        static let editName = "Edit Name"
-        static let enterName = "Enter Name"
-        static let enterNewName = "Enter New Name"
-        static let newTheme = "New Theme"
+        static let editName = "Edit Name".localized()
+        static let enterName = "Enter Name".localized()
+        static let enterNewName = "Enter New Name".localized()
+        static let newTheme = "New Theme".localized()
     }
     
     func showGiveThemeNameAlert () {

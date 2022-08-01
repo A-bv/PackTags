@@ -10,10 +10,10 @@ import UIKit
 
 extension PackTableVC {
     private enum Strings {
-        static let oneHashtag = "1 Hashtag"
-        static let more = "more"
-        static let zeroHashtags = "0 Hashtags"
-        static let tapPencil = "Tap the Pencil button to add Hashtags"
+        static let oneHashtag = "1 Hashtag".localized()
+        static let more = "more".localized()
+        static let zeroHashtags = "0 Hashtags".localized()
+        static let tapPencil = "Tap the Pencil button to add Hashtags.".localized()
     }
     
     func configureCell(indexPath: IndexPath) -> UITableViewCell {

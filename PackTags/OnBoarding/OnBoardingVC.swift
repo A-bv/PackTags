@@ -17,12 +17,12 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
     var scrollHeight: CGFloat! = 0.0
     
     private enum Strings {
-        static let onBoardingPageTitle1  = "WELCOME TO PACKTAGS"
-        static let onBoardingPageTitle2  = "UNIQUE PACKS"
-        static let onBoardingPageTitle3  = "ANALYTICS"
-        static let onBoardingPageSubtitle1  = "The smart notebook for your hashtags"
-        static let onBoardingPageSubtitle2  = "Automatically removes duplicates or invalid hashtags"
-        static let onBoardingPageSubtitle3  = "Tracks your results for the best strategy"
+        static let onBoardingPageTitle1  = "WELCOME TO PACKTAGS".localized()
+        static let onBoardingPageTitle2  = "UNIQUE PACKS".localized()
+        static let onBoardingPageTitle3  = "ANALYTICS".localized()
+        static let onBoardingPageSubtitle1  = "The smart notebook for your hashtags".localized()
+        static let onBoardingPageSubtitle2  = "Automatically removes duplicates or invalid hashtags".localized()
+        static let onBoardingPageSubtitle3  = "Tracks your results for the best strategy".localized()
     }
 
     //data for the slides

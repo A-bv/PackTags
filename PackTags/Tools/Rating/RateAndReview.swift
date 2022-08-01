@@ -9,11 +9,11 @@ import UIKit
 
 extension UIViewController {
     private enum Strings {
-        static let rateAndReviewYourFeedback = "Your feedback"
-        static let rateAndReviewEnjoyingQuestion = "Are you enjoying PackTags?"
-        static let rateAndReviewDismiss = "Dismiss"
-        static let rateAndReviewRateUsOnAppStore = "Yes! Rate us on the App Store."
-        static let rateAndReviewTellUsWhyQuestion = "No! Tell us why."
+        static let rateAndReviewYourFeedback = "Your feedback".localized()
+        static let rateAndReviewEnjoyingQuestion = "Are you enjoying PackTags?".localized()
+        static let rateAndReviewDismiss = "Dismiss".localized()
+        static let rateAndReviewRateUsOnAppStore = "Yes! Rate us on the App Store.".localized()
+        static let rateAndReviewTellUsWhyQuestion = "No! Tell us why.".localized()
     }
     
     private enum Links {

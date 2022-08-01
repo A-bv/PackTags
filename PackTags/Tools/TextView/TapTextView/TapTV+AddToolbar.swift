@@ -16,16 +16,16 @@ extension TapTextView {
             • Copy •
             • Cut •
             • Group On Top •
-            • Clear •
+            • Clear selection •
             • Delete •
             
             To undo changes, exit the hashtag
-            edition mode with cancel.
+            edition mode without saving.
             
             You may want to do a save before using this feature.
             
             """
-        static let tapTextViewToolBarDescriptionTitle = "Actions on selected hashtags"
+        static let tapTextViewToolBarDescriptionTitle = "Actions on selected hashtags".localized()
     }
     
     @objc func doneTagSelection() {

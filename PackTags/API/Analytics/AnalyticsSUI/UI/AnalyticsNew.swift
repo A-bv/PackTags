@@ -20,30 +20,30 @@ struct AnalyticsNew_Previews: PreviewProvider {
 struct AnalyticsNew : View {
     
     private enum Strings {
-        static let average = "Average"
-        static let previousPosts = "Previous posts"
-        static let previousPost = "Previous post"
-        static let latest = "Latest post"
-        static let noMedia = "No media have been posted yet\nas a Business/Creator account"
-        static let dataUnavailable = "Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account"
-        static let engagement = "Engagement"
-        static let reach = "Reach"
-        static let impressions = "Impressions"
-        static let eR = "Engagement Rate (ER)"
-        static let eRR = "Engagement Rate by Reach (ERR)"
-        static let eRI = "Engagement Rate by Impressions (ER Impressions)"
-        static let analyticsTitle = "Analytics"
-        static let notConnected = "Not connected"
-        static let privateProfile = "Profile is private"
-        static let ratioToFollower = "Per Follower"
-        static let ratioByReach = "By Reach"
-        static let ratioByImpressions = "By Impressions"
-        static let engagementDefinition = "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives."
-        static let reachDefinition = "Reach is the total number of people (single accounts) who saw your content."
-        static let impressionsDefinition = "Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not."
-        static let eRDefiniton = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, proportionally to your followers."
-        static let eRRDefiniton = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, proportionally to your followers."
-        static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times."
+        static let average = "Average".localized()
+        static let previousPosts = "Previous posts".localized()
+        static let previousPost = "Previous post".localized()
+        static let latest = "Latest post".localized()
+        static let noMedia = "No media have been posted yet\nas a Business/Creator account".localized()
+        static let dataUnavailable = "Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account".localized()
+        static let engagement = "Engagement".localized()
+        static let reach = "Reach".localized()
+        static let impressions = "Impressions".localized()
+        static let eR = "Engagement Rate (ER)".localized()
+        static let eRR = "Engagement Rate by Reach (ERR)".localized()
+        static let eRI = "Engagement Rate by Impressions (ER Impressions)".localized()
+        static let analyticsTitle = "Analytics".localized()
+        static let notConnected = "Not connected".localized()
+        static let privateProfile = "Profile is private".localized()
+        static let ratioToFollower = "Per Follower".localized()
+        static let ratioByReach = "By Reach".localized()
+        static let ratioByImpressions = "By Impressions".localized()
+        static let engagementDefinition = "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives.".localized()
+        static let reachDefinition = "Reach is the total number of people (single accounts) who saw your content.".localized()
+        static let impressionsDefinition = "Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not.".localized()
+        static let eRDefiniton = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers.".localized()
+        static let eRRDefiniton = "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content.".localized()
+        static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account.".localized()
     }
     
     //

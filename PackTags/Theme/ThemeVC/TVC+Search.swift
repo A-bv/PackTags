@@ -48,7 +48,7 @@ extension ThemeVC {
 //MARK: - UISearchBarDelegate
 extension ThemeVC: UISearchBarDelegate {
     private enum Strings {
-        static let results = "results"
+        static let results = "results".localized()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

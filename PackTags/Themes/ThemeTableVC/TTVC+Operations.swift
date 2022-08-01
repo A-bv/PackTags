@@ -25,9 +25,9 @@ extension ThemeTableViewController {
 // MARK: - Delete theme + alert
 extension ThemeTableViewController {
     private enum Strings {
-        static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is unreversible"
-        static let yes = "Yes"
-        static let cancel = "Cancel"
+        static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is unreversible.".localized()
+        static let yes = "Yes".localized()
+        static let cancel = "Cancel".localized()
     }
     
     func presentDeletionSafeAlert(indexpath: IndexPath) {

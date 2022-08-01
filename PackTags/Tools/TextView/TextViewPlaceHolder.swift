@@ -11,7 +11,7 @@ import UIKit
 //TextView place holder
 extension UITextView{
     private enum Strings {
-        static let textViewPlaceHolder = "Paste or enter your hashtags ..."
+        static let textViewPlaceHolder = "Paste or enter your hashtags...".localized()
     }
     
     private enum Constants {

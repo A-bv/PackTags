@@ -1,1 +1,235 @@
+// SettingsVC
+"Settings" = "Réglages";
+"Account" = "Compte";
+"Instagram" = "Instagram";
+"Facebook Login" = "Connection à Facebook";
+"Hastags" = "Hastags";
+"Quantity Per Pack" = "Quantité par pack";
+"Save & Shuffle" = "Enregistrer puis mélanger";
+"Keep Packs Order" = "Gardez l'ordre des packs";
+"Help" = "Aide";
+"On Board" = "Introduction";
+"Tricks & Tips" = "Trucs et astuces";
+"Instagram Setup" = "Configuration Instagram";
+"About us" = "À propos de nous";
+"Our Instagram" = "Notre Instagram";
+"Share" = "Partager";
+"Rate & Review" = "Évaluer et commenter";
+"Contact Us" = "Nous contacter";
+"Legal" = "Juridique";
+"Privacy" = "Confidentialité";
+"Terms & Conditions" = "Termes et conditions";
+"Disclaimer" = "Clause de non-responsabilité";
 
+
+//TTVC
+"Delete this theme?\n\nThis action is unreversible." = "Supprimer ce theme?\n\nCette action est irréversible.";
+"Yes" = "Oui";
+"Cancel" = "Annuler";
+
+
+//PackTVC
+"1 Hashtag" = "1 Hashtag";
+"more" = "plus";
+"0 Hashtags" = "0 Hashtags";
+"Tap the Pencil button to add Hashtags." = "Appuyez sur le bouton Crayon pour ajouter des hashtags.";
+
+"Show" = "Montrer";
+
+"Instagram" = "Instagram";
+"Username" = "Nom d'utilisateur";
+"Enter Username" = "Entrer votre nom d'utilisateur";
+"PackTags will redirect you to this account each, time the copy button is tapped." = "PackTags vous redirigera vers ce compte à chaque fois que vous appuierez sur le bouton de copie.";
+"PackTags will stop redirecting you to this account, each time the copy button is tapped." = "PackTags cessera de vous rediriger vers ce compte à chaque fois que vous appuierez sur le bouton de copie.";
+"Tap the button again to undo." = "Appuyez à nouveau sur le bouton pour annuler.";
+
+
+//TVC
+"Rename" = "Renommer";
+"Edit picture" = "Modifier l'image";
+"Text Recognition" = "Reconnaissance de texte";
+"Smart hashtags" = "Smart hashtags";
+"Search hashtags" = "Recherche d'hashtags";
+"Shuffle hashtags" = "Mélanger les hashtags";
+"Edit..." = "Modifier...";
+"Import..." = "Importer...";
+"Manage..." = "Gérer...";
+
+"results" = "résultats";
+
+// IgApiSetupVC
+"Switch" = "Convertir";
+"Create a page" = "Créer une page";
+"login" = "Connection";
+"Account Linking" = "Associer votre compte";
+
+"Continue" = "Continuer";
+ 
+/*
+// HowTosetupProIGVC
+"Switch to Creator /Business:" = "Passer à Créateur/Entreprise :";
+"""
+              • On your profile tap  ≡
+              • Tap "Settings"
+              • Tap "Accounts"
+              • Switch Account Type
+        
+         
+""" = """
+              • Sur votre profil, appuyez sur ≡
+              • Appuyez sur "Paramètres"
+              • Appuyez sur "Comptes"
+              • Changer de type de compte
+        
+         
+""";
+
+"""
+              • On your profile tap "Edit Profile"
+              • Link your Facebook page
+        """ = """
+              • Sur votre profil, appuyez sur "Modifier le profil"
+              • Liez votre page Facebook
+        """;
+"🔗    If your page is not linked:" = "🔗 Si votre page n'est pas liée :";
+"Open Instagram" = "Ouvrir Instagram";
+ */
+ 
+// FB LoginVC
+"Connected!" = "Connecté!";
+"You can now access analytics and generate hashtags." = "Vous pouvez désormais accéder aux analyses et générer des hashtags.";
+
+//AnViewModel
+"Likes" = "Likes";
+"Comments" = "Commentaires";
+"Average" = "Moyenne";
+"Selection" = "Selection";
+
+//AnalyticsNew
+"Average" = "Moyenne";
+"Previous posts" = "Posts précédents";
+"Previous post" = "Post précédent";
+"Latest post" = "Dernier post";
+"No media have been posted yet\nas a Business/Creator account" = "Aucun média n'a encore été publié\npar un compte Entreprise/Créateur";
+"Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account" = "Données indisponibles\n\nOu\n\nProbablement pas de nouvelles publications\npar un compte Business/Creator";
+"Engagement" = "Engagement";
+"Reach" = "Portée";
+"Impressions" = "Impressions";
+"Engagement Rate (ER)" = "Taux d'engagement (ER)";
+"Engagement Rate by Reach (ERR)" = "Taux d'engagement en fonction de la portée (ERR)";
+"Engagement Rate by Impressions (ER Impressions)" = "Taux d'engagement par impressions (ER Impressions)";
+"Analytics" = "Analyses";
+"Not connected" = "Non connecté";
+"Profile is private" = "Le profil est privé";
+"Per Follower" = "Par follower";
+"By Reach" = "Par portée";
+"By Impressions" = "Par impressions";
+"Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives." = "Engagement = Likes + Commentaires\n\nL'engagement est une mesure utilisée pour déterminer le nombre d'interactions que votre contenu reçoit." ;
+"Reach is the total number of people (single accounts) who saw your content." = "La portée est le nombre total de personnes (comptes uniques) qui ont vu votre contenu.";
+"Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not." = "Les impressions représentent le nombre de fois que votre contenu est apparu sur un écran, qu'il ait été cliqué ou non.";
+"ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers." = "ER = Likes et Commentaires / Followers * 100\n\nLe taux d'engagement est une mesure utilisée pour déterminer le nombre d'interactions que votre contenu reçoit, par rapport à vos followers.";
+"ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content." = "ERR = likes et commentaires / Portée * 100\n\nLe taux d'engagement par portée est une mesure utilisée pour déterminer le nombre d'interactions que votre contenu reçoit, par rapport à chaque compte unique qui a vu votre contenu.";
+"ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account." = "ER Impressions = Likes et Commentaires / Impressions *100\n\nSi votre ER impressions est inférieur à votre ERR, alors c'est bon signe, car votre contenu est vu plusieurs fois par un seul compte.";
+
+
+//SmargIGView
+"Loading..." = "Chargement...";
+"Smart Hashtags" = "Smart Hashtags";
+"Hashtag page search" = "Page de recherche d'hashtags";
+
+//OnBoardingVc
+"WELCOME TO PACKTAGS" = "BIENVENUE SUR PACKTAGS";
+"UNIQUE PACKS" = "DES PACKS UNIQUES";
+"ANALYTICS" = "ANALYSES";
+"The smart notebook for your hashtags" = "Le carnet intelligent pour vos hashtags";
+"Automatically removes duplicates or invalid hashtags" = "Supprime automatiquement les doublons ou les hashtags invalides";
+"Tracks your results for the best strategy" = "Suit vos résultats pour la meilleure stratégie";
+
+//RateAndReview
+"Your feedback" = "Votre avis";
+"Are you enjoying PackTags?" = "Aimez-vous PackTags?";
+"Dismiss" = "Annuler";
+"Yes! Rate us on the App Store." = "Oui! Évaluez-nous sur l'App Store.";
+"No! Tell us why." = "Non! Dites-nous pourquoi.";
+
+/*
+//TapTV
+"""
+        
+        • Copy •
+        • Cut •
+        • Group On Top •
+        • Clear selection •
+        • Delete •
+        
+        To undo changes, exit the hashtag
+        edition mode without saving.
+        
+        You may want to do a save before using this feature.
+        
+""" = """
+        
+        • Copier •
+        • Couper •
+        • Grouper en haut •
+        • Effacer la selection •
+        • Supprimer •
+        
+        Pour annuler les modifications, quittez le mode d'édition d'hashtags
+        sans sauvegarder.
+        
+        Vous voudrez peut-être faire une sauvegarde avant d'utiliser cette fonction.
+        
+""";
+ */
+"Actions on selected hashtags" = "Actions sur les hashtags sélectionnés";
+
+//TextViewPlaceHolder
+"Paste or enter your hashtags..." = "Collez ou saisissez vos hashtags...";
+
+//ModalUI
+"Help?" = "Aide?";
+"Setup" = "Configuration";
+
+//Alerts
+"Cancel" = "Annuler";
+"Done" = "Terminé";
+"Edit Your Setup" = "Modifiez votre configuration";
+/*
+"""
+            
+            Login again and edit your settings:
+            
+            • A Creator/Business Instagram account is needed.
+            
+            • Only select the Facebook page that
+              is linked to your Instagram account.
+            
+            Tap "Setup" for more information.
+            
+""" = """
+            
+            Connectez-vous à nouveau et modifiez vos paramètres :
+            
+            • Un compte Instagram Creator/Business est nécessaire.
+            
+            • Sélectionnez uniquement la page Facebook qui
+              est lié à votre compte Instagram.
+            
+            Appuyez sur "Configuration" pour plus d'informations.
+            
+""";
+*/
+"Discover PackTags and its features with \"Tricks & Tips\" in settings." = "Découvrez PackTags et ses fonctionalités avec \"Trucs et astuces\" dans paramètres.";
+"View later" = "Plus tard";
+"Let's go!" = "C'est parti!";
+"Tricks & Tips" = "Trucs et astuces";
+
+"Username" = "Nom d'utilisateur";
+"Enter Username" = "Entrez votre nom d'utilisateur";
+"Edit Username" = "Modifiez votre nom d'utilisateur";
+
+"Edit Name" = "Renommer";
+"Enter Name" = "Entrer nom";
+"Enter New Name" = "Entrer nouveau nom";
+"New Theme" = "Nouveau theme";

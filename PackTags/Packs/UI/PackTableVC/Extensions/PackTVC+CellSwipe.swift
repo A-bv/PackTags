@@ -10,7 +10,7 @@ import UIKit
 
 extension PackTableVC {
     private enum Strings {
-        static let show = "Show"
+        static let show = "Show".localized()
     }
     
     func addSCellSwipeAccessory (indexPath: IndexPath) -> UISwipeActionsConfiguration? {

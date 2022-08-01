@@ -324,22 +324,22 @@
                                 <color key="currentPageIndicatorTintColor" systemColor="systemPurpleColor"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fC-rw-yTX">
-                                <rect key="frame" x="32" y="44" width="350" height="687"/>
+                                <rect key="frame" x="16" y="44" width="382" height="687"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ygq-NX-k9q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ygq-NX-k9q" firstAttribute="trailing" secondItem="3fC-rw-yTX" secondAttribute="trailing" constant="32" id="2NC-HR-hxI"/>
                             <constraint firstItem="RjL-Mi-pzh" firstAttribute="top" secondItem="a6k-RA-bfI" secondAttribute="bottom" constant="20" id="2PN-xD-RNm"/>
                             <constraint firstItem="ygq-NX-k9q" firstAttribute="bottom" secondItem="RjL-Mi-pzh" secondAttribute="bottom" constant="35" id="8Vl-M7-4rd"/>
-                            <constraint firstItem="3fC-rw-yTX" firstAttribute="top" secondItem="ygq-NX-k9q" secondAttribute="top" id="8c4-YP-ng6"/>
                             <constraint firstItem="RjL-Mi-pzh" firstAttribute="leading" secondItem="ygq-NX-k9q" secondAttribute="leading" constant="32" id="A2R-Vw-QPW"/>
-                            <constraint firstItem="a6k-RA-bfI" firstAttribute="top" secondItem="3fC-rw-yTX" secondAttribute="bottom" constant="20" id="AoU-s8-203"/>
+                            <constraint firstItem="a6k-RA-bfI" firstAttribute="top" secondItem="3fC-rw-yTX" secondAttribute="bottom" constant="20" id="DlF-jX-Hnh"/>
                             <constraint firstItem="ygq-NX-k9q" firstAttribute="trailing" secondItem="RjL-Mi-pzh" secondAttribute="trailing" constant="32" id="FDo-nr-zdM"/>
                             <constraint firstItem="ygq-NX-k9q" firstAttribute="trailing" secondItem="a6k-RA-bfI" secondAttribute="trailing" constant="32" id="FTB-ih-nTm"/>
+                            <constraint firstItem="3fC-rw-yTX" firstAttribute="top" secondItem="ygq-NX-k9q" secondAttribute="top" id="J9q-kX-mAA"/>
                             <constraint firstItem="a6k-RA-bfI" firstAttribute="leading" secondItem="ygq-NX-k9q" secondAttribute="leading" constant="32" id="JcG-cI-dTr"/>
-                            <constraint firstItem="3fC-rw-yTX" firstAttribute="leading" secondItem="ygq-NX-k9q" secondAttribute="leading" constant="32" id="T6J-Hn-p6f"/>
+                            <constraint firstItem="3fC-rw-yTX" firstAttribute="leading" secondItem="ygq-NX-k9q" secondAttribute="leading" constant="16" id="R2b-Hr-JsO"/>
+                            <constraint firstItem="3fC-rw-yTX" firstAttribute="trailing" secondItem="ygq-NX-k9q" secondAttribute="trailing" constant="-16" id="esK-OG-plv"/>
                         </constraints>
                     </view>
                     <connections>

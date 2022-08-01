@@ -12,15 +12,15 @@ import SwiftUI
 
 extension ThemeVC{
     private enum Strings {
-        static let rename = "Rename"
-        static let editPicture = "Edit picture"
-        static let textRecognition = "Text Recognition"
-        static let smartHashtags = "Smart hashtags"
-        static let searchHashtags = "Search hashtags"
-        static let shuffleHashtags = "Shuffle hashtags"
-        static let menuSectionEdit = "Edit..."
-        static let menuSectionImport = "Import..."
-        static let menuSectionManage = "Manage..."
+        static let rename = "Rename".localized()
+        static let editPicture = "Edit picture".localized()
+        static let textRecognition = "Text Recognition".localized()
+        static let smartHashtags = "Smart hashtags".localized()
+        static let searchHashtags = "Search hashtags".localized()
+        static let shuffleHashtags = "Shuffle hashtags".localized()
+        static let menuSectionEdit = "Edit...".localized()
+        static let menuSectionImport = "Import...".localized()
+        static let menuSectionManage = "Manage...".localized()
     }
     
     func buttonMenu () -> UIBarButtonItem {

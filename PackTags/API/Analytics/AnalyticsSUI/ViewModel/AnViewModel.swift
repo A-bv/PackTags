@@ -12,10 +12,10 @@ import Combine
 class ANewVCDataSUI: ObservableObject {
     
     private enum Strings {
-        static let likes = "Likes"
-        static let comments = "Comments"
-        static let average = "Average"
-        static let selection = "Selection"
+        static let likes = "Likes".localized()
+        static let comments = "Comments".localized()
+        static let average = "Average".localized()
+        static let selection = "Selection".localized()
     }
     
     //MARK: - Live Variables
