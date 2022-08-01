@@ -21,10 +21,9 @@ struct AnalyticsNew : View {
     
     private enum Strings {
         static let average = "Average"
-        static let lastPost = "Last post"
-        static let latest = "Latest"
-        //TODO: Find the right string
-        // static let lastCountedPosts = ""
+        static let previousPosts = "Previous posts"
+        static let previousPost = "Previous post"
+        static let latest = "Latest post"
         static let noMedia = "No media have been posted yet\nas a Business/Creator account"
         static let dataUnavailable = "Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account"
         static let engagement = "Engagement"
@@ -475,21 +474,24 @@ struct AnalyticsNew : View {
                         HStack {
                             let num = swiftUIData.processedJson?.rates.count
                             if num != 1 {
-                            Image(systemName: "circle")
+                            Image(systemName: "arrow.turn.left.up")
                                 .font(.caption)
                                 .foregroundColor(Color(UIColor.label).opacity(0.6))
-                                Text(Strings.latest)
+                            Text(Strings.latest)
                                 .font(.caption)
                                 .foregroundColor(Color(UIColor.label).opacity(0.6))
                             }
                             Spacer()
                             
                             // TODO: lastCountedPosts
-                            let text2 = num != 1 ? "Last \(num ?? 0) Posts" : Strings.lastPost
+                            let text2 = num != 1 ? Strings.previousPost : Strings.previousPosts
+                            // "Last \(num ?? 0) Posts" : Strings.previousPosts
                             Text(text2)
                                 .font(.caption)
                                 .foregroundColor(Color(UIColor.label).opacity(0.6))
-
+                            Image(systemName: "arrow.right")
+                                .font(.caption)
+                                .foregroundColor(Color(UIColor.label).opacity(0.6))
                         }
                                 
                     }
