@@ -13,11 +13,14 @@ class SmartGViewModel: ObservableObject {
     @Published var computedData: [processedSmartGModel] = []
     
     func fetch() {
-        GetJson.ig_hashtag_search(s_Hashtag: "travel", Completion: {[weak self] (result) in
-            guard let result = result as? [DataMedia] else {return}
-            self?.dataMedias = result
-            self?.processSmartGModel ()
-        })
+        GetJson.ig_hashtag_search(
+            s_Hashtag: "travel",
+            Completion: {
+                [weak self] (result) in
+                guard let result = result as? [DataMedia] else {return}
+                self?.dataMedias = result
+                self?.processSmartGModel()
+            })
         
         //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
     }
@@ -28,13 +31,11 @@ extension SmartGViewModel {
     {
         var processedSmartGModels = [processedSmartGModel]()
         for dataMedia in dataMedias {
-            let H = dataMedia.caption?.hashtags()
-            if H != nil {
-                processedSmartGModels.append(processedSmartGModel(hashtags: H!))
-            }
+            guard let hashtags = dataMedia.caption?.hashtags() else { return }
+            processedSmartGModels.append(processedSmartGModel(hashtags: hashtags))
         }
     
-        self.computedData = processedSmartGModels.compactMap{$0}
+        self.computedData = processedSmartGModels
         print(self.computedData)
     }
 }

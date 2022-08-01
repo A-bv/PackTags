@@ -25,7 +25,7 @@ extension ANewVCDataSUI {
             self.processedJson = ProcessJson.processJsApiGraph(decodedJson: profileJson)
             
             //VARR Entry (dir)
-            self.getEngagementVariations(isFromSave: true)
+            // self.getEngagementVariations(isFromSave: true)
             
             // fill (update)
             self.fillGraphData ()

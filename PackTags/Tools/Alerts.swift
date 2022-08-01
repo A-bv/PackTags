@@ -229,7 +229,7 @@ extension UIViewController {
             defaults.set(name, forKey: "Instagram Username")
             
             //VARR
-            ProcessJson.removeAllSavedVarData()
+            // ProcessJson.removeAllSavedVarData()
         }
     }
 }

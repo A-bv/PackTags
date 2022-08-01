@@ -6,20 +6,13 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-
 import UIKit
-
-extension ProcessJson {
+   
+class StringFormatter: NSObject {
     class func averageElementsOfArray (a: [Int]) -> String {
         let avgNS = (a as NSArray).value(forKeyPath: "@avg.floatValue") as? NSNumber
         let avgDbl = avgNS?.doubleValue
-        let avg = formatNum(value: avgDbl ?? 0)
-            //String(format: "%.2f", avgDbl ?? 0)
-        return avg
-    }
-    
-    class func averageElementOfArrayCGFloat (a: [CGFloat]) -> CGFloat {
-        return a.reduce(0.0) { return $0 + $1/CGFloat(a.count)}
+        return formatNum(value: avgDbl ?? 0) //String(format: "%.2f", avgDbl ?? 0)
     }
     
     class func formatNum (value : Double) -> String {
@@ -39,8 +32,9 @@ extension ProcessJson {
         return text
     }
     
+    /*
     //VARR
-    class func extraFormatNum (value : Double) -> String {
+    func extraFormatNum (value : Double) -> String {
         var output = String()
         if value < 0 {
             output = "▼ " + formatNum(value: -value) + "%"
@@ -50,5 +44,5 @@ extension ProcessJson {
         if value == 0 { output = "" }
         if value.isInfinite == true { output = "" }
         return output
-    }
+    }*/
 }

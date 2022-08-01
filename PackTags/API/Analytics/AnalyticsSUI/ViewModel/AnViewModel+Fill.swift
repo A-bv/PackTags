@@ -14,8 +14,12 @@ extension ANewVCDataSUI {
     func fillData(){
         
         //Security check:
+        //VARR
         //Only fill data if there is data else return
-        if engagementVariations?.ratesVr == Optional([]) || processedJson?.rates == Optional([]) {
+        
+        // if engagementVariations?.ratesVr == Optional([]) { return }
+            
+        if processedJson?.rates == Optional([]) {
             return
         }
         
@@ -33,9 +37,8 @@ extension ANewVCDataSUI {
         self.circles_Data[0].goal = avEng
         
         //VARR
-        self.circles_Data[0].variation =  engagementVariations?.avg2Vr ?? 0 //avg engagement rate variation
-        self.circles_Data[1].variation = engagementVariations?.ratesVr[0] ?? 0 //Selection default value
-        
+        // self.circles_Data[0].variation =  engagementVariations?.avg2Vr ?? 0 //avg engagement rate variation
+        // self.circles_Data[1].variation = engagementVariations?.ratesVr[0] ?? 0 //Selection default value
     }
     
     func fillGraphData () {
@@ -47,33 +50,21 @@ extension ANewVCDataSUI {
         }
         
         if (rates.count) > 0 {
-           
-            //VARR
-            // A 0 variation array will not show
-            // Initialize a 0 variation array if variations are not computable
             
-            // Security check:
-            // if somehow there is a variation array count that is no equal to a rates array count
-            // or if rate variation is inexistant
-            var ratesVr = engagementVariations?.ratesVr
-            if ratesVr == nil || ratesVr?.count != rates.count {
-                // Initialise a new 0 variation array, lenght: rates count
-                ratesVr = [CGFloat?](repeating: 0, count: rates.count)
-            }
-            
+            /* VARR
+            let securedRatesVr = variationSecurityCheck(
+                ratesVr: engagementVariations?.ratesVr,
+                ratesCount: rates.count)*/
             
             //Graph data
             for i in 0 ... (rates.count)-1 {
-                
                 graph_Data?.append(
                     Post(
                         id: i,
                         post: "\(i+1)",
                         r: CGFloat(rates[i]!),
                         barHeight:  ((rates[i]!) / maxR) * 50 + 5, //80
-                        rVr: ratesVr?[i]! ?? 0     //VARR
-                    )
-                )
+                        rVr: 0)) //Varr securedRatesVr?[i]! ?? 0)
             }
         }
     }

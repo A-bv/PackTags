@@ -26,10 +26,14 @@ struct SmartG_SwiftUI: View {
                 Header()
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack {
-                        ForEach(viewModel.dataMedias, id: \.self){
+                        ForEach(viewModel.dataMedias, id: \.self)
+                        {
                         media in
                             if let stringUrl = media.media_url, let url = URL(string: stringUrl) {
-                                StoryCard(url: url, title: "\(media.comments_count ?? 0)")
+                                StoryCard(
+                                    url: url,
+                                    title1: "\(media.comments_count ?? 0)",
+                                    title2: "\(media.like_count ?? 0)")
                             }
                         }
                     }
@@ -53,9 +57,9 @@ struct SmartG_SwiftUI: View {
 }
 
 struct StoryCard: View{
-    
     let url: URL
-    let title: String
+    let title1: String
+    let title2: String
     
     var body: some View{
         VStack(alignment: .leading){
@@ -65,14 +69,20 @@ struct StoryCard: View{
                 placeholder: {
                     Text(Strings.loading3Dots)
                 },
-                image: { Image(uiImage: $0).resizable() }
-            )
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 160, height: 190)
-                
-                .clipShape(RoundedRectangle(cornerRadius: 15))
-                Text(title)
+                image: { Image(uiImage: $0).resizable() })
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 160, height: 190)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            
+            HStack(){
+                Image(systemName: "text.bubble.fill")
+                Text(title1)
                     .font(.system(size: 12, weight: .semibold))
+                Spacer()
+                Image(systemName: "suit.heart.fill")
+                Text(title2)
+                    .font(.system(size: 12, weight: .semibold))
+            }
         }
     }
 }

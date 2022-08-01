@@ -27,8 +27,8 @@ class ProcessJson: NSObject {
         let sum0 = (metrics.likeArray as NSArray).value(forKeyPath: "@sum.floatValue")
         let sum1 = (metrics.commentArray as NSArray).value(forKeyPath: "@sum.floatValue")
         
-        let avg0 = ProcessJson.averageElementsOfArray(a: metrics.likeArray)
-        let avg1 = ProcessJson.averageElementsOfArray(a: metrics.commentArray)
+        let avg0 = StringFormatter.averageElementsOfArray(a: metrics.likeArray)
+        let avg1 = StringFormatter.averageElementsOfArray(a: metrics.commentArray)
         
         let captions = metrics.captions
         
@@ -157,5 +157,9 @@ class ProcessJson: NSObject {
                 captions: captions,
                 engImpressions: engImpressions,
                 engReach: engReach))
+    }
+    
+    class func averageElementOfArrayCGFloat (a: [CGFloat]) -> CGFloat {
+        return a.reduce(0.0) { return $0 + $1/CGFloat(a.count)}
     }
 }

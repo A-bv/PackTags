@@ -5,9 +5,11 @@
 //  Created by Alexandre Bevilacqua on 19/05/2021.
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
+/*
+import CoreGraphics
 
-import UIKit
 //MARK: - Varr core
+import UIKit
 
 struct engagementVariations {
     let avg2Vr: CGFloat?            //8. Variation Avg Engagement
@@ -22,7 +24,9 @@ struct engagementVariations {
     }
 }
 
+
 extension ANewVCDataSUI {
+    
     //VARR Entry
     func getEngagementVariations(isFromSave: Bool) {
         
@@ -31,11 +35,34 @@ extension ANewVCDataSUI {
         } else {
             if let pJ = self.processedJson {
                 self.engagementVariations = ProcessJson.buildEngagementRatesVariations(pj: pJ)
-                ProcessJson.saveEngagementRates(avg2: pJ.avg2, rates: pJ.rates, times: pJ.pTimes)
+                ProcessJson.saveEngagementRates(
+                    avg2: pJ.avg2,
+                    rates: pJ.rates,
+                    times: pJ.pTimes)
             }
         }
     }
+ 
+
+    func variationSecurityCheck(
+        ratesVr: [CGFloat?]?,
+        ratesCount: Int) -> [CGFloat?]? {
+        //VARR
+        // A 0 variation array will not show
+        // Initialize a 0 variation array if variations are not computable
+        
+        // Security check:
+        // if somehow there is a variation array count that is no equal to a rates array count
+        // or if rate variation is inexistant
+        if ratesVr == nil || ratesVr?.count != Int(ratesCount) {
+            // Initialise a new 0 variation array, lenght: rates count
+            return [CGFloat](repeating: 0, count: Int(ratesCount))
+        } else {
+            return ratesVr
+        }
+    }
 }
+
 
 extension ProcessJson {
     class func removeAllSavedVarData () {
@@ -150,3 +177,4 @@ extension ProcessJson {
         return (avg2Vr, ratesVr)
     }
 }
+*/

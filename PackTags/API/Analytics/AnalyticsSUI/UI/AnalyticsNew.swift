@@ -308,7 +308,7 @@ struct AnalyticsNew : View {
                         
                         if swiftUIData.processedJson?.rates.count == 1 {
                             let p = swiftUIData.processedJson?.avg2 ?? 0
-                            let value = ProcessJson.formatNum(value: Double(p))
+                            let value = StringFormatter.formatNum(value: Double(p))
                             let text = rawInsights == true ? Double(p) <= 100 ? value.components(separatedBy: ".")[0] : value
                                      : rawInsights == true ? value : value + " %"
                                  
@@ -353,10 +353,12 @@ struct AnalyticsNew : View {
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                         }
                                         
+                                        /*
                                         //VARR
                                         Text(ProcessJson.extraFormatNum(value: Double(circle.variation)))
                                             .font(.caption2)
                                             .frame(maxWidth: .infinity, alignment: .leading)
+                                         */
                                     }
                                     
                                     
@@ -400,7 +402,7 @@ struct AnalyticsNew : View {
                                         //__________ circles progress bar
                                         //AAA 3
                                         //Show non decimal value if raw insights
-                                        let value = ProcessJson.formatNum(value: Double(circle.currentData))
+                                        let value = StringFormatter.formatNum(value: Double(circle.currentData))
                                         
                                         Text( rawInsights == true && circle.id == 1 ?
                                                 Double(circle.currentData) <= 100 ? value.components(separatedBy: ".")[0] : value
@@ -483,7 +485,6 @@ struct AnalyticsNew : View {
                             }
                             Spacer()
                             
-                            // TODO: lastCountedPosts
                             let text2 = num != 1 ? Strings.previousPost : Strings.previousPosts
                             // "Last \(num ?? 0) Posts" : Strings.previousPosts
                             Text(text2)
