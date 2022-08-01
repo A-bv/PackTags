@@ -11,20 +11,7 @@ import UIKit
 //toolbar functions
 extension TapTextView {
     private enum Strings {
-        static let tapTextViewToolBarDescriptionMessage = """
-            
-            • Copy •
-            • Cut •
-            • Group On Top •
-            • Clear selection •
-            • Delete •
-            
-            To undo changes, exit the hashtag
-            edition mode without saving.
-            
-            You may want to do a save before using this feature.
-            
-            """
+        static let tapTextViewToolBarDescriptionMessage = "tapTextViewToolBarDescriptionMessage".localized()
         static let tapTextViewToolBarDescriptionTitle = "Actions on selected hashtags".localized()
     }
     

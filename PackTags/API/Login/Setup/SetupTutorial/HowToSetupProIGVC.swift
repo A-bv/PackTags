@@ -30,7 +30,8 @@ class HowToSetupProIGVC: UIViewController {
     private enum Constants {
         static let openInstagramBtnHeight = CGFloat(44)
         static let openInstagramBtnBottomPadding = CGFloat(-50)
-        static let stackViewSpacing = CGFloat(0.0)
+        static let stackViewSpacing = CGFloat(50.0)
+        static let subStackViewSpacing = CGFloat(5.0)
         static let LH = CGFloat(44.0)  //label height
         static let TH = CGFloat(100.0) //Text height
         static let textViewWidth = CGFloat(300)
@@ -45,18 +46,8 @@ class HowToSetupProIGVC: UIViewController {
     
     private enum Strings {
         static let topLabelText = "Switch to Creator /Business:".localized()
-        static let topTextViewText = """
-                  • On your profile tap  ≡
-                  • Tap "Settings"
-                  • Tap "Accounts"
-                  • Switch Account Type
-            
-             
-            """
-        static let bottomTextViewText = """
-                  • On your profile tap "Edit Profile"
-                  • Link your Facebook page
-            """
+        static let topTextViewText = "topTextViewText".localized()
+        static let bottomTextViewText = "bottomTextViewText".localized()
         static let bottomLabelText = "🔗    If your page is not linked:".localized()
         static let buttonTitle = "Open Instagram".localized()
     }
@@ -84,6 +75,12 @@ class HowToSetupProIGVC: UIViewController {
         textView.widthAnchor.constraint(
             equalToConstant: Constants.textViewWidth).isActive = true
         return textView
+    }
+    
+    var stack: UIStackView {
+        let subStack = UIStackView()
+        subStack.axis = NSLayoutConstraint.Axis.vertical
+        return subStack
     }
     
     override func viewDidLoad() {
@@ -140,24 +137,33 @@ extension HowToSetupProIGVC {
         bottomTextView.heightAnchor.constraint(
             equalToConstant: Constants.TH).isActive = true
         
-        //StackView
-        let stackHTS = UIStackView()
-        stackHTS.axis = NSLayoutConstraint.Axis.vertical
+        //General StackView
+        let stackHTS = stack
         stackHTS.distribution = .equalSpacing
         stackHTS.alignment = .center
         stackHTS.spacing = Constants.stackViewSpacing
+        
+        //Sub stackView 1
+        let subStack1 = stack
+        subStack1.addArrangedSubview(topLabel)
+        subStack1.addArrangedSubview(topTextView)
+        subStack1.spacing = Constants.subStackViewSpacing
+        
+        //Sub StackView 2
+        let subStack2 = stack
+        subStack2.addArrangedSubview(bottomLabel)
+        subStack2.addArrangedSubview(bottomTextView)
+        subStack2.spacing = Constants.subStackViewSpacing
        
-        stackHTS.addArrangedSubview(topLabel)
-        stackHTS.addArrangedSubview(topTextView)
-        stackHTS.addArrangedSubview(bottomLabel)
-        stackHTS.addArrangedSubview(bottomTextView)
+        stackHTS.addArrangedSubview(subStack1)
+        stackHTS.addArrangedSubview(subStack2)
         self.view.addSubview(stackHTS)
         
         stackHTS.translatesAutoresizingMaskIntoConstraints  = false
         stackHTS.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         stackHTS.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        stackHTS.heightAnchor.constraint(
-            equalToConstant: CGFloat(Constants.stackViewHeight)).isActive = true
+        //stackHTS.heightAnchor.constraint(
+        //    equalToConstant: CGFloat(Constants.stackViewHeight)).isActive = true
         
         
         // Fill text

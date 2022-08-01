@@ -65,35 +65,21 @@
 
 "Continue" = "Continuer";
  
-/*
-// HowTosetupProIGVC
+// HowToSetupProIGVC
 "Switch to Creator /Business:" = "Passer à Créateur/Entreprise :";
-"""
-              • On your profile tap  ≡
-              • Tap "Settings"
-              • Tap "Accounts"
-              • Switch Account Type
-        
-         
-""" = """
-              • Sur votre profil, appuyez sur ≡
-              • Appuyez sur "Paramètres"
-              • Appuyez sur "Comptes"
-              • Changer de type de compte
-        
-         
-""";
+"topTextViewText" =
+"     • Allez sur votre profil.
+     • Appuyez sur \"≡\".
+     • Appuyez sur \"Paramètres\".
+     • Appuyez sur \"Comptes\".
+     • Changer de type de compte.";
 
-"""
-              • On your profile tap "Edit Profile"
-              • Link your Facebook page
-        """ = """
-              • Sur votre profil, appuyez sur "Modifier le profil"
-              • Liez votre page Facebook
-        """;
+"bottomTextViewText" =
+"     • Allez sur votre profil.
+     • Appuyez sur \"Modifier profil\".
+     • Liez votre page Facebook.";
 "🔗    If your page is not linked:" = "🔗 Si votre page n'est pas liée :";
 "Open Instagram" = "Ouvrir Instagram";
- */
  
 // FB LoginVC
 "Connected!" = "Connecté!";
@@ -152,36 +138,20 @@
 "Yes! Rate us on the App Store." = "Oui! Évaluez-nous sur l'App Store.";
 "No! Tell us why." = "Non! Dites-nous pourquoi.";
 
-/*
 //TapTV
-"""
+"tapTextViewToolBarDescriptionMessage" = "
         
-        • Copy •
-        • Cut •
-        • Group On Top •
-        • Clear selection •
-        • Delete •
+• Copier •
+• Couper •
+• Grouper en haut •
+• Effacer la selection •
+• Supprimer •
         
-        To undo changes, exit the hashtag
-        edition mode without saving.
+Pour annuler les modifications, quittez le mode d'édition d'hashtags sans sauvegarder.
         
-        You may want to do a save before using this feature.
+Vous voudrez peut-être faire une sauvegarde avant d'utiliser cette fonction.
         
-""" = """
-        
-        • Copier •
-        • Couper •
-        • Grouper en haut •
-        • Effacer la selection •
-        • Supprimer •
-        
-        Pour annuler les modifications, quittez le mode d'édition d'hashtags
-        sans sauvegarder.
-        
-        Vous voudrez peut-être faire une sauvegarde avant d'utiliser cette fonction.
-        
-""";
- */
+";
 "Actions on selected hashtags" = "Actions sur les hashtags sélectionnés";
 
 //TextViewPlaceHolder
@@ -195,31 +165,16 @@
 "Cancel" = "Annuler";
 "Done" = "Terminé";
 "Edit Your Setup" = "Modifiez votre configuration";
-/*
-"""
+"troubleShootingAlertMessage" = "
             
-            Login again and edit your settings:
+Connectez-vous à nouveau et modifiez vos paramètres :
             
-            • A Creator/Business Instagram account is needed.
+• Un compte Instagram Creator/Business est nécessaire.
             
-            • Only select the Facebook page that
-              is linked to your Instagram account.
-            
-            Tap "Setup" for more information.
-            
-""" = """
-            
-            Connectez-vous à nouveau et modifiez vos paramètres :
-            
-            • Un compte Instagram Creator/Business est nécessaire.
-            
-            • Sélectionnez uniquement la page Facebook qui
+• Sélectionnez uniquement la page Facebook qui
               est lié à votre compte Instagram.
             
-            Appuyez sur "Configuration" pour plus d'informations.
-            
-""";
-*/
+Appuyez sur \"Configuration\" pour plus d'informations.";
 "Discover PackTags and its features with \"Tricks & Tips\" in settings." = "Découvrez PackTags et ses fonctionalités avec \"Trucs et astuces\" dans paramètres.";
 "View later" = "Plus tard";
 "Let's go!" = "C'est parti!";

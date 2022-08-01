@@ -19,18 +19,7 @@ class Alerts: NSObject {
         static let cancel = "Cancel".localized()
         static let done = "Done".localized()
         static let editYourSetup = "Edit Your Setup".localized()
-        static let troubleShootingAlertMessage = """
-                
-                Login again and edit your settings:
-                
-                • A Creator/Business Instagram account is needed.
-                
-                • Only select the Facebook page that
-                  is linked to your Instagram account.
-                
-                Tap "Setup" for more information.
-                
-                """
+        static let troubleShootingAlertMessage = "troubleShootingAlertMessage".localized()
         static let discoverPacktagsWithTricksAndTips = "Discover PackTags and its features with \"Tricks & Tips\" in settings.".localized()
         static let viewLater = "View later".localized()
         static let letsGo = "Let's go!".localized()
