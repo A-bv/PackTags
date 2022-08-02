@@ -25,10 +25,11 @@ struct SmartG_SwiftUI: View {
             VStack{
                 Header()
                 ScrollView(.horizontal, showsIndicators: false){
-                    HStack {
-                        ForEach(viewModel.dataMedias, id: \.self)
-                        {
-                        media in
+                    HStack(alignment: .center, spacing: 10) {
+                        ForEach(Array(viewModel.dataMedias.enumerated()), id: \.element) { index, media in
+                        // ForEach(viewModel.dataMedias, id: \.self)
+                        //{
+                        // media in
                             if let stringUrl = media.media_url, let url = URL(string: stringUrl) {
                                 StoryCard(
                                     url: url,
@@ -36,13 +37,15 @@ struct SmartG_SwiftUI: View {
                                     title2: StringFormatter.formatNum(
                                         value: Double(media.like_count ?? Int(0.0)),
                                         noDecimal: true),
-                                    title3: "\(viewModel.computedData.count)")
+                                    title3: "\(viewModel.computedData[index].hashtags.count)")
                             }
                         }
                     }
+                    
                 }
                 .padding(.leading)
                 .padding(.vertical, 5)
+                
                 List {
                     ForEach(viewModel.computedData, id: \.self){
                         item in
@@ -85,19 +88,24 @@ struct StoryCard: View{
             .clipShape(RoundedRectangle(cornerRadius: 15))
             
             HStack(){
-                Image(systemName: "text.bubble.fill")
-                Text(title1)
-                    .font(.system(size: 12, weight: .semibold))
+                if title1 != "0" {
+                    Image(systemName: "text.bubble.fill")
+                    Text(title1)
+                        .font(.system(size: 12, weight: .semibold))
+                }
                 if title2 != "0" {
                     Image(systemName: "suit.heart.fill")
                     Text(title2)
                         .font(.system(size: 12, weight: .semibold))
                 }
+                if title3 != "0" {
+                    Image(systemName: "number.circle.fill")
+                    Text(title3)
+                        .font(.system(size: 12, weight: .semibold))
+                }
                 Spacer()
-                Image(systemName: "number.circle.fill")
-                Text(title3)
-                    .font(.system(size: 12, weight: .semibold))
             }
+            Spacer()
         }
     }
 }
