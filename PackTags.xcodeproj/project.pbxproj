@@ -27,6 +27,8 @@
 		021EB81428846AD100463B42 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB81328846AD100463B42 /* Localizable.swift */; };
 		021EB81828846FDE00463B42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 021EB81A28846FDE00463B42 /* Localizable.strings */; };
 		021EB84D288C1EB000463B42 /* TTVC+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB84C288C1EB000463B42 /* TTVC+Operations.swift */; };
+		021EB87E289E8B8400463B42 /* SmartTags+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB87C289E8B8400463B42 /* SmartTags+CoreDataClass.swift */; };
+		021EB87F289E8B8400463B42 /* SmartTags+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB87D289E8B8400463B42 /* SmartTags+CoreDataProperties.swift */; };
 		022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022479C4250D1ED900E0E489 /* CoreDataHelper.swift */; };
 		022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688922624F9B1007DBD98 /* ThemeCell.swift */; };
 		0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* Neumorphic.swift */; };
@@ -150,6 +152,8 @@
 		021EB81928846FDE00463B42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		021EB81B28846FEE00463B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		021EB84C288C1EB000463B42 /* TTVC+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Operations.swift"; sourceTree = "<group>"; };
+		021EB87C289E8B8400463B42 /* SmartTags+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartTags+CoreDataClass.swift"; sourceTree = "<group>"; };
+		021EB87D289E8B8400463B42 /* SmartTags+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartTags+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		022479C4250D1ED900E0E489 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		022688922624F9B1007DBD98 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		0226889C2626F332007DBD98 /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
@@ -295,8 +299,8 @@
 		0216113D25D864860098CE5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */,
-				02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */,
+				021EB87B289E8A7B00463B42 /* SmartTags */,
+				021EB876289E8A2E00463B42 /* ThemeCD */,
 				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
 				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
 			);
@@ -351,6 +355,24 @@
 				0229864127BD9CBA0048F9E9 /* PrModel_SmartG.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		021EB876289E8A2E00463B42 /* ThemeCD */ = {
+			isa = PBXGroup;
+			children = (
+				02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */,
+				02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */,
+			);
+			name = ThemeCD;
+			sourceTree = "<group>";
+		};
+		021EB87B289E8A7B00463B42 /* SmartTags */ = {
+			isa = PBXGroup;
+			children = (
+				021EB87C289E8B8400463B42 /* SmartTags+CoreDataClass.swift */,
+				021EB87D289E8B8400463B42 /* SmartTags+CoreDataProperties.swift */,
+			);
+			name = SmartTags;
 			sourceTree = "<group>";
 		};
 		0226F19A259E0346006E086C /* Supporting Files */ = {
@@ -928,6 +950,7 @@
 				02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */,
 				0264B817264A7CE900E1EEFA /* AnViewModel.swift in Sources */,
 				024347D827119E2100F86A64 /* TextRecognition.swift in Sources */,
+				021EB87F289E8B8400463B42 /* SmartTags+CoreDataProperties.swift in Sources */,
 				02CAC9B32591047D00BE5E57 /* TextViewKbNoHide.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				0226F197259AB231006E086C /* TapTV+Selection.swift in Sources */,
@@ -943,6 +966,7 @@
 				02FEF5B7263304EC0001B525 /* ExternalActions.swift in Sources */,
 				0269E2AC2564B838005FE14B /* AnalyticsVC.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
+				021EB87E289E8B8400463B42 /* SmartTags+CoreDataClass.swift in Sources */,
 				0229863C27BD6DF60048F9E9 /* ImageLoader.swift in Sources */,
 				02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */,
 				02B02AC52594238100586352 /* TVC+Search.swift in Sources */,

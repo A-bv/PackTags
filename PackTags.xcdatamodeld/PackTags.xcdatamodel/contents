@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SmartTags" representedClassName="SmartTags" syncable="YES">
+        <attribute name="hashtagSearchDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="hashtagTitle" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="ThemeCD" representedClassName=".ThemeCD" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
@@ -10,5 +14,6 @@
     </entity>
     <elements>
         <element name="ThemeCD" positionX="-54" positionY="-9" width="128" height="119"/>
+        <element name="SmartTags" positionX="-45" positionY="45" width="128" height="59"/>
     </elements>
 </model>

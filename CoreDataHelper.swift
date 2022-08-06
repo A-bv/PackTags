@@ -60,8 +60,6 @@ struct CoreDataHelper {
 }
 
 
-//MARK: - Extensions
-
 //OPTIONAL: Reorder tableView
 extension CoreDataHelper {
     static func getRecordsCount() -> Int32 {
@@ -76,40 +74,38 @@ extension CoreDataHelper {
     }
 }
 
-extension CoreDataHelper { //! works along with func checkCD
-    //Checks if element in array is already in Core Data (might not be the most elegant)
-    static func ccd (tags: [String]) -> [String] {
+extension CoreDataHelper {
+    static func tagsAlreadyInCoreData (tags: [String]) -> [String] {
         
-        if tags != [] {
-            
-            var tagsR = [String]()
-            
-            //condition for the predicate
-            let regex = ".*(" + tags.map {
-                NSRegularExpression.escapedPattern(for: $0)
-            }.joined(separator: "|") + ")\\b.*"
-            
-            //build the predicate to prepare the filter for Core Data
-            let predicate = NSPredicate(format: "content MATCHES %@", regex)
-            
-            //build the request
-            let fetchRequest = NSFetchRequest<ThemeCD>(entityName: "ThemeCD")
-            fetchRequest.predicate = predicate
-            do  {
-                //fetch
-                let result = try context.fetch(fetchRequest)
-                for data in result {
-                    let z = (data.value(forKey: "content")! as AnyObject).components(separatedBy: " ") //list of tags in fetched object (O)
-                    let y = Array(Set(z).intersection(Set(tags))) //tag that is already in (O)
-                    tagsR += y
-                }
-            } catch {
-                print(error.localizedDescription)
+        guard !tags.isEmpty else { return [] }
+        
+        var tagsR = [String]()
+        
+        //condition for the predicate
+        let regex = ".*(" + tags.map {
+            NSRegularExpression.escapedPattern(for: $0)
+        }.joined(separator: "|") + ")\\b.*"
+        
+        //build the predicate to prepare the filter for Core Data
+        let predicate = NSPredicate(format: "content MATCHES %@", regex)
+        
+        //build the request
+        let fetchRequest = NSFetchRequest<ThemeCD>(entityName: "ThemeCD")
+        fetchRequest.predicate = predicate
+        
+        do  {
+            let fetchedResult = try context.fetch(fetchRequest)
+            for data in fetchedResult {
+                
+                let listOfTagsInFetchedObject = (data.value(forKey: "content")! as AnyObject).components(separatedBy: " ")
+                
+                let tagAlreadyInFetchedObject = Array(Set(listOfTagsInFetchedObject).intersection(Set(tags)))
+                
+                tagsR += tagAlreadyInFetchedObject
             }
-            return tagsR
-        } else {
-            return []
+        } catch {
+            print(error.localizedDescription)
         }
+        return tagsR
     }
 }
-

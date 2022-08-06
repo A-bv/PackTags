@@ -45,11 +45,11 @@ struct Unique {
             
             let d = c.differenceArrays(from: b)  //3: difference
             
-            e = CoreDataHelper.ccd(tags: d) //check if present in Core Data
+            e = CoreDataHelper.tagsAlreadyInCoreData(tags: d) //check if present in Core Data
         } else {
-            e = CoreDataHelper.ccd(tags: b)
+            e = CoreDataHelper.tagsAlreadyInCoreData(tags: b)
         }
-        print("Tags already in Core Data:",e.count)
+        print("Tags already in Core Data:", e.count)
         let f = b.filter { !e.contains($0) } //deletes 
         return f
     }
