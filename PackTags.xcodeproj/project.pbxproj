@@ -296,8 +296,8 @@
 			isa = PBXGroup;
 			children = (
 				02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */,
-				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
 				02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */,
+				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
 				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
 			);
 			name = CoreData;

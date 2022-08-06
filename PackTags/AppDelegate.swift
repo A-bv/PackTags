@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //coredatavisu()
         
         //Fb login
-        ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         //Storekit (app review)
         StoreKitHelper.incrementNumberOftimesLaunched()
@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Fb login
-    func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool { ApplicationDelegate.shared.application( app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation] ) }
+    func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
+        ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])}
 
     // MARK: - Style
     func setupAppearance() {
@@ -50,30 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - UISceneSession Lifecycle
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-    
-    // MARK: - Core Data data visualisation
-    func coredatavisu(){ // custom func
-        let link = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).last!
-        print(
-            """
-            External device Core Data db:
-            go xcode>window>devices
-            select app>download
-            right click "show package" then content>application support
-            
-            iOS simulator Core Data db:
-            go Finder,
-            press "CMD+N",
-            press "CMD + Shift + G",
-            Paste: \(link)
-            
-            open .sqlite with 'DB browser for SQLite'
-            or press "CMD + shift + ." in the application support folder
-            to reveal external storage images
-            """
-        )
+        return UISceneConfiguration(
+            name: "Default Configuration",
+            sessionRole: connectingSceneSession.role)
     }
 
     // MARK: - Core Data stack
@@ -101,5 +81,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+
+    // MARK: - Core Data data visualisation
+    func coredatavisu(){ // custom func
+        let link = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).last!
+        print(
+            """
+            External device Core Data db:
+            go xcode>window>devices
+            select app>download
+            right click "show package" then content>application support
+            
+            iOS simulator Core Data db:
+            go Finder,
+            press "CMD+N",
+            press "CMD + Shift + G",
+            Paste: \(link)
+            
+            open .sqlite with 'DB browser for SQLite'
+            or press "CMD + shift + ." in the application support folder
+            to reveal external storage images
+            """
+        )
     }
 }
