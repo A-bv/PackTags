@@ -19,6 +19,9 @@ struct SmartG_SwiftUI: View {
     @State private var textstyle = UIFont.TextStyle.body
     @StateObject var viewModel = SmartGViewModel()
     
+    @State private var hashtagEntry: String = "#travel"
+    @State private var showingAlert = false
+    
     var body: some View {
         ZStack{
             Color.bgFillColor.ignoresSafeArea()
@@ -46,11 +49,39 @@ struct SmartG_SwiftUI: View {
                 .padding(.leading)
                 .padding(.vertical, 5)
                 
+                HStack {
+                    TextField("Enter a hashtag", text: $hashtagEntry)
+                    Button(action: {
+                        print(self.$hashtagEntry)
+                    }) {
+                        Text("+")
+                    }
+                    Button(action: {
+                        showingAlert = true
+                    }) {
+                        Text("Added")
+                    }
+                    .alert(isPresented: $showingAlert) {
+                        Alert(
+                            title: Text("Important message"),
+                            message: Text("Wear sunscreen"),
+                            dismissButton: .default(Text("Ok!")))
+                    }
+                    Spacer()
+                    Button(action: {
+                        print(self.$hashtagEntry)
+                    }) {
+                        Text("Sync")
+                    }
+                    .foregroundColor(.green)
+                }
+                .padding(20)
+                
                 List {
-                    ForEach(viewModel.computedData, id: \.self){
-                        item in
+                    ForEach(Array(viewModel.computedData.enumerated()), id: \.element){
+                        index, item in
                         HStack{
-                            Text("hashtags: \(item.hashtags.joined(separator: " "))")
+                            Text("\(String(index+1)): \(item.hashtags.joined(separator: " "))")
                         }
                     }
                 }
@@ -105,7 +136,6 @@ struct StoryCard: View{
                 }
                 Spacer()
             }
-            Spacer()
         }
     }
 }
