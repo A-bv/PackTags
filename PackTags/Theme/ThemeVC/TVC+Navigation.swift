@@ -11,7 +11,7 @@ import UIKit
 extension ThemeVC {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          guard let identifier = segue.identifier else { return }
-         if identifier == "cancel" {return}
+         if identifier == "cancel" { return }
      
          //Text treatment (no duplicates, no wrong tags)
          let text = Unique.cleanList(t: themeTextView.text, x:theme, shuffle: false)

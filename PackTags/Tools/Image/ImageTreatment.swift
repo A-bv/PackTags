@@ -55,7 +55,9 @@ extension UIImageView {
         edgeDetectFilter.setValue(0.12, forKey: "inputIntensity")
         edgeDetectFilter.setValue(0.2, forKey: "inputRadius")
     
-        let newImage = UIImage(ciImage: edgeDetectFilter.outputImage!)
+        guard let ciImage = edgeDetectFilter.outputImage else { return }
+                
+        let newImage = UIImage(ciImage: ciImage)
         self.image = newImage
     }
 }

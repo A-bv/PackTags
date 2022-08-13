@@ -18,7 +18,7 @@ extension PackTableVC {
     
     //MARK: - Unwind
     @IBAction func unwindToThemeList(sender: UIStoryboardSegue) {
-        setPackTableVC()
+        updatePackTableVC()
         resetStatusBarColor = false
     }
     

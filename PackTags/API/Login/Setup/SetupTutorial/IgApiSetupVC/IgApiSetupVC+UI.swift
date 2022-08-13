@@ -24,8 +24,6 @@ extension IgApiSetupVC  {
     }
     
     func buildUI() {
-        
-        // UI1
         let l1: UILabel  = {
             let label = UILabel()
             label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title2)
@@ -79,8 +77,6 @@ extension IgApiSetupVC  {
         
         
         //MARK: - StackView part
-        
-        //buttons
         for i in 0...labels.count-1 {
             let btn: UIButton = {
                 let button = UIButton.init()

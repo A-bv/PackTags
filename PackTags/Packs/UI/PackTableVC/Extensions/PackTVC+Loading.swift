@@ -21,9 +21,13 @@ extension PackTableVC {
 }
 
 extension PackTableVC {
-    func setPackTableVC() {
+    func updatePackTableVC() {
         loadPack()
         tableView.reloadData()
-        self.navigationItem.title = theme?.name
+        navigationItem.title = theme?.name
+        DispatchQueue.main.async {
+            // TODO: Check if can only update image
+            self.setupTableViewBackgroundImage()
+        }
     }
 }

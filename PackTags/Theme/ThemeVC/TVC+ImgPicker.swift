@@ -21,7 +21,8 @@ extension ThemeVC {
 extension ThemeVC {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any])
     {
-        guard let selectedImage = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage
+        guard let selectedImage = info[UIImagePickerController.InfoKey(
+                rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage
         else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }

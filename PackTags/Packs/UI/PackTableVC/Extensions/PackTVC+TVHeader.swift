@@ -10,20 +10,24 @@ import UIKit
 
 extension PackTableVC {
     func setupTableViewBackgroundImage() {
+        updateTableViewBackgroundImage()
+        uiiv.contentMode = .scaleAspectFill
+        uiiv.clipsToBounds = true
+        uiiv.layer.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: UIScreen.main.bounds.width,
+            height: self.view.frame.midY + cR)
+        
+            let tableViewBackgroundView = UIView()
+            tableViewBackgroundView.addSubview(self.uiiv)
+            tableView.backgroundView = tableViewBackgroundView
+            uiiv.putFilter()
+    }
+    
+    func updateTableViewBackgroundImage() {
         if let theme = theme, let imageData = theme.image, let image = UIImage(data: imageData) {
             uiiv = UIImageView(image: image)
-            uiiv.contentMode = .scaleAspectFill
-            uiiv.clipsToBounds = true
-            uiiv.layer.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: UIScreen.main.bounds.width,
-                height: self.view.frame.midY + cR)
-            
-                let tableViewBackgroundView = UIView()
-                tableViewBackgroundView.addSubview(self.uiiv)
-                tableView.backgroundView = tableViewBackgroundView
-                uiiv.putFilter()
         }
     }
 }
