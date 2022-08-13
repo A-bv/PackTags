@@ -15,9 +15,9 @@ class IgApiSetupVC: UIViewController {
     }
     
     private enum Strings {
-        static let switchAccount = "Switch".localized()
+        static let switchAccount = "Account Type".localized()
         static let createAPage = "Create a page".localized()
-        static let login = "login".localized()
+        static let login = "Login".localized()
         static let accountLinkingTitle = "Account Linking".localized()
     }
     
@@ -27,21 +27,18 @@ class IgApiSetupVC: UIViewController {
     
     static var businessAccAttributedString: NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: "")
-        attributedString.append(NSAttributedString(attachment: instagramIconAttachment))
         attributedString.append(NSAttributedString(string: "   \(Strings.switchAccount)"))
         return attributedString
     }
     
     static var facebookPageAttributedString: NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: "")
-        attributedString.append(NSAttributedString(attachment: facebookIconAttachment))
         attributedString.append(NSAttributedString(string: "  \(Strings.createAPage)"))
         return attributedString
     }
     
     static var loginAttributedString: NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: "")
-        attributedString.append(NSAttributedString(attachment: facebookIconAttachment))
         attributedString.append(NSAttributedString(string: "  \(Strings.login)"))
         return attributedString
     }
@@ -50,6 +47,12 @@ class IgApiSetupVC: UIViewController {
         loginAttributedString,
         facebookPageAttributedString,
         businessAccAttributedString]
+    
+    var buttonIcons = [
+        UIImage(named: "fbColor"),
+        UIImage(named: "fbColor"),
+        UIImage(named: "igColor")
+    ]
     
     var buttons: [UIButton] = []
     

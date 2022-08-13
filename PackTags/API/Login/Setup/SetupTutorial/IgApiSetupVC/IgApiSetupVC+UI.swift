@@ -14,6 +14,15 @@ extension IgApiSetupVC  {
         static let continueString = "Continue".localized()
     }
     
+    private enum Constants {
+        static let value10: CGFloat = 10
+        static let value20: CGFloat = 20
+        static let titleTopDistance: CGFloat = 40
+        static let value44: CGFloat = 44
+        static let value50: CGFloat = 50
+        static let value200: CGFloat = 200
+    }
+    
     func buildUI() {
         
         // UI1
@@ -41,25 +50,32 @@ extension IgApiSetupVC  {
             return btn
         }()
         
-        let cstW = view.frame.width/10
-        let titleTopDistance = CGFloat(40)
+        let cstW = view.frame.width/Constants.value10
         
         self.view.addSubview(l1)
         self.view.addSubview(continueBtn)
         
-
         
         //MARK: - Title & Continue part
+        l1.topAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.topAnchor,
+            constant: cstW).isActive = true
+        l1.heightAnchor.constraint(
+            equalToConstant: Constants.value44 + Constants.titleTopDistance).isActive = true
+        l1.trailingAnchor.constraint(
+            equalTo: view.trailingAnchor,
+            constant: -cstW).isActive = true
+        l1.leadingAnchor.constraint(
+            equalTo: view.leadingAnchor,
+            constant: cstW).isActive = true
         
-        l1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: cstW).isActive = true
-        l1.heightAnchor.constraint(equalToConstant: 44 + titleTopDistance).isActive = true
-        l1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -cstW).isActive = true
-        l1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: cstW).isActive = true
-        //l1.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        
-        continueBtn.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        continueBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        continueBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        continueBtn.heightAnchor.constraint(
+            equalToConstant: Constants.value44).isActive = true
+        continueBtn.centerXAnchor.constraint(
+            equalTo: self.view.centerXAnchor).isActive = true
+        continueBtn.bottomAnchor.constraint(
+            equalTo: view.bottomAnchor,
+            constant: -Constants.value50).isActive = true
         
         
         //MARK: - StackView part
@@ -70,14 +86,14 @@ extension IgApiSetupVC  {
                 let button = UIButton.init()
                 button.setTitleColor(.white, for: .normal)
                 button.setAttributedTitle(labels[i], for: .normal)
-                button.backgroundColor = UITextView.appearance().tintColor.withAlphaComponent(0.5) //.clear //bkgdColor
-                button.layer.cornerRadius = 22
-                //button.layer.borderWidth = 0.5
+                button.backgroundColor = UITextView.appearance().tintColor.withAlphaComponent(0.5)
+                button.layer.cornerRadius = Constants.value44/2
                 button.layer.borderColor = UIColor.white.cgColor
                 button.translatesAutoresizingMaskIntoConstraints = false
                 button.addTarget(self, action: actions[i], for: .touchUpInside)
-                button.heightAnchor.constraint(equalToConstant: 44).isActive = true
-                button.widthAnchor.constraint(equalToConstant: 200).isActive = true
+                button.heightAnchor.constraint(equalToConstant: Constants.value44).isActive = true
+                button.widthAnchor.constraint(equalToConstant: Constants.value200).isActive = true
+                button.setImage(buttonIcons[i], for: .normal)
                 return button
             }()
             
@@ -101,9 +117,13 @@ extension IgApiSetupVC  {
         
         //Constraints StackView
         stackA.translatesAutoresizingMaskIntoConstraints  = false
-        stackA.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 20).isActive = true
-        stackA.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        stackA.heightAnchor.constraint(equalToConstant: CGFloat(labels.count*44) + CGFloat(labels.count-1)*cstH ).isActive = true
+        stackA.centerYAnchor.constraint(
+            equalTo: self.view.centerYAnchor,
+            constant: Constants.value20).isActive = true
+        stackA.centerXAnchor.constraint(
+            equalTo: self.view.centerXAnchor).isActive = true
+        stackA.heightAnchor.constraint(
+            equalToConstant: CGFloat(labels.count)*Constants.value44 + CGFloat(labels.count-1)*cstH ).isActive = true
     }
 }
 

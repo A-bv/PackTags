@@ -9,10 +9,10 @@
 "Pnd-1y-xsw.normalTitle" = "Done";
 
 /* Class = "UIButton"; normalTitle = "Get Started"; ObjectID = "RjL-Mi-pzh"; */
-"RjL-Mi-pzh.normalTitle" = "Get Started";
+"RjL-Mi-pzh.normalTitle" = "Commencer";
 
 /* Class = "UINavigationItem"; title = "Themes"; ObjectID = "bbI-w9-2Ss"; */
-"bbI-w9-2Ss.title" = "Themes";
+"bbI-w9-2Ss.title" = "Thèmes";
 
 /* Class = "UIViewController"; title = "ThemeViewController"; ObjectID = "ejf-rU-4pm"; */
 "ejf-rU-4pm.title" = "ThemeViewController";

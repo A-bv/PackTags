@@ -58,15 +58,15 @@
 "results" = "résultats";
 
 // IgApiSetupVC
-"Switch" = "Convertir";
+"Account type" = "Type de compte";
 "Create a page" = "Créer une page";
-"login" = "Connection";
+"Login" = "Connection";
 "Account Linking" = "Associer votre compte";
 
 "Continue" = "Continuer";
  
 // HowToSetupProIGVC
-"Switch to Creator /Business:" = "Passer à Créateur/Entreprise :";
+"Switch to Creator /Business:" = "Passer à Créateur /Entreprise:";
 "topTextViewText" =
 "     • Allez sur votre profil.
      • Appuyez sur \"≡\".

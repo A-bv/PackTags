@@ -15,13 +15,6 @@ var instagramIconAttachment: NSTextAttachment {
     return icon
 }
 
-var facebookIconAttachment: NSTextAttachment {
-    let icon = NSTextAttachment()
-    icon.image = UIImage(named: "fbColor")
-    icon.bounds = CGRect(x: 0, y: -5, width: 30, height: 30)
-    return icon
-}
-
 class HowToSetupProIGVC: UIViewController {
     deinit {
         print("deinit HowToSetupProIGVC")
@@ -162,8 +155,6 @@ extension HowToSetupProIGVC {
         stackHTS.translatesAutoresizingMaskIntoConstraints  = false
         stackHTS.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         stackHTS.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        //stackHTS.heightAnchor.constraint(
-        //    equalToConstant: CGFloat(Constants.stackViewHeight)).isActive = true
         
         
         // Fill text
