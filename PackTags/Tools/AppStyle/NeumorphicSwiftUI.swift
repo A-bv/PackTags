@@ -9,67 +9,57 @@
 import SwiftUI
 
 //MARK: - Styles
-
 struct ColorfulButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding(10)
             .contentShape(Circle())
             .background(
-                ColorfulBackground(isHighlighted: configuration.isPressed,
-                                   shape: RoundedRectangle(cornerRadius: 10)
-                                   //shape: Circle())
-                )
-            )
+                ColorfulBackground(
+                    isHighlighted: configuration.isPressed,
+                    shape: RoundedRectangle(cornerRadius: 10))) //shape: Circle())
             .animation(nil)
     }
 }
 
 struct DarkToggleStyle: ToggleStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
-        Button(action: {
-            configuration.isOn.toggle()
-        }) {
+        Button(action: { configuration.isOn.toggle() }) {
             configuration.label
                 .padding(10)
                 .contentShape(Circle())
         }
         .background(
-            ColorfulBackground(isHighlighted: configuration.isOn,
-                               shape: RoundedRectangle(cornerRadius: 10)
-                               
-            )
+            ColorfulBackground(
+                isHighlighted: configuration.isOn,
+                shape: RoundedRectangle(cornerRadius: 10))
         )
     }
 }
 
 
 //MARK: - Styles tools
-
 struct ColorfulBackground<S: Shape>: View {
     var isHighlighted: Bool
     var shape: S
-
+    
     var body: some View {
         ZStack {
             if isHighlighted {
                 shape
                     .fill(LinearGradient(Color.mphEnd, Color.mphStart))
-                    //
                     //.overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
                     .overlay(shape.stroke(LinearGradient(Color("Color4"), Color("Color1")), lineWidth: 4))
-                
-                    //
+
                     .shadow(color: Color.mphStart, radius: 10, x: 5, y: 5)
                     .shadow(color: Color.mphEnd, radius: 10, x: -5, y: -5)
-                    
+                
             } else {
                 shape
                     .fill(LinearGradient(Color.mphStart, Color.mphEnd))
-                    //
                     //.overlay(shape.stroke(LinearGradient(Color.lightStart, Color.lightEnd), lineWidth: 4))
                     .overlay(shape.stroke(Color("Color-Bkgd"), lineWidth: 4))
-                    //
+
                     .shadow(color: Color.mphStart, radius: 10, x: -10, y: -10)
                     .shadow(color: Color.mphEnd, radius: 10, x: 10, y: 10)
             }
@@ -78,36 +68,21 @@ struct ColorfulBackground<S: Shape>: View {
     }
 }
 
-
-
-
-
-
-
-
 // MARK: - Extension for shapes
-
 extension Shape {
-    
-    public func outerNeumorphism<S:ShapeStyle>
-    (_ fillContent: S) -> some View
-    {
-        
+    public func outerNeumorphism<S:ShapeStyle>(_ fillContent: S) -> some View {
         self.fill(fillContent)
-            //DOCK
             .shadow(color: Color.lowerShadow, radius: 10, x: 10, y: 10)
             .shadow(color: Color.upperShadow, radius: 10, x: -5, y: -5)
-            
     }
     
     public func innerNeumorphism<S:ShapeStyle>
-    (_ fillContent: S) -> some View
-    {
+    (_ fillContent: S) -> some View {
         ZStack {
             self.fill(fillContent)
                 .overlay(
                     self
-                    //.stroke(Color.gray, lineWidth: 4)
+                        //.stroke(Color.gray, lineWidth: 4)
                         .stroke(Color.lowerShadow, lineWidth: 4)
                         .blur(radius: 4)
                         .offset(x: 2, y: 2)

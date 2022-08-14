@@ -68,10 +68,3 @@ extension UIView {
         }
     }
 }
-
-extension CALayer {
-    func shadowPerformanceBoost() {
-        self.shouldRasterize = true
-        self.rasterizationScale = UIScreen.main.scale
-    }
-}

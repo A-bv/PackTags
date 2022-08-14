@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		020584D1284D6F8100020FB8 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* RoundedCorners.swift */; };
+		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D3284D6FFC00020FB8 /* TextViewKbToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D2284D6FFC00020FB8 /* TextViewKbToolBar.swift */; };
-		020584D5284D715D00020FB8 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* BlurView.swift */; };
+		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
 		020584D7284D7B4E00020FB8 /* PackTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */; };
 		0206214E2663A2AE0072C404 /* JsonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0206214D2663A2AE0072C404 /* JsonModels.swift */; };
 		02062153266503490072C404 /* GJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062152266503490072C404 /* GJs.swift */; };
@@ -31,7 +31,7 @@
 		021EB87F289E8B8400463B42 /* SmartTags+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB87D289E8B8400463B42 /* SmartTags+CoreDataProperties.swift */; };
 		022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022479C4250D1ED900E0E489 /* CoreDataHelper.swift */; };
 		022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688922624F9B1007DBD98 /* ThemeCell.swift */; };
-		0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* Neumorphic.swift */; };
+		0226889D2626F332007DBD98 /* UIView+Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* UIView+Neumorphic.swift */; };
 		022688B32628BCCC007DBD98 /* TTVC+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688B22628BCCC007DBD98 /* TTVC+Interface.swift */; };
 		0226F197259AB231006E086C /* TapTV+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F196259AB231006E086C /* TapTV+Selection.swift */; };
 		0226F19C259EAB93006E086C /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19B259EAB93006E086C /* PackCell.swift */; };
@@ -57,7 +57,7 @@
 		02491C5726779A2800F98E17 /* IgApiSetupVC+acts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5626779A2800F98E17 /* IgApiSetupVC+acts.swift */; };
 		02491C5926779A4900F98E17 /* HowToSetupProIGVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* HowToSetupProIGVC.swift */; };
 		02491C5D267BA40500F98E17 /* CheckSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5C267BA40500F98E17 /* CheckSetup.swift */; };
-		02491C67267E3FED00F98E17 /* NeuMphSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C66267E3FED00F98E17 /* NeuMphSwiftUI.swift */; };
+		02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */; };
 		02491C692680883800F98E17 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C682680883700F98E17 /* AppColors.swift */; };
 		025479DF26C7EEA000E28724 /* SeedData in Resources */ = {isa = PBXBuildFile; fileRef = 025479DE26C7EEA000E28724 /* SeedData */; };
 		026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */; };
@@ -100,6 +100,7 @@
 		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
+		02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */; };
 		02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE29E260A9BA900324724 /* SettingsCell.swift */; };
 		02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE2A4260AC79C00324724 /* SettingsCell2.swift */; };
 		02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550924FFA2AA00174E34 /* AppDelegate.swift */; };
@@ -130,9 +131,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		020584D0284D6F8100020FB8 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		020584D2284D6FFC00020FB8 /* TextViewKbToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewKbToolBar.swift; sourceTree = "<group>"; };
-		020584D4284D715D00020FB8 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		020584D4284D715D00020FB8 /* UIView+BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BlurView.swift"; sourceTree = "<group>"; };
 		020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0206214D2663A2AE0072C404 /* JsonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModels.swift; sourceTree = "<group>"; };
 		02062152266503490072C404 /* GJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJs.swift; sourceTree = "<group>"; };
@@ -156,7 +157,7 @@
 		021EB87D289E8B8400463B42 /* SmartTags+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartTags+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		022479C4250D1ED900E0E489 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		022688922624F9B1007DBD98 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
-		0226889C2626F332007DBD98 /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
+		0226889C2626F332007DBD98 /* UIView+Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Neumorphic.swift"; sourceTree = "<group>"; };
 		022688B22628BCCC007DBD98 /* TTVC+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Interface.swift"; sourceTree = "<group>"; };
 		0226F196259AB231006E086C /* TapTV+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapTV+Selection.swift"; sourceTree = "<group>"; };
 		0226F19B259EAB93006E086C /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
@@ -181,7 +182,7 @@
 		02491C5626779A2800F98E17 /* IgApiSetupVC+acts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IgApiSetupVC+acts.swift"; sourceTree = "<group>"; };
 		02491C5826779A4900F98E17 /* HowToSetupProIGVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToSetupProIGVC.swift; sourceTree = "<group>"; };
 		02491C5C267BA40500F98E17 /* CheckSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSetup.swift; sourceTree = "<group>"; };
-		02491C66267E3FED00F98E17 /* NeuMphSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuMphSwiftUI.swift; sourceTree = "<group>"; };
+		02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSwiftUI.swift; sourceTree = "<group>"; };
 		02491C682680883700F98E17 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		025479DE26C7EEA000E28724 /* SeedData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SeedData; sourceTree = "<group>"; };
 		026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
@@ -223,6 +224,7 @@
 		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGLayer+Performance.swift"; sourceTree = "<group>"; };
 		02FAE29E260A9BA900324724 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		02FAE2A4260AC79C00324724 /* SettingsCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell2.swift; sourceTree = "<group>"; };
 		02FB550624FFA2AA00174E34 /* PackTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,15 +277,6 @@
 				02A5EB6925C054440063A315 /* FrameTags.swift */,
 			);
 			path = TapTextView;
-			sourceTree = "<group>";
-		};
-		020584CF284D6F5A00020FB8 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				020584D0284D6F8100020FB8 /* RoundedCorners.swift */,
-				020584D4284D715D00020FB8 /* BlurView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		021044F926446B5700408CEB /* ProcessJson */ = {
@@ -463,7 +456,6 @@
 			children = (
 				02F60AA926809FD5004022CA /* AppStyle */,
 				02FD6CB326D8178800AB16E4 /* Rating */,
-				020584CF284D6F5A00020FB8 /* View */,
 				0281B9782879874900344D3E /* ViewController */,
 				02B05C1E27F90BA3000026B8 /* TextView */,
 				02962683284BA65E009B0F58 /* TableView */,
@@ -679,9 +671,12 @@
 			isa = PBXGroup;
 			children = (
 				02491C682680883700F98E17 /* AppColors.swift */,
-				0226889C2626F332007DBD98 /* Neumorphic.swift */,
-				02491C66267E3FED00F98E17 /* NeuMphSwiftUI.swift */,
 				0247E585257FEFB900C65245 /* DarkMode.swift */,
+				02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */,
+				0226889C2626F332007DBD98 /* UIView+Neumorphic.swift */,
+				020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */,
+				020584D4284D715D00020FB8 /* UIView+BlurView.swift */,
+				02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */,
 			);
 			path = AppStyle;
 			sourceTree = "<group>";
@@ -879,10 +874,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */,
+				0226889D2626F332007DBD98 /* UIView+Neumorphic.swift in Sources */,
 				02B05C1A27F90333000026B8 /* TextViewPlaceHolder.swift in Sources */,
+				02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */,
 				02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */,
-				02491C67267E3FED00F98E17 /* NeuMphSwiftUI.swift in Sources */,
+				02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */,
 				02062155266550D70072C404 /* PrJs.swift in Sources */,
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
 				02D1A119255387590045E56F /* UniqueTags.swift in Sources */,
@@ -928,10 +924,10 @@
 				02CAC9B52591054400BE5E57 /* TVC+ImgPicker.swift in Sources */,
 				0231AB1826872C47007F4FC8 /* PrJs+Varr.swift in Sources */,
 				023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */,
-				020584D5284D715D00020FB8 /* BlurView.swift in Sources */,
+				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* HowToSetupProIGVC.swift in Sources */,
 				0281B97E2879B14A00344D3E /* PackTVC+NaviLogic.swift in Sources */,
-				020584D1284D6F8100020FB8 /* RoundedCorners.swift in Sources */,
+				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsNew.swift in Sources */,
 				020584D3284D6FFC00020FB8 /* TextViewKbToolBar.swift in Sources */,
 				02491C55267799BD00F98E17 /* IgApiSetupVC+UI.swift in Sources */,
