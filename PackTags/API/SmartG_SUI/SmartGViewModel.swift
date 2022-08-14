@@ -31,19 +31,22 @@ extension SmartGViewModel {
     func processSmartGModel()
     {
         var processedSmartGModels = [processedSmartGModel]()
-        //var hashtagsFullList: [String] = []
+        var hashtagsFullList: [String] = []
         
         for dataMedia in dataMedias {
             guard let hashtags = dataMedia.caption?.detectHashtags() else { return }
             processedSmartGModels.append(processedSmartGModel(hashtags: hashtags))
-            //hashtagsFullList += hashtags
+            hashtagsFullList += hashtags
         }
     
         self.computedData = processedSmartGModels
         
         // TODO: Finish this
-        //self.topHashtags = hashtagsFullList.histogram.sorted { $0.1 > $1.1}.prefix(10).map({ $0.key })
-        //print(self.topHashtags)
+        let hashtagsHistogram = hashtagsFullList.histogram.sorted { $0.1 > $1.1}.prefix(10)
+        self.topHashtags = hashtagsHistogram.map({ $0.key })
+        let minValue = hashtagsHistogram.map({ $0.value }).min()
+        print("Histogram", hashtagsHistogram)
+        print(self.topHashtags, minValue)
         
         /*
         self.filteredHashtags = hashtags.joined(separator: " ").detectHashtags().removingDuplicates()

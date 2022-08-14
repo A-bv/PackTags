@@ -85,10 +85,10 @@ struct SmartG_SwiftUI: View {
                 .padding(20)
                 
                 List {
-                    ForEach(Array(viewModel.computedData.enumerated()), id: \.element){
+                    ForEach(Array(viewModel.topHashtags.enumerated()), id: \.element){
                         index, item in
                         HStack{
-                            Text("\(String(index+1)): \(item.hashtags.joined(separator: " "))")
+                            Text("\(String(index+1)): \(item)")
                         }
                     }
                 }

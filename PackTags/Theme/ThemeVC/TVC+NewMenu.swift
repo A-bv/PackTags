@@ -52,12 +52,8 @@ extension ThemeVC{
             image: UIImage(systemName: "chart.bar.doc.horizontal.fill")
         ) { [weak vc = self] action in
             
-            guard let blockNavigation = vc?.shouldShowFBLogin() else {
+            if vc?.shouldShowFBLogin() == true {
                 vc?.showFBLoginScreen()
-                return
-            }
-            
-            if blockNavigation {
                 return
             } else {
                 let hostingController = UIHostingController(rootView: SmartG_SwiftUI())
