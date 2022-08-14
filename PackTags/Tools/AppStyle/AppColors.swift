@@ -51,8 +51,8 @@ extension UIColor {
 
 extension UIColor {
     
-    static var darkShadowColor: UIColor {
-        return  DarkMode.isDarkMode() == true ? UIColor.black : UIColor.shadowWhite
+    static var shadowColor: UIColor {
+        return  UIColor(named: "shadowColor")!
     }
     
     static var lightShadowColor: UIColor {

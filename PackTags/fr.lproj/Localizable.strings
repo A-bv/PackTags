@@ -43,6 +43,8 @@
 "PackTags will stop redirecting you to this account, each time the copy button is tapped." = "PackTags cessera de vous rediriger vers ce compte à chaque fois que vous appuierez sur le bouton de copie.";
 "Tap the button again to undo." = "Appuyez à nouveau sur le bouton pour annuler.";
 
+//PackCell
+"Copy" = "Copier";
 
 //TVC
 "Rename" = "Renommer";

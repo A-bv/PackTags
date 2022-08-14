@@ -15,4 +15,26 @@ class DarkMode: NSObject {
     }
 }
 
+//MARK: - Update colors when light/dark mode
+extension ThemeCell {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.contentView.backgroundColor = bkgdColor
+        view.addNeumorphicShadows()
+    }
+}
 
+extension ThemeTableViewController {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateLogo ()
+        navigationController?.navigationBar.putShadow()
+    }
+}
+
+extension PackCell {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        copyButton.addNeumorphicShadows()
+    }
+}

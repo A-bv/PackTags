@@ -46,15 +46,15 @@ class HowToSetupProIGVC: UIViewController {
     }
     
     var l0: UILabel {
-        let l = UILabel(frame:CGRect.zero)
-        l.backgroundColor = bkgdColor
-        l.font = UIFont.preferredFont(forTextStyle: .headline)
-        l.translatesAutoresizingMaskIntoConstraints = false // Enable autolayout
-        l.heightAnchor.constraint(
+        let label = UILabel(frame:CGRect.zero)
+        label.backgroundColor = bkgdColor
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.translatesAutoresizingMaskIntoConstraints = false // Enable autolayout
+        label.heightAnchor.constraint(
             equalToConstant: Constants.LH).isActive = true
-        l.widthAnchor.constraint(
+        label.widthAnchor.constraint(
             equalToConstant: Constants.textViewWidth).isActive = true
-        return l
+        return label
     }
     
     var t0: UITextView {

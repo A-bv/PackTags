@@ -15,7 +15,7 @@ extension UIView {
         darkShadow.frame = self.layer.bounds
         darkShadow.name = "darkShadow"
         darkShadow.backgroundColor = bkgdColor.cgColor
-        darkShadow.shadowColor = UIColor.darkShadowColor.cgColor
+        darkShadow.shadowColor = UIColor.shadowColor.cgColor
         darkShadow.cornerRadius = cornerRadius
         darkShadow.shadowOpacity = 1
         darkShadow.shadowRadius = shadowRadius
@@ -37,36 +37,32 @@ extension UIView {
         self.layer.insertSublayer(lightShadow, at: 0)
     }
     
-    func updateNeumorphicButton(hold: Bool, delay: Bool) {
-        var value = Double()
-        if delay == true {value = 0.2} else {value = 0}
+    func addNeumorphicShadows(
+        isButtonViewHeld: Bool = false,
+        updateAfterShortDelay: Bool = false) {
+        let value: Double = updateAfterShortDelay ? 0.2 : 0
 
-        if hold == true {
-                
+        if isButtonViewHeld {
             for item in self.layer.sublayers ?? [] where item.name == "lightShadow" {
-                item.backgroundColor = UIColor.darkShadowColor.cgColor
-                if DarkMode.isDarkMode() == false {
-                    item.shadowColor = UIColor.darkShadowColor.withAlphaComponent(0.50).cgColor
-                } else {
-                    item.shadowColor = UIColor.darkShadowColor.cgColor
-                }
+                item.backgroundColor = UIColor.shadowColor.resolvedColor(with: self.traitCollection).cgColor
+                item.shadowColor = DarkMode.isDarkMode() ? UIColor.shadowColor.resolvedColor(with: self.traitCollection).cgColor : UIColor.shadowColor.withAlphaComponent(0.50).resolvedColor(with: self.traitCollection).cgColor
             }
                 
             for item in self.layer.sublayers ?? [] where item.name == "darkShadow" {
-                item.backgroundColor = UIColor.bottomColor.cgColor
-                item.shadowColor = UIColor.lightShadowColor.cgColor
+                item.backgroundColor = UIColor.bottomColor.resolvedColor(with: self.traitCollection).cgColor
+                item.shadowColor = UIColor.lightShadowColor.resolvedColor(with: self.traitCollection).cgColor
             }
                 
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + value) {
                 for item in self.layer.sublayers ?? [] where item.name == "lightShadow" {
-                    item.backgroundColor = bkgdColor.cgColor
-                    item.shadowColor = UIColor.lightShadowColor.cgColor
+                    item.backgroundColor = bkgdColor.resolvedColor(with: self.traitCollection).cgColor
+                    item.shadowColor = UIColor.lightShadowColor.resolvedColor(with: self.traitCollection).cgColor
                 }
                     
                 for item in self.layer.sublayers ?? [] where item.name == "darkShadow" {
-                    item.backgroundColor = bkgdColor.cgColor
-                    item.shadowColor = UIColor.darkShadowColor.cgColor
+                    item.backgroundColor = bkgdColor.resolvedColor(with: self.traitCollection).cgColor
+                    item.shadowColor = UIColor.shadowColor.resolvedColor(with: self.traitCollection).cgColor
                 }
             }
         }
@@ -77,53 +73,5 @@ extension CALayer {
     func shadowPerformanceBoost() {
         self.shouldRasterize = true
         self.rasterizationScale = UIScreen.main.scale
-    }
-}
-
-extension UIViewController {
-    func neumorphicNavBar () {
-        navigationController?.navigationBar.putShadow(true)
-    }
-}
-
-//MARK: - Update colors when light/dark mode
-extension ThemeCell {
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        self.contentView.backgroundColor = bkgdColor
-        view.updateNeumorphicButton(hold: false, delay:false)
-    }
-}
-
-extension ThemeTableViewController {
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        updateLogo ()
-        self.neumorphicNavBar()
-    }
-}
-
-extension PackCell {
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        self.contentView.backgroundColor = bkgdColor
-        copyButton.updateNeumorphicButton(hold: false, delay:false)
-    }
-}
-
-extension SettingsVC {
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        self.navigationController?.navigationBar.backgroundColor = bkgdColor
-    }
-}
-
-extension PackTableVC {
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        self.navigationController?.navigationBar.putShadow(true)
     }
 }

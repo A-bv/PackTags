@@ -21,7 +21,7 @@ extension ThemeTableViewController {
         analyticsButton.image = UIImage(systemName: "chart.pie")
         addThemeButton.image = UIImage(systemName: "plus")
 
-        navigationController?.navigationBar.putShadow(true)
+        navigationController?.navigationBar.putShadow()
         navigationItem.rightBarButtonItems = [addThemeButton]
         updateLogo()
     }
@@ -34,7 +34,7 @@ extension ThemeTableViewController {
     
     func setupNavigationBarAppearance () {
         self.setNavBarAppearance(color: bkgdColor)
-        self.neumorphicNavBar()
+        self.navigationController?.navigationBar.putShadow()
         self.navigationController?.navigationBar.tintColor = UITextView.appearance().tintColor
     }
 }

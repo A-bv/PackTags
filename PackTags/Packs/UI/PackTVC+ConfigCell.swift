@@ -26,7 +26,7 @@ extension PackTableVC {
         
         // -- Labels --
         let tags = packs[indexPath.row].components(separatedBy:" ")
-        cell.nameLabel.text = tags.first
+        cell.cellLabel.text = tags.first
         let btnLabel = tags.count != 1 ? " + \(tags.count - 1) \(Strings.more) " : " \(Strings.oneHashtag) "
         cell.subButton.setTitle(pack == "" ? " \(Strings.zeroHashtags) " : btnLabel, for: .normal)
         

@@ -9,6 +9,28 @@
 import UIKit
 
 class PackCell: UITableViewCell {
+    private enum Strings {
+        static let copyLabel = "Copy".localized()
+    }
+    
+    private enum Constants {
+        static let subButtonCornerRadius = CGFloat(5)
+        static let subButtonFontSize = CGFloat(12)
+        
+        static let copyButtonShadowRadius = CGFloat(7)
+        static let copyButtonFontSize = CGFloat(17)
+        static let copyButtonRightPadding = CGFloat(30)
+        static let copyButtonHeight = CGFloat(44)
+        static let copyButtonWidth = CGFloat(80)
+        static let copyButtonCornerRadius = copyButtonHeight/2
+        
+        static let value10 = CGFloat(10)
+        
+        static let value55 = CGFloat(55)
+        
+        static let cellLabelFontSize = CGFloat(19)
+        static let profileImageViewCornerRadius = CGFloat(35)
+    }
     
     let containerView:UIView = {
         let view = UIView()
@@ -21,15 +43,15 @@ class PackCell: UITableViewCell {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill 
         img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
-        img.layer.cornerRadius = 35
+        img.layer.cornerRadius = Constants.profileImageViewCornerRadius
         img.clipsToBounds = true
         return img
     }()
     
-    let nameLabel:UILabel = {
+    let cellLabel:UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 19)
-        //label.font = UIFont(name: "PingFangTC-Semibold", size:19)
+        let fontSize = Constants.cellLabelFontSize
+        label.font = UIFont.boldSystemFont(ofSize: fontSize)
         label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -39,10 +61,11 @@ class PackCell: UITableViewCell {
     
     let subButton :UIButton = {
         let btn = UIButton()
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+        let fontSize = Constants.subButtonFontSize
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        btn.layer.cornerRadius = 5
+        btn.layer.cornerRadius = Constants.subButtonCornerRadius
         btn.clipsToBounds = true
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.showsTouchWhenHighlighted = true
@@ -52,32 +75,37 @@ class PackCell: UITableViewCell {
     var buttonTapCallback: () -> ()  = { }
         
     let copyButton: UIButton = {
-        let cornerRadius: CGFloat = 22
-        let shadowRadius: CGFloat = 7
-        
-        let btn = UIButton(frame:CGRect(x: 0, y: 0, width: 80, height: 44))
+        let fontSize = Constants.copyButtonFontSize
+        let btn = UIButton(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: Constants.copyButtonWidth,
+                height: Constants.copyButtonHeight))
         btn.setTitleColor(customTextColor, for: .normal)
-        btn.setTitle("Copy", for: .normal)
+        btn.setTitle(Strings.copyLabel, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.titleLabel?.font = UIFont(name: "PingFangTC-Semibold", size:17)
+        btn.titleLabel?.font = UIFont(name: "PingFangTC-Semibold", size: fontSize)
         btn.titleLabel?.adjustsFontForContentSizeCategory = true
         
-        btn.neumorphism(cornerRadius: cornerRadius, shadowRadius: shadowRadius)
+        btn.neumorphism(
+            cornerRadius: Constants.copyButtonCornerRadius,
+            shadowRadius: Constants.copyButtonShadowRadius)
         
         return btn
     }()
     
     @objc func startTap(sender: UIButton) {
-        sender.updateNeumorphicButton(hold: true, delay:true)
+        sender.addNeumorphicShadows(isButtonViewHeld: true, updateAfterShortDelay:true)
     }
     
     @objc func didTapButton(sender: UIButton) {
-        sender.updateNeumorphicButton(hold: false, delay:true)
+        sender.addNeumorphicShadows(updateAfterShortDelay:true)
         buttonTapCallback()
     }
     
     @objc func dragOutButton(sender: UIButton) {
-        sender.updateNeumorphicButton(hold: false, delay:false)
+        sender.addNeumorphicShadows()
         buttonTapCallback()
     }
     
@@ -90,7 +118,7 @@ class PackCell: UITableViewCell {
         super.awakeFromNib()
         self.contentView.backgroundColor = bkgdColor
         
-        containerView.addSubview(nameLabel)
+        containerView.addSubview(cellLabel)
         containerView.addSubview(subButton)
         self.contentView.addSubview(containerView)
         self.contentView.addSubview(copyButton)
@@ -104,34 +132,48 @@ class PackCell: UITableViewCell {
         // ---------- containerView ----------
         
         containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
-        containerView.leadingAnchor.constraint(equalTo:self.contentView.leadingAnchor, constant:30).isActive = true
+        containerView.leadingAnchor.constraint(
+            equalTo:self.contentView.leadingAnchor,
+            constant: Constants.copyButtonRightPadding).isActive = true
         
-        containerView.trailingAnchor.constraint(equalTo:self.copyButton.leadingAnchor, constant:-10).isActive = true
-        containerView.heightAnchor.constraint(equalToConstant:55).isActive = true
+        containerView.trailingAnchor.constraint(
+            equalTo:self.copyButton.leadingAnchor,
+            constant: -Constants.value10).isActive = true
+        containerView.heightAnchor.constraint(
+            equalToConstant: Constants.value55).isActive = true
         
-        // ---------- nameLabel ----------
+        // ---------- cellLabel ----------
         
-        nameLabel.topAnchor.constraint(equalTo:self.containerView.topAnchor).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
-        nameLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true
+        cellLabel.topAnchor.constraint(equalTo:self.containerView.topAnchor).isActive = true
+        cellLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
+        cellLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true
         
         // ---------- subLabel ----------
         
-        subButton.topAnchor.constraint(equalTo:self.nameLabel.bottomAnchor, constant: 5).isActive = true
-        subButton.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
-        subButton.bottomAnchor.constraint(equalTo:self.containerView.bottomAnchor).isActive = true
+        subButton.topAnchor.constraint(
+            equalTo: self.cellLabel.bottomAnchor,
+            constant: Constants.subButtonCornerRadius).isActive = true
+        subButton.leadingAnchor.constraint(
+            equalTo: self.containerView.leadingAnchor).isActive = true
+        subButton.bottomAnchor.constraint(
+            equalTo: self.containerView.bottomAnchor).isActive = true
         
         // ---------- copyButton ----------
         
-        copyButton.widthAnchor.constraint(equalToConstant:80).isActive = true
-        copyButton.heightAnchor.constraint(equalToConstant:44).isActive = true
-        copyButton.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant:-30).isActive = true
-        copyButton.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
+        copyButton.widthAnchor.constraint(
+            equalToConstant: Constants.copyButtonWidth).isActive = true
+        copyButton.heightAnchor.constraint(
+            equalToConstant: Constants.copyButtonHeight).isActive = true
+        copyButton.trailingAnchor.constraint(
+            equalTo:self.contentView.trailingAnchor,
+            constant: -Constants.copyButtonRightPadding).isActive = true
+        copyButton.centerYAnchor.constraint(
+            equalTo:self.contentView.centerYAnchor).isActive = true
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         self.roundTopCorners(radius: 0)
-        self.copyButton.updateNeumorphicButton(hold: false, delay:false)
+        self.copyButton.addNeumorphicShadows()
     }
 }
