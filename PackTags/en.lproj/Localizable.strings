@@ -1,12 +1,14 @@
 //HowToSetupProIGVC
 "topTextViewText" =
-"      • On your profile, tap  \"≡\".
+"      • Go to your profile.
+      • Tap  \"≡\".
       • Tap \"Settings\".
       • Tap \"Accounts\".
-      • Switch Account Type.";
+      • Switch account type.";
 
 "bottomTextViewText" =
-"      • On your profile, tap \"Edit Profile\".
+"      • Go to your profile.
+      • Tap \"Edit Profile\".
       • Link your Facebook page.";
 
 //Tap Tv

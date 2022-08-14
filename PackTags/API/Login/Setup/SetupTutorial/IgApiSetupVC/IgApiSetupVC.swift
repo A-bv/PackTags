@@ -15,7 +15,7 @@ class IgApiSetupVC: UIViewController {
     }
     
     private enum Strings {
-        static let switchAccount = "Account Type".localized()
+        static let switchAccount = "Account type".localized()
         static let createAPage = "Create a page".localized()
         static let login = "Login".localized()
         static let accountLinkingTitle = "Account Linking".localized()
