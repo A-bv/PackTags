@@ -27,11 +27,11 @@ class SmartGViewModel: ObservableObject {
 }
 
 extension SmartGViewModel {
-    func processSmartGModel ()
+    func processSmartGModel()
     {
         var processedSmartGModels = [processedSmartGModel]()
         for dataMedia in dataMedias {
-            guard let hashtags = dataMedia.caption?.hashtags() else { return }
+            guard let hashtags = dataMedia.caption?.detectHashtags() else { return }
             processedSmartGModels.append(processedSmartGModel(hashtags: hashtags))
         }
     

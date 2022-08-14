@@ -37,8 +37,8 @@ extension GetJson {
         }
     }
     
-    class func ig_hashtag_search (s_Hashtag:String, Completion block: @escaping((Any) -> ())) {
-        findHashtagUrl(s_Hashtag: "travel", Completion: { (url) in
+    class func ig_hashtag_search (s_Hashtag: String, Completion block: @escaping((Any) -> ())) {
+        findHashtagUrl(s_Hashtag: s_Hashtag, Completion: { (url) in
             GetJson.cURL2(of: Media.self, from: url, Completion: { (result) in
                 block(result)
             })

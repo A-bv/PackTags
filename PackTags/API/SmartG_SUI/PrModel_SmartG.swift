@@ -11,7 +11,7 @@ import Foundation
 struct processedSmartGModel: Hashable, Decodable {
     let hashtags: [String]
     
-    init(hashtags: [String] = [] ) {
+    init(hashtags: [String] = []) {
         self.hashtags = hashtags
     }
 }

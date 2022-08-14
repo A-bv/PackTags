@@ -51,15 +51,12 @@ struct SmartG_SwiftUI: View {
                 
                 HStack {
                     TextField("Enter a hashtag", text: $hashtagEntry)
+                    
                     Button(action: {
+                        showingAlert = true
                         print(self.$hashtagEntry)
                     }) {
                         Text("+")
-                    }
-                    Button(action: {
-                        showingAlert = true
-                    }) {
-                        Text("Added")
                     }
                     .alert(isPresented: $showingAlert) {
                         Alert(
@@ -67,6 +64,13 @@ struct SmartG_SwiftUI: View {
                             message: Text("Wear sunscreen"),
                             dismissButton: .default(Text("Ok!")))
                     }
+                    
+                    Button(action: {
+                        
+                    }) {
+                        Text("Added")
+                    }
+                    
                     Spacer()
                     Button(action: {
                         print(self.$hashtagEntry)

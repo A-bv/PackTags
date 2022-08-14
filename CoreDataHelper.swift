@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Foundation
 
 struct CoreDataHelper {
     static let context: NSManagedObjectContext = {
@@ -108,42 +107,5 @@ extension CoreDataHelper {
             print(error.localizedDescription)
         }
         return tagsR
-    }
-}
-
-
-// MARK: - Smart Hashtags
-extension CoreDataHelper {
-    static func newTag() -> SmartTags {
-        let theme = NSEntityDescription.insertNewObject(
-            forEntityName: "SmartTags",
-            into: context) as! SmartTags
-        return theme
-    }
-    
-    static func saveTag() {
-        do {
-            try context.save()
-        } catch let error {
-            print("Could not save \(error.localizedDescription)")
-        }
-    }
-    
-    static func deleteTag(theme: SmartTags) {
-        context.delete(theme)
-        saveTag()
-    }
-
-    static func retrieveTags() -> [SmartTags] {
-        do {
-            let fetchRequest = NSFetchRequest<SmartTags>(entityName: "SmartTags")
-            
-            let results = try context.fetch(fetchRequest)
-
-            return results
-        } catch let error {
-            print("Could not fetch \(error.localizedDescription)")
-            return []
-        }
     }
 }

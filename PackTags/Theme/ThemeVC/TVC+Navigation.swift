@@ -14,7 +14,7 @@ extension ThemeVC {
          if identifier == "cancel" { return }
      
          //Text treatment (no duplicates, no wrong tags)
-         let text = Unique.cleanList(t: themeTextView.text, x:theme, shuffle: false)
+         let text = Unique.cleanList(rawText: themeTextView.text, coreDataModel:theme, shuffle: false)
          
          //Downsampling
          let image = themeImageView?.jpegData(compressionQuality: 0.8)

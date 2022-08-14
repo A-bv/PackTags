@@ -101,6 +101,7 @@
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
 		02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */; };
+		02E4F64028A934BE00B9CF2E /* CoreDataHelper+SmartG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63F28A934BE00B9CF2E /* CoreDataHelper+SmartG.swift */; };
 		02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE29E260A9BA900324724 /* SettingsCell.swift */; };
 		02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE2A4260AC79C00324724 /* SettingsCell2.swift */; };
 		02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550924FFA2AA00174E34 /* AppDelegate.swift */; };
@@ -225,6 +226,7 @@
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGLayer+Performance.swift"; sourceTree = "<group>"; };
+		02E4F63F28A934BE00B9CF2E /* CoreDataHelper+SmartG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataHelper+SmartG.swift"; sourceTree = "<group>"; };
 		02FAE29E260A9BA900324724 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		02FAE2A4260AC79C00324724 /* SettingsCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell2.swift; sourceTree = "<group>"; };
 		02FB550624FFA2AA00174E34 /* PackTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,9 +294,10 @@
 		0216113D25D864860098CE5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
+				02E4F63F28A934BE00B9CF2E /* CoreDataHelper+SmartG.swift */,
 				021EB87B289E8A7B00463B42 /* SmartTags */,
 				021EB876289E8A2E00463B42 /* ThemeCD */,
-				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
 				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
 			);
 			name = CoreData;
@@ -303,6 +306,7 @@
 		021AFD542787857B0008735E /* SmartG_SUI */ = {
 			isa = PBXGroup;
 			children = (
+				0229864127BD9CBA0048F9E9 /* PrModel_SmartG.swift */,
 				02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */,
 				021D76162759A00D00F54054 /* SmartGView.swift */,
 			);
@@ -345,7 +349,6 @@
 			children = (
 				0206214D2663A2AE0072C404 /* JsonModels.swift */,
 				021D761F275A99D500F54054 /* PrModel_Analytics.swift */,
-				0229864127BD9CBA0048F9E9 /* PrModel_SmartG.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				023A2F822856554600EE6CDE /* PackTVC+CellSwipe.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */,
 				0216110E25D46C180098CE5E /* TVC+NewMenu.swift in Sources */,
+				02E4F64028A934BE00B9CF2E /* CoreDataHelper+SmartG.swift in Sources */,
 				02B05C232809CD76000026B8 /* SearcheableTextView.swift in Sources */,
 				0274DB2E26848492005F9C9C /* AnViewModel+Fill.swift in Sources */,
 				023A2F7A2856493C00EE6CDE /* PackTVC+AutoReorder.swift in Sources */,
