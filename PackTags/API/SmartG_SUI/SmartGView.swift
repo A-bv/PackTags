@@ -29,11 +29,14 @@ struct SmartG_SwiftUI: View {
                 Header()
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(alignment: .center, spacing: 10) {
+                        //TODO: Find ID error
                         ForEach(Array(viewModel.dataMedias.enumerated()), id: \.element) { index, media in
                         // ForEach(viewModel.dataMedias, id: \.self)
-                        //{
-                        // media in
-                            if let stringUrl = media.media_url, let url = URL(string: stringUrl) {
+                            //{
+                            // media in
+                            if let stringUrl = media.media_url,
+                               let url = URL(string: stringUrl),
+                               !viewModel.computedData.isEmpty {
                                 StoryCard(
                                     url: url,
                                     title1: "\(media.comments_count ?? 0)",

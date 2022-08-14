@@ -11,6 +11,7 @@ import Foundation
 class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
     @Published var computedData: [processedSmartGModel] = []
+    @Published var topHashtags: [String] = []
     
     func fetch() {
         GetJson.ig_hashtag_search(
@@ -30,12 +31,24 @@ extension SmartGViewModel {
     func processSmartGModel()
     {
         var processedSmartGModels = [processedSmartGModel]()
+        //var hashtagsFullList: [String] = []
+        
         for dataMedia in dataMedias {
             guard let hashtags = dataMedia.caption?.detectHashtags() else { return }
             processedSmartGModels.append(processedSmartGModel(hashtags: hashtags))
+            //hashtagsFullList += hashtags
         }
     
         self.computedData = processedSmartGModels
-        print(self.computedData)
+        
+        // TODO: Finish this
+        //self.topHashtags = hashtagsFullList.histogram.sorted { $0.1 > $1.1}.prefix(10).map({ $0.key })
+        //print(self.topHashtags)
+        
+        /*
+        self.filteredHashtags = hashtags.joined(separator: " ").detectHashtags().removingDuplicates()
+        self.hashtagsHistorigram = hashtags.histogram
+        print("Historigram:", hashtagsHistorigram)
+         */
     }
 }
