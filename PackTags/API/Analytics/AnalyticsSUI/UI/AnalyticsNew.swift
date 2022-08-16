@@ -484,7 +484,7 @@ struct AnalyticsNew : View {
                             }
                             Spacer()
                             
-                            let text2 = num != 1 ? Strings.previousPost : Strings.previousPosts
+                            let text2 = num != 1 ? Strings.previousPosts : Strings.previousPost
                             // "Last \(num ?? 0) Posts" : Strings.previousPosts
                             Text(text2)
                                 .font(.caption)

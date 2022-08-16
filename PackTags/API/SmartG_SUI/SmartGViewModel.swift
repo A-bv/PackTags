@@ -44,7 +44,7 @@ extension SmartGViewModel {
         // TODO: Finish this
         let hashtagsHistogram = hashtagsFullList.histogram.sorted { $0.1 > $1.1}.prefix(10)
         self.topHashtags = hashtagsHistogram.map({ $0.key })
-        let minValue = hashtagsHistogram.map({ $0.value }).min()
+        guard let minValue = hashtagsHistogram.map({ $0.value }).min() else { return }
         print("Histogram", hashtagsHistogram)
         print(self.topHashtags, minValue)
         
