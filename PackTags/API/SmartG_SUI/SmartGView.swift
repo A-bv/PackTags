@@ -76,7 +76,8 @@ struct SmartG_SwiftUI: View {
                     
                     Spacer()
                     Button(action: {
-                        print(self.$hashtagEntry)
+                        let searchedHashtag = self.hashtagEntry.filter { $0 != "#" }
+                        viewModel.fetch(hashtag: searchedHashtag)
                     }) {
                         Text("Sync")
                     }
@@ -95,7 +96,7 @@ struct SmartG_SwiftUI: View {
             }
         }
         .onAppear {
-            viewModel.fetch()
+            viewModel.fetch(hashtag: "travel")
         }
     }
     

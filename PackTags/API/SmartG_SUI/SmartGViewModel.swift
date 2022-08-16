@@ -13,9 +13,9 @@ class SmartGViewModel: ObservableObject {
     @Published var computedData: [processedSmartGModel] = []
     @Published var topHashtags: [String] = []
     
-    func fetch() {
+    func fetch(hashtag: String) {
         GetJson.ig_hashtag_search(
-            s_Hashtag: "travel",
+            s_Hashtag: hashtag,
             Completion: {
                 [weak self] (result) in
                 guard let result = result as? [DataMedia] else {return}
