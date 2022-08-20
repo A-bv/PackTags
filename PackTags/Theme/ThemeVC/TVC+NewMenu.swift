@@ -56,9 +56,7 @@ extension ThemeVC{
                 vc?.showFBLoginScreen()
                 return
             } else {
-                let hostingController = UIHostingController(rootView: SmartG_SwiftUI())
-                hostingController.modalPresentationStyle = .overFullScreen
-                vc?.present(hostingController, animated: true, completion: nil)
+                vc?.showSmartGScreen(presentingController: vc)
             }
         }
         
@@ -106,5 +104,11 @@ extension ThemeVC{
         let optionsBarItem = UIBarButtonItem(image:symbol, primaryAction: nil, menu: barButtonMenu)
         
         return optionsBarItem
+    }
+    
+    private func showSmartGScreen(presentingController: UIViewController?) {
+        let hostingController = UIHostingController(rootView: SmartG_SwiftUI())
+        hostingController.modalPresentationStyle = .overFullScreen
+        presentingController?.present(hostingController, animated: true, completion: nil)
     }
 }
