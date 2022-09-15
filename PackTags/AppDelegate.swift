@@ -105,4 +105,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             """
         )
     }
+
+    //Localize: https://www.youtube.com/watch?v=WSI_LS3Yq8I Change simulator language at 5:55
 }
