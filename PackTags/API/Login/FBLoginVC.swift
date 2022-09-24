@@ -86,7 +86,7 @@ extension FBLoginVC {
         // Request 1. Get facebook business page of the facebook account
         let fbPageRequest = GraphRequest(graphPath: "/me/accounts", httpMethod: .get)
     
-        fbPageRequest.start(completion: {connection,result,error in
+        fbPageRequest.start(completionHandler: {connection,result,error in
             
             if let error = error {
                 print("fbPageRequest error :", error)
@@ -116,7 +116,7 @@ extension FBLoginVC {
         // Required: Fb acc + Fb business page + IG Business or creator
            let igBRequest = GraphRequest(graphPath: "/me/accounts", parameters: ["fields":"instagram_business_account"], httpMethod: .get)
             
-           igBRequest.start(completion: {connection,result,error in
+           igBRequest.start(completionHandler: {connection,result,error in
           
                if let error = error {
                    print("igBRequest error :", error)
