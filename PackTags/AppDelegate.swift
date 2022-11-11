@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    lazy var dataController = DataController()
     
     // MARK: - Core Data Saving support
     func saveContext () {

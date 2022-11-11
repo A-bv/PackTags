@@ -14,6 +14,14 @@ private enum Strings {
     static let hashtagsPageSearch = "Hashtag page search".localized()
 }
 
+struct SmartG_SwiftUIContainer: View {
+    @StateObject var dataController = DataController()
+    var body: some View {
+        SmartG_SwiftUI()
+            .environment(\.managedObjectContext, dataController.container.viewContext)
+    }
+}
+
 struct SmartG_SwiftUI: View {
     // @State private var igHash: String =  "hashtag theme?"
     @State private var textstyle = UIFont.TextStyle.body
@@ -21,6 +29,11 @@ struct SmartG_SwiftUI: View {
     
     @State private var hashtagEntry: String = "#travel"
     @State private var showingAlert = false
+    
+    @State private var showingPopover = false
+    
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
     
     var body: some View {
         ZStack{
@@ -58,6 +71,17 @@ struct SmartG_SwiftUI: View {
                     Button(action: {
                         showingAlert = true
                         print(self.$hashtagEntry)
+                        let firstNames = ["#Giny", "#Harry", "#Paul", "#Katrina"]
+                        let lastNames = ["#Potter", "#Weasley", "#Granger"]
+                        
+                        let chosenFirstName = firstNames.randomElement()!
+                        let chosenLastName = lastNames.randomElement()!
+                        
+                        let hashtag = Hashtag(context: moc)
+                        hashtag.id = UUID()
+                        hashtag.title = "\(chosenFirstName) \(chosenLastName)"
+                        
+                        try? moc.save()
                     }) {
                         Text("+")
                     }
@@ -69,9 +93,19 @@ struct SmartG_SwiftUI: View {
                     }
                     
                     Button(action: {
-                        
+                        showingPopover = true
                     }) {
                         Text("Added")
+                    }
+                    .popover(isPresented: $showingPopover) {
+                        List {
+                            ForEach(hashtags, id: \.self) {
+                                Text($0.title ?? "Unknown")
+                            }
+                            .onDelete(perform: removeHashtag)
+                        }
+                        .font(.headline)
+                        .padding()
                     }
                     
                     Spacer()
@@ -86,11 +120,10 @@ struct SmartG_SwiftUI: View {
                 .padding(20)
                 
                 List {
-                    ForEach(Array(viewModel.topHashtags.enumerated()), id: \.element){
+                    let topHashatgs = Array(viewModel.topHashtags.enumerated())
+                    ForEach(topHashatgs, id: \.element){
                         index, item in
-                        HStack{
                             Text("\(String(index+1)): \(item)")
-                        }
                     }
                 }
             }
@@ -104,6 +137,13 @@ struct SmartG_SwiftUI: View {
     func printdd (value: Any) -> Bool {
         print(value)
         return true
+    }
+    
+    func removeHashtag(at offsets: IndexSet) {
+        for index in offsets {
+            let hashtag = hashtags[index]
+            moc.delete(hashtag)
+        }
     }
 }
 

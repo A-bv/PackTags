@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 
 let apiGph_version = "v13.0" //Api graph version
 let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
