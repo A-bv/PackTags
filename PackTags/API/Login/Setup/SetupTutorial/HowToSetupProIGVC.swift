@@ -38,7 +38,7 @@ class HowToSetupProIGVC: UIViewController {
     }
     
     private enum Strings {
-        static let topLabelText = "Switch to Creator /Business:".localized()
+        static let topLabelText = "Creator /Business account:".localized()
         static let topTextViewText = "topTextViewText".localized()
         static let bottomTextViewText = "bottomTextViewText".localized()
         static let bottomLabelText = "🔗    If your page is not linked:".localized()
