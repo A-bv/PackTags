@@ -20,7 +20,7 @@ extension ThemeCell {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         self.contentView.backgroundColor = bkgdColor
-        view.addNeumorphicShadows()
+        supportingView.addNeumorphicShadows()
     }
 }
 
