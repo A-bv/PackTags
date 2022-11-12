@@ -292,11 +292,8 @@
 		0216113D25D864860098CE5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
-				021EB876289E8A2E00463B42 /* ThemeCD */,
-				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
-				02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */,
-				02FDEDCE2903062400B9BCFD /* DataController.swift */,
+				02D8C17729201663002585C7 /* Themes */,
+				02D8C17829201678002585C7 /* SmartG */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -630,6 +627,25 @@
 				02B05C222809CD76000026B8 /* SearcheableTextView.swift */,
 			);
 			path = ThemeVC;
+			sourceTree = "<group>";
+		};
+		02D8C17729201663002585C7 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
+				021EB876289E8A2E00463B42 /* ThemeCD */,
+				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
+			);
+			name = Themes;
+			sourceTree = "<group>";
+		};
+		02D8C17829201678002585C7 /* SmartG */ = {
+			isa = PBXGroup;
+			children = (
+				02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */,
+				02FDEDCE2903062400B9BCFD /* DataController.swift */,
+			);
+			name = SmartG;
 			sourceTree = "<group>";
 		};
 		02E4B9D325CC97C700949213 /* Analytics */ = {
