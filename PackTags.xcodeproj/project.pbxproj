@@ -628,7 +628,8 @@
 		02D10F0A2920673200287248 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				02D10F0D2920FA3900287248 /* Settings */,
+				02D10F112920FBEC00287248 /* SettingsCells */,
+				02D10F0E2920FA9F00287248 /* SettingsVC */,
 				0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */,
 			);
 			path = UI;
@@ -649,15 +650,6 @@
 				02AB39A927B894D600335131 /* FBLoginSetup */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		02D10F0D2920FA3900287248 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				02D10F0E2920FA9F00287248 /* SettingsVC */,
-				02D10F112920FBEC00287248 /* SettingsCells */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		02D10F0E2920FA9F00287248 /* SettingsVC */ = {
