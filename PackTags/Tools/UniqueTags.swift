@@ -9,8 +9,8 @@
 import Foundation
 
 struct Unique {
-    static func packBy (t:[String]) -> String {
-        let list = Array(t.chunks(of: numTagsInPack).joined(separator: ["---"])) //sections with ---
+    static func packBy (textToPack:[String]) -> String {
+        let list = Array(textToPack.chunks(of: numTagsInPack).joined(separator: ["---"])) //sections with ---
         return list.joined(separator:" ").replacingOccurrences(of: " --- ", with: "\n\n") //format
     }
     

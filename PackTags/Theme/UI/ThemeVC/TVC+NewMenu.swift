@@ -78,7 +78,8 @@ extension ThemeVC{
                     rawText: textToShuffle,
                     coreDataModel: vc?.theme,
                     shuffle: true).components(separatedBy:" ")
-                vc?.themeTextView.text = Unique.packBy(t: array)
+                vc?.themeTextView.text = Unique.packBy(
+                    textToPack: array)
             }
         }
         

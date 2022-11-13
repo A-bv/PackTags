@@ -91,6 +91,7 @@
 		02CAC9B52591054400BE5E57 /* TVC+ImgPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B42591054400BE5E57 /* TVC+ImgPicker.swift */; };
 		02CAC9B7259105B400BE5E57 /* TVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B6259105B400BE5E57 /* TVC.swift */; };
 		02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */; };
+		02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */; };
 		02D1A119255387590045E56F /* UniqueTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D1A118255387590045E56F /* UniqueTags.swift */; };
 		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
@@ -216,6 +217,7 @@
 		02CAC9B42591054400BE5E57 /* TVC+ImgPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+ImgPicker.swift"; sourceTree = "<group>"; };
 		02CAC9B6259105B400BE5E57 /* TVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVC.swift; sourceTree = "<group>"; };
 		02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTreatment.swift; sourceTree = "<group>"; };
+		02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+delegate.swift"; sourceTree = "<group>"; };
 		02D1A118255387590045E56F /* UniqueTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueTags.swift; sourceTree = "<group>"; };
 		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -507,16 +509,6 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		0296306A2614A705000CF4E9 /* SettingsVC */ = {
-			isa = PBXGroup;
-			children = (
-				02FAE29E260A9BA900324724 /* SettingsCell.swift */,
-				02FAE2A4260AC79C00324724 /* SettingsCell2.swift */,
-				02BC8D582602B79900441349 /* SettingsVC.swift */,
-			);
-			path = SettingsVC;
-			sourceTree = "<group>";
-		};
 		02A4235A2843FFF300A25067 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,8 +628,8 @@
 		02D10F0A2920673200287248 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				02D10F0D2920FA3900287248 /* Settings */,
 				0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */,
-				0296306A2614A705000CF4E9 /* SettingsVC */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -657,6 +649,33 @@
 				02AB39A927B894D600335131 /* FBLoginSetup */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		02D10F0D2920FA3900287248 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				02D10F0E2920FA9F00287248 /* SettingsVC */,
+				02D10F112920FBEC00287248 /* SettingsCells */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		02D10F0E2920FA9F00287248 /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				02BC8D582602B79900441349 /* SettingsVC.swift */,
+				02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */,
+			);
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		02D10F112920FBEC00287248 /* SettingsCells */ = {
+			isa = PBXGroup;
+			children = (
+				02FAE2A4260AC79C00324724 /* SettingsCell2.swift */,
+				02FAE29E260A9BA900324724 /* SettingsCell.swift */,
+			);
+			path = SettingsCells;
 			sourceTree = "<group>";
 		};
 		02D8C17729201663002585C7 /* Themes */ = {
@@ -951,6 +970,7 @@
 				021EB84D288C1EB000463B42 /* TTVC+Operations.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
 				02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */,
+				02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */,
 				02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */,
 				02062153266503490072C404 /* GJs.swift in Sources */,
 				02B104A9276A630E00C9EC6C /* Url_img_SUI.swift in Sources */,

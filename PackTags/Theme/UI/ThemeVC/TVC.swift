@@ -96,7 +96,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
             
             //Packing by 30 from Core Data on textView
             if theme.content != nil {
-                let hashtags = Unique.packBy(t: theme.content!.components(separatedBy:" "))
+                let hashtags = Unique.packBy(textToPack: theme.content!.components(separatedBy:" "))
                 themeTextView.text = hashtags
             }
             

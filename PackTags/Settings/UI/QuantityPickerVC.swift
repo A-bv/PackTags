@@ -8,17 +8,34 @@
 
 import UIKit
 
-class QuantityPickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+var numTagsInPack: Int = {
+    let savedTagQuantity = UserDefaults.standard.integer(forKey: "QuantityOfTagsPerPack")
+    return savedTagQuantity == 0 ? 30 : savedTagQuantity
+}()
+
+class QuantityPickerVC: UIViewController {
     
     deinit {
         print("deinit")
     }
     
-    var dataArray = Array((5...30).reversed())
+    private enum Constants {
+        static let maximumTagNumber = 30
+        static let minimumTagNumber = 5
+        static let defaultTagNumber = 0
+        static let savedTagQuantity = UserDefaults.standard.integer(forKey: "QuantityOfTagsPerPack")
+        static let pickerNumberOfComponents = 1
+    }
+    
+    private var dataArray = Array(
+        (Constants.minimumTagNumber...Constants.maximumTagNumber).reversed())
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI ()
+    }
+    
+    private func setupUI () {
         self.view.applyBlur()
         self.placeTopRightButton (arrowButton: false)
         
@@ -26,42 +43,31 @@ class QuantityPickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
         UIPicker.delegate = self as UIPickerViewDelegate
         UIPicker.dataSource = self as UIPickerViewDataSource
         UIPicker.center = self.view.center
-        UIPicker.selectRow(abs(numTagsInPack - 30), inComponent: 0, animated: false)
+        UIPicker.selectRow(
+            abs(numTagsInPack - Constants.maximumTagNumber),
+            inComponent: 0,
+            animated: false)
         self.view.addSubview(UIPicker)
-        
-        /*
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width , height: 40))
-        label.text = "A quantity of 30 is recommended"
-        label.textAlignment = .center
-        self.view.addSubview(label)
-        */
     }
-    
-    
-    
+}
+
+extension QuantityPickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        Constants.pickerNumberOfComponents
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-    {
-        return dataArray.count
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        dataArray.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
-    {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let row = String(dataArray[row])
         return row
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        UserDefaults.standard.set(Int(dataArray[row]), forKey: "QuantityOfTagsPerPack")
-        numTagsInPack = UserDefaults.standard.integer(forKey: "QuantityOfTagsPerPack")
+        let row = Int(dataArray[row])
+        UserDefaults.standard.set(row, forKey: "QuantityOfTagsPerPack")
+        numTagsInPack = Constants.savedTagQuantity
     }
 }
-
-public var numTagsInPack: Int = UserDefaults.standard.integer(forKey: "QuantityOfTagsPerPack") == 0 ? 30 : UserDefaults.standard.integer(forKey: "QuantityOfTagsPerPack")
-
-
-
-

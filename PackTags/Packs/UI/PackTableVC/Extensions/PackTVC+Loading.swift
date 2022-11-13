@@ -15,7 +15,7 @@ extension PackTableVC {
             packs=[]
             return
         }
-        let string = Unique.packBy(t: content.components(separatedBy:" "))
+        let string = Unique.packBy(textToPack: content.components(separatedBy:" "))
         packs = string.components(separatedBy: "\n\n")
     }
 }
