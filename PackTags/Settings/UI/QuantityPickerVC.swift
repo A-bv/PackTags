@@ -26,7 +26,7 @@ class QuantityPickerVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
         UIPicker.delegate = self as UIPickerViewDelegate
         UIPicker.dataSource = self as UIPickerViewDataSource
         UIPicker.center = self.view.center
-        UIPicker.selectRow(abs(numTagsInPack - 30),inComponent: 0,animated: false)
+        UIPicker.selectRow(abs(numTagsInPack - 30), inComponent: 0, animated: false)
         self.view.addSubview(UIPicker)
         
         /*

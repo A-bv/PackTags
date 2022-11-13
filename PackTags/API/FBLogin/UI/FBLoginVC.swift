@@ -30,17 +30,45 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
         return button
     }()
     
-    // Delegates
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupFBLoginVC()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        shouldShowIgApiSetupVC ()
+    }
+    
+    private func setupFBLoginVC () {
+        self.view.applyBlur()
+        self.placeTopRightButton(arrowButton: false)
+        self.placeHelpButton (isHelpSetupIgPro: true)
+        
+        let loginButton = loginButton
+        loginButton.delegate = self
+        loginButton.center = view.center
+        view.addSubview(loginButton)
+    }
+}
+
+// Delegates
+extension FBLoginVC {
     // triggered when just after login
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         
-        if ((error) != nil){}
+        if ((error) != nil){ }
+        checkSetup()
+    }
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
+}
+
+// Checks
+extension FBLoginVC {
+    private func checkSetup() {
+        //Checks Setup and save Instagram Business Account ID
         let uD = UserDefaults.standard
-        
         //Detects first time login
         uD.set(true, forKey: "pressedFBLoginButton")
-        
-        //Checks Setup and save Instagram Business Account ID
         if isFbTokenValid() {
             verifySetupFbPages(Completion: {[weak self] _ in
                 self?.verifySetupIgBAndGetIgBId(Completion: {(IgBId) in
@@ -58,29 +86,31 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
             Alerts.setupTroubleShootingAlert(presenterVc: self)
         }
     }
-    
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    private func shouldShowIgApiSetupVC () {
+        let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
+        let isBtnPressedFbLogin =
+            UserDefaults.standard.object(forKey: "pressedFBLoginButton")
+        let isBtnPressedOnIgApiSetupVC =
+            UserDefaults.standard.object(forKey: "continued_IgApiSetupVC")
+            
+        //Only show if never pressed continue on IgApiSetupVC()
+        if isBtnPressedOnIgApiSetupVC == nil {
+            let controller = IgApiSetupVC()
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .coverVertical
+            self.present(controller, animated: true, completion: nil)
+        }
         
-        self.view.applyBlur()
-        self.placeTopRightButton(arrowButton: false)
-        self.placeHelpButton (isHelpSetupIgPro: true)
-        
-        let loginButton = loginButton
-        loginButton.delegate = self
-        loginButton.center = view.center
-        view.addSubview(loginButton)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        shouldShowIgApiSetupVC ()
+        //Alert if already pressed fb login button and if wrong setup
+        if isCorrectSetup == false && isBtnPressedFbLogin != nil {
+            Alerts.setupTroubleShootingAlert(presenterVc: self)
+        }
     }
 }
 
+// Calls
 extension FBLoginVC {
-    
     private func verifySetupFbPages (Completion block: @escaping (([String]) -> ())) {
         // 0. Fb acc gives a token
         // Request 1. Get facebook business page of the facebook account
@@ -93,11 +123,10 @@ extension FBLoginVC {
                 return
             }
 
-            guard let response1 = result as? NSDictionary else {
-                return } //
+            guard let response1 = result as? NSDictionary else { return } //
             //id page fb packtags.app 107298991584829
             // ----- CAUTION ----- only works with one associated page (takes the first in array)
-            guard let pages = (response1.value(forKeyPath: "data.name") as? [String]) else {return}
+            guard let pages = (response1.value(forKeyPath: "data.name") as? [String]) else { return }
             
             if pages == [] {
                 // Exit if no IGPro or wrong linked FB page(s)
@@ -136,5 +165,25 @@ extension FBLoginVC {
                    return
                }
            })
+    }
+}
+
+extension UIViewController {
+    func isFbTokenValid () -> Bool {
+        guard let token = AccessToken.current, !token.isExpired else { return false }
+        UserDefaults.standard.set( token.tokenString, forKey: "fbToken")
+        return true
+    }
+    
+    func shouldShowFBLogin () -> Bool {
+        let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
+        return (!isCorrectSetup || !isFbTokenValid())
+    }
+    
+    func showFBLoginScreen () {
+        let vc = FBLoginVC()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .coverVertical
+        self.present(vc, animated: true, completion: nil)
     }
 }

@@ -30,7 +30,7 @@ extension IgApiSetupVC  {
     }
     
     @objc func convertIGFunc (_ sender: Any) {
-        let vwc = HowToSetupProIGVC()
+        let vwc = SetupProIGVC()
         vwc.modalPresentationStyle = .overFullScreen
         vwc.modalTransitionStyle = .coverVertical
         self.present(vwc, animated: true, completion: nil)

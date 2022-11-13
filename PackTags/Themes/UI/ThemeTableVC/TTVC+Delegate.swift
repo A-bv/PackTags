@@ -33,8 +33,8 @@ extension ThemeTableViewController {
         
         cell.nameLabel.text = theme.name
             
-        if theme.thumbnail != nil {
-            cell.themeImageView.image = UIImage(data: theme.thumbnail!)
+        if let thumbnail = theme.thumbnail {
+            cell.themeImageView.image = UIImage(data: thumbnail)
         }
            
         return cell

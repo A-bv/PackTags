@@ -51,10 +51,9 @@
 		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
 		02491C512671212400F98E17 /* IgApiSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C502671212400F98E17 /* IgApiSetupVC.swift */; };
 		02491C53267147AF00F98E17 /* ModalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C52267147AF00F98E17 /* ModalUI.swift */; };
-		02491C55267799BD00F98E17 /* IgApiSetupVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C54267799BD00F98E17 /* IgApiSetupVC+UI.swift */; };
-		02491C5726779A2800F98E17 /* IgApiSetupVC+acts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5626779A2800F98E17 /* IgApiSetupVC+acts.swift */; };
-		02491C5926779A4900F98E17 /* HowToSetupProIGVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* HowToSetupProIGVC.swift */; };
-		02491C5D267BA40500F98E17 /* CheckSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5C267BA40500F98E17 /* CheckSetup.swift */; };
+		02491C55267799BD00F98E17 /* IgApiSetupVC+buildUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C54267799BD00F98E17 /* IgApiSetupVC+buildUI.swift */; };
+		02491C5726779A2800F98E17 /* IgApiSetupVC+actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5626779A2800F98E17 /* IgApiSetupVC+actions.swift */; };
+		02491C5926779A4900F98E17 /* SetupProIGVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* SetupProIGVC.swift */; };
 		02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */; };
 		02491C692680883800F98E17 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C682680883700F98E17 /* AppColors.swift */; };
 		025479DF26C7EEA000E28724 /* SeedData in Resources */ = {isa = PBXBuildFile; fileRef = 025479DE26C7EEA000E28724 /* SeedData */; };
@@ -176,10 +175,9 @@
 		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		02491C502671212400F98E17 /* IgApiSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgApiSetupVC.swift; sourceTree = "<group>"; };
 		02491C52267147AF00F98E17 /* ModalUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalUI.swift; sourceTree = "<group>"; };
-		02491C54267799BD00F98E17 /* IgApiSetupVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IgApiSetupVC+UI.swift"; sourceTree = "<group>"; };
-		02491C5626779A2800F98E17 /* IgApiSetupVC+acts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IgApiSetupVC+acts.swift"; sourceTree = "<group>"; };
-		02491C5826779A4900F98E17 /* HowToSetupProIGVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToSetupProIGVC.swift; sourceTree = "<group>"; };
-		02491C5C267BA40500F98E17 /* CheckSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSetup.swift; sourceTree = "<group>"; };
+		02491C54267799BD00F98E17 /* IgApiSetupVC+buildUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IgApiSetupVC+buildUI.swift"; sourceTree = "<group>"; };
+		02491C5626779A2800F98E17 /* IgApiSetupVC+actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IgApiSetupVC+actions.swift"; sourceTree = "<group>"; };
+		02491C5826779A4900F98E17 /* SetupProIGVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProIGVC.swift; sourceTree = "<group>"; };
 		02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSwiftUI.swift; sourceTree = "<group>"; };
 		02491C682680883700F98E17 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		025479DE26C7EEA000E28724 /* SeedData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SeedData; sourceTree = "<group>"; };
@@ -317,20 +315,10 @@
 			path = "GJS Tools";
 			sourceTree = "<group>";
 		};
-		021AFD5A2789F44F0008735E /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				02491C5A26779AE400F98E17 /* Setup */,
-				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
-				02491C5C267BA40500F98E17 /* CheckSetup.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		021D7621275A9BBB00F54054 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				021AFD5A2789F44F0008735E /* Login */,
+				02491C5A26779AE400F98E17 /* FBLogin */,
 				021D7622275A9E6200F54054 /* Models */,
 				0231AB1326849F4A007F4FC8 /* Import */,
 				02E4B9D325CC97C700949213 /* Analytics */,
@@ -422,22 +410,22 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		02491C5A26779AE400F98E17 /* Setup */ = {
+		02491C5A26779AE400F98E17 /* FBLogin */ = {
 			isa = PBXGroup;
 			children = (
-				02AB39A927B894D600335131 /* SetupTutorial */,
+				02D10F0C2920777000287248 /* UI */,
 			);
-			path = Setup;
+			path = FBLogin;
 			sourceTree = "<group>";
 		};
-		02491C5B26779B1100F98E17 /* IgApiSetupVC */ = {
+		02491C5B26779B1100F98E17 /* SetupVC */ = {
 			isa = PBXGroup;
 			children = (
 				02491C502671212400F98E17 /* IgApiSetupVC.swift */,
-				02491C54267799BD00F98E17 /* IgApiSetupVC+UI.swift */,
-				02491C5626779A2800F98E17 /* IgApiSetupVC+acts.swift */,
+				02491C54267799BD00F98E17 /* IgApiSetupVC+buildUI.swift */,
+				02491C5626779A2800F98E17 /* IgApiSetupVC+actions.swift */,
 			);
-			path = IgApiSetupVC;
+			path = SetupVC;
 			sourceTree = "<group>";
 		};
 		0273D1532655B9260043011C /* Tools */ = {
@@ -532,7 +520,7 @@
 		02A4235A2843FFF300A25067 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				029FDDC0264E75600063DF1D /* OnBoardingVC.swift */,
+				02D10F0B2920675600287248 /* UI */,
 				0281B9822879CA7900344D3E /* Core.swift */,
 			);
 			path = OnBoarding;
@@ -542,7 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				0234E7B9287ADE3500D7A2AF /* Navigation */,
-				02AEA5EA25B9D2F10063076F /* ThemeTableVC */,
+				02D10F082920657A00287248 /* UI */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -558,18 +546,18 @@
 		02A4235D284400FC00A25067 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				02CAC9B82591061B00BE5E57 /* ThemeVC */,
+				02D10F092920661B00287248 /* UI */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
 		};
-		02AB39A927B894D600335131 /* SetupTutorial */ = {
+		02AB39A927B894D600335131 /* FBLoginSetup */ = {
 			isa = PBXGroup;
 			children = (
-				02491C5B26779B1100F98E17 /* IgApiSetupVC */,
-				02491C5826779A4900F98E17 /* HowToSetupProIGVC.swift */,
+				02491C5B26779B1100F98E17 /* SetupVC */,
+				02491C5826779A4900F98E17 /* SetupProIGVC.swift */,
 			);
-			path = SetupTutorial;
+			path = FBLoginSetup;
 			sourceTree = "<group>";
 		};
 		02AEA5E725B9D2B00063076F /* PackTableVC */ = {
@@ -586,7 +574,6 @@
 		02AEA5EA25B9D2F10063076F /* ThemeTableVC */ = {
 			isa = PBXGroup;
 			children = (
-				022688922624F9B1007DBD98 /* ThemeCell.swift */,
 				02FB552E24FFA78B00174E34 /* TTVC.swift */,
 				02FEF535262B86620001B525 /* TTVC+navigation.swift */,
 				022688B22628BCCC007DBD98 /* TTVC+Interface.swift */,
@@ -627,6 +614,49 @@
 				02B05C222809CD76000026B8 /* SearcheableTextView.swift */,
 			);
 			path = ThemeVC;
+			sourceTree = "<group>";
+		};
+		02D10F082920657A00287248 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				022688922624F9B1007DBD98 /* ThemeCell.swift */,
+				02AEA5EA25B9D2F10063076F /* ThemeTableVC */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		02D10F092920661B00287248 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				02CAC9B82591061B00BE5E57 /* ThemeVC */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		02D10F0A2920673200287248 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */,
+				0296306A2614A705000CF4E9 /* SettingsVC */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		02D10F0B2920675600287248 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				029FDDC0264E75600063DF1D /* OnBoardingVC.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		02D10F0C2920777000287248 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
+				02AB39A927B894D600335131 /* FBLoginSetup */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		02D8C17729201663002585C7 /* Themes */ = {
@@ -692,8 +722,7 @@
 		02FAE2AB260ADA9200324724 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				0296306A2614A705000CF4E9 /* SettingsVC */,
-				0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */,
+				02D10F0A2920673200287248 /* UI */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -917,9 +946,8 @@
 				023A2F7C2856495800EE6CDE /* PackTVC+ConfigCell.swift in Sources */,
 				02FEF536262B86620001B525 /* TTVC+navigation.swift in Sources */,
 				02491C53267147AF00F98E17 /* ModalUI.swift in Sources */,
-				02491C5726779A2800F98E17 /* IgApiSetupVC+acts.swift in Sources */,
+				02491C5726779A2800F98E17 /* IgApiSetupVC+actions.swift in Sources */,
 				0206214E2663A2AE0072C404 /* JsonModels.swift in Sources */,
-				02491C5D267BA40500F98E17 /* CheckSetup.swift in Sources */,
 				021EB84D288C1EB000463B42 /* TTVC+Operations.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
 				02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */,
@@ -934,12 +962,12 @@
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,
 				023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
-				02491C5926779A4900F98E17 /* HowToSetupProIGVC.swift in Sources */,
+				02491C5926779A4900F98E17 /* SetupProIGVC.swift in Sources */,
 				0281B97E2879B14A00344D3E /* PackTVC+NaviLogic.swift in Sources */,
 				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsNew.swift in Sources */,
 				020584D3284D6FFC00020FB8 /* TextViewKbToolBar.swift in Sources */,
-				02491C55267799BD00F98E17 /* IgApiSetupVC+UI.swift in Sources */,
+				02491C55267799BD00F98E17 /* IgApiSetupVC+buildUI.swift in Sources */,
 				0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */,
 				02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */,
 				023A2F7E2856497800EE6CDE /* PackTVC+TVHeader.swift in Sources */,

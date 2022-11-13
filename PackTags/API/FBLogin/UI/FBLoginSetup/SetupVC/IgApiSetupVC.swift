@@ -21,6 +21,8 @@ class IgApiSetupVC: UIViewController {
         static let accountLinkingTitle = "Account Linking".localized()
     }
     
+    let cstH = UIScreen.main.bounds.height >= 600.0 ? CGFloat(80.0) : CGFloat(65.0)
+    
     let actions =  [#selector(loginFunc(_:)),
                     #selector(createPageFunc(_:)),
                     #selector(convertIGFunc(_:))]
@@ -55,8 +57,6 @@ class IgApiSetupVC: UIViewController {
     ]
     
     var buttons: [UIButton] = []
-    
-    let cstH = UIScreen.main.bounds.height >= 600.0 ? CGFloat(80.0) : CGFloat(65.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()

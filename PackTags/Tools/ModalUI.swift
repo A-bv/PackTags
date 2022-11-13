@@ -71,7 +71,7 @@ extension UIViewController {
             btn.setTitleColor(customPurple, for: .normal)
             btn.addTarget(
                 self,
-                action: #selector(showHowToSetupProIGVC(_:)),
+                action: #selector(showSetupProIGVC(_:)),
                 for: .touchUpInside)
             return btn
         } ()
@@ -127,7 +127,7 @@ extension UIViewController {
         }
     }
     
-    @objc func showHowToSetupProIGVC (_ sender: Any) {
+    @objc func showSetupProIGVC (_ sender: Any) {
         let vwc = IgApiSetupVC()
         vwc.modalPresentationStyle = .overFullScreen
         vwc.modalTransitionStyle = .crossDissolve
