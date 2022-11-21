@@ -7,15 +7,16 @@
 //
 
 import UIKit
+
 class OnBoardingController: UIViewController, UIScrollViewDelegate {
-    
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
-    @IBOutlet var btnGetStarted: UIButton!
+    @IBOutlet var getStartedBtn: UIButton!
 
     var scrollWidth: CGFloat! = 0.0
     var scrollHeight: CGFloat! = 0.0
-    
+    var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+
     private enum Strings {
         static let onBoardingPageTitle1  = "WELCOME TO PACKTAGS".localized()
         static let onBoardingPageTitle2  = "UNIQUE PACKS".localized()
@@ -25,26 +26,42 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
         static let onBoardingPageSubtitle3  = "Tracks your results for the best strategy".localized()
     }
 
-    //data for the slides
+    private enum Constants {
+        static let subtitleNumberOfLines = 3
+        static let spacing10 = CGFloat(10)
+        static let spacing30 = CGFloat(30)
+        static let titleHeight = CGFloat(30)
+        static let labelsXPadding = CGFloat(32)
+        static let imageViewCenterPositionYAdjustment = -CGFloat(50)
+        static let subtitleHeight = CGFloat(50)
+        static let scrollWidthPadding = CGFloat(64)
+        static let screenWidth = UIScreen.main.bounds.width
+        static let disableVerticalScrollOrBounceValue = CGFloat(1)
+        
+        static let smallScreenWidthLimit = CGFloat(320)
+        static let adaptativeImageViewLenght = screenWidth <= smallScreenWidthLimit ? 200 : 300
+        static let fontSize1: CGFloat = screenWidth <= smallScreenWidthLimit ? 15.0 : 20.0
+        static let fontSize2: CGFloat = fontSize1 - 2
+    }
+
     var titles = [
         Strings.onBoardingPageTitle1,
         Strings.onBoardingPageTitle2,
         Strings.onBoardingPageTitle3
     ]
-    
-    var descs = [
+
+    var captions = [
         Strings.onBoardingPageSubtitle1,
         Strings.onBoardingPageSubtitle2,
         Strings.onBoardingPageSubtitle3
     ]
-    
-    var imgs = [
+
+    var illustrations = [
         "intro1",
         "intro4",
         "intro5"
     ]
 
-    //get dynamic width and height of scrollview and save it
     override func viewDidLayoutSubviews() {
         scrollWidth = scrollView.frame.size.width
         scrollHeight = scrollView.frame.size.height
@@ -52,100 +69,99 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layoutIfNeeded()
-        //to call viewDidLayoutSubviews() and get dynamic width and height of scrollview
-        
-        btnGetStarted.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
-        btnGetStarted.isHidden = true
-        
+        self.view.layoutIfNeeded() // used to call viewDidLayoutSubviews()
         self.view.backgroundColor = welcomeScreenColor
+
+        setupGetStartedButton ()
+        setupScrollView()
+        setupSlides()
+        initializePageControl()
+    }
+
+    private func setupSlides() {
+        for index in 0..<titles.count {
+            let slide = makeSlide(index: index)
+            addSlideToScrollView(slide: slide)
+        }
+    }
+
+    private func setupGetStartedButton () {
+        getStartedBtn.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
+        getStartedBtn.isHidden = true
+    }
+
+    private func initializePageControl() {
+        pageControl.numberOfPages = titles.count
+        pageControl.currentPage = 0
+    }
+
+    private func setupScrollView() {
         self.scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
+    }
 
-        //crete the slides and add them
-        var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+    private func makeSlide (index: Int) -> UIView {
+        let imageViewFrame = CGRect(
+            x: 0,
+            y: 0,
+            width: Constants.adaptativeImageViewLenght,
+            height: Constants.adaptativeImageViewLenght)
+        let imageViewCenter = CGPoint(
+            x: scrollWidth/2,
+            y: scrollHeight/2 + Constants.imageViewCenterPositionYAdjustment)
+        
+        let imageView = UIImageView.init(image:  UIImage.init(named: illustrations[index])!)
+        imageView.frame = imageViewFrame
+        imageView.contentMode = .scaleAspectFit
+        imageView.center = imageViewCenter
+        
+        let titleFrame = CGRect(
+            x: Constants.labelsXPadding,
+            y: imageView.frame.maxY + Constants.spacing30,
+            width: scrollWidth - Constants.scrollWidthPadding,
+            height: Constants.titleHeight)
+        let title = UILabel.init(frame: titleFrame)
+        title.textAlignment = .center
+        title.font = UIFont.boldSystemFont(ofSize: Constants.fontSize1)
+        title.text = titles[index]
 
-        for index in 0..<titles.count {
-            frame.origin.x = scrollWidth * CGFloat(index)
-            frame.size = CGSize(width: scrollWidth, height: scrollHeight)
+        let subtitleFrame = CGRect(
+            x: Constants.labelsXPadding,
+            y: title.frame.maxY + Constants.spacing10,
+            width: scrollWidth - Constants.scrollWidthPadding,
+            height: Constants.subtitleHeight)
+        let subtitle = UILabel.init(frame: subtitleFrame)
+        subtitle.textAlignment = .center
+        subtitle.font = UIFont.systemFont(ofSize: Constants.fontSize2)
+        subtitle.text = captions[index]
+        subtitle.numberOfLines = Constants.subtitleNumberOfLines
 
-            let slide = UIView(frame: frame)
-
-            //subviews
-            let imageView = UIImageView.init(
-                image:  UIImage.init(named: imgs[index])!)
-            
-            //Iphone5 adatation
-            //under 320: iphones 5, smaller image
-            let sW = UIScreen.main.bounds.width
-            let dim = sW <= 320 ? 200 : 300
-            let fontSize1: CGFloat = sW <= 320 ? 15.0 : 20.0
-            //
-            
-            imageView.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: dim,
-                height: dim)
-            
-            imageView.contentMode = .scaleAspectFit
-            imageView.center = CGPoint(
-                x: scrollWidth/2,
-                y: scrollHeight/2 - 50)
-          
-            let txt1 = UILabel.init(
-                frame: CGRect(
-                    x: 32,
-                    y: imageView.frame.maxY + 30,
-                    width: scrollWidth - 64,
-                    height: 30))
-            
-            txt1.textAlignment = .center
-            txt1.font = UIFont.boldSystemFont(ofSize: fontSize1)
-            txt1.text = titles[index]
-
-            let txt2 = UILabel.init(
-                frame: CGRect(
-                    x: 32,
-                    y: txt1.frame.maxY + 10,
-                    width: scrollWidth - 64,
-                    height: 50))
-            
-            txt2.textAlignment = .center
-            txt2.numberOfLines = 3
-            txt2.font = UIFont.systemFont(ofSize: fontSize1 - 2)
-            txt2.text = descs[index]
-
-            slide.addSubview(imageView)
-            slide.addSubview(txt1)
-            slide.addSubview(txt2)
-            scrollView.addSubview(slide)
-        }
-
-        //set width of scrollview to accomodate all the slides
-        scrollView.contentSize = CGSize(
-            width: scrollWidth * CGFloat(titles.count),
+        frame.origin.x = scrollWidth * CGFloat(index)
+        frame.size = CGSize(
+            width: scrollWidth,
             height: scrollHeight)
 
-        //disable vertical scroll/bounce
-        self.scrollView.contentSize.height = 1.0
+        let slide = UIView(frame: frame)
+        slide.addSubview(imageView)
+        slide.addSubview(subtitle)
+        slide.addSubview(title)
 
-        //initial state
-        pageControl.numberOfPages = titles.count
-        pageControl.currentPage = 0
-
+        return slide
     }
 
-    //indicator
-    @IBAction func pageChanged(_ sender: Any) {
-        scrollView!.scrollRectToVisible(
-            CGRect(
-                x: scrollWidth * CGFloat ((pageControl?.currentPage)!),
-                y: 0, width: scrollWidth, height: scrollHeight), animated: true)
+    private func addSlideToScrollView (slide: UIView) {
+        let scrollviewWidthToAccomodateAllSlides = scrollWidth * CGFloat(titles.count)
+        scrollView.contentSize = CGSize(
+            width: scrollviewWidthToAccomodateAllSlides,
+            height: scrollHeight)
+        scrollView.contentSize.height = Constants.disableVerticalScrollOrBounceValue
+        scrollView.addSubview(slide)
     }
+}
 
+extension OnBoardingController {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         setIndiactorForCurrentPage()
     }
@@ -153,26 +169,30 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
     func setIndiactorForCurrentPage()  {
         let page = (scrollView?.contentOffset.x)!/scrollWidth
         pageControl?.currentPage = Int(page)
-        
-        if Int(page) == titles.count - 1 {
-            btnGetStarted.isHidden = false
-        } else {
-            btnGetStarted.isHidden = true
-        }
+        getStartedBtn.isHidden = Int(page) != titles.count - 1
     }
     
+    @IBAction func pageChanged(_ sender: Any) {
+        let currentPage = CGFloat((pageControl?.currentPage)!)
+        let pageControlFrame = CGRect(
+            x: scrollWidth * currentPage,
+            y: 0,
+            width: scrollWidth,
+            height: scrollHeight)
+        scrollView!.scrollRectToVisible(pageControlFrame,animated: true)
+    }
+
     @objc func didTap(_ sender: UIButton) {
         Core.shared.setIsNotNewUser()
-        self.dismiss(animated: true)
         Alerts.showFirstTimeTipsAlert(presentingVc: self)
+        dismiss(animated: true)
     }
 }
 
 extension UIViewController {
     func showOnboardingScreen() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "welcome") as! OnBoardingController
-        
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "welcome") as! OnBoardingController
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
     }
 }
