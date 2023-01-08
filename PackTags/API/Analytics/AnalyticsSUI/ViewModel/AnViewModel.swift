@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-class ANewVCDataSUI: ObservableObject {
+class AnalyticsVCModels: ObservableObject {
     
     private enum Strings {
         static let likes = "Likes".localized()
@@ -21,15 +21,15 @@ class ANewVCDataSUI: ObservableObject {
     //MARK: - Live Variables
     @Published var processedJson : processedProfileModel?
     @Published var jsonOfficial : Profile? //Api Graph
-    @Published var stats_Data = [
-        Stats(
+    @Published var overviewSectionData = [
+        AnalyticsOverviewModel(
             id: 0,
             title: Strings.likes,
             currentData: "0",
             goal: 0,
             color: Color("running"),
             image: Image(systemName: "suit.heart.fill")),
-        Stats(
+        AnalyticsOverviewModel(
             id: 1,
             title: Strings.comments,
             currentData: "0",

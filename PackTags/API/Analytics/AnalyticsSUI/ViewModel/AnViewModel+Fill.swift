@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ANewVCDataSUI {
+extension AnalyticsVCModels {
     static var lastSelected = 0
     
     func fillData(){
@@ -24,11 +24,11 @@ extension ANewVCDataSUI {
         }
         
         //
-        self.stats_Data[0].currentData = processedJson?.avg0 ?? "0" //avg likes
-        self.stats_Data[1].currentData = processedJson?.avg1 ?? "0" //avg com
+        self.overviewSectionData[0].currentData = processedJson?.avg0 ?? "0" //avg likes
+        self.overviewSectionData[1].currentData = processedJson?.avg1 ?? "0" //avg com
         
         //
-        self.circles_Data[1].currentData = processedJson?.rates[ANewVCDataSUI.lastSelected] ?? 0 //Selection default value
+        self.circles_Data[1].currentData = processedJson?.rates[AnalyticsVCModels.lastSelected] ?? 0 //Selection default value
         self.circles_Data[1].goal = getMaxRate()
         
         //

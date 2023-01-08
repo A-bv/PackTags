@@ -10,7 +10,7 @@ import Foundation
 
 class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []
-    @Published var computedData: [processedSmartGModel] = []
+    @Published var computedData: [SmartGModel] = []
     @Published var topHashtags: [String] = []
     
     func fetch(hashtag: String) {
@@ -30,12 +30,12 @@ class SmartGViewModel: ObservableObject {
 extension SmartGViewModel {
     func processSmartGModel()
     {
-        var processedSmartGModels = [processedSmartGModel]()
+        var processedSmartGModels = [SmartGModel]()
         var hashtagsFullList: [String] = []
         
         for dataMedia in dataMedias {
             guard let hashtags = dataMedia.caption?.detectHashtags() else { return }
-            processedSmartGModels.append(processedSmartGModel(hashtags: hashtags))
+            processedSmartGModels.append(SmartGModel(hashtags: hashtags))
             hashtagsFullList += hashtags
         }
     

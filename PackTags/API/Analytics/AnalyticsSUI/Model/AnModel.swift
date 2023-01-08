@@ -8,17 +8,6 @@
 
 import SwiftUI
 
-// stats Data...
-struct Stats : Identifiable {
-    
-    var id : Int
-    var title : String
-    var currentData : String
-    var goal : CGFloat
-    var color : Color
-    var image: Image
-}
-
 //Circles
 struct Circles : Identifiable {
     
@@ -28,4 +17,13 @@ struct Circles : Identifiable {
     var goal : CGFloat
     var color : Color
     var variation : CGFloat
+}
+
+// graph Data...
+struct Post : Identifiable {
+    var id : Int
+    var post : String
+    var r : CGFloat
+    var barHeight: CGFloat
+    var rVr: CGFloat
 }

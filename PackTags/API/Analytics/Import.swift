@@ -13,7 +13,7 @@ let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
 let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
 //AnalyticsNew's importation function: Functions for init() {}
-extension ANewVCDataSUI {
+extension AnalyticsVCModels {
     //1 local import (called when refreshing data without web)
     func getJsonFromDir () {
         DispatchQueue.main.async {

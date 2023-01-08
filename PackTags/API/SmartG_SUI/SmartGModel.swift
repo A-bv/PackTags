@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct processedSmartGModel: Hashable, Decodable {
+struct SmartGModel: Hashable, Decodable {
     let hashtags: [String]
     
     init(hashtags: [String] = []) {
