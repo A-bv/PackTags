@@ -50,8 +50,12 @@ struct AnalyticsNew : View {
         static let overviewSectionColumnsSpacing: CGFloat = 20
         static let headerVerticalSpacing: CGFloat = 5
         static let scrollViewVerticalSpacing: CGFloat = 25
-        static let smallScreenWidthLimit: CGFloat = 375
+        static let smallScreenWidthLimit: CGFloat = 375 // iPhone 13 mini / SE
         static let graphSectionHorizontalPadding: CGFloat = 17.5
+        static let overviewCellHeaderToValuePadding: CGFloat = 20
+        static let overviewCellValueFontSize: CGFloat = 22
+        static let overviewCellCornerRadius: CGFloat = 15
+        static let overviewCellToEdgeHorizontalPadding: CGFloat = 20
     }
     
     //
@@ -106,7 +110,9 @@ struct AnalyticsNew : View {
         
     init() {
         //Navigation bar customization
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.clear]
+        UINavigationBar.appearance().titleTextAttributes = [
+            .foregroundColor: UIColor.clear
+        ]
     }
     
     var body: some View{
@@ -117,14 +123,13 @@ struct AnalyticsNew : View {
                 //MARK: - Screen Header
                 header
                 //MARK: - Screen selection
+                
+                
                 if monitor.isConnected == false {
-                    //Screen when offline
                     offlineView
                 } else if swiftUIData.jsonOfficial == nil {
-                    //Screen when loading Json data
-                    unavailableDataView
+                    loadingView
                 } else {
-                    //Screen when data is available
                     //Screen when profile is private (unofficial Json)
                     if swiftUIData.processedJson?.isPv == true {
                         ZStack {
@@ -146,7 +151,7 @@ struct AnalyticsNew : View {
                             }
                         }
                     } else {
-                        //Screen when data is available
+                        // Screen when data is available
                         scrollView
                     }
                 }
@@ -270,57 +275,45 @@ extension AnalyticsNew {
 // Overview
 extension AnalyticsNew {
     var overviewSection: some View{
-        LazyVGrid(
-            columns: columns,
-            spacing: 30
-        ){
-            ForEach(swiftUIData.overviewSectionData){stat in
-
+        LazyVGrid(columns: columns) {
+            ForEach(swiftUIData.overviewSectionData) { overviewCell in
                 //ZStack{
-                VStack(spacing: 20){
+                VStack(spacing: Constants.overviewCellHeaderToValuePadding){
                     HStack{
                         Text(swiftUIData.processedJson?.postsCount == 1 ? "" : Strings.average)
                             .font(.body)
                             //.font(.system(size: 20))
                             //.fontWeight(.bold)
                             .foregroundColor(Color(UIColor.label))
-    
                         Spacer(minLength: 0)
-    
-                        stat.image
+                        overviewCell.image
                             .font(Font.system(.title2))
                     }
-
-                    Text(stat.currentData)
-                        .font(.system(size: 22))
+                    Text(overviewCell.currentData)
+                        .font(.system(size: Constants.overviewCellValueFontSize))
                         .foregroundColor(Color(UIColor.label))
                         .fontWeight(.bold)
-    
-                    Text(stat.title)
+                    Text(overviewCell.title)
                         //.font(.system(size: 22))
                         .fontWeight(.bold)
                         .foregroundColor(Color(UIColor.label))
                         .frame(maxWidth: .infinity, alignment: .center)
                         //Spacer(minLength: 0)
                         //Spacer()
-                    
-
                 }
                 .padding()
                 //.background(Color(UIColor.label).opacity(0.06))
-                .cornerRadius(15)
                 .background(
-                    RoundedRectangle(cornerRadius: 15)
+                    RoundedRectangle(cornerRadius: Constants.overviewCellCornerRadius)
                         .outerNeumorphism(Color.statsFillColor))
             }
         }
         .padding(
             EdgeInsets(
                 top: 0,
-                leading: 20,
+                leading: Constants.overviewCellToEdgeHorizontalPadding,
                 bottom: 0,
-                trailing: 20))
-        .padding(.bottom, 30)
+                trailing: Constants.overviewCellToEdgeHorizontalPadding))
     }
 }
 
@@ -591,7 +584,7 @@ extension AnalyticsNew {
 
 // Unavailable Data View
 extension AnalyticsNew {
-    var unavailableDataView: some View {
+    var loadingView: some View {
         ZStack {
             Color.bgFillColor
                 .edgesIgnoringSafeArea(.all)
