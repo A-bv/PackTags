@@ -12,6 +12,7 @@ struct processedProfileModel {
     
     let usr: String?                //. Basic: username
     let isPv: Bool?                 //. Basic: is private?
+    let postsCount: Int?            //. Basic: post count
     
     let sum0: Int?                  //0. Total likes
     let sum1: Int?                  //1. Total comments
@@ -47,6 +48,7 @@ struct processedProfileModel {
         self.avg2 = avg2
         self.maxR = maxR
         self.captions = captions
+        self.postsCount = rates.count
     }
 }
 

@@ -45,6 +45,15 @@ struct AnalyticsNew : View {
         static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account.".localized()
     }
     
+    private enum Constants {
+        static let overviewSectionColumnsCount: Int = 2
+        static let overviewSectionColumnsSpacing: CGFloat = 20
+        static let headerVerticalSpacing: CGFloat = 5
+        static let scrollViewVerticalSpacing: CGFloat = 25
+        static let smallScreenWidthLimit: CGFloat = 375
+        static let graphSectionHorizontalPadding: CGFloat = 17.5
+    }
+    
     //
     @ObservedObject var swiftUIData = AnalyticsVCModels()
     
@@ -60,7 +69,11 @@ struct AnalyticsNew : View {
     //
     @State var selected = 0
     var colors = [Color("Color1"),Color("Color")]
-    var columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 2)
+    var columns = Array(
+        repeating: GridItem(
+            .flexible(),
+            spacing: Constants.overviewSectionColumnsSpacing),
+        count: Constants.overviewSectionColumnsCount)
     
     //
     @State var titles = [
@@ -83,11 +96,14 @@ struct AnalyticsNew : View {
     @State var loading = true
     
     //Layout
-    @State var padCst = UIScreen.main.bounds.size.width < 375 ? 0 : 17.5
+    @State var graphSectionHorizontalPadding = UIScreen.main.bounds.size.width
+    < Constants.smallScreenWidthLimit
+    ? 0
+    : Constants.graphSectionHorizontalPadding
     
     //Toggle button
     @State private var isToggled = false
-    
+        
     init() {
         //Navigation bar customization
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.clear]
@@ -191,7 +207,7 @@ extension AnalyticsNew {
 extension AnalyticsNew {
     var header: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: Constants.headerVerticalSpacing) {
                 Text(Strings.analyticsTitle)
                     .font(.largeTitle)
                     .foregroundColor(Color(UIColor.label))
@@ -223,9 +239,12 @@ extension AnalyticsNew {
     var scrollView: some View {
         ScrollView(.vertical, showsIndicators: false) {
             //MARK: - Graph part
-            VStack(alignment: .leading, spacing: 25) {
+            VStack(
+                alignment: .leading,
+                spacing: Constants.scrollViewVerticalSpacing
+            ) {
                 graphsHeader
-                if swiftUIData.processedJson?.rates.count == 1 {
+                if swiftUIData.processedJson?.postsCount == 1 {
                     monoCirle
                 }
                 else {
@@ -235,13 +254,12 @@ extension AnalyticsNew {
                 }
             }
             .padding()
-            .cornerRadius(10)
             .padding(
                 EdgeInsets(
                     top: 0,
-                    leading: CGFloat(padCst),
+                    leading: CGFloat(graphSectionHorizontalPadding),
                     bottom: 0,
-                    trailing: CGFloat(padCst)))
+                    trailing: CGFloat(graphSectionHorizontalPadding)))
                
             //MARK: - Overview part
             overviewSection
@@ -252,13 +270,16 @@ extension AnalyticsNew {
 // Overview
 extension AnalyticsNew {
     var overviewSection: some View{
-        LazyVGrid(columns: columns,spacing: 30){
+        LazyVGrid(
+            columns: columns,
+            spacing: 30
+        ){
             ForEach(swiftUIData.overviewSectionData){stat in
 
                 //ZStack{
                 VStack(spacing: 20){
                     HStack{
-                        Text(swiftUIData.processedJson?.rates.count == 1 ? "" : Strings.average)
+                        Text(swiftUIData.processedJson?.postsCount == 1 ? "" : Strings.average)
                             .font(.body)
                             //.font(.system(size: 20))
                             //.fontWeight(.bold)
@@ -293,8 +314,13 @@ extension AnalyticsNew {
                         .outerNeumorphism(Color.statsFillColor))
             }
         }
-        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-        .padding(.bottom,30)
+        .padding(
+            EdgeInsets(
+                top: 0,
+                leading: 20,
+                bottom: 0,
+                trailing: 20))
+        .padding(.bottom, 30)
     }
 }
 
@@ -345,7 +371,7 @@ extension AnalyticsNew {
     
     var barchartArrows: some View{
         HStack {
-            let num = swiftUIData.processedJson?.rates.count
+            let num = swiftUIData.processedJson?.postsCount
             if num != 1 {
             Image(systemName: "arrow.turn.left.up")
                 .font(.caption)
@@ -408,7 +434,7 @@ extension AnalyticsNew {
                 }
                 
                 .toggleStyle(DarkToggleStyle())
-                .padding(.trailing,10)
+                .padding(.trailing, 10)
                 .onChange(of: isToggled)
                 { _ in
                     let impactMed = UIImpactFeedbackGenerator(style: .medium)
