@@ -11,7 +11,7 @@ import UIKit
 struct processedProfileModel {
     
     let usr: String?                //. Basic: username
-    let isPv: Bool?                 //. Basic: is private?
+    let isPrivateProfile: Bool?                 //. Basic: is private?
     let postsCount: Int?            //. Basic: post count
     
     let sum0: Int?                  //0. Total likes
@@ -38,7 +38,7 @@ struct processedProfileModel {
          ) {
         
         self.usr = usr
-        self.isPv = isPv
+        self.isPrivateProfile = isPv
         self.sum0 = sum0
         self.sum1 = sum1
         self.avg0 = avg0

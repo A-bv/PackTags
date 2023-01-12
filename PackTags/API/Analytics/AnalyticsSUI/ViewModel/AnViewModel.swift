@@ -53,7 +53,7 @@ class AnalyticsVCModels: ObservableObject {
             color: Color("water"),
             variation: 0)
     ]
-    @Published var graph_Data: [Post]? = [Post(id: 0, post: "", r: 0, barHeight: 0, rVr: 0)]
+    @Published var barChartData: [Post]? = [Post(id: 0, post: "", r: 0, barHeight: 0, rVr: 0)]
     
     //VARR
     //@Published var engagementVariations : engagementVariations?

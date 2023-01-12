@@ -43,6 +43,7 @@ struct AnalyticsNew : View {
         static let eRDefiniton = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers.".localized()
         static let eRRDefiniton = "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content.".localized()
         static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account.".localized()
+        static let ok = "Ok"
     }
     
     private enum Constants {
@@ -56,6 +57,18 @@ struct AnalyticsNew : View {
         static let overviewCellValueFontSize: CGFloat = 22
         static let overviewCellCornerRadius: CGFloat = 15
         static let overviewCellToEdgeHorizontalPadding: CGFloat = 20
+        static let opacity: CGFloat = 0.6
+        static let barsOpacity: CGFloat = 0.06
+        static let barChartHorizontalSpacing: CGFloat = 10
+        static let barMaxHeight: CGFloat = 50
+        static let barChartTopPadding: CGFloat = 10
+        static let maxNumberOfModes: Int = 3  // 1 followers, 2 reach, 3 impressions
+        static let graphSectionHeaderVerticalSpacing: CGFloat = 5
+        static let graphSectionHeaderTraillingPadding: CGFloat = 10
+        static let circleTitleToCirclePadding: CGFloat = 25
+        static let circleTitleFontSize: CGFloat = 20
+        static let offlineViewFontSize: CGFloat = 56
+        static let loadingIndicatorFrame: CGFloat = 70
     }
     
     //
@@ -123,15 +136,12 @@ struct AnalyticsNew : View {
                 //MARK: - Screen Header
                 header
                 //MARK: - Screen selection
-                
-                
                 if monitor.isConnected == false {
                     offlineView
                 } else if swiftUIData.jsonOfficial == nil {
                     loadingView
                 } else {
-                    //Screen when profile is private (unofficial Json)
-                    if swiftUIData.processedJson?.isPv == true {
+                    if swiftUIData.processedJson?.isPrivateProfile == true {
                         ZStack {
                             Color.bgFillColor
                                 .edgesIgnoringSafeArea(.all)
@@ -163,8 +173,11 @@ struct AnalyticsNew : View {
 //MARK: - Functions
 extension AnalyticsNew {
     //AAA 2
-    func updateCircle (v1:CGFloat,v2:CGFloat) -> Bool {
-        swiftUIData.circles_Data[1].currentData = CGFloat(v1)
+    func updateCircle(
+        v1: CGFloat,
+        v2: CGFloat
+    ) -> Bool {
+        swiftUIData.circles_Data[1].currentData = v1
         swiftUIData.circles_Data[1].variation = v2
         return true
     }
@@ -248,7 +261,7 @@ extension AnalyticsNew {
                 alignment: .leading,
                 spacing: Constants.scrollViewVerticalSpacing
             ) {
-                graphsHeader
+                graphSectionHeader
                 if swiftUIData.processedJson?.postsCount == 1 {
                     monoCirle
                 }
@@ -320,10 +333,8 @@ extension AnalyticsNew {
 // Barchart
 extension AnalyticsNew {
     var barchart: some View{
-        HStack(spacing: 10){
-            
-            ForEach(swiftUIData.graph_Data ?? []){value in
-                
+        HStack(spacing: Constants.barChartHorizontalSpacing){
+            ForEach(swiftUIData.barChartData ?? []) { value in
                 // Bars...
                 VStack{
                     VStack{
@@ -335,19 +346,21 @@ extension AnalyticsNew {
                                     gradient: .init(
                                         colors: selected == value.id
                                         ? colors
-                                        : [Color(UIColor.label).opacity(0.06)]),
+                                        : [Color(UIColor.label).opacity(Constants.barsOpacity)]),
                                     startPoint: .top, endPoint: .bottom))
                         
                         // max height = 50
                             .frame(height: value.barHeight)
                         
                     }
-                    .frame(height: 60)
-                    //100) //50+10
+                    .frame(
+                        height: Constants.barMaxHeight + Constants.barChartTopPadding)
                     .onTapGesture {
                         withAnimation(.easeOut){
                             selected = value.id
-                            let _ = updateCircle(v1:value.r,v2:value.rVr)
+                            let _ = updateCircle(
+                                v1: value.r,
+                                v2: value.rVr)
                             AnalyticsVCModels.lastSelected = value.id
                             let impactMed = UIImpactFeedbackGenerator(style: .soft)
                             impactMed.impactOccurred()
@@ -368,66 +381,64 @@ extension AnalyticsNew {
             if num != 1 {
             Image(systemName: "arrow.turn.left.up")
                 .font(.caption)
-                .foregroundColor(Color(UIColor.label).opacity(0.6))
+                .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
             Text(Strings.latest)
                 .font(.caption)
-                .foregroundColor(Color(UIColor.label).opacity(0.6))
+                .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
             }
             Spacer()
             
-            let text2 = num != 1 ? Strings.previousPosts : Strings.previousPost
+            let leftArrowText = num != 1 ? Strings.previousPosts : Strings.previousPost
             // "Last \(num ?? 0) Posts" : Strings.previousPosts
-            Text(text2)
+            Text(leftArrowText)
                 .font(.caption)
-                .foregroundColor(Color(UIColor.label).opacity(0.6))
+                .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
             Image(systemName: "arrow.right")
                 .font(.caption)
-                .foregroundColor(Color(UIColor.label).opacity(0.6))
+                .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
         }
     }
 }
 
 // GraphsHeader
 extension AnalyticsNew {
-    var graphsHeader: some View {
+    var graphSectionHeader: some View {
         HStack{
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: Constants.graphSectionHeaderVerticalSpacing) {
                 HStack {
                     Text(titles[mode])
                         .font(.title)
                         .foregroundColor(Color(UIColor.label))
-                    
                     //Info Button
-                    Button(action: {
-                        showingAlert = true
-                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                    }) {
+                    Button(
+                        action: {
+                            showingAlert = true
+                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                        }
+                    ) {
                         Image(systemName: "info.circle")
                     }
                     .alert(isPresented: $showingAlert) {
-                        Alert(title: Text(infoTitles[mode]), message:Text(infoMessages[mode]), dismissButton: .default(Text("Ok")))
+                        Alert(
+                            title: Text(infoTitles[mode]),
+                            message:Text(infoMessages[mode]),
+                            dismissButton: .default(Text(Strings.ok)))
                     }
                 }
-                
                 Text(subtitles[mode])
                     .font(.subheadline)
                     .foregroundColor(Color(UIColor.label))
-                
             }
-            
             Spacer()
-            
             HStack {
                 // Insights - Rates button toggle
                 Toggle(isOn: $isToggled) {
                     Image(
                         systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
                         .foregroundColor(Color("Color4"))
-                    
                 }
-                
                 .toggleStyle(DarkToggleStyle())
-                .padding(.trailing, 10)
+                .padding(.trailing, Constants.graphSectionHeaderTraillingPadding)
                 .onChange(of: isToggled)
                 { _ in
                     let impactMed = UIImpactFeedbackGenerator(style: .medium)
@@ -444,8 +455,8 @@ extension AnalyticsNew {
                     let impactMed = UIImpactFeedbackGenerator(style: .soft)
                     impactMed.impactOccurred()
                         
-                    mode = mode + 1
-                    if mode == 3 { //1followers, 2reach, 3impr
+                    mode += 1
+                    if mode == Constants.maxNumberOfModes {
                         mode = 0
                     }
                     
@@ -465,18 +476,17 @@ extension AnalyticsNew {
 // Cirles
 extension AnalyticsNew {
     var circles: some View{
-        LazyVGrid(columns: columns,spacing: 30){
+        LazyVGrid(columns: columns){
 
         ForEach(swiftUIData.circles_Data){circle in
-            VStack(spacing: 25){
+            VStack(spacing: Constants.circleTitleToCirclePadding){
                 VStack{
                     HStack{
                         Text(circle.title)
-                            .font(.system(size: 20))
+                            .font(.system(size: Constants.circleTitleFontSize))
                             .foregroundColor(Color(UIColor.label))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    
                     /*
                     //VARR
                     Text(ProcessJson.extraFormatNum(value: Double(circle.variation)))
@@ -575,7 +585,7 @@ extension AnalyticsNew {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Image(systemName: "wifi.slash")
-                    .font(.system(size:56))
+                    .font(.system(size: Constants.offlineViewFontSize))
                 Text(Strings.notConnected)
             }
         }
@@ -591,7 +601,10 @@ extension AnalyticsNew {
                     
             ActivityIndicatorView(isVisible: $loading, type: .rotatingDots)
                 .foregroundColor(Color("customPurple"))
-                .frame(width: 70, height: 70, alignment: .center)
+                .frame(
+                    width: Constants.loadingIndicatorFrame,
+                    height: Constants.loadingIndicatorFrame,
+                    alignment: .center)
             }
     }
 }

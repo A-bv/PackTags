@@ -45,8 +45,8 @@ extension AnalyticsVCModels {
         guard let rates = processedJson?.rates else {return}
         let maxR = getMaxRate()
         
-        if graph_Data != nil {
-            graph_Data?.removeAll()
+        if barChartData != nil {
+            barChartData?.removeAll()
         }
         
         if (rates.count) > 0 {
@@ -58,7 +58,7 @@ extension AnalyticsVCModels {
             
             //Graph data
             for i in 0 ... (rates.count)-1 {
-                graph_Data?.append(
+                barChartData?.append(
                     Post(
                         id: i,
                         post: "\(i+1)",
