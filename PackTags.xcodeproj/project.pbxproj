@@ -99,6 +99,7 @@
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
 		02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */; };
+		02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */; };
 		02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE29E260A9BA900324724 /* SettingsCell.swift */; };
 		02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE2A4260AC79C00324724 /* SettingsCell2.swift */; };
 		02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550924FFA2AA00174E34 /* AppDelegate.swift */; };
@@ -227,6 +228,7 @@
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGLayer+Performance.swift"; sourceTree = "<group>"; };
+		02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsCell.swift; sourceTree = "<group>"; };
 		02FAE29E260A9BA900324724 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		02FAE2A4260AC79C00324724 /* SettingsCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell2.swift; sourceTree = "<group>"; };
 		02FB550624FFA2AA00174E34 /* PackTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -308,6 +310,7 @@
 				0229864127BD9CBA0048F9E9 /* SmartGModel.swift */,
 				02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */,
 				021D76162759A00D00F54054 /* SmartGView.swift */,
+				02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */,
 			);
 			path = SmartG_SUI;
 			sourceTree = "<group>";
@@ -1023,6 +1026,7 @@
 				02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */,
 				02FB552F24FFA78B00174E34 /* TTVC.swift in Sources */,
 				0229863E27BD6DF60048F9E9 /* EnvironmentValues+ImageCache.swift in Sources */,
+				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* ExternalActions.swift in Sources */,
 				0269E2AC2564B838005FE14B /* AnalyticsVC.swift in Sources */,
 				02FDEDCF2903062400B9BCFD /* DataController.swift in Sources */,

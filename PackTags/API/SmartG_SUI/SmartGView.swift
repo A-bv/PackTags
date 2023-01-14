@@ -70,26 +70,20 @@ struct SmartG_SwiftUI: View {
                     
                     Button(action: {
                         showingAlert = true
-                        print(self.$hashtagEntry)
-                        let firstNames = ["#Giny", "#Harry", "#Paul", "#Katrina"]
-                        let lastNames = ["#Potter", "#Weasley", "#Granger"]
-                        
-                        let chosenFirstName = firstNames.randomElement()!
-                        let chosenLastName = lastNames.randomElement()!
-                        
+                        let entry = self.hashtagEntry
                         let hashtag = Hashtag(context: moc)
                         hashtag.id = UUID()
-                        hashtag.title = "\(chosenFirstName) \(chosenLastName)"
-                        
+                        hashtag.title = "\(entry)"
+                        hashtag.addDate = Date()
                         try? moc.save()
                     }) {
                         Text("+")
                     }
                     .alert(isPresented: $showingAlert) {
                         Alert(
-                            title: Text("Important message"),
-                            message: Text("Wear sunscreen"),
-                            dismissButton: .default(Text("Ok!")))
+                            title: Text("New hashtag added!\n"),
+                            message: Text("A maximum of 30 hashtags can be added per week."),
+                            dismissButton: .default(Text("Ok")))
                     }
                     
                     Button(action: {
@@ -100,7 +94,7 @@ struct SmartG_SwiftUI: View {
                     .popover(isPresented: $showingPopover) {
                         List {
                             ForEach(hashtags, id: \.self) {
-                                Text($0.title ?? "Unknown")
+                                SmartGSavedTagsCell(title: $0.title ?? "Unknown", date: $0.addDate ?? Date())
                             }
                             .onDelete(perform: removeHashtag)
                         }
