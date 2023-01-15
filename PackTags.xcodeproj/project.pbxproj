@@ -309,8 +309,7 @@
 			children = (
 				0229864127BD9CBA0048F9E9 /* SmartGModel.swift */,
 				02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */,
-				021D76162759A00D00F54054 /* SmartGView.swift */,
-				02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */,
+				02F89B25297427AE008F363D /* UI */,
 			);
 			path = SmartG_SUI;
 			sourceTree = "<group>";
@@ -746,6 +745,15 @@
 				02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */,
 			);
 			path = AppStyle;
+			sourceTree = "<group>";
+		};
+		02F89B25297427AE008F363D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				021D76162759A00D00F54054 /* SmartGView.swift */,
+				02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		02FAE2AB260ADA9200324724 /* Settings */ = {
