@@ -110,7 +110,7 @@ extension ThemeVC{
     private func showSmartGScreen(presentingController: UIViewController?) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let dataController = appDelegate.dataController
-        let hostingController = UIHostingController(rootView: SmartG_SwiftUIContainer(dataController: dataController))
+        let hostingController = UIHostingController(rootView: SmartGViewContainer(dataController: dataController))
         hostingController.modalPresentationStyle = .overFullScreen
         presentingController?.present(hostingController, animated: true, completion: nil)
     }

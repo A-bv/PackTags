@@ -8,26 +8,23 @@
 
 import SwiftUI
 
+private enum Constants {
+    static let collectionInterMediasPadding: CGFloat = 10
+    static let collectionPadding: CGFloat = 5
+    static let interactionBarPadding: CGFloat = 20
+}
+
 private enum Strings {
-    static let loading3Dots = "Loading...".localized()
-    static let smartHashtags = "Smart Hashtags".localized()
-    static let hashtagsPageSearch = "Hashtag page search".localized()
+    static let defaultHashtag = "#travel"
+    static let defaultHashtagWithoutHash = "travel"
 }
 
-struct SmartG_SwiftUIContainer: View {
-    @StateObject var dataController = DataController()
-    var body: some View {
-        SmartG_SwiftUI()
-            .environment(\.managedObjectContext, dataController.container.viewContext)
-    }
-}
-
-struct SmartG_SwiftUI: View {
+struct SmartGView: View {
     // @State private var igHash: String =  "hashtag theme?"
     @State private var textstyle = UIFont.TextStyle.body
     @StateObject var viewModel = SmartGViewModel()
     
-    @State private var hashtagEntry: String = "#travel"
+    @State private var hashtagEntry: String = Strings.defaultHashtag
     @State private var showingAlert = false
     
     @State private var showingPopover = false
@@ -39,98 +36,130 @@ struct SmartG_SwiftUI: View {
         ZStack{
             Color.bgFillColor.ignoresSafeArea()
             VStack{
-                Header()
-                ScrollView(.horizontal, showsIndicators: false){
-                    HStack(alignment: .center, spacing: 10) {
-                        //TODO: Find ID error
-                        ForEach(Array(viewModel.dataMedias.enumerated()), id: \.element) { index, media in
-                        // ForEach(viewModel.dataMedias, id: \.self)
-                            //{
-                            // media in
-                            if let stringUrl = media.media_url,
-                               let url = URL(string: stringUrl),
-                               !viewModel.computedData.isEmpty {
-                                StoryCard(
-                                    url: url,
-                                    title1: "\(media.comments_count ?? 0)",
-                                    title2: StringFormatter.formatNum(
-                                        value: Double(media.like_count ?? Int(0.0)),
-                                        noDecimal: true),
-                                    title3: "\(viewModel.computedData[index].hashtags.count)")
-                            }
-                        }
-                    }
-                    
-                }
-                .padding(.leading)
-                .padding(.vertical, 5)
-                
-                HStack {
-                    TextField("Enter a hashtag", text: $hashtagEntry)
-                    
-                    Button(action: {
-                        showingAlert = true
-                        let entry = self.hashtagEntry
-                        let hashtag = Hashtag(context: moc)
-                        hashtag.id = UUID()
-                        hashtag.title = "\(entry)"
-                        hashtag.addDate = Date()
-                        try? moc.save()
-                    }) {
-                        Text("+")
-                    }
-                    .alert(isPresented: $showingAlert) {
-                        Alert(
-                            title: Text("New hashtag added!\n"),
-                            message: Text("A maximum of 30 hashtags can be added per week."),
-                            dismissButton: .default(Text("Ok")))
-                    }
-                    
-                    Button(action: {
-                        showingPopover = true
-                    }) {
-                        Text("Added")
-                    }
-                    .popover(isPresented: $showingPopover) {
-                        List {
-                            ForEach(hashtags, id: \.self) {
-                                SmartGSavedTagsCell(title: $0.title ?? "Unknown", date: $0.addDate ?? Date())
-                            }
-                            .onDelete(perform: removeHashtag)
-                        }
-                        .font(.headline)
-                        .padding()
-                    }
-                    
-                    Spacer()
-                    Button(action: {
-                        let searchedHashtag = self.hashtagEntry.filter { $0 != "#" }
-                        viewModel.fetch(hashtag: searchedHashtag)
-                    }) {
-                        Text("Sync")
-                    }
-                    .foregroundColor(.green)
-                }
-                .padding(20)
-                
-                List {
-                    let topHashatgs = Array(viewModel.topHashtags.enumerated())
-                    ForEach(topHashatgs, id: \.element){
-                        index, item in
-                            Text("\(String(index+1)): \(item)")
-                    }
-                }
+                SmartGHeader()
+                collection
+                hashtagsList
+                interactionBar
             }
         }
         .onAppear {
-            viewModel.fetch(hashtag: "travel")
+            viewModel.fetch(hashtag: Strings.defaultHashtagWithoutHash)
         }
     }
-    
+}
+
+// Media collection
+extension SmartGView {
+    var collection: some View {
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack(alignment: .center, spacing: Constants.collectionInterMediasPadding) {
+                // TODO: Find ID error
+                let medias = Array(viewModel.dataMedias.enumerated())
+                ForEach(medias, id: \.element) { index, media in
+                    if let stringUrl = media.media_url,
+                       let url = URL(string: stringUrl),
+                       !viewModel.computedData.isEmpty,
+                       let likeCount = media.like_count,
+                       let commentsCount = media.comments_count
+                    {
+                        let likes = StringFormatter.formatNum(
+                            value: Double(likeCount),
+                            noDecimal: true)
+                        let hashtagsCount = String(viewModel.computedData[index].hashtags.count)
+                        StoryCard(
+                            url: url,
+                            comments: String(commentsCount),
+                            likes: likes,
+                            hashtagsCount: hashtagsCount)
+                        }
+                    }
+                }
+            }
+        .padding(.leading)
+        .padding(.vertical, Constants.collectionPadding)
+    }
+}
+
+// Interaction bar
+extension SmartGView {
+    var interactionBar: some View {
+        HStack {
+            Button {
+                showingPopover = true
+            } label: {
+                Image(systemName: "list.bullet.circle")
+            }
+            .popover(isPresented: $showingPopover) {
+                List {
+                    ForEach(hashtags, id: \.self) {
+                        SmartGSavedTagsCell(title: $0.title ?? "Unknown", date: $0.addDate ?? Date())
+                    }
+                    .onDelete(perform: removeHashtag)
+                }
+                .font(.headline)
+                .padding()
+            }
+            
+            TextField("Enter a hashtag", text: $hashtagEntry)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            Spacer()
+            
+            Button {
+                showingAlert = true
+                UIPasteboard.general.string = viewModel.topHashtags.joined(separator: " ")
+                
+            } label: {
+                Image(systemName: "paperplane.circle.fill")
+            }
+            .foregroundColor(.orange)
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text("Top 10 hastags copied!"),
+                    message: Text("The most used hashtags of the page \(self.hashtagEntry) were copied into clipboard."),
+                    dismissButton: .default(Text("Ok")))
+            }
+            
+            Button {
+                let searchedHashtag = self.hashtagEntry.filter { $0 != "#" }
+                viewModel.fetch(hashtag: searchedHashtag)
+                let entry = self.hashtagEntry
+                updateHashtag(entry: entry)
+            } label: {
+                Image(systemName: "arrow.clockwise.circle.fill")
+            }
+            .foregroundColor(.green)
+        }
+        .padding(Constants.interactionBarPadding)
+    }
+}
+
+// Hashtag list
+extension SmartGView {
+    var hashtagsList: some View {
+        List {
+            let topHashatgs = Array(viewModel.topHashtags.enumerated())
+            ForEach(topHashatgs, id: \.element){
+                index, item in
+                    Text("\(String(index+1)): \(item)")
+            }
+        }
+    }
+}
+
+// MARK: - Functions
+extension SmartGView {
     //AAA - Just a function to print out values
     func printdd (value: Any) -> Bool {
         print(value)
         return true
+    }
+    
+    func updateHashtag (entry: String) {
+        if let index = hashtags.firstIndex(where: { $0.title == entry }) {
+            moc.delete(hashtags[index])
+        }
+        saveHashtag(hastagTitle: entry)
     }
     
     func removeHashtag(at offsets: IndexSet) {
@@ -139,80 +168,18 @@ struct SmartG_SwiftUI: View {
             moc.delete(hashtag)
         }
     }
-}
-
-struct StoryCard: View{
-    let url: URL
-    let title1: String
-    let title2: String
-    let title3: String
     
-    var body: some View{
-        VStack(alignment: .leading){
-            //URLImage(urlString: url)
-            AsyncImage(
-                url: url,
-                placeholder: {
-                    Text(Strings.loading3Dots)
-                },
-                image: { Image(uiImage: $0).resizable() })
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 160, height: 190)
-            .clipShape(RoundedRectangle(cornerRadius: 15))
-            
-            HStack(){
-                if title1 != "0" {
-                    Image(systemName: "text.bubble.fill")
-                    Text(title1)
-                        .font(.system(size: 12, weight: .semibold))
-                }
-                if title2 != "0" {
-                    Image(systemName: "suit.heart.fill")
-                    Text(title2)
-                        .font(.system(size: 12, weight: .semibold))
-                }
-                if title3 != "0" {
-                    Image(systemName: "number.circle.fill")
-                    Text(title3)
-                        .font(.system(size: 12, weight: .semibold))
-                }
-                Spacer()
-            }
-        }
+    func saveHashtag(hastagTitle: String) {
+        let hashtag = Hashtag(context: moc)
+        hashtag.id = UUID()
+        hashtag.title = "\(hastagTitle)"
+        hashtag.addDate = Date()
+        try? moc.save()
     }
 }
 
-struct Header: View {
-    @Environment(\.presentationMode) var presentationMode
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 5) {
-                Text(Strings.smartHashtags)
-                    .font(.largeTitle)
-                    .foregroundColor(Color(UIColor.label))
-                    .fontWeight(.bold)
-            
-                Text(Strings.hashtagsPageSearch)
-                    .font(.subheadline)
-                    .foregroundColor(Color(UIColor.label))
-
-            }
-            Spacer()
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "chevron.down.circle")
-                    .font(Font.system(.title))
-                    .foregroundColor(Color(UIColor.label))
-            }
-        }
-        .padding()
-    }
-}
-
-struct SmartG_SwiftUI_Previews: PreviewProvider {
+struct SmartGView_Previews: PreviewProvider {
     static var previews: some View {
-        SmartG_SwiftUI()
+        SmartGView()
     }
 }

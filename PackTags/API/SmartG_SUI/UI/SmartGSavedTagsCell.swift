@@ -26,9 +26,6 @@ struct SmartGSavedTagsCell: View {
             HStack {
                 Text(title)
                 Spacer()
-            }
-            HStack {
-                Spacer()
                 if let timeLeft = timeLeft() {
                     Text(timeLeft)
                 }

@@ -100,6 +100,9 @@
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
 		02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */; };
 		02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */; };
+		02F89B272974306F008F363D /* SmartGStoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B262974306F008F363D /* SmartGStoryCard.swift */; };
+		02F89B2929743EF9008F363D /* SmartGViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B2829743EF9008F363D /* SmartGViewContainer.swift */; };
+		02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B2A29743FE4008F363D /* SmartGHeader.swift */; };
 		02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE29E260A9BA900324724 /* SettingsCell.swift */; };
 		02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE2A4260AC79C00324724 /* SettingsCell2.swift */; };
 		02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550924FFA2AA00174E34 /* AppDelegate.swift */; };
@@ -229,6 +232,9 @@
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGLayer+Performance.swift"; sourceTree = "<group>"; };
 		02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsCell.swift; sourceTree = "<group>"; };
+		02F89B262974306F008F363D /* SmartGStoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGStoryCard.swift; sourceTree = "<group>"; };
+		02F89B2829743EF9008F363D /* SmartGViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewContainer.swift; sourceTree = "<group>"; };
+		02F89B2A29743FE4008F363D /* SmartGHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGHeader.swift; sourceTree = "<group>"; };
 		02FAE29E260A9BA900324724 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		02FAE2A4260AC79C00324724 /* SettingsCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell2.swift; sourceTree = "<group>"; };
 		02FB550624FFA2AA00174E34 /* PackTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +313,7 @@
 		021AFD542787857B0008735E /* SmartG_SUI */ = {
 			isa = PBXGroup;
 			children = (
+				02F89B2829743EF9008F363D /* SmartGViewContainer.swift */,
 				0229864127BD9CBA0048F9E9 /* SmartGModel.swift */,
 				02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */,
 				02F89B25297427AE008F363D /* UI */,
@@ -752,6 +759,8 @@
 			children = (
 				021D76162759A00D00F54054 /* SmartGView.swift */,
 				02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */,
+				02F89B262974306F008F363D /* SmartGStoryCard.swift */,
+				02F89B2A29743FE4008F363D /* SmartGHeader.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -951,6 +960,7 @@
 				02B05C1A27F90333000026B8 /* TextViewPlaceHolder.swift in Sources */,
 				02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */,
 				02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */,
+				02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */,
 				02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */,
 				02062155266550D70072C404 /* PrJs.swift in Sources */,
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
@@ -988,6 +998,7 @@
 				021EB84D288C1EB000463B42 /* TTVC+Operations.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
 				02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */,
+				02F89B272974306F008F363D /* SmartGStoryCard.swift in Sources */,
 				02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */,
 				02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */,
 				02062153266503490072C404 /* GJs.swift in Sources */,
@@ -1004,6 +1015,7 @@
 				0281B97E2879B14A00344D3E /* PackTVC+NaviLogic.swift in Sources */,
 				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsNew.swift in Sources */,
+				02F89B2929743EF9008F363D /* SmartGViewContainer.swift in Sources */,
 				020584D3284D6FFC00020FB8 /* TextViewKbToolBar.swift in Sources */,
 				02491C55267799BD00F98E17 /* IgApiSetupVC+buildUI.swift in Sources */,
 				0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */,

@@ -11,10 +11,10 @@ import Foundation
 
 @MainActor
 class DataController: ObservableObject {
-    let container = NSPersistentContainer(name: "SmartTags")
+    let persistantContainer = NSPersistentContainer(name: "SmartTags")
     
     init() {
-        container.loadPersistentStores { description, error in
+        persistantContainer.loadPersistentStores { description, error in
             if let error = error {
                 print("Core Data failed to load: \(error.localizedDescription)")
             }
