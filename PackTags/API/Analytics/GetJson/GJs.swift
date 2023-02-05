@@ -13,19 +13,7 @@ class GetJson: NSObject {
     typealias result<T> = (Result<T, Error>) -> Void
 }
 
-//Build Urls
 extension GetJson {
-    class func encode_url (url:String) -> String? {
-        //URLs must be encoded: "," = "%2C", "{" = "%7B", "}" = "%7D"
-        
-        guard let encodedUrl = url.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else { return nil }
-        //No commas
-        return encodedUrl.replacingOccurrences(of: ",", with: "%2C")
-    }
-}
-
-extension GetJson {
-    
     class func cURL2<T: Decodable>(
         of type: T.Type,
         from url: String,
@@ -62,7 +50,7 @@ extension GetJson {
 
 extension GetJson {
     class private func saveJsonDataLocally(data: Data) {
-        if  GetJson.isOkToSaveJsonDataInDir == true {
+        if GetJson.isOkToSaveJsonDataInDir {
             GetJson.saveJsonDataToDir(jsonString: data)
             GetJson.isOkToSaveJsonDataInDir = false
         }

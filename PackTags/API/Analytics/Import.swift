@@ -21,7 +21,7 @@ extension AnalyticsVCModels {
             guard let profileJson = GenericJSONParser.ParseJs(of: Profile.self, data: jsonData) as? Profile else { return }
      
             self.jsonOfficial = profileJson
-            self.processedJson = ProcessJson.processJsApiGraph(decodedJson: profileJson)
+            self.processedJson = ProcessJson.transform(decodedJson: profileJson)
             
             //VARR Entry (dir)
             // self.getEngagementVariations(isFromSave: true)
@@ -36,11 +36,11 @@ extension AnalyticsVCModels {
     func getOnlineJsonAPIGraph () {
         GetJson.load_Profile(completion: {
             (profileJson) in
-            DispatchQueue.main.async{
-                self.jsonOfficial = profileJson
-                self.processedJson = ProcessJson.processJsApiGraph(decodedJson: profileJson)
-                self.fillGraphData ()
-                self.fillData()
+            DispatchQueue.main.async{ [weak self] in
+                self?.jsonOfficial = profileJson
+                self?.processedJson = ProcessJson.transform(decodedJson: profileJson)
+                self?.fillGraphData()
+                self?.fillData()
                 //self.getEngagementVariations(isFromSave: false) //VARR
             }
         })

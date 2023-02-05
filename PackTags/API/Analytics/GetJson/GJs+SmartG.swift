@@ -12,9 +12,8 @@ import Foundation
 extension GetJson {
     class func findHashtagUrl (s_Hashtag:String, Completion block: @escaping((String) -> ())) {
         let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(s_Hashtag)&access_token=\(fbToken)"
-        guard let e_url = encode_url (url: url) else {
-            return
-        }
+        guard let e_url = url.encodeUrl() else { return }
+
         GenericJSONParser.download(fromURLString: e_url) { (result) in
             switch result {
             case .success(let data):
@@ -25,7 +24,7 @@ extension GetJson {
                     
                     let htg_url = "https://graph.facebook.com/\(apiGph_version)/\(hashtag_id)/\(m_type)?fields=caption,comments_count,like_count,media_type,media_url,timestamp,id,media_product_type&user_id=\(igBId)&limit=\(limit)&access_token=\(fbToken)"
                     
-                    guard let e_htg_url = encode_url (url:htg_url)
+                    guard let e_htg_url = htg_url.encodeUrl()
                     else {
                         return
                     }
@@ -52,6 +51,6 @@ extension GetJson {
         //
         let limit = 12
         let url = "https://graph.facebook.com/\(apiGph_version)/\(igBId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(fbToken)"
-        return encode_url (url: url)
+        return url.encodeUrl()
     }
 }

@@ -14,21 +14,22 @@ extension GetJson {
     
     class func getJsonDataFromDir() -> Data? {
         let fm = FileManager.default
-        let pathName = fm.urls(for: .documentDirectory,in: .userDomainMask)
-            .first?.appendingPathComponent("localJsonData")
-        
-        if pathName != nil {
-            if fm.fileExists(atPath: pathName!.path){
-                do {
-                    let jsonData = try Data(contentsOf: pathName!)
-                    //print(try String(contentsOf: pathName!)) //prints Json
-                    return jsonData
-                } catch {
-                    print("getJsonDataFromDir error:", error)
-                }
+        if let pathName = fm.urls(
+            for: .documentDirectory,in: .userDomainMask)
+            .first?.appendingPathComponent("localJsonData"),
+           fm.fileExists(atPath: pathName.path)
+        {
+            do {
+                let jsonData = try Data(contentsOf: pathName)
+                //print(try String(contentsOf: pathName!)) //prints Json
+                return jsonData
+            } catch {
+                print("getJsonDataFromDir error:", error)
+                return nil
             }
+        } else {
+            return nil
         }
-        return nil
     }
     
     class func saveJsonDataToDir (jsonString: Data?) {
@@ -38,8 +39,9 @@ extension GetJson {
         
         //Saving Json
         if let jsonData = jsonString,
-            let documentDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                             in: .userDomainMask).first
+            let documentDirectory = FileManager.default.urls(
+                for: .documentDirectory,
+                in: .userDomainMask).first
         {
             let url = documentDirectory.appendingPathComponent("localJsonData")
             do {

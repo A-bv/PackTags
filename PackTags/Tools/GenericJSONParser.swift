@@ -12,9 +12,10 @@ class GenericJSONParser {
     
     typealias result<T> = (Result<T, Error>) -> Void
     
-    class func download(fromURLString urlString: String,
-                          completion: @escaping (Result<Data, Error>) -> Void) {
-        
+    class func download(
+        fromURLString urlString: String,
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
         if let url = URL(string: urlString) {
             let urlSession = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
                 if let error = error {

@@ -17,7 +17,7 @@ var rawInsights = true
 // Additional operations on the obtained Json data
 
 class ProcessJson: NSObject {
-    class func processJsApiGraph (decodedJson: Profile) -> processedProfileModel?
+    class func transform (decodedJson: Profile) -> processedProfileModel?
     {
         let top = decodedJson
         
