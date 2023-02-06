@@ -15,7 +15,7 @@
 		02062153266503490072C404 /* GJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062152266503490072C404 /* GJs.swift */; };
 		02062155266550D70072C404 /* PrJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062154266550D70072C404 /* PrJs.swift */; };
 		020621572666DBCC0072C404 /* AnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* AnModel.swift */; };
-		021044F626446AEF00408CEB /* PrJs+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* PrJs+Tools.swift */; };
+		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		0213D9F3275D2F08002A54ED /* GJs+SmartG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213D9F2275D2F08002A54ED /* GJs+SmartG.swift */; };
 		0213D9F5275D2F8A002A54ED /* GJs+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213D9F4275D2F8A002A54ED /* GJs+Analytics.swift */; };
 		0216110E25D46C180098CE5E /* TVC+NewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216110D25D46C180098CE5E /* TVC+NewMenu.swift */; };
@@ -145,7 +145,7 @@
 		02062152266503490072C404 /* GJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJs.swift; sourceTree = "<group>"; };
 		02062154266550D70072C404 /* PrJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrJs.swift; sourceTree = "<group>"; };
 		020621562666DBCC0072C404 /* AnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnModel.swift; sourceTree = "<group>"; };
-		021044F526446AEF00408CEB /* PrJs+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrJs+Tools.swift"; sourceTree = "<group>"; };
+		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		0213D9F2275D2F08002A54ED /* GJs+SmartG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+SmartG.swift"; sourceTree = "<group>"; };
 		0213D9F4275D2F8A002A54ED /* GJs+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+Analytics.swift"; sourceTree = "<group>"; };
 		0216110D25D46C180098CE5E /* TVC+NewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+NewMenu.swift"; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				02062154266550D70072C404 /* PrJs.swift */,
-				021044F526446AEF00408CEB /* PrJs+Tools.swift */,
+				021044F526446AEF00408CEB /* StringFormatter.swift */,
 				0273D1512655A9BB0043011C /* PrJs+Varr.swift */,
 			);
 			path = ProcessJson;
@@ -1003,7 +1003,7 @@
 				02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */,
 				02062153266503490072C404 /* GJs.swift in Sources */,
 				02B104A9276A630E00C9EC6C /* Url_img_SUI.swift in Sources */,
-				021044F626446AEF00408CEB /* PrJs+Tools.swift in Sources */,
+				021044F626446AEF00408CEB /* StringFormatter.swift in Sources */,
 				02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */,
 				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
 				02CAC9B52591054400BE5E57 /* TVC+ImgPicker.swift in Sources */,
