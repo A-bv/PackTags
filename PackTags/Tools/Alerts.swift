@@ -227,9 +227,6 @@ extension UIViewController {
             let defaults = UserDefaults.standard
             let name = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
             defaults.set(name, forKey: "Instagram Username")
-            
-            //VARR
-            // ProcessJson.removeAllSavedVarData()
         }
     }
 }

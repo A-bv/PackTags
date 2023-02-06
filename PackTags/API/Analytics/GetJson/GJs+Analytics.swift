@@ -11,11 +11,11 @@ import Foundation
 //Functions for analytics
 extension GetJson {
     
-    class func load_Profile (completion block: @escaping ((Profile) -> ())) {
+    class func loadProfile (completion block: @escaping ((Profile) -> ())) {
         findMediaLimit() { (value) in
             guard let encodedUrl = self.buildURLAPIGraph(i: value) else { return }
             
-            GetJson.isOkToSaveJsonDataInDir = true //local save
+            DocumentDirectory.isOkToSaveJsonDataInDir = true //local save
             
             GetJson.cURL2(of: Profile.self, from: encodedUrl, Completion: {(Json) in
                 block(Json as! Profile)

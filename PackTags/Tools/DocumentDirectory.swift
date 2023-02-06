@@ -9,7 +9,7 @@
 import UIKit
 
 //MARK: - Save/read Json to document directory
-extension GetJson {
+class DocumentDirectory: NSObject {
     static var isOkToSaveJsonDataInDir = false
     
     class func getJsonDataFromDir() -> Data? {

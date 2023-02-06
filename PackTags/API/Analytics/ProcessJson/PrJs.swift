@@ -29,21 +29,19 @@ class ProcessJson: NSObject {
         
         let avg0 = StringFormatter.averageElementsOfArray(array: metrics.likeArray)
         let avg1 = StringFormatter.averageElementsOfArray(array: metrics.commentArray)
-        
+
         let captions = metrics.captions
-        
-        //VARR
         let times = metrics.times
-        
+
         //Basic
         let usr = top.username
         let isPv = false
-        
+
         //Engagement rates
         let erFw = metrics.engFollowers
         let erReach = metrics.engReach
         let erImpr = metrics.engImpressions
-        
+
         let rates = [erFw, erReach, erImpr]
         
         var avg2 = [CGFloat?]()

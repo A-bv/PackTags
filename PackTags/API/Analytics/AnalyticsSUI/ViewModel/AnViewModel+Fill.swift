@@ -14,14 +14,8 @@ extension AnalyticsVCModels {
     func fillData(){
         
         //Security check:
-        //VARR
         //Only fill data if there is data else return
-        
-        // if engagementVariations?.ratesVr == Optional([]) { return }
-            
-        if processedJson?.rates == Optional([]) {
-            return
-        }
+        if processedJson?.rates == Optional([]) { return }
         
         //
         self.overviewSectionData[0].currentData = processedJson?.avg0 ?? "0" //avg likes
@@ -35,10 +29,6 @@ extension AnalyticsVCModels {
         let avEng: CGFloat = processedJson?.avg2 ?? 0 //avg engagement
         self.circles_Data[0].currentData = avEng
         self.circles_Data[0].goal = avEng
-        
-        //VARR
-        // self.circles_Data[0].variation =  engagementVariations?.avg2Vr ?? 0 //avg engagement rate variation
-        // self.circles_Data[1].variation = engagementVariations?.ratesVr[0] ?? 0 //Selection default value
     }
     
     func fillGraphData () {
@@ -50,12 +40,6 @@ extension AnalyticsVCModels {
         }
         
         if (rates.count) > 0 {
-            
-            /* VARR
-            let securedRatesVr = variationSecurityCheck(
-                ratesVr: engagementVariations?.ratesVr,
-                ratesCount: rates.count)*/
-            
             //Graph data
             for i in 0 ... (rates.count)-1 {
                 barChartData?.append(
@@ -64,7 +48,7 @@ extension AnalyticsVCModels {
                         post: "\(i+1)",
                         r: CGFloat(rates[i]!),
                         barHeight:  ((rates[i]!) / maxR) * 50 + 5, //80
-                        rVr: 0)) //Varr securedRatesVr?[i]! ?? 0)
+                        rVr: 0))
             }
         }
     }

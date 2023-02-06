@@ -6,7 +6,7 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-import UIKit
+import Foundation
    
 class StringFormatter: NSObject {
     class func averageElementsOfArray (array: [Int]) -> String {
@@ -33,20 +33,6 @@ class StringFormatter: NSObject {
     }
     
     class func averageElementOfArrayCGFloat (array: [CGFloat]) -> CGFloat {
-        return array.reduce(0.0) { return $0 + $1/CGFloat(array.count)}
+        array.reduce(0.0) { $0 + $1/CGFloat(array.count) }
     }
-    
-    /*
-    //VARR
-    func extraFormatNum (value : Double) -> String {
-        var output = String()
-        if value < 0 {
-            output = "▼ " + formatNum(value: -value) + "%"
-        } else {
-            output = "▲ " + formatNum(value: value) + "%"
-        }
-        if value == 0 { output = "" }
-        if value.isInfinite == true { output = "" }
-        return output
-    }*/
 }

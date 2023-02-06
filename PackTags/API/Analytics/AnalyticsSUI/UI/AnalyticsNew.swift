@@ -487,12 +487,6 @@ extension AnalyticsNew {
                             .foregroundColor(Color(UIColor.label))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    /*
-                    //VARR
-                    Text(ProcessJson.extraFormatNum(value: Double(circle.variation)))
-                        .font(.caption2)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                     */
                 }
                 
                 ZStack{

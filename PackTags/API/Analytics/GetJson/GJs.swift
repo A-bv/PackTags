@@ -50,9 +50,9 @@ extension GetJson {
 
 extension GetJson {
     class private func saveJsonDataLocally(data: Data) {
-        if GetJson.isOkToSaveJsonDataInDir {
-            GetJson.saveJsonDataToDir(jsonString: data)
-            GetJson.isOkToSaveJsonDataInDir = false
+        if DocumentDirectory.isOkToSaveJsonDataInDir {
+            DocumentDirectory.saveJsonDataToDir(jsonString: data)
+            DocumentDirectory.isOkToSaveJsonDataInDir = false
         }
     }
 }

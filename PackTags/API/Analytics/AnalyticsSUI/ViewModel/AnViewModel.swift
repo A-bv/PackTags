@@ -55,9 +55,6 @@ class AnalyticsVCModels: ObservableObject {
     ]
     @Published var barChartData: [Post]? = [Post(id: 0, post: "", r: 0, barHeight: 0, rVr: 0)]
     
-    //VARR
-    //@Published var engagementVariations : engagementVariations?
-    
     //MARK: - Init
     //Load data for AnalyticsNew (AnalyticsNew's func list)
     
