@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ProcessedProfileModel {
+struct TransformedProfileModel {
     
     let usr: String?                //. Basic: username
     let isPrivateProfile: Bool?                 //. Basic: is private?
@@ -52,7 +52,7 @@ struct ProcessedProfileModel {
     }
 }
 
-struct subProcessedProfileModel {
+struct SubTransformedProfileModel {
     let likeArray: [Int]
     let commentArray: [Int]
     let engFollowers: [CGFloat]

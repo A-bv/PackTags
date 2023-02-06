@@ -17,7 +17,7 @@ var rawInsights = true
 // Additional operations on the obtained Json data
 
 class ProcessJson: NSObject {
-    class func transform (decodedJson: Profile) -> ProcessedProfileModel?
+    class func transform (decodedJson: Profile) -> TransformedProfileModel?
     {
         let top = decodedJson
         
@@ -54,7 +54,7 @@ class ProcessJson: NSObject {
             maxR.append(er.reduce(CGFloat.leastNormalMagnitude, { max($0, CGFloat($1)) }))
         }
         
-        let data = ProcessedProfileModel(
+        let data = TransformedProfileModel(
             usr: usr,
             isPv: isPv,
             sum0: (sum0 as! Int),
@@ -70,7 +70,7 @@ class ProcessJson: NSObject {
         return data
     }
     
-    class func buildArraysApiGraph (top:Profile?) -> (subProcessedProfileModel?) {
+    class func buildArraysApiGraph (top:Profile?) -> (SubTransformedProfileModel?) {
         var likeArray = [Int]()
         var commentArray = [Int]()
         var sumLC = [CGFloat]()
