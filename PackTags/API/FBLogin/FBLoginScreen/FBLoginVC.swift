@@ -36,7 +36,7 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        shouldShowIgApiSetupVC ()
+        shouldShowApiSetupVC()
     }
     
     private func setupFBLoginVC () {
@@ -87,16 +87,16 @@ extension FBLoginVC {
         }
     }
 
-    private func shouldShowIgApiSetupVC () {
+    private func shouldShowApiSetupVC() {
         let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
         let isBtnPressedFbLogin =
             UserDefaults.standard.object(forKey: "pressedFBLoginButton")
-        let isBtnPressedOnIgApiSetupVC =
-            UserDefaults.standard.object(forKey: "continued_IgApiSetupVC")
+        let isBtnPressedOnApiSetupVC =
+            UserDefaults.standard.object(forKey: "continued_ApiSetupVC")
             
-        //Only show if never pressed continue on IgApiSetupVC()
-        if isBtnPressedOnIgApiSetupVC == nil {
-            let controller = IgApiSetupVC()
+        //Only show if never pressed continue on ApiSetupVC()
+        if isBtnPressedOnApiSetupVC == nil {
+            let controller = ApiSetupVC()
             controller.modalPresentationStyle = .overFullScreen
             controller.modalTransitionStyle = .coverVertical
             self.present(controller, animated: true, completion: nil)

@@ -9,8 +9,8 @@
 import UIKit
    
 class StringFormatter: NSObject {
-    class func averageElementsOfArray (a: [Int]) -> String {
-        let avgNS = (a as NSArray).value(forKeyPath: "@avg.floatValue") as? NSNumber
+    class func averageElementsOfArray (array: [Int]) -> String {
+        let avgNS = (array as NSArray).value(forKeyPath: "@avg.floatValue") as? NSNumber
         let avgDbl = avgNS?.doubleValue
         return formatNum(value: avgDbl ?? 0) //String(format: "%.2f", avgDbl ?? 0)
     }
@@ -30,6 +30,10 @@ class StringFormatter: NSObject {
             text = String(format: "%.1fM", value/1_000_000).replacingOccurrences(of: ".0", with: "")
         }
         return text
+    }
+    
+    class func averageElementOfArrayCGFloat (array: [CGFloat]) -> CGFloat {
+        return array.reduce(0.0) { return $0 + $1/CGFloat(array.count)}
     }
     
     /*

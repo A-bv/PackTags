@@ -17,7 +17,7 @@ var rawInsights = true
 // Additional operations on the obtained Json data
 
 class ProcessJson: NSObject {
-    class func transform (decodedJson: Profile) -> processedProfileModel?
+    class func transform (decodedJson: Profile) -> ProcessedProfileModel?
     {
         let top = decodedJson
         
@@ -27,8 +27,8 @@ class ProcessJson: NSObject {
         let sum0 = (metrics.likeArray as NSArray).value(forKeyPath: "@sum.floatValue")
         let sum1 = (metrics.commentArray as NSArray).value(forKeyPath: "@sum.floatValue")
         
-        let avg0 = StringFormatter.averageElementsOfArray(a: metrics.likeArray)
-        let avg1 = StringFormatter.averageElementsOfArray(a: metrics.commentArray)
+        let avg0 = StringFormatter.averageElementsOfArray(array: metrics.likeArray)
+        let avg1 = StringFormatter.averageElementsOfArray(array: metrics.commentArray)
         
         let captions = metrics.captions
         
@@ -50,11 +50,11 @@ class ProcessJson: NSObject {
         var maxR = [CGFloat?]()
         
         for er in rates {
-            avg2.append(ProcessJson.averageElementOfArrayCGFloat(a: er))
+            avg2.append(StringFormatter.averageElementOfArrayCGFloat(array: er))
             maxR.append(er.reduce(CGFloat.leastNormalMagnitude, { max($0, CGFloat($1)) }))
         }
         
-        let data = processedProfileModel(
+        let data = ProcessedProfileModel(
             usr: usr,
             isPv: isPv,
             sum0: (sum0 as! Int),
@@ -157,9 +157,5 @@ class ProcessJson: NSObject {
                 captions: captions,
                 engImpressions: engImpressions,
                 engReach: engReach))
-    }
-    
-    class func averageElementOfArrayCGFloat (a: [CGFloat]) -> CGFloat {
-        return a.reduce(0.0) { return $0 + $1/CGFloat(a.count)}
     }
 }

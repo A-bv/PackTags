@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import SafariServices
 
-class IgApiSetupVC: UIViewController {
+class ApiSetupVC: UIViewController {
     
     deinit {
-        print("deinit igApiSetupVC")
+        print("deinit ApiSetupVC")
     }
     
     private enum Strings {
@@ -64,5 +65,44 @@ class IgApiSetupVC: UIViewController {
         self.view.applyBlur()
         self.placeTopRightButton(arrowButton: false)
         self.buildUI()
+    }
+}
+
+extension ApiSetupVC  {
+    private enum Links {
+        static let facebookLink = "https://www.facebook.com"
+        static let facebookCreatePageLink = "https://www.facebook.com/pages/create"
+    }
+    
+    @objc func loginFunc (_ sender: Any) {
+        if let url = URL(string: Links.facebookLink) {
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
+         }
+    }
+    
+    @objc func createPageFunc (_ sender: Any) {
+        if let url = URL(string: Links.facebookCreatePageLink) {
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
+         }
+    }
+    
+    @objc func convertIGFunc (_ sender: Any) {
+        let vwc = ProIGSetupVC()
+        vwc.modalPresentationStyle = .overFullScreen
+        vwc.modalTransitionStyle = .coverVertical
+        self.present(vwc, animated: true, completion: nil)
+    }
+    
+    @objc func continueFunc (_ sender: Any) {
+        if UserDefaults.standard.object(
+            forKey: "continued_ApiSetupVC") == nil {
+            UserDefaults.standard.set(
+                "true",
+                forKey: "continued_ApiSetupVC")
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }

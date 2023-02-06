@@ -59,7 +59,7 @@
 
 "results" = "résultats";
 
-// IgApiSetupVC
+// ApiSetupVC
 "Account type" = "Type de compte";
 "Create a page" = "Créer une page";
 "Login" = "Connection";
@@ -67,7 +67,7 @@
 
 "Continue" = "Continuer";
  
-// SetupProIGVC
+// ProIGSetupVC
 "Creator /Business account:" = "Compte Créateur /Entreprise:";
 "topTextViewText" =
 "     • Allez sur votre profil.

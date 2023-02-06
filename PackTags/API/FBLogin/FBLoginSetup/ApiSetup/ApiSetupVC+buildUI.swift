@@ -1,5 +1,5 @@
 //
-//  IgApiSetupVC+UI.swift
+//  ApiSetupVC+UI.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 14/06/2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension IgApiSetupVC  {
+extension ApiSetupVC  {
     private enum Strings {
         static let accountLinkingTitle = "Account Linking".localized()
         static let continueString = "Continue".localized()

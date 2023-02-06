@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct processedProfileModel {
+struct ProcessedProfileModel {
     
     let usr: String?                //. Basic: username
     let isPrivateProfile: Bool?                 //. Basic: is private?

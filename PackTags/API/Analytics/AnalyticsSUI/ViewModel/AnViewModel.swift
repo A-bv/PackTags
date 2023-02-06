@@ -19,7 +19,7 @@ class AnalyticsVCModels: ObservableObject {
     }
     
     //MARK: - Live Variables
-    @Published var processedJson : processedProfileModel?
+    @Published var processedJson : ProcessedProfileModel?
     @Published var jsonOfficial : Profile? //Api Graph
     @Published var overviewSectionData = [
         AnalyticsOverviewModel(

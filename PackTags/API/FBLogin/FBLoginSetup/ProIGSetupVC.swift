@@ -15,9 +15,9 @@ var instagramIconAttachment: NSTextAttachment {
     return icon
 }
 
-class SetupProIGVC: UIViewController {
+class ProIGSetupVC: UIViewController {
     deinit {
-        print("deinit SetupProIGVC")
+        print("deinit ProIGSetupVC")
     }
     
     private enum Constants {
@@ -95,7 +95,7 @@ class SetupProIGVC: UIViewController {
 }
 
 
-extension SetupProIGVC {
+extension ProIGSetupVC {
     func setupProfileButton () {
         let openInstagramBtn: UIButton = {
             let btn = UIButton()

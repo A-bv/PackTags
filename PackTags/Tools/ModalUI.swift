@@ -71,7 +71,7 @@ extension UIViewController {
             btn.setTitleColor(customPurple, for: .normal)
             btn.addTarget(
                 self,
-                action: #selector(showSetupProIGVC(_:)),
+                action: #selector(showProIGSetupVC(_:)),
                 for: .touchUpInside)
             return btn
         } ()
@@ -127,8 +127,8 @@ extension UIViewController {
         }
     }
     
-    @objc func showSetupProIGVC (_ sender: Any) {
-        let vwc = IgApiSetupVC()
+    @objc func showProIGSetupVC (_ sender: Any) {
+        let vwc = ApiSetupVC()
         vwc.modalPresentationStyle = .overFullScreen
         vwc.modalTransitionStyle = .crossDissolve
         self.present(vwc, animated: true, completion: nil)
@@ -136,8 +136,8 @@ extension UIViewController {
     
     @objc func dissmissPicker(sender: UIButton) {
         let vc = String(describing: type(of: self))
-        //->SetupCheck: Dismiss all views over root view for IgApiSetupVC
-        if vc == "IgApiSetupVC" {
+        //->SetupCheck: Dismiss all views over root view for ApiSetupVC
+        if vc == "ApiSetupVC" {
             self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         } else {
             self.dismiss(animated: true, completion: nil)
