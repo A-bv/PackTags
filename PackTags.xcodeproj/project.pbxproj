@@ -13,7 +13,7 @@
 		020584D7284D7B4E00020FB8 /* PackTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */; };
 		0206214E2663A2AE0072C404 /* JsonResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0206214D2663A2AE0072C404 /* JsonResponseModels.swift */; };
 		02062153266503490072C404 /* GJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062152266503490072C404 /* GJs.swift */; };
-		02062155266550D70072C404 /* PrJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062154266550D70072C404 /* PrJs.swift */; };
+		02062155266550D70072C404 /* ProcessJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062154266550D70072C404 /* ProcessJson.swift */; };
 		020621572666DBCC0072C404 /* AnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* AnModel.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		0213D9F3275D2F08002A54ED /* GJs+SmartG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213D9F2275D2F08002A54ED /* GJs+SmartG.swift */; };
@@ -89,6 +89,7 @@
 		02CAC9B52591054400BE5E57 /* TVC+ImgPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B42591054400BE5E57 /* TVC+ImgPicker.swift */; };
 		02CAC9B7259105B400BE5E57 /* TVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B6259105B400BE5E57 /* TVC.swift */; };
 		02CD2D8F29904F0D00EDE077 /* UrlEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD2D8E29904F0D00EDE077 /* UrlEncoding.swift */; };
+		02CD2DAE2991E28200EDE077 /* GJs+Discovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD2DAD2991E28200EDE077 /* GJs+Discovery.swift */; };
 		02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */; };
 		02D066BE296B4B5000536E3A /* AnOverviewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BD296B4B5000536E3A /* AnOverviewSectionModel.swift */; };
 		02D066C0296B606F00536E3A /* RoundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BF296B606F00536E3A /* RoundShape.swift */; };
@@ -142,7 +143,7 @@
 		020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0206214D2663A2AE0072C404 /* JsonResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponseModels.swift; sourceTree = "<group>"; };
 		02062152266503490072C404 /* GJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJs.swift; sourceTree = "<group>"; };
-		02062154266550D70072C404 /* PrJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrJs.swift; sourceTree = "<group>"; };
+		02062154266550D70072C404 /* ProcessJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessJson.swift; sourceTree = "<group>"; };
 		020621562666DBCC0072C404 /* AnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnModel.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		0213D9F2275D2F08002A54ED /* GJs+SmartG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+SmartG.swift"; sourceTree = "<group>"; };
@@ -220,6 +221,7 @@
 		02CAC9B42591054400BE5E57 /* TVC+ImgPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+ImgPicker.swift"; sourceTree = "<group>"; };
 		02CAC9B6259105B400BE5E57 /* TVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVC.swift; sourceTree = "<group>"; };
 		02CD2D8E29904F0D00EDE077 /* UrlEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlEncoding.swift; sourceTree = "<group>"; };
+		02CD2DAD2991E28200EDE077 /* GJs+Discovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+Discovery.swift"; sourceTree = "<group>"; };
 		02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTreatment.swift; sourceTree = "<group>"; };
 		02D066BD296B4B5000536E3A /* AnOverviewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnOverviewSectionModel.swift; sourceTree = "<group>"; };
 		02D066BF296B606F00536E3A /* RoundShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShape.swift; sourceTree = "<group>"; };
@@ -292,7 +294,7 @@
 		021044F926446B5700408CEB /* ProcessJson */ = {
 			isa = PBXGroup;
 			children = (
-				02062154266550D70072C404 /* PrJs.swift */,
+				02062154266550D70072C404 /* ProcessJson.swift */,
 			);
 			path = ProcessJson;
 			sourceTree = "<group>";
@@ -332,8 +334,8 @@
 		021D7622275A9E6200F54054 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0206214D2663A2AE0072C404 /* JsonResponseModels.swift */,
-				021D761F275A99D500F54054 /* TransformedProfileModel.swift */,
+				02CD2DAC2991C1DD00EDE077 /* Domain */,
+				02CD2DAB2991C1C000EDE077 /* Network */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -619,6 +621,22 @@
 			path = FBLoginScreen;
 			sourceTree = "<group>";
 		};
+		02CD2DAB2991C1C000EDE077 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0206214D2663A2AE0072C404 /* JsonResponseModels.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		02CD2DAC2991C1DD00EDE077 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				021D761F275A99D500F54054 /* TransformedProfileModel.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		02D066BC296B3FFC00536E3A /* Notebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -829,6 +847,7 @@
 				0213D9F4275D2F8A002A54ED /* GJs+Analytics.swift */,
 				0213D9F2275D2F08002A54ED /* GJs+SmartG.swift */,
 				021D7623275A9EE900F54054 /* GJs+RefreshRate.swift */,
+				02CD2DAD2991E28200EDE077 /* GJs+Discovery.swift */,
 			);
 			path = GetJson;
 			sourceTree = "<group>";
@@ -951,7 +970,7 @@
 				02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */,
 				02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */,
 				02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */,
-				02062155266550D70072C404 /* PrJs.swift in Sources */,
+				02062155266550D70072C404 /* ProcessJson.swift in Sources */,
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
 				02D1A119255387590045E56F /* UniqueTags.swift in Sources */,
 				02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */,
@@ -978,6 +997,7 @@
 				0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */,
 				0229863F27BD6DF60048F9E9 /* ImageCache.swift in Sources */,
 				02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */,
+				02CD2DAE2991E28200EDE077 /* GJs+Discovery.swift in Sources */,
 				0281B97A2879877C00344D3E /* NavigationBarDimensions.swift in Sources */,
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
 				023A2F7C2856495800EE6CDE /* PackTVC+ConfigCell.swift in Sources */,

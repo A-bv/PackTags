@@ -8,30 +8,30 @@
 
 import Foundation
 
-//MARK: - is allowed to refresh
 extension GetJson {
+    private enum Constants {
+        static let timeForRefresh = 5
+    }
     class func canRefresh () -> Bool {
+        let defaults = UserDefaults.standard
+        guard let lastRefreshTime = defaults.object(forKey: "LastStatsRefresh") else { return true }
         
-        if UserDefaults.standard.object(forKey: "LastStatsRefresh") == nil {
-            return true
+        let date0 = lastRefreshTime as! Date
+        
+        /*
+         let df = DateFormatter()
+         df.dateFormat = "dd/MM/yyyy HH:mm"
+         print("Last refresh at",df.string(from: date0))
+         */
+        
+        //Allow a fetch each day
+        let timeInterval = Constants.timeForRefresh//7200//2hours 86400//day  // Seconds
+        if date0 + TimeInterval(timeInterval) > Date() {
+            return false
         } else {
-            let date0 = UserDefaults.standard.object(forKey: "LastStatsRefresh") as! Date
-            
-            /*
-            let df = DateFormatter()
-            df.dateFormat = "dd/MM/yyyy HH:mm"
-            print("Last refresh at",df.string(from: date0))
-            */
-            
-            //Allow a fetch each day
-            let timeInterval = 5 //7200//2hours 86400//day  // Seconds
-            if date0 + TimeInterval(timeInterval) > Date() {
-                return false
-            } else {
-                UserDefaults.standard.set(Date(), forKey: "LastStatsRefresh")
-                print("Time updated")
-                return true
-            }
+            defaults.set(Date(), forKey: "LastStatsRefresh")
+            print("Time updated")
+            return true
         }
     }
 }

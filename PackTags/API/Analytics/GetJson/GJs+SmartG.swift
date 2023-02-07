@@ -10,8 +10,8 @@
 import Foundation
 
 extension GetJson {
-    class func findHashtagUrl (s_Hashtag:String, Completion block: @escaping((String) -> ())) {
-        let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(s_Hashtag)&access_token=\(fbToken)"
+    class func findHashtagUrl (searchedHashtag:String, completion block: @escaping((String) -> ())) {
+        let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(searchedHashtag)&access_token=\(fbToken)"
         guard let e_url = url.encodeUrl() else { return }
 
         GenericJSONParser.download(fromURLString: e_url) { (result) in
@@ -36,21 +36,16 @@ extension GetJson {
         }
     }
     
-    class func ig_hashtag_search (s_Hashtag: String, Completion block: @escaping((Any) -> ())) {
-        findHashtagUrl(s_Hashtag: s_Hashtag, Completion: { (url) in
+    class func igHashtagSearch (
+        searchedHashtag: String,
+        completion block: @escaping((Any) -> ())
+    ) {
+        findHashtagUrl(
+            searchedHashtag: searchedHashtag,
+            completion: { (url) in
             GetJson.cURL2(of: Media.self, from: url, Completion: { (result) in
                 block(result)
             })
         })
-    }
-}
-
-extension GetJson {
-    class func business_discovery_url (account:String) -> String? {
-        //Business discovery
-        //
-        let limit = 12
-        let url = "https://graph.facebook.com/\(apiGph_version)/\(igBId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(fbToken)"
-        return url.encodeUrl()
     }
 }
