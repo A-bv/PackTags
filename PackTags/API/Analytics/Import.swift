@@ -22,7 +22,7 @@ extension AnalyticsVCModels {
                 data: jsonData) as? Profile else { return }
      
             self?.jsonOfficial = profileJson
-            self?.processedJson = ProcessJson.transform(decodedJson: profileJson)
+            self?.processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson)
             self?.updateData()
         }
     }
@@ -33,7 +33,7 @@ extension AnalyticsVCModels {
             completion: { (profileJson) in
                 DispatchQueue.main.async{ [weak self] in
                     self?.jsonOfficial = profileJson
-                    self?.processedJson = ProcessJson.transform(decodedJson: profileJson)
+                    self?.processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson)
                     self?.updateData()
                 }
             })

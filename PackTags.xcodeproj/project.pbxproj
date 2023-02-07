@@ -13,7 +13,7 @@
 		020584D7284D7B4E00020FB8 /* PackTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */; };
 		0206214E2663A2AE0072C404 /* JsonResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0206214D2663A2AE0072C404 /* JsonResponseModels.swift */; };
 		02062153266503490072C404 /* GJs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062152266503490072C404 /* GJs.swift */; };
-		02062155266550D70072C404 /* ProcessJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062154266550D70072C404 /* ProcessJson.swift */; };
+		02062155266550D70072C404 /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02062154266550D70072C404 /* ProfileDataTransformer.swift */; };
 		020621572666DBCC0072C404 /* AnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* AnModel.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		0213D9F3275D2F08002A54ED /* GJs+SmartG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0213D9F2275D2F08002A54ED /* GJs+SmartG.swift */; };
@@ -143,7 +143,7 @@
 		020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0206214D2663A2AE0072C404 /* JsonResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponseModels.swift; sourceTree = "<group>"; };
 		02062152266503490072C404 /* GJs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJs.swift; sourceTree = "<group>"; };
-		02062154266550D70072C404 /* ProcessJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessJson.swift; sourceTree = "<group>"; };
+		02062154266550D70072C404 /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
 		020621562666DBCC0072C404 /* AnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnModel.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		0213D9F2275D2F08002A54ED /* GJs+SmartG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GJs+SmartG.swift"; sourceTree = "<group>"; };
@@ -291,12 +291,12 @@
 			path = TapTextView;
 			sourceTree = "<group>";
 		};
-		021044F926446B5700408CEB /* ProcessJson */ = {
+		021044F926446B5700408CEB /* Transformers */ = {
 			isa = PBXGroup;
 			children = (
-				02062154266550D70072C404 /* ProcessJson.swift */,
+				02062154266550D70072C404 /* ProfileDataTransformer.swift */,
 			);
-			path = ProcessJson;
+			path = Transformers;
 			sourceTree = "<group>";
 		};
 		0216113D25D864860098CE5E /* CoreData */ = {
@@ -389,8 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				0231AB152684B973007F4FC8 /* Import.swift */,
-				02FEF5C626382A250001B525 /* GetJson */,
-				021044F926446B5700408CEB /* ProcessJson */,
+				02FEF5C626382A250001B525 /* Service */,
+				021044F926446B5700408CEB /* Transformers */,
 			);
 			name = Import;
 			path = Analytics;
@@ -840,7 +840,7 @@
 			path = Rating;
 			sourceTree = "<group>";
 		};
-		02FEF5C626382A250001B525 /* GetJson */ = {
+		02FEF5C626382A250001B525 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				02062152266503490072C404 /* GJs.swift */,
@@ -849,7 +849,7 @@
 				021D7623275A9EE900F54054 /* GJs+RefreshRate.swift */,
 				02CD2DAD2991E28200EDE077 /* GJs+Discovery.swift */,
 			);
-			path = GetJson;
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -970,7 +970,7 @@
 				02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */,
 				02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */,
 				02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */,
-				02062155266550D70072C404 /* ProcessJson.swift in Sources */,
+				02062155266550D70072C404 /* ProfileDataTransformer.swift in Sources */,
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
 				02D1A119255387590045E56F /* UniqueTags.swift in Sources */,
 				02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */,

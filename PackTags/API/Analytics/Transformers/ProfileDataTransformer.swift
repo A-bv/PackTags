@@ -6,8 +6,6 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-
-
 import UIKit
 
 var mode: Int = 0
@@ -16,12 +14,17 @@ var rawInsights = true
 //MARK: - Process
 // Additional operations on the obtained Json data
 
-class ProcessJson: NSObject {
-    class func transform (decodedJson: Profile) -> TransformedProfileModel?
-    {
-        let top = decodedJson
+enum DataTransformer {}
+
+extension DataTransformer {
+    enum ProfileDataTransformer {}
+}
+
+extension DataTransformer.ProfileDataTransformer {
+    static func transform (response: Profile) -> TransformedProfileModel? {
+        let top = response
         
-        guard let metrics = buildArraysApiGraph(top: decodedJson) else { return nil }
+        guard let metrics = buildArraysApiGraph(top: response) else { return nil }
         
         // 0: likes 1:comments
         let sum0 = (metrics.likeArray as NSArray).value(forKeyPath: "@sum.floatValue")
@@ -67,8 +70,8 @@ class ProcessJson: NSObject {
         
         return data
     }
-    
-    class func buildArraysApiGraph (top:Profile?) -> (SubTransformedProfileModel?) {
+
+    static func buildArraysApiGraph (top:Profile?) -> (SubTransformedProfileModel?) {
         var likeArray = [Int]()
         var commentArray = [Int]()
         var sumLC = [CGFloat]()
