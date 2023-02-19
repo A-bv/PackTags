@@ -319,7 +319,7 @@
 			path = SmartGSUI;
 			sourceTree = "<group>";
 		};
-		021D7621275A9BBB00F54054 /* API */ = {
+		021D7621275A9BBB00F54054 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				02491C5A26779AE400F98E17 /* FBLogin */,
@@ -328,7 +328,7 @@
 				02E4B9D325CC97C700949213 /* Analytics */,
 				021AFD542787857B0008735E /* SmartGSUI */,
 			);
-			path = API;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		021D7622275A9E6200F54054 /* Models */ = {
@@ -812,7 +812,7 @@
 			isa = PBXGroup;
 			children = (
 				02D066BC296B3FFC00536E3A /* Notebook */,
-				021D7621275A9BBB00F54054 /* API */,
+				021D7621275A9BBB00F54054 /* Network */,
 				02FAE2AB260ADA9200324724 /* Settings */,
 				02A4235A2843FFF300A25067 /* OnBoarding */,
 				0273D1532655B9260043011C /* Tools */,
