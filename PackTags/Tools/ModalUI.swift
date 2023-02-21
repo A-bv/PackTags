@@ -30,7 +30,7 @@ extension UIViewController {
         let btn: UIButton = {
             let btn = UIButton()
             btn.tintColor = UIColor.label
-
+            
             let image = arrowButton == true ? UIImage(named: "ciDown") : UIImage(named: "close_round")
             let tintedImage = image?.withRenderingMode(.alwaysTemplate)
             btn.setBackgroundImage(tintedImage ,for: .normal)
@@ -51,7 +51,9 @@ extension UIViewController {
         btn.heightAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
         btn.widthAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
     }
-    
+}
+
+extension UIViewController {
     func placeHelpButton (isHelpSetupIgPro: Bool) {
         let helpBtn: UIButton = {
             let btn = UIButton()
@@ -75,7 +77,7 @@ extension UIViewController {
                 for: .touchUpInside)
             return btn
         } ()
-                
+        
         let btn = isHelpSetupIgPro ? setupBtn : helpBtn
         self.view.addSubview(btn)
         
@@ -91,6 +93,15 @@ extension UIViewController {
         btn.heightAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
     }
 
+    @objc func showProIGSetupVC (_ sender: Any) {
+        let vwc = ApiSetupVC()
+        vwc.modalPresentationStyle = .overFullScreen
+        vwc.modalTransitionStyle = .crossDissolve
+        self.present(vwc, animated: true, completion: nil)
+    }
+}
+
+extension UIViewController {
     func placeTextView (textView: UITextView) {
         textView.font = UIFont.preferredFont(forTextStyle: .body)
         textView.adjustsFontForContentSizeCategory = true
@@ -116,8 +127,9 @@ extension UIViewController {
             equalTo: view.bottomAnchor,
             constant: -Constants.distance34).isActive = true
     }
-    
-    // MARK: - objc action functions
+}
+
+extension UIViewController {
     @objc func showWebSetBusinessIG (_ sender: Any) {
         if let url = URL(string: Links.facebookSetupHelpUrl) {
             let vc = SFSafariViewController(url: url)
@@ -125,13 +137,6 @@ extension UIViewController {
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true)
         }
-    }
-    
-    @objc func showProIGSetupVC (_ sender: Any) {
-        let vwc = ApiSetupVC()
-        vwc.modalPresentationStyle = .overFullScreen
-        vwc.modalTransitionStyle = .crossDissolve
-        self.present(vwc, animated: true, completion: nil)
     }
     
     @objc func dissmissPicker(sender: UIButton) {

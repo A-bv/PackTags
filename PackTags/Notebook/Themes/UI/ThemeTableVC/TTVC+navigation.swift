@@ -53,19 +53,21 @@ extension ThemeTableViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        //Checks if insta user is defined before performing segue to analytics
         if identifier == "ShowAnalytics" {
-            
-            //->SetupCheck //JKK
-            if !self.shouldShowFBLogin() {
+            return shouldNavigateToFBLoginScreen()
+        } else {
+            return true
+        }
+    }
+}
+
+extension ThemeTableViewController {
+    private func shouldNavigateToFBLoginScreen () -> Bool {
+            if !shouldShowFBLogin() {
                 return true
             } else {
                 showFBLoginScreen()
                 return false
             }
-        }
-
-        // by default, transition
-        return true
     }
 }
