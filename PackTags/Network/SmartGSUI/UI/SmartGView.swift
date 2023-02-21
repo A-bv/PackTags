@@ -138,10 +138,15 @@ extension SmartGView {
 extension SmartGView {
     var hashtagsList: some View {
         List {
-            let topHashatgs = Array(viewModel.topHashtags.enumerated())
-            ForEach(topHashatgs, id: \.element){
+            let topHashtags = Array(viewModel.topHashtags.enumerated())
+            let topHashtagsCount = viewModel.topHashtagsCount
+            ForEach(topHashtags, id: \.element){
                 index, item in
+                HStack{
                     Text("\(String(index+1)): \(item)")
+                    Spacer()
+                    Text("\(topHashtagsCount[index])")
+                }
             }
         }
     }
