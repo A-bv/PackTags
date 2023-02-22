@@ -42,7 +42,7 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
     private func setupFBLoginVC () {
         self.view.applyBlur()
         self.placeTopRightButton(arrowButton: false)
-        self.placeHelpButton (isHelpSetupIgPro: true)
+        self.placeHelpButtonForFBLoginSetup()
         
         let loginButton = loginButton
         loginButton.delegate = self
@@ -165,6 +165,35 @@ extension FBLoginVC {
                    return
                }
            })
+    }
+}
+
+extension UIViewController {
+    private enum Strings {
+        static let setupTitle = "Setup".localized()
+    }
+    
+    func placeHelpButtonForFBLoginSetup() {
+        let setupBtn: UIButton = {
+            let btn = UIButton()
+            btn.setTitle(Strings.setupTitle, for: .normal)
+            btn.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
+            btn.setTitleColor(customPurple, for: .normal)
+            btn.addTarget(
+                self,
+                action: #selector(showProIGSetupVC(_:)),
+                for: .touchUpInside)
+            return btn
+        } ()
+        view.addSubview(setupBtn)
+        setupHelpButtonConstraints(setupBtn)
+    }
+
+    @objc func showProIGSetupVC (_ sender: Any) {
+        let vwc = ApiSetupVC()
+        vwc.modalPresentationStyle = .overFullScreen
+        vwc.modalTransitionStyle = .crossDissolve
+        self.present(vwc, animated: true, completion: nil)
     }
 }
 

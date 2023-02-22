@@ -75,6 +75,7 @@
 		02A423552842C1D000A25067 /* TVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423542842C1D000A25067 /* TVC+Navigation.swift */; };
 		02A423642845564900A25067 /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423632845564900A25067 /* LongPressReorder.swift */; };
 		02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5EB6925C054440063A315 /* FrameTags.swift */; };
+		02AD94A929A5936500D893E5 /* SetConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* SetConstraints.swift */; };
 		02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AEA58625B630B10063076F /* PackTVC+NavBar.swift */; };
 		02B02AC52594238100586352 /* TVC+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B02AC42594238100586352 /* TVC+Search.swift */; };
 		02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */; };
@@ -207,6 +208,7 @@
 		02A423542842C1D000A25067 /* TVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Navigation.swift"; sourceTree = "<group>"; };
 		02A423632845564900A25067 /* LongPressReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressReorder.swift; sourceTree = "<group>"; };
 		02A5EB6925C054440063A315 /* FrameTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameTags.swift; sourceTree = "<group>"; };
+		02AD94A829A5936500D893E5 /* SetConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetConstraints.swift; sourceTree = "<group>"; };
 		02AEA58625B630B10063076F /* PackTVC+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+NavBar.swift"; sourceTree = "<group>"; };
 		02B02AC42594238100586352 /* TVC+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Search.swift"; sourceTree = "<group>"; };
 		02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapTV+AddGesture.swift"; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 			children = (
 				02AB39A927B894D600335131 /* FBLoginSetup */,
 				02CD2DA62990795A00EDE077 /* FBLoginScreen */,
+				02AD94A829A5936500D893E5 /* SetConstraints.swift */,
 			);
 			path = FBLogin;
 			sourceTree = "<group>";
@@ -1056,6 +1059,7 @@
 				0229863E27BD6DF60048F9E9 /* EnvironmentValues+ImageCache.swift in Sources */,
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* ExternalActions.swift in Sources */,
+				02AD94A929A5936500D893E5 /* SetConstraints.swift in Sources */,
 				0269E2AC2564B838005FE14B /* AnalyticsVC.swift in Sources */,
 				02FDEDCF2903062400B9BCFD /* DataController.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,

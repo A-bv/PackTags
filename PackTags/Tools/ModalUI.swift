@@ -7,18 +7,8 @@
 //
 
 import UIKit
-import SafariServices
 
 extension UIViewController {
-    private enum Links {
-        static let facebookSetupHelpUrl = "https://www.facebook.com/business/help/502981923235522"
-    }
-    
-    private enum Strings {
-        static let setupHelpQuestion = "Help?".localized()
-        static let setupTitle = "Setup".localized()
-    }
-    
     private enum Constants {
         static let distance10 = CGFloat(10)
         static let buttonSize = CGFloat(22)
@@ -54,54 +44,6 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    func placeHelpButton (isHelpSetupIgPro: Bool) {
-        let helpBtn: UIButton = {
-            let btn = UIButton()
-            btn.setTitle(Strings.setupHelpQuestion, for: .normal)
-            btn.setTitleColor(customPurple, for: .normal)
-            btn.addTarget(
-                self,
-                action: #selector(showWebSetBusinessIG(_:)),
-                for: .touchUpInside)
-            return btn
-        } ()
-        
-        let setupBtn: UIButton = {
-            let btn = UIButton()
-            btn.setTitle(Strings.setupTitle, for: .normal)
-            btn.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
-            btn.setTitleColor(customPurple, for: .normal)
-            btn.addTarget(
-                self,
-                action: #selector(showProIGSetupVC(_:)),
-                for: .touchUpInside)
-            return btn
-        } ()
-        
-        let btn = isHelpSetupIgPro ? setupBtn : helpBtn
-        self.view.addSubview(btn)
-        
-        // -- constraints --
-        let cstW = view.frame.width/Constants.distance10
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.topAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.topAnchor,
-            constant: cstW).isActive = true
-        
-        // -- button --
-        btn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: cstW).isActive = true
-        btn.heightAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
-    }
-
-    @objc func showProIGSetupVC (_ sender: Any) {
-        let vwc = ApiSetupVC()
-        vwc.modalPresentationStyle = .overFullScreen
-        vwc.modalTransitionStyle = .crossDissolve
-        self.present(vwc, animated: true, completion: nil)
-    }
-}
-
-extension UIViewController {
     func placeTextView (textView: UITextView) {
         textView.font = UIFont.preferredFont(forTextStyle: .body)
         textView.adjustsFontForContentSizeCategory = true
@@ -130,15 +72,6 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    @objc func showWebSetBusinessIG (_ sender: Any) {
-        if let url = URL(string: Links.facebookSetupHelpUrl) {
-            let vc = SFSafariViewController(url: url)
-            vc.modalPresentationStyle = .overFullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true)
-        }
-    }
-    
     @objc func dissmissPicker(sender: UIButton) {
         let vc = String(describing: type(of: self))
         //->SetupCheck: Dismiss all views over root view for ApiSetupVC
