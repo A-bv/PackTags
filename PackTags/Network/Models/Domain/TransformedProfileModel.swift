@@ -11,7 +11,7 @@ import UIKit
 struct TransformedProfileModel {
     
     let usr: String?                //. Basic: username
-    let isPrivateProfile: Bool?                 //. Basic: is private?
+    let isPrivateProfile: Bool?     //. Basic: is private?
     let postsCount: Int?            //. Basic: post count
     
     let sum0: Int?                  //0. Total likes
@@ -24,19 +24,19 @@ struct TransformedProfileModel {
     let maxR: CGFloat?              //7. Max Engagement
     let captions: [String?]         //8. Caption
     
-    init(usr: String? = nil,
-         isPv: Bool? = nil,
-         sum0: Int? = nil,
-         sum1: Int? = nil,
-         avg0: String? = nil,
-         avg1: String? = nil,
-         rates: ([CGFloat?]) = ([nil]),
-         pTimes: [CDouble?] = [nil],
-         avg2: CGFloat? = nil,
-         maxR: CGFloat? = nil,
-         captions: [String?] = [nil]
-         ) {
-        
+    init(
+        usr: String? = nil,
+        isPv: Bool? = nil,
+        sum0: Int? = nil,
+        sum1: Int? = nil,
+        avg0: String? = nil,
+        avg1: String? = nil,
+        rates: ([CGFloat?]) = ([nil]),
+        pTimes: [CDouble?] = [nil],
+        avg2: CGFloat? = nil,
+        maxR: CGFloat? = nil,
+        captions: [String?] = [nil]
+    ) {
         self.usr = usr
         self.isPrivateProfile = isPv
         self.sum0 = sum0
@@ -50,14 +50,4 @@ struct TransformedProfileModel {
         self.captions = captions
         self.postsCount = rates.count
     }
-}
-
-struct SubTransformedProfileModel {
-    let likeArray: [Int]
-    let commentArray: [Int]
-    let engFollowers: [CGFloat]
-    let times: [Double?]
-    let captions: [String?]
-    let engImpressions: [CGFloat]
-    let engReach: [CGFloat]
 }

@@ -11,7 +11,9 @@ import Foundation
 //Functions for analytics
 extension GetJson {
     
-    class func loadProfile (completion block: @escaping ((Profile) -> ())) {
+    class func loadProfile (
+        completion block: @escaping ((Profile) -> ())
+    ) {
         findMediaLimit() { (value) in
             guard let encodedUrl = self.buildURLAPIGraph(i: value) else { return }
             
@@ -54,6 +56,7 @@ extension GetJson {
             let limit = mCount.max() ?? 0
             
             //print("Media limit: \(mCount.count)") old
+            
             print("Media limit: \(limit)")
             
             block(limit)
@@ -61,7 +64,6 @@ extension GetJson {
     }
     
     class func buildURLAPIGraph (i: Int) -> String? {
-        
         let limit = "\(i)"
         let url = "https://graph.facebook.com/\(apiGph_version)/\(igBId)?fields=biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,recently_searched_hashtags,insights.metric(reach,impressions,profile_views,follower_count).period(day),media.limit(\(limit)){media_type,caption,timestamp,media_url,comments_count,comments,is_comment_enabled,username,like_count,media_product_type,insights.metric(reach,impressions,engagement)}&access_token=\(fbToken)&checkType=FULL"
         

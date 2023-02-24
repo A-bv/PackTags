@@ -76,6 +76,7 @@
 		02A423642845564900A25067 /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423632845564900A25067 /* LongPressReorder.swift */; };
 		02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5EB6925C054440063A315 /* FrameTags.swift */; };
 		02AD94A929A5936500D893E5 /* SetConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* SetConstraints.swift */; };
+		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AEA58625B630B10063076F /* PackTVC+NavBar.swift */; };
 		02B02AC52594238100586352 /* TVC+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B02AC42594238100586352 /* TVC+Search.swift */; };
 		02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */; };
@@ -209,6 +210,7 @@
 		02A423632845564900A25067 /* LongPressReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressReorder.swift; sourceTree = "<group>"; };
 		02A5EB6925C054440063A315 /* FrameTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameTags.swift; sourceTree = "<group>"; };
 		02AD94A829A5936500D893E5 /* SetConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetConstraints.swift; sourceTree = "<group>"; };
+		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AEA58625B630B10063076F /* PackTVC+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+NavBar.swift"; sourceTree = "<group>"; };
 		02B02AC42594238100586352 /* TVC+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Search.swift"; sourceTree = "<group>"; };
 		02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapTV+AddGesture.swift"; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 			isa = PBXGroup;
 			children = (
 				021D761F275A99D500F54054 /* TransformedProfileModel.swift */,
+				02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				02F89B272974306F008F363D /* SmartGStoryCard.swift in Sources */,
 				02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */,
 				02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */,
+				02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */,
 				02062153266503490072C404 /* GJs.swift in Sources */,
 				02B104A9276A630E00C9EC6C /* Url_img_SUI.swift in Sources */,
 				021044F626446AEF00408CEB /* StringFormatter.swift in Sources */,
