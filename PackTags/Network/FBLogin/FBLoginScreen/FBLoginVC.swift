@@ -75,14 +75,14 @@ extension FBLoginVC {
             Alerts.setupTroubleShootingAlert(presenterVc: self)
         }
     }
-
+    
     private func shouldShowApiSetupVC() {
         let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
         let isBtnPressedFbLogin =
-            UserDefaults.standard.object(forKey: "pressedFBLoginButton")
+        UserDefaults.standard.object(forKey: "pressedFBLoginButton")
         let isBtnPressedOnApiSetupVC =
-            UserDefaults.standard.object(forKey: "continued_ApiSetupVC")
-            
+        UserDefaults.standard.object(forKey: "continued_ApiSetupVC")
+        
         //Only show if never pressed continue on ApiSetupVC()
         if isBtnPressedOnApiSetupVC == nil {
             let controller = ApiSetupVC()
@@ -104,14 +104,14 @@ extension FBLoginVC {
         // 0. Fb acc gives a token
         // Request 1. Get facebook business page of the facebook account
         let fbPageRequest = GraphRequest(graphPath: "/me/accounts", httpMethod: .get)
-    
+        
         fbPageRequest.start(completionHandler: {connection,result,error in
             
             if let error = error {
                 print("fbPageRequest error :", error)
                 return
             }
-
+            
             guard let response1 = result as? NSDictionary else { return } //
             //id page fb packtags.app 107298991584829
             // ----- CAUTION ----- only works with one associated page (takes the first in array)
@@ -128,32 +128,37 @@ extension FBLoginVC {
             block(pages)
         })
     }
-
+    
     private func verifySetupIgBAndGetIgBId (Completion block: @escaping ((String) -> ())){
         
         // Required: Fb acc + Fb business page + IG Business or creator
-           let igBRequest = GraphRequest(graphPath: "/me/accounts", parameters: ["fields":"instagram_business_account"], httpMethod: .get)
-            
-           igBRequest.start(completionHandler: {connection,result,error in
-          
-               if let error = error {
-                   print("igBRequest error :", error)
-                   return
-               }
-               
-               guard let response2 = result as? NSDictionary else { return } //
-               guard let igBIds = (response2.value(forKeyPath: "data.instagram_business_account.id") as? [String])
-               else {
-                   print("No business account linked or wrong pages selected")
-                   Alerts.setupTroubleShootingAlert(presenterVc: self)
-                   return
-               }
-               if igBIds.count >= 1 {
-                   block(igBIds[0])
-               } else {
-                   return
-               }
-           })
+        let igBRequest = GraphRequest(
+            graphPath: "/me/accounts",
+            parameters: ["fields":"instagram_business_account"],
+            httpMethod: .get)
+        
+        igBRequest.start(
+            completionHandler: { connection, result, error in
+                
+                if let error = error {
+                    print("igBRequest error :", error)
+                    return
+                }
+                
+                guard let response2 = result as? NSDictionary else { return } //
+                guard let igBIds = (response2.value(forKeyPath: "data.instagram_business_account.id") as? [String])
+                else {
+                    print("No business account linked or wrong pages selected")
+                    Alerts.setupTroubleShootingAlert(presenterVc: self)
+                    return
+                }
+                
+                if igBIds.count >= 1 {
+                    block(igBIds[0])
+                } else {
+                    return
+                }
+            })
     }
 }
 
@@ -177,7 +182,7 @@ extension UIViewController {
         view.addSubview(setupBtn)
         setupHelpButtonConstraints(setupBtn)
     }
-
+    
     @objc func showProIGSetupVC (_ sender: Any) {
         let vwc = ApiSetupVC()
         vwc.modalPresentationStyle = .overFullScreen
