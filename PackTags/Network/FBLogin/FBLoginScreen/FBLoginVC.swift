@@ -51,17 +51,6 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
     }
 }
 
-// Delegates
-extension FBLoginVC {
-    // triggered when just after login
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        
-        if ((error) != nil){ }
-        checkSetup()
-    }
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
-}
-
 // Checks
 extension FBLoginVC {
     private func checkSetup() {
@@ -215,4 +204,21 @@ extension UIViewController {
         vc.modalTransitionStyle = .coverVertical
         self.present(vc, animated: true, completion: nil)
     }
+}
+
+// Delegates
+extension FBLoginVC {
+    // triggered when just after login
+    func loginButton(
+        _ loginButton: FBLoginButton,
+        didCompleteWith result: LoginManagerLoginResult?,
+        error: Error?
+    ) {
+        if let error {
+            print("Fb login error:", error)
+        }
+        checkSetup()
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
 }
