@@ -105,7 +105,8 @@ extension FBLoginVC {
         // Request 1. Get facebook business page of the facebook account
         let fbPageRequest = GraphRequest(graphPath: "/me/accounts", httpMethod: .get)
         
-        fbPageRequest.start(completionHandler: {connection,result,error in
+        fbPageRequest.start(
+            completionHandler: { connection, result, error in
             
             if let error = error {
                 print("fbPageRequest error :", error)
@@ -117,7 +118,7 @@ extension FBLoginVC {
             // ----- CAUTION ----- only works with one associated page (takes the first in array)
             guard let pages = (response1.value(forKeyPath: "data.name") as? [String]) else { return }
             
-            if pages == [] {
+                if pages.isEmpty {
                 // Exit if no IGPro or wrong linked FB page(s)
                 print("No page")
                 Alerts.setupTroubleShootingAlert(presenterVc: self)
@@ -193,11 +194,18 @@ extension UIViewController {
 
 extension UIViewController {
     func isFbTokenValid () -> Bool {
-        guard let token = AccessToken.current, !token.isExpired else { return false }
+        guard
+            let token = AccessToken.current,
+            !token.isExpired
+        else {
+            return false
+        }
         UserDefaults.standard.set( token.tokenString, forKey: "fbToken")
         return true
     }
-    
+}
+
+extension UIViewController {
     func shouldShowFBLogin () -> Bool {
         let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
         return (!isCorrectSetup || !isFbTokenValid())

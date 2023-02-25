@@ -6,6 +6,8 @@
 //  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
 //
 
+import Foundation
+
 struct SubTransformedProfileModel {
     let likeArray: [Int]
     let commentArray: [Int]
@@ -15,4 +17,3 @@ struct SubTransformedProfileModel {
     let engImpressions: [CGFloat]
     let engReach: [CGFloat]
 }
-
