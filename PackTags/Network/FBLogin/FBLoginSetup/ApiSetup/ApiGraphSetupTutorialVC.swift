@@ -9,10 +9,10 @@
 import UIKit
 import SafariServices
 
-class ApiSetupVC: UIViewController {
+class ApiGraphSetupTutorialVC: UIViewController {
     
     deinit {
-        print("deinit ApiSetupVC")
+        print("deinit ApiGraphSetupTutorialVC")
     }
     
     private enum Strings {
@@ -68,7 +68,7 @@ class ApiSetupVC: UIViewController {
     }
 }
 
-extension ApiSetupVC  {
+extension ApiGraphSetupTutorialVC  {
     private enum Links {
         static let facebookLink = "https://www.facebook.com"
         static let facebookCreatePageLink = "https://www.facebook.com/pages/create"
@@ -96,8 +96,8 @@ extension ApiSetupVC  {
     }
     
     @objc func continueFunc (_ sender: Any) {
-        if UserDefaults.standard.object(forKey: "continued_ApiSetupVC") == nil {
-            UserDefaults.standard.set("true",  forKey: "continued_ApiSetupVC")
+        if UserDefaults.standard.object(forKey: "continuedApiGraphSetupOnce") == nil {
+            UserDefaults.standard.set("true",  forKey: "continuedApiGraphSetupOnce")
         }
         
         self.dismiss(animated: true, completion: nil)

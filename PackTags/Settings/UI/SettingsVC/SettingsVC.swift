@@ -185,7 +185,7 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemPurple
                         ) {[weak self] in
-                            let vc = ApiSetupVC()
+                            let vc = ApiGraphSetupTutorialVC()
                             self?.showPage(vc: vc)
                         })]))
         

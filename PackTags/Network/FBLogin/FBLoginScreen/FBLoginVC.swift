@@ -10,6 +10,23 @@
 import UIKit
 import FBSDKLoginKit
 
+// MARK: - Model
+struct FBToken {
+    let tokenString: String?
+    let isValid: Bool
+    
+    init() {
+        if let token = AccessToken.current, !token.isExpired {
+            tokenString = token.tokenString
+            isValid = true
+        } else {
+            tokenString = nil
+            isValid = false
+        }
+    }
+}
+
+// MARK: - Class
 class FBLoginVC: UIViewController, LoginButtonDelegate {
     
     deinit {
@@ -19,6 +36,7 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
     private enum Strings {
         static let connectedAlertTitle = "Connected!".localized()
         static let accessAnalyticsConfirm = "You can now access analytics and generate hashtags.".localized()
+        static let setupTitle = "Setup".localized()
     }
     
     let loginButton: FBLoginButton = {
@@ -36,68 +54,49 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        shouldShowApiSetupVC()
-    }
-    
-    private func setupFBLoginVC () {
-        self.view.applyBlur()
-        self.placeTopRightButton(arrowButton: false)
-        self.placeHelpButtonForFBLoginSetup()
-        
-        let loginButton = loginButton
-        loginButton.delegate = self
-        loginButton.center = view.center
-        view.addSubview(loginButton)
+        showApiGraphSetupVCIfneeded()
+        showWrongSetupAlertIfNeeded()
     }
 }
 
-// Checks
+// Delegates
 extension FBLoginVC {
-    private func checkSetup() {
-        //Checks Setup and save Instagram Business Account ID
-        //Detects first time login
-        UserDefaults.standard.set(true, forKey: "pressedFBLoginButton")
+    // triggered when just after login
+    func loginButton(
+        _ loginButton: FBLoginButton,
+        didCompleteWith result: LoginManagerLoginResult?,
+        error: Error?
+    ) {
+        if let error { print("Fb login error:", error) }
+        savePushedFBLoginButtonOnce()
+        apiCallGetIgBusinessId()
+    }
+
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
+}
+
+// MARK: - Logic
+extension FBLoginVC {
+    private func apiCallGetIgBusinessId() {
+        
         let token = FBToken()
         saveCorrectStatus(token: token)
         saveFBToken(token: token)
         
         if token.isValid {
             verifySetupFbPages(Completion: {[weak self] _ in
-                self?.verifySetupIgBAndGetIgBId(Completion: {(IgBId) in
-                    UserDefaults.standard.set(IgBId, forKey: "IgBId")
-                    Alerts.simpleShortAlert(
-                        title: Strings.connectedAlertTitle,
-                        message: Strings.accessAnalyticsConfirm,
-                        vc: self,
-                        okDismissVc: true)
+                self?.verifySetupIgBAndGetIgBId(Completion: {(id) in
+                    self?.saveInstagramBusinessAccountID(id: id)
+                    self?.showSuccessfulSetupAlert()
                 })
             })
         } else {
             Alerts.setupTroubleShootingAlert(presenterVc: self)
         }
     }
-    
-    private func shouldShowApiSetupVC() {
-        let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
-        let isBtnPressedFbLogin = UserDefaults.standard.object(forKey: "pressedFBLoginButton")
-        let isBtnPressedOnApiSetupVC = UserDefaults.standard.object(forKey: "continued_ApiSetupVC")
-        
-        //Only show if never pressed continue on ApiSetupVC()
-        if isBtnPressedOnApiSetupVC == nil {
-            let controller = ApiSetupVC()
-            controller.modalPresentationStyle = .overFullScreen
-            controller.modalTransitionStyle = .coverVertical
-            self.present(controller, animated: true, completion: nil)
-        }
-        
-        //Alert if already pressed fb login button and if wrong setup
-        if isCorrectSetup == false && isBtnPressedFbLogin != nil {
-            Alerts.setupTroubleShootingAlert(presenterVc: self)
-        }
-    }
 }
 
-// Calls
+// MARK: - Logic
 extension FBLoginVC {
     private func verifySetupFbPages (Completion block: @escaping (([String]) -> ())) {
         // 0. Fb acc gives a token
@@ -117,9 +116,8 @@ extension FBLoginVC {
             // ----- CAUTION ----- only works with one associated page (takes the first in array)
             guard let pages = (response1.value(forKeyPath: "data.name") as? [String]) else { return }
             
-                if pages.isEmpty {
+            if pages.isEmpty {
                 // Exit if no IGPro or wrong linked FB page(s)
-                print("No page")
                 Alerts.setupTroubleShootingAlert(presenterVc: self)
                 return
             }
@@ -162,11 +160,82 @@ extension FBLoginVC {
     }
 }
 
-extension UIViewController {
-    private enum Strings {
-        static let setupTitle = "Setup".localized()
+// MARK: - Logic
+extension FBLoginVC {
+    func saveFBToken (token: FBToken) {
+        let token = token.tokenString
+        UserDefaults.standard.set( token, forKey: "fbToken")
     }
     
+    func saveCorrectStatus (token: FBToken) {
+        if token.isValid {
+            UserDefaults.standard.set(true, forKey: "isCorrectSetup")
+        } else {
+            UserDefaults.standard.set(false, forKey: "isCorrectSetup")
+        }
+    }
+}
+
+// MARK: - Logic
+extension FBLoginVC {
+    private func showApiGraphSetupVCIfneeded() {
+        if UserDefaults.standard.object(forKey: "continuedApiGraphSetupOnce") == nil {
+            let controller = ApiGraphSetupTutorialVC()
+            controller.modalPresentationStyle = .overFullScreen
+            controller.modalTransitionStyle = .coverVertical
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    private func showWrongSetupAlertIfNeeded() {
+        let triedASetup = UserDefaults.standard.object(forKey: "pressedFBLoginButton")
+        let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
+        if isCorrectSetup == false, triedASetup != nil {
+            Alerts.setupTroubleShootingAlert(presenterVc: self)
+        }
+    }
+}
+
+// MARK: - Logic
+extension FBLoginVC {
+    private func savePushedFBLoginButtonOnce() {
+        if UserDefaults.standard.object(forKey: "pressedFBLoginButton") == nil {
+            UserDefaults.standard.set(true, forKey: "pressedFBLoginButton")
+        }
+    }
+    
+    private func saveInstagramBusinessAccountID(id: String) {
+        UserDefaults.standard.set(id, forKey: "IgBId")
+    }
+}
+
+// MARK: - UI
+extension FBLoginVC {
+    private func setupFBLoginVC () {
+        self.view.applyBlur()
+        self.placeTopRightButton(arrowButton: false)
+        self.placeHelpButtonForFBLoginSetup()
+        
+        let loginButton = loginButton
+        loginButton.delegate = self
+        loginButton.center = view.center
+        view.addSubview(loginButton)
+    }
+}
+
+// MARK: - UI
+extension FBLoginVC {
+    func showSuccessfulSetupAlert() {
+        Alerts.simpleShortAlert(
+            title: Strings.connectedAlertTitle,
+            message: Strings.accessAnalyticsConfirm,
+            vc: self,
+            okDismissVc: true)
+    }
+}
+
+// MARK: - UI
+extension FBLoginVC {
     func placeHelpButtonForFBLoginSetup() {
         let setupBtn: UIButton = {
             let btn = UIButton()
@@ -184,56 +253,9 @@ extension UIViewController {
     }
     
     @objc func showProIGSetupVC (_ sender: Any) {
-        let vwc = ApiSetupVC()
+        let vwc = ApiGraphSetupTutorialVC()
         vwc.modalPresentationStyle = .overFullScreen
         vwc.modalTransitionStyle = .crossDissolve
         self.present(vwc, animated: true, completion: nil)
     }
-}
-
-struct FBToken {
-    let tokenString: String?
-    let isValid: Bool
-    
-    init() {
-        if let token = AccessToken.current, !token.isExpired {
-            tokenString = token.tokenString
-            isValid = true
-        } else {
-            tokenString = nil
-            isValid = false
-        }
-    }
-}
-
-extension UIViewController {
-    func saveFBToken (token: FBToken) {
-        let token = token.tokenString
-        UserDefaults.standard.set( token, forKey: "fbToken")
-    }
-    
-    func saveCorrectStatus (token: FBToken) {
-        if token.isValid {
-            UserDefaults.standard.set(true, forKey: "isCorrectSetup")
-        } else {
-            UserDefaults.standard.set(false, forKey: "isCorrectSetup")
-        }
-    }
-}
-
-// Delegates
-extension FBLoginVC {
-    // triggered when just after login
-    func loginButton(
-        _ loginButton: FBLoginButton,
-        didCompleteWith result: LoginManagerLoginResult?,
-        error: Error?
-    ) {
-        if let error {
-            print("Fb login error:", error)
-        }
-        checkSetup()
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
 }

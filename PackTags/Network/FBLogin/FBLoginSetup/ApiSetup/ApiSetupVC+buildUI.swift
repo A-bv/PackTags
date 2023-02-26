@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ApiSetupVC  {
+extension ApiGraphSetupTutorialVC  {
     private enum Strings {
         static let accountLinkingTitle = "Account Linking".localized()
         static let continueString = "Continue".localized()

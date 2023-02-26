@@ -48,7 +48,7 @@
 		023A2F822856554600EE6CDE /* PackTVC+CellSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F812856554600EE6CDE /* PackTVC+CellSwipe.swift */; };
 		024347D827119E2100F86A64 /* TextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024347D727119E2100F86A64 /* TextRecognition.swift */; };
 		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
-		02491C512671212400F98E17 /* ApiSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C502671212400F98E17 /* ApiSetupVC.swift */; };
+		02491C512671212400F98E17 /* ApiGraphSetupTutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */; };
 		02491C53267147AF00F98E17 /* ModalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C52267147AF00F98E17 /* ModalUI.swift */; };
 		02491C55267799BD00F98E17 /* ApiSetupVC+buildUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C54267799BD00F98E17 /* ApiSetupVC+buildUI.swift */; };
 		02491C5926779A4900F98E17 /* ProIGSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* ProIGSetupVC.swift */; };
@@ -182,7 +182,7 @@
 		023A2F812856554600EE6CDE /* PackTVC+CellSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+CellSwipe.swift"; sourceTree = "<group>"; };
 		024347D727119E2100F86A64 /* TextRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognition.swift; sourceTree = "<group>"; };
 		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
-		02491C502671212400F98E17 /* ApiSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSetupVC.swift; sourceTree = "<group>"; };
+		02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiGraphSetupTutorialVC.swift; sourceTree = "<group>"; };
 		02491C52267147AF00F98E17 /* ModalUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalUI.swift; sourceTree = "<group>"; };
 		02491C54267799BD00F98E17 /* ApiSetupVC+buildUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiSetupVC+buildUI.swift"; sourceTree = "<group>"; };
 		02491C5826779A4900F98E17 /* ProIGSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProIGSetupVC.swift; sourceTree = "<group>"; };
@@ -431,7 +431,7 @@
 		02491C5B26779B1100F98E17 /* ApiSetup */ = {
 			isa = PBXGroup;
 			children = (
-				02491C502671212400F98E17 /* ApiSetupVC.swift */,
+				02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */,
 				02491C54267799BD00F98E17 /* ApiSetupVC+buildUI.swift */,
 			);
 			path = ApiSetup;
@@ -1072,7 +1072,7 @@
 				02B02AC52594238100586352 /* TVC+Search.swift in Sources */,
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
 				0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */,
-				02491C512671212400F98E17 /* ApiSetupVC.swift in Sources */,
+				02491C512671212400F98E17 /* ApiGraphSetupTutorialVC.swift in Sources */,
 				02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */,
 				021D7624275A9EE900F54054 /* GJs+RefreshRate.swift in Sources */,
 				0274105826207D2100D82F6D /* PackTVC+Instagram.swift in Sources */,
