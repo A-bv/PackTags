@@ -54,7 +54,9 @@ extension ThemeTableViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "ShowAnalytics" {
-            return shouldNavigateToFBLoginScreen()
+            let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
+            if !isCorrectSetup { showFBLoginScreenFromThemeTVC() }
+            return isCorrectSetup
         } else {
             return true
         }
@@ -62,12 +64,10 @@ extension ThemeTableViewController {
 }
 
 extension ThemeTableViewController {
-    private func shouldNavigateToFBLoginScreen () -> Bool {
-            if !shouldShowFBLogin() {
-                return true
-            } else {
-                showFBLoginScreen()
-                return false
-            }
+    private func showFBLoginScreenFromThemeTVC () {
+        let viewController = FBLoginVC()
+        viewController.modalPresentationStyle = .overFullScreen
+        viewController.modalTransitionStyle = .coverVertical
+        self.present(viewController, animated: true, completion: nil)
     }
 }

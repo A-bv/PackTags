@@ -50,13 +50,12 @@ extension ThemeVC{
         let smartGen = UIAction(
             title: Strings.smartHashtags,
             image: UIImage(systemName: "chart.bar.doc.horizontal.fill")
-        ) { [weak vc = self] action in
-            
-            if vc?.shouldShowFBLogin() == true {
-                vc?.showFBLoginScreen()
-                return
+        ) { [weak self] action in
+            let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
+            if isCorrectSetup {
+                self?.showSmartGScreen()
             } else {
-                vc?.showSmartGScreen(presentingController: vc)
+                self?.showFBLoginScreenFromThemeVC()
             }
         }
         
@@ -107,11 +106,18 @@ extension ThemeVC{
         return optionsBarItem
     }
     
-    private func showSmartGScreen(presentingController: UIViewController?) {
+    private func showSmartGScreen() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let dataController = appDelegate.dataController
         let hostingController = UIHostingController(rootView: SmartGViewContainer(dataController: dataController))
         hostingController.modalPresentationStyle = .overFullScreen
-        presentingController?.present(hostingController, animated: true, completion: nil)
+        self.present(hostingController, animated: true, completion: nil)
+    }
+    
+    private func showFBLoginScreenFromThemeVC() {
+        let viewController = FBLoginVC()
+        viewController.modalPresentationStyle = .overFullScreen
+        viewController.modalTransitionStyle = .coverVertical
+        self.present(viewController, animated: true, completion: nil)
     }
 }

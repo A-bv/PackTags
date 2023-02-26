@@ -13,7 +13,7 @@ import SwiftUI
 class AnalyticsViewController: UIViewController {
     
     deinit {
-        print("deinit")
+        print("deinit AnalyticsVC")
     }
 
     override func viewDidLoad() {

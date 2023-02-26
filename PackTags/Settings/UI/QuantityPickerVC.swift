@@ -16,7 +16,7 @@ var numTagsInPack: Int = {
 class QuantityPickerVC: UIViewController {
     
     deinit {
-        print("deinit")
+        print("deinit QuantityPickerVC")
     }
     
     private enum Constants {

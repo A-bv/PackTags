@@ -11,7 +11,7 @@ import UIKit
 class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
     deinit {
-        print("deinit")
+        print("deinit ThemeVC")
     }
     
     //MARK: - Properties

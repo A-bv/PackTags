@@ -39,7 +39,7 @@ struct SettingsOption {
 
 class SettingsVC: UIViewController {
     deinit {
-        print("deinit")
+        print("deinit SettingsVC")
     }
     
     private enum Strings {

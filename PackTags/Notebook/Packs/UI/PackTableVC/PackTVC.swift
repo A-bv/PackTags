@@ -11,7 +11,7 @@ import UIKit
 class PackTableVC: UITableViewController {
     
     deinit {
-        print("deinit")
+        print("deinit PackTableVC")
     }
     
     @IBOutlet weak var composeButton: UIBarButtonItem!
