@@ -328,7 +328,7 @@
 		021D7621275A9BBB00F54054 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				02491C5A26779AE400F98E17 /* FBLogin */,
+				02491C5A26779AE400F98E17 /* Setup */,
 				021D7622275A9E6200F54054 /* Models */,
 				0231AB1326849F4A007F4FC8 /* Import */,
 				02E4B9D325CC97C700949213 /* Analytics */,
@@ -420,14 +420,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		02491C5A26779AE400F98E17 /* FBLogin */ = {
+		02491C5A26779AE400F98E17 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
-				02AB39A927B894D600335131 /* FBLoginSetupTutorial */,
-				02CD2DA62990795A00EDE077 /* FBLoginScreen */,
+				02AB39A927B894D600335131 /* Tutorial */,
+				02CD2DA62990795A00EDE077 /* FBLogin */,
 				02AD94A829A5936500D893E5 /* SetConstraints.swift */,
 			);
-			path = FBLogin;
+			path = Setup;
 			sourceTree = "<group>";
 		};
 		0273D1532655B9260043011C /* Tools */ = {
@@ -546,13 +546,13 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
-		02AB39A927B894D600335131 /* FBLoginSetupTutorial */ = {
+		02AB39A927B894D600335131 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
 				02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */,
 				02491C5826779A4900F98E17 /* ProIGSetupVC.swift */,
 			);
-			path = FBLoginSetupTutorial;
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		02AEA5E725B9D2B00063076F /* PackTableVC */ = {
@@ -611,14 +611,14 @@
 			path = ThemeVC;
 			sourceTree = "<group>";
 		};
-		02CD2DA62990795A00EDE077 /* FBLoginScreen */ = {
+		02CD2DA62990795A00EDE077 /* FBLogin */ = {
 			isa = PBXGroup;
 			children = (
 				02AD94B029AC078E00D893E5 /* FBLoginModel.swift */,
 				02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */,
 				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
 			);
-			path = FBLoginScreen;
+			path = FBLogin;
 			sourceTree = "<group>";
 		};
 		02CD2DAB2991C1C000EDE077 /* Network */ = {

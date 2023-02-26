@@ -9,13 +9,6 @@
 import FBSDKLoginKit
 
 final class FBLoginViewModel {
-    init() {
-        
-    }
-}
-
-// MARK: - Logic
-extension FBLoginViewModel {
     func getToken() -> FBToken {
         let token = FBToken()
         saveCorrectStatus(token: token)
