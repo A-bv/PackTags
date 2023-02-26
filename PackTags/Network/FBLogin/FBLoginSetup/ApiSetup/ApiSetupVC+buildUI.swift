@@ -44,7 +44,10 @@ extension ApiSetupVC  {
             btn.setTitleColor(customPurple, for: .normal)
             btn.setTitle(Strings.continueString, for: .normal)
             btn.translatesAutoresizingMaskIntoConstraints = false
-            btn.addTarget(self, action: #selector(continueFunc(_:)), for: .touchUpInside)
+            btn.addTarget(
+                self,
+                action: #selector(continueFunc(_:)),
+                for: .touchUpInside)
             return btn
         }()
         

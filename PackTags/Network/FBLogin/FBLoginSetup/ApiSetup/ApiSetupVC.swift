@@ -96,11 +96,8 @@ extension ApiSetupVC  {
     }
     
     @objc func continueFunc (_ sender: Any) {
-        if UserDefaults.standard.object(
-            forKey: "continued_ApiSetupVC") == nil {
-            UserDefaults.standard.set(
-                "true",
-                forKey: "continued_ApiSetupVC")
+        if UserDefaults.standard.object(forKey: "continued_ApiSetupVC") == nil {
+            UserDefaults.standard.set("true",  forKey: "continued_ApiSetupVC")
         }
         
         self.dismiss(animated: true, completion: nil)
