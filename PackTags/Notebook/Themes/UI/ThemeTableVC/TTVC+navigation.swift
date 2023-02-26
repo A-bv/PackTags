@@ -65,7 +65,8 @@ extension ThemeTableViewController {
 
 extension ThemeTableViewController {
     private func showFBLoginScreenFromThemeTVC () {
-        let viewController = FBLoginVC()
+        let viewModel = FBLoginViewModel()
+        let viewController = FBLoginVC(viewModel: viewModel)
         viewController.modalPresentationStyle = .overFullScreen
         viewController.modalTransitionStyle = .coverVertical
         self.present(viewController, animated: true, completion: nil)

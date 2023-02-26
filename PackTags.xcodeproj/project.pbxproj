@@ -77,6 +77,7 @@
 		02AD94A929A5936500D893E5 /* SetConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* SetConstraints.swift */; };
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
+		02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */; };
 		02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AEA58625B630B10063076F /* PackTVC+NavBar.swift */; };
 		02B02AC52594238100586352 /* TVC+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B02AC42594238100586352 /* TVC+Search.swift */; };
 		02B05C1627F8BFAF000026B8 /* TapTV+AddGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */; };
@@ -211,6 +212,7 @@
 		02AD94A829A5936500D893E5 /* SetConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetConstraints.swift; sourceTree = "<group>"; };
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
+		02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
 		02AEA58625B630B10063076F /* PackTVC+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+NavBar.swift"; sourceTree = "<group>"; };
 		02B02AC42594238100586352 /* TVC+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Search.swift"; sourceTree = "<group>"; };
 		02B05C1527F8BFAF000026B8 /* TapTV+AddGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapTV+AddGesture.swift"; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				02AD94B029AC078E00D893E5 /* FBLoginModel.swift */,
+				02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */,
 				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
 			);
 			path = FBLoginScreen;
@@ -1045,6 +1048,7 @@
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				0226F197259AB231006E086C /* TapTV+Selection.swift in Sources */,
 				0274DB3026848948005F9C9C /* DocumentDirectory.swift in Sources */,
+				02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */,
 				02FD6CB026D8006400AB16E4 /* RateAndReview.swift in Sources */,
 				0213D9F3275D2F08002A54ED /* GJs+SmartG.swift in Sources */,
 				021AFD5C278A1BE40008735E /* Alerts.swift in Sources */,

@@ -126,7 +126,8 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemOrange
                         ) { [weak self] in
-                            let vwc = FBLoginVC()
+                            let viewModel = FBLoginViewModel()
+                            let vwc = FBLoginVC(viewModel: viewModel)
                             self?.showPage(vc: vwc)
                         })]))
         

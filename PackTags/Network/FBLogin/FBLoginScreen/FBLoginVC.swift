@@ -11,10 +11,19 @@ import UIKit
 import FBSDKLoginKit
 
 // MARK: - Class
-class FBLoginVC: UIViewController, LoginButtonDelegate {
+class FBLoginVC: UIViewController {
     
     deinit {
         print("deinit FBLoginVC")
+    }
+    
+    init(viewModel: FBLoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private enum Strings {
@@ -23,7 +32,9 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
         static let setupTitle = "Setup".localized()
     }
     
-    let loginButton: FBLoginButton = {
+    private let viewModel: FBLoginViewModel
+    
+    private let loginButton: FBLoginButton = {
         let button = FBLoginButton()
         button.permissions = [
             "instagram_basic",
@@ -43,6 +54,23 @@ class FBLoginVC: UIViewController, LoginButtonDelegate {
     }
 }
 
+extension FBLoginVC {
+    private func apiCallGetIgBusinessId() {
+        let token = viewModel.getToken()
+        if token.isValid {
+            viewModel.apiCallGetIgBusinessId(Completion: { [weak self] isCorrectSetup in
+                if isCorrectSetup {
+                    self?.showSuccessfulSetupAlert()
+                } else {
+                    Alerts.setupTroubleShootingAlert(presenterVc: self)
+                }
+            })
+        } else {
+            Alerts.setupTroubleShootingAlert(presenterVc: self)
+        }
+    }
+}
+
 // Delegates
 extension FBLoginVC {
     // triggered when just after login
@@ -51,116 +79,17 @@ extension FBLoginVC {
         didCompleteWith result: LoginManagerLoginResult?,
         error: Error?
     ) {
-        if let error { print("Fb login error:", error) }
-        savePushedFBLoginButtonOnce()
+        if let error {
+            print("Fb login error:", error)
+        }
+        viewModel.savePushedFBLoginButtonOnce()
         apiCallGetIgBusinessId()
     }
 
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
 }
 
-// MARK: - Logic
-extension FBLoginVC {
-    private func apiCallGetIgBusinessId() {
-        
-        let token = FBToken()
-        saveCorrectStatus(token: token)
-        saveFBToken(token: token)
-        
-        if token.isValid {
-            verifySetupFbPages(Completion: {[weak self] _ in
-                self?.verifySetupIgBAndGetIgBId(Completion: {(id) in
-                    self?.saveInstagramBusinessAccountID(id: id)
-                    self?.showSuccessfulSetupAlert()
-                })
-            })
-        } else {
-            Alerts.setupTroubleShootingAlert(presenterVc: self)
-        }
-    }
-}
-
-// MARK: - Logic
-extension FBLoginVC {
-    private func verifySetupFbPages (Completion block: @escaping (([String]) -> ())) {
-        // 0. Fb acc gives a token
-        // Request 1. Get facebook business page of the facebook account
-        let fbPageRequest = GraphRequest(graphPath: "/me/accounts", httpMethod: .get)
-        
-        fbPageRequest.start(
-            completionHandler: { connection, result, error in
-            
-            if let error = error {
-                print("fbPageRequest error :", error)
-                return
-            }
-            
-            guard let response1 = result as? NSDictionary else { return } //
-            //id page fb packtags.app 107298991584829
-            // ----- CAUTION ----- only works with one associated page (takes the first in array)
-            guard let pages = (response1.value(forKeyPath: "data.name") as? [String]) else { return }
-            
-            if pages.isEmpty {
-                // Exit if no IGPro or wrong linked FB page(s)
-                Alerts.setupTroubleShootingAlert(presenterVc: self)
-                return
-            }
-            // ----- CAUTION -----
-            
-            block(pages)
-        })
-    }
-    
-    private func verifySetupIgBAndGetIgBId (Completion block: @escaping ((String) -> ())){
-        
-        // Required: Fb acc + Fb business page + IG Business or creator
-        let igBRequest = GraphRequest(
-            graphPath: "/me/accounts",
-            parameters: ["fields":"instagram_business_account"],
-            httpMethod: .get)
-        
-        igBRequest.start(
-            completionHandler: { connection, result, error in
-                
-                if let error = error {
-                    print("igBRequest error :", error)
-                    return
-                }
-                
-                guard let response2 = result as? NSDictionary else { return } //
-                guard let igBIds = response2.value(forKeyPath: "data.instagram_business_account.id") as? [String]
-                else {
-                    print("No business account linked or wrong pages selected")
-                    Alerts.setupTroubleShootingAlert(presenterVc: self)
-                    return
-                }
-                
-                if igBIds.count >= 1 {
-                    block(igBIds[0])
-                } else {
-                    return
-                }
-            })
-    }
-}
-
-// MARK: - Logic
-extension FBLoginVC {
-    func saveFBToken (token: FBToken) {
-        let token = token.tokenString
-        UserDefaults.standard.set( token, forKey: "fbToken")
-    }
-    
-    func saveCorrectStatus (token: FBToken) {
-        if token.isValid {
-            UserDefaults.standard.set(true, forKey: "isCorrectSetup")
-        } else {
-            UserDefaults.standard.set(false, forKey: "isCorrectSetup")
-        }
-    }
-}
-
-// MARK: - Logic
+// MARK: - UI
 extension FBLoginVC {
     private func showApiGraphSetupVCIfneeded() {
         if UserDefaults.standard.object(forKey: "continuedApiGraphSetupOnce") == nil {
@@ -180,21 +109,8 @@ extension FBLoginVC {
     }
 }
 
-// MARK: - Logic
-extension FBLoginVC {
-    private func savePushedFBLoginButtonOnce() {
-        if UserDefaults.standard.object(forKey: "pressedFBLoginButton") == nil {
-            UserDefaults.standard.set(true, forKey: "pressedFBLoginButton")
-        }
-    }
-    
-    private func saveInstagramBusinessAccountID(id: String) {
-        UserDefaults.standard.set(id, forKey: "IgBId")
-    }
-}
-
 // MARK: - UI
-extension FBLoginVC {
+extension FBLoginVC: LoginButtonDelegate {
     private func setupFBLoginVC () {
         self.view.applyBlur()
         self.placeTopRightButton(arrowButton: false)

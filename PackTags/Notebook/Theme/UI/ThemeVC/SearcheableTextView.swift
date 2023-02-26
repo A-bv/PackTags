@@ -31,8 +31,15 @@ extension UITextView {
 
 //Highlight searched words
 extension NSAttributedString {
-    convenience init(base: String, keyWords: [String], foregroundColor: UIColor, font: UIFont, highlightForeground: UIColor, highlighBackground: UIColor, alpha: CGFloat)
-    {
+    convenience init(
+        base: String,
+        keyWords: [String],
+        foregroundColor: UIColor,
+        font: UIFont,
+        highlightForeground: UIColor,
+        highlighBackground: UIColor,
+        alpha: CGFloat
+    ) {
         let baseAttributed = NSMutableAttributedString(string: base, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: foregroundColor])
         
         let range = NSRange(location: 0, length: base.utf16.count)
