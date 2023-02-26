@@ -10,22 +10,6 @@
 import UIKit
 import FBSDKLoginKit
 
-// MARK: - Model
-struct FBToken {
-    let tokenString: String?
-    let isValid: Bool
-    
-    init() {
-        if let token = AccessToken.current, !token.isExpired {
-            tokenString = token.tokenString
-            isValid = true
-        } else {
-            tokenString = nil
-            isValid = false
-        }
-    }
-}
-
 // MARK: - Class
 class FBLoginVC: UIViewController, LoginButtonDelegate {
     
