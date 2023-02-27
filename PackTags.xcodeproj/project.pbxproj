@@ -318,8 +318,8 @@
 			isa = PBXGroup;
 			children = (
 				02F89B2829743EF9008F363D /* SmartGViewContainer.swift */,
-				0229864127BD9CBA0048F9E9 /* SmartGModel.swift */,
-				02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */,
+				02AD94B429AC2A0A00D893E5 /* Model */,
+				02AD94B529AC2A1700D893E5 /* ViewModel */,
 				02F89B25297427AE008F363D /* UI */,
 			);
 			path = SmartGSUI;
@@ -553,6 +553,22 @@
 				02491C5826779A4900F98E17 /* ProIGSetupVC.swift */,
 			);
 			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		02AD94B429AC2A0A00D893E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0229864127BD9CBA0048F9E9 /* SmartGModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02AD94B529AC2A1700D893E5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		02AEA5E725B9D2B00063076F /* PackTableVC */ = {

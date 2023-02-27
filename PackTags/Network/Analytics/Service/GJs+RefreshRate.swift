@@ -12,6 +12,7 @@ extension GetJson {
     private enum Constants {
         static let timeForRefresh = 5
     }
+    
     class func canRefresh () -> Bool {
         let defaults = UserDefaults.standard
         guard let lastRefreshTime = defaults.object(forKey: "LastStatsRefresh") else { return true }

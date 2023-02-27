@@ -19,22 +19,31 @@ extension ThemeVC {
 
 //MARK: - UIImagePickerControllerDelegate
 extension ThemeVC {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any])
+    private enum Constants {
+        static let imageSize600 = 600
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any])
     {
-        guard let selectedImage = info[UIImagePickerController.InfoKey(
-                rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage
+        let image = UIImagePickerController.InfoKey.originalImage.rawValue
+        let index = UIImagePickerController.InfoKey(rawValue: image)
+        
+        guard let selectedImage = info[index] as? UIImage
         else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
         // Regular action
         if recognizeText == false {
-            
             DispatchQueue.main.async { [weak self] in
                 self?.themeImageView = selectedImage.upOrientationImage()
             
                 //Downsampling
-                self?.themeImageView  = selectedImage.resized(to: CGSize(width: 600,height: 600))
+                let imageSize = CGSize(
+                    width: Constants.imageSize600,
+                    height: Constants.imageSize600)
+                self?.themeImageView  = selectedImage.resized(to: imageSize)
             }
             
             

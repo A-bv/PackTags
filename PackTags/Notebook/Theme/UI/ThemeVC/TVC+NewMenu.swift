@@ -105,7 +105,9 @@ extension ThemeVC{
         
         return optionsBarItem
     }
-    
+}
+
+extension ThemeVC {
     private func showSmartGScreen() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let dataController = appDelegate.dataController

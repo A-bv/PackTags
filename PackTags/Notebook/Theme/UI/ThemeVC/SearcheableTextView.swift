@@ -40,18 +40,33 @@ extension NSAttributedString {
         highlighBackground: UIColor,
         alpha: CGFloat
     ) {
-        let baseAttributed = NSMutableAttributedString(string: base, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: foregroundColor])
+        let attributes = [
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: foregroundColor
+        ]
+        let baseAttributed = NSMutableAttributedString(
+            string: base,
+            attributes: attributes)
         
         let range = NSRange(location: 0, length: base.utf16.count)
+        
         for word in keyWords {
             guard let regex = try? NSRegularExpression(pattern: word, options: .caseInsensitive) else {
                 continue
             }
             
-            regex.matches(in: base, options: .withTransparentBounds, range: range).forEach { baseAttributed.addAttributes(
-                [NSAttributedString.Key.backgroundColor: highlighBackground.withAlphaComponent(alpha),
-                 NSAttributedString.Key.foregroundColor: highlightForeground],
-                range: $0.range) }
+            let attributes = [
+                NSAttributedString.Key.backgroundColor: highlighBackground.withAlphaComponent(alpha),
+                NSAttributedString.Key.foregroundColor: highlightForeground
+            ]
+            
+            regex.matches(
+                in: base,
+                options: .withTransparentBounds,
+                range: range
+            ).forEach {
+                baseAttributed.addAttributes(attributes, range: $0.range)
+            }
         }
         self.init(attributedString: baseAttributed)
     }
@@ -90,9 +105,7 @@ extension UITextView {
     }
     
     func setCursorPosition (value:Int) {
-        if let newPosition = self.position(from: self.beginningOfDocument, offset: value)
-        {
-            //set cursor position
+        if let newPosition = self.position(from: self.beginningOfDocument, offset: value) {
             self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
         }
     }
@@ -105,7 +118,11 @@ extension UITextView {
         var searchedWords = [(Int,Int)]()
         if let mystring = self.text {
             var searchPosition = mystring.startIndex
-            while let range = mystring.range(of: word, options: .caseInsensitive , range: searchPosition..<mystring.endIndex) {
+            while let range = mystring.range(
+                of: word,
+                options: .caseInsensitive,
+                range: searchPosition..<mystring.endIndex
+            ) {
                 let startPos = mystring.distance(from: mystring.startIndex, to: range.lowerBound)
                 let endPos = mystring.distance(from: mystring.startIndex, to: range.upperBound)
                 searchedWords.append((startPos,endPos))
@@ -116,15 +133,11 @@ extension UITextView {
     }
     
     func getFirstHighlightedWordPosition (word: String) -> Int {
-        if let mystring = self.text {
-            if let range = mystring.range(of: word, options: .caseInsensitive) {
-                //let startPos = mystring.distance(from: mystring.startIndex, to: range.lowerBound)
-                let endPos = mystring.distance(from: mystring.startIndex, to: range.upperBound)
-                return endPos
-            }
+        if let mystring = self.text,
+           let range = mystring.range(of: word, options: .caseInsensitive) {
+            return mystring.distance(from: mystring.startIndex, to: range.upperBound)
         } else {
             return 0
         }
-    return 0
     }
 }
