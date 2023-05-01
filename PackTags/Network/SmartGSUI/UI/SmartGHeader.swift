@@ -13,11 +13,17 @@ private enum Strings {
     static let hashtagsPageSearch = "Hashtag page search".localized()
 }
 
+private enum Constants {
+    static let headerHorizontalEdgePadding: CGFloat = 20
+    static let headerInterTitlesPadding: CGFloat = 5
+    static let headerBottomPadding: CGFloat = 15
+}
+
 struct SmartGHeader: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: Constants.headerInterTitlesPadding) {
                 Text(Strings.smartHashtags)
                     .font(.largeTitle)
                     .foregroundColor(Color(UIColor.label))
@@ -37,6 +43,7 @@ struct SmartGHeader: View {
                     .foregroundColor(Color(UIColor.label))
             }
         }
-        .padding()
+        .padding(.horizontal, Constants.headerHorizontalEdgePadding)
+        .padding(.bottom, Constants.headerBottomPadding)
     }
 }
