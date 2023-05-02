@@ -47,10 +47,3 @@ struct SmartGSavedTagsCell: View {
         return String(days) + " " + Strings.days + " " + Strings.left
     }
 }
-
-struct SmartGSavedTagsCell_Previews: PreviewProvider {
-    static var previews: some View {
-        SmartGSavedTagsCell(title: "#Exemple", date: Date())
-    }
-}
-

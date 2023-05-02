@@ -38,7 +38,7 @@ extension SmartGView {
             
             Button {
                 showingAlert = true
-                UIPasteboard.general.string = viewModel.topHashtags.joined(separator: " ")
+                UIPasteboard.general.string = smartGViewModel.topHashtags.joined(separator: " ")
                 
             } label: {
                 Image(systemName: "paperplane.circle.fill")
@@ -53,7 +53,7 @@ extension SmartGView {
             
             Button {
                 let searchedHashtag = self.hashtagEntry.filter { $0 != "#" }
-                viewModel.fetch(hashtag: searchedHashtag)
+                smartGViewModel.fetch(hashtag: searchedHashtag)
                 let entry = self.hashtagEntry
                 updateHashtag(entry: entry)
             } label: {

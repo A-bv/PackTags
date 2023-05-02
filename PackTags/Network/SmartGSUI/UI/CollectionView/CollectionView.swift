@@ -30,6 +30,12 @@ struct CollectionView: View {
 
 extension SmartGView {
     var collection: some View {
-        CollectionView(viewModel: self.viewModel)
+        CollectionView(viewModel: self.smartGViewModel)
+    }
+}
+
+struct CollectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        CollectionView(viewModel: SmartGViewModel())
     }
 }

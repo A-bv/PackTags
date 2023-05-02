@@ -6,7 +6,7 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 class SmartGViewModel: ObservableObject {
     @Published var dataMedias: [DataMedia] = []

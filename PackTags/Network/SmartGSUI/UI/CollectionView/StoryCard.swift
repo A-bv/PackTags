@@ -12,8 +12,6 @@ private enum Strings {
     static let loading3Dots = "Loading...".localized()
 }
 
-
-
 struct StoryCard: View {
     let url: URL
     let comments: String
@@ -26,16 +24,16 @@ struct StoryCard: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             //URLImage(urlString: url)
-                asyncImage()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: cardWidth, height: cardHeight)
-                    .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius))
-                
-                StoryCardLabel(
-                    comments: comments,
-                    likes: likes,
-                    hashtagsCount: hashtagsCount)
-                .padding()
+            asyncImage()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: cardWidth, height: cardHeight)
+                .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius))
+            
+            StoryCardLabel(
+                comments: comments,
+                likes: likes,
+                hashtagsCount: hashtagsCount)
+            .padding()
         }
     }
     
@@ -43,21 +41,6 @@ struct StoryCard: View {
         return AsyncImage(
             url: url,
             placeholder: { Text(Strings.loading3Dots) },
-            image: { Image(uiImage: $0).resizable() }
-        )
+            image: { Image(uiImage: $0).resizable() })
     }
-    
-    /*
-    private func cardLabels() -> some View {
-        return VStack {
-            HStack {
-                Spacer()
-                StoryCardLabel(
-                    comments: comments,
-                    likes: likes,
-                    hashtagsCount: hashtagsCount
-                )
-            }
-        }
-    }*/
 }

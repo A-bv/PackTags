@@ -24,11 +24,13 @@ extension CollectionView {
     }
 
     private func makeStoryCard(from media: DataMedia, index: Int) -> some View {
-        guard let stringUrl = media.media_url,
-              let url = URL(string: stringUrl),
-              let likeCount = media.like_count,
-              let commentsCount = media.comments_count,
-              !viewModel.computedData.isEmpty else {
+        guard
+            let stringUrl = media.media_url,
+            let url = URL(string: stringUrl),
+            let likeCount = media.like_count,
+            let commentsCount = media.comments_count,
+            !viewModel.computedData.isEmpty
+        else {
             return AnyView(EmptyView())
         }
 
