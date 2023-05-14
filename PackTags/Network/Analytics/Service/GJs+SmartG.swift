@@ -1,51 +1,76 @@
-//
-//  GJss.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 05/12/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-//Functions for SmartG
-
 import Foundation
 
 extension GetJson {
-    class func findHashtagUrl (searchedHashtag:String, completion block: @escaping((String) -> ())) {
-        let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(searchedHashtag)&access_token=\(fbToken)"
-        guard let e_url = url.encodeUrl() else { return }
+    class func igHashtagSearch(searchedHashtag: String, completion block: @escaping((Any) -> ())) {
+        let getJson = GetJson()
+        getJson.findHashtagUrl(searchedHashtag: searchedHashtag) { (url) in
+            GetJson.cURL2(of: Media.self, from: url) { (result) in
+                block(result)
+            }
+        }
+    }
+}
 
-        GenericJSONParser.download(fromURLString: e_url) { (result) in
+extension GetJson {
+    private func constructHashtagSearchURL(searchedHashtag: String) -> String? {
+        let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(searchedHashtag)&access_token=\(fbToken)"
+        return url.encodeUrl()
+    }
+
+    private func extractHashtagID(fromJSONString JSONString: String) -> String? {
+        return JSONString.filter { "0"..."9" ~= $0 }
+    }
+
+    private func constructHashtagMediaSearchURL(hashtagID: String) -> String? {
+        let limit = "25" //max value
+        let m_type = "top_media" //"recent_media"
+
+        let base = "https://graph.facebook.com"
+
+        let fieldsArray = [
+            "caption", "comments_count", "like_count", "media_type", "media_url", "timestamp", "id", "media_product_type"]
+        let fields = "fields=" + fieldsArray.joined(separator: ",")
+        let options = "\(m_type)?\(fields)&user_id=\(igBId)&limit=\(limit)"
+
+        let htgUrl = "\(base)/\(apiGph_version)/\(hashtagID)/\(options)&access_token=\(fbToken)"
+        return htgUrl.encodeUrl()
+    }
+
+    private func extractMediaSearchURL(
+        fromJSONString jsonString: String
+    ) -> String? {
+        guard let hashtagID = extractHashtagID(fromJSONString: jsonString) else {
+            print("Unable to extract hashtag ID from API response.")
+            return nil
+        }
+        guard let mediaSearchURL = constructHashtagMediaSearchURL(hashtagID: hashtagID) else {
+            print("Unable to construct media search URL from hashtag ID.")
+            return nil
+        }
+        return mediaSearchURL
+    }
+
+    private func findHashtagUrl(
+        searchedHashtag: String,
+        completion block: @escaping((String) -> ())
+    ) {
+        guard let searchURL = constructHashtagSearchURL(searchedHashtag: searchedHashtag) else { return }
+        
+        GenericJSONParser.download(fromURLString: searchURL) { [weak self] (result) in
             switch result {
             case .success(let data):
-                if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-                    let hashtag_id = JSONString.filter { "0"..."9" ~= $0 }
-                    let limit = "25" //max value
-                    let m_type = "top_media" //recent_media
-                    
-                    let htg_url = "https://graph.facebook.com/\(apiGph_version)/\(hashtag_id)/\(m_type)?fields=caption,comments_count,like_count,media_type,media_url,timestamp,id,media_product_type&user_id=\(igBId)&limit=\(limit)&access_token=\(fbToken)"
-                    
-                    guard let e_htg_url = htg_url.encodeUrl()
-                    else {
-                        return
-                    }
-                    block(e_htg_url)
-                 }
+                guard
+                    let jsonString = String(data: data, encoding: .utf8),
+                    let mediaSearchURL = self?.extractMediaSearchURL(
+                        fromJSONString: jsonString)
+                else {
+                    print("download json")
+                    return
+                }
+                block(mediaSearchURL)
             case .failure(let error):
                 print("download json:", error)
             }
         }
-    }
-    
-    class func igHashtagSearch (
-        searchedHashtag: String,
-        completion block: @escaping((Any) -> ())
-    ) {
-        findHashtagUrl(
-            searchedHashtag: searchedHashtag,
-            completion: { (url) in
-            GetJson.cURL2(of: Media.self, from: url, Completion: { (result) in
-                block(result)
-            })
-        })
     }
 }

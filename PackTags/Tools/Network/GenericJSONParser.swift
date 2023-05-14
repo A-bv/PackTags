@@ -9,7 +9,6 @@
 import UIKit
 
 class GenericJSONParser {
-    
     typealias result<T> = (Result<T, Error>) -> Void
     
     class func download(
@@ -49,4 +48,13 @@ class GenericJSONParser {
         }
         return nil
     }
+    
+    /*    class func ParseJs<T: Decodable>(of type: T.Type, data: Data) -> Result<[T], Error> {
+     do {
+         let decoded = try JSONDecoder().decode([T].self, from: data)
+         return .success(decoded)
+     } catch let error {
+         return .failure(error)
+     }
+ }*/
 }

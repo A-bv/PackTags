@@ -19,7 +19,7 @@ extension GetJson {
             
             DocumentDirectory.isOkToSaveJsonDataInDir = true //local save
             
-            GetJson.cURL2(of: Profile.self, from: encodedUrl, Completion: {(Json) in
+            GetJson.cURL2(of: Profile.self, from: encodedUrl, completion: {(Json) in
                 block(Json as! Profile)
             })
         }
@@ -36,7 +36,7 @@ extension GetJson {
           
             group.enter()
             
-            GetJson.cURL2(of: Profile.self, from: encodedUrl, Completion: {(Json) in
+            GetJson.cURL2(of: Profile.self, from: encodedUrl, completion: {(Json) in
                 
                 guard let js = (Json as? Profile) else {return}
                 if js.username != nil { //means no error returned
