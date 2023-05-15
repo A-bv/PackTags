@@ -2,8 +2,7 @@ import Foundation
 
 extension GetJson {
     class func igHashtagSearch(searchedHashtag: String, completion block: @escaping((Any) -> ())) {
-        let getJson = GetJson()
-        getJson.findHashtagUrl(searchedHashtag: searchedHashtag) { (url) in
+        GetJson.findHashtagUrl(searchedHashtag: searchedHashtag) { (url) in
             GetJson.cURL2(of: Media.self, from: url) { (result) in
                 block(result)
             }
@@ -12,16 +11,37 @@ extension GetJson {
 }
 
 extension GetJson {
-    private func constructHashtagSearchURL(searchedHashtag: String) -> String? {
+    private class func findHashtagUrl(
+        searchedHashtag: String,
+        completion block: @escaping((String) -> ())
+    ) {
+        guard let searchURL = constructHashtagSearchURL(searchedHashtag: searchedHashtag) else { return }
+        
+        GenericJSONParser.download(fromURLString: searchURL) { (result) in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    handleHashtagIdResponse(data: data) { result in
+                        switch result {
+                        case .success(let mediaSearchURL):
+                            block(mediaSearchURL)
+                        case .failure(let error):
+                            print("Error decoding JSON: \(error)")
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("download json:", error)
+            }
+        }
+    }
+    
+    private class func constructHashtagSearchURL(searchedHashtag: String) -> String? {
         let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(searchedHashtag)&access_token=\(fbToken)"
         return url.encodeUrl()
     }
 
-    private func extractHashtagID(fromJSONString JSONString: String) -> String? {
-        return JSONString.filter { "0"..."9" ~= $0 }
-    }
-
-    private func constructHashtagMediaSearchURL(hashtagID: String) -> String? {
+    private class func constructHashtagMediaSearchURL(hashtagID: String) -> String? {
         let limit = "25" //max value
         let m_type = "top_media" //"recent_media"
 
@@ -36,41 +56,17 @@ extension GetJson {
         return htgUrl.encodeUrl()
     }
 
-    private func extractMediaSearchURL(
-        fromJSONString jsonString: String
-    ) -> String? {
-        guard let hashtagID = extractHashtagID(fromJSONString: jsonString) else {
-            print("Unable to extract hashtag ID from API response.")
-            return nil
-        }
-        guard let mediaSearchURL = constructHashtagMediaSearchURL(hashtagID: hashtagID) else {
-            print("Unable to construct media search URL from hashtag ID.")
-            return nil
-        }
-        return mediaSearchURL
-    }
-
-    private func findHashtagUrl(
-        searchedHashtag: String,
-        completion block: @escaping((String) -> ())
-    ) {
-        guard let searchURL = constructHashtagSearchURL(searchedHashtag: searchedHashtag) else { return }
-        
-        GenericJSONParser.download(fromURLString: searchURL) { [weak self] (result) in
-            switch result {
-            case .success(let data):
-                guard
-                    let jsonString = String(data: data, encoding: .utf8),
-                    let mediaSearchURL = self?.extractMediaSearchURL(
-                        fromJSONString: jsonString)
-                else {
-                    print("download json")
-                    return
-                }
-                block(mediaSearchURL)
-            case .failure(let error):
-                print("download json:", error)
+    private class func handleHashtagIdResponse(data: Data, completion: @escaping (Result<String, Error>) -> Void) {
+        do {
+            let response = try JSONDecoder().decode(HashtagIdResponse.self, from: data)
+            guard let id = response.data.first?.id else { return }
+            guard let mediaSearchURL = constructHashtagMediaSearchURL(hashtagID: id) else {
+                print("Could not construct Hashtag Media Search URL")
+                return
             }
+            completion(.success(mediaSearchURL))
+        } catch {
+            completion(.failure(error))
         }
     }
 }

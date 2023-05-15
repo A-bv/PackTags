@@ -25,7 +25,9 @@ extension GetJson {
                 print(error)
             case .success(let data):
                 if T.self == Profile.self { saveJsonDataLocally(data: data) }
-                handleSuccessResult(of: T.self, data: data, completion: block)
+                DispatchQueue.main.async {
+                    handleSuccessResult(of: T.self, data: data, completion: block)
+                }
             }
         }
     }
@@ -44,20 +46,18 @@ extension GetJson {
         data: Data,
         completion block: @escaping (Any) -> ()
     ) {
-        DispatchQueue.main.async {
-            if T.Type.self == Profile.Type.self {
-                guard let decoded = GenericJSONParser.ParseJs(of: T.self, data: data ) else {return}
-                block(decoded)
-            } else if T.Type.self == Media.Type.self {
-                guard let decoded = GenericJSONParser.ParseJs(of: T.self, data: data ) else {return}
-                let D = decoded as? Media
-                guard let d  = D?.data else {return}
-                let array = d.compactMap { $0 }
-                block(array)
-            } else {
-                guard let decoded = GenericJSONParser.ParseJs2(of: T.self, data: data ) else {return}
-                block(decoded)
-            }
+        if T.Type.self == Profile.Type.self {
+            guard let decoded = GenericJSONParser.ParseJs(of: T.self, data: data) else {return}
+            block(decoded)
+        } else if T.Type.self == Media.Type.self {
+            guard let decoded = GenericJSONParser.ParseJs(of: T.self, data: data) else {return}
+            let D = decoded as? Media
+            guard let d  = D?.data else {return}
+            let array = d.compactMap { $0 }
+            block(array)
+        } else {
+            guard let decoded = GenericJSONParser.ParseJs2(of: T.self, data: data) else {return}
+            block(decoded)
         }
     }
 }
