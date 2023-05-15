@@ -21,7 +21,7 @@ struct TagView: View {
     
     var body: some View {
         Button(action: {
-            print(item)
+            UIPasteboard.general.string = item
         }) {
             Text("\(item)")
                 .background(

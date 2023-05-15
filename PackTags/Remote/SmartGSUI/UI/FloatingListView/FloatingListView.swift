@@ -68,7 +68,6 @@ struct FloatingListView: View {
         .padding(.horizontal, Constants.tagListPadding)
         .onAppear(perform: {
             tagYPos = generateTagYPos()
-            topTags = getRelatedTags() // viewModel.topHashtags
         })
     }
     
@@ -76,21 +75,6 @@ struct FloatingListView: View {
         let initial = -Constants.tagListHeight/2 + Constants.tagListPadding + Constants.tagCornerRadius
         let final = CGFloat(Constants.numberOfTags) * Constants.tagSpacing
         return Array(stride(from: initial, through: final, by: Constants.tagSpacing))
-    }
-    
-    func getRelatedTags() -> [String] {
-        [
-            "#chicago",
-            "#cat",
-            "#cake",
-            "#trees",
-            "#taco",
-            "#house",
-            "#plant",
-            "#pet",
-            "#bottle",
-            "#planet"
-        ]
     }
 }
 
