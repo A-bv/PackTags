@@ -13,7 +13,7 @@ let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
 let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
 extension AnalyticsSUIViewModel {
-    //1 local import (called when refreshing data without web)
+    // 1. local import (called when refreshing data without web)
     func getJsonFromDir () {
         DispatchQueue.main.async { [weak self] in
             guard let jsonData = DocumentDirectory.getJsonDataFromDir() else { return } //data
@@ -27,7 +27,7 @@ extension AnalyticsSUIViewModel {
         }
     }
     
-    //2 web import
+    // 2. Api import
     func getOnlineJsonAPIGraph () {
         GetJson.loadProfile(
             completion: { (profileJson) in

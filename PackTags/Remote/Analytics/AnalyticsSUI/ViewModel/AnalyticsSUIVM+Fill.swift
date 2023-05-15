@@ -31,7 +31,7 @@ extension AnalyticsSUIViewModel {
     }
     
     func fillGraphData () {
-        guard let rates = processedJson?.rates else {return}
+        guard let rates = processedJson?.rates else { return }
         let maxR = getMaxRate()
         
         if barChartData != nil {
@@ -52,8 +52,8 @@ extension AnalyticsSUIViewModel {
         }
     }
     
-    func getMaxRate () -> CGFloat {
-        let maxR = processedJson?.maxR == nil || processedJson?.maxR == 0 ? 1 : processedJson?.maxR
-        return maxR!
+    private func getMaxRate() -> CGFloat {
+        let max = processedJson?.maxR
+        return (max == nil || max == 0 ? 1 : max)!
     }
 }
