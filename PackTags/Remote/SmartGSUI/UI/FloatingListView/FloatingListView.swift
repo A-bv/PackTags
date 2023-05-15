@@ -24,11 +24,11 @@ private enum Constants {
 }
 
 struct FloatingListView: View {
+    @ObservedObject var viewModel: SmartGViewModel
     @State private var hashtagEntry: String = "Tag entry"
     @State private var childSizes = [CGSize](repeating: .zero, count: Constants.numberOfTags)
     @State private var tagYPos = [CGFloat](repeating: .zero, count: Constants.numberOfTags)
-
-    @State private var hashtagsL = getRelatedTags()
+    @State private var topTags: [String] = []
 
     var body: some View {
         ZStack{
@@ -41,32 +41,34 @@ struct FloatingListView: View {
     var rHashtagsList: some View {
         ZStack {
             Color.blue
-            
-            ForEach(Array(hashtagsL.enumerated()), id: \.element) { index, item in
-                let padding = Constants.tagPadding + Constants.tagListPadding
-                let maxX = Constants.screenWidth/2 - childSizes[index].width/2 - padding
-                let x = CGFloat.random(in: -maxX...maxX)
-                let y = tagYPos[index]
-                
-                let color = Constants.tagColor
-                
-                TagView(
-                    color: color,
-                    index: index,
-                    item: item,
-                    childSizes: $childSizes,
-                    hashtagsL: $hashtagsL,
-                    x: x,
-                    y: y,
-                    tagPadding: Constants.tagPadding,
-                    tagCornerRadius: Constants.tagCornerRadius)
-            }
+            // if !topTags.isEmpty {
+                ForEach(Array(viewModel.topHashtags.enumerated()), id: \.element) { index, item in
+                    let padding = Constants.tagPadding + Constants.tagListPadding
+                    let maxX = Constants.screenWidth/2 - childSizes[index].width/2 - padding
+                    let x = CGFloat.random(in: -maxX...maxX)
+                    let y = tagYPos[index]
+                    
+                    let color = Constants.tagColor
+
+                    TagView(
+                        color: color,
+                        index: index,
+                        item: item,
+                        childSizes: $childSizes,
+                        hashtagsL: $topTags,
+                        x: x,
+                        y: y,
+                        tagPadding: Constants.tagPadding,
+                        tagCornerRadius: Constants.tagCornerRadius)
+                }
+            // }
         }
         .frame(width: Constants.tagListWidth, height: Constants.tagListHeight)
         .cornerRadius(Constants.tagListCornerRadius)
         .padding(.horizontal, Constants.tagListPadding)
         .onAppear(perform: {
             tagYPos = generateTagYPos()
+            topTags = getRelatedTags() // viewModel.topHashtags
         })
     }
     
@@ -76,7 +78,7 @@ struct FloatingListView: View {
         return Array(stride(from: initial, through: final, by: Constants.tagSpacing))
     }
     
-    static func getRelatedTags() -> [String] {
+    func getRelatedTags() -> [String] {
         [
             "#chicago",
             "#cat",
@@ -94,6 +96,6 @@ struct FloatingListView: View {
 
 struct FloatingListView_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingListView()
+        FloatingListView(viewModel: SmartGViewModel())
     }
 }

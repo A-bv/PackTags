@@ -21,7 +21,7 @@ struct TagView: View {
     
     var body: some View {
         Button(action: {
-            hashtagsL = FloatingListView.getRelatedTags()
+            print(item)
         }) {
             Text("\(item)")
                 .background(

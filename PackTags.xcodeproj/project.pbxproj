@@ -803,11 +803,11 @@
 			children = (
 				02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */,
 				021D76162759A00D00F54054 /* SmartGView.swift */,
-				02FA307E2A004C2F006A48CC /* SmartGView+functions.swift */,
 				02FA30802A004C7D006A48CC /* SmartGView+interactionBar.swift */,
 				02F89B2A29743FE4008F363D /* SmartGHeader.swift */,
 				02FA30782A00442C006A48CC /* FloatingListView */,
 				02FA307B2A00459A006A48CC /* CollectionView */,
+				02FA30902A11DD0B006A48CC /* Other */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -824,8 +824,8 @@
 		02FA307B2A00459A006A48CC /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				02FA307C2A004804006A48CC /* CollectionView+functions.swift */,
 				02FA30762A004254006A48CC /* CollectionView.swift */,
+				02FA307C2A004804006A48CC /* CollectionView+functions.swift */,
 				02F89B262974306F008F363D /* StoryCard.swift */,
 				02FA30722A00405C006A48CC /* StoryCardLabel.swift */,
 			);
@@ -855,6 +855,14 @@
 				02491C52267147AF00F98E17 /* UIViewController+ModalViewItems.swift */,
 			);
 			path = StandardModalUI;
+			sourceTree = "<group>";
+		};
+		02FA30902A11DD0B006A48CC /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				02FA307E2A004C2F006A48CC /* SmartGView+functions.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		02FAE2AB260ADA9200324724 /* Settings */ = {

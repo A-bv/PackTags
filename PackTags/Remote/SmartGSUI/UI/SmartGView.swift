@@ -32,8 +32,8 @@ struct SmartGView: View {
             VStack{
                 SmartGHeader()
                 collection
-                FloatingListView()
                 interactionBar
+                FloatingListView(viewModel: self.smartGViewModel)
             }
         }
         .onAppear {

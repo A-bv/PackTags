@@ -9,7 +9,7 @@
 import SwiftUI
 
 private enum Constants {
-    static let interactionBarPadding: CGFloat = 20
+    static let interactionBarPadding: CGFloat = 0
 }
 
 extension SmartGView {
