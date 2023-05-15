@@ -24,7 +24,7 @@ extension GetJson {
             case .failure(let error):
                 print(error)
             case .success(let data):
-                if T.self == Profile.self { saveJsonDataLocally(data: data) }
+                if T.self == Profile.self { DocumentDirectory.saveJsonDataLocally(data: data) }
                 DispatchQueue.main.async {
                     handleSuccessResult(of: T.self, data: data, completion: block)
                 }
@@ -33,14 +33,7 @@ extension GetJson {
     }
 }
 
-extension GetJson {
-    class private func saveJsonDataLocally(data: Data) {
-        if DocumentDirectory.isOkToSaveJsonDataInDir {
-            DocumentDirectory.saveJsonDataToDir(jsonString: data)
-            DocumentDirectory.isOkToSaveJsonDataInDir = false
-        }
-    }
-    
+extension GetJson {    
     class private func handleSuccessResult<T: Decodable>(
         of type: T.Type,
         data: Data,

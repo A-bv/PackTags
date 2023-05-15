@@ -1,17 +1,26 @@
 //
-//  GetJson+Dir.swift
+//  DocumentDirectory.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 24/06/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
+//  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
 //
 
 import UIKit
 
-//MARK: - Save/read Json to document directory
 class DocumentDirectory: NSObject {
     static var isOkToSaveJsonDataInDir = false
     
+    class func saveJsonDataLocally(data: Data) {
+        if isOkToSaveJsonDataInDir {
+            saveJsonDataToDir(jsonString: data)
+            isOkToSaveJsonDataInDir = false
+        }
+    }
+}
+
+//MARK: - General Save/read Json functions into document directory
+extension DocumentDirectory {
     class func getJsonDataFromDir() -> Data? {
         let fm = FileManager.default
         if let pathName = fm.urls(
@@ -32,7 +41,7 @@ class DocumentDirectory: NSObject {
         }
     }
     
-    class func saveJsonDataToDir (jsonString: Data?) {
+    class func saveJsonDataToDir(jsonString: Data?) {
         
         //Saving time
         UserDefaults.standard.set(Date(), forKey: "LastStatsRefresh")
