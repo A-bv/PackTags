@@ -48,7 +48,7 @@
 		024347D827119E2100F86A64 /* TextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024347D727119E2100F86A64 /* TextRecognition.swift */; };
 		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
 		02491C512671212400F98E17 /* ApiGraphSetupTutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */; };
-		02491C53267147AF00F98E17 /* ModalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C52267147AF00F98E17 /* ModalUI.swift */; };
+		02491C53267147AF00F98E17 /* UIViewController+ModalViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C52267147AF00F98E17 /* UIViewController+ModalViewItems.swift */; };
 		02491C5926779A4900F98E17 /* ProIGSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* ProIGSetupVC.swift */; };
 		02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */; };
 		02491C692680883800F98E17 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C682680883700F98E17 /* AppColors.swift */; };
@@ -95,7 +95,7 @@
 		02D066BE296B4B5000536E3A /* AnOverviewSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BD296B4B5000536E3A /* AnOverviewSectionModel.swift */; };
 		02D066C0296B606F00536E3A /* RoundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BF296B606F00536E3A /* RoundShape.swift */; };
 		02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */; };
-		02D1A119255387590045E56F /* UniqueTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D1A118255387590045E56F /* UniqueTags.swift */; };
+		02D1A119255387590045E56F /* Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D1A118255387590045E56F /* Unique.swift */; };
 		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
@@ -191,7 +191,7 @@
 		024347D727119E2100F86A64 /* TextRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognition.swift; sourceTree = "<group>"; };
 		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiGraphSetupTutorialVC.swift; sourceTree = "<group>"; };
-		02491C52267147AF00F98E17 /* ModalUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalUI.swift; sourceTree = "<group>"; };
+		02491C52267147AF00F98E17 /* UIViewController+ModalViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ModalViewItems.swift"; sourceTree = "<group>"; };
 		02491C5826779A4900F98E17 /* ProIGSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProIGSetupVC.swift; sourceTree = "<group>"; };
 		02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSwiftUI.swift; sourceTree = "<group>"; };
 		02491C682680883700F98E17 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		02D066BD296B4B5000536E3A /* AnOverviewSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnOverviewSectionModel.swift; sourceTree = "<group>"; };
 		02D066BF296B606F00536E3A /* RoundShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShape.swift; sourceTree = "<group>"; };
 		02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+delegate.swift"; sourceTree = "<group>"; };
-		02D1A118255387590045E56F /* UniqueTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueTags.swift; sourceTree = "<group>"; };
+		02D1A118255387590045E56F /* Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unique.swift; sourceTree = "<group>"; };
 		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 			path = SmartGSUI;
 			sourceTree = "<group>";
 		};
-		021D7621275A9BBB00F54054 /* Network */ = {
+		021D7621275A9BBB00F54054 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
 				02491C5A26779AE400F98E17 /* Setup */,
@@ -350,7 +350,7 @@
 				02E4B9D325CC97C700949213 /* Analytics */,
 				021AFD542787857B0008735E /* SmartGSUI */,
 			);
-			path = Network;
+			path = Remote;
 			sourceTree = "<group>";
 		};
 		021D7622275A9E6200F54054 /* Models */ = {
@@ -464,10 +464,9 @@
 				02FEF5B6263304EC0001B525 /* ExternalActions.swift */,
 				021044F526446AEF00408CEB /* StringFormatter.swift */,
 				0274DB2F26848948005F9C9C /* DocumentDirectory.swift */,
-				02491C52267147AF00F98E17 /* ModalUI.swift */,
+				02D1A118255387590045E56F /* Unique.swift */,
 				021AFD5B278A1BE40008735E /* Alerts.swift */,
 				021EB81328846AD100463B42 /* Localizable.swift */,
-				02D1A118255387590045E56F /* UniqueTags.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -478,6 +477,7 @@
 				0281B98F287A344C00344D3E /* NavigationBar */,
 				0281B98C287A33B900344D3E /* Apperance */,
 				0281B9862879D5D700344D3E /* Dimensions */,
+				02FA308A2A11BC3F006A48CC /* StandardModalUI */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -847,6 +847,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		02FA308A2A11BC3F006A48CC /* StandardModalUI */ = {
+			isa = PBXGroup;
+			children = (
+				02491C52267147AF00F98E17 /* UIViewController+ModalViewItems.swift */,
+			);
+			path = StandardModalUI;
+			sourceTree = "<group>";
+		};
 		02FAE2AB260ADA9200324724 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,7 +895,7 @@
 			isa = PBXGroup;
 			children = (
 				02D066BC296B3FFC00536E3A /* Notebook */,
-				021D7621275A9BBB00F54054 /* Network */,
+				021D7621275A9BBB00F54054 /* Remote */,
 				02FAE2AB260ADA9200324724 /* Settings */,
 				02A4235A2843FFF300A25067 /* OnBoarding */,
 				0273D1532655B9260043011C /* Tools */,
@@ -1046,7 +1054,7 @@
 				02FA30772A004254006A48CC /* CollectionView.swift in Sources */,
 				02062155266550D70072C404 /* ProfileDataTransformer.swift in Sources */,
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
-				02D1A119255387590045E56F /* UniqueTags.swift in Sources */,
+				02D1A119255387590045E56F /* Unique.swift in Sources */,
 				02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackTVC.swift in Sources */,
 				0281B9832879CA7900344D3E /* Core.swift in Sources */,
@@ -1079,7 +1087,7 @@
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
 				023A2F7C2856495800EE6CDE /* PackTVC+ConfigCell.swift in Sources */,
 				02FEF536262B86620001B525 /* TTVC+navigation.swift in Sources */,
-				02491C53267147AF00F98E17 /* ModalUI.swift in Sources */,
+				02491C53267147AF00F98E17 /* UIViewController+ModalViewItems.swift in Sources */,
 				0206214E2663A2AE0072C404 /* JsonResponseModels.swift in Sources */,
 				021EB84D288C1EB000463B42 /* TTVC+Operations.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
