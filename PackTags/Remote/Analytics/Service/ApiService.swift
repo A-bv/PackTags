@@ -8,12 +8,12 @@
 
 import UIKit
 
-// MARK: - API Calls to get IG Business data
-class GetJson: NSObject {
+class ApiService: NSObject {
     typealias result<T> = (Result<T, Error>) -> Void
 }
 
-extension GetJson {
+// MARK: - API Calls to get IG Business data (Analytics and Medias)
+extension ApiService {
     class func cURL2<T: Decodable>(
         of type: T.Type,
         from url: String,
@@ -31,9 +31,7 @@ extension GetJson {
             }
         }
     }
-}
-
-extension GetJson {    
+   
     class private func handleSuccessResult<T: Decodable>(
         of type: T.Type,
         data: Data,
@@ -54,4 +52,3 @@ extension GetJson {
         }
     }
 }
-

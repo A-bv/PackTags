@@ -12,6 +12,7 @@ let apiGph_version = "v13.0" //Api graph version
 let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
 let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
+// Analytics
 extension AnalyticsSUIViewModel {
     // 1. local import (called when refreshing data without web)
     func getJsonFromDir () {
@@ -29,7 +30,7 @@ extension AnalyticsSUIViewModel {
     
     // 2. Api import
     func getOnlineJsonAPIGraph () {
-        GetJson.loadProfile(
+        ApiService.loadProfile(
             completion: { (profileJson) in
                 DispatchQueue.main.async{ [weak self] in
                     self?.jsonOfficial = profileJson
@@ -42,5 +43,22 @@ extension AnalyticsSUIViewModel {
     private func updateData() {
         fillGraphData()
         fillData()
+    }
+}
+
+// SmartG
+extension SmartGViewModel {
+    // 1. Api import
+    func fetch(hashtag: String) {
+        ApiService.igHashtagSearch(
+            searchedHashtag: hashtag,
+            completion: {
+                [weak self] (result) in
+                guard let result = result as? [DataMedia] else {return}
+                self?.dataMedias = result
+                self?.processSmartGModel()
+            })
+        
+        //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
     }
 }

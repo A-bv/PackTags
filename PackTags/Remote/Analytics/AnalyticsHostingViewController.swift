@@ -10,8 +10,7 @@
 import UIKit
 import SwiftUI
 
-class AnalyticsViewController: UIViewController {
-    
+class AnalyticsHostingViewController: UIViewController {
     deinit {
         print("deinit AnalyticsVC")
     }

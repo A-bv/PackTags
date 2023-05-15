@@ -28,7 +28,19 @@ final class FBLoginViewModel {
             })
         })
     }
+}
 
+// MARK: - Logic
+extension FBLoginViewModel {
+    func savePushedFBLoginButtonOnce() {
+        if UserDefaults.standard.object(forKey: "pressedFBLoginButton") == nil {
+            UserDefaults.standard.set(true, forKey: "pressedFBLoginButton")
+        }
+    }
+}
+
+// MARK: - Walk through
+extension FBLoginViewModel {
     private func verifySetupFbPages (Completion correctPagesSetup: @escaping (Bool) -> ()) {
         // 0. Fb acc gives a token
         // Request 1. Get facebook business page of the facebook account
@@ -89,28 +101,19 @@ final class FBLoginViewModel {
             })
     }
 }
-
-// MARK: - Logic
+ 
+// MARK: - Saving
 extension FBLoginViewModel {
-    func savePushedFBLoginButtonOnce() {
-        if UserDefaults.standard.object(forKey: "pressedFBLoginButton") == nil {
-            UserDefaults.standard.set(true, forKey: "pressedFBLoginButton")
-        }
-    }
-    
     private func saveInstagramBusinessAccountID(id: String) {
         UserDefaults.standard.set(id, forKey: "IgBId")
     }
-}
 
-// MARK: - Logic
-extension FBLoginViewModel {
-    func saveFBToken (token: FBToken) {
+    private func saveFBToken (token: FBToken) {
         let token = token.tokenString
         UserDefaults.standard.set( token, forKey: "fbToken")
     }
     
-    func saveCorrectStatus (token: FBToken) {
+    private func saveCorrectStatus (token: FBToken) {
         if token.isValid {
             UserDefaults.standard.set(true, forKey: "isCorrectSetup")
         } else {

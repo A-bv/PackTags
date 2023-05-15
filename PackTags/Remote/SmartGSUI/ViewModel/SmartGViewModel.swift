@@ -13,19 +13,6 @@ class SmartGViewModel: ObservableObject {
     @Published var computedData: [SmartGModel] = []
     @Published var topHashtags: [String] = []
     @Published var topHashtagsCount: [Int] = []
-    
-    func fetch(hashtag: String) {
-        GetJson.igHashtagSearch(
-            searchedHashtag: hashtag,
-            completion: {
-                [weak self] (result) in
-                guard let result = result as? [DataMedia] else {return}
-                self?.dataMedias = result
-                self?.processSmartGModel()
-            })
-        
-        //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
-    }
 }
 
 extension SmartGViewModel {

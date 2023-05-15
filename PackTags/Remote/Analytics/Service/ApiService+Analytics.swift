@@ -9,23 +9,23 @@
 import Foundation
 
 //Functions for analytics
-extension GetJson {
+extension ApiService {
     class func loadProfile (
-        completion block: @escaping ((Profile) -> ())
+        completion block: @escaping (Profile) -> ()
     ) {
         findMediaLimit() { (value) in
             guard let encodedUrl = self.buildURLAPIGraph(i: value) else { return }
             
             DocumentDirectory.isOkToSaveJsonDataInDir = true //local save
             
-            GetJson.cURL2(of: Profile.self, from: encodedUrl, completion: {(Json) in
+            ApiService.cURL2(of: Profile.self, from: encodedUrl, completion: {(Json) in
                 block(Json as! Profile)
             })
         }
     }
 }
 
-extension GetJson {
+extension ApiService {
     class func findMediaLimit(Completion block: @escaping ((Int) -> ())) {
         var mCount: [Int] = []
         let group = DispatchGroup()
@@ -36,7 +36,7 @@ extension GetJson {
           
             group.enter()
             
-            GetJson.cURL2(of: Profile.self, from: encodedUrl, completion: {(Json) in
+            ApiService.cURL2(of: Profile.self, from: encodedUrl, completion: {(Json) in
                 
                 guard let js = (Json as? Profile) else {return}
                 if js.username != nil { //means no error returned

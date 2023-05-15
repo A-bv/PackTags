@@ -1,16 +1,14 @@
 import Foundation
 
-extension GetJson {
+extension ApiService {
     class func igHashtagSearch(searchedHashtag: String, completion block: @escaping((Any) -> ())) {
-        GetJson.findHashtagUrl(searchedHashtag: searchedHashtag) { (url) in
-            GetJson.cURL2(of: Media.self, from: url) { (result) in
+        ApiService.findHashtagUrl(searchedHashtag: searchedHashtag) { (url) in
+            ApiService.cURL2(of: Media.self, from: url) { (result) in
                 block(result)
             }
         }
     }
-}
 
-extension GetJson {
     private class func findHashtagUrl(
         searchedHashtag: String,
         completion block: @escaping((String) -> ())
@@ -36,6 +34,22 @@ extension GetJson {
         }
     }
     
+    private class func handleHashtagIdResponse(data: Data, completion: @escaping (Result<String, Error>) -> Void) {
+        do {
+            let response = try JSONDecoder().decode(HashtagIdResponse.self, from: data)
+            guard let id = response.data.first?.id else { return }
+            guard let mediaSearchURL = constructHashtagMediaSearchURL(hashtagID: id) else {
+                print("Could not construct Hashtag Media Search URL")
+                return
+            }
+            completion(.success(mediaSearchURL))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+}
+
+extension ApiService {
     private class func constructHashtagSearchURL(searchedHashtag: String) -> String? {
         let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(searchedHashtag)&access_token=\(fbToken)"
         return url.encodeUrl()
@@ -54,28 +68,5 @@ extension GetJson {
 
         let htgUrl = "\(base)/\(apiGph_version)/\(hashtagID)/\(options)&access_token=\(fbToken)"
         return htgUrl.encodeUrl()
-    }
-
-    private class func handleHashtagIdResponse(data: Data, completion: @escaping (Result<String, Error>) -> Void) {
-        do {
-            let response = try JSONDecoder().decode(HashtagIdResponse.self, from: data)
-            guard let id = response.data.first?.id else { return }
-            guard let mediaSearchURL = constructHashtagMediaSearchURL(hashtagID: id) else {
-                print("Could not construct Hashtag Media Search URL")
-                return
-            }
-            completion(.success(mediaSearchURL))
-        } catch {
-            completion(.failure(error))
-        }
-    }
-}
-
-// Discovery
-extension GetJson {
-    class func business_discovery_url (account:String) -> String? {
-        let limit = 12
-        let url = "https://graph.facebook.com/\(apiGph_version)/\(igBId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(fbToken)"
-        return url.encodeUrl()
     }
 }
