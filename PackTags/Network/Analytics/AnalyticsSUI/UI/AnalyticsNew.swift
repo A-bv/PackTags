@@ -72,7 +72,7 @@ struct AnalyticsNew : View {
     }
     
     //
-    @ObservedObject var swiftUIData = AnalyticsVCModels()
+    @ObservedObject var swiftUIData = AnalyticsSUIViewModel()
     
     //
     @State private var showingAlert = false
@@ -241,7 +241,7 @@ extension AnalyticsNew {
             Button(action: {
                 rawInsights = true
                 presentationMode.wrappedValue.dismiss()
-                AnalyticsVCModels.lastSelected = 0
+                AnalyticsSUIViewModel.lastSelected = 0
             }) {
                 Image(systemName: "chevron.down.circle")
                     .font(Font.system(.title))
@@ -361,7 +361,7 @@ extension AnalyticsNew {
                             let _ = updateCircle(
                                 v1: value.r,
                                 v2: value.rVr)
-                            AnalyticsVCModels.lastSelected = value.id
+                            AnalyticsSUIViewModel.lastSelected = value.id
                             let impactMed = UIImpactFeedbackGenerator(style: .soft)
                             impactMed.impactOccurred()
                         }

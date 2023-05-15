@@ -10,7 +10,6 @@ import Foundation
 
 //Functions for analytics
 extension GetJson {
-    
     class func loadProfile (
         completion block: @escaping ((Profile) -> ())
     ) {
@@ -24,9 +23,10 @@ extension GetJson {
             })
         }
     }
-    
+}
+
+extension GetJson {
     class func findMediaLimit(Completion block: @escaping ((Int) -> ())) {
-        
         var mCount: [Int] = []
         let group = DispatchGroup()
         for i in 1...12 {
@@ -52,13 +52,8 @@ extension GetJson {
         }
         
         group.notify(queue: .main) {
-            
             let limit = mCount.max() ?? 0
-            
-            //print("Media limit: \(mCount.count)") old
-            
             print("Media limit: \(limit)")
-            
             block(limit)
         }
     }

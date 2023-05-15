@@ -12,7 +12,7 @@ let apiGph_version = "v13.0" //Api graph version
 let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
 let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
-extension AnalyticsVCModels {
+extension AnalyticsSUIViewModel {
     //1 local import (called when refreshing data without web)
     func getJsonFromDir () {
         DispatchQueue.main.async { [weak self] in

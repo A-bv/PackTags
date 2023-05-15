@@ -1,19 +1,19 @@
 //
-//  GJs+CanRf.swift
+//  AnalyticsSUIVM+refresh.swift
 //  PackTags
 //
-//  Created by Alexandre Bevilacqua on 03/12/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
+//  Created by Alexandre Bevilacqua on 15.05.23.
+//  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
 //
 
 import Foundation
 
-extension GetJson {
+extension AnalyticsSUIViewModel {
     private enum Constants {
         static let timeForRefresh = 5
     }
     
-    class func canRefresh () -> Bool {
+    func canRefresh () -> Bool {
         let defaults = UserDefaults.standard
         guard let lastRefreshTime = defaults.object(forKey: "LastStatsRefresh") else { return true }
         

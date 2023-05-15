@@ -8,11 +8,10 @@
 
 import UIKit
 
-extension AnalyticsVCModels {
+extension AnalyticsSUIViewModel {
     static var lastSelected = 0
     
     func fillData(){
-        
         //Security check:
         //Only fill data if there is data else return
         if processedJson?.rates == Optional([]) { return }
@@ -22,7 +21,7 @@ extension AnalyticsVCModels {
         self.overviewSectionData[1].currentData = processedJson?.avg1 ?? "0" //avg com
         
         //
-        self.circles_Data[1].currentData = processedJson?.rates[AnalyticsVCModels.lastSelected] ?? 0 //Selection default value
+        self.circles_Data[1].currentData = processedJson?.rates[AnalyticsSUIViewModel.lastSelected] ?? 0 //Selection default value
         self.circles_Data[1].goal = getMaxRate()
         
         //

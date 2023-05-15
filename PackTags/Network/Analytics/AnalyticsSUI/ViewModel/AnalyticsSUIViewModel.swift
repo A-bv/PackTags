@@ -9,8 +9,7 @@
 import SwiftUI
 import Combine
 
-class AnalyticsVCModels: ObservableObject {
-    
+class AnalyticsSUIViewModel: ObservableObject {
     private enum Strings {
         static let likes = "Likes".localized()
         static let comments = "Comments".localized()
@@ -59,8 +58,6 @@ class AnalyticsVCModels: ObservableObject {
     //Load data for AnalyticsNew (AnalyticsNew's func list)
     
     init() {
-        GetJson.canRefresh() == true ? self.getOnlineJsonAPIGraph() : self.getJsonFromDir()
+        self.canRefresh() == true ? self.getOnlineJsonAPIGraph() : self.getJsonFromDir()
     }
-    //init() { runGetTests ()}
-    //init() {self.getJsonFromDir()}
 }
