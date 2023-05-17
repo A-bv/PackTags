@@ -16,13 +16,14 @@ class SmartGViewModel: ObservableObject {
 }
 
 extension SmartGViewModel {
-    func processSmartGModel()
-    {
+    func processSmartGModel() {
         var processedSmartGModels = [SmartGModel]()
         var hashtagsFullList: [String] = []
         
         for dataMedia in dataMedias {
-            guard let hashtags = dataMedia.caption?.detectHashtags() else { return }
+            guard let hashtags = dataMedia.caption?.detectHashtags() else {
+                return
+            }
             processedSmartGModels.append(SmartGModel(hashtags: hashtags))
             hashtagsFullList += hashtags
         }
@@ -30,7 +31,7 @@ extension SmartGViewModel {
         self.computedData = processedSmartGModels
         
         // TODO: Finish this
-        let hashtagsHistogram = hashtagsFullList.histogram.sorted { $0.1 > $1.1}.prefix(10)
+        let hashtagsHistogram = hashtagsFullList.histogram.sorted { $0.1 > $1.1 }.prefix(10)
         self.topHashtags = hashtagsHistogram.map({ $0.key })
         self.topHashtagsCount = hashtagsHistogram.map({ $0.value })
         guard let minValue = topHashtagsCount.min() else { return }

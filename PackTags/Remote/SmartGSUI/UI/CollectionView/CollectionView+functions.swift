@@ -49,8 +49,7 @@ extension CollectionView {
                 hashtagsCount: hashtagsCount,
                 cardWidth: Constants.cardWidth,
                 cardHeight: Constants.cardHeight,
-                cardCornerRadius: Constants.cardCornerRadius
-            )
+                cardCornerRadius: Constants.cardCornerRadius)
         )
     }
 }

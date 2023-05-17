@@ -87,16 +87,19 @@ extension Array where Element: Hashable {
 }
 
 // Detect hashtags in text
-extension String
-{
-    func detectHashtags() -> [String]
-    {
-        if let regex = try? NSRegularExpression(pattern: "((?!#\\p{Hebrew}|#\\p{Arabic})#[\\w]+)", options: .caseInsensitive)
-        {
+extension String {
+    func detectHashtags() -> [String] {
+        if let regex = try? NSRegularExpression(
+            pattern: "((?!#\\p{Hebrew}|#\\p{Arabic})#[\\w]+)",
+            options: .caseInsensitive
+        ) {
             let string = self as NSString
 
-            return regex.matches(in: self, options: [], range: NSRange(location: 0, length: string.length)).map
-            {
+            return regex.matches(
+                in: self,
+                options: [],
+                range: NSRange(location: 0, length: string.length)
+            ).map {
                 string.substring(with: $0.range)
             }
         }
