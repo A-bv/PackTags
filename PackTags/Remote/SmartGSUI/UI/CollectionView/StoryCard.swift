@@ -20,6 +20,7 @@ struct StoryCard: View {
     let cardWidth: CGFloat
     let cardHeight: CGFloat
     let cardCornerRadius: CGFloat
+    @Environment(\.imageCache) var imageCache
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -40,6 +41,7 @@ struct StoryCard: View {
     private func asyncImage() -> some View {
         return AsyncImage(
             url: url,
+            imageCache: imageCache,
             placeholder: { Text(Strings.loading3Dots) },
             image: { Image(uiImage: $0).resizable() })
     }
