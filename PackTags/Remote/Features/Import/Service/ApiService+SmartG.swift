@@ -1,11 +1,21 @@
 import Foundation
 
 extension ApiService {
-    class func igHashtagSearch(searchedHashtag: String, completion block: @escaping((Any) -> ())) {
-        ApiService.findHashtagUrl(searchedHashtag: searchedHashtag) { (url) in
-            ApiService.cURL2(of: Media.self, from: url) { (result) in
-                block(result)
-            }
+    class func searchHashtag(
+        searchedHashtag: String,
+        completion: @escaping (Any) -> Void
+    ) {
+        ApiService.findHashtagUrl(searchedHashtag: searchedHashtag) { url in
+            self.getMedia(for: url, completion: completion)
+        }
+    }
+    
+    private class func getMedia(
+        for url: String,
+        completion: @escaping (Any) -> Void
+    ) {
+        ApiService.fetchDataFromIgApi(of: Media.self, from: url) { result in
+            completion(result)
         }
     }
 

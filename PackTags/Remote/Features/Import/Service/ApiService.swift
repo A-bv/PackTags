@@ -10,11 +10,9 @@ import UIKit
 
 class ApiService: NSObject {
     typealias result<T> = (Result<T, Error>) -> Void
-}
 
-// MARK: - API Calls to get IG Business data (Analytics and Medias)
-extension ApiService {
-    class func cURL2<T: Decodable>(
+    // Function to get IG Business data (Analytics and Medias)
+    class func fetchDataFromIgApi<T: Decodable>(
         of type: T.Type,
         from url: String,
         completion block: @escaping (Any) -> ()

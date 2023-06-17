@@ -10,33 +10,37 @@ import Foundation
 
 //Functions for analytics
 extension ApiService {
-    class func loadProfile (
+    class func loadProfileForAnalytics (
         completion block: @escaping (Profile) -> ()
     ) {
         findMediaLimit() { (value) in
-            guard let encodedUrl = self.buildURLAPIGraph(i: value) else { return }
-            
+            guard let encodedUrl = self.buildURLAPIGraph(foundLimit: value) else { return }
+
             DocumentDirectory.isOkToSaveJsonDataInDir = true //local save
-            
-            ApiService.cURL2(of: Profile.self, from: encodedUrl, completion: {(Json) in
-                block(Json as! Profile)
+
+            ApiService.fetchDataFromIgApi(
+                of: Profile.self,
+                from: encodedUrl,
+                completion: { (profileJson) in
+                    block(profileJson as! Profile)
             })
         }
     }
 }
 
 extension ApiService {
-    class func findMediaLimit(Completion block: @escaping ((Int) -> ())) {
+    // TODO: Test if this function is still needed
+    class private func findMediaLimit(Completion block: @escaping ((Int) -> ())) {
         var mCount: [Int] = []
         let group = DispatchGroup()
         for i in 1...12 {
 
             //Test 12 urls to find the limit
-            guard let encodedUrl = self.buildURLAPIGraph(i: i) else {return }
+            guard let encodedUrl = self.buildURLAPIGraph(foundLimit: i) else {return }
           
             group.enter()
             
-            ApiService.cURL2(of: Profile.self, from: encodedUrl, completion: {(Json) in
+            ApiService.fetchDataFromIgApi(of: Profile.self, from: encodedUrl, completion: {(Json) in
                 
                 guard let js = (Json as? Profile) else {return}
                 if js.username != nil { //means no error returned
@@ -45,9 +49,8 @@ extension ApiService {
                     But the Json media's count is actually the limit to find*/
                     mCount.append(js.media?.data.count ?? 0)
                 }
-                
+
                 group.leave()
-                
             })
         }
         
@@ -58,8 +61,8 @@ extension ApiService {
         }
     }
     
-    class func buildURLAPIGraph (i: Int) -> String? {
-        let limit = "\(i)"
+    class private func buildURLAPIGraph (foundLimit: Int) -> String? {
+        let limit = "\(foundLimit)"
         let url = "https://graph.facebook.com/\(apiGph_version)/\(igBId)?fields=biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,recently_searched_hashtags,insights.metric(reach,impressions,profile_views,follower_count).period(day),media.limit(\(limit)){media_type,caption,timestamp,media_url,comments_count,comments,is_comment_enabled,username,like_count,media_product_type,insights.metric(reach,impressions,engagement)}&access_token=\(fbToken)&checkType=FULL"
         
         return url.encodeUrl()

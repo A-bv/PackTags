@@ -30,7 +30,7 @@ extension AnalyticsSUIViewModel {
     
     // 2. Api import
     func getOnlineJsonAPIGraph () {
-        ApiService.loadProfile(
+        ApiService.loadProfileForAnalytics(
             completion: { (profileJson) in
                 DispatchQueue.main.async{ [weak self] in
                     self?.jsonOfficial = profileJson
@@ -50,7 +50,7 @@ extension AnalyticsSUIViewModel {
 extension SmartGViewModel {
     // 1. Api import
     func fetch(hashtag: String) {
-        ApiService.igHashtagSearch(
+        ApiService.searchHashtag(
             searchedHashtag: hashtag,
             completion: {
                 [weak self] (result) in
