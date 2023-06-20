@@ -120,7 +120,7 @@ struct AnalyticsNew : View {
     
     //Toggle button
     @State private var isToggled = false
-        
+    
     init() {
         //Navigation bar customization
         UINavigationBar.appearance().titleTextAttributes = [
@@ -128,37 +128,32 @@ struct AnalyticsNew : View {
         ]
     }
     
-    var body: some View{
+    var body: some View {
         ZStack {
             Color.bgFillColor.ignoresSafeArea()
             
-            VStack(){
-                //MARK: - Screen Header
+            VStack {
                 header
-                //MARK: - Screen selection
-                if monitor.isConnected == false {
+                
+                if !monitor.isConnected {
                     offlineView
                 } else if swiftUIData.jsonOfficial == nil {
                     loadingView
                 } else {
                     if swiftUIData.processedJson?.isPrivateProfile == true {
-                        ZStack {
-                            Color.bgFillColor
-                                .edgesIgnoringSafeArea(.all)
-                            Text(Strings.privateProfile)
-                        }
+                        Color.bgFillColor
+                            .edgesIgnoringSafeArea(.all)
+                        Text(Strings.privateProfile)
                     } else if swiftUIData.processedJson?.rates == Optional([]) {
-                        //Screen when data is invalid
-                        ZStack {
-                            Color.bgFillColor
-                                .edgesIgnoringSafeArea(.all)
-                            if swiftUIData.processedJson?.usr != nil {
-                                Text(Strings.noMedia)
-                                    .multilineTextAlignment(.center)
-                            } else {
-                                Text(Strings.dataUnavailable)
-                                    .multilineTextAlignment(.center)
-                            }
+                        // Screen when data is invalid
+                        Color.bgFillColor
+                            .edgesIgnoringSafeArea(.all)
+                        if swiftUIData.processedJson?.usr != nil {
+                            Text(Strings.noMedia)
+                                .multilineTextAlignment(.center)
+                        } else {
+                            Text(Strings.dataUnavailable)
+                                .multilineTextAlignment(.center)
                         }
                     } else {
                         // Screen when data is available

@@ -651,6 +651,15 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
+		02B0D7292A3F08C000EF1500 /* Neumorphic */ = {
+			isa = PBXGroup;
+			children = (
+				02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */,
+				0226889C2626F332007DBD98 /* UIView+Neumorphic.swift */,
+			);
+			path = Neumorphic;
+			sourceTree = "<group>";
+		};
 		02CAC9B82591061B00BE5E57 /* ThemeVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -805,10 +814,9 @@
 		02F60AA926809FD5004022CA /* AppStyle */ = {
 			isa = PBXGroup;
 			children = (
+				02B0D7292A3F08C000EF1500 /* Neumorphic */,
 				02491C682680883700F98E17 /* AppColors.swift */,
 				0247E585257FEFB900C65245 /* DarkMode.swift */,
-				02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */,
-				0226889C2626F332007DBD98 /* UIView+Neumorphic.swift */,
 				020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */,
 				020584D4284D715D00020FB8 /* UIView+BlurView.swift */,
 				02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */,
