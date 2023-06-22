@@ -84,6 +84,7 @@
 		02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1727F8BFBF000026B8 /* TapTextView.swift */; };
 		02B05C1A27F90333000026B8 /* TextViewPlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1927F90333000026B8 /* TextViewPlaceHolder.swift */; };
 		02B05C232809CD76000026B8 /* SearcheableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C222809CD76000026B8 /* SearcheableTextView.swift */; };
+		02B0D72B2A44B2E700EF1500 /* MonoCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D72A2A44B2E700EF1500 /* MonoCircle.swift */; };
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
 		02B104A9276A630E00C9EC6C /* Url_img_SUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */; };
 		02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */; };
@@ -228,6 +229,7 @@
 		02B05C1727F8BFBF000026B8 /* TapTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTextView.swift; sourceTree = "<group>"; };
 		02B05C1927F90333000026B8 /* TextViewPlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceHolder.swift; sourceTree = "<group>"; };
 		02B05C222809CD76000026B8 /* SearcheableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcheableTextView.swift; sourceTree = "<group>"; };
+		02B0D72A2A44B2E700EF1500 /* MonoCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoCircle.swift; sourceTree = "<group>"; };
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
 		02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url_img_SUI.swift; sourceTree = "<group>"; };
 		02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Navigation.swift"; sourceTree = "<group>"; };
@@ -904,6 +906,7 @@
 			children = (
 				02FBAFE425A93C6100E32D73 /* AnalyticsNew.swift */,
 				02D066BF296B606F00536E3A /* RoundShape.swift */,
+				02B0D72A2A44B2E700EF1500 /* MonoCircle.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1184,6 +1187,7 @@
 				02B02AC52594238100586352 /* TVC+Search.swift in Sources */,
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
 				0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */,
+				02B0D72B2A44B2E700EF1500 /* MonoCircle.swift in Sources */,
 				02491C512671212400F98E17 /* ApiGraphSetupTutorialVC.swift in Sources */,
 				02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */,
 				0274105826207D2100D82F6D /* PackTVC+Instagram.swift in Sources */,

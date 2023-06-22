@@ -253,14 +253,15 @@ extension AnalyticsNew {
         ScrollView(.vertical, showsIndicators: false) {
             //MARK: - Graph part
             VStack(
-                alignment: .leading,
                 spacing: Constants.scrollViewVerticalSpacing
             ) {
                 graphSectionHeader
                 if swiftUIData.processedJson?.postsCount == 1 {
-                    monoCirle
-                }
-                else {
+                    MonoCircleView(
+                        monoCircleValue: Double(swiftUIData.processedJson?.avg2 ?? 0),
+                        rawInsights: rawInsights)
+                    Spacer()
+                } else {
                     circles
                     barchart
                     barchartArrows
@@ -529,40 +530,6 @@ extension AnalyticsNew {
             }
         }
     }
-    }
-}
-
-// Mono Circle
-extension AnalyticsNew {
-    var monoCirle: some View {
-        VStack(){
-            HStack(){
-                Spacer()
-                VStack(){
-                    HStack{
-                        let p = swiftUIData.processedJson?.avg2 ?? 0
-                        let value = StringFormatter.formatNum(value: Double(p))
-                        let text = rawInsights == true
-                        ? Double(p) <= 100
-                        ? value.components(separatedBy: ".")[0]
-                        : value
-                        : rawInsights == true ? value : value + " %"
-                        
-                        Text(text)
-                            //.font(.system(size: 22))
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color("Color4"))
-                    }
-                }
-                Spacer()
-            }.padding(50)
-        }
-        .padding(50)
-        .cornerRadius(15)
-        .background(
-            Circle()
-                .outerNeumorphism(Color.statsFillColor))
     }
 }
 
