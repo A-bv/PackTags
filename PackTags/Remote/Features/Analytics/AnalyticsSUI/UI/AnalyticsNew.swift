@@ -57,8 +57,6 @@ struct AnalyticsNew : View {
         static let maxNumberOfModes: Int = 3  // 1 followers, 2 reach, 3 impressions
         static let graphSectionHeaderVerticalSpacing: CGFloat = 5
         static let graphSectionHeaderTraillingPadding: CGFloat = 10
-        static let circleTitleToCirclePadding: CGFloat = 25
-        static let circleTitleFontSize: CGFloat = 20
         static let offlineViewFontSize: CGFloat = 56
         static let loadingIndicatorFrame: CGFloat = 70
     }
@@ -80,9 +78,10 @@ struct AnalyticsNew : View {
 
     var colors = [Color("Color1"),Color("Color")]
     var columns = Array(
-        repeating: GridItem(
-            .flexible(),
-            spacing: Constants.overviewSectionColumnsSpacing),
+        repeating:
+            GridItem(
+                .flexible(),
+                spacing: Constants.overviewSectionColumnsSpacing),
         count: Constants.overviewSectionColumnsCount)
     
     //
@@ -247,7 +246,10 @@ extension AnalyticsNew {
                             rawInsights: rawInsights)
                         Spacer()
                     } else {
-                        circles
+                        CirclesView(
+                            circles: $swiftUIData.circlesData,
+                            rawInsights: rawInsights,
+                            columns: columns)
                         BarchartView(
                             selected: $selected,
                             rate: $swiftUIData.circlesData[1].value,
@@ -380,70 +382,6 @@ extension AnalyticsNew {
                 .padding(.trailing,0)
             }
         }
-    }
-}
-
-// Cirles
-extension AnalyticsNew {
-    var circles: some View{
-        LazyVGrid(columns: columns){
-
-        ForEach(swiftUIData.circlesData){circle in
-            VStack(spacing: Constants.circleTitleToCirclePadding){
-                VStack{
-                    HStack{
-                        Text(circle.title)
-                            .font(.system(size: Constants.circleTitleFontSize))
-                            .foregroundColor(Color(UIColor.label))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                }
-                
-                ZStack{
-                    //__________ circles morphism
-                    Circle()
-                        .trim(from: 0, to: 1)
-                        .stroke(Color.clear, lineWidth: 10)
-                        .frame(
-                            width: (UIScreen.main.bounds.width - 150 + 20) / 2,
-                            height: (UIScreen.main.bounds.width - 150 + 20) / 2)
-                        .background(
-                            Circle()
-                                .outerNeumorphism(Color.statsFillColor)
-                                .rotationEffect(.degrees(90)))
-                    //__________ circles progress bar
-                    Circle()
-                        .trim(from: 0, to: (circle.value / circle.maxValue))
-                        .stroke(
-                            LinearGradient(Color("Color4"), Color("Color1")),
-                            style: StrokeStyle(lineWidth: 10, lineCap: .round))
-                        .frame(
-                            width: (UIScreen.main.bounds.width - 150) / 2,
-                            height: (UIScreen.main.bounds.width - 150) / 2)
-                    //__________ circles progress bar
-                    //AAA 3
-                    //Show non decimal value if raw insights
-                    let value = StringFormatter.formatNum(value: Double(circle.value))
-                    
-                    Text(
-                        rawInsights == true && circle.id == 1
-                        ? Double(circle.value) <= 100
-                        ? value.components(separatedBy: ".")[0]
-                        : value
-                        : rawInsights == true
-                        ? value : value + " %")
-                    
-                        //.font(.system(size: 22))
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(circle.color)
-                        .rotationEffect(.init(degrees: 90))
-
-                }
-                .rotationEffect(.init(degrees: -90))
-            }
-        }
-    }
     }
 }
 

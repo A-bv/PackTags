@@ -40,6 +40,7 @@
 		023A2F7E2856497800EE6CDE /* PackTVC+TVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7D2856497800EE6CDE /* PackTVC+TVHeader.swift */; };
 		023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7F285649B900EE6CDE /* PackTVC+Loading.swift */; };
 		023A2F822856554600EE6CDE /* PackTVC+CellSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F812856554600EE6CDE /* PackTVC+CellSwipe.swift */; };
+		023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B932A48EC60006E2D35 /* CirclesView.swift */; };
 		024347D827119E2100F86A64 /* TextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024347D727119E2100F86A64 /* TextRecognition.swift */; };
 		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
 		02491C512671212400F98E17 /* ApiGraphSetupTutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */; };
@@ -84,7 +85,7 @@
 		02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1727F8BFBF000026B8 /* TapTextView.swift */; };
 		02B05C1A27F90333000026B8 /* TextViewPlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1927F90333000026B8 /* TextViewPlaceHolder.swift */; };
 		02B05C232809CD76000026B8 /* SearcheableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C222809CD76000026B8 /* SearcheableTextView.swift */; };
-		02B0D72B2A44B2E700EF1500 /* MonoCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D72A2A44B2E700EF1500 /* MonoCircle.swift */; };
+		02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */; };
 		02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarchartView.swift */; };
 		02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */; };
 		02B0D7572A48CBB900EF1500 /* Import+TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */; };
@@ -188,6 +189,7 @@
 		023A2F7D2856497800EE6CDE /* PackTVC+TVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+TVHeader.swift"; sourceTree = "<group>"; };
 		023A2F7F285649B900EE6CDE /* PackTVC+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Loading.swift"; sourceTree = "<group>"; };
 		023A2F812856554600EE6CDE /* PackTVC+CellSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+CellSwipe.swift"; sourceTree = "<group>"; };
+		023D2B932A48EC60006E2D35 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
 		024347D727119E2100F86A64 /* TextRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognition.swift; sourceTree = "<group>"; };
 		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiGraphSetupTutorialVC.swift; sourceTree = "<group>"; };
@@ -232,7 +234,7 @@
 		02B05C1727F8BFBF000026B8 /* TapTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTextView.swift; sourceTree = "<group>"; };
 		02B05C1927F90333000026B8 /* TextViewPlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceHolder.swift; sourceTree = "<group>"; };
 		02B05C222809CD76000026B8 /* SearcheableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcheableTextView.swift; sourceTree = "<group>"; };
-		02B0D72A2A44B2E700EF1500 /* MonoCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoCircle.swift; sourceTree = "<group>"; };
+		02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoCircleView.swift; sourceTree = "<group>"; };
 		02B0D74C2A48B73700EF1500 /* BarchartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartView.swift; sourceTree = "<group>"; };
 		02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartArrowsView.swift; sourceTree = "<group>"; };
 		02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Import+TestCase.swift"; sourceTree = "<group>"; };
@@ -423,6 +425,15 @@
 				02AEA5E725B9D2B00063076F /* PackTableVC */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		023D2B952A48F101006E2D35 /* Circles */ = {
+			isa = PBXGroup;
+			children = (
+				02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */,
+				023D2B932A48EC60006E2D35 /* CirclesView.swift */,
+			);
+			path = Circles;
 			sourceTree = "<group>";
 		};
 		02491C5A26779AE400F98E17 /* Setup */ = {
@@ -921,9 +932,9 @@
 			isa = PBXGroup;
 			children = (
 				02FBAFE425A93C6100E32D73 /* AnalyticsNew.swift */,
-				02D066BF296B606F00536E3A /* RoundShape.swift */,
-				02B0D72A2A44B2E700EF1500 /* MonoCircle.swift */,
+				023D2B952A48F101006E2D35 /* Circles */,
 				02B0D7582A48E9EB00EF1500 /* Barchart */,
+				02D066BF296B606F00536E3A /* RoundShape.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1116,6 +1127,7 @@
 				0274DB2E26848492005F9C9C /* ASuiVM+Fill.swift in Sources */,
 				023A2F7A2856493C00EE6CDE /* PackTVC+AutoReorder.swift in Sources */,
 				02D066C0296B606F00536E3A /* RoundShape.swift in Sources */,
+				023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */,
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,
 				02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */,
 				0264B837264B25E100E1EEFA /* LoadIndicator.swift in Sources */,
@@ -1207,7 +1219,7 @@
 				02B02AC52594238100586352 /* TVC+Search.swift in Sources */,
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
 				0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */,
-				02B0D72B2A44B2E700EF1500 /* MonoCircle.swift in Sources */,
+				02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */,
 				02491C512671212400F98E17 /* ApiGraphSetupTutorialVC.swift in Sources */,
 				02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */,
 				0274105826207D2100D82F6D /* PackTVC+Instagram.swift in Sources */,
