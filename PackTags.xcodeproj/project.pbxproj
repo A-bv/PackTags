@@ -87,6 +87,7 @@
 		02B0D72B2A44B2E700EF1500 /* MonoCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D72A2A44B2E700EF1500 /* MonoCircle.swift */; };
 		02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarchartView.swift */; };
 		02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */; };
+		02B0D7572A48CBB900EF1500 /* Import+TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */; };
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
 		02B104A9276A630E00C9EC6C /* Url_img_SUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */; };
 		02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */; };
@@ -234,6 +235,7 @@
 		02B0D72A2A44B2E700EF1500 /* MonoCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoCircle.swift; sourceTree = "<group>"; };
 		02B0D74C2A48B73700EF1500 /* BarchartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartView.swift; sourceTree = "<group>"; };
 		02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartArrowsView.swift; sourceTree = "<group>"; };
+		02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Import+TestCase.swift"; sourceTree = "<group>"; };
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
 		02B104A8276A630E00C9EC6C /* Url_img_SUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url_img_SUI.swift; sourceTree = "<group>"; };
 		02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Navigation.swift"; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				026D16D62A3E474500228DEA /* Import.swift */,
+				02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */,
 				026D16D42A3E474500228DEA /* Transformers */,
 				026D16D72A3E474500228DEA /* Service */,
 			);
@@ -1178,6 +1181,7 @@
 				02CAC9B7259105B400BE5E57 /* TVC.swift in Sources */,
 				026D16DD2A3E474500228DEA /* Import.swift in Sources */,
 				02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */,
+				02B0D7572A48CBB900EF1500 /* Import+TestCase.swift in Sources */,
 				02FA30812A004C7D006A48CC /* SmartGView+interactionBar.swift in Sources */,
 				02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */,
 				02FA30732A00405D006A48CC /* StoryCardLabel.swift in Sources */,

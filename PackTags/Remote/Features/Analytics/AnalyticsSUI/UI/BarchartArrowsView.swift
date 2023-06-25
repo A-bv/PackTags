@@ -10,7 +10,7 @@ import SwiftUI
 
 // BarchartArrows
 struct BarchartArrowsView: View {
-    @ObservedObject var swiftUIData: AnalyticsSUIViewModel // Add this line
+    let postsCount: Int
     
     private enum Constants {
         static let opacity: CGFloat = 0.6
@@ -24,8 +24,7 @@ struct BarchartArrowsView: View {
     
     var body: some View {
         HStack {
-            let num = swiftUIData.processedJson?.postsCount
-            if num != 1 {
+            if postsCount != 1 {
                 Image(systemName: "arrow.turn.left.up")
                     .font(.caption)
                     .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
@@ -35,7 +34,7 @@ struct BarchartArrowsView: View {
             }
             Spacer()
             
-            let leftArrowText = num != 1 ? Strings.previousPosts : Strings.previousPost
+            let leftArrowText = postsCount != 1 ? Strings.previousPosts : Strings.previousPost
             // "Last \(num ?? 0) Posts" : Strings.previousPosts
             Text(leftArrowText)
                 .font(.caption)
@@ -44,5 +43,12 @@ struct BarchartArrowsView: View {
                 .font(.caption)
                 .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
         }
+    }
+}
+
+struct BarchartArrowsView_Previews: PreviewProvider {
+    static var previews: some View {
+        BarchartArrowsView(postsCount: 3)
+            .padding()
     }
 }

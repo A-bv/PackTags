@@ -248,15 +248,19 @@ extension AnalyticsNew {
                 spacing: Constants.scrollViewVerticalSpacing
             ) {
                 graphSectionHeader
-                if swiftUIData.processedJson?.postsCount == 1 {
-                    MonoCircleView(
-                        monoCircleValue: Double(swiftUIData.processedJson?.avg2 ?? 0),
-                        rawInsights: rawInsights)
-                    Spacer()
-                } else {
-                    circles
-                    BarchartView(selected: $selected, colors: colors, swiftUIData: swiftUIData)
-                    BarchartArrowsView(swiftUIData: swiftUIData)
+                if let postCount = swiftUIData.processedJson?.postsCount,
+                   let average = swiftUIData.processedJson?.avg2
+                {
+                    if postCount == 1 {
+                        MonoCircleView(
+                            monoCircleValue: Double(average),
+                            rawInsights: rawInsights)
+                        Spacer()
+                    } else {
+                        circles
+                        BarchartView(selected: $selected, colors: colors, swiftUIData: swiftUIData)
+                        BarchartArrowsView(postsCount: postCount)
+                    }
                 }
             }
             .padding()
