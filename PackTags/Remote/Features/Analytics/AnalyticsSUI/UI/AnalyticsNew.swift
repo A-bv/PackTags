@@ -219,7 +219,6 @@ extension AnalyticsNew {
             Button(action: {
                 rawInsights = true
                 presentationMode.wrappedValue.dismiss()
-                AnalyticsSUIViewModel.lastSelected = 0
             }) {
                 Image(systemName: "chevron.down.circle")
                     .font(Font.system(.title))

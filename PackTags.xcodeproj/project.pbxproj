@@ -669,6 +669,15 @@
 			path = Neumorphic;
 			sourceTree = "<group>";
 		};
+		02B0D7582A48E9EB00EF1500 /* Barchart */ = {
+			isa = PBXGroup;
+			children = (
+				02B0D74C2A48B73700EF1500 /* BarchartView.swift */,
+				02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */,
+			);
+			path = Barchart;
+			sourceTree = "<group>";
+		};
 		02CAC9B82591061B00BE5E57 /* ThemeVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -914,8 +923,7 @@
 				02FBAFE425A93C6100E32D73 /* AnalyticsNew.swift */,
 				02D066BF296B606F00536E3A /* RoundShape.swift */,
 				02B0D72A2A44B2E700EF1500 /* MonoCircle.swift */,
-				02B0D74C2A48B73700EF1500 /* BarchartView.swift */,
-				02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */,
+				02B0D7582A48E9EB00EF1500 /* Barchart */,
 			);
 			path = UI;
 			sourceTree = "<group>";

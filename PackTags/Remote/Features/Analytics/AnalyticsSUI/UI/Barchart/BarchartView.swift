@@ -50,7 +50,6 @@ struct BarchartView: View {
                         withAnimation(.easeOut){
                             selected = value.id
                             rate = value.rate
-                            AnalyticsSUIViewModel.lastSelected = value.id
                             let impactMed = UIImpactFeedbackGenerator(style: .soft)
                             impactMed.impactOccurred()
                         }
