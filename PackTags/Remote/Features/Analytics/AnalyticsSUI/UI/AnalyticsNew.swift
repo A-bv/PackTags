@@ -77,6 +77,7 @@ struct AnalyticsNew : View {
     
     //
     @State var selected = 0
+
     var colors = [Color("Color1"),Color("Color")]
     var columns = Array(
         repeating: GridItem(
@@ -248,7 +249,11 @@ extension AnalyticsNew {
                         Spacer()
                     } else {
                         circles
-                        BarchartView(selected: $selected, colors: colors, swiftUIData: swiftUIData)
+                        BarchartView(
+                            selected: $selected,
+                            rate: $swiftUIData.circlesData[1].value,
+                            chartData: $swiftUIData.barChartData,
+                            colors: colors)
                         BarchartArrowsView(postsCount: postCount)
                     }
                 }

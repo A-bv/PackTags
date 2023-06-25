@@ -51,7 +51,7 @@ class AnalyticsSUIViewModel: ObservableObject {
             color: .blue)
     ]
 
-    @Published var barChartData: [Post]? = [Post(id: 0, post: "", rate: 0, barHeight: 0)]
+    @Published var barChartData: [Post] = [Post(id: 0, post: "", rate: 0, barHeight: 0)]
     
     //MARK: - Init
     //Load data for AnalyticsNew (AnalyticsNew's func list)

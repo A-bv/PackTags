@@ -34,14 +34,12 @@ extension AnalyticsSUIViewModel {
         guard let rates = processedJson?.rates else { return }
         let maxR = getMaxRate()
         
-        if barChartData != nil {
-            barChartData?.removeAll()
-        }
+        barChartData.removeAll()
         
         if (rates.count) > 0 {
             //Graph data
             for i in 0 ... (rates.count)-1 {
-                barChartData?.append(
+                barChartData.append(
                     Post(
                         id: i,
                         post: "\(i+1)",

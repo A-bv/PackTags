@@ -11,8 +11,9 @@ import SwiftUI
 // Barchart
 struct BarchartView: View {
     @Binding var selected: Int
+    @Binding var rate: CGFloat
+    @Binding var chartData: [Post]
     var colors: [Color]
-    @ObservedObject var swiftUIData: AnalyticsSUIViewModel
     
     private enum Constants {
         static let opacity: CGFloat = 0.6
@@ -24,7 +25,7 @@ struct BarchartView: View {
     
     var body: some View {
         HStack(spacing: Constants.barChartHorizontalSpacing){
-            ForEach(swiftUIData.barChartData ?? []) { value in
+            ForEach(chartData) { value in
                 // Bars...
                 VStack{
                     VStack{
@@ -48,7 +49,7 @@ struct BarchartView: View {
                     .onTapGesture {
                         withAnimation(.easeOut){
                             selected = value.id
-                            swiftUIData.circlesData[1].value = value.rate
+                            rate = value.rate
                             AnalyticsSUIViewModel.lastSelected = value.id
                             let impactMed = UIImpactFeedbackGenerator(style: .soft)
                             impactMed.impactOccurred()
@@ -66,7 +67,16 @@ struct BarchartView: View {
 
 struct BarchartView_Previews: PreviewProvider {
     static var previews: some View {
-        BarchartView(selected: .constant(0), colors: [Color.blue, Color.green], swiftUIData: AnalyticsSUIViewModel())
-            .padding()
+        let data = [
+            Post(id: 1, post: "Post1", rate: CGFloat(0), barHeight: CGFloat(32.5)),
+            Post(id: 2, post: "Post2", rate: CGFloat(0), barHeight: CGFloat(43.75)),
+            Post(id: 3, post: "Post3", rate: CGFloat(0), barHeight: CGFloat(22.5))
+        ]
+        BarchartView(
+            selected: .constant(2),
+            rate: .constant(0.0),
+            chartData: .constant(data),
+            colors: [.blue, .green])
+        .padding()
     }
 }
