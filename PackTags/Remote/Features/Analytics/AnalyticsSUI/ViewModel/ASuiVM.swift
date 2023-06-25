@@ -24,35 +24,34 @@ class AnalyticsSUIViewModel: ObservableObject {
         AnalyticsOverviewModel(
             id: 0,
             title: Strings.likes,
-            currentData: "0",
-            goal: 0,
-            color: Color("running"),
+            value: "0",
+            maxValue: 0,
+            color: .blue,
             image: Image(systemName: "suit.heart.fill")),
         AnalyticsOverviewModel(
             id: 1,
             title: Strings.comments,
-            currentData: "0",
-            goal: 0,
-            color: Color("water"),
+            value: "0",
+            maxValue: 0,
+            color: .blue,
             image: Image(systemName: "text.bubble.fill"))]
     
-    @Published var circles_Data = [
+    @Published var circlesData = [
         Circles(
             id: 0,
             title: Strings.average,
-            currentData: 0,
-            goal: 0,
-            color: Color("running"),
-            variation: 0),
+            value: 0,
+            maxValue: 0,
+            color: .blue),
         Circles(
             id: 1,
             title: Strings.selection,
-            currentData: 0,
-            goal: 0,
-            color: Color("water"),
-            variation: 0)
+            value: 0,
+            maxValue: 0,
+            color: .blue)
     ]
-    @Published var barChartData: [Post]? = [Post(id: 0, post: "", r: 0, barHeight: 0, rVr: 0)]
+
+    @Published var barChartData: [Post]? = [Post(id: 0, post: "", rate: 0, barHeight: 0)]
     
     //MARK: - Init
     //Load data for AnalyticsNew (AnalyticsNew's func list)

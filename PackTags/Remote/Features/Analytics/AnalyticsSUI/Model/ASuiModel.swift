@@ -10,20 +10,17 @@ import SwiftUI
 
 //Circles
 struct Circles : Identifiable {
-    
-    var id : Int
-    var title : String
-    var currentData : CGFloat
-    var goal : CGFloat
-    var color : Color
-    var variation : CGFloat
+    var id: Int
+    var title: String
+    var value: CGFloat
+    var maxValue: CGFloat
+    var color: Color
 }
 
 // graph Data...
-struct Post : Identifiable {
-    var id : Int
-    var post : String
-    var r : CGFloat
+struct Post: Identifiable {
+    var id: Int
+    var post: String
+    var rate: CGFloat
     var barHeight: CGFloat
-    var rVr: CGFloat
 }

@@ -158,17 +158,7 @@ struct AnalyticsNew : View {
 }
 
 //MARK: - Functions
-extension AnalyticsNew {
-    //AAA 2
-    func updateCircle(
-        v1: CGFloat,
-        v2: CGFloat
-    ) -> Bool {
-        swiftUIData.circles_Data[1].currentData = v1
-        swiftUIData.circles_Data[1].variation = v2
-        return true
-    }
-    
+extension AnalyticsNew {  
     func updateLabels () -> Bool {
         let rawMetricsLabels = [
             Strings.engagement,
@@ -287,27 +277,21 @@ extension AnalyticsNew {
                     HStack{
                         Text(swiftUIData.processedJson?.postsCount == 1 ? "" : Strings.average)
                             .font(.body)
-                            //.font(.system(size: 20))
-                            //.fontWeight(.bold)
                             .foregroundColor(Color(UIColor.label))
                         Spacer(minLength: 0)
                         overviewCell.image
                             .font(Font.system(.title2))
                     }
-                    Text(overviewCell.currentData)
+                    Text(overviewCell.value)
                         .font(.system(size: Constants.overviewCellValueFontSize))
                         .foregroundColor(Color(UIColor.label))
                         .fontWeight(.bold)
                     Text(overviewCell.title)
-                        //.font(.system(size: 22))
                         .fontWeight(.bold)
                         .foregroundColor(Color(UIColor.label))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        //Spacer(minLength: 0)
-                        //Spacer()
                 }
                 .padding()
-                //.background(Color(UIColor.label).opacity(0.06))
                 .background(
                     RoundedRectangle(cornerRadius: Constants.overviewCellCornerRadius)
                         .outerNeumorphism(Color.statsFillColor))
@@ -400,7 +384,7 @@ extension AnalyticsNew {
     var circles: some View{
         LazyVGrid(columns: columns){
 
-        ForEach(swiftUIData.circles_Data){circle in
+        ForEach(swiftUIData.circlesData){circle in
             VStack(spacing: Constants.circleTitleToCirclePadding){
                 VStack{
                     HStack{
@@ -425,7 +409,7 @@ extension AnalyticsNew {
                                 .rotationEffect(.degrees(90)))
                     //__________ circles progress bar
                     Circle()
-                        .trim(from: 0, to: (circle.currentData / circle.goal))
+                        .trim(from: 0, to: (circle.value / circle.maxValue))
                         .stroke(
                             LinearGradient(Color("Color4"), Color("Color1")),
                             style: StrokeStyle(lineWidth: 10, lineCap: .round))
@@ -435,11 +419,11 @@ extension AnalyticsNew {
                     //__________ circles progress bar
                     //AAA 3
                     //Show non decimal value if raw insights
-                    let value = StringFormatter.formatNum(value: Double(circle.currentData))
+                    let value = StringFormatter.formatNum(value: Double(circle.value))
                     
                     Text(
                         rawInsights == true && circle.id == 1
-                        ? Double(circle.currentData) <= 100
+                        ? Double(circle.value) <= 100
                         ? value.components(separatedBy: ".")[0]
                         : value
                         : rawInsights == true

@@ -48,8 +48,7 @@ struct BarchartView: View {
                     .onTapGesture {
                         withAnimation(.easeOut){
                             selected = value.id
-                            swiftUIData.circles_Data[1].currentData = value.r
-                            swiftUIData.circles_Data[1].variation = value.rVr
+                            swiftUIData.circlesData[1].value = value.rate
                             AnalyticsSUIViewModel.lastSelected = value.id
                             let impactMed = UIImpactFeedbackGenerator(style: .soft)
                             impactMed.impactOccurred()

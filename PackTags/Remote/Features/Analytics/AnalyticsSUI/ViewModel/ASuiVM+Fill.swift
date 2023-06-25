@@ -17,17 +17,17 @@ extension AnalyticsSUIViewModel {
         if processedJson?.rates == Optional([]) { return }
         
         //
-        self.overviewSectionData[0].currentData = processedJson?.avg0 ?? "0" //avg likes
-        self.overviewSectionData[1].currentData = processedJson?.avg1 ?? "0" //avg com
+        self.overviewSectionData[0].value = processedJson?.avg0 ?? "0" //avg likes
+        self.overviewSectionData[1].value = processedJson?.avg1 ?? "0" //avg com
         
         //
-        self.circles_Data[1].currentData = processedJson?.rates[AnalyticsSUIViewModel.lastSelected] ?? 0 //Selection default value
-        self.circles_Data[1].goal = getMaxRate()
+        self.circlesData[1].value = processedJson?.rates[AnalyticsSUIViewModel.lastSelected] ?? 0 //Selection default value
+        self.circlesData[1].maxValue = getMaxRate()
         
         //
         let avEng: CGFloat = processedJson?.avg2 ?? 0 //avg engagement
-        self.circles_Data[0].currentData = avEng
-        self.circles_Data[0].goal = avEng
+        self.circlesData[0].value = avEng
+        self.circlesData[0].maxValue = avEng
     }
     
     func fillGraphData () {
@@ -45,9 +45,8 @@ extension AnalyticsSUIViewModel {
                     Post(
                         id: i,
                         post: "\(i+1)",
-                        r: CGFloat(rates[i]!),
-                        barHeight:  ((rates[i]!) / maxR) * 50 + 5, //80
-                        rVr: 0))
+                        rate: CGFloat(rates[i]!),
+                        barHeight:  ((rates[i]!) / maxR) * 50 + 5)) //80
             }
         }
     }

@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct AnalyticsOverviewModel : Identifiable {
-    var id : Int
-    var title : String
-    var currentData : String
-    var goal : CGFloat
-    var color : Color
+    var id: Int
+    var title: String
+    var value: String
+    var maxValue: CGFloat
+    var color: Color
     var image: Image
 }
