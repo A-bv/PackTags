@@ -18,13 +18,15 @@ extension AnalyticsSUIViewModel {
     func getJsonFromDir () {
         DispatchQueue.main.async { [weak self] in
             guard let jsonData = DocumentDirectory.getJsonDataFromDir() else { return } //data
-            guard let profileJson = GenericJSONParser.ParseJs(
-                of: Profile.self,
-                data: jsonData) as? Profile else { return }
+            guard
+                let profileJson = GenericJSONParser.ParseJs(
+                    of: Profile.self,
+                    data: jsonData) as? Profile
+            else { return }
      
-            self?.jsonOfficial = profileJson
-            self?.processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson)
-            self?.updateData()
+            DispatchQueue.main.async{ [weak self] in
+                self?.load(profileJson: profileJson)
+            }
         }
     }
     
@@ -33,11 +35,17 @@ extension AnalyticsSUIViewModel {
         ApiService.loadProfileForAnalytics(
             completion: { (profileJson) in
                 DispatchQueue.main.async{ [weak self] in
-                    self?.jsonOfficial = profileJson
-                    self?.processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson)
-                    self?.updateData()
+                    self?.load(profileJson: profileJson)
                 }
             })
+    }
+    
+    private func load(profileJson: Profile) {
+        jsonOfficial = profileJson
+        processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson)
+        // QQQ
+        // processedJson = fakeProcessedJson()
+        updateData()
     }
     
     private func updateData() {
@@ -45,6 +53,27 @@ extension AnalyticsSUIViewModel {
         fillData()
     }
 }
+
+// Preview Testing purposes QQQ:
+// ***
+extension AnalyticsSUIViewModel {
+    func fakeProcessedJson () -> TransformedProfileModel {
+        TransformedProfileModel(
+            usr: "packtags.app",
+            isPv: false,
+            sum0: Optional(225),
+            sum1: Optional(26),
+            avg0: Optional("18.8"),
+            avg1: Optional("2.2"),
+            rates: [Optional(12.0), Optional(23.0), Optional(16.0)],
+            pTimes: [Optional(1639268616.0), Optional(1637529580.0), Optional(1636327207.0)],
+            avg2: 23.0,
+            maxR: 40.0,
+            captions: ["A", "B", "C"])
+    }
+}
+// ***
+
 
 // SmartG
 extension SmartGViewModel {

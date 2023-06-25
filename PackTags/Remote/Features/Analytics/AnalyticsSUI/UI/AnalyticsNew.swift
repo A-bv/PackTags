@@ -20,9 +20,6 @@ struct AnalyticsNew : View {
     
     private enum Strings {
         static let average = "Average".localized()
-        static let previousPosts = "Previous posts".localized()
-        static let previousPost = "Previous post".localized()
-        static let latest = "Latest post".localized()
         static let noMedia = "No media have been posted yet\nas a Business/Creator account".localized()
         static let dataUnavailable = "Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account".localized()
         static let engagement = "Engagement".localized()
@@ -57,11 +54,6 @@ struct AnalyticsNew : View {
         static let overviewCellValueFontSize: CGFloat = 22
         static let overviewCellCornerRadius: CGFloat = 15
         static let overviewCellToEdgeHorizontalPadding: CGFloat = 20
-        static let opacity: CGFloat = 0.6
-        static let barsOpacity: CGFloat = 0.06
-        static let barChartHorizontalSpacing: CGFloat = 10
-        static let barMaxHeight: CGFloat = 50
-        static let barChartTopPadding: CGFloat = 10
         static let maxNumberOfModes: Int = 3  // 1 followers, 2 reach, 3 impressions
         static let graphSectionHeaderVerticalSpacing: CGFloat = 5
         static let graphSectionHeaderTraillingPadding: CGFloat = 10
@@ -263,8 +255,8 @@ extension AnalyticsNew {
                     Spacer()
                 } else {
                     circles
-                    barchart
-                    barchartArrows
+                    BarchartView(selected: $selected, colors: colors, swiftUIData: swiftUIData)
+                    BarchartArrowsView(swiftUIData: swiftUIData)
                 }
             }
             .padding()
@@ -323,76 +315,6 @@ extension AnalyticsNew {
                 leading: Constants.overviewCellToEdgeHorizontalPadding,
                 bottom: 0,
                 trailing: Constants.overviewCellToEdgeHorizontalPadding))
-    }
-}
-
-// Barchart
-extension AnalyticsNew {
-    var barchart: some View{
-        HStack(spacing: Constants.barChartHorizontalSpacing){
-            ForEach(swiftUIData.barChartData ?? []) { value in
-                // Bars...
-                VStack{
-                    VStack{
-                        Spacer(minLength: 0)
-                        
-                        RoundedShape()
-                            .fill(
-                                LinearGradient(
-                                    gradient: .init(
-                                        colors: selected == value.id
-                                        ? colors
-                                        : [Color(UIColor.label).opacity(Constants.barsOpacity)]),
-                                    startPoint: .top, endPoint: .bottom))
-                        
-                        // max height = 50
-                            .frame(height: value.barHeight)
-                        
-                    }
-                    .frame(
-                        height: Constants.barMaxHeight + Constants.barChartTopPadding)
-                    .onTapGesture {
-                        withAnimation(.easeOut){
-                            selected = value.id
-                            let _ = updateCircle(
-                                v1: value.r,
-                                v2: value.rVr)
-                            AnalyticsSUIViewModel.lastSelected = value.id
-                            let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                            impactMed.impactOccurred()
-                        }
-                    }
-                    
-                    Text(value.post)
-                        .font(.caption2)
-                        .foregroundColor(Color(UIColor.label))
-                }
-            }
-        }
-    }
-    
-    var barchartArrows: some View{
-        HStack {
-            let num = swiftUIData.processedJson?.postsCount
-            if num != 1 {
-            Image(systemName: "arrow.turn.left.up")
-                .font(.caption)
-                .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
-            Text(Strings.latest)
-                .font(.caption)
-                .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
-            }
-            Spacer()
-            
-            let leftArrowText = num != 1 ? Strings.previousPosts : Strings.previousPost
-            // "Last \(num ?? 0) Posts" : Strings.previousPosts
-            Text(leftArrowText)
-                .font(.caption)
-                .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
-            Image(systemName: "arrow.right")
-                .font(.caption)
-                .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
-        }
     }
 }
 
