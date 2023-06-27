@@ -25,10 +25,10 @@ extension PackTableVC {
         self.setNavBarTransparent(alpha: alpha)
     }
     
-    func updateAlphaForNavBarOpacity(offset:CGFloat) {
-        let pos = currentNavBarHeight + 2*statusBarHeight
-        let denominator: CGFloat = 50 //offset treshold
-        let value = (offset + CGFloat(pos)) / denominator
+    private func updateAlphaForNavBarOpacity(offset: CGFloat) {
+        let pos = currentNavBarHeight + 2 * statusBarHeight
+        let denominator: CGFloat = 50 // Offset threshold
+        let value = (offset + pos) / denominator
         alpha = min(1, value)
     }
 }

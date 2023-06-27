@@ -72,7 +72,7 @@ class PackCell: UITableViewCell {
         return btn
     }()
     
-    var buttonTapCallback: () -> ()  = { }
+    var buttonTapCallback: () -> Void = { }
         
     let copyButton: UIButton = {
         let fontSize = Constants.copyButtonFontSize

@@ -17,47 +17,31 @@ extension PackTableVC {
     }
     
     func configureCell(indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PackCell", for: indexPath) as? PackCell
-        else {
-            fatalError("The dequeued cell is not an instance of Pack.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PackCell", for: indexPath) as? PackCell else {
+            fatalError("The dequeued cell is not an instance of PackCell.")
         }
         
         let pack = self.packs[indexPath.row]
+        let tags = pack.components(separatedBy: " ")
         
-        // -- Labels --
-        let tags = packs[indexPath.row].components(separatedBy:" ")
         cell.cellLabel.text = tags.first
         let btnLabel = tags.count != 1 ? " + \(tags.count - 1) \(Strings.more) " : " \(Strings.oneHashtag) "
-        cell.subButton.setTitle(pack == "" ? " \(Strings.zeroHashtags) " : btnLabel, for: .normal)
+        cell.subButton.setTitle(pack.isEmpty ? " \(Strings.zeroHashtags) " : btnLabel, for: .normal)
         
-        // -- COPY Button --
-        cell.buttonTapCallback = {[weak self] in
+        cell.buttonTapCallback = { [weak self] in
             self?.pasteboard.string = pack
-            self?.goInsta(packIdx:indexPath.row)
+            self?.goInsta(packIdx: indexPath.row)
         }
         
-        // -- SUB Button --
-        cell.subButtonTapCallback = {[weak self] in
-            let message = pack == "" ? Strings.tapPencil : pack
-            self?.subBtnAlert(
-                title: "",
-                message: message)
+        cell.subButtonTapCallback = { [weak self] in
+            let message = pack.isEmpty ? Strings.tapPencil : pack
+            self?.subBtnAlert(title: "", message: message)
         }
         
-        if indexPath.row == 0{
+        if indexPath.row == 0 {
             cell.roundTopCorners(radius: cR)
         }
         
         return cell
     }
-}
-
-extension PackCell {
-    func configure(with viewModel: PackCellViewModel) {
-        
-    }
-}
-
-struct PackCellViewModel {
-    let pack: [String]
 }
