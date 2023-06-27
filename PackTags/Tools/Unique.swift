@@ -86,6 +86,25 @@ extension Array where Element: Hashable {
     }
 }
 
+// Returns array of differences between 2 arrays
+extension Array where Element: Hashable {
+    func differenceArrays(from other: [Element]) -> [Element] {
+        let thisSet = Set(self)
+        let otherSet = Set(other)
+        return Array(thisSet.symmetricDifference(otherSet))
+    }
+}
+
+// Adds element at specific position in list
+extension Array {
+    func chunks(of size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            let n = Swift.min(size, count - $0)
+            return Array(self[$0 ..< $0 + n])
+        }
+    }
+}
+
 // Detect hashtags in text
 extension String {
     func detectHashtags() -> [String] {
@@ -104,25 +123,6 @@ extension String {
             }
         }
         return []
-    }
-}
-
-// Returns array of differences between 2 arrays
-extension Array where Element: Hashable {
-    func differenceArrays(from other: [Element]) -> [Element] {
-        let thisSet = Set(self)
-        let otherSet = Set(other)
-        return Array(thisSet.symmetricDifference(otherSet))
-    }
-}
-
-// Adds element at specific position in list
-extension Array {
-    func chunks(of size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
-            let n = Swift.min(size, count - $0)
-            return Array(self[$0 ..< $0 + n])
-        }
     }
 }
 

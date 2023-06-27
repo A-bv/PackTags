@@ -62,10 +62,10 @@ extension PackTableVC {
 
         if isGoInstaEnabled {
             UserDefaults.standard.set(false, forKey: key)
-            self.subBtnAlert(title: username, message: Strings.stopRedirectionAlertMessage)
+            subBtnAlert(title: username, message: Strings.stopRedirectionAlertMessage)
         } else if !username.isEmpty {
             UserDefaults.standard.set(true, forKey: key)
-            self.subBtnAlert(title: username, message: Strings.redirectionAlertMessage)
+            subBtnAlert(title: username, message: Strings.redirectionAlertMessage)
         }
     }
 }
