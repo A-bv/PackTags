@@ -22,57 +22,50 @@ extension PackTableVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             let goInstagram = UserDefaults.standard.bool(forKey: "goInsta")
             let Username = UserDefaults.standard.string(forKey: "Instagram Username") ?? ""
-            if goInstagram == false {} else {
+            if goInstagram {
                 self.openAppURL(
                     appURL: "instagram://user?username=\(Username)",
                     webURL: "https://instagram.com/\(Username)",
-                    completion: {_ in
+                    completion: { _ in
                         if UserDefaults.standard.bool(forKey: "Keep Packs Order") == false {
                             self.copiedPacksToBottom(packIdx: packIdx)
-                        } else {}
+                        }
                     }
                 )
             }
         }
     }
     
-    func statusAutoDirectToInstagram () {
-        let Username = UserDefaults.standard.string(forKey: "Instagram Username")  ?? ""
+    func statusAutoDirectToInstagram() {
+        let username = UserDefaults.standard.string(forKey: "Instagram Username")  ?? ""
+        let key = "goInsta"
         
-        if Username == "" {
-            Alerts.alertTitle(
+        if username.isEmpty {
+            Alerts.showAlertTitle(
                 targetVC: self,
                 title: Strings.instagram,
                 message: Strings.username,
                 placeholder: Strings.enterUsername
-            ) { (inputName) in
+            ) { [weak self] inputName in
                 let name = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
                 UserDefaults.standard.set(name, forKey: "Instagram Username")
-                UserDefaults.standard.set(true, forKey: "goInsta")
+                UserDefaults.standard.set(true, forKey: key)
                 
-                self.subBtnAlert(
-                    title: Username,
+                self?.subBtnAlert(
+                    title: username,
                     message: Strings.redirectionAlertMessage + "  \n\n " + Strings.undoRedirection
                 )
             }
         }
         
-        let status = UserDefaults.standard.bool(forKey: "goInsta")
-        if status == true {
-            UserDefaults.standard.set(false, forKey: "goInsta")
-            self.subBtnAlert(
-                title: Username,
-                message: Strings.stopRedirectionAlertMessage
-            )
-        } else {
-            if Username != "" {
-                UserDefaults.standard.set(true, forKey: "goInsta")
-                
-                self.subBtnAlert(
-                    title: Username,
-                    message: Strings.redirectionAlertMessage
-                )
-            }
+        let isGoInstaEnabled = UserDefaults.standard.bool(forKey: key)
+
+        if isGoInstaEnabled {
+            UserDefaults.standard.set(false, forKey: key)
+            self.subBtnAlert(title: username, message: Strings.stopRedirectionAlertMessage)
+        } else if !username.isEmpty {
+            UserDefaults.standard.set(true, forKey: key)
+            self.subBtnAlert(title: username, message: Strings.redirectionAlertMessage)
         }
     }
 }

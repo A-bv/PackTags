@@ -26,7 +26,7 @@ class Alerts: NSObject {
         static let tricksAndTips = "Tricks & Tips".localized()
     }
     
-    class func alertTitle(
+    class func showAlertTitle(
         targetVC: UIViewController,
         title: String,
         message: String,
@@ -216,7 +216,7 @@ extension UIViewController {
         let placeholder = username == "" ? Strings.enterUsername : Strings.editUsername
         
         //Shows alert pop up
-        Alerts.alertTitle(
+        Alerts.showAlertTitle(
             targetVC: self,
             title: Strings.instagram,
             message: message,
@@ -245,7 +245,7 @@ extension ThemeVC {
         let message = themeTitle.isEmpty == true ? tips : Strings.editName
         let placeholder = themeTitle.isEmpty == true ? Strings.enterName : Strings.enterNewName
         
-        Alerts.alertTitle(
+        Alerts.showAlertTitle(
             targetVC: self,
             title: title,
             message: message,
