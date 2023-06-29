@@ -29,7 +29,6 @@ struct AnalyticsNew : View {
         static let eRR = "Engagement Rate by Reach (ERR)".localized()
         static let eRI = "Engagement Rate by Impressions (ER Impressions)".localized()
         static let analyticsTitle = "Analytics".localized()
-        static let notConnected = "Not connected".localized()
         static let privateProfile = "Profile is private".localized()
         static let ratioToFollower = "Per Follower".localized()
         static let ratioByReach = "By Reach".localized()
@@ -57,8 +56,6 @@ struct AnalyticsNew : View {
         static let maxNumberOfModes: Int = 3  // 1 followers, 2 reach, 3 impressions
         static let graphSectionHeaderVerticalSpacing: CGFloat = 5
         static let graphSectionHeaderTraillingPadding: CGFloat = 10
-        static let offlineViewFontSize: CGFloat = 56
-        static let loadingIndicatorFrame: CGFloat = 70
     }
     
     //
@@ -128,9 +125,9 @@ struct AnalyticsNew : View {
                 header
                 
                 if !monitor.isConnected {
-                    offlineView
+                    OfflineView()
                 } else if swiftUIData.jsonOfficial == nil {
-                    loadingView
+                    LoadingView(loading: $loading)
                 } else {
                     if swiftUIData.processedJson?.isPrivateProfile == true {
                         Color.bgFillColor
@@ -159,7 +156,7 @@ struct AnalyticsNew : View {
 
 //MARK: - Functions
 extension AnalyticsNew {  
-    func updateLabels () -> Bool {
+    func updateLabels () {
         let rawMetricsLabels = [
             Strings.engagement,
             Strings.reach,
@@ -193,7 +190,6 @@ extension AnalyticsNew {
             "\n\(Strings.eRRDefiniton)",
             "\n\(Strings.eRIDefinition)"
         ]
-        return true
     }
 }
 
@@ -357,7 +353,7 @@ extension AnalyticsNew {
                     impactMed.impactOccurred()
                         
                     rawInsights = !rawInsights
-                    let _ = updateLabels ()
+                    updateLabels()
                     
                     swiftUIData.getJsonFromDir()
                 }
@@ -382,37 +378,5 @@ extension AnalyticsNew {
                 .padding(.trailing,0)
             }
         }
-    }
-}
-
-// Offline View
-extension AnalyticsNew {
-    var offlineView: some View {
-        ZStack {
-            Color.bgFillColor
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-                Image(systemName: "wifi.slash")
-                    .font(.system(size: Constants.offlineViewFontSize))
-                Text(Strings.notConnected)
-            }
-        }
-    }
-}
-
-// Unavailable Data View
-extension AnalyticsNew {
-    var loadingView: some View {
-        ZStack {
-            Color.bgFillColor
-                .edgesIgnoringSafeArea(.all)
-                    
-            ActivityIndicatorView(isVisible: $loading, type: .rotatingDots)
-                .foregroundColor(Color("customPurple"))
-                .frame(
-                    width: Constants.loadingIndicatorFrame,
-                    height: Constants.loadingIndicatorFrame,
-                    alignment: .center)
-            }
     }
 }

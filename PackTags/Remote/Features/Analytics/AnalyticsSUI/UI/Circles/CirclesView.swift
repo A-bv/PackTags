@@ -82,3 +82,24 @@ struct CirclesView: View {
         return rawInsights && circle.id == 1 ? displayedValueCircle1 : displayedValueCircle2
     }
 }
+
+struct CirclesView_Previews: PreviewProvider {
+    @State static var circles: [Circles] = [
+        Circles(id: 0, title: "Average", value: 200, maxValue: 7, color: .blue),
+        Circles(id: 1, title: "Selection", value: 1000, maxValue: 80, color: .blue)
+    ]
+    
+    static var previews: some View {
+        let gridItem = GridItem(.flexible())
+        ZStack {
+            Color.bgFillColor.ignoresSafeArea()
+            VStack() {
+                CirclesView(
+                    circles: $circles,
+                    rawInsights: false,
+                    columns: [gridItem])
+            }
+            .padding(50)
+        }
+    }
+}
