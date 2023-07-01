@@ -8,17 +8,25 @@
 
 import UIKit
 
-//Cells with an arrow
 class SettingsCell: UITableViewCell {
-    
-    //--
-    
     static let identifier = "SettingsCell"
+    
+    private enum Constants {
+        static let iconContainerX: CGFloat = 15
+        static let iconContainerY: CGFloat = 6
+        static let iconContainerCornerRadius: CGFloat = 8
+        static let iconImageViewTintColor = UIColor.white
+        static let iconImageViewSizeRatio: CGFloat = 1.5
+        static let labelXOffset: CGFloat = 25
+        static let labelWidthOffset: CGFloat = 20
+        static let contentViewHeightOffset: CGFloat = 12
+        static let disclosureIndicatorType: UITableViewCell.AccessoryType = .disclosureIndicator
+    }
     
     private let iconContainer: UIView = {
         let view = UIView()
-        view .clipsToBounds = true
-        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        view.layer.cornerRadius = Constants.iconContainerCornerRadius
         view.layer.masksToBounds = true
         return view
     }()
@@ -29,16 +37,9 @@ class SettingsCell: UITableViewCell {
         return label
     }()
     
-    //--
-    
-    
-    
-    
-    //--
-    
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = .white
+        imageView.tintColor = Constants.iconImageViewTintColor
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -50,7 +51,7 @@ class SettingsCell: UITableViewCell {
         contentView.addSubview(iconImageView)
         
         contentView.clipsToBounds = true
-        accessoryType = .disclosureIndicator
+        accessoryType = Constants.disclosureIndicatorType
     }
     
     required init?(coder: NSCoder) {
@@ -59,50 +60,39 @@ class SettingsCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let size: CGFloat = contentView.frame.size.height - 12
-        iconContainer.frame = CGRect(x: 15, y: 6, width: size, height: size)
+        let size: CGFloat = contentView.frame.size.height - Constants.contentViewHeightOffset
+        iconContainer.frame = CGRect(
+            x: Constants.iconContainerX,
+            y: Constants.iconContainerY,
+            width: size,
+            height: size)
         
-        let imageSize: CGFloat = size/1.5
-        iconImageView.frame = CGRect(x: (size-imageSize)/2, y: (size-imageSize)/2, width: imageSize, height: imageSize)
+        let imageSize: CGFloat = size / Constants.iconImageViewSizeRatio
+        iconImageView.frame = CGRect(
+            x: (size - imageSize) / 2,
+            y: (size - imageSize) / 2,
+            width: imageSize,
+            height: imageSize)
         iconImageView.center = iconContainer.center
         
         label.frame = CGRect(
-            x: 25 + iconContainer.frame.size.width,
+            x: Constants.labelXOffset + iconContainer.frame.size.width,
             y: 0,
-            width: contentView.frame.size.width - 20 - iconContainer.frame.size.width,
+            width: contentView.frame.size.width - Constants.labelWidthOffset - iconContainer.frame.size.width,
             height: contentView.frame.size.height
         )
     }
     
-    //called when TV trying to reuse its cell
-    override func prepareForReuse() { 
+    override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
         label.text = nil
         iconContainer.backgroundColor = nil
-        //--
     }
     
-    public func configure(with model: SettingsOption){
+    public func configure(with model: SettingsOption) {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
-        
-        //--
-        //--
     }
-    
-    //--
-    
-    
-    
-    //--
 }
-
-
-
-
-
-
-
-
