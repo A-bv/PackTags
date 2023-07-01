@@ -14,7 +14,13 @@ class StringFormatter: NSObject {
         let avgDbl = avgNS?.doubleValue
         return formatNum(value: avgDbl ?? 0) //String(format: "%.2f", avgDbl ?? 0)
     }
-    
+
+    class func averageElementOfArrayCGFloat (array: [CGFloat]) -> CGFloat {
+        array.reduce(0.0) { $0 + $1/CGFloat(array.count) }
+    }
+}
+
+extension StringFormatter {
     class func formatNum (value : Double, noDecimal: Bool = false) -> String {
         var text = String()
         switch value {
@@ -31,8 +37,16 @@ class StringFormatter: NSObject {
         }
         return text
     }
-    
-    class func averageElementOfArrayCGFloat (array: [CGFloat]) -> CGFloat {
-        array.reduce(0.0) { $0 + $1/CGFloat(array.count) }
+}
+
+extension StringFormatter {
+    class func formatValueToText(
+        with value: Double, isRate: Bool
+    ) -> String {
+        let number = StringFormatter.formatNum(value: value)
+        let truncValue = value <= 100 ? number.components(separatedBy: ".")[0] : number
+        let rateValue = number + " %"
+        let text = isRate ? rateValue : truncValue
+        return text
     }
 }

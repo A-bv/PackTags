@@ -239,12 +239,12 @@ extension AnalyticsNew {
                     if postCount == 1 {
                         MonoCircleView(
                             monoCircleValue: Double(average),
-                            rawInsights: rawInsights)
+                            isRate: !rawInsights)
                         Spacer()
                     } else {
                         CirclesView(
                             circles: $swiftUIData.circlesData,
-                            rawInsights: rawInsights,
+                            isRate: !rawInsights,
                             columns: columns)
                         BarchartView(
                             selected: $selected,

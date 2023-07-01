@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CirclesView: View {
     @Binding var circles: [Circles]
-    var rawInsights: Bool
+    var isRate: Bool
     let columns: [GridItem]
     
     private enum Constants {
@@ -33,13 +33,11 @@ struct CirclesView: View {
         LazyVGrid(columns: columns) {
             ForEach(circles) { circle in
                 VStack(spacing: Constants.circleTitleToCirclePadding) {
-                    VStack {
-                        HStack {
-                            Text(circle.title)
-                                .font(.system(size: Constants.circleTitleFontSize))
-                                .foregroundColor(Color(UIColor.label))
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
+                    HStack {
+                        Text(circle.title)
+                            .font(.system(size: Constants.circleTitleFontSize))
+                            .foregroundColor(Color(UIColor.label))
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
                     ZStack {
@@ -63,7 +61,10 @@ struct CirclesView: View {
                                 width: Constants.circleFrameWidthInner,
                                 height: Constants.circleFrameHeightInner)
 
-                        Text(makeCircleText(circle: circle))
+                        Text(
+                            StringFormatter.formatValueToText(
+                                with: circle.value,
+                                isRate: isRate))
                             .font(.title3)
                             .fontWeight(.bold)
                             .foregroundColor(circle.color)
@@ -74,19 +75,12 @@ struct CirclesView: View {
             }
         }
     }
-    
-    private func makeCircleText(circle: Circles) -> String {
-        let value = StringFormatter.formatNum(value: Double(circle.value))
-        let displayedValueCircle1 = Double(circle.value) <= 100 ? value.components(separatedBy: ".")[0] : value
-        let displayedValueCircle2 = rawInsights ? value : value + " %"
-        return rawInsights && circle.id == 1 ? displayedValueCircle1 : displayedValueCircle2
-    }
 }
 
 struct CirclesView_Previews: PreviewProvider {
     @State static var circles: [Circles] = [
-        Circles(id: 0, title: "Average", value: 200, maxValue: 7, color: .blue),
-        Circles(id: 1, title: "Selection", value: 1000, maxValue: 80, color: .blue)
+        Circles(id: 0, title: "Average", value: 203.1, maxValue: 7, color: .blue),
+        Circles(id: 1, title: "Selection", value: 133.3, maxValue: 80, color: .blue)
     ]
     
     static var previews: some View {
@@ -96,7 +90,7 @@ struct CirclesView_Previews: PreviewProvider {
             VStack() {
                 CirclesView(
                     circles: $circles,
-                    rawInsights: false,
+                    isRate: true,
                     columns: [gridItem])
             }
             .padding(50)

@@ -5,39 +5,31 @@ struct MonoCircleView: View {
     private enum Constants {
         static let padding: CGFloat = 50
         static let textColor: Color = Color("Color4")
+        static let circlePaddingRadius: CGFloat = 100
     }
     
     let monoCircleValue: Double
-    let rawInsights: Bool
+    let isRate: Bool
     
     var body: some View {
         VStack {
-            let value = StringFormatter.formatNum(value: monoCircleValue)
-            let text = getText(for: value)
-            
+            let text = StringFormatter.formatValueToText(
+                with: monoCircleValue, isRate: isRate)
             Text(text)
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(Constants.textColor)
         }
-        .padding(2 * Constants.padding)
+        .padding(Constants.circlePaddingRadius)
         .background(
             Circle()
                 .outerNeumorphism(Color.statsFillColor)
         )
     }
-    
-    private func getText(for value: String) -> String {
-        if rawInsights {
-            return Double(monoCircleValue) <= 100 ? value.components(separatedBy: ".")[0] : value
-        } else {
-            return rawInsights ? value : value + " %"
-        }
-    }
 }
 
 struct MonoCircleView_Previews: PreviewProvider {
     static var previews: some View {
-        MonoCircleView(monoCircleValue: 12, rawInsights: true)
+        MonoCircleView(monoCircleValue: 12.1, isRate: false)
     }
 }
