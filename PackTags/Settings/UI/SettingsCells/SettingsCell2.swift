@@ -8,17 +8,25 @@
 
 import UIKit
 
-//Cells with a switch
 class SettingsCell2: UITableViewCell {
-
     static let identifier = "SettingsCell2"
+    
+    private enum Constants {
+        static let cornerRadius: CGFloat = 8
+        static let containerX: CGFloat = 15
+        static let containerY: CGFloat = 6
+        static let iconImageViewSizeRatio: CGFloat = 1.5
+        static let labelXOffset: CGFloat = 25
+        static let labelWidthOffset: CGFloat = 20
+        static let sizeOffset: CGFloat = 12
+    }
     
     var name: String?
     
     private let iconContainer: UIView = {
         let view = UIView()
-        view .clipsToBounds = true
-        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        view.layer.cornerRadius = Constants.cornerRadius
         view.layer.masksToBounds = true
         return view
     }()
@@ -29,12 +37,11 @@ class SettingsCell2: UITableViewCell {
         return label
     }()
     
-    //--
     private let mySwitch: UISwitch = {
-        let mySwitch = UISwitch(frame: .zero) as UISwitch
+        let mySwitch = UISwitch(frame: .zero)
         mySwitch.onTintColor = .systemGreen
         return mySwitch
-    }() //--
+    }()
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -50,7 +57,7 @@ class SettingsCell2: UITableViewCell {
         contentView.addSubview(iconImageView)
         
         contentView.clipsToBounds = true
-        accessoryView = mySwitch    //--
+        accessoryView = mySwitch
     }
     
     required init?(coder: NSCoder) {
@@ -59,46 +66,55 @@ class SettingsCell2: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let size: CGFloat = contentView.frame.size.height - 12
-        iconContainer.frame = CGRect(x: 15, y: 6, width: size, height: size)
+        let size: CGFloat = contentView.frame.size.height - Constants.sizeOffset
+        let imageSize: CGFloat = size / Constants.iconImageViewSizeRatio
         
-        let imageSize: CGFloat = size/1.5
-        iconImageView.frame = CGRect(x: (size-imageSize)/2, y: (size-imageSize)/2, width: imageSize, height: imageSize)
+        iconContainer.frame = CGRect(
+            x: Constants.containerX,
+            y: Constants.containerY,
+            width: size,
+            height: size)
+
+        iconImageView.frame = CGRect(
+            x: (size - imageSize) / 2,
+            y: (size - imageSize) / 2,
+            width: imageSize,
+            height: imageSize)
+
         iconImageView.center = iconContainer.center
-     
+
+        let labelX: CGFloat = Constants.labelXOffset + iconContainer.frame.size.width
+        let labelWidth: CGFloat = contentView.frame.size.width - Constants.labelWidthOffset - iconContainer.frame.size.width
+        let labelHeight = contentView.frame.size.height
         label.frame = CGRect(
-            x: 25 + iconContainer.frame.size.width,
+            x: labelX,
             y: 0,
-            width: contentView.frame.size.width - 20 - iconContainer.frame.size.width,
-            height: contentView.frame.size.height
-        )
+            width: labelWidth,
+            height: labelHeight)
     }
     
-    //called when TV trying to reuse its cell
     override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
         label.text = nil
         iconContainer.backgroundColor = nil
-        mySwitch.isOn = false 
+        mySwitch.isOn = false
     }
     
-    public func configure(with model: SettingsSwitchOption){//mod
+    public func configure(with model: SettingsSwitchOption) {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
-        
         mySwitch.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
         
-        if name != nil {
-            mySwitch.isOn = UserDefaults.standard.bool(forKey: name!)
+        if let name = name {
+            mySwitch.isOn = UserDefaults.standard.bool(forKey: name)
         }
     }
-
-    //SwitchButton function
+    
     @objc private func valueChanged(sender: UISwitch) {
-        if name != nil {
-            UserDefaults.standard.set(sender.isOn, forKey: name!)
+        if let name = name {
+            UserDefaults.standard.set(sender.isOn, forKey: name)
         }
     }
 }

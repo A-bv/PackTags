@@ -61,26 +61,30 @@ class SettingsCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         let size: CGFloat = contentView.frame.size.height - Constants.contentViewHeightOffset
+        let imageSize: CGFloat = size / Constants.iconImageViewSizeRatio
+        
         iconContainer.frame = CGRect(
             x: Constants.iconContainerX,
             y: Constants.iconContainerY,
             width: size,
             height: size)
         
-        let imageSize: CGFloat = size / Constants.iconImageViewSizeRatio
         iconImageView.frame = CGRect(
             x: (size - imageSize) / 2,
             y: (size - imageSize) / 2,
             width: imageSize,
             height: imageSize)
+
         iconImageView.center = iconContainer.center
         
+        let labelX: CGFloat = Constants.labelXOffset + iconContainer.frame.size.width
+        let labelWidth = contentView.frame.size.width - Constants.labelWidthOffset - iconContainer.frame.size.width
+        let labelHeight = contentView.frame.size.height
         label.frame = CGRect(
-            x: Constants.labelXOffset + iconContainer.frame.size.width,
+            x: labelX,
             y: 0,
-            width: contentView.frame.size.width - Constants.labelWidthOffset - iconContainer.frame.size.width,
-            height: contentView.frame.size.height
-        )
+            width: labelWidth,
+            height: labelHeight)
     }
     
     override func prepareForReuse() {
