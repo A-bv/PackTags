@@ -91,18 +91,18 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     func updateSaveButtonState() {saveButton.isEnabled = !themeTitle.isEmpty}
     
     private func loadEntries (){
-        if let theme = theme {
-            themeTitle = theme.name ?? ""
-            
-            //Packing by 30 from Core Data on textView
-            if theme.content != nil {
-                let hashtags = Unique.packBy(textToPack: theme.content!.components(separatedBy:" "))
-                themeTextView.text = hashtags
-            }
-            
-            //image
-            if theme.image == nil { print("could not find an image") }
-            else { themeImageView = UIImage(data: theme.image!) }
+        guard let theme else { return }
+        
+        //Packing by 30 from Core Data on textView
+        if let content = theme.content {
+            let hashtags = Unique.packBy(
+                textToPack: content.components(separatedBy:" "))
+            themeTextView.text = hashtags
+        }
+        
+        //image
+        if let image = theme.image {
+            themeImageView = UIImage(data: image)
         }
     }
     

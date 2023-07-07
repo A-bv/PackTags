@@ -9,9 +9,10 @@
 import Foundation
 
 struct Unique {
-    static func packBy (textToPack:[String]) -> String {
+    static func packBy(textToPack: [String]) -> String {
+        let numTagsInPack = QuantityPickerViewModel().numTagsInPack
         let list = Array(textToPack.chunks(of: numTagsInPack).joined(separator: ["---"])) //sections with ---
-        return list.joined(separator:" ").replacingOccurrences(of: " --- ", with: "\n\n") //format
+        return list.joined(separator: " ").replacingOccurrences(of: " --- ", with: "\n\n") //format
     }
     
     // MARK: - List of hashtags

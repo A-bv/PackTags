@@ -10,13 +10,15 @@ import Foundation
 
 //MARK: - Loading
 extension PackTableVC {
-    func loadPack(){
+    func loadPack() {
         guard let content = theme?.content else {
-            packs=[]
+            packs = []
             return
         }
-        let string = Unique.packBy(textToPack: content.components(separatedBy:" "))
-        packs = string.components(separatedBy: "\n\n")
+        
+        packs = Unique.packBy(
+            textToPack: content.components(separatedBy: " "))
+        .components(separatedBy: "\n\n")
     }
 }
 
