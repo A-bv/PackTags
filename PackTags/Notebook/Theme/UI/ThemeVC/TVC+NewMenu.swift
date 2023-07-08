@@ -76,8 +76,8 @@ extension ThemeVC{
                 let packsOfText = Unique.cleanTagList(
                     rawText: textToShuffle,
                     coreDataModel: vc?.theme,
-                    shuffle: true).components(separatedBy:" ")
-                vc?.themeTextView.text = Unique.makePacks(
+                    shuffle: true)
+                vc?.themeTextView.text = Unique.reorganizeTagsBySavedQuantity(
                     from: packsOfText)
             }
         }

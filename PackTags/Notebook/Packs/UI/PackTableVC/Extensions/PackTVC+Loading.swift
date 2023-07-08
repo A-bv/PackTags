@@ -16,8 +16,8 @@ extension PackTableVC {
             return
         }
         
-        let packsOfText = content.components(separatedBy: " ")
-        packs = Unique.makePacks(from: packsOfText)
+        let text = content
+        packs = Unique.reorganizeTagsBySavedQuantity(from: text)
         .components(separatedBy: "\n\n")
     }
 }
