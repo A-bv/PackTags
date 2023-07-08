@@ -1,13 +1,20 @@
 //
-//  ImageCache.swift
+//  EnvironmentValues+ImageCache.swift
 //  AsyncImage
 //
 // 
 
-import UIKit
+import SwiftUI
 
-protocol ImageCache {
-    subscript(_ url: URL) -> UIImage? { get set }
+extension EnvironmentValues {
+    var imageCache: ImageCache {
+        get { self[ImageCacheKey.self] }
+        set { self[ImageCacheKey.self] = newValue }
+    }
+}
+
+struct ImageCacheKey: EnvironmentKey {
+    static let defaultValue: ImageCache = TemporaryImageCache()
 }
 
 struct TemporaryImageCache: ImageCache {

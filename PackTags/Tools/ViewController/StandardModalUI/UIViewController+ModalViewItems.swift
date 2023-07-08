@@ -12,8 +12,6 @@ extension UIViewController {
     private enum Constants {
         static let distance10 = CGFloat(10)
         static let buttonSize = CGFloat(22)
-        static let distance16 = CGFloat(16)
-        static let distance34 = CGFloat(34)
     }
     
     func placeTopRightButton (arrowButton: Bool) {
@@ -40,34 +38,6 @@ extension UIViewController {
         btn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -cstW).isActive = true
         btn.heightAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
         btn.widthAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
-    }
-}
-
-extension UIViewController {
-    func placeTextView (textView: UITextView) {
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.adjustsFontForContentSizeCategory = true
-        textView.autocorrectionType = UITextAutocorrectionType.no
-        textView.keyboardType = UIKeyboardType.default
-        textView.returnKeyType = UIReturnKeyType.done
-        textView.isEditable = false
-        textView.textAlignment = .center
-        self.view.addSubview(textView)
-        
-        let cstW = view.frame.width/Constants.distance10
-        
-        textView.topAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.topAnchor,
-            constant: cstW + Constants.buttonSize + Constants.distance16).isActive = true
-        textView.leftAnchor.constraint(
-            equalTo: view.leftAnchor,
-            constant: Constants.distance16).isActive = true
-        textView.rightAnchor.constraint(
-            equalTo: view.rightAnchor,
-            constant: -Constants.distance16).isActive = true
-        textView.bottomAnchor.constraint(
-            equalTo: view.bottomAnchor,
-            constant: -Constants.distance34).isActive = true
     }
 }
 

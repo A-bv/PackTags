@@ -1,11 +1,12 @@
 //
-//  UrlImageSwiftUI.swift
+//  URLImage.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 15/12/2021.
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
+/*
 import SwiftUI
 
 struct URLImage: View {
@@ -46,3 +47,4 @@ struct URLImage: View {
         task.resume()
     }
 }
+*/

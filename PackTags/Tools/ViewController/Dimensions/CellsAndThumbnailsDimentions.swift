@@ -26,15 +26,13 @@ extension UIViewController {
         }
     }
     
-    func ThemeTableViewControllerCellAndThumbnailDimensions() -> CGFloat {
-        let vc = self
-        
+    func themeTableViewControllerCellAndThumbnailDimensions() -> CGFloat {
         let paddingBottom = CGFloat(14)
-        let navigationBarHeight = vc.currentNavBarHeight + vc.statusBarHeight
+        let navigationBarHeight = currentNavBarHeight + statusBarHeight
  
         let iPhoneSEWidth: CGFloat = 320
         
-        let screenHeight = vc.view.frame.height
+        let screenHeight = view.frame.height
         let cellHeightLImit: CGFloat = 164
         
         //tableView cells height

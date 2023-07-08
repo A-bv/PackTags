@@ -28,7 +28,7 @@ extension ThemeTableViewController {
     
     func configureTableView () {
         self.tableView.backgroundColor = bkgdColor
-        self.tableView.rowHeight = self.ThemeTableViewControllerCellAndThumbnailDimensions()
+        self.tableView.rowHeight = self.themeTableViewControllerCellAndThumbnailDimensions()
         self.addLongPressToTableView() // reorder cells
     }
     
