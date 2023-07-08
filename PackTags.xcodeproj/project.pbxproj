@@ -119,8 +119,8 @@
 		02FA30772A004254006A48CC /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30762A004254006A48CC /* CollectionView.swift */; };
 		02FA307A2A004441006A48CC /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30792A004441006A48CC /* TagView.swift */; };
 		02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA307C2A004804006A48CC /* CollectionView+functions.swift */; };
-		02FA307F2A004C2F006A48CC /* SmartGView+functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA307E2A004C2F006A48CC /* SmartGView+functions.swift */; };
-		02FA30812A004C7D006A48CC /* SmartGView+interactionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30802A004C7D006A48CC /* SmartGView+interactionBar.swift */; };
+		02FA307F2A004C2F006A48CC /* InteractionBarView+functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA307E2A004C2F006A48CC /* InteractionBarView+functions.swift */; };
+		02FA30812A004C7D006A48CC /* InteractionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30802A004C7D006A48CC /* InteractionBarView.swift */; };
 		02FA30852A118D71006A48CC /* JsonParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30842A118D71006A48CC /* JsonParsingError.swift */; };
 		02FA30872A119C3C006A48CC /* HashtagIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30862A119C3C006A48CC /* HashtagIdResponse.swift */; };
 		02FA30892A11B637006A48CC /* ASuiVM+refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30882A11B637006A48CC /* ASuiVM+refresh.swift */; };
@@ -272,8 +272,8 @@
 		02FA30762A004254006A48CC /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		02FA30792A004441006A48CC /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		02FA307C2A004804006A48CC /* CollectionView+functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+functions.swift"; sourceTree = "<group>"; };
-		02FA307E2A004C2F006A48CC /* SmartGView+functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartGView+functions.swift"; sourceTree = "<group>"; };
-		02FA30802A004C7D006A48CC /* SmartGView+interactionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartGView+interactionBar.swift"; sourceTree = "<group>"; };
+		02FA307E2A004C2F006A48CC /* InteractionBarView+functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InteractionBarView+functions.swift"; sourceTree = "<group>"; };
+		02FA30802A004C7D006A48CC /* InteractionBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionBarView.swift; sourceTree = "<group>"; };
 		02FA30842A118D71006A48CC /* JsonParsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParsingError.swift; sourceTree = "<group>"; };
 		02FA30862A119C3C006A48CC /* HashtagIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagIdResponse.swift; sourceTree = "<group>"; };
 		02FA30882A11B637006A48CC /* ASuiVM+refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASuiVM+refresh.swift"; sourceTree = "<group>"; };
@@ -802,6 +802,15 @@
 			path = SmartGSUI;
 			sourceTree = "<group>";
 		};
+		02D709D42A5915F80009F7C3 /* InteractionBar */ = {
+			isa = PBXGroup;
+			children = (
+				02FA30802A004C7D006A48CC /* InteractionBarView.swift */,
+				02FA307E2A004C2F006A48CC /* InteractionBarView+functions.swift */,
+			);
+			path = InteractionBar;
+			sourceTree = "<group>";
+		};
 		02D8C17729201663002585C7 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
@@ -867,11 +876,10 @@
 			children = (
 				02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */,
 				021D76162759A00D00F54054 /* SmartGView.swift */,
-				02FA30802A004C7D006A48CC /* SmartGView+interactionBar.swift */,
+				02D709D42A5915F80009F7C3 /* InteractionBar */,
 				02F89B2A29743FE4008F363D /* SmartGHeader.swift */,
 				02FA30782A00442C006A48CC /* FloatingListView */,
 				02FA307B2A00459A006A48CC /* CollectionView */,
-				02FA30902A11DD0B006A48CC /* Other */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -919,14 +927,6 @@
 				02491C52267147AF00F98E17 /* ModalViewTopRightButton.swift */,
 			);
 			path = ModalView;
-			sourceTree = "<group>";
-		};
-		02FA30902A11DD0B006A48CC /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				02FA307E2A004C2F006A48CC /* SmartGView+functions.swift */,
-			);
-			path = Other;
 			sourceTree = "<group>";
 		};
 		02FAE2AB260ADA9200324724 /* Settings */ = {
@@ -1147,7 +1147,7 @@
 				0226F19C259EAB93006E086C /* PackCell.swift in Sources */,
 				02CD2D8F29904F0D00EDE077 /* UrlEncoding.swift in Sources */,
 				021D7620275A99D500F54054 /* TransformedProfileModel.swift in Sources */,
-				02FA307F2A004C2F006A48CC /* SmartGView+functions.swift in Sources */,
+				02FA307F2A004C2F006A48CC /* InteractionBarView+functions.swift in Sources */,
 				021D76172759A00D00F54054 /* SmartGView.swift in Sources */,
 				0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */,
 				02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */,
@@ -1218,7 +1218,7 @@
 				026D16DD2A3E474500228DEA /* Import.swift in Sources */,
 				02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */,
 				02B0D7572A48CBB900EF1500 /* Import+TestCase.swift in Sources */,
-				02FA30812A004C7D006A48CC /* SmartGView+interactionBar.swift in Sources */,
+				02FA30812A004C7D006A48CC /* InteractionBarView.swift in Sources */,
 				02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */,
 				02FA30732A00405D006A48CC /* StoryCardLabel.swift in Sources */,
 				026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */,

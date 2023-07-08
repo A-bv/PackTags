@@ -30,8 +30,7 @@ struct TagView: View {
                             .onAppear {
                                 childSizes[index] = geometry.size
                             }
-                    }
-                )
+                    })
                 .foregroundColor(.white)
                 .font(.headline)
                 .padding(tagPadding)

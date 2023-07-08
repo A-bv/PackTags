@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Functions
-extension SmartGView {
+extension InteractionBarView {
     //AAA - Just a function to print out values
     func printdd (value: Any) -> Bool {
         print(value)

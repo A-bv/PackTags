@@ -30,7 +30,7 @@ struct StoryCardLabel: View {
             switchType(type: .hashtags, count: hashtagsCount)
         }
         .foregroundColor(.white)
-        .background(Color.pink)
+        .background(Color.clear)
     }
     
     @ViewBuilder

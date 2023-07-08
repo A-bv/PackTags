@@ -10,7 +10,7 @@ import SwiftUI
 
 private enum Constants {
     static let cardWidth: CGFloat = 190
-    static let cardHeight: CGFloat = 250
+    static let cardHeight: CGFloat = 220
     static let cardCornerRadius: CGFloat = 12
 }
 

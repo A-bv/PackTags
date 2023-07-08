@@ -23,22 +23,31 @@ struct SmartGView: View {
     
     @State var showingPopover = false
     
-    @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
     
     var body: some View {
         ZStack{
             Color.bgFillColor.ignoresSafeArea()
-            VStack{
+            ScrollView{
                 SmartGHeader()
                 interactionBar
                 collection
                 FloatingListView(viewModel: self.smartGViewModel)
             }
+            .ignoresSafeArea(.keyboard)
         }
         .onAppear {
             smartGViewModel.fetch(hashtag: Strings.defaultHashtagWithoutHash)
         }
+    }
+    
+    var interactionBar: some View {
+        InteractionBarView(
+            showingPopover: $showingPopover,
+            hashtagEntry: $hashtagEntry,
+            showingAlert: $showingAlert,
+            hashtags: hashtags,
+            smartGViewModel: smartGViewModel)
     }
 }
 

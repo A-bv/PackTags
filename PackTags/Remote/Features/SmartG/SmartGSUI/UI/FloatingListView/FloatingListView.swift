@@ -40,7 +40,7 @@ struct FloatingListView: View {
     
     var rHashtagsList: some View {
         ZStack {
-            Color.blue
+            Color.clear
             // if !topTags.isEmpty {
                 ForEach(Array(viewModel.topHashtags.enumerated()), id: \.element) { index, item in
                     let padding = Constants.tagPadding + Constants.tagListPadding
@@ -64,7 +64,7 @@ struct FloatingListView: View {
             // }
         }
         .frame(width: Constants.tagListWidth, height: Constants.tagListHeight)
-        .cornerRadius(Constants.tagListCornerRadius)
+        // .cornerRadius(Constants.tagListCornerRadius)
         .padding(.horizontal, Constants.tagListPadding)
         .onAppear(perform: {
             tagYPos = generateTagYPos()
