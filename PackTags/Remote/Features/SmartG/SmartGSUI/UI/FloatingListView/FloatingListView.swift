@@ -16,7 +16,7 @@ private enum Constants {
     static let tagListPadding: CGFloat = 20
     static let tagListCornerRadius: CGFloat = 20
     static let tagSize: CGFloat = 50
-    static let tagColor = Color.red.opacity(0.7)
+    static let tagColor = Color("Color4").opacity(0.7)
     static let tagDefaultColor = Color.black.opacity(0.7)
     static let screenWidth = UIScreen.main.bounds.width
     static let tagPadding: CGFloat = 10

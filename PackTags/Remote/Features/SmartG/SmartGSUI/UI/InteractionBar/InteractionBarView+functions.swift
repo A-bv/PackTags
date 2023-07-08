@@ -23,13 +23,6 @@ extension InteractionBarView {
         saveHashtag(hastagTitle: entry)
     }
     
-    func removeHashtag(at offsets: IndexSet) {
-        for index in offsets {
-            let hashtag = hashtags[index]
-            moc.delete(hashtag)
-        }
-    }
-    
     func saveHashtag(hastagTitle: String) {
         let hashtag = Hashtag(context: moc)
         hashtag.id = UUID()

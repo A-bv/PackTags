@@ -13,8 +13,8 @@ struct InteractionBarView: View {
     @Binding var hashtagEntry: String
     @Binding var showingAlert: Bool
     @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
     
-    var hashtags: FetchedResults<Hashtag>
     var smartGViewModel: SmartGViewModel
     private enum Constants {
         static let interactionBarPadding: CGFloat = 10
@@ -27,13 +27,17 @@ struct InteractionBarView: View {
         }
         static let popoverDismissButton = "Ok"
         static let enterHashtagPlaceholder = "Enter a hashtag"
-        static let unknownHashtagTitle = "Unknown"
+    }
+    
+    var textField: some View {
+        TextField(Strings.enterHashtagPlaceholder, text: $hashtagEntry)
+            .disableAutocorrection(true)
+            .padding(.horizontal)
     }
     
     var body: some View {
         HStack {
-            TextField(Strings.enterHashtagPlaceholder, text: $hashtagEntry)
-                .padding()
+            textField
             
             Spacer()
             
@@ -68,6 +72,8 @@ struct InteractionBarView: View {
             .buttonStyle(ColorfulButtonStyle())
             
             Button {
+                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                impactMed.impactOccurred()
                 showingPopover = true
             } label: {
                 Image(systemName: "info.circle")
@@ -75,23 +81,10 @@ struct InteractionBarView: View {
             }
             .buttonStyle(ColorfulButtonStyle())
             .popover(isPresented: $showingPopover) {
-                VStack {
-                    Text("Hashtags")
-                        .font(.headline)
-                        .padding()
-                    
-                    List {
-                        ForEach(hashtags, id: \.self) { hashtag in
-                            SmartGSavedTagsCell(title: hashtag.title ?? Strings.unknownHashtagTitle, date: hashtag.addDate ?? Date())
-                        }
-                        .onDelete(perform: removeHashtag)
-                    }
-                    .font(.body)
-                    .padding()
-                }
+                SmartGSavedTagsView()
             }
         }
-        .padding(Constants.interactionBarPadding)
+        .padding(.horizontal)
     }
 }
 
@@ -103,22 +96,20 @@ struct InteractionBarView_Previews: PreviewProvider {
             showingPopover: .constant(false),
             hashtagEntry: .constant(""),
             showingAlert: .constant(false),
-            hashtags: hashtags,
             smartGViewModel: SmartGViewModel())
         .padding()
     }
 }
 
 /*
-Button(
+ Button(
  action: {
-    let impactMed = UIImpactFeedbackGenerator(style: .soft)
-    impactMed.impactOccurred()
-
-}) {
-    Image(systemName: "scale.3d")
-        .foregroundColor(Color("Color4"))
-}
-.buttonStyle(ColorfulButtonStyle())
-*/
-
+ let impactMed = UIImpactFeedbackGenerator(style: .soft)
+ impactMed.impactOccurred()
+ 
+ }) {
+ Image(systemName: "scale.3d")
+ .foregroundColor(Color("Color4"))
+ }
+ .buttonStyle(ColorfulButtonStyle())
+ */
