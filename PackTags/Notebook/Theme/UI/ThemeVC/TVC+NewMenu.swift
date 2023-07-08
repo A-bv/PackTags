@@ -73,12 +73,12 @@ extension ThemeVC{
             image: UIImage(systemName: "shuffle.circle")
         ) { [weak vc = self] action in
             if let textToShuffle = vc?.themeTextView.text {
-                let array = Unique.cleanList(
+                let packsOfText = Unique.cleanTagList(
                     rawText: textToShuffle,
                     coreDataModel: vc?.theme,
                     shuffle: true).components(separatedBy:" ")
-                vc?.themeTextView.text = Unique.packBy(
-                    textToPack: array)
+                vc?.themeTextView.text = Unique.makePacks(
+                    from: packsOfText)
             }
         }
         

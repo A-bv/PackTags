@@ -9,72 +9,48 @@
 import Foundation
 
 struct Unique {
-    static func packBy(textToPack: [String]) -> String {
+    static func makePacks(from packs: [String]) -> String {
         let numTagsInPack = QuantityPickerViewModel().numTagsInPack
-        let list = Array(textToPack.chunks(of: numTagsInPack).joined(separator: ["---"])) //sections with ---
+        let list = Array(packs.chunked(into: numTagsInPack).joined(separator: ["---"])) //sections with ---
         return list.joined(separator: " ").replacingOccurrences(of: " --- ", with: "\n\n") //format
     }
     
-    // MARK: - List of hashtags
-    static func cleanList(rawText: String, coreDataModel: ThemeCD?, shuffle: Bool) -> String {
+    static func cleanTagList(rawText: String, coreDataModel: ThemeCD?, shuffle: Bool) -> String {
+        var cleanTags = rawText.detectHashtags().removingDuplicates()
         
-        //unique in TextView
-        var cleanlist = rawText.detectHashtags().removingDuplicates()
-        
-        //unique in Core Data DB
-        if !cleanlist.isEmpty {
-            cleanlist = checkDuplicatesInCoreData(
-                initialTags: cleanlist,
-                themesInCoreData: coreDataModel)}
-        
-        //Mix tags if option is set in settings
-        if UserDefaults.standard.bool(forKey: "Save & Shuffle") == true || shuffle == true {
-            cleanlist = cleanlist.shuffled()
+        if !cleanTags.isEmpty {
+            cleanTags = removeDuplicatesInCoreData(initialTags: cleanTags, themesInCoreData: coreDataModel)
         }
         
-        return cleanlist.joined(separator:" ")
+        if UserDefaults.standard.bool(forKey: "Save & Shuffle") || shuffle {
+            cleanTags = cleanTags.shuffled()
+        }
+        
+        return cleanTags.joined(separator: " ")
     }
 
-    static func checkDuplicatesInCoreData (
-        initialTags: [String],
-        themesInCoreData: ThemeCD?) -> [String] {
-        var e = [""]
+    static func removeDuplicatesInCoreData(initialTags: [String], themesInCoreData: ThemeCD?) -> [String] {
+        var existingTags = [""]
         
-        //1,2,3: detect new added tags in textView
-        if themesInCoreData?.content !=  "" && themesInCoreData?.content != nil {
+        if let content = themesInCoreData?.content, !content.isEmpty {
+            var newContent = content
+            newContent = newContent.replacingOccurrences(of: "\n\n", with: " ")
             
-            //get new content
-            var new = themesInCoreData?.content
+            let contentTags = newContent.components(separatedBy: " ")
+            let commonTags = Array(Set(contentTags).intersection(Set(initialTags)))
+            let differentTags = commonTags.differenceArrays(from: initialTags)
             
-            //no line break
-            new = new?.replacingOccurrences(of: "\n\n", with: " ")
-            
-            //1: string to list
-            let a = new?.components(separatedBy:" ")
-            
-            //2: common elements
-            let c = Array(Set(a!).intersection(Set(initialTags)))
-            
-            //3: difference
-            let d = c.differenceArrays(from: initialTags)
-            
-            //check if present in Core Data
-            e = CoreDataHelper.tagsAlreadyInCoreData(tags: d)
+            existingTags = CoreDataHelper.tagsAlreadyInCoreData(tags: differentTags)
         } else {
-            
-            //check if present in Core Data
-            e = CoreDataHelper.tagsAlreadyInCoreData(tags: initialTags)
+            existingTags = CoreDataHelper.tagsAlreadyInCoreData(tags: initialTags)
         }
-            
-        print("Tags already in Core Data:", e.count)
+        
+        print("Tags already in Core Data:", existingTags.count)
     
-        // return initial list without duplicates from core data
-        return initialTags.filter { !e.contains($0) }
+        return initialTags.filter { !existingTags.contains($0) }
     }
 }
     
-// MARK: - Extensions
-// Remove duplicates
 extension Array where Element: Hashable {
     func removingDuplicates() -> [Element] {
         var addedDict = [Element: Bool]()
@@ -82,12 +58,12 @@ extension Array where Element: Hashable {
             addedDict.updateValue(true, forKey: $0) == nil
         }
     }
+    
     mutating func removeDuplicates() {
         self = self.removingDuplicates()
     }
 }
 
-// Returns array of differences between 2 arrays
 extension Array where Element: Hashable {
     func differenceArrays(from other: [Element]) -> [Element] {
         let thisSet = Set(self)
@@ -96,38 +72,34 @@ extension Array where Element: Hashable {
     }
 }
 
-// Adds element at specific position in list
 extension Array {
-    func chunks(of size: Int) -> [[Element]] {
+    func chunked(into size: Int) -> [[Element]] {
         return stride(from: 0, to: count, by: size).map {
-            let n = Swift.min(size, count - $0)
-            return Array(self[$0 ..< $0 + n])
+            let endIndex = Swift.min(size, count - $0)
+            return Array(self[$0 ..< $0 + endIndex])
         }
     }
 }
 
-// Detect hashtags in text
 extension String {
     func detectHashtags() -> [String] {
         if let regex = try? NSRegularExpression(
             pattern: "((?!#\\p{Hebrew}|#\\p{Arabic})#[\\w]+)",
             options: .caseInsensitive
         ) {
-            let string = self as NSString
-
+            let nsString = self as NSString
             return regex.matches(
                 in: self,
                 options: [],
-                range: NSRange(location: 0, length: string.length)
+                range: NSRange(location: 0, length: nsString.length)
             ).map {
-                string.substring(with: $0.range)
+                nsString.substring(with: $0.range)
             }
         }
         return []
     }
 }
 
-// Counts occurences of an element in a array
 extension Sequence where Element: Hashable {
     var histogram: [Element: Int] {
         return self.reduce(into: [:]) { counts, elem in counts[elem, default: 0] += 1 }

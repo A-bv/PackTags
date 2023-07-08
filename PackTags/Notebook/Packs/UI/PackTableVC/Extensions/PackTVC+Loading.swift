@@ -16,8 +16,8 @@ extension PackTableVC {
             return
         }
         
-        packs = Unique.packBy(
-            textToPack: content.components(separatedBy: " "))
+        let packsOfText = content.components(separatedBy: " ")
+        packs = Unique.makePacks(from: packsOfText)
         .components(separatedBy: "\n\n")
     }
 }

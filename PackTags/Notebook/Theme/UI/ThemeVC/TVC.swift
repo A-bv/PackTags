@@ -92,11 +92,12 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
     
     private func loadEntries (){
         guard let theme else { return }
+        themeTitle = theme.name ?? ""
         
         //Packing by 30 from Core Data on textView
         if let content = theme.content {
-            let hashtags = Unique.packBy(
-                textToPack: content.components(separatedBy:" "))
+            let packsOfText = content.components(separatedBy:" ")
+            let hashtags = Unique.makePacks(from: packsOfText)
             themeTextView.text = hashtags
         }
         
