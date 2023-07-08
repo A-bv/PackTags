@@ -71,15 +71,19 @@ extension ThemeVC{
         let shuffle = UIAction(
             title: Strings.shuffleHashtags,
             image: UIImage(systemName: "shuffle.circle")
-        ) { [weak vc = self] action in
-            if let textToShuffle = vc?.themeTextView.text {
-                let packsOfText = Unique.cleanTagList(
-                    rawText: textToShuffle,
-                    coreDataModel: vc?.theme,
-                    shuffle: true)
-                vc?.themeTextView.text = Unique.reorganizeTagsBySavedQuantity(
-                    from: packsOfText)
+        ) { [weak self] action in
+            guard let themeTextView = self?.themeTextView,
+                  let textToShuffle = themeTextView.text,
+                  let numTagsPerPack = self?.numTagsPerPack else {
+                return
             }
+            
+            let text = Unique.cleanTagList(
+                rawText: textToShuffle,
+                coreDataModel: self?.theme,
+                shuffle: true)
+            
+            themeTextView.text = Unique.reorganizeTags(from: text, with: numTagsPerPack)
         }
         
         let edit = UIMenu(

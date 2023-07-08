@@ -59,6 +59,8 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         }
     }
     
+    var numTagsPerPack = QuantityPickerViewModel().numTagsInPack
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         toolBarSearch.delegate = self
@@ -96,8 +98,8 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         
         //Packing by 30 from Core Data on textView
         if let content = theme.content {
-            let packsOfText = content
-            let hashtags = Unique.reorganizeTagsBySavedQuantity(from: packsOfText)
+            let text = content
+            let hashtags = Unique.reorganizeTags(from: text, with: numTagsPerPack)
             themeTextView.text = hashtags
         }
         

@@ -9,10 +9,9 @@
 import Foundation
 
 struct Unique {
-    static func reorganizeTagsBySavedQuantity(from text: String) -> String {
-        let numTagsInPack = QuantityPickerViewModel().numTagsInPack
+    static func reorganizeTags(from text: String, with quantity: Int) -> String {
         let packs = text.components(separatedBy: " ")
-        let chunks = packs.chunked(into: numTagsInPack).map { $0.joined(separator: " ") }
+        let chunks = packs.chunked(into: quantity).map { $0.joined(separator: " ") }
         let newText = chunks.joined(separator: "\n\n")
         return newText
     }

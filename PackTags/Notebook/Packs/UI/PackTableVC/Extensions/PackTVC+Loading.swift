@@ -17,7 +17,8 @@ extension PackTableVC {
         }
         
         let text = content
-        packs = Unique.reorganizeTagsBySavedQuantity(from: text)
+        let numTagsPerPack = QuantityPickerViewModel().numTagsInPack
+        packs = Unique.reorganizeTags(from: text, with: numTagsPerPack)
         .components(separatedBy: "\n\n")
     }
 }
