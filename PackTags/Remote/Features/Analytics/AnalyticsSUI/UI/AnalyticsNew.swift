@@ -232,7 +232,12 @@ extension AnalyticsNew {
             VStack(
                 spacing: Constants.scrollViewVerticalSpacing
             ) {
-                graphSectionHeader
+                HStack{
+                    graphSectionHeader
+                    Spacer()
+                    graphSectionHeaderButtons
+                }
+
                 if let postCount = swiftUIData.processedJson?.postsCount,
                    let average = swiftUIData.processedJson?.avg2
                 {
@@ -311,72 +316,74 @@ extension AnalyticsNew {
 // GraphsHeader
 extension AnalyticsNew {
     var graphSectionHeader: some View {
-        HStack{
-            VStack(alignment: .leading, spacing: Constants.graphSectionHeaderVerticalSpacing) {
-                HStack {
-                    Text(titles[mode])
-                        .font(.title)
-                        .foregroundColor(Color(UIColor.label))
-                    //Info Button
-                    Button(
-                        action: {
-                            showingAlert = true
-                            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                        }
-                    ) {
-                        Image(systemName: "info.circle")
-                    }
-                    .alert(isPresented: $showingAlert) {
-                        Alert(
-                            title: Text(infoTitles[mode]),
-                            message:Text(infoMessages[mode]),
-                            dismissButton: .default(Text(Strings.ok)))
-                    }
-                }
-                Text(subtitles[mode])
-                    .font(.subheadline)
-                    .foregroundColor(Color(UIColor.label))
-            }
-            Spacer()
+        VStack(alignment: .leading, spacing: Constants.graphSectionHeaderVerticalSpacing) {
             HStack {
-                // Insights - Rates button toggle
-                Toggle(isOn: $isToggled) {
-                    Image(
-                        systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
-                        .foregroundColor(Color("Color4"))
-                }
-                .toggleStyle(DarkToggleStyle())
-                .padding(.trailing, Constants.graphSectionHeaderTraillingPadding)
-                .onChange(of: isToggled)
-                { _ in
-                    let impactMed = UIImpactFeedbackGenerator(style: .medium)
-                    impactMed.impactOccurred()
-                        
-                    rawInsights = !rawInsights
-                    updateLabels()
-                    
-                    swiftUIData.getJsonFromDir()
-                }
-
-                //Switch mode Button
-                Button(action: {
-                    let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                    impactMed.impactOccurred()
-                        
-                    mode += 1
-                    if mode == Constants.maxNumberOfModes {
-                        mode = 0
+                Text(titles[mode])
+                    .font(.title)
+                    .foregroundColor(Color(UIColor.label))
+                //Info Button
+                Button(
+                    action: {
+                        showingAlert = true
+                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                     }
-                    
-                    swiftUIData.getJsonFromDir()
-
-                }) {
-                    Image(systemName: "scale.3d")
-                        .foregroundColor(Color("Color4"))
+                ) {
+                    Image(systemName: "info.circle")
                 }
-                .buttonStyle(ColorfulButtonStyle())
-                .padding(.trailing,0)
+                .alert(isPresented: $showingAlert) {
+                    Alert(
+                        title: Text(infoTitles[mode]),
+                        message:Text(infoMessages[mode]),
+                        dismissButton: .default(Text(Strings.ok)))
+                }
             }
+            Text(subtitles[mode])
+                .font(.subheadline)
+                .foregroundColor(Color(UIColor.label))
+        }
+    }
+}
+
+extension AnalyticsNew {
+    var graphSectionHeaderButtons: some View {
+        HStack {
+            // Insights - Rates button toggle
+            Toggle(isOn: $isToggled) {
+                Image(
+                    systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
+                    .foregroundColor(Color("Color4"))
+            }
+            .toggleStyle(DarkToggleStyle())
+            .padding(.trailing, Constants.graphSectionHeaderTraillingPadding)
+            .onChange(of: isToggled)
+            { _ in
+                let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                impactMed.impactOccurred()
+                    
+                rawInsights = !rawInsights
+                updateLabels()
+                
+                swiftUIData.getJsonFromDir()
+            }
+
+            //Switch mode Button
+            Button(action: {
+                let impactMed = UIImpactFeedbackGenerator(style: .soft)
+                impactMed.impactOccurred()
+                    
+                mode += 1
+                if mode == Constants.maxNumberOfModes {
+                    mode = 0
+                }
+                
+                swiftUIData.getJsonFromDir()
+
+            }) {
+                Image(systemName: "scale.3d")
+                    .foregroundColor(Color("Color4"))
+            }
+            .buttonStyle(ColorfulButtonStyle())
+            .padding(.trailing,0)
         }
     }
 }

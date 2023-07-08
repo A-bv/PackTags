@@ -64,3 +64,27 @@ extension SmartGView {
         .padding(Constants.interactionBarPadding)
     }
 }
+
+/*
+struct SmartGView_Previews: PreviewProvider {
+    static var previews: some View {
+        SmartGView()
+    }
+}
+Button(action: {
+    let impactMed = UIImpactFeedbackGenerator(style: .soft)
+    impactMed.impactOccurred()
+        
+    mode += 1
+    if mode == Constants.maxNumberOfModes {
+        mode = 0
+    }
+    
+    swiftUIData.getJsonFromDir()
+
+}) {
+    Image(systemName: "scale.3d")
+        .foregroundColor(Color("Color4"))
+}
+.buttonStyle(ColorfulButtonStyle())
+*/

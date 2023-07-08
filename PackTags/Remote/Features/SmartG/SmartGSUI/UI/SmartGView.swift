@@ -31,8 +31,8 @@ struct SmartGView: View {
             Color.bgFillColor.ignoresSafeArea()
             VStack{
                 SmartGHeader()
-                collection
                 interactionBar
+                collection
                 FloatingListView(viewModel: self.smartGViewModel)
             }
         }
