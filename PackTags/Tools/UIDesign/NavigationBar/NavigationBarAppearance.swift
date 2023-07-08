@@ -26,6 +26,16 @@ extension UIViewController {
         navigationController?.navigationBar.tintColor = textColor
     }
     
+    private func getClearNavigationBarAttributes() -> [NSAttributedString.Key : Any] {
+        let font = UIFont.systemFont(
+            ofSize: 31,
+            weight: UIFont.Weight.bold)
+        
+        return [ .foregroundColor: UIColor.white, .font: font ]
+    }
+}
+
+extension UIViewController {
     func setNavBarAppearance(color: UIColor) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -36,15 +46,5 @@ extension UIViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
-    }
-}
-
-extension UIViewController {
-    func getClearNavigationBarAttributes () -> [NSAttributedString.Key : Any] {
-        let font = UIFont.systemFont(
-            ofSize: 31,
-            weight: UIFont.Weight.bold)
-        
-        return [ .foregroundColor: UIColor.white, .font: font ]
     }
 }

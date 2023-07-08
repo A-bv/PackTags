@@ -35,13 +35,15 @@ class ApiGraphSetupTutorialVC: UIViewController {
     let cstH = UIScreen.main.bounds.height >= 600.0 ? CGFloat(80.0) : CGFloat(65.0)
     
     private enum Links {
-        static let facebookLink = "https://www.facebook.com"
+        // static let facebookLink = "https://www.facebook.com"
         static let facebookCreatePageLink = "https://www.facebook.com/pages/create"
     }
     
-    let actions =  [#selector(loginFunc(_:)),
-                    #selector(createPageFunc(_:)),
-                    #selector(convertIGFunc(_:))]
+    let actions =  [
+        // #selector(loginFunc(_:)),
+        #selector(createPageFunc(_:)),
+        #selector(convertIGFunc(_:))
+    ]
     
     static var businessAccAttributedString: NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: "")
@@ -62,12 +64,12 @@ class ApiGraphSetupTutorialVC: UIViewController {
     }
     
     var labels = [
-        loginAttributedString,
+        // loginAttributedString,
         facebookPageAttributedString,
         businessAccAttributedString]
     
     var buttonIcons = [
-        UIImage(named: "fbColor"),
+        // UIImage(named: "fbColor"),
         UIImage(named: "fbColor"),
         UIImage(named: "igColor")
     ]
@@ -82,6 +84,7 @@ class ApiGraphSetupTutorialVC: UIViewController {
     }
 
     func buildUI() {
+        /*
         let l1: UILabel  = {
             let label = UILabel()
             label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title2)
@@ -95,7 +98,7 @@ class ApiGraphSetupTutorialVC: UIViewController {
             label.attributedText = attributedString
             label.textColor = customPurple
             return label
-        }()
+        }()*/
         
         let continueBtn: UIButton  = {
             let btn = UIButton()
@@ -109,13 +112,14 @@ class ApiGraphSetupTutorialVC: UIViewController {
             return btn
         }()
         
-        let cstW = view.frame.width/Constants.value10
+        // let cstW = view.frame.width/Constants.value10
         
-        self.view.addSubview(l1)
+        // self.view.addSubview(l1)
         self.view.addSubview(continueBtn)
         
         
         //MARK: - Title & Continue part
+        /*
         l1.topAnchor.constraint(
             equalTo: view.safeAreaLayoutGuide.topAnchor,
             constant: cstW).isActive = true
@@ -127,6 +131,7 @@ class ApiGraphSetupTutorialVC: UIViewController {
         l1.leadingAnchor.constraint(
             equalTo: view.leadingAnchor,
             constant: cstW).isActive = true
+         */
         
         continueBtn.heightAnchor.constraint(
             equalToConstant: Constants.value44).isActive = true
@@ -185,12 +190,13 @@ class ApiGraphSetupTutorialVC: UIViewController {
 }
 
 extension ApiGraphSetupTutorialVC {
+    /*
     @objc func loginFunc (_ sender: Any) {
         if let url = URL(string: Links.facebookLink) {
             let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
          }
-    }
+    }*/
     
     @objc func createPageFunc (_ sender: Any) {
         if let url = URL(string: Links.facebookCreatePageLink) {

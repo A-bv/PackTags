@@ -39,9 +39,7 @@ extension UIViewController {
         btn.heightAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
         btn.widthAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
     }
-}
 
-extension UIViewController {
     @objc func dissmissPicker(sender: UIButton) {
         let vc = String(describing: type(of: self))
         //->SetupCheck: Dismiss all views over root view for ApiSetupVC
@@ -50,9 +48,5 @@ extension UIViewController {
         } else {
             self.dismiss(animated: true, completion: nil)
         }
-    }
-    
-    @objc func dissmissAllUntilRootVC(sender: UIButton) {
-        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
     }
 }

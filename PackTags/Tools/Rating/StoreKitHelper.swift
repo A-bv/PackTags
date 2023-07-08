@@ -11,6 +11,10 @@ import StoreKit
 
 //Storekit (app review)
 struct StoreKitHelper {
+    private enum Constants {
+        static let timesLaunched: Int = 5
+    }
+
     static let numberOfTimesLaunchedKey = "numberOfTimesLaunched"
     
     static func displayStoreKit() {
@@ -35,7 +39,7 @@ struct StoreKitHelper {
         let numberOfTimesLaunched: Int = UserDefaults.standard.integer(forKey: StoreKitHelper.numberOfTimesLaunchedKey)
         
         //Enter if over 10th launch
-        if numberOfTimesLaunched > 5 {
+        if numberOfTimesLaunched > Constants.timesLaunched {
             
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)

@@ -394,7 +394,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6505D751-7194-4259-8EAA-CBF01B9FAFFD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Remote/Features/Import/Service/ApiService.swift"
@@ -553,7 +553,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3D8CA388-7B17-4D40-BB1C-926BB595BFC7"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
@@ -617,7 +617,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "EC76F807-1380-4A03-8A4E-2014032DE4A0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"

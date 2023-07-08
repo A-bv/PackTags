@@ -70,10 +70,10 @@
 // ProIGSetupVC
 "Creator /Business account:" = "Compte Créateur /Entreprise:";
 "topTextViewText" =
-"     • Allez sur votre profil.
+"     • Allez sur votre page.
      • Appuyez sur \"≡\".
      • Appuyez sur \"Paramètres\".
-     • Appuyez sur \"Comptes\".
+     • Appuyez sur \"Outils et contrôles\".
      • Changer de type de compte.";
 
 "bottomTextViewText" =

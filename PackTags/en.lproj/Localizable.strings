@@ -1,9 +1,9 @@
 // ProIGSetupVC
 "topTextViewText" =
-"      • Go to your profile.
+"      • Go to your page.
       • Tap  \"≡\".
       • Tap \"Settings\".
-      • Tap \"Accounts\".
+      • Tap \"Tools\".
       • Switch account type.";
 
 "bottomTextViewText" =

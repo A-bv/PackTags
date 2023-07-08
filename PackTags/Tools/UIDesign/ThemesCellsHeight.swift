@@ -8,29 +8,10 @@
 
 import UIKit
 
-//public var thumbnailDim = CGFloat(145.33)
-public var thumbnailDim = CGFloat(140.00)
-
-extension UIViewController {
-    enum device {
-        case beforeIPhone5
-        case afterIPhone5
-    }
-    
-    func getCellThumbNailDimension (device: device) -> CGFloat {
-        switch device {
-        case .beforeIPhone5:
-            return 115
-        case .afterIPhone5:
-            return 132
-        }
-    }
-    
-    func themeTableViewControllerCellAndThumbnailDimensions() -> CGFloat {
+extension UIViewController {    
+    func getThemeTableViewControllerCellHeight() -> CGFloat {
         let paddingBottom = CGFloat(14)
         let navigationBarHeight = currentNavBarHeight + statusBarHeight
- 
-        let iPhoneSEWidth: CGFloat = 320
         
         let screenHeight = view.frame.height
         let cellHeightLImit: CGFloat = 164
@@ -44,11 +25,6 @@ extension UIViewController {
         
         if cellHeight <= cellHeightLImit {
             cellHeight = (screenHeight - navigationBarHeight)/3
-            if UIScreen.main.bounds.width <= iPhoneSEWidth {
-                thumbnailDim = getCellThumbNailDimension(device: .beforeIPhone5)
-            } else {
-                thumbnailDim = getCellThumbNailDimension(device: .afterIPhone5)
-            }
         }
         
         return cellHeight
