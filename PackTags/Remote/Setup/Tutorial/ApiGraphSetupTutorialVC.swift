@@ -41,7 +41,7 @@ class ApiGraphSetupTutorialVC: UIViewController {
     
     let actions =  [
         // #selector(loginFunc(_:)),
-        #selector(createPageFunc(_:)),
+        // #selector(createPageFunc(_:)),
         #selector(convertIGFunc(_:))
     ]
     
@@ -65,12 +65,12 @@ class ApiGraphSetupTutorialVC: UIViewController {
     
     var labels = [
         // loginAttributedString,
-        facebookPageAttributedString,
+        // facebookPageAttributedString,
         businessAccAttributedString]
     
     var buttonIcons = [
         // UIImage(named: "fbColor"),
-        UIImage(named: "fbColor"),
+        // UIImage(named: "fbColor"),
         UIImage(named: "igColor")
     ]
     
@@ -196,7 +196,7 @@ extension ApiGraphSetupTutorialVC {
             let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
          }
-    }*/
+    }
     
     @objc func createPageFunc (_ sender: Any) {
         if let url = URL(string: Links.facebookCreatePageLink) {
@@ -204,6 +204,7 @@ extension ApiGraphSetupTutorialVC {
             present(vc, animated: true)
          }
     }
+     */
     
     @objc func convertIGFunc (_ sender: Any) {
         let vwc = ProIGSetupVC()
