@@ -13,29 +13,71 @@ struct SmartGSavedTagsView: View {
     @Environment(\.managedObjectContext) var moc
     private enum Strings {
         static let unknownHashtagTitle = "Unknown"
-        static let hashtags = "Hashtags"
+        static let smartGSavedTagsFooter = "Instagram allows only 30 saved hashtags per week."
+        static func savedHashtagCount(count: Int) -> String {
+            return "Count: \(count)"
+        }
+        static let savedHashtagsHeadline: String = "Saved Hashtags"
+        static let left = "left"
+        static let days = "days"
+    }
+    
+    private enum Constants {
+        static let sevenDaysSeconds: TimeInterval = 7 * 24 * 60 * 60
+        static let sevenDays: Int = 7
+        static let headerHeight: CGFloat = 0
+    }
+    
+    func timeLeft(date: Date) -> String? {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        
+        guard let futureDate = calendar.date(byAdding: .day, value: Constants.sevenDays, to: date) else {
+            return nil
+        }
+        
+        let components = calendar.dateComponents([.day], from: currentDate, to: futureDate)
+        
+        if let days = components.day {
+            let daysString = String(days)
+            return "\(daysString) \(Strings.days) \(Strings.left)"
+        }
+        
+        return nil
     }
     
     var body: some View {
         VStack {
-            Text(Strings.hashtags)
-                .font(.headline)
-                .padding()
-            
             List {
-                ForEach(hashtags, id: \.self) { hashtag in
-                    SmartGSavedTagsCell(
-                        title: hashtag.title ?? Strings.unknownHashtagTitle,
-                        date: hashtag.addDate ?? Date())
+                Section {
+                    ForEach(hashtags, id: \.self) { hashtag in
+                        SmartGSavedTagsCell(
+                            title: hashtag.title ?? Strings.unknownHashtagTitle,
+                            date: timeLeft(date: hashtag.addDate ?? Date()) ?? "")
+                    }
+                    // .onDelete(perform: removeHashtag)
+                } header: {
+                    VStack(alignment: .leading) {
+                        Text(Strings.savedHashtagsHeadline)
+                            .font(.headline)
+                            .foregroundColor(Color("Color4"))
+                            
+                        Text(Strings.savedHashtagCount(count: hashtags.count))
+                            .font(.caption)
+                            .textCase(.lowercase)
+                    }
+                    .padding(.vertical)
+                    
+                        
+                } footer: {
+                    Text(Strings.smartGSavedTagsFooter)
                 }
-                .onDelete(perform: removeHashtag)
             }
-            .font(.body)
-            .padding()
+            .environment(\.defaultMinListHeaderHeight, Constants.headerHeight)
         }
     }
     
-    func removeHashtag(at offsets: IndexSet) {
+    private func removeHashtag(at offsets: IndexSet) {
         for index in offsets {
             let hashtag = hashtags[index]
             moc.delete(hashtag)
@@ -43,10 +85,29 @@ struct SmartGSavedTagsView: View {
     }
 }
 
-
 struct SmartGSavedTagsView_Previews: PreviewProvider {
+    static var dataController: DataController = {
+        let controller = DataController()
+        let context = controller.persistantContainer.viewContext
+        
+        let hashtagTitles = [
+            "Example Hashtag 1",
+            "Example Hashtag 2",
+            "Example Hashtag 3"
+        ]
+        let hashtags = hashtagTitles.map { title -> Hashtag in
+            let hashtag = Hashtag(context: context)
+            hashtag.title = title
+            hashtag.addDate = Date()
+            return hashtag
+        }
+        
+        return controller
+    }()
+    
     static var previews: some View {
         SmartGSavedTagsView()
             .previewDisplayName("Hashtags Preview")
+            .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
     }
 }

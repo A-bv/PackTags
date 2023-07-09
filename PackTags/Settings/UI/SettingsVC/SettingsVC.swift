@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-struct Section {
+struct SettingsSection {
     let title: String
     let options: [SettingsOptionType] //mod
 }
@@ -86,7 +86,7 @@ class SettingsVC: UIViewController {
         return table
     }()
     
-    var models = [Section]()
+    var models = [SettingsSection]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +107,7 @@ class SettingsVC: UIViewController {
         self.tableView.backgroundColor = bkgdColor
         
         models.append(
-            Section(
+            SettingsSection(
                 title: Strings.settingsSectionTitleAccount,
                 options: [
                     .staticCell(
@@ -132,7 +132,7 @@ class SettingsVC: UIViewController {
                         })]))
         
         models.append(
-            Section(
+            SettingsSection(
                 title: Strings.settingsSectionTitleHashtags,
                 options: [
                     .staticCell(
@@ -158,7 +158,7 @@ class SettingsVC: UIViewController {
                             handler: {}, isOn: false))]))
         
         models.append(
-            Section(
+            SettingsSection(
                 title: Strings.settingsSectionTitleHelp,
                 options: [
                     .staticCell(
@@ -191,7 +191,7 @@ class SettingsVC: UIViewController {
                         })]))
         
         models.append(
-            Section(
+            SettingsSection(
                 title: Strings.settingsSectionTitleAboutUs,
                 options: [
                     .staticCell(
@@ -234,7 +234,7 @@ class SettingsVC: UIViewController {
                         })]))
         
         models.append(
-            Section(
+            SettingsSection(
                 title: Strings.settingsSectionTitleLegal,
                 options: [
                     .staticCell(
