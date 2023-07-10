@@ -120,7 +120,6 @@
 		02FA30772A004254006A48CC /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30762A004254006A48CC /* CollectionView.swift */; };
 		02FA307A2A004441006A48CC /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30792A004441006A48CC /* TagView.swift */; };
 		02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA307C2A004804006A48CC /* CollectionView+functions.swift */; };
-		02FA307F2A004C2F006A48CC /* InteractionBarView+functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA307E2A004C2F006A48CC /* InteractionBarView+functions.swift */; };
 		02FA30812A004C7D006A48CC /* InteractionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30802A004C7D006A48CC /* InteractionBarView.swift */; };
 		02FA30852A118D71006A48CC /* JsonParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30842A118D71006A48CC /* JsonParsingError.swift */; };
 		02FA30872A119C3C006A48CC /* HashtagIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FA30862A119C3C006A48CC /* HashtagIdResponse.swift */; };
@@ -274,7 +273,6 @@
 		02FA30762A004254006A48CC /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		02FA30792A004441006A48CC /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		02FA307C2A004804006A48CC /* CollectionView+functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+functions.swift"; sourceTree = "<group>"; };
-		02FA307E2A004C2F006A48CC /* InteractionBarView+functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InteractionBarView+functions.swift"; sourceTree = "<group>"; };
 		02FA30802A004C7D006A48CC /* InteractionBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionBarView.swift; sourceTree = "<group>"; };
 		02FA30842A118D71006A48CC /* JsonParsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParsingError.swift; sourceTree = "<group>"; };
 		02FA30862A119C3C006A48CC /* HashtagIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagIdResponse.swift; sourceTree = "<group>"; };
@@ -808,7 +806,6 @@
 			isa = PBXGroup;
 			children = (
 				02FA30802A004C7D006A48CC /* InteractionBarView.swift */,
-				02FA307E2A004C2F006A48CC /* InteractionBarView+functions.swift */,
 			);
 			path = InteractionBar;
 			sourceTree = "<group>";
@@ -1158,7 +1155,6 @@
 				0226F19C259EAB93006E086C /* PackCell.swift in Sources */,
 				02CD2D8F29904F0D00EDE077 /* UrlEncoding.swift in Sources */,
 				021D7620275A99D500F54054 /* TransformedProfileModel.swift in Sources */,
-				02FA307F2A004C2F006A48CC /* InteractionBarView+functions.swift in Sources */,
 				021D76172759A00D00F54054 /* SmartGView.swift in Sources */,
 				0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */,
 				02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */,

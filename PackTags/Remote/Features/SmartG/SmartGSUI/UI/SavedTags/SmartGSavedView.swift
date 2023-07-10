@@ -25,10 +25,62 @@ struct SmartGSavedTagsView: View {
     private enum Constants {
         static let sevenDaysSeconds: TimeInterval = 7 * 24 * 60 * 60
         static let sevenDays: Int = 7
-        static let headerHeight: CGFloat = 0
+        static let headerHeight: CGFloat = 50
     }
     
-    func timeLeft(date: Date) -> String? {
+    @Binding var isPresented: Bool
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                Button(action: {
+                    isPresented = false
+                }) {
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 24))
+                        .foregroundColor(Color("Color4"))
+                        .padding()
+                }
+                
+                List {
+                    Section {
+                        ForEach(hashtags, id: \.self) { hashtag in
+                            SmartGSavedTagsCell(
+                                title: hashtag.title ?? Strings.unknownHashtagTitle,
+                                date: timeLeft(date: hashtag.addDate ?? Date()) ?? "")
+                        }
+                        // .onDelete(perform: removeHashtag)
+                    } header: {
+                        VStack(alignment: .leading) {
+                            Text(Strings.savedHashtagsHeadline)
+                                .font(.headline)
+                                .foregroundColor(Color("Color4"))
+                            
+                            Text(Strings.savedHashtagCount(count: hashtags.count))
+                                .font(.caption)
+                                .textCase(.lowercase)
+                            Spacer()
+                        }
+                        
+                        
+                    } footer: {
+                        Text(Strings.smartGSavedTagsFooter)
+                    }
+                }
+                .environment(\.defaultMinListHeaderHeight, Constants.headerHeight)
+            }
+            .background(Color(UIColor.systemGroupedBackground))
+        }
+    }
+    
+    private func removeHashtag(at offsets: IndexSet) {
+        for index in offsets {
+            let hashtag = hashtags[index]
+            moc.delete(hashtag)
+        }
+    }
+    
+    private func timeLeft(date: Date) -> String? {
         let currentDate = Date()
         let calendar = Calendar.current
         
@@ -44,44 +96,6 @@ struct SmartGSavedTagsView: View {
         }
         
         return nil
-    }
-    
-    var body: some View {
-        VStack {
-            List {
-                Section {
-                    ForEach(hashtags, id: \.self) { hashtag in
-                        SmartGSavedTagsCell(
-                            title: hashtag.title ?? Strings.unknownHashtagTitle,
-                            date: timeLeft(date: hashtag.addDate ?? Date()) ?? "")
-                    }
-                    // .onDelete(perform: removeHashtag)
-                } header: {
-                    VStack(alignment: .leading) {
-                        Text(Strings.savedHashtagsHeadline)
-                            .font(.headline)
-                            .foregroundColor(Color("Color4"))
-                            
-                        Text(Strings.savedHashtagCount(count: hashtags.count))
-                            .font(.caption)
-                            .textCase(.lowercase)
-                    }
-                    .padding(.vertical)
-                    
-                        
-                } footer: {
-                    Text(Strings.smartGSavedTagsFooter)
-                }
-            }
-            .environment(\.defaultMinListHeaderHeight, Constants.headerHeight)
-        }
-    }
-    
-    private func removeHashtag(at offsets: IndexSet) {
-        for index in offsets {
-            let hashtag = hashtags[index]
-            moc.delete(hashtag)
-        }
     }
 }
 
@@ -106,8 +120,17 @@ struct SmartGSavedTagsView_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        SmartGSavedTagsView()
-            .previewDisplayName("Hashtags Preview")
-            .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
+        Group {
+            SmartGSavedTagsView(isPresented: .constant(true))
+                .previewDisplayName("Hashtags Preview")
+                .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
+                .preferredColorScheme(.light) // Preview in light mode
+
+            SmartGSavedTagsView(isPresented: .constant(true))
+                .previewDisplayName("Hashtags Preview")
+                .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
+                .preferredColorScheme(.dark) // Preview in dark mode
+        }
+        
     }
 }
