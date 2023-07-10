@@ -13,7 +13,9 @@ struct InteractionBarView: View {
     @Binding var hashtagEntry: String
     @Binding var showingAlert: Bool
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
+
+    @FetchRequest(sortDescriptors: [])
+    var hashtags: FetchedResults<Hashtag>
     
     var smartGViewModel: SmartGViewModel
     private enum Constants {
