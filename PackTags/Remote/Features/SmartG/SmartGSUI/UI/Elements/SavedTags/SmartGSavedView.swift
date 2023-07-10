@@ -131,6 +131,5 @@ struct SmartGSavedTagsView_Previews: PreviewProvider {
                 .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
                 .preferredColorScheme(.dark) // Preview in dark mode
         }
-        
     }
 }
