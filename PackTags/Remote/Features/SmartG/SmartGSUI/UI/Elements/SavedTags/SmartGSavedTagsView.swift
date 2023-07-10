@@ -9,10 +9,7 @@
 import SwiftUI
 
 struct SmartGSavedTagsView: View {
-    @FetchRequest(sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
-    @Environment(\.managedObjectContext) var moc
     private enum Strings {
-        static let unknownHashtagTitle = "Unknown"
         static let smartGSavedTagsFooter = "Instagram allows only 30 saved hashtags per week."
         static func savedHashtagCount(count: Int) -> String {
             return "Count: \(count)"
@@ -26,43 +23,49 @@ struct SmartGSavedTagsView: View {
         static let sevenDaysSeconds: TimeInterval = 7 * 24 * 60 * 60
         static let sevenDays: Int = 7
         static let headerHeight: CGFloat = 50
+        static let tintColor = Color("Color4")
     }
     
     @Binding var isPresented: Bool
+    @FetchRequest(sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
+    @Environment(\.managedObjectContext) var moc
+    
+    private var button: some View {
+        Button(action: {
+            isPresented = false
+        }) {
+            Image(systemName: "chevron.down")
+                .font(.system(size: 24))
+                .foregroundColor(Constants.tintColor)
+                .padding(.top)
+        }
+    }
+    
+    private var header: some View {
+        VStack(alignment: .leading) {
+            Text(Strings.savedHashtagsHeadline)
+                .font(.headline)
+                .foregroundColor(Constants.tintColor)
+            
+            Text(Strings.savedHashtagCount(count: hashtags.count))
+                .font(.caption)
+                .textCase(.lowercase)
+        }
+    }
     
     var body: some View {
         ZStack {
             VStack {
-                Button(action: {
-                    isPresented = false
-                }) {
-                    Image(systemName: "chevron.down")
-                        .font(.system(size: 24))
-                        .foregroundColor(Color("Color4"))
-                        .padding()
-                }
-                
+                button
                 List {
                     Section {
                         ForEach(hashtags, id: \.self) { hashtag in
-                            SmartGSavedTagsCell(
-                                title: hashtag.title ?? Strings.unknownHashtagTitle,
-                                date: timeLeft(date: hashtag.addDate ?? Date()) ?? "")
+                            makeCell(hashtag: hashtag)
                         }
                         // .onDelete(perform: removeHashtag)
                     } header: {
-                        VStack(alignment: .leading) {
-                            Text(Strings.savedHashtagsHeadline)
-                                .font(.headline)
-                                .foregroundColor(Color("Color4"))
-                            
-                            Text(Strings.savedHashtagCount(count: hashtags.count))
-                                .font(.caption)
-                                .textCase(.lowercase)
-                            Spacer()
-                        }
-                        
-                        
+                        header
+                            .padding(.bottom)
                     } footer: {
                         Text(Strings.smartGSavedTagsFooter)
                     }
@@ -71,6 +74,22 @@ struct SmartGSavedTagsView: View {
             }
             .background(Color(UIColor.systemGroupedBackground))
         }
+    }
+    
+    private func makeCell(
+        hashtag: FetchedResults<Hashtag>.Element
+    ) -> SmartGSavedTagsCell? {
+        guard
+            let title = hashtag.title,
+            let date = hashtag.addDate,
+            let dateString =  timeLeft(date: date)
+        else {
+            return nil
+        }
+                    
+        return SmartGSavedTagsCell(
+            title: title,
+            date: dateString)
     }
     
     private func removeHashtag(at offsets: IndexSet) {
