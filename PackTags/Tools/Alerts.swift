@@ -18,8 +18,6 @@ class Alerts: NSObject {
     private enum Strings {
         static let cancel = "Cancel".localized()
         static let done = "Done".localized()
-        static let editYourSetup = "Edit Your Setup".localized()
-        static let troubleShootingAlertMessage = "troubleShootingAlertMessage".localized()
         static let discoverPacktagsWithTricksAndTips = "Discover PackTags and its features with \"Tricks & Tips\" in settings.".localized()
         static let viewLater = "View later".localized()
         static let letsGo = "Let's go!".localized()
@@ -109,15 +107,6 @@ class Alerts: NSObject {
             vc?.present(alertController, animated: true)
             print("Short Alert")
         }
-    }
-
-    class func setupTroubleShootingAlert(presenterVc: UIViewController?) {
-        simpleShortAlert(
-            title: Strings.editYourSetup,
-            message: Strings.troubleShootingAlertMessage,
-            vc: presenterVc,
-            okDismissVc: false)
-        UserDefaults.standard.set(false, forKey: "isCorrectSetup")
     }
     
     class func showFirstTimeTipsAlert(presentingVc: UIViewController) {

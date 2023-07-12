@@ -87,7 +87,6 @@ extension FBLoginViewModel {
                 
                 guard let response2 = result as? NSDictionary else { return } //
                 
-                
                 if let igBIds = response2.value(forKeyPath: "data.instagram_business_account.id") as? [String] {
                     if igBIds.count >= 1 {
                         validId(igBIds[0])

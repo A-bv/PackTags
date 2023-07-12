@@ -30,6 +30,8 @@ class FBLoginVC: UIViewController {
         static let connectedAlertTitle = "Connected!".localized()
         static let accessAnalyticsConfirm = "You can now access analytics and generate hashtags.".localized()
         static let setupTitle = "Setup".localized()
+        static let editYourSetup = "Edit Your Setup".localized()
+        static let troubleShootingAlertMessage = "troubleShootingAlertMessage".localized()
     }
     
     private let viewModel: FBLoginViewModel
@@ -53,43 +55,7 @@ class FBLoginVC: UIViewController {
         showWrongSetupAlertIfNeeded()
     }
 }
-
-extension FBLoginVC {
-    private func apiCallGetIgBusinessId() {
-        let token = viewModel.getToken()
-        if token.isValid {
-            viewModel.apiCallGetIgBusinessId(Completion: { [weak self] isCorrectSetup in
-                if isCorrectSetup {
-                    self?.showSuccessfulSetupAlert()
-                } else {
-                    Alerts.setupTroubleShootingAlert(presenterVc: self)
-                }
-            })
-        } else {
-            Alerts.setupTroubleShootingAlert(presenterVc: self)
-        }
-    }
-}
-
-// Delegates
-extension FBLoginVC {
-    // triggered when just after login
-    func loginButton(
-        _ loginButton: FBLoginButton,
-        didCompleteWith result: LoginManagerLoginResult?,
-        error: Error?
-    ) {
-        if let error {
-            print("Fb login error:", error)
-        }
-        viewModel.savePushedFBLoginButtonOnce()
-        apiCallGetIgBusinessId()
-    }
-
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
-}
-
-// MARK: - UI
+    
 extension FBLoginVC {
     private func showApiGraphSetupVCIfneeded() {
         if UserDefaults.standard.object(forKey: "continuedApiGraphSetupOnce") == nil {
@@ -104,7 +70,7 @@ extension FBLoginVC {
         let triedASetup = UserDefaults.standard.object(forKey: "pressedFBLoginButton")
         let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
         if isCorrectSetup == false, triedASetup != nil {
-            Alerts.setupTroubleShootingAlert(presenterVc: self)
+            showTroubleShootingAlert()
         }
     }
 }
@@ -121,22 +87,8 @@ extension FBLoginVC: LoginButtonDelegate {
         loginButton.center = view.center
         view.addSubview(loginButton)
     }
-}
 
-// MARK: - UI
-extension FBLoginVC {
-    func showSuccessfulSetupAlert() {
-        Alerts.simpleShortAlert(
-            title: Strings.connectedAlertTitle,
-            message: Strings.accessAnalyticsConfirm,
-            vc: self,
-            okDismissVc: true)
-    }
-}
-
-// MARK: - UI
-extension FBLoginVC {
-    func placeHelpButtonForFBLoginSetup() {
+    private func placeHelpButtonForFBLoginSetup() {
         let setupBtn: UIButton = {
             let btn = UIButton()
             btn.setTitle(Strings.setupTitle, for: .normal)
@@ -157,5 +109,58 @@ extension FBLoginVC {
         vwc.modalPresentationStyle = .overFullScreen
         vwc.modalTransitionStyle = .crossDissolve
         self.present(vwc, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Delegates
+extension FBLoginVC {
+    // triggered when just after login
+    func loginButton(
+        _ loginButton: FBLoginButton,
+        didCompleteWith result: LoginManagerLoginResult?,
+        error: Error?
+    ) {
+        if let error {
+            print("Fb login error:", error)
+        }
+        viewModel.savePushedFBLoginButtonOnce()
+        apiCallGetIgBusinessId()
+    }
+
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
+}
+
+// MARK: - Actions
+extension FBLoginVC {
+    private func apiCallGetIgBusinessId() {
+        let token = viewModel.getToken()
+        if token.isValid {
+            viewModel.apiCallGetIgBusinessId(Completion: { [weak self] isCorrectSetup in
+                if isCorrectSetup {
+                    self?.showSuccessfulSetupAlert()
+                } else {
+                    self?.showTroubleShootingAlert()
+                }
+            })
+        } else {
+            showTroubleShootingAlert()
+        }
+    }
+    
+    private func showSuccessfulSetupAlert() {
+        Alerts.simpleShortAlert(
+            title: Strings.connectedAlertTitle,
+            message: Strings.accessAnalyticsConfirm,
+            vc: self,
+            okDismissVc: true)
+    }
+    
+    private func showTroubleShootingAlert() {
+        UserDefaults.standard.set(false, forKey: "isCorrectSetup")
+        Alerts.simpleShortAlert(
+            title: Strings.editYourSetup,
+            message: Strings.troubleShootingAlertMessage,
+            vc: self,
+            okDismissVc: false)
     }
 }

@@ -33,20 +33,18 @@ class ApiService: NSObject {
     class private func handleSuccessResult<T: Decodable>(
         of type: T.Type,
         data: Data,
-        completion block: @escaping (Any) -> ()
+        completion block: @escaping (Any) -> Void
     ) {
-        if T.Type.self == Profile.Type.self {
-            guard let decoded = GenericJSONParser.ParseJs(of: T.self, data: data) else {return}
-            block(decoded)
-        } else if T.Type.self == Media.Type.self {
-            guard let decoded = GenericJSONParser.ParseJs(of: T.self, data: data) else {return}
-            let D = decoded as? Media
-            guard let d  = D?.data else {return}
-            let array = d.compactMap { $0 }
-            block(array)
+        if T.self == Profile.self {
+            guard let decodedProfile = GenericJSONParser.ParseJs(of: T.self, data: data) as? Profile else { return }
+            block(decodedProfile)
+        } else if T.self == Media.self {
+            guard let decodedMedia = GenericJSONParser.ParseJs(of: T.self, data: data) as? Media else { return }
+            let mediaData = decodedMedia.data.compactMap { $0 }
+            block(mediaData)
         } else {
-            guard let decoded = GenericJSONParser.ParseJs2(of: T.self, data: data) else {return}
-            block(decoded)
+            guard let decodedObject = GenericJSONParser.ParseJs2(of: T.self, data: data) else { return }
+            block(decodedObject)
         }
     }
 }

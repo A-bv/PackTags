@@ -483,8 +483,8 @@
 		026D16E22A3E47A400228DEA /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				021D7622275A9E6200F54054 /* Models */,
 				026D16D32A3E474500228DEA /* Import */,
+				021D7622275A9E6200F54054 /* Models */,
 				02E4B9D325CC97C700949213 /* Analytics */,
 				021AFD542787857B0008735E /* SmartG */,
 			);

@@ -8,7 +8,7 @@
 
 import UIKit
 
-let apiGph_version = "v13.0" //Api graph version
+let apiGph_version = "v17.0" //Api graph version
 let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
 let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
