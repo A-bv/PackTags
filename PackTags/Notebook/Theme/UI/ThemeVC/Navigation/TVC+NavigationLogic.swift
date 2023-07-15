@@ -13,6 +13,7 @@ extension ThemeVC {
         static let thumbnailResizedSize = CGSize(width: 135.333, height: 135.333)
         static let jpegCompressionQuality = CGFloat(0.8)
     }
+
     func handleSelectedThemeData(for segue: UIStoryboardSegue, sender: Any?) {
         //Text treatment (no duplicates, no wrong tags)
         let text = Unique.cleanTagList(
