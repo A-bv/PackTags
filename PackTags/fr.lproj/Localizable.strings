@@ -58,13 +58,6 @@
 "Manage..." = "Gérer...";
 
 "results" = "résultats";
-
-// ApiSetupVC
-"Create a page" = "Créer une page";
-"Login" = "Connection";
-"Account Linking" = "Associer votre compte";
-
-"Continue" = "Continuer";
  
 // ProIGSetupVC
 "Creator /Business account:" = "Compte Créateur /Entreprise:";
