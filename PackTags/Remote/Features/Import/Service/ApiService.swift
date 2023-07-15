@@ -9,42 +9,50 @@
 import UIKit
 
 class ApiService: NSObject {
-    typealias result<T> = (Result<T, Error>) -> Void
+    typealias ResultHandler<T> = (Result<T, Error>) -> Void
 
     // Function to get IG Business data (Analytics and Medias)
     class func fetchDataFromIgApi<T: Decodable>(
         of type: T.Type,
         from url: String,
-        completion block: @escaping (Any) -> ()
+        completion: @escaping ResultHandler<Any>
     ) {
-        GenericJSONParser.download(fromURLString: url) { (result) in
+        GenericJSONParser.download(fromURLString: url) { result in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let data):
-                if T.self == Profile.self { DocumentDirectory.saveJsonDataLocally(data: data) }
+                if T.self == Profile.self {
+                    DocumentDirectory.saveJsonDataLocally(data: data)
+                }
                 DispatchQueue.main.async {
-                    handleSuccessResult(of: T.self, data: data, completion: block)
+                    handleSuccessResult(of: T.self, data: data, completion: completion)
                 }
             }
         }
     }
    
-    class private func handleSuccessResult<T: Decodable>(
+    private class func handleSuccessResult<T: Decodable>(
         of type: T.Type,
         data: Data,
-        completion block: @escaping (Any) -> Void
+        completion: @escaping ResultHandler<Any>
     ) {
         if T.self == Profile.self {
-            guard let decodedProfile = GenericJSONParser.ParseJs(of: T.self, data: data) as? Profile else { return }
-            block(decodedProfile)
+            guard let decodedProfile = GenericJSONParser.ParseJs(of: T.self, data: data) as? Profile else {
+                return
+            }
+            completion(.success(decodedProfile))
         } else if T.self == Media.self {
-            guard let decodedMedia = GenericJSONParser.ParseJs(of: T.self, data: data) as? Media else { return }
+            guard let decodedMedia = GenericJSONParser.ParseJs(of: T.self, data: data) as? Media else {
+                return
+            }
             let mediaData = decodedMedia.data.compactMap { $0 }
-            block(mediaData)
+            completion(.success(mediaData))
         } else {
-            guard let decodedObject = GenericJSONParser.ParseJs2(of: T.self, data: data) else { return }
-            block(decodedObject)
+            guard let decodedObject = GenericJSONParser.ParseJs2(of: T.self, data: data) else {
+                return
+            }
+            completion(.success(decodedObject))
         }
     }
 }

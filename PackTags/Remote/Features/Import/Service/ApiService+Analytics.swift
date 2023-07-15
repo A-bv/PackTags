@@ -10,58 +10,54 @@ import Foundation
 
 //Functions for analytics
 extension ApiService {
-    class func loadProfileForAnalytics (
-        completion block: @escaping (Profile) -> ()
-    ) {
-        findMediaLimit() { (value) in
+    class func loadProfileForAnalytics(completion: @escaping (Profile) -> Void) {
+        findMediaLimit { value in
             guard let encodedUrl = self.buildURLAPIGraph(foundLimit: value) else { return }
-
+            
             DocumentDirectory.isOkToSaveJsonDataInDir = true //local save
-
-            ApiService.fetchDataFromIgApi(
-                of: Profile.self,
-                from: encodedUrl,
-                completion: { (profileJson) in
-                    block(profileJson as! Profile)
-            })
+            
+            ApiService.fetchDataFromIgApi(of: Profile.self, from: encodedUrl) { result in
+                if case let .success(profileJson) = result, let profile = profileJson as? Profile {
+                    completion(profile)
+                }
+            }
         }
     }
 }
 
 extension ApiService {
     // TODO: Test if this function is still needed
-    class private func findMediaLimit(Completion block: @escaping ((Int) -> ())) {
+    class private func findMediaLimit(completion: @escaping ((Int) -> Void)) {
         var mCount: [Int] = []
         let group = DispatchGroup()
+        
         for i in 1...12 {
-
-            //Test 12 urls to find the limit
-            guard let encodedUrl = self.buildURLAPIGraph(foundLimit: i) else {return }
+            guard let encodedUrl = self.buildURLAPIGraph(foundLimit: i) else { return }
           
             group.enter()
             
-            ApiService.fetchDataFromIgApi(of: Profile.self, from: encodedUrl, completion: {(Json) in
-                
-                guard let js = (Json as? Profile) else {return}
-                if js.username != nil { //means no error returned
-                    
-                    /*Hack: Api sometimes fail to return an error and returns a json,
-                    But the Json media's count is actually the limit to find*/
-                    mCount.append(js.media?.data.count ?? 0)
+            ApiService.fetchDataFromIgApi(of: Profile.self, from: encodedUrl) { result in
+                if case let .success(profileJson) = result, let profile = profileJson as? Profile {
+                    if profile.username != nil {
+                        //means no error returned
+                        /*Hack: Api sometimes fail to return an error and returns a json,
+                        But the Json media's count is actually the limit to find*/
+                        mCount.append(profile.media?.data.count ?? 0)
+                    }
                 }
-
+                
                 group.leave()
-            })
+            }
         }
         
         group.notify(queue: .main) {
             let limit = mCount.max() ?? 0
             print("Media limit: \(limit)")
-            block(limit)
+            completion(limit)
         }
     }
     
-    class private func buildURLAPIGraph (foundLimit: Int) -> String? {
+    class private func buildURLAPIGraph(foundLimit: Int) -> String? {
         let limit = "\(foundLimit)"
         let url = "https://graph.facebook.com/\(apiGph_version)/\(igBId)?fields=biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,recently_searched_hashtags,insights.metric(reach,impressions,profile_views,follower_count).period(day),media.limit(\(limit)){media_type,caption,timestamp,media_url,comments_count,comments,is_comment_enabled,username,like_count,media_product_type,insights.metric(reach,impressions,engagement)}&access_token=\(fbToken)&checkType=FULL"
         
