@@ -112,7 +112,7 @@ extension FBLoginVC {
     private func apiCallGetIgBusinessId() {
         let token = viewModel.getToken()
         if token.isValid {
-            viewModel.apiCallGetIgBusinessId(Completion: { [weak self] isCorrectSetup in
+            viewModel.apiCallGetIgBusinessId(completion: { [weak self] isCorrectSetup in
                 if isCorrectSetup {
                     self?.showSuccessfulSetupAlert()
                 } else {

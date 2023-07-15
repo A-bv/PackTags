@@ -16,17 +16,17 @@ final class FBLoginViewModel {
         return token
     }
     
-    func apiCallGetIgBusinessId(Completion completed: @escaping (Bool) -> ()) {
-        verifySetupFbPages(Completion: { [weak self] isCorrectSetup in
-            self?.verifySetupIgBAndGetIgBId(Completion: { [weak self] validId in
-                if let validId {
+    func apiCallGetIgBusinessId(completion: @escaping (Bool) -> ()) {
+        verifyCorrectFbPagesSetup { [weak self] isCorrectSetup in
+            self?.verifySetupIgBAndGetIgBId { [weak self] validId in
+                if let validId = validId {
                     self?.saveInstagramBusinessAccountID(id: validId)
-                    completed(isCorrectSetup)
+                    completion(isCorrectSetup)
                 } else {
-                    completed(false)
+                    completion(false)
                 }
-            })
-        })
+            }
+        }
     }
 }
 
@@ -39,84 +39,66 @@ extension FBLoginViewModel {
     }
 }
 
-// MARK: - Walk through
+// MARK: - Walkthrough
 extension FBLoginViewModel {
-    private func verifySetupFbPages (Completion correctPagesSetup: @escaping (Bool) -> ()) {
-        // 0. Fb acc gives a token
-        // Request 1. Get facebook business page of the facebook account
-        let fbPageRequest = GraphRequest(graphPath: "/me/accounts", httpMethod: .get)
+    private func verifyCorrectFbPagesSetup(completion: @escaping (Bool) -> ()) {
+        let request = GraphRequest(
+            graphPath: "/me/accounts",
+            httpMethod: .get)
         
-        fbPageRequest.start(
-            completionHandler: { connection, result, error in
-            
+        request.start { connection, result, error in
             if let error = error {
-                print("fbPageRequest error :", error)
+                print("fbPageRequest error:", error)
                 return
             }
             
-            guard let response1 = result as? NSDictionary else { return } //
-                
-            //id page fb packtags.app 107298991584829
-            // ----- CAUTION ----- only works with one associated page (takes the first in array)
-            guard let pages = (response1.value(forKeyPath: "data.name") as? [String]) else { return }
+            guard let response = result as? NSDictionary else { return }
+            guard let pages = response.value(forKeyPath: "data.name") as? [String] else { return }
             
-            if pages.isEmpty { // Exit if no IGPro or wrong linked FB page(s)
-                correctPagesSetup(false)
+            if pages.isEmpty {
+                completion(false)
+            } else {
+                completion(true)
             }
-            // ----- CAUTION -----
-            
-            correctPagesSetup(true)
-        })
+        }
     }
     
-    private func verifySetupIgBAndGetIgBId (Completion validId: @escaping ((String?) -> ())){
-        
-        // Required: Fb acc + Fb business page + IG Business or creator
-        let igBRequest = GraphRequest(
+    private func verifySetupIgBAndGetIgBId(completion: @escaping (String?) -> ()) {
+        let request = GraphRequest(
             graphPath: "/me/accounts",
-            parameters: ["fields":"instagram_business_account"],
+            parameters: ["fields": "instagram_business_account"],
             httpMethod: .get)
         
-        igBRequest.start(
-            completionHandler: { connection, result, error in
-                
-                if let error = error {
-                    print("igBRequest error :", error)
-                    return
-                }
-                
-                guard let response2 = result as? NSDictionary else { return } //
-                
-                if let igBIds = response2.value(forKeyPath: "data.instagram_business_account.id") as? [String] {
-                    if igBIds.count >= 1 {
-                        validId(igBIds[0])
-                    } else {
-                        validId(nil)
-                    }
-                } else {
-                    print("No business account linked or wrong pages selected")
-                    validId(nil)
-                }
-            })
+        request.start { connection, result, error in
+            if let error = error {
+                print("igBRequest error:", error)
+                return
+            }
+            
+            guard let response = result as? NSDictionary else { return }
+            
+            if let igBIds = response.value(forKeyPath: "data.instagram_business_account.id") as? [String] {
+                completion(igBIds.first)
+            } else {
+                print("No business account linked or wrong pages selected")
+                completion(nil)
+            }
+        }
     }
 }
- 
+
 // MARK: - Saving
 extension FBLoginViewModel {
     private func saveInstagramBusinessAccountID(id: String) {
         UserDefaults.standard.set(id, forKey: "IgBId")
     }
 
-    private func saveFBToken (token: FBToken) {
-        let token = token.tokenString
-        UserDefaults.standard.set( token, forKey: "fbToken")
+    private func saveFBToken(token: FBToken) {
+        let tokenString = token.tokenString
+        UserDefaults.standard.set(tokenString, forKey: "fbToken")
     }
     
-    private func saveCorrectStatus (token: FBToken) {
-        if token.isValid {
-            UserDefaults.standard.set(true, forKey: "isCorrectSetup")
-        } else {
-            UserDefaults.standard.set(false, forKey: "isCorrectSetup")
-        }
+    private func saveCorrectStatus(token: FBToken) {
+        UserDefaults.standard.set(token.isValid, forKey: "isCorrectSetup")
     }
 }
