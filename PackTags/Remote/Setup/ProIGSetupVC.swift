@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SafariServices
 
 var instagramIconAttachment: NSTextAttachment {
     let icon = NSTextAttachment()
@@ -36,11 +35,9 @@ class ProIGSetupVC: UIViewController {
     private enum Links {
         static let appURL = "instagram://app"
         static let webURL = "https://instagram.com"
-        static let facebookSetupHelpUrl = "https://www.facebook.com/business/help/502981923235522"
     }
 
     private enum Strings {
-        static let setupHelpQuestion = "Help?".localized()
         static let topLabelText = "Creator /Business account:".localized()
         static let topTextViewText = "topTextViewText".localized()
         static let bottomTextViewText = "bottomTextViewText".localized()
@@ -173,29 +170,5 @@ class ProIGSetupVC: UIViewController {
         topTextView.text = Strings.topTextViewText
         bottomTextView.text = Strings.bottomTextViewText
         bottomLabel.text = Strings.bottomLabelText
-    }
-
-    private func placeHelpButtonForSetupIGProWeb() {
-        let helpBtn: UIButton = {
-            let btn = UIButton()
-            btn.setTitle(Strings.setupHelpQuestion, for: .normal)
-            btn.setTitleColor(customPurple, for: .normal)
-            btn.addTarget(
-                self,
-                action: #selector(showWebSetBusinessIG(_:)),
-                for: .touchUpInside)
-            return btn
-        } ()
-        view.addSubview(helpBtn)
-        setupHelpButtonConstraints(helpBtn)
-    }
-
-    @objc func showWebSetBusinessIG (_ sender: Any) {
-        if let url = URL(string: Links.facebookSetupHelpUrl) {
-            let vc = SFSafariViewController(url: url)
-            vc.modalPresentationStyle = .overFullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true)
-        }
     }
 }

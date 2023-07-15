@@ -29,7 +29,6 @@ class FBLoginVC: UIViewController {
     private enum Strings {
         static let connectedAlertTitle = "Connected!".localized()
         static let accessAnalyticsConfirm = "You can now access analytics and generate hashtags.".localized()
-        static let setupTitle = "Setup".localized()
         static let editYourSetup = "Edit Your Setup".localized()
         static let troubleShootingAlertMessage = "troubleShootingAlertMessage".localized()
     }
@@ -78,35 +77,16 @@ extension FBLoginVC: LoginButtonDelegate {
         self.view.applyBlur()
         self.placeTopRightButton(arrowButton: false)
         self.placeHelpButtonForFBLoginSetup()
-        
+        self.placeFBLogingButton()
+    }
+    
+    private func placeFBLogingButton() {
         let loginButton = loginButton
         loginButton.delegate = self
         loginButton.center = view.center
         view.addSubview(loginButton)
     }
 
-    private func placeHelpButtonForFBLoginSetup() {
-        let setupBtn: UIButton = {
-            let btn = UIButton()
-            btn.setTitle(Strings.setupTitle, for: .normal)
-            btn.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
-            btn.setTitleColor(customPurple, for: .normal)
-            btn.addTarget(
-                self,
-                action: #selector(showProIGSetupVC(_:)),
-                for: .touchUpInside)
-            return btn
-        } ()
-        view.addSubview(setupBtn)
-        setupHelpButtonConstraints(setupBtn)
-    }
-    
-    @objc func showProIGSetupVC (_ sender: Any) {
-        let vc = ProIGSetupVC()
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        self.present(vc, animated: true)
-    }
 }
 
 // MARK: - Delegates

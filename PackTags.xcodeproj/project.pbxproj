@@ -76,7 +76,7 @@
 		02A423552842C1D000A25067 /* TVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423542842C1D000A25067 /* TVC+Navigation.swift */; };
 		02A423642845564900A25067 /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423632845564900A25067 /* LongPressReorder.swift */; };
 		02A5EB6A25C054440063A315 /* FrameTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5EB6925C054440063A315 /* FrameTags.swift */; };
-		02AD94A929A5936500D893E5 /* ConstraintsEachSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* ConstraintsEachSetupVC.swift */; };
+		02AD94A929A5936500D893E5 /* "UIViewController+HelpButton.swift".swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* "UIViewController+HelpButton.swift".swift */; };
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
 		02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */; };
@@ -228,7 +228,7 @@
 		02A423542842C1D000A25067 /* TVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Navigation.swift"; sourceTree = "<group>"; };
 		02A423632845564900A25067 /* LongPressReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressReorder.swift; sourceTree = "<group>"; };
 		02A5EB6925C054440063A315 /* FrameTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameTags.swift; sourceTree = "<group>"; };
-		02AD94A829A5936500D893E5 /* ConstraintsEachSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsEachSetupVC.swift; sourceTree = "<group>"; };
+		02AD94A829A5936500D893E5 /* "UIViewController+HelpButton.swift".swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\"UIViewController+HelpButton.swift\".swift"; sourceTree = "<group>"; };
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
 		02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
@@ -441,9 +441,9 @@
 		02491C5A26779AE400F98E17 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
-				02AB39A927B894D600335131 /* Tutorial */,
+				02491C5826779A4900F98E17 /* ProIGSetupVC.swift */,
 				02CD2DA62990795A00EDE077 /* FBLogin */,
-				02AD94A829A5936500D893E5 /* ConstraintsEachSetupVC.swift */,
+				02AD94A829A5936500D893E5 /* "UIViewController+HelpButton.swift".swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -589,14 +589,6 @@
 				02D10F092920661B00287248 /* UI */,
 			);
 			path = Theme;
-			sourceTree = "<group>";
-		};
-		02AB39A927B894D600335131 /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-				02491C5826779A4900F98E17 /* ProIGSetupVC.swift */,
-			);
-			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		02AD94B429AC2A0A00D893E5 /* Model */ = {
@@ -1239,7 +1231,7 @@
 				0229863E27BD6DF60048F9E9 /* EnvironmentValues.swift in Sources */,
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* ExternalActions.swift in Sources */,
-				02AD94A929A5936500D893E5 /* ConstraintsEachSetupVC.swift in Sources */,
+				02AD94A929A5936500D893E5 /* "UIViewController+HelpButton.swift".swift in Sources */,
 				0269E2AC2564B838005FE14B /* AnalyticsHostingViewController.swift in Sources */,
 				02FDEDCF2903062400B9BCFD /* DataController.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
