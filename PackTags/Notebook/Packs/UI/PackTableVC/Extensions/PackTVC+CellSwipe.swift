@@ -16,7 +16,9 @@ extension PackTableVC {
     func addSCellSwipeAccessory (indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contextItem = UIContextualAction(style: .normal, title: Strings.show) {  (contextualAction, view, boolValue) in
             self.chosenPack = self.packs[indexPath.row]
-            self.performSegue(withIdentifier: "ShowDetail", sender: UISwipeActionsConfiguration.self)
+            self.performSegue(
+                withIdentifier: PackTableVCSegueOrigin.showDetail.rawValue,
+                sender: UISwipeActionsConfiguration.self)
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
 

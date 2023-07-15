@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="coK-Hp-DXf">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +14,7 @@
             <objects>
                 <viewController id="xD6-oJ-mpg" customClass="SettingsVC" customModule="PackTags" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zme-Wn-Zbm">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Aca-XD-05V"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -28,19 +30,19 @@
             <objects>
                 <tableViewController title="ThemeTableViewController" id="g5o-SH-Iyg" customClass="ThemeTableViewController" customModule="PackTags" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WQo-J9-aSB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ThemeCell" rowHeight="100" id="Jlu-Ph-SBJ" customClass="ThemeCell" customModule="PackTags" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="50" width="390" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jlu-Ph-SBJ" id="Fkp-fk-lZJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ODT-3n-pug" kind="show" identifier="ShowTheme" id="mNK-GL-Gby"/>
+                                    <segue destination="ODT-3n-pug" kind="show" identifier="showTheme" id="mNK-GL-Gby"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -53,18 +55,18 @@
                         <leftBarButtonItems>
                             <barButtonItem id="Q5d-RW-Iii">
                                 <connections>
-                                    <segue destination="xD6-oJ-mpg" kind="show" identifier="ShowSettings" id="rJ4-7Q-PRJ"/>
+                                    <segue destination="xD6-oJ-mpg" kind="show" identifier="showSettings" id="rJ4-7Q-PRJ"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem id="L3j-Zt-8rO">
                                 <connections>
-                                    <segue destination="bZ1-1X-cml" kind="presentation" identifier="ShowAnalytics" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="plm-bL-2pW"/>
+                                    <segue destination="bZ1-1X-cml" kind="presentation" identifier="showAnalytics" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="plm-bL-2pW"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" id="qap-mE-lrt">
                             <connections>
-                                <segue destination="0sW-rf-UIL" kind="presentation" identifier="AddItem" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="wVY-d4-Pxc"/>
+                                <segue destination="0sW-rf-UIL" kind="presentation" identifier="addItem" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="wVY-d4-Pxc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -83,11 +85,11 @@
             <objects>
                 <viewController id="bZ1-1X-cml" customClass="AnalyticsHostingViewController" customModule="PackTags" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XjV-Hy-OEG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AnalyticsView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QI-he-kpP">
-                                <rect key="frame" x="247" y="183" width="106" height="234"/>
+                                <rect key="frame" x="142" y="230" width="106" height="384"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -112,14 +114,14 @@
             <objects>
                 <tableViewController id="ODT-3n-pug" userLabel="PackTableVC" customClass="PackTableVC" customModule="PackTags" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sse-mF-B3q">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PackCell" rowHeight="81" id="0wr-vy-wSk" customClass="PackCell" customModule="PackTags" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="600" height="81"/>
+                                <rect key="frame" x="0.0" y="50" width="390" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0wr-vy-wSk" id="IRP-SK-nLf">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="81"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="81"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -133,7 +135,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="EditPic" id="vsr-DK-Loq">
                                 <connections>
-                                    <segue destination="0sW-rf-UIL" kind="presentation" identifier="ShowDetail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="eAe-I4-Dlb"/>
+                                    <segue destination="0sW-rf-UIL" kind="presentation" identifier="showDetail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="eAe-I4-Dlb"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="insta2" id="5wO-tP-6UG">
@@ -156,27 +158,27 @@
             <objects>
                 <viewController title="ThemeViewController" automaticallyAdjustsScrollViewInsets="NO" id="ejf-rU-4pm" userLabel="ThemeVC" customClass="ThemeVC" customModule="PackTags" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4oj-gr-uPV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DGr-LS-C5v">
-                                <rect key="frame" x="8" y="52" width="584" height="540"/>
+                                <rect key="frame" x="8" y="99" width="374" height="703"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OnY-iY-xDg">
-                                        <rect key="frame" x="0.0" y="0.0" width="584" height="37"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                         <subviews>
                                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search ..." translatesAutoresizingMaskIntoConstraints="NO" id="rwj-XC-JJg">
-                                                <rect key="frame" x="0.0" y="0.0" width="485.66666666666669" height="37"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="308" height="30"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="twitter" smartDashesType="no" smartQuotesType="no"/>
                                             </searchBar>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrh-Ne-Sjb">
-                                                <rect key="frame" x="487.66666666666669" y="0.0" width="18.333333333333314" height="37"/>
+                                                <rect key="frame" x="310" y="0.0" width="0.0" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVx-7P-LCQ">
-                                                <rect key="frame" x="508" y="0.0" width="37" height="37"/>
+                                                <rect key="frame" x="312" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="CVx-7P-LCQ" secondAttribute="height" multiplier="1:1" id="cwp-bE-m63"/>
                                                 </constraints>
@@ -186,7 +188,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pnd-1y-xsw">
-                                                <rect key="frame" x="547" y="0.0" width="37" height="37"/>
+                                                <rect key="frame" x="344" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Pnd-1y-xsw" secondAttribute="height" multiplier="1:1" id="NvY-c6-PBx"/>
                                                 </constraints>
@@ -205,7 +207,7 @@
                                         </constraints>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4I-Y8-4lY" customClass="TapTextView" customModule="PackTags" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="45" width="584" height="487"/>
+                                        <rect key="frame" x="0.0" y="38" width="374" height="607"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <gestureRecognizers/>
                                         <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="600"/>
@@ -214,7 +216,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="twitter" smartQuotesType="no"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mj3-kS-tzO">
-                                        <rect key="frame" x="0.0" y="540" width="584" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="653" width="374" height="50"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -268,7 +270,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="coK-Hp-DXf" customClass="ThemeNavigationController" customModule="PackTags" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="6XE-KU-qRI">
-                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
@@ -292,7 +294,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0sW-rf-UIL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zRV-YD-jbY">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -309,20 +311,20 @@
             <objects>
                 <viewController storyboardIdentifier="welcome" id="cCK-Su-6Oq" customClass="OnBoardingController" customModule="PackTags" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BTQ-Y5-caZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjL-Mi-pzh">
-                                <rect key="frame" x="32" y="535" width="536" height="30"/>
+                                <rect key="frame" x="32" y="745" width="326" height="30"/>
                                 <state key="normal" title="Get Started"/>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="a6k-RA-bfI">
-                                <rect key="frame" x="32" y="489" width="536" height="26"/>
+                                <rect key="frame" x="32" y="699" width="326" height="26"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" systemColor="systemPurpleColor"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fC-rw-yTX">
-                                <rect key="frame" x="16" y="0.0" width="568" height="469"/>
+                                <rect key="frame" x="16" y="47" width="358" height="632"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ygq-NX-k9q"/>

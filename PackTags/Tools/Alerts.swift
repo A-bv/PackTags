@@ -194,9 +194,8 @@ extension SettingsVC {
             message: message,
             placeholder: placeholder
         ) { (inputName) in
-            let defaults = UserDefaults.standard
             let name = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
-            defaults.set(name, forKey: "Instagram Username")
+            UserDefaults.standard.set(name, forKey: "Instagram Username")
         }
     }
 }

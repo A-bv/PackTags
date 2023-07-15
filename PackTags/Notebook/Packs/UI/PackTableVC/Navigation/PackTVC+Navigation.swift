@@ -12,8 +12,17 @@ import UIKit
 extension PackTableVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        navigationToThemeDetails(segue: segue, sender: sender)
-        resetStatusBarColor = true
+        
+        guard let segueIdentifier = segue.identifier else {
+            return
+        }
+        
+        if let origin = PackTableVCSegueOrigin(rawValue: segueIdentifier) {
+            if origin == .showDetail {
+                handleSelectedThemeData(for: segue, sender: sender)
+                resetStatusBarColor = true
+            }
+        }
     }
     
     //MARK: - Unwind

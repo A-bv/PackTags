@@ -12,7 +12,7 @@ import StoreKit
 //Storekit (app review)
 struct StoreKitHelper {
     private enum Constants {
-        static let limitTimesLaunched: Int = 5
+        static let limitTimesLaunched: Int = 7
         static let timesLaunched: String = "numberOfTimesLaunched"
     }
     
