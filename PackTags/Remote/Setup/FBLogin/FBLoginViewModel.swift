@@ -30,15 +30,6 @@ final class FBLoginViewModel {
     }
 }
 
-// MARK: - Logic
-extension FBLoginViewModel {
-    func savePushedFBLoginButtonOnce() {
-        if UserDefaults.standard.object(forKey: "pressedFBLoginButton") == nil {
-            UserDefaults.standard.set(true, forKey: "pressedFBLoginButton")
-        }
-    }
-}
-
 // MARK: - Walkthrough
 extension FBLoginViewModel {
     private func verifyCorrectFbPagesSetup(completion: @escaping (Bool) -> ()) {
@@ -100,5 +91,11 @@ extension FBLoginViewModel {
     
     private func saveCorrectStatus(token: FBToken) {
         UserDefaults.standard.set(token.isValid, forKey: "isCorrectSetup")
+    }
+
+    func savePushedFBLoginButtonOnce() {
+        if UserDefaults.standard.object(forKey: "pressedFBLoginButton") == nil {
+            UserDefaults.standard.set(true, forKey: "pressedFBLoginButton")
+        }
     }
 }
