@@ -102,7 +102,10 @@ extension FBLoginVC: LoginButtonDelegate {
     }
     
     @objc func showProIGSetupVC (_ sender: Any) {
-        
+        let vc = ProIGSetupVC()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true)
     }
 }
 

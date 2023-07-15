@@ -175,7 +175,7 @@ class ProIGSetupVC: UIViewController {
         bottomLabel.text = Strings.bottomLabelText
     }
 
-    func placeHelpButtonForSetupIGProWeb() {
+    private func placeHelpButtonForSetupIGProWeb() {
         let helpBtn: UIButton = {
             let btn = UIButton()
             btn.setTitle(Strings.setupHelpQuestion, for: .normal)
