@@ -67,7 +67,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImag
         
         self.navigationController?.view.tintColor = UITextView.appearance().tintColor
         
-        if isNotNewTheme == false {showGiveThemeNameAlert()} else {}
+        if isNotNewTheme == false {showNameThemeAlert()} else {}
         
         loadbuttons()
         loadEntries ()

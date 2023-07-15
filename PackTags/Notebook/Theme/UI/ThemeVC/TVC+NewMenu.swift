@@ -28,7 +28,7 @@ extension ThemeVC{
             title: Strings.rename,
             image: UIImage(systemName: "tag")
         ) { [weak vc = self] action in
-            vc?.showGiveThemeNameAlert()
+            vc?.showNameThemeAlert()
         }
         
         let editPicture = UIAction(

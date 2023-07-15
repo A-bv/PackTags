@@ -41,7 +41,7 @@ extension PackTableVC {
         let key = "goInsta"
         
         if username.isEmpty {
-            Alerts.showAlertTitle(
+            Alerts.showTextInputAlert(
                 targetVC: self,
                 title: Strings.instagram,
                 message: Strings.username,

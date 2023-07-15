@@ -24,7 +24,7 @@ class Alerts: NSObject {
         static let tricksAndTips = "Tricks & Tips".localized()
     }
     
-    class func showAlertTitle(
+    class func showTextInputAlert(
         targetVC: UIViewController,
         title: String,
         message: String,
@@ -128,13 +128,6 @@ class Alerts: NSObject {
 
 // MARK: - More alerts
 extension UIViewController {
-    private enum Strings {
-        static let username = NSLocalizedString("Username", comment: "")
-        static let enterUsername = NSLocalizedString("Enter Username", comment: "")
-        static let editUsername = NSLocalizedString("Edit Username", comment: "")
-        static let instagram = NSLocalizedString("Instagram", comment: "")
-    }
-    
     @objc func dismissAlertController() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -179,6 +172,16 @@ extension UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+}
+
+extension SettingsVC {
+    private enum Strings {
+        static let username = NSLocalizedString("Username", comment: "")
+        static let enterUsername = NSLocalizedString("Enter Username", comment: "")
+        static let editUsername = NSLocalizedString("Edit Username", comment: "")
+        static let instagram = NSLocalizedString("Instagram", comment: "")
+    }
+
     
     func setInstaUserAlert() {
         let username = UserDefaults.standard.string(forKey: "Instagram Username") ?? ""
@@ -186,7 +189,7 @@ extension UIViewController {
         let placeholder = username.isEmpty ? Strings.enterUsername : Strings.editUsername
         
         // Shows alert pop-up
-        Alerts.showAlertTitle(
+        Alerts.showTextInputAlert(
             targetVC: self,
             title: Strings.instagram,
             message: message,
@@ -207,13 +210,13 @@ extension ThemeVC {
         static let newTheme = NSLocalizedString("New Theme", comment: "")
     }
     
-    func showGiveThemeNameAlert() {
+    func showNameThemeAlert() {
         let tips = ""
         let title = themeTitle.isEmpty ? Strings.newTheme : themeTitle
         let message = themeTitle.isEmpty ? tips : Strings.editName
         let placeholder = themeTitle.isEmpty ? Strings.enterName : Strings.enterNewName
         
-        Alerts.showAlertTitle(
+        Alerts.showTextInputAlert(
             targetVC: self,
             title: title,
             message: message,
@@ -224,6 +227,7 @@ extension ThemeVC {
         }
     }
 }
+
 
 extension String {
     var isValidName: Bool {
