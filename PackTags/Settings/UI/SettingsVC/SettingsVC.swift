@@ -186,10 +186,9 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemPurple
                         ) {[weak self] in
-                            let vc = ApiGraphSetupTutorialVC()
-                            self?.showPage(vc: vc)
+                            self?.showPage(vc: ProIGSetupVC())
                         })]))
-        
+
         models.append(
             SettingsSection(
                 title: Strings.settingsSectionTitleAboutUs,
@@ -281,5 +280,3 @@ extension UIViewController {
         self.present(vc, animated: true)
     }
 }
-
-

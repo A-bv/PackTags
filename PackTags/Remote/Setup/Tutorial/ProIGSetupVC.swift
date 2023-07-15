@@ -50,7 +50,6 @@ class ProIGSetupVC: UIViewController {
     
     var l0: UILabel {
         let label = UILabel(frame:CGRect.zero)
-        label.backgroundColor = bkgdColor
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.translatesAutoresizingMaskIntoConstraints = false // Enable autolayout
         label.heightAnchor.constraint(
@@ -63,7 +62,7 @@ class ProIGSetupVC: UIViewController {
     var t0: UITextView {
         let textView = UITextView()
         textView.isEditable = false
-        textView.backgroundColor = bkgdColor
+        textView.backgroundColor = .clear
         textView.textAlignment = .left
         textView.tintColor = .black
         textView.font = UIFont.preferredFont(forTextStyle: .body)
@@ -81,12 +80,14 @@ class ProIGSetupVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.placeTopRightButton(arrowButton: false)
         self.view.backgroundColor = bkgdColor
+        self.view.applyBlur()
         self.placeHelpButtonForSetupIGProWeb()
+        self.placeTopRightButton(arrowButton: false)
         
-        setupCustomStackHTSProIG ()
-        setupProfileButton ()
+        checkIsFirstTime()
+        setupCustomStackHTSProIG()
+        openInstagramButton()
     }
     
     @objc func goProfile (_ sender: Any) {
@@ -95,11 +96,14 @@ class ProIGSetupVC: UIViewController {
             webURL: Links.webURL,
             completion: {_ in})
     }
-}
 
-
-extension ProIGSetupVC {
-    func setupProfileButton () {
+    private func checkIsFirstTime() {
+        if UserDefaults.standard.object(forKey: "continuedApiGraphSetupOnce") == nil {
+            UserDefaults.standard.set("true",  forKey: "continuedApiGraphSetupOnce")
+        }
+    }
+    
+    private func openInstagramButton() {
         let openInstagramBtn: UIButton = {
             let btn = UIButton()
             btn.setTitleColor(customPurple, for: .normal)
@@ -122,7 +126,7 @@ extension ProIGSetupVC {
             constant: Constants.openInstagramBtnBottomPadding).isActive = true
     }
     
-    func setupCustomStackHTSProIG () {
+    private func setupCustomStackHTSProIG () {
         let topLabel = l0
         let bottomLabel = l0
         let topTextView = t0

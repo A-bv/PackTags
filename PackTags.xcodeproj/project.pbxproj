@@ -45,7 +45,6 @@
 		023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B982A4D0A5E006E2D35 /* OfflineView.swift */; };
 		024347D827119E2100F86A64 /* TextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024347D727119E2100F86A64 /* TextRecognition.swift */; };
 		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
-		02491C512671212400F98E17 /* ApiGraphSetupTutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */; };
 		02491C53267147AF00F98E17 /* ModalViewTopRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C52267147AF00F98E17 /* ModalViewTopRightButton.swift */; };
 		02491C5926779A4900F98E17 /* ProIGSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* ProIGSetupVC.swift */; };
 		02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */; };
@@ -198,7 +197,6 @@
 		023D2B982A4D0A5E006E2D35 /* OfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
 		024347D727119E2100F86A64 /* TextRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognition.swift; sourceTree = "<group>"; };
 		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
-		02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiGraphSetupTutorialVC.swift; sourceTree = "<group>"; };
 		02491C52267147AF00F98E17 /* ModalViewTopRightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewTopRightButton.swift; sourceTree = "<group>"; };
 		02491C5826779A4900F98E17 /* ProIGSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProIGSetupVC.swift; sourceTree = "<group>"; };
 		02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSwiftUI.swift; sourceTree = "<group>"; };
@@ -596,7 +594,6 @@
 		02AB39A927B894D600335131 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				02491C502671212400F98E17 /* ApiGraphSetupTutorialVC.swift */,
 				02491C5826779A4900F98E17 /* ProIGSetupVC.swift */,
 			);
 			path = Tutorial;
@@ -1252,7 +1249,6 @@
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
 				0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */,
 				02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */,
-				02491C512671212400F98E17 /* ApiGraphSetupTutorialVC.swift in Sources */,
 				02AEA58725B630B10063076F /* PackTVC+NavBar.swift in Sources */,
 				0274105826207D2100D82F6D /* PackTVC+Instagram.swift in Sources */,
 				022688B32628BCCC007DBD98 /* TTVC+Interface.swift in Sources */,

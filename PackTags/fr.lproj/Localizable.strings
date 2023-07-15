@@ -60,7 +60,6 @@
 "results" = "résultats";
 
 // ApiSetupVC
-"Account type" = "Type de compte";
 "Create a page" = "Créer une page";
 "Login" = "Connection";
 "Account Linking" = "Associer votre compte";
@@ -70,16 +69,16 @@
 // ProIGSetupVC
 "Creator /Business account:" = "Compte Créateur /Entreprise:";
 "topTextViewText" =
-"     • Allez sur votre page.
-     • Allez sur \"≡\".
-     • Allez sur \"Paramètres\".
-     • Allez sur \"Outils et contrôles\".
-     • Changer de type de compte.";
+"    💭 Allez sur votre page Instagram.
+    💭 Allez sur \"≡\".
+    💭 Allez sur \"Paramètres\".
+    💭 Allez sur \"Outils et contrôles\".
+    💭 Changer de type de compte.";
 
 "bottomTextViewText" =
-"     • Allez sur votre page.
-     • Appuyez sur \"Modifier profil\".
-     • Créez/Liez une page Facebook.";
+"    💭 Allez sur votre page Instagram.
+    💭 Appuyez sur \"Modifier profil\".
+    💭 Créez/Liez une page Facebook.";
 "🔗    If your page is not linked:" = "🔗 Si votre page n'est pas liée :";
 "Open Instagram" = "Ouvrir Instagram";
  

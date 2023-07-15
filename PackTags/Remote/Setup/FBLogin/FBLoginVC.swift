@@ -59,10 +59,7 @@ class FBLoginVC: UIViewController {
 extension FBLoginVC {
     private func showApiGraphSetupVCIfneeded() {
         if UserDefaults.standard.object(forKey: "continuedApiGraphSetupOnce") == nil {
-            let controller = ApiGraphSetupTutorialVC()
-            controller.modalPresentationStyle = .overFullScreen
-            controller.modalTransitionStyle = .coverVertical
-            self.present(controller, animated: true, completion: nil)
+            showSetupScreen()
         }
     }
     
@@ -105,10 +102,7 @@ extension FBLoginVC: LoginButtonDelegate {
     }
     
     @objc func showProIGSetupVC (_ sender: Any) {
-        let vwc = ApiGraphSetupTutorialVC()
-        vwc.modalPresentationStyle = .overFullScreen
-        vwc.modalTransitionStyle = .crossDissolve
-        self.present(vwc, animated: true, completion: nil)
+        
     }
 }
 
@@ -162,5 +156,12 @@ extension FBLoginVC {
             message: Strings.troubleShootingAlertMessage,
             vc: self,
             okDismissVc: false)
+    }
+    
+    private func showSetupScreen() {
+        let controller = ProIGSetupVC()
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        self.present(controller, animated: true, completion: nil)
     }
 }
