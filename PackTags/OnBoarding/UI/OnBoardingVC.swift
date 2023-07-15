@@ -16,6 +16,12 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
     var scrollWidth: CGFloat! = 0.0
     var scrollHeight: CGFloat! = 0.0
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+    
+    var onDismiss: (() -> Void)?
+    
+    deinit {
+        onDismiss?()
+    }
 
     private enum Strings {
         static let onBoardingPageTitle1  = "WELCOME TO PACKTAGS".localized()
@@ -184,25 +190,15 @@ extension OnBoardingController {
 
     @objc func didTap(_ sender: UIButton) {
         Core.shared.setIsNotNewUser()
-        if shouldShowTipsAlert() {
-            Alerts.showFirstTimeTipsAlert(presentingVc: self)
-        }
         dismiss(animated: true)
-    }
-    
-    private func shouldShowTipsAlert() -> Bool {
-        let tipsAlertShown = UserDefaults.standard.bool(forKey: "showTipsAlertShown")
-        if !tipsAlertShown {
-            UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
-        }
-        return !tipsAlertShown
     }
 }
 
 extension UIViewController {
-    func showOnboardingScreen() {
+    func showOnboardingScreen(completion: (() -> Void)?) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: "welcome") as! OnBoardingController
         viewController.modalPresentationStyle = .fullScreen
+        viewController.onDismiss = completion
         present(viewController, animated: true)
     }
 }

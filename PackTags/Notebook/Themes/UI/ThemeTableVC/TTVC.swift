@@ -41,11 +41,9 @@ class ThemeTableViewController: UITableViewController {
         configureTableView ()
         
         themes = CoreDataHelper.retrieveThemes()
+        handleNewUserFlow()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if Core.shared.isNewUser() {
-            self.showOnboardingScreen()
-        }
-    }
-}
+        super.viewDidAppear(animated)
+    }}

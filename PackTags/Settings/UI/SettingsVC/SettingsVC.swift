@@ -168,7 +168,7 @@ class SettingsVC: UIViewController {
                             iconBackgroundColor: .systemTeal
                         ) {[weak self] in
                             UserDefaults.standard.setValue(false, forKey: "isNewUser")
-                            self?.showOnboardingScreen()
+                            self?.showOnboardingScreen(completion: nil)
                         }),
                     .staticCell(
                         model: SettingsOption(

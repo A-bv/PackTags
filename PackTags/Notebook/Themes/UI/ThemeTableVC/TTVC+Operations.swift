@@ -47,6 +47,18 @@ extension ThemeTableViewController {
             btnAction1: deleteAction,
             btnAction2: cancelAction)
     }
+    
+    func handleNewUserFlow() {
+        if Core.shared.isNewUser() {
+            showOnboardingScreen(completion: {
+                let tipsAlertShown = UserDefaults.standard.bool(forKey: "showTipsAlertShown")
+                if !tipsAlertShown {
+                    UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
+                    Alerts.showFirstTimeTipsAlert(presentingViewController: self)
+                }
+            })
+        }
+    }
 
     func deleteRow(indexPath: IndexPath) {
         let themeToDelete = self.themes[indexPath.row]

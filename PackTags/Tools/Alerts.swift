@@ -100,15 +100,11 @@ class Alerts: NSObject {
         presentingViewController.present(alertController, animated: true)
     }
     
-    class func showFirstTimeTipsAlert(presentingVc: UIViewController) {
-        let keyWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
-        let rootVC = keyWindow?.rootViewController
-        
+    class func showFirstTimeTipsAlert(presentingViewController: UIViewController) {
         let message = "\n" + Strings.discoverPacktagsWithTricksAndTips
-        let rvc = keyWindow?.rootViewController
         
         guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
-        let vc = SFSafariViewController(url: url)
+        let presentedViewController = SFSafariViewController(url: url)
         
         let action1 = UIAlertAction(
             title: Strings.viewLater,
@@ -116,11 +112,12 @@ class Alerts: NSObject {
         
         let action2 = UIAlertAction(
             title: Strings.letsGo,
-            style: .default,
-            handler: { _ in rootVC?.present(vc, animated: true) }
-        )
+            style: .default
+        ) { _ in
+            presentingViewController.present(presentedViewController, animated: true)
+        }
         
-        rvc?.simpleAlert(
+        presentingViewController.simpleAlert(
             title: Strings.tricksAndTips,
             message: message,
             btnAction1: action1,
