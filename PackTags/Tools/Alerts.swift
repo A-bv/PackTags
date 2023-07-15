@@ -51,29 +51,28 @@ class Alerts: NSObject {
         
         saveAction.isEnabled = false
         
-        alertController.addTextField { (textField) in
+        let textFieldHandler: (UITextField) -> Void = { textField in
             textField.placeholder = placeholder
-            
-            // Enables button if textfield is not empty
-            NotificationCenter.default.addObserver(
-                forName: UITextField.textDidChangeNotification,
-                object: textField,
-                queue: OperationQueue.main) { _ in
-                    let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-                    if placeholder.contains("Username") && title == "Instagram" {
-                        saveAction.isEnabled = text.isValidName
-                    } else {
-                        let textCount = text.count
-                        let textIsNotEmpty = textCount > 0
-                        saveAction.isEnabled = textIsNotEmpty
-                    }
-                }
+            observeTextFieldChanges(textField: textField, placeholder: placeholder, title: title, saveAction: saveAction)
         }
         
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
-        
+        alertController.addTextField { textField in
+            textFieldHandler(textField)
+        }
         targetVC.present(alertController, animated: true, completion: nil)
+        
+        func observeTextFieldChanges(textField: UITextField, placeholder: String, title: String, saveAction: UIAlertAction) {
+            NotificationCenter.default.addObserver(
+                forName: UITextField.textDidChangeNotification,
+                object: textField,
+                queue: .main) { _ in
+                    let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                    let isValidName = placeholder.contains("Username") && title == "Instagram" && text.isValidName
+                    saveAction.isEnabled = isValidName || !text.isEmpty
+                }
+        }
     }
     
     class func simpleShortAlert(
