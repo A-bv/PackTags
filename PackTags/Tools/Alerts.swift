@@ -45,8 +45,8 @@ class Alerts: NSObject {
             title: Strings.done,
             style: .default
         ) { _ in
-            let inputName = alertController.textFields![0].text
-            completion(inputName ?? "was nil")
+            let inputName = alertController.textFields?.first?.text ?? ""
+            completion(inputName)
         }
         
         saveAction.isEnabled = false
@@ -58,17 +58,16 @@ class Alerts: NSObject {
             NotificationCenter.default.addObserver(
                 forName: UITextField.textDidChangeNotification,
                 object: textField,
-                queue: OperationQueue.main,
-                using: { _ in
-                    let text = textField.text
-                    if placeholder.contains("Username") == true && title == "Instagram" {
-                        saveAction.isEnabled =  text?.isValidName ?? false //Valid user
+                queue: OperationQueue.main) { _ in
+                    let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                    if placeholder.contains("Username") && title == "Instagram" {
+                        saveAction.isEnabled = text.isValidName
                     } else {
-                        let textCount = text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                        let textCount = text.count
                         let textIsNotEmpty = textCount > 0
                         saveAction.isEnabled = textIsNotEmpty
                     }
-                })
+                }
         }
         
         alertController.addAction(cancelAction)
@@ -80,9 +79,9 @@ class Alerts: NSObject {
     class func simpleShortAlert(
         title: String,
         message: String,
-        vc: UIViewController?,
-        okDismissVc: Bool)
-    {
+        presentingViewController: UIViewController,
+        shouldDissmissPresentingVCWhenConfirmed: Bool
+    ) {
         let alertController = UIAlertController(
             title: title,
             message: message,
@@ -93,54 +92,39 @@ class Alerts: NSObject {
                 title: "Ok",
                 style: .cancel,
                 handler: { _ in
-                    if okDismissVc {
-                        vc?.dismiss(animated: true, completion: nil)
+                    if shouldDissmissPresentingVCWhenConfirmed {
+                        presentingViewController.dismiss(animated: true, completion: nil)
                     }
-        }))
-        
-        if vc == nil {
-            let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-            let rootVC = keyWindow?.rootViewController
-            rootVC?.presentedViewController?.present(alertController, animated: true)
-            print("Alert from root vc")
-        } else {
-            vc?.present(alertController, animated: true)
-            print("Short Alert")
-        }
+            }))
+
+        presentingViewController.present(alertController, animated: true)
     }
     
     class func showFirstTimeTipsAlert(presentingVc: UIViewController) {
-        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        let keyWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
         let rootVC = keyWindow?.rootViewController
         
-        if !UserDefaults.standard.bool(forKey: "showTipsAlertShown") {
-            UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
-            
-            let numberOfTimesLaunched: Int = UserDefaults.standard.integer(forKey: StoreKitHelper.numberOfTimesLaunchedKey)
-            if numberOfTimesLaunched == 1 {
-                let message = "\n" + Strings.discoverPacktagsWithTricksAndTips
-                let rvc = keyWindow?.rootViewController
-                
-                guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
-                let vc = SFSafariViewController(url: url)
-                
-                let action1 = UIAlertAction(
-                    title: Strings.viewLater,
-                    style: .default)
-                
-                let action2 = UIAlertAction(
-                    title: Strings.letsGo,
-                    style: .default,
-                    handler: { _ in rootVC?.present(vc, animated: true)}
-                )
-                
-                rvc?.simpleAlert(
-                    title: Strings.tricksAndTips,
-                    message: message,
-                    btnAction1: action1,
-                    btnAction2: action2)
-            }
-        }
+        let message = "\n" + Strings.discoverPacktagsWithTricksAndTips
+        let rvc = keyWindow?.rootViewController
+        
+        guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
+        let vc = SFSafariViewController(url: url)
+        
+        let action1 = UIAlertAction(
+            title: Strings.viewLater,
+            style: .default)
+        
+        let action2 = UIAlertAction(
+            title: Strings.letsGo,
+            style: .default,
+            handler: { _ in rootVC?.present(vc, animated: true) }
+        )
+        
+        rvc?.simpleAlert(
+            title: Strings.tricksAndTips,
+            message: message,
+            btnAction1: action1,
+            btnAction2: action2)
     }
 }
 
@@ -148,13 +132,13 @@ class Alerts: NSObject {
 // MARK: - More alerts
 extension UIViewController {
     private enum Strings {
-        static let username = "Username".localized()
-        static let enterUsername = "Enter Username".localized()
-        static let editUsername = "Edit Username".localized()
-        static let instagram = "Instagram".localized()
+        static let username = NSLocalizedString("Username", comment: "")
+        static let enterUsername = NSLocalizedString("Enter Username", comment: "")
+        static let editUsername = NSLocalizedString("Edit Username", comment: "")
+        static let instagram = NSLocalizedString("Instagram", comment: "")
     }
     
-    @objc func dismissAlertController(){
+    @objc func dismissAlertController() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -171,7 +155,7 @@ extension UIViewController {
             let tapGesture = UITapGestureRecognizer(
                 target: self,
                 action: #selector(self.dismissAlertController))
-            alert.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+            alert.view.superview?.subviews.first?.addGestureRecognizer(tapGesture)
         }
     }
     
@@ -199,20 +183,18 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func setInstaUserAlert () {
-        let username = UserDefaults.standard.string(forKey: "Instagram Username")  ?? ""
-        let message = username == "" ? Strings.username : username
-        let placeholder = username == "" ? Strings.enterUsername : Strings.editUsername
+    func setInstaUserAlert() {
+        let username = UserDefaults.standard.string(forKey: "Instagram Username") ?? ""
+        let message = username.isEmpty ? Strings.username : username
+        let placeholder = username.isEmpty ? Strings.enterUsername : Strings.editUsername
         
-        //Shows alert pop up
+        // Shows alert pop-up
         Alerts.showAlertTitle(
             targetVC: self,
             title: Strings.instagram,
             message: message,
             placeholder: placeholder
-        ) {
-            (inputName) in
-            
+        ) { (inputName) in
             let defaults = UserDefaults.standard
             let name = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
             defaults.set(name, forKey: "Instagram Username")
@@ -222,26 +204,24 @@ extension UIViewController {
 
 extension ThemeVC {
     private enum Strings {
-        static let editName = "Edit Name".localized()
-        static let enterName = "Enter Name".localized()
-        static let enterNewName = "Enter New Name".localized()
-        static let newTheme = "New Theme".localized()
+        static let editName = NSLocalizedString("Edit Name", comment: "")
+        static let enterName = NSLocalizedString("Enter Name", comment: "")
+        static let enterNewName = NSLocalizedString("Enter New Name", comment: "")
+        static let newTheme = NSLocalizedString("New Theme", comment: "")
     }
     
-    func showGiveThemeNameAlert () {
+    func showGiveThemeNameAlert() {
         let tips = ""
-        let title = themeTitle.isEmpty == true ? Strings.newTheme : themeTitle
-        let message = themeTitle.isEmpty == true ? tips : Strings.editName
-        let placeholder = themeTitle.isEmpty == true ? Strings.enterName : Strings.enterNewName
+        let title = themeTitle.isEmpty ? Strings.newTheme : themeTitle
+        let message = themeTitle.isEmpty ? tips : Strings.editName
+        let placeholder = themeTitle.isEmpty ? Strings.enterName : Strings.enterNewName
         
         Alerts.showAlertTitle(
             targetVC: self,
             title: title,
             message: message,
             placeholder: placeholder
-        ) { [weak vc = self]
-            (inputName) in
-            
+        ) { [weak vc = self] (inputName) in
             vc?.themeTitle = inputName
             vc?.updateSaveButtonState()
         }
@@ -251,7 +231,7 @@ extension ThemeVC {
 extension String {
     var isValidName: Bool {
         let RegEx = "^(?=.{1,30}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9._]+(?<![.])$" //"^\\w{7,18}$"
-        let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
+        let Test = NSPredicate(format: "SELF MATCHES %@", RegEx)
         return Test.evaluate(with: self)
     }
 }

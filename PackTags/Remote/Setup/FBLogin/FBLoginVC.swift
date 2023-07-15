@@ -128,8 +128,8 @@ extension FBLoginVC {
         Alerts.simpleShortAlert(
             title: Strings.connectedAlertTitle,
             message: Strings.accessAnalyticsConfirm,
-            vc: self,
-            okDismissVc: true)
+            presentingViewController: self,
+            shouldDissmissPresentingVCWhenConfirmed: true)
     }
     
     private func showTroubleShootingAlert() {
@@ -137,8 +137,8 @@ extension FBLoginVC {
         Alerts.simpleShortAlert(
             title: Strings.editYourSetup,
             message: Strings.troubleShootingAlertMessage,
-            vc: self,
-            okDismissVc: false)
+            presentingViewController: self,
+            shouldDissmissPresentingVCWhenConfirmed: false)
     }
     
     private func showSetupScreen() {

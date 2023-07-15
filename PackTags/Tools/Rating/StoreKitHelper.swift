@@ -12,10 +12,9 @@ import StoreKit
 //Storekit (app review)
 struct StoreKitHelper {
     private enum Constants {
-        static let timesLaunched: Int = 5
+        static let limitTimesLaunched: Int = 5
+        static let timesLaunched: String = "numberOfTimesLaunched"
     }
-
-    static let numberOfTimesLaunchedKey = "numberOfTimesLaunched"
     
     static func displayStoreKit() {
         //Current build
@@ -36,10 +35,10 @@ struct StoreKitHelper {
         guard (currentVersion != lastVersionPromptedForReview || currentBuild != lastBuildPromptedForReview) else {return}
         
         //Get number of times launched
-        let numberOfTimesLaunched: Int = UserDefaults.standard.integer(forKey: StoreKitHelper.numberOfTimesLaunchedKey)
+        let numberOfTimesLaunched = UserDefaults.standard.integer(forKey: Constants.timesLaunched)
         
         //Enter if over 10th launch
-        if numberOfTimesLaunched > Constants.timesLaunched {
+        if numberOfTimesLaunched > Constants.limitTimesLaunched {
             
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
@@ -52,10 +51,7 @@ struct StoreKitHelper {
     }
     
     static func incrementNumberOftimesLaunched() {
-        
-        let numberOfTimesLaunched: Int = UserDefaults.standard.integer(forKey: StoreKitHelper.numberOfTimesLaunchedKey) + 1
-        
-        UserDefaults.standard.set(numberOfTimesLaunched, forKey:  StoreKitHelper.numberOfTimesLaunchedKey)
+        let newValue = UserDefaults.standard.integer(forKey: Constants.timesLaunched) + 1
+        UserDefaults.standard.set(newValue, forKey:  Constants.timesLaunched)
     }
-    
 }

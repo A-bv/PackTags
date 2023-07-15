@@ -184,8 +184,18 @@ extension OnBoardingController {
 
     @objc func didTap(_ sender: UIButton) {
         Core.shared.setIsNotNewUser()
-        Alerts.showFirstTimeTipsAlert(presentingVc: self)
+        if shouldShowTipsAlert() {
+            Alerts.showFirstTimeTipsAlert(presentingVc: self)
+        }
         dismiss(animated: true)
+    }
+    
+    private func shouldShowTipsAlert() -> Bool {
+        let tipsAlertShown = UserDefaults.standard.bool(forKey: "showTipsAlertShown")
+        if !tipsAlertShown {
+            UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
+        }
+        return !tipsAlertShown
     }
 }
 
