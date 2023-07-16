@@ -39,6 +39,7 @@
 		02385DFD2A634F190050FFDE /* PackTVC+NavigationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFC2A634F190050FFDE /* PackTVC+NavigationLogic.swift */; };
 		02385E002A634FAB0050FFDE /* TTVC+NavigationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* TTVC+NavigationLogic.swift */; };
 		02385E032A63523B0050FFDE /* TVC+NavigationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E022A63523B0050FFDE /* TVC+NavigationLogic.swift */; };
+		02385E082A64430E0050FFDE /* AppUrlHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E072A64430E0050FFDE /* AppUrlHandler.swift */; };
 		023A2F7A2856493C00EE6CDE /* PackTVC+AutoReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F792856493C00EE6CDE /* PackTVC+AutoReorder.swift */; };
 		023A2F7C2856495800EE6CDE /* PackTVC+ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7B2856495800EE6CDE /* PackTVC+ConfigCell.swift */; };
 		023A2F7E2856497800EE6CDE /* PackTVC+TVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7D2856497800EE6CDE /* PackTVC+TVHeader.swift */; };
@@ -193,6 +194,7 @@
 		02385DFC2A634F190050FFDE /* PackTVC+NavigationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+NavigationLogic.swift"; sourceTree = "<group>"; };
 		02385DFF2A634FAB0050FFDE /* TTVC+NavigationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+NavigationLogic.swift"; sourceTree = "<group>"; };
 		02385E022A63523B0050FFDE /* TVC+NavigationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+NavigationLogic.swift"; sourceTree = "<group>"; };
+		02385E072A64430E0050FFDE /* AppUrlHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUrlHandler.swift; sourceTree = "<group>"; };
 		023A2F792856493C00EE6CDE /* PackTVC+AutoReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+AutoReorder.swift"; sourceTree = "<group>"; };
 		023A2F7B2856495800EE6CDE /* PackTVC+ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+ConfigCell.swift"; sourceTree = "<group>"; };
 		023A2F7D2856497800EE6CDE /* PackTVC+TVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+TVHeader.swift"; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				0264B836264B25E100E1EEFA /* LoadIndicator.swift */,
 				024347D727119E2100F86A64 /* TextRecognition.swift */,
 				02FEF5B6263304EC0001B525 /* ExternalActions.swift */,
+				02385E072A64430E0050FFDE /* AppUrlHandler.swift */,
 				021044F526446AEF00408CEB /* StringFormatter.swift */,
 				0274DB2F26848948005F9C9C /* DocumentDirectory.swift */,
 				02D1A118255387590045E56F /* Unique.swift */,
@@ -1261,6 +1264,7 @@
 				02385DFA2A63420E0050FFDE /* SegueDestination.swift in Sources */,
 				0229863E27BD6DF60048F9E9 /* EnvironmentValues.swift in Sources */,
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
+				02385E082A64430E0050FFDE /* AppUrlHandler.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* ExternalActions.swift in Sources */,
 				02AD94A929A5936500D893E5 /* UIViewController+ModalViewButtons.swift.swift in Sources */,
 				0269E2AC2564B838005FE14B /* AnalyticsHostingViewController.swift in Sources */,

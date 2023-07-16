@@ -198,11 +198,10 @@ class SettingsVC: UIViewController {
                             title: Strings.settingsSectionTitleOurInstagram,
                             icon: icon,
                             iconBackgroundColor: .systemPink
-                        ) { [weak self] in
-                            self?.openAppURL(
+                        ) {
+                            AppURLHandler.openAppURL(
                                 appURL: Links.settingsInstagramAppUrl,
-                                webURL: Links.settingsInstagramWebUrl,
-                                completion: {_ in})
+                                webURL: Links.settingsInstagramWebUrl)
                         }),
                     
                     .staticCell(

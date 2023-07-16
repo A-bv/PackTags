@@ -10,25 +10,7 @@ import UIKit
 import MessageUI
 import WebKit
 
-extension UIViewController:  MFMailComposeViewControllerDelegate {
-    func openAppURL (appURL: String, webURL: String, completion: @escaping (Bool) -> Void) {
-        let appURL = URL(string: appURL)!
-        let application = UIApplication.shared
-        
-        if application.canOpenURL(appURL) {
-            application.open(appURL) { success in
-                if success {
-                    completion(true)
-                }
-            }
-            
-        } else {
-            // if Instagram app is not installed, open URL inside Safari
-            let webURL = URL(string: webURL)!
-            application.open(webURL)
-        }
-    }
-    
+extension UIViewController: MFMailComposeViewControllerDelegate {
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()

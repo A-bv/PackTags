@@ -22,16 +22,13 @@ extension PackTableVC {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             let goInstagram = UserDefaults.standard.bool(forKey: "goInsta")
             let Username = UserDefaults.standard.string(forKey: "Instagram Username") ?? ""
+            if UserDefaults.standard.bool(forKey: "Keep Packs Order") == false {
+                self.copiedPacksToBottom(packIdx: packIdx)
+            }
             if goInstagram {
-                self.openAppURL(
+                AppURLHandler.openAppURL(
                     appURL: "instagram://user?username=\(Username)",
-                    webURL: "https://instagram.com/\(Username)",
-                    completion: { _ in
-                        if UserDefaults.standard.bool(forKey: "Keep Packs Order") == false {
-                            self.copiedPacksToBottom(packIdx: packIdx)
-                        }
-                    }
-                )
+                    webURL: "https://instagram.com/\(Username)")
             }
         }
     }

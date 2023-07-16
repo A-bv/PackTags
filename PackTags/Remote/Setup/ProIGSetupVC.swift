@@ -88,10 +88,9 @@ class ProIGSetupVC: UIViewController {
     }
     
     @objc func goProfile (_ sender: Any) {
-        self.openAppURL(
+        AppURLHandler.openAppURL(
             appURL: Links.appURL,
-            webURL: Links.webURL,
-            completion: {_ in})
+            webURL: Links.webURL)
     }
 
     private func checkIsFirstTime() {
