@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DocumentDirectory: NSObject {
+final class DocumentDirectory {
     static var isOkToSaveJsonDataInDir = false
     
     static func saveJsonDataLocally(data: Data) {

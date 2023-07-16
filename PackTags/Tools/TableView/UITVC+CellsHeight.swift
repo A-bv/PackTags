@@ -8,13 +8,13 @@
 
 import UIKit
 
-extension UIViewController {    
-    func getThemeTableViewControllerCellHeight() -> CGFloat {
-        let paddingBottom = CGFloat(14)
-        let navigationBarHeight = currentNavBarHeight + statusBarHeight
-        
+extension UITableViewController {    
+    func getThemeTableViewControllerCellHeight(
+        navigationBarHeight: CGFloat,
+        paddingBottom: CGFloat
+    ) -> CGFloat {
         let screenHeight = view.frame.height
-        let cellHeightLImit: CGFloat = 164
+        let cellMinimumHeight: CGFloat = 164
         
         //tableView cells height
         var cellHeight = (screenHeight  - paddingBottom - navigationBarHeight)/4
@@ -23,7 +23,7 @@ extension UIViewController {
             cellHeight = (screenHeight  - paddingBottom - navigationBarHeight)/4
         }
         
-        if cellHeight <= cellHeightLImit {
+        if cellHeight <= cellMinimumHeight {
             cellHeight = (screenHeight - navigationBarHeight)/3
         }
         

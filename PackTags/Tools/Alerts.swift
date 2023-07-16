@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 // MARK: - Alerts
-class Alerts {
+final class Alerts {
     private enum Links {
         static let settingsTricksAndTipsUrl = "https://sites.google.com/view/packtags-tricks-tips/accueil"
     }

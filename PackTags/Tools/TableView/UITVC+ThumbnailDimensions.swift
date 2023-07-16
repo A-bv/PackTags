@@ -11,7 +11,7 @@ import UIKit
 //public var thumbnailDim = CGFloat(145.33)
 public var thumbnailDim = CGFloat(140.00)
 
-extension UIViewController {
+extension UITableViewController {
     private enum device {
         case beforeIPhone5
         case afterIPhone5

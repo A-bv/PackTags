@@ -9,6 +9,9 @@
 import UIKit
 
 extension ThemeTableViewController {
+    private enum Constants {
+        static let tableViewBottomPadding = CGFloat(14)
+    }
     
     func updateLogo() {
         navigationItem.titleView = DarkMode.isDarkMode() ?
@@ -28,7 +31,12 @@ extension ThemeTableViewController {
     
     func configureTableView () {
         self.tableView.backgroundColor = bkgdColor
-        self.tableView.rowHeight = self.getThemeTableViewControllerCellHeight()
+        
+        let navigationBarHeight = currentNavBarHeight + statusBarHeight
+
+        self.tableView.rowHeight = getThemeTableViewControllerCellHeight(
+            navigationBarHeight: navigationBarHeight,
+            paddingBottom: Constants.tableViewBottomPadding)
         self.setThemeTableViewControllerThumbnailsDimension()
         self.addLongPressToTableView() // reorder cells
     }

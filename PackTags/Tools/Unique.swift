@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Unique {
+final class Unique {
     static func reorganizeTags(from text: String, with quantity: Int) -> String {
         let packs = text.components(separatedBy: " ")
         let chunks = packs.chunked(into: quantity).map { $0.joined(separator: " ") }
