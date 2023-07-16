@@ -24,8 +24,10 @@ extension PackTableVC {
             }
         }
     }
-    
-    //MARK: - Unwind
+}
+
+//MARK: - Unwind
+extension PackTableVC {
     @IBAction func unwindToThemeList(sender: UIStoryboardSegue) {
         updatePackTableVC()
         resetStatusBarColor = false
@@ -39,6 +41,8 @@ extension PackTableVC {
         from fromViewController: UIViewController,
         withSender sender: Any) -> Bool
     {
-        return true //true = unwind segue stops here
+        return true
+        //if true -> unwind segue will execute first unwindToThemeList it encounters in hierarchy (PackTableVC's one)
+        //if false -> it will ignore and continue to the second it encounters in hierarchy (TTVC's one)
     }
 }
