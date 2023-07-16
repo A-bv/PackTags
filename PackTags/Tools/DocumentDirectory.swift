@@ -11,7 +11,7 @@ import UIKit
 class DocumentDirectory: NSObject {
     static var isOkToSaveJsonDataInDir = false
     
-    class func saveJsonDataLocally(data: Data) {
+    static func saveJsonDataLocally(data: Data) {
         if isOkToSaveJsonDataInDir {
             saveJsonDataToDir(jsonString: data)
             isOkToSaveJsonDataInDir = false
@@ -21,7 +21,7 @@ class DocumentDirectory: NSObject {
 
 //MARK: - General Save/read Json functions into document directory
 extension DocumentDirectory {
-    class func getJsonDataFromDir() -> Data? {
+    static func getJsonDataFromDir() -> Data? {
         let fm = FileManager.default
         if let pathName = fm.urls(
             for: .documentDirectory,in: .userDomainMask)
@@ -41,7 +41,7 @@ extension DocumentDirectory {
         }
     }
     
-    class func saveJsonDataToDir(jsonString: Data?) {
+    static func saveJsonDataToDir(jsonString: Data?) {
         
         //Saving time
         UserDefaults.standard.set(Date(), forKey: "LastStatsRefresh")

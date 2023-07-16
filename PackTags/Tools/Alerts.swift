@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 // MARK: - Alerts
-class Alerts: NSObject {
+class Alerts {
     private enum Links {
         static let settingsTricksAndTipsUrl = "https://sites.google.com/view/packtags-tricks-tips/accueil"
     }
@@ -24,7 +24,7 @@ class Alerts: NSObject {
         static let tricksAndTips = "Tricks & Tips".localized()
     }
     
-    class func showTextInputAlert(
+    static func showTextInputAlert(
         targetVC: UIViewController,
         title: String,
         message: String,
@@ -75,7 +75,7 @@ class Alerts: NSObject {
         }
     }
     
-    class func simpleShortAlert(
+    static func simpleShortAlert(
         title: String,
         message: String,
         presentingViewController: UIViewController,
@@ -99,7 +99,7 @@ class Alerts: NSObject {
         presentingViewController.present(alertController, animated: true)
     }
     
-    class func showFirstTimeTipsAlert(presentingViewController: UIViewController) {
+    static func showFirstTimeTipsAlert(presentingViewController: UIViewController) {
         let message = "\n" + Strings.discoverPacktagsWithTricksAndTips
         
         guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ApiService: NSObject {
+final class ApiService {
     typealias ResultHandler<T> = (Result<T, Error>) -> Void
 
     // Function to get IG Business data (Analytics and Medias)
-    class func fetchDataFromIgApi<T: Decodable>(
+    static func fetchDataFromIgApi<T: Decodable>(
         of type: T.Type,
         from url: String,
         completion: @escaping ResultHandler<Any>
@@ -32,7 +32,7 @@ class ApiService: NSObject {
         }
     }
    
-    private class func handleSuccessResult<T: Decodable>(
+    private static func handleSuccessResult<T: Decodable>(
         of type: T.Type,
         data: Data,
         completion: @escaping ResultHandler<Any>

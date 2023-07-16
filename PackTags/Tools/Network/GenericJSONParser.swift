@@ -8,10 +8,10 @@
 
 import UIKit
 
-class GenericJSONParser {
+final class GenericJSONParser {
     typealias result<T> = (Result<T, Error>) -> Void
     
-    class func download(
+    static func download(
         fromURLString urlString: String,
         completion: @escaping (Result<Data, Error>) -> Void
     ) {
@@ -29,7 +29,7 @@ class GenericJSONParser {
         }
     }
     
-    class func ParseJs2<T: Decodable>(of type: T.Type, data: Data) -> Any? {
+    static func ParseJs2<T: Decodable>(of type: T.Type, data: Data) -> Any? {
         do {
             return try JSONDecoder().decode([T].self, from: data)
         }
@@ -39,7 +39,7 @@ class GenericJSONParser {
         return nil
     }
     
-    class func ParseJs<T: Decodable>(of type: T.Type, data: Data) -> Any? {
+    static func ParseJs<T: Decodable>(of type: T.Type, data: Data) -> Any? {
         do {
             return try JSONDecoder().decode(T.self, from: data)
         }
@@ -49,7 +49,7 @@ class GenericJSONParser {
         return nil
     }
     
-    /*    class func ParseJs<T: Decodable>(of type: T.Type, data: Data) -> Result<[T], Error> {
+    /*    static func ParseJs<T: Decodable>(of type: T.Type, data: Data) -> Result<[T], Error> {
      do {
          let decoded = try JSONDecoder().decode([T].self, from: data)
          return .success(decoded)

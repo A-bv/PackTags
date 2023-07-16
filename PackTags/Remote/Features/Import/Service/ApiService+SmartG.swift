@@ -1,16 +1,16 @@
 import Foundation
 
 extension ApiService {
-    class func searchHashtag(
+    static func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Any) -> Void
     ) {
         ApiService.findHashtagUrl(searchedHashtag: searchedHashtag) { url in
-            self.getMedia(for: url, completion: completion)
+            getMedia(for: url, completion: completion)
         }
     }
     
-    private class func getMedia(
+    private static func getMedia(
         for url: String,
         completion: @escaping (Any) -> Void
     ) {
@@ -19,7 +19,7 @@ extension ApiService {
         }
     }
 
-    private class func findHashtagUrl(
+    private static func findHashtagUrl(
         searchedHashtag: String,
         completion block: @escaping((String) -> ())
     ) {
@@ -44,7 +44,7 @@ extension ApiService {
         }
     }
     
-    private class func handleHashtagIdResponse(data: Data, completion: @escaping (Result<String, Error>) -> Void) {
+    private static func handleHashtagIdResponse(data: Data, completion: @escaping (Result<String, Error>) -> Void) {
         do {
             let response = try JSONDecoder().decode(HashtagIdResponse.self, from: data)
             guard let id = response.data.first?.id else { return }
@@ -60,12 +60,12 @@ extension ApiService {
 }
 
 extension ApiService {
-    private class func constructHashtagSearchURL(searchedHashtag: String) -> String? {
+    private static func constructHashtagSearchURL(searchedHashtag: String) -> String? {
         let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(searchedHashtag)&access_token=\(fbToken)"
         return url.encodeUrl()
     }
 
-    private class func constructHashtagMediaSearchURL(hashtagID: String) -> String? {
+    private static func constructHashtagMediaSearchURL(hashtagID: String) -> String? {
         let limit = "25" //max value
         let m_type = "top_media" //"recent_media"
 

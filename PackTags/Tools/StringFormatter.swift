@@ -8,20 +8,20 @@
 
 import Foundation
    
-class StringFormatter: NSObject {
-    class func averageElementsOfArray (array: [Int]) -> String {
+final class StringFormatter {
+    static func averageElementsOfArray (array: [Int]) -> String {
         let avgNS = (array as NSArray).value(forKeyPath: "@avg.floatValue") as? NSNumber
         let avgDbl = avgNS?.doubleValue
         return formatNum(value: avgDbl ?? 0) //String(format: "%.2f", avgDbl ?? 0)
     }
 
-    class func averageElementOfArrayCGFloat (array: [CGFloat]) -> CGFloat {
+    static func averageElementOfArrayCGFloat (array: [CGFloat]) -> CGFloat {
         array.reduce(0.0) { $0 + $1/CGFloat(array.count) }
     }
 }
 
 extension StringFormatter {
-    class func formatNum (value : Double, noDecimal: Bool = false) -> String {
+    static func formatNum (value : Double, noDecimal: Bool = false) -> String {
         var text = String()
         switch value {
         case  ..<0.01:
@@ -40,7 +40,7 @@ extension StringFormatter {
 }
 
 extension StringFormatter {
-    class func formatValueToText(
+    static func formatValueToText(
         with value: Double, isRate: Bool
     ) -> String {
         let number = StringFormatter.formatNum(value: value)

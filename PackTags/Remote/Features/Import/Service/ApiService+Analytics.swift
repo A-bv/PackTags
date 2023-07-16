@@ -10,7 +10,7 @@ import Foundation
 
 //Functions for analytics
 extension ApiService {
-    class func loadProfileForAnalytics(completion: @escaping (Profile) -> Void) {
+    static func loadProfileForAnalytics(completion: @escaping (Profile) -> Void) {
         findMediaLimit { value in
             guard let encodedUrl = self.buildURLAPIGraph(foundLimit: value) else { return }
             

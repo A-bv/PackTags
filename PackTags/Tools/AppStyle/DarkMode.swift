@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class DarkMode: NSObject {
-    class func isDarkMode () -> Bool {
+final class DarkMode {
+    static func isDarkMode () -> Bool {
         return UITraitCollection.current.userInterfaceStyle == .dark
     }
 }
