@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
         
     deinit {
         print("deinit ThemeVC")

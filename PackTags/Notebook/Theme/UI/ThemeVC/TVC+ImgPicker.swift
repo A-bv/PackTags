@@ -8,8 +8,30 @@
 
 import UIKit
 
-extension ThemeVC {
-    func setImagePicker () {
+extension ThemeVC: UIImagePickerControllerDelegate {
+    private enum Constants {
+        static let imageSize = 600
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let image = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        if !recognizeText {
+            handleRegularImageSelection(image)
+        } else {
+            handleTextRecognitionImageSelection(image)
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func setImagePicker() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
@@ -17,60 +39,39 @@ extension ThemeVC {
     }
 }
 
-//MARK: - UIImagePickerControllerDelegate
 extension ThemeVC {
-    private enum Constants {
-        static let imageSize600 = 600
+    private func handleRegularImageSelection(_ image: UIImage) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.themeImageView = image.upOrientationImage()
+            
+            let imageSize = CGSize(width: Constants.imageSize, height: Constants.imageSize)
+            self.themeImageView = image.resized(to: imageSize)
+        }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any])
-    {
-        let image = UIImagePickerController.InfoKey.originalImage.rawValue
-        let index = UIImagePickerController.InfoKey(rawValue: image)
+    private func handleTextRecognitionImageSelection(_ image: UIImage) {
+        spinner.startAnimating()
         
-        guard let selectedImage = info[index] as? UIImage
-        else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
-        
-        // Regular action
-        if recognizeText == false {
-            DispatchQueue.main.async { [weak self] in
-                self?.themeImageView = selectedImage.upOrientationImage()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             
-                //Downsampling
-                let imageSize = CGSize(
-                    width: Constants.imageSize600,
-                    height: Constants.imageSize600)
-                self?.themeImageView  = selectedImage.resized(to: imageSize)
-            }
+            let tempImageForRecon = image.upOrientationImage()
+            self.themeTextView.hidePlaceholder()
             
-            
-        //Text Recognition (2/2)
-        } else {
-            spinner.startAnimating()
-            DispatchQueue.main.async {
-                let tempImageForRecon = selectedImage.upOrientationImage()
-                self.themeTextView.hidePlaceholder()
+            self.recognizeText(image: tempImageForRecon) { [weak self] text in
+                guard let self = self else { return }
                 
-                self.recognizeText(image: tempImageForRecon!)
-                { [weak self] (text) in
-                    if let initialText = self?.themeTextView.text {
-                        self?.themeTextView.text = text + "\n\n" + initialText
-                    } else {
-                        self?.themeTextView.text = text
-                    }
+                if let initialText = self.themeTextView.text {
+                    self.themeTextView.text = text + "\n\n" + initialText
+                } else {
+                    self.themeTextView.text = text
                 }
-                self.spinner.stopAnimating()
-                self.recognizeText = false
             }
+            
+            self.spinner.stopAnimating()
+            self.recognizeText = false
         }
-        picker.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
-        picker.dismiss(animated: true, completion: nil) // Dismiss the picker
     }
 }
