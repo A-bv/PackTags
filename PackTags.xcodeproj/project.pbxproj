@@ -48,7 +48,7 @@
 		023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B932A48EC60006E2D35 /* CirclesView.swift */; };
 		023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B962A4D085E006E2D35 /* LoadingView.swift */; };
 		023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B982A4D0A5E006E2D35 /* OfflineView.swift */; };
-		024347D827119E2100F86A64 /* TextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024347D727119E2100F86A64 /* TextRecognition.swift */; };
+		024347D827119E2100F86A64 /* TextRecognitionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024347D727119E2100F86A64 /* TextRecognitionUtility.swift */; };
 		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
 		02491C5926779A4900F98E17 /* ProIGSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* ProIGSetupVC.swift */; };
 		02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */; };
@@ -56,7 +56,7 @@
 		025479DF26C7EEA000E28724 /* SeedData in Resources */ = {isa = PBXBuildFile; fileRef = 025479DE26C7EEA000E28724 /* SeedData */; };
 		026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */; };
 		0264B817264A7CE900E1EEFA /* ASuiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* ASuiVM.swift */; };
-		0264B837264B25E100E1EEFA /* LoadIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B836264B25E100E1EEFA /* LoadIndicator.swift */; };
+		0264B837264B25E100E1EEFA /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */; };
 		0269E2AC2564B838005FE14B /* AnalyticsHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269E2AB2564B838005FE14B /* AnalyticsHostingViewController.swift */; };
 		026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */; };
 		026D16DD2A3E474500228DEA /* Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* Import.swift */; };
@@ -145,7 +145,7 @@
 		02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9EC928DF5BF000193A15 /* FacebookCore */; };
 		02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9ECB28DF5BF000193A15 /* FacebookLogin */; };
 		02FEF536262B86620001B525 /* TTVC+navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF535262B86620001B525 /* TTVC+navigation.swift */; };
-		02FEF5B7263304EC0001B525 /* ExternalActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5B6263304EC0001B525 /* ExternalActions.swift */; };
+		02FEF5B7263304EC0001B525 /* UIVC+SendMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5B6263304EC0001B525 /* UIVC+SendMail.swift */; };
 		02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5C92638951C0001B525 /* GenericJSONParser.swift */; };
 /* End PBXBuildFile section */
 
@@ -203,7 +203,7 @@
 		023D2B932A48EC60006E2D35 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
 		023D2B962A4D085E006E2D35 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		023D2B982A4D0A5E006E2D35 /* OfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
-		024347D727119E2100F86A64 /* TextRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognition.swift; sourceTree = "<group>"; };
+		024347D727119E2100F86A64 /* TextRecognitionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionUtility.swift; sourceTree = "<group>"; };
 		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		02491C5826779A4900F98E17 /* ProIGSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProIGSetupVC.swift; sourceTree = "<group>"; };
 		02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSwiftUI.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 		025479DE26C7EEA000E28724 /* SeedData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SeedData; sourceTree = "<group>"; };
 		026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0264B816264A7CE900E1EEFA /* ASuiVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASuiVM.swift; sourceTree = "<group>"; };
-		0264B836264B25E100E1EEFA /* LoadIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadIndicator.swift; sourceTree = "<group>"; };
+		0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		0269E2AB2564B838005FE14B /* AnalyticsHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsHostingViewController.swift; sourceTree = "<group>"; };
 		026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
 		026D16D62A3E474500228DEA /* Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Import.swift; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 		02FDEDCC290304E200B9BCFD /* SmartTags.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartTags.xcdatamodel; sourceTree = "<group>"; };
 		02FDEDCE2903062400B9BCFD /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		02FEF535262B86620001B525 /* TTVC+navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+navigation.swift"; sourceTree = "<group>"; };
-		02FEF5B6263304EC0001B525 /* ExternalActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalActions.swift; sourceTree = "<group>"; };
+		02FEF5B6263304EC0001B525 /* UIVC+SendMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+SendMail.swift"; sourceTree = "<group>"; };
 		02FEF5C92638951C0001B525 /* GenericJSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericJSONParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -532,9 +532,9 @@
 				02B05C1F27F90BB9000026B8 /* Image */,
 				02FA30832A118D58006A48CC /* Network */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
-				0264B836264B25E100E1EEFA /* LoadIndicator.swift */,
-				024347D727119E2100F86A64 /* TextRecognition.swift */,
-				02FEF5B6263304EC0001B525 /* ExternalActions.swift */,
+				0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */,
+				024347D727119E2100F86A64 /* TextRecognitionUtility.swift */,
+				02FEF5B6263304EC0001B525 /* UIVC+SendMail.swift */,
 				02385E072A64430E0050FFDE /* AppUrlHandler.swift */,
 				021044F526446AEF00408CEB /* StringFormatter.swift */,
 				0274DB2F26848948005F9C9C /* DocumentDirectory.swift */,
@@ -1181,7 +1181,7 @@
 				023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */,
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,
 				02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */,
-				0264B837264B25E100E1EEFA /* LoadIndicator.swift in Sources */,
+				0264B837264B25E100E1EEFA /* ActivityIndicatorView.swift in Sources */,
 				0226F19C259EAB93006E086C /* PackCell.swift in Sources */,
 				02CD2D8F29904F0D00EDE077 /* UrlEncoding.swift in Sources */,
 				021D7620275A99D500F54054 /* TransformedProfileModel.swift in Sources */,
@@ -1241,7 +1241,7 @@
 				02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */,
 				0264B817264A7CE900E1EEFA /* ASuiVM.swift in Sources */,
 				02D709D12A58F7330009F7C3 /* ThemesThumbnailDimensions.swift in Sources */,
-				024347D827119E2100F86A64 /* TextRecognition.swift in Sources */,
+				024347D827119E2100F86A64 /* TextRecognitionUtility.swift in Sources */,
 				02CAC9B32591047D00BE5E57 /* TextViewKbNoHide.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				0226F197259AB231006E086C /* TapTV+Selection.swift in Sources */,
@@ -1265,7 +1265,7 @@
 				0229863E27BD6DF60048F9E9 /* EnvironmentValues.swift in Sources */,
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
 				02385E082A64430E0050FFDE /* AppUrlHandler.swift in Sources */,
-				02FEF5B7263304EC0001B525 /* ExternalActions.swift in Sources */,
+				02FEF5B7263304EC0001B525 /* UIVC+SendMail.swift in Sources */,
 				02AD94A929A5936500D893E5 /* UIViewController+ModalViewButtons.swift.swift in Sources */,
 				0269E2AC2564B838005FE14B /* AnalyticsHostingViewController.swift in Sources */,
 				02385E002A634FAB0050FFDE /* TTVC+NavigationLogic.swift in Sources */,

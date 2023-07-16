@@ -60,7 +60,7 @@ extension ThemeVC {
             let tempImageForRecon = image.upOrientationImage()
             self.themeTextView.hidePlaceholder()
             
-            self.recognizeText(image: tempImageForRecon) { [weak self] text in
+            TextRecognitionUtility.recognizeText(image: tempImageForRecon) { [weak self] text in
                 guard let self = self else { return }
                 
                 if let initialText = self.themeTextView.text {
