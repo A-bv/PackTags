@@ -49,15 +49,17 @@ extension ThemeTableViewController {
     }
     
     func handleNewUserFlow() {
-        if Core.shared.isNewUser() {
-            showOnboardingScreen(completion: {
-                let tipsAlertShown = UserDefaults.standard.bool(forKey: "showTipsAlertShown")
-                if !tipsAlertShown {
-                    UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
-                    Alerts.showFirstTimeTipsAlert(presentingViewController: self)
-                }
-            })
+        if !Core.shared.isNewUser() {
+            return
         }
+
+        showOnboardingScreen(completion: {
+            let tipsAlertShown = UserDefaults.standard.bool(forKey: "showTipsAlertShown")
+            if !tipsAlertShown {
+                UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
+                Alerts.showFirstTimeTipsAlert(presentingViewController: self)
+            }
+        })
     }
 
     func deleteRow(indexPath: IndexPath) {

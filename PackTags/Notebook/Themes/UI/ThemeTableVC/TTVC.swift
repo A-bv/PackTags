@@ -36,14 +36,12 @@ class ThemeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         configureNavBar ()
         configureTableView ()
-        
         themes = CoreDataHelper.retrieveThemes()
-        handleNewUserFlow()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        handleNewUserFlow()
     }}
