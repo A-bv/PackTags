@@ -37,20 +37,8 @@ extension FBLoginViewModel {
             graphPath: "/me/accounts",
             httpMethod: .get)
         
-        request.start { connection, result, error in
-            if let error = error {
-                print("fbPageRequest error:", error)
-                return
-            }
-            
-            guard let response = result as? NSDictionary else { return }
-            guard let pages = response.value(forKeyPath: "data.name") as? [String] else { return }
-            
-            if pages.isEmpty {
-                completion(false)
-            } else {
-                completion(true)
-            }
+        request.start { [weak self] connection, result, error in
+            self?.handleCorrectFbPagesSetupResponse(connection, result, error, completion: completion)
         }
     }
     
@@ -60,20 +48,57 @@ extension FBLoginViewModel {
             parameters: ["fields": "instagram_business_account"],
             httpMethod: .get)
         
-        request.start { connection, result, error in
-            if let error = error {
-                print("igBRequest error:", error)
-                return
-            }
-            
-            guard let response = result as? NSDictionary else { return }
-            
-            if let igBIds = response.value(forKeyPath: "data.instagram_business_account.id") as? [String] {
-                completion(igBIds.first)
-            } else {
-                print("No business account linked or wrong pages selected")
-                completion(nil)
-            }
+        request.start { [weak self] connection, result, error in
+            self?.handleSetupIgBResponse(connection, result, error, completion: completion)
+        }
+    }
+}
+
+extension FBLoginViewModel {
+    private func handleCorrectFbPagesSetupResponse(
+        _ connection: GraphRequestConnection?,
+        _ result: Any?,
+        _ error: (any Error)?,
+        completion: @escaping (Bool) -> ()
+    ) {
+        let key = "data.name"
+        if let error = error {
+            print("Error during Facebook page request:", error)
+            return
+        }
+
+        guard let response = result as? NSDictionary else {
+            return
+        }
+
+        guard let pages = response.value(forKeyPath: key) as? [String] else {
+            return
+        }
+
+        completion(!pages.isEmpty)
+    }
+
+    private func handleSetupIgBResponse(
+        _ connection: GraphRequestConnection?,
+        _ result: Any?,
+        _ error: Error?,
+        completion: @escaping (String?) -> ()
+    ) {
+        let key = "data.instagram_business_account.id"
+        if let error = error {
+            print("igBRequest error:", error)
+            return
+        }
+        
+        guard let response = result as? NSDictionary else {
+            return
+        }
+        
+        if let igBIds = response.value(forKeyPath: key) as? [String] {
+            completion(igBIds.first)
+        } else {
+            print("No business account linked or wrong pages selected")
+            completion(nil)
         }
     }
 }

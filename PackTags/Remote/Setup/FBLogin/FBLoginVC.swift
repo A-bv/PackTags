@@ -40,7 +40,8 @@ class FBLoginVC: UIViewController {
         button.permissions = [
             "instagram_basic",
             "pages_show_list",
-            "instagram_manage_insights"]
+            "instagram_manage_insights",
+            "business_management"]
         return button
     }()
     

@@ -20,5 +20,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3F43310B-6A99-4E6A-BC5B-FA4EF0921096"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Remote/Setup/FBLogin/FBLoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "Constants"
+            landmarkType = "13">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "459759C4-5D10-416E-826B-9920F0A620A1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Remote/Setup/FBLogin/FBLoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "getToken()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE617C0E-B1DD-4168-9BDC-88E852594FE1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Remote/Setup/FBLogin/FBLoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "apiCallGetIgBusinessId()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CE617C0E-B1DD-4168-9BDC-88E852594FE1 - 4d6f67b57d860bfe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PackTags.FBLoginVC.apiCallGetIgBusinessId() -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Setup/FBLogin/FBLoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "CE617C0E-B1DD-4168-9BDC-88E852594FE1 - 78dc9a5b1d2cfe21"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in PackTags.FBLoginVC.apiCallGetIgBusinessId() -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Setup/FBLogin/FBLoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
