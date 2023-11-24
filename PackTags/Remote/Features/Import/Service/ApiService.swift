@@ -31,17 +31,20 @@ final class ApiService {
         data: Data,
         completion: @escaping ResultHandler<Any>
     ) {
-        guard let decodedObject = GenericJSONParser.ParseJs2(of: T.self, data: data) else {
-            return
-        }
-
-        if let profile = decodedObject as? Profile {
-            DocumentDirectory.saveJsonDataLocally(data: data)
-            completion(.success(profile))
-        } else if let media = decodedObject as? Media {
-            let mediaData = media.data.compactMap { $0 }
-            completion(.success(mediaData))
+        if T.self == Profile.self {
+            guard let decodedProfile = GenericJSONParser.ParseJs(of: T.self, data: data) as? Profile else {
+                return
+            }
+            completion(.success(decodedProfile))
+        } else if T.self == Media.self {
+            guard let decodedMedia = GenericJSONParser.ParseJs(of: T.self, data: data) as? Media else {
+                return
+            }
+            let mediaData = decodedMedia.data.compactMap { $0 }
         } else {
+            guard let decodedObject = GenericJSONParser.ParseJs2(of: T.self, data: data) else {
+                return
+            }
             completion(.success(decodedObject))
         }
     }

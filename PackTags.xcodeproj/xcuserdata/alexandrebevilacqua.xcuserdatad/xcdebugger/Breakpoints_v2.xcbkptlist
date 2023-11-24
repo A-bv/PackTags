@@ -71,112 +71,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BBA2385F-72E5-4F8F-ADA4-6FA079F87802"
-            shouldBeEnabled = "No"
+            uuid = "0EE6463F-63C1-4E43-A4E8-18D859BD59B4"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "findHashtagUrl(searchedHashtag:completion:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "handleHashtagIdResponse(data:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BBA2385F-72E5-4F8F-ADA4-6FA079F87802 - ad2f3d0d5f8f39d7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "PackTags"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "364">
-               </Location>
-               <Location
-                  uuid = "BBA2385F-72E5-4F8F-ADA4-6FA079F87802 - ad2f3d0d5f8f39d7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "PackTags"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "416">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "99985433-E908-4DD7-92D8-37017F6F5EEF"
-            shouldBeEnabled = "No"
+            uuid = "2121759C-E7A0-4560-BE94-A7937A52181D"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "findHashtagUrl(searchedHashtag:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "99985433-E908-4DD7-92D8-37017F6F5EEF - d0925d8b5fa732aa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "PackTags"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "132">
-               </Location>
-               <Location
-                  uuid = "99985433-E908-4DD7-92D8-37017F6F5EEF - d0925d8b5fa732aa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "PackTags"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "168">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2879C6E6-13F8-47A4-AC97-54188775593D"
-            shouldBeEnabled = "No"
+            uuid = "2341CFB4-AB80-4AC8-B047-162A795AD1FE"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
+            filePath = "PackTags/Tools/Network/GenericJSONParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "findHashtagUrl(searchedHashtag:completion:)"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "download(fromURLString:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC94259B-5E7A-44E3-967A-D7FFC8E4FFFC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Tools/Network/GenericJSONParser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "ParseJs2(of:data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
