@@ -14,13 +14,15 @@ extension ApiService {
         for url: String,
         completion: @escaping ([DataMedia]) -> Void
     ) {
-        fetchDataFromUrl(of: Profile.self, from: url) { result in
+        fetchDataFromUrl(of: Media.self, from: url) { result in
             switch result {
             case .failure(let error):
                 print("Error: \(error)")
             case .success(let data):
                 if let dataMedia = data as? [DataMedia] {
                     completion(dataMedia)
+                } else {
+                    print("Error")
                 }
             }
         }

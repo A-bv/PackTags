@@ -41,6 +41,7 @@ final class ApiService {
                 return
             }
             let mediaData = decodedMedia.data.compactMap { $0 }
+            completion(.success(mediaData))
         } else {
             guard let decodedObject = GenericJSONParser.ParseJs2(of: T.self, data: data) else {
                 return
