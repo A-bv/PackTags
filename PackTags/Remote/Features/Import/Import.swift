@@ -65,9 +65,7 @@ extension SmartGViewModel {
     func fetch(hashtag: String) {
         ApiService.searchHashtag(
             searchedHashtag: hashtag,
-            completion: {
-                [weak self] (result) in
-                guard let result = result as? [DataMedia] else {return}
+            completion: { [weak self] result in
                 self?.dataMedias = result
                 self?.processSmartGModel()
             })

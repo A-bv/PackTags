@@ -23,38 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3F43310B-6A99-4E6A-BC5B-FA4EF0921096"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PackTags/Remote/Setup/FBLogin/FBLoginViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "Constants"
-            landmarkType = "13">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "459759C4-5D10-416E-826B-9920F0A620A1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PackTags/Remote/Setup/FBLogin/FBLoginViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "getToken()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "CE617C0E-B1DD-4168-9BDC-88E852594FE1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -98,6 +66,118 @@
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BBA2385F-72E5-4F8F-ADA4-6FA079F87802"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "findHashtagUrl(searchedHashtag:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BBA2385F-72E5-4F8F-ADA4-6FA079F87802 - ad2f3d0d5f8f39d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "364">
+               </Location>
+               <Location
+                  uuid = "BBA2385F-72E5-4F8F-ADA4-6FA079F87802 - ad2f3d0d5f8f39d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "416">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "99985433-E908-4DD7-92D8-37017F6F5EEF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "findHashtagUrl(searchedHashtag:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "99985433-E908-4DD7-92D8-37017F6F5EEF - d0925d8b5fa732aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "99985433-E908-4DD7-92D8-37017F6F5EEF - d0925d8b5fa732aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2879C6E6-13F8-47A4-AC97-54188775593D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Remote/Features/Import/Service/ApiService+SmartG.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "findHashtagUrl(searchedHashtag:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

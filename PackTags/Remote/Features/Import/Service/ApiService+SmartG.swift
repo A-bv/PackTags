@@ -3,7 +3,7 @@ import Foundation
 extension ApiService {
     static func searchHashtag(
         searchedHashtag: String,
-        completion: @escaping (Any) -> Void
+        completion: @escaping ([DataMedia]) -> Void
     ) {
         ApiService.findHashtagUrl(searchedHashtag: searchedHashtag) { url in
             getMedia(for: url, completion: completion)
@@ -12,10 +12,17 @@ extension ApiService {
     
     private static func getMedia(
         for url: String,
-        completion: @escaping (Any) -> Void
+        completion: @escaping ([DataMedia]) -> Void
     ) {
-        ApiService.fetchDataFromIgApi(of: Media.self, from: url) { result in
-            completion(result)
+        fetchDataFromUrl(of: Profile.self, from: url) { result in
+            switch result {
+            case .failure(let error):
+                print("Error: \(error)")
+            case .success(let data):
+                print("Success! Received data: \(data)")
+                guard let data = data as? [DataMedia] else { return }
+                completion(data)
+            }
         }
     }
 

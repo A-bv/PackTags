@@ -16,7 +16,7 @@ extension ApiService {
             
             DocumentDirectory.isOkToSaveJsonDataInDir = true //local save
             
-            ApiService.fetchDataFromIgApi(of: Profile.self, from: encodedUrl) { result in
+            ApiService.fetchDataFromUrl(of: Profile.self, from: encodedUrl) { result in
                 if case let .success(profileJson) = result, let profile = profileJson as? Profile {
                     completion(profile)
                 }
@@ -36,7 +36,7 @@ extension ApiService {
           
             group.enter()
             
-            ApiService.fetchDataFromIgApi(of: Profile.self, from: encodedUrl) { result in
+            ApiService.fetchDataFromUrl(of: Profile.self, from: encodedUrl) { result in
                 if case let .success(profileJson) = result, let profile = profileJson as? Profile {
                     if profile.username != nil {
                         //means no error returned
