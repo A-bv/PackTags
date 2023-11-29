@@ -601,8 +601,8 @@
 		02A4235B2844002600A25067 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				02AEA5EA25B9D2F10063076F /* ThemeTable */,
 				0234E7B9287ADE3500D7A2AF /* Navigation */,
+				02AEA5EA25B9D2F10063076F /* ThemeTable */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
