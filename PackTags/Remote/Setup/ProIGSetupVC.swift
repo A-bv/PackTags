@@ -142,7 +142,7 @@ class ProIGSetupVC: UIViewController {
         let containerStackView = stackView
         containerStackView.distribution = .equalSpacing
         containerStackView.alignment = .center
-        containerStackView.spacing = Constants.stackViewSpacing  // Set the spacing between substacks
+        containerStackView.spacing = Constants.stackViewSpacing
 
         let subStack1 = makeStackView()
         subStack1.addArrangedSubview(topLabel)
