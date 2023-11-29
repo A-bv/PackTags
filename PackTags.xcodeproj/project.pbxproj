@@ -601,8 +601,8 @@
 		02A4235B2844002600A25067 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				02AEA5EA25B9D2F10063076F /* ThemeTable */,
 				0234E7B9287ADE3500D7A2AF /* Navigation */,
-				02D10F082920657A00287248 /* UI */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -650,16 +650,17 @@
 			path = PackTableVC;
 			sourceTree = "<group>";
 		};
-		02AEA5EA25B9D2F10063076F /* ThemeTableVC */ = {
+		02AEA5EA25B9D2F10063076F /* ThemeTable */ = {
 			isa = PBXGroup;
 			children = (
+				022688922624F9B1007DBD98 /* ThemeCell.swift */,
 				02FB552E24FFA78B00174E34 /* TTVC.swift */,
 				02385DFE2A634F910050FFDE /* Navigation */,
 				022688B22628BCCC007DBD98 /* TTVC+Interface.swift */,
 				021EB84C288C1EB000463B42 /* TTVC+Operations.swift */,
 				02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */,
 			);
-			path = ThemeTableVC;
+			path = ThemeTable;
 			sourceTree = "<group>";
 		};
 		02B05C1E27F90BA3000026B8 /* TextView */ = {
@@ -750,15 +751,6 @@
 				02A4235D284400FC00A25067 /* Theme */,
 			);
 			path = Notebook;
-			sourceTree = "<group>";
-		};
-		02D10F082920657A00287248 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				022688922624F9B1007DBD98 /* ThemeCell.swift */,
-				02AEA5EA25B9D2F10063076F /* ThemeTableVC */,
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 		02D10F092920661B00287248 /* UI */ = {
