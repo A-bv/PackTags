@@ -1,15 +1,19 @@
 // ProIGSetupVC
 "topTextViewText" =
-"      💭 Go to your Instagram page.
-      💭 Tap  \"≡\".
-      💭 Tap \"Settings\".
-      💭 Tap \"Tools\".
-      💭 Switch account type.";
+"
+⭑ Go to your Instagram page.
+⭑ Tap  \"≡\".
+⭑ Tap \"Settings\".
+⭑ Tap \"Tools\".
+⭑ Switch account type.
+";
 
 "bottomTextViewText" =
-"      💭 Go to your Instagram page.
-      💭 Tap \"Edit Profile\".
-      💭 Create/Link a Facebook page.";
+" 
+⭑ Go to your Instagram page.
+⭑ \"Edit Profile\".
+⭑ Create/Link a Facebook page.
+";
 
 //Tap Tv
 "tapTextViewToolBarDescriptionMessage" = "
