@@ -66,8 +66,10 @@ extension SmartGViewModel {
         ApiService.searchHashtag(
             searchedHashtag: hashtag,
             completion: { [weak self] result in
-                self?.dataMedias = result
-                self?.processSmartGModel()
+                DispatchQueue.main.async {
+                    self?.dataMedias = result
+                    self?.processSmartGModel()
+                }
             })
         
         //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
