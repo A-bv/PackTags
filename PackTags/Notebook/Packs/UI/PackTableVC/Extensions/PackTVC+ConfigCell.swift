@@ -17,7 +17,9 @@ extension PackTableVC {
     }
     
     func configureCell(indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PackCell", for: indexPath) as? PackCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "PackCell", for: indexPath) as? PackCell
+        else {
             fatalError("The dequeued cell is not an instance of PackCell.")
         }
         
