@@ -1,7 +1,3 @@
-//
-//  dss.swift
-//  PackTags
-//
 //  Created by Alexandre Bevilacqua on 02.04.22.
 //  Copyright © 2022 Alexandre Bevilacqua. All rights reserved.
 //
@@ -67,13 +63,17 @@ class TapTextView: UITextView {
     
     func makeTapTextViewButton() -> UIBarButtonItem {
         let img = UIImage(systemName: "hand.point.up.left")!
-        activateButton = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(getTag))
+        activateButton = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(startTagSelection))
         return activateButton
     }
     
-    @objc private func getTag() {
+    @objc private func startTagSelection() {
         self.resignFirstResponder()
-        self.startTagSelection()
+        tapGestureRecognizer.isEnabled = true
+        isEditable = false
+        isSelectable = false
+        addTappedTagRecognizer()
+        tagDelegate?.tapTextViewDidStartSelection(self)
         activateButton.isEnabled = false
     }
     
@@ -85,14 +85,6 @@ class TapTextView: UITextView {
         firstTimeGrouped = false
         tagDelegate?.tapTextViewDidFinishSelection(self)
         activateButton.isEnabled = true
-    }
-    
-    private func startTagSelection() {
-        tapGestureRecognizer.isEnabled = true
-        isEditable = false
-        isSelectable = false
-        addTappedTagRecognizer()
-        tagDelegate?.tapTextViewDidStartSelection(self)
     }
     
     private func addTappedTagRecognizer() {
