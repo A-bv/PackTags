@@ -49,7 +49,7 @@ class TapTextView: UITextView {
     
     var selectionDict = [String:Int]()
     var viewTagCount = Int()
-    var tap = UIGestureRecognizer()
+    var tapGestureRecognizer = UITapGestureRecognizer()
     var firstTimeGrouped = false
     
     var activateButton = UIBarButtonItem()
@@ -77,17 +77,18 @@ class TapTextView: UITextView {
         activateButton.isEnabled = false
     }
     
-    func doneTagSelection() {
+    @objc private func doneTagSelection() {
         cleanTagSelection()
-        tap.isEnabled = false
+        tapGestureRecognizer.isEnabled = false
         isEditable = true
         isSelectable = true
         firstTimeGrouped = false
         tagDelegate?.tapTextViewDidFinishSelection(self)
+        activateButton.isEnabled = true
     }
     
     private func startTagSelection() {
-        tap.isEnabled = true
+        tapGestureRecognizer.isEnabled = true
         isEditable = false
         isSelectable = false
         addTappedTagRecognizer()
@@ -95,12 +96,12 @@ class TapTextView: UITextView {
     }
     
     private func addTappedTagRecognizer() {
-        tap = UITapGestureRecognizer(
+        tapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(tapResponse(recognizer:)))
 
-        tap.delegate = self as? UIGestureRecognizerDelegate
-        addGestureRecognizer(tap)
+        tapGestureRecognizer.delegate = self as? UIGestureRecognizerDelegate
+        addGestureRecognizer(tapGestureRecognizer)
     }
     
     // MARK: - Selection
@@ -138,7 +139,7 @@ class TapTextView: UITextView {
             toolbar.append(spacer)
         }
 
-        toolbar.append(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTagSelection2)))
+        toolbar.append(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTagSelection)))
         
         return toolbar
     }
@@ -163,17 +164,10 @@ class TapTextView: UITextView {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         let tappedWord: String? = self.text(in:textRange)
         processTappedWord(tappedWord: tappedWord)
-        
-        /*
-        print("number of views after tap:", self.subviews.count)
-        print("count:",viewTagCount)
-        */
     }
     
     private func processTappedWord(tappedWord: String?) {
-        guard let tappedWord else {
-            return
-        }
+        guard let tappedWord else { return }
         
         if let selectedTag = selectionDict[tappedWord] {
             selectTag(base: tappedWord, tag: selectedTag, state: .selected)
@@ -239,17 +233,17 @@ class TapTextView: UITextView {
     }
         
     // MARK: - toolBar actions
-    @objc private func copyTagSelection(){
-        let arrayToCopy = (Array(selectionDict.keys)).map { "#" + $0 }
+    @objc private func copyTagSelection() {
+        let arrayToCopy = selectionDict.keys.map { "#" + $0 }
         UIPasteboard.general.string = arrayToCopy.joined(separator: " ")
     }
     
-    @objc private func cutTagSelection(){
+    @objc private func cutTagSelection() {
         copyTagSelection()
         deleteTagSelection()
     }
     
-    @objc private func groupTagSelection(){
+    @objc private func groupTagSelection() {
         cutTagSelection()
         
         //get from clipboard
@@ -274,35 +268,27 @@ class TapTextView: UITextView {
         }
         
         self.scrollRangeToVisible(NSRange(location:0, length:0))
-        // print("number of views after tap:", self.numberOfViewsOnTextView(superView: self))
-        // print("count:", viewTagCount)
-        
     }
     
-    @objc private func cleanTagSelection(){
+    @objc private func cleanTagSelection() {
         for tag in selectionDict.keys {
             processTappedWord(tappedWord: tag)
         }
     }
     
-    @objc private func deleteTagSelection(){
+    @objc private func deleteTagSelection() {
         for tag in selectionDict.keys {
             processTappedWord(tappedWord: tag)
             self.text = self.text.replacingOccurrences(of: "#\(tag)\\b", with: "", options: .regularExpression)
         }
     }
     
-    @objc private func toolbarInfo(){
+    @objc private func toolbarInfo() {
         guard let presentingViewController else { return }
         Alerts.simpleAlert(
             presentingViewController: presentingViewController,
             title: Strings.tapTextViewToolBarDescriptionTitle,
             message: Strings.tapTextViewToolBarDescriptionMessage,
             btnAction1: UIAlertAction(title: Strings.infoAlertOk, style: .default))
-    }
-
-    @objc private func doneTagSelection2() {
-        self.doneTagSelection()
-        activateButton.isEnabled = true
     }
 }

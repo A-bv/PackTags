@@ -63,7 +63,6 @@ extension ThemeVC{
             title: Strings.searchHashtags,
             image: UIImage(systemName: "magnifyingglass")
         ) { [weak vc = self] action in
-            vc?.themeTextView.doneTagSelection()
             vc?.startToSearch()
             vc?.isSearchMode = true
         }
