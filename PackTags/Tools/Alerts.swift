@@ -63,15 +63,21 @@ final class Alerts {
         }
         targetVC.present(alertController, animated: true, completion: nil)
         
-        func observeTextFieldChanges(textField: UITextField, placeholder: String, title: String, saveAction: UIAlertAction) {
+        func observeTextFieldChanges(
+            textField: UITextField,
+            placeholder: String,
+            title: String,
+            saveAction: UIAlertAction
+        ) {
             NotificationCenter.default.addObserver(
                 forName: UITextField.textDidChangeNotification,
                 object: textField,
-                queue: .main) { _ in
-                    let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-                    let isValidName = placeholder.contains("Username") && title == "Instagram" && text.isValidName
-                    saveAction.isEnabled = isValidName || !text.isEmpty
-                }
+                queue: .main
+            ) { _ in
+                let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                let isValidName = placeholder.contains("Username") && title == "Instagram" && text.isValidName
+                saveAction.isEnabled = isValidName || !text.isEmpty
+            }
         }
     }
     
@@ -116,11 +122,37 @@ final class Alerts {
             presentingViewController.present(presentedViewController, animated: true)
         }
         
-        presentingViewController.simpleAlert(
+        simpleAlert(
+            presentingViewController: presentingViewController,
             title: Strings.tricksAndTips,
             message: message,
             btnAction1: action1,
             btnAction2: action2)
+    }
+    
+    static func simpleAlert(
+        presentingViewController: UIViewController,
+        title: String,
+        message: String,
+        btnAction1: UIAlertAction? = nil,
+        btnAction2: UIAlertAction? = nil
+    ) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+        
+        if let btnAction1 = btnAction1 {
+            alert.addAction(btnAction1)
+        }
+        
+        if let btnAction2 = btnAction2 {
+            alert.addAction(btnAction2)
+        }
+        
+        alert.preferredAction = btnAction2
+        
+        presentingViewController.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -146,30 +178,6 @@ extension UIViewController {
                 action: #selector(self.dismissAlertController))
             alert.view.superview?.subviews.first?.addGestureRecognizer(tapGesture)
         }
-    }
-    
-    func simpleAlert(
-        title: String,
-        message: String,
-        btnAction1: UIAlertAction? = nil,
-        btnAction2: UIAlertAction? = nil
-    ) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert)
-        
-        if let btnAction1 = btnAction1 {
-            alert.addAction(btnAction1)
-        }
-        
-        if let btnAction2 = btnAction2 {
-            alert.addAction(btnAction2)
-        }
-        
-        alert.preferredAction = btnAction2
-        
-        self.present(alert, animated: true, completion: nil)
     }
 }
 

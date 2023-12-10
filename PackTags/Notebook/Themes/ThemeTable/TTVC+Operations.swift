@@ -41,7 +41,8 @@ extension ThemeTableViewController {
             style: .cancel,
             handler: nil)
         
-        self.simpleAlert(
+        Alerts.simpleAlert(
+            presentingViewController: self,
             title: "",
             message: Strings.deleteConfirmationMessage,
             btnAction1: deleteAction,

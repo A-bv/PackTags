@@ -115,14 +115,14 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavi
     }
     
     private func loadbuttons () {
-        navigationItem.rightBarButtonItems = [saveButton, buttonMenuThemeOptions, themeTextView.tapStartBarButtonItem()]
+        navigationItem.rightBarButtonItems = [saveButton, buttonMenuThemeOptions, themeTextView.makeTapTextViewButton()]
     }
     
     private func configureTextView() {
         themeTextView.delegate = self
         themeTextView.tagDelegate = self
         themeTextView.setPlaceholder()
-        themeTextView.addTagSelectorToolBar (vc: self)
+        themeTextView.addTagSelectorToolBar (viewController: self)
         themeTextView.notHiddenByKeyboard()
     }
 }
