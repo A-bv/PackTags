@@ -29,6 +29,22 @@ class TapTextView: UITextView {
     private enum Strings {
         static let tapTextViewToolBarDescriptionMessage = "tapTextViewToolBarDescriptionMessage".localized()
         static let tapTextViewToolBarDescriptionTitle = "Actions on selected hashtags".localized()
+        static let infoAlertOk = "OK"
+    }
+    
+    private enum TagSelectionState {
+        case selected
+        case notSelected
+    }
+
+    private enum Constants {
+        static let tagViewBackgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        static let cornerRadiusMultiplier: CGFloat = 4.0
+
+        enum Insets {
+            static let horizontal: CGFloat = -1
+            static let vertical: CGFloat = 2
+        }
     }
     
     var selectionDict = [String:Int]()
@@ -42,7 +58,7 @@ class TapTextView: UITextView {
     @IBInspectable
     weak var tagDelegate: TapTextViewDelegate?
     
-    //MARK: - Toolbar configuration
+    // MARK: - Activation of TapTextView
     func addTagSelectorToolBar(viewController: UIViewController) {
         presentingViewController = viewController
         guard let presentingViewController else { return }
@@ -55,8 +71,13 @@ class TapTextView: UITextView {
         return activateButton
     }
     
-    //MARK: - toolbar functions
-    @objc func doneTagSelection() {
+    @objc private func getTag() {
+        self.resignFirstResponder()
+        self.startTagSelection()
+        activateButton.isEnabled = false
+    }
+    
+    func doneTagSelection() {
         cleanTagSelection()
         tap.isEnabled = false
         isEditable = true
@@ -82,6 +103,7 @@ class TapTextView: UITextView {
         addGestureRecognizer(tap)
     }
     
+    // MARK: - Selection
     private func makeToolbarItems() -> [UIBarButtonItem] {
         var toolbarIcons = [UIImage?]()
         
@@ -116,7 +138,7 @@ class TapTextView: UITextView {
             toolbar.append(spacer)
         }
 
-        toolbar.append(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTagSelection)))
+        toolbar.append(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTagSelection2)))
         
         return toolbar
     }
@@ -125,6 +147,7 @@ class TapTextView: UITextView {
         UIBarButtonItem(image: image, style: .plain, target: self, action: action)
     }
     
+    // MARK: - Selection
     @objc private func tapResponse(recognizer: UITapGestureRecognizer) {
         let location: CGPoint = recognizer.location(in: self)
         let position: CGPoint = CGPoint(x:location.x, y: location.y)
@@ -142,74 +165,71 @@ class TapTextView: UITextView {
         processTappedWord(tappedWord: tappedWord)
         
         /*
-         print("number of views after tap:", self.subviews.count)
-         print("count:",viewTagCount)
-         */
+        print("number of views after tap:", self.subviews.count)
+        print("count:",viewTagCount)
+        */
     }
     
-    // MARK: - Selection
     private func processTappedWord(tappedWord: String?) {
         guard let tappedWord else {
             return
         }
         
         if let selectedTag = selectionDict[tappedWord] {
-            selectTag(base: tappedWord, tag: selectedTag, isSelected: true)
+            selectTag(base: tappedWord, tag: selectedTag, state: .selected)
             selectionDict[tappedWord] = nil
         } else {
             viewTagCount += 1
-            selectionDict[tappedWord] = viewTagCount//tappedWord = unique key
-            selectTag(base: tappedWord, tag: viewTagCount, isSelected: false)
+            selectionDict[tappedWord] = viewTagCount    //tappedWord = unique key
+            selectTag(base: tappedWord, tag: viewTagCount, state: .notSelected)
         }
     }
-    
-    private func selectTag(base: String, tag: Int, isSelected: Bool) {
+
+    private func selectTag(base: String, tag: Int, state: TagSelectionState) {
+        var textColorAttribute = [NSAttributedString.Key: UIColor]()
+        let myString = self.attributedText.mutableCopy() as! NSMutableAttributedString
+
+        let pattern = "\\#\(base)\\b" //"(\\#[a-zA-Z]+\\b)(?!;)"
+        guard let regex = try? NSRegularExpression(pattern: pattern) else { return }
         
-        //text color
-        var textColorAttribute = [NSAttributedString.Key : UIColor]()
-        let myString = self.attributedText.mutableCopy() as! NSMutableAttributedString //
-        
-        //****** Selection
-        let pattern = "\\#\(base)\\b" //base //"(\\#[a-zA-Z]+\\b)(?!;)"
-        let regex = try! NSRegularExpression(pattern: pattern, options: [])
-        let matches = regex.matches(in: self.text, options: [], range: NSMakeRange(0, self.text.count))
-        
-        for m in matches {
-            if isSelected == false {
-                textColorAttribute = [NSAttributedString.Key.foregroundColor: UIColor.white]//
-                
-                // *** create a frame view ***
-                let range = m.range
-                var frame = frameOfTextInRange(range: range)
-                frame = frame.insetBy(dx: CGFloat(-1), dy: CGFloat(2)) //Changed
-                frame = frame.offsetBy(dx: CGFloat(0), dy: CGFloat(0)) //changed
-                let v = UIView(frame: frame)
-                v.layer.cornerRadius = v.frame.height / 4 //Initial
-                v.tag = tag
-                self.insertSubview(v, at: 0)
-                //v.backgroundColor = UIColor.systemPink
-                v.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-                
-            } else if isSelected == true {
-                textColorAttribute = [NSAttributedString.Key.foregroundColor: .label]//
-                
-                // *** delete a frame view ***
+        let range = NSRange(self.text.startIndex..., in: self.text)
+        let matches = regex.matches(in: self.text, options: [], range: range)
+
+        for match in matches {
+            switch state {
+            case .notSelected:
+                textColorAttribute = [.foregroundColor: UIColor.white]
+
+                let frame = frameOfTextInRange(range: match.range)
+                let framePadding = frame.insetBy(dx: Constants.Insets.horizontal, dy: Constants.Insets.vertical)
+
+                let view = UIView(frame: framePadding)
+                view.layer.cornerRadius = frame.height / Constants.cornerRadiusMultiplier
+                view.tag = tag
+                self.insertSubview(view, at: 0)
+                view.backgroundColor = Constants.tagViewBackgroundColor
+
+            case .selected:
+                textColorAttribute = [.foregroundColor: .label]
                 self.removeSpecificView(tag: tag)
             }
-            myString.addAttributes(textColorAttribute, range: m.range)
+
+            myString.addAttributes(textColorAttribute, range: match.range)
         }
-        
+
         self.attributedText = myString.copy() as? NSAttributedString
     }
     
-    //add view
-    private func frameOfTextInRange(range:NSRange) -> CGRect {
-        let beginning = self.beginningOfDocument
-        let start = self.position(from: beginning, offset: range.location)
-        let end = self.position(from: start!, offset: range.length)
-        let textRange = self.textRange(from: start!, to: end!)
-        let rect = self.firstRect(for: textRange!)
-        return self.convert(rect, from: self)
+    private func frameOfTextInRange(range: NSRange) -> CGRect {
+        let beginning = beginningOfDocument
+        guard
+            let start = position(from: beginning, offset: range.location),
+            let end = position(from: start, offset: range.length),
+            let textRange = textRange(from: start, to: end)
+        else {
+            return CGRect.zero
+        }
+        return convert(firstRect(for: textRange), from: self)
     }
     
     private func removeSpecificView(tag: Int) {
@@ -217,8 +237,8 @@ class TapTextView: UITextView {
             .filter({$0.tag == tag})
             .forEach({$0.removeFromSuperview()})
     }
-    
-    //toolBar actions
+        
+    // MARK: - toolBar actions
     @objc private func copyTagSelection(){
         let arrayToCopy = (Array(selectionDict.keys)).map { "#" + $0 }
         UIPasteboard.general.string = arrayToCopy.joined(separator: " ")
@@ -273,20 +293,14 @@ class TapTextView: UITextView {
     }
     
     @objc private func toolbarInfo(){
-        let message = Strings.tapTextViewToolBarDescriptionMessage
-        let title = Strings.tapTextViewToolBarDescriptionTitle
-        let action = UIAlertAction(title: "OK", style: .default)
         guard let presentingViewController else { return }
-        Alerts.simpleAlert(presentingViewController: presentingViewController,
-            title: title, message: message, btnAction1: action)
+        Alerts.simpleAlert(
+            presentingViewController: presentingViewController,
+            title: Strings.tapTextViewToolBarDescriptionTitle,
+            message: Strings.tapTextViewToolBarDescriptionMessage,
+            btnAction1: UIAlertAction(title: Strings.infoAlertOk, style: .default))
     }
 
-    @objc private func getTag() {
-        self.resignFirstResponder()
-        self.startTagSelection()
-        activateButton.isEnabled = false
-    }
-    
     @objc private func doneTagSelection2() {
         self.doneTagSelection()
         activateButton.isEnabled = true
