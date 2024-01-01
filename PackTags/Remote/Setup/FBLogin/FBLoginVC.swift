@@ -33,15 +33,19 @@ class FBLoginVC: UIViewController {
         static let troubleShootingAlertMessage = "troubleShootingAlertMessage".localized()
     }
     
-    private let viewModel: FBLoginViewModel
-    
-    private let loginButton: FBLoginButton = {
-        let button = FBLoginButton()
-        button.permissions = [
+    private enum Permissions {
+        static let list = [
             "instagram_basic",
             "pages_show_list",
             "instagram_manage_insights",
             "business_management"]
+    }
+    
+    private let viewModel: FBLoginViewModel
+    
+    private let loginButton: FBLoginButton = {
+        let button = FBLoginButton()
+        button.permissions = Permissions.list
         return button
     }()
     
