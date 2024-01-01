@@ -57,4 +57,44 @@ extension AnalyticsSUIViewModel {
         fillGraphData()
         fillData()
     }
+    
+    private func fillGraphData() {
+        guard let rates = processedJson?.rates else { return }
+        let maxR = getMaxRate()
+        
+        barChartData.removeAll()
+        
+        if (rates.count) > 0 {
+            //Graph data
+            for i in 0 ... (rates.count)-1 {
+                barChartData.append(
+                    Post(
+                        id: i,
+                        post: "\(i+1)",
+                        rate: CGFloat(rates[i]!),
+                        barHeight:  ((rates[i]!) / maxR) * 50 + 5)) //80
+            }
+        }
+    }
+    
+    private func fillData() {
+        guard let rates = processedJson?.rates, !rates.isEmpty else {
+            return
+        }
+
+        overviewSectionData[0].value = processedJson?.avg0 ?? "0"
+        overviewSectionData[1].value = processedJson?.avg1 ?? "0"
+
+        circlesData[1].value = CGFloat(rates[0] ?? 0)
+        circlesData[1].maxValue = getMaxRate()
+
+        let avgEngagement: CGFloat = CGFloat(processedJson?.avg2 ?? 0)
+        circlesData[0].value = avgEngagement
+        circlesData[0].maxValue = avgEngagement
+    }
+    
+    private func getMaxRate() -> CGFloat {
+        let max = processedJson?.maxR
+        return (max == nil || max == 0 ? 1 : max)!
+    }
 }
