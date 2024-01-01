@@ -72,6 +72,7 @@
 		0281B98B287A007200344D3E /* UINC+BarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* UINC+BarAppearance.swift */; };
 		02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */; };
+		02998A642B43735F00B70516 /* SmartGVM+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A632B43735F00B70516 /* SmartGVM+Import.swift */; };
 		029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnBoardingVC.swift */; };
 		02A423552842C1D000A25067 /* TVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423542842C1D000A25067 /* TVC+Navigation.swift */; };
 		02A423642845564900A25067 /* UITVC+LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423632845564900A25067 /* UITVC+LongPressReorder.swift */; };
@@ -88,7 +89,7 @@
 		02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarchartView.swift */; };
 		02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */; };
 		02B0D7572A48CBB900EF1500 /* Import+TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */; };
-		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
+		02B104A727697B6C00C9EC6C /* SmartGVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGVM.swift */; };
 		02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */; };
 		02BC8D592602B79900441349 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsVC.swift */; };
 		02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */; };
@@ -220,6 +221,7 @@
 		0281B98A287A007200344D3E /* UINC+BarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINC+BarAppearance.swift"; sourceTree = "<group>"; };
 		02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerVC.swift; sourceTree = "<group>"; };
+		02998A632B43735F00B70516 /* SmartGVM+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartGVM+Import.swift"; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
 		02A423542842C1D000A25067 /* TVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Navigation.swift"; sourceTree = "<group>"; };
 		02A423632845564900A25067 /* UITVC+LongPressReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITVC+LongPressReorder.swift"; sourceTree = "<group>"; };
@@ -236,7 +238,7 @@
 		02B0D74C2A48B73700EF1500 /* BarchartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartView.swift; sourceTree = "<group>"; };
 		02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartArrowsView.swift; sourceTree = "<group>"; };
 		02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Import+TestCase.swift"; sourceTree = "<group>"; };
-		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
+		02B104A627697B6C00C9EC6C /* SmartGVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGVM.swift; sourceTree = "<group>"; };
 		02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Navigation.swift"; sourceTree = "<group>"; };
 		02BC8D582602B79900441349 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+KbNoHide.swift"; sourceTree = "<group>"; };
@@ -393,6 +395,8 @@
 			isa = PBXGroup;
 			children = (
 				0264B816264A7CE900E1EEFA /* ASuiVM.swift */,
+				026D16D62A3E474500228DEA /* Import.swift */,
+				02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -459,17 +463,6 @@
 			path = Setup;
 			sourceTree = "<group>";
 		};
-		026D16D32A3E474500228DEA /* Import */ = {
-			isa = PBXGroup;
-			children = (
-				026D16D62A3E474500228DEA /* Import.swift */,
-				02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */,
-				026D16D42A3E474500228DEA /* Transformers */,
-				026D16D72A3E474500228DEA /* Service */,
-			);
-			path = Import;
-			sourceTree = "<group>";
-		};
 		026D16D42A3E474500228DEA /* Transformers */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,7 +485,8 @@
 		026D16E22A3E47A400228DEA /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				026D16D32A3E474500228DEA /* Import */,
+				026D16D72A3E474500228DEA /* Service */,
+				026D16D42A3E474500228DEA /* Transformers */,
 				021D7622275A9E6200F54054 /* Models */,
 				02E4B9D325CC97C700949213 /* Analytics */,
 				021AFD542787857B0008735E /* SmartG */,
@@ -613,7 +607,8 @@
 		02AD94B529AC2A1700D893E5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */,
+				02B104A627697B6C00C9EC6C /* SmartGVM.swift */,
+				02998A632B43735F00B70516 /* SmartGVM+Import.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1168,6 +1163,7 @@
 				02FEF536262B86620001B525 /* TTVC+navigation.swift in Sources */,
 				0206214E2663A2AE0072C404 /* JsonResponseModels.swift in Sources */,
 				021EB84D288C1EB000463B42 /* TTVC+Operations.swift in Sources */,
+				02998A642B43735F00B70516 /* SmartGVM+Import.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
 				02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */,
 				02F89B272974306F008F363D /* StoryCard.swift in Sources */,
@@ -1219,7 +1215,7 @@
 				021AFD5C278A1BE40008735E /* Alerts.swift in Sources */,
 				02CAC9B7259105B400BE5E57 /* TVC.swift in Sources */,
 				026D16DD2A3E474500228DEA /* Import.swift in Sources */,
-				02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */,
+				02B104A727697B6C00C9EC6C /* SmartGVM.swift in Sources */,
 				02385DFD2A634F190050FFDE /* PackTVC+NavigationLogic.swift in Sources */,
 				02B0D7572A48CBB900EF1500 /* Import+TestCase.swift in Sources */,
 				02FA30812A004C7D006A48CC /* InteractionBarView.swift in Sources */,

@@ -54,10 +54,12 @@ class AnalyticsSUIViewModel: ObservableObject {
     @Published var barChartData: [Post] = [Post(id: 0, post: "", rate: 0, barHeight: 0)]
     
     //MARK: - Init
-    //Load data for AnalyticsNew (AnalyticsNew's func list)
-    
     init() {
-        self.canRefresh() == true ? self.getOnlineJsonAPIGraph() : self.getJsonFromDir()
+        self.loadDataForAnalyticsNew()
+    }
+    
+    private func loadDataForAnalyticsNew() {
+        canRefresh() == true ? getOnlineJsonAPIGraph() : getJsonFromDir()
     }
 }
 
