@@ -55,29 +55,29 @@ extension AnalyticsSUIViewModel {
     
     private func updateData() {
         fillGraphData()
-        fillData()
+        fillOverviewSectionData()
     }
     
     private func fillGraphData() {
-        guard let rates = processedJson?.rates else { return }
-        let maxR = getMaxRate()
+        guard let rates = processedJson?.rates, !rates.isEmpty else {
+            print("No rates available.")
+            return
+        }
         
+        let maxR = getMaxRate()
         barChartData.removeAll()
         
-        if (rates.count) > 0 {
-            //Graph data
-            for i in 0 ... (rates.count)-1 {
-                barChartData.append(
-                    Post(
-                        id: i,
-                        post: "\(i+1)",
-                        rate: CGFloat(rates[i]!),
-                        barHeight:  ((rates[i]!) / maxR) * 50 + 5)) //80
-            }
+        for i in 0 ... rates.count - 1 {
+            barChartData.append(
+                BarChartPost(
+                    id: i,
+                    post: "\(i+1)",
+                    rate: CGFloat(rates[i]!),
+                    barHeight:  ((rates[i]!) / maxR) * 50 + 5)) //80
         }
     }
     
-    private func fillData() {
+    private func fillOverviewSectionData() {
         guard let rates = processedJson?.rates, !rates.isEmpty else {
             return
         }

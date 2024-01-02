@@ -9,7 +9,6 @@
 import UIKit
 
 struct TransformedProfileModel {
-    
     let usr: String?                //. Basic: username
     let isPrivateProfile: Bool?     //. Basic: is private?
     let postsCount: Int?            //. Basic: post count
@@ -18,7 +17,7 @@ struct TransformedProfileModel {
     let sum1: Int?                  //1. Total comments
     let avg0: String?               //2. Avg likes
     let avg1: String?               //3. Avg comments
-    let rates: ([CGFloat?])         //4. Engagement rates
+    let rates: [CGFloat?]           //4. Engagement rates
     let pTimes: [Double?]           //5. Posting times
     let avg2: CGFloat?              //6. Avg Engagement
     let maxR: CGFloat?              //7. Max Engagement
@@ -31,7 +30,7 @@ struct TransformedProfileModel {
         sum1: Int? = nil,
         avg0: String? = nil,
         avg1: String? = nil,
-        rates: ([CGFloat?]) = ([nil]),
+        rates: [CGFloat?] = [nil],
         pTimes: [CDouble?] = [nil],
         avg2: CGFloat? = nil,
         maxR: CGFloat? = nil,

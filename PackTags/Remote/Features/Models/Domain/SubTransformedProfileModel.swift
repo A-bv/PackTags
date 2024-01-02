@@ -11,9 +11,9 @@ import Foundation
 struct SubTransformedProfileModel {
     let likeArray: [Int]
     let commentArray: [Int]
-    let engFollowers: [CGFloat]
+    let engagementRateFollowers: [CGFloat]
     let times: [Double?]
     let captions: [String?]
-    let engImpressions: [CGFloat]
-    let engReach: [CGFloat]
+    let engagementRateImpressions: [CGFloat]
+    let engagementRateReach: [CGFloat]
 }

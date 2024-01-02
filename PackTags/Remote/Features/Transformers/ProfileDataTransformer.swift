@@ -21,10 +21,10 @@ extension DataTransformer {
 }
 
 extension DataTransformer.ProfileDataTransformer {
-    static func transform (response: Profile) -> TransformedProfileModel? {
+    static func transform(response: Profile) -> TransformedProfileModel? {
         let top = response
         
-        guard let metrics = buildArraysApiGraph(top: response) else { return nil }
+        guard let metrics = computeMetrics(profileResponse: response) else { return nil }
         
         // 0: likes 1:comments
         let sum0 = (metrics.likeArray as NSArray).value(forKeyPath: "@sum.floatValue")
@@ -40,17 +40,15 @@ extension DataTransformer.ProfileDataTransformer {
         let usr = top.username
         let isPv = false
 
-        //Engagement rates
-        let erFw = metrics.engFollowers
-        let erReach = metrics.engReach
-        let erImpr = metrics.engImpressions
-
-        let rates = [erFw, erReach, erImpr]
+        let engagementRates = [
+            metrics.engagementRateFollowers,
+            metrics.engagementRateReach,
+            metrics.engagementRateImpressions]
         
         var avg2 = [CGFloat?]()
         var maxR = [CGFloat?]()
         
-        for er in rates {
+        for er in engagementRates {
             avg2.append(StringFormatter.averageElementOfArrayCGFloat(array: er))
             maxR.append(er.reduce(CGFloat.leastNormalMagnitude, { max($0, CGFloat($1)) }))
         }
@@ -62,7 +60,7 @@ extension DataTransformer.ProfileDataTransformer {
             sum1: (sum1 as! Int),
             avg0: avg0,
             avg1: avg1,
-            rates: rates[mode],
+            rates: engagementRates[mode],
             pTimes: times,
             avg2: avg2[mode],
             maxR: maxR[mode],
@@ -71,92 +69,94 @@ extension DataTransformer.ProfileDataTransformer {
         return data
     }
 
-    static func buildArraysApiGraph (top:Profile?) -> (SubTransformedProfileModel?) {
+    static private func computeMetrics(profileResponse:Profile) -> SubTransformedProfileModel? {
         var likeArray = [Int]()
         var commentArray = [Int]()
-        var sumLC = [CGFloat]()
-        var impressions = [Int]()
-        var reach = [Int]()
+        var sumLikesCommentsArray = [CGFloat]()
+        var impressions = [CGFloat]()
+        var reachArray = [CGFloat]()
         var times = [Double?]()
         var captions = [String?]()
+    
+        guard let numberOfMedias = profileResponse.media?.data.count else { return nil }
         
-        var engFollowers  = [CGFloat]()
-        var engImpressions  = [CGFloat]()
-        var engReach  = [CGFloat]()
-        
-        guard let n = top?.media?.data.count else { return nil } //number of medias
-        
-        for i in 0..<n {
-            likeArray.append(top?.media?.data[i]?.like_count ?? 0)
-            commentArray.append(top?.media?.data[i]?.comments_count ?? 0)
-            captions.append(top?.media?.data[i]?.caption ?? "")
+        for i in 0..<numberOfMedias {
+            let mediaData = profileResponse.media?.data[i]
+            guard let insightsData = mediaData?.insights?.data else { return nil }
             
-            guard let data = top?.media?.data[i]?.insights?.data else { return nil }
+            likeArray.append(mediaData?.like_count ?? 0)
+            commentArray.append(mediaData?.comments_count ?? 0)
+            captions.append(mediaData?.caption ?? "")
             
-            if data.indices.contains(2) {
-                sumLC.append(CGFloat(top?.media?.data[i]?.insights?.data[2]?.values[0]?.value ?? 0))
-                impressions.append(top?.media?.data[i]?.insights?.data[1]?.values[0]?.value ?? 0)
-                reach.append(top?.media?.data[i]?.insights?.data[0]?.values[0]?.value ?? 0)
+            let mediaSumLikesComment = CGFloat(mediaData?.insights?.data[2]?.values[0]?.value ?? 0)
+            let mediaImpressions = CGFloat(mediaData?.insights?.data[1]?.values[0]?.value ?? 0)
+            let mediaReach = CGFloat(mediaData?.insights?.data[0]?.values[0]?.value ?? 0)
+            
+            if insightsData.count > 2 {
+                sumLikesCommentsArray.append(mediaSumLikesComment)
+                impressions.append(mediaImpressions)
+                reachArray.append(mediaReach)
             }
             
             //time_stamp
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
-            if let stringDate = top?.media?.data[i]?.timestamp {
+            if let stringDate = mediaData?.timestamp {
                 let date = dateFormatter.date(from:(stringDate))
                 times.append(date?.timeIntervalSince1970)
             }
         }
         
-        if rawInsights == true {
-            engFollowers = sumLC.map { ($0) }
-        } else {
-            //Engagement per Follower
-            if top?.followers_count == nil || top?.followers_count == 0 {
-                // return 0 when the operation is not possible
-                engFollowers = sumLC.map { ($0 * 0) }
-                
-            } else {
-                let f = CGFloat((top?.followers_count)!)
-                engFollowers = sumLC.map { ($0 * 100.0 / f) }
-            }
-        }
-        
-        if rawInsights == true {
-            engImpressions = impressions.map { CGFloat(($0)) }
-        } else {
-            //Engagement by Impressions
-            impressions.indices.forEach {
-                if impressions[$0] == 0 { engImpressions.append(0) } //append 0 when Nan
-                else {
-                    engImpressions.append(sumLC[$0]*100/CGFloat(impressions[$0]))
-                }
-            }
-        }
-      
-        if rawInsights == true {
-            engReach = reach.map { CGFloat(($0)) }
-        } else {
-            //Engagement by Reach
-            reach.indices.forEach {
-                if reach[$0] == 0 {
-                    engReach.append(0)
-                    //append 0 when Nan
-                } else {
-                    engReach.append(sumLC[$0]*100/CGFloat(reach[$0]))
-                }
-            }
-        }
+        let engagementRateFollowers = getEngagementByFollowerRates(
+            engagementArray: sumLikesCommentsArray, followersCount: profileResponse.followers_count)
+        let engagementRateImpressions = getEngagementByImpressionRates(
+            engagementArray: sumLikesCommentsArray, impressions: impressions)
+        let engagementRateReach = getEngagementByReachRates(
+            engagementArray: sumLikesCommentsArray, reachArray: reachArray)
 
         return(
             .init(
                 likeArray: likeArray,
                 commentArray: commentArray,
-                engFollowers: engFollowers,
+                engagementRateFollowers: rawInsights ? sumLikesCommentsArray : engagementRateFollowers,
                 times: times,
                 captions: captions,
-                engImpressions: engImpressions,
-                engReach: engReach))
+                engagementRateImpressions: rawInsights ? impressions : engagementRateImpressions,
+                engagementRateReach: rawInsights ? reachArray : engagementRateReach))
+    }
+    
+    private static func getEngagementByFollowerRates(engagementArray: [CGFloat], followersCount: Int?) -> [CGFloat] {
+        var engFollowers  = [CGFloat]()
+        if let followersCount, followersCount != 0 {
+            engFollowers = engagementArray.map { ($0 * 100.0 / CGFloat(followersCount)) }
+        } else {
+            engFollowers = engagementArray.map { ($0 * 0) }
+        }
+        return engFollowers
+    }
+    
+    private static func getEngagementByImpressionRates(engagementArray: [CGFloat], impressions: [CGFloat]) -> [CGFloat] {
+        var engImpressions = [CGFloat]()
+        impressions.indices.forEach {
+            if impressions[$0] == 0 {
+                engImpressions.append(0) //append 0 when Nan
+            } else {
+                engImpressions.append(engagementArray[$0]*100/CGFloat(impressions[$0]))
+            }
+        }
+        return engImpressions
+    }
+    
+    private static func getEngagementByReachRates(engagementArray: [CGFloat], reachArray: [CGFloat]) -> [CGFloat] {
+        var engReach = [CGFloat]()
+        reachArray.indices.forEach {
+            if reachArray[$0] == 0 {
+                engReach.append(0) //append 0 when Nan
+            } else {
+                engReach.append(engagementArray[$0]*100/CGFloat(reachArray[$0]))
+            }
+        }
+        return engReach
     }
 }

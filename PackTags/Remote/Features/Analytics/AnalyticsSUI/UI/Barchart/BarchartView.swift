@@ -12,7 +12,7 @@ import SwiftUI
 struct BarchartView: View {
     @Binding var selected: Int
     @Binding var rate: CGFloat
-    @Binding var chartData: [Post]
+    @Binding var chartData: [BarChartPost]
     var colors: [Color]
     
     private enum Constants {
@@ -67,9 +67,9 @@ struct BarchartView: View {
 struct BarchartView_Previews: PreviewProvider {
     static var previews: some View {
         let data = [
-            Post(id: 1, post: "Post1", rate: CGFloat(0), barHeight: CGFloat(32.5)),
-            Post(id: 2, post: "Post2", rate: CGFloat(0), barHeight: CGFloat(43.75)),
-            Post(id: 3, post: "Post3", rate: CGFloat(0), barHeight: CGFloat(22.5))
+            BarChartPost(id: 1, post: "Post1", rate: CGFloat(0), barHeight: CGFloat(32.5)),
+            BarChartPost(id: 2, post: "Post2", rate: CGFloat(0), barHeight: CGFloat(43.75)),
+            BarChartPost(id: 3, post: "Post3", rate: CGFloat(0), barHeight: CGFloat(22.5))
         ]
         BarchartView(
             selected: .constant(2),

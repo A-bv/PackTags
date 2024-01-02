@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AnalyticsOverviewModel : Identifiable {
+struct AnalyticsOverviewModel: Identifiable {
     var id: Int
     var title: String
     var value: String

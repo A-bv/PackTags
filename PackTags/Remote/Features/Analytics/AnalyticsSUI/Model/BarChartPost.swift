@@ -8,17 +8,7 @@
 
 import SwiftUI
 
-//Circles
-struct Circles : Identifiable {
-    var id: Int
-    var title: String
-    var value: CGFloat
-    var maxValue: CGFloat
-    var color: Color
-}
-
-// graph Data...
-struct Post: Identifiable {
+struct BarChartPost: Identifiable {
     var id: Int
     var post: String
     var rate: CGFloat
