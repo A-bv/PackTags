@@ -13,8 +13,8 @@ struct BarchartView: View {
         static let barChartHorizontalSpacing: CGFloat = 10
     }
     
-    @Binding var selected: Int
-    @Binding var rate: CGFloat
+    @Binding var selectedBarChartPostId: Int
+    @Binding var selectedBarChartPostRateValue: CGFloat
     @Binding var barchartPostList: [BarChartPost]
     var colors: [Color]
 
@@ -22,8 +22,8 @@ struct BarchartView: View {
         HStack(spacing: Constants.barChartHorizontalSpacing) {
             ForEach(barchartPostList) { post in
                 BarChartItemView(
-                    selected: $selected,
-                    rate: $rate,
+                    selectedPostId: $selectedBarChartPostId,
+                    selectedPostRate: $selectedBarChartPostRateValue,
                     colors: colors,
                     post: post)
             }
@@ -39,8 +39,8 @@ struct BarchartView_Previews: PreviewProvider {
             BarChartPost(id: 3, post: "Post3", rate: CGFloat(0), barHeight: CGFloat(22.5))
         ]
         BarchartView(
-            selected: .constant(2),
-            rate: .constant(0.0),
+            selectedBarChartPostId: .constant(2),
+            selectedBarChartPostRateValue: .constant(0.0),
             barchartPostList: .constant(data),
             colors: [.blue, .green])
         .padding()

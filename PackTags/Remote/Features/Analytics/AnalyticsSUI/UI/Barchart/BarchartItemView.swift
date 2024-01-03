@@ -16,14 +16,14 @@ struct BarChartItemView: View {
         static let barChartTopPadding: CGFloat = 10
     }
 
-    @Binding var selected: Int
-    @Binding var rate: CGFloat
+    @Binding var selectedPostId: Int
+    @Binding var selectedPostRate: CGFloat
     var colors: [Color]
     var post: BarChartPost
     
     private var fillGradient: LinearGradient {
         LinearGradient(
-            gradient: .init(colors: selected == post.id ? colors : [Color(UIColor.label).opacity(Constants.barsOpacity)]),
+            gradient: .init(colors: selectedPostId == post.id ? colors : [Color(UIColor.label).opacity(Constants.barsOpacity)]),
             startPoint: .top,
             endPoint: .bottom
         )
@@ -31,8 +31,8 @@ struct BarChartItemView: View {
     
     private func handleTapGesture() {
         withAnimation(.easeOut) {
-            selected = post.id
-            rate = post.rate
+            selectedPostId = post.id
+            selectedPostRate = post.rate
             UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         }
     }

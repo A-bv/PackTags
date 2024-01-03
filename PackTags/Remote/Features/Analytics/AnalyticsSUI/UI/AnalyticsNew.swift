@@ -71,7 +71,7 @@ struct AnalyticsNew : View {
     @ObservedObject var monitor = NetworkMonitor()
     
     //
-    @State var selected = 0
+    @State var selectedBarChartPostId = 0
 
     var colors = [Color("Color1"),Color("Color")]
     var columns = Array(
@@ -82,14 +82,8 @@ struct AnalyticsNew : View {
         count: Constants.overviewSectionColumnsCount)
     
     //
-    @State var titles = [
-        Strings.engagement,
-        Strings.reach,
-        Strings.impressions]
-    @State var subtitles = [
-        " ",
-        " ",
-        " "]
+    @State var titles = [Strings.engagement, Strings.reach, Strings.impressions]
+    @State var subtitles = [" ", " ", " "]
     @State var infoTitles = [
         Strings.eR,
         Strings.eRR,
@@ -313,8 +307,8 @@ extension AnalyticsNew {
                             isRate: !rawInsights,
                             columns: columns)
                         BarchartView(
-                            selected: $selected,
-                            rate: $swiftUIData.circlesData[1].value,
+                            selectedBarChartPostId: $selectedBarChartPostId,
+                            selectedBarChartPostRateValue: $swiftUIData.circlesData[1].value,
                             barchartPostList: $swiftUIData.barChartData,
                             colors: colors)
                         BarchartArrowsView(postsCount: postCount)
