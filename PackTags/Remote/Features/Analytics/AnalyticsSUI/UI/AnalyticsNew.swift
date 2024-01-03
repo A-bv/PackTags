@@ -315,7 +315,7 @@ extension AnalyticsNew {
                         BarchartView(
                             selected: $selected,
                             rate: $swiftUIData.circlesData[1].value,
-                            chartData: $swiftUIData.barChartData,
+                            barchartPostList: $swiftUIData.barChartData,
                             colors: colors)
                         BarchartArrowsView(postsCount: postCount)
                     }

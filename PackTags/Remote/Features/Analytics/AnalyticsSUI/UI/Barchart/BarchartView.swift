@@ -15,18 +15,17 @@ struct BarchartView: View {
     
     @Binding var selected: Int
     @Binding var rate: CGFloat
-    @Binding var chartData: [BarChartPost]
+    @Binding var barchartPostList: [BarChartPost]
     var colors: [Color]
 
     var body: some View {
         HStack(spacing: Constants.barChartHorizontalSpacing) {
-            ForEach(chartData) { value in
+            ForEach(barchartPostList) { post in
                 BarChartItemView(
-                    value: value,
                     selected: $selected,
                     rate: $rate,
-                    colors: colors
-                )
+                    colors: colors,
+                    post: post)
             }
         }
     }
@@ -42,7 +41,7 @@ struct BarchartView_Previews: PreviewProvider {
         BarchartView(
             selected: .constant(2),
             rate: .constant(0.0),
-            chartData: .constant(data),
+            barchartPostList: .constant(data),
             colors: [.blue, .green])
         .padding()
     }
