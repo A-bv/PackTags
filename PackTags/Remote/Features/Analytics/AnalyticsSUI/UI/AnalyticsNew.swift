@@ -156,31 +156,31 @@ struct AnalyticsNew : View {
 
 //MARK: - Functions
 extension AnalyticsNew {  
-    func updateLabels () {
+    private func updateLabels(isRawInsights: Bool) {
         let rawMetricsLabels = [
             Strings.engagement,
             Strings.reach,
             Strings.impressions
         ]
         
-        titles = rawInsights == true ? rawMetricsLabels : [
+        titles = isRawInsights ? rawMetricsLabels : [
             Strings.engagement,
             Strings.engagement,
             Strings.engagement]
         
-        subtitles = rawInsights == true ? [" "," "," "] : [
+        subtitles = isRawInsights ? [" "," "," "] : [
             Strings.ratioToFollower,
             Strings.ratioByReach,
             Strings.ratioByImpressions
         ]
         
-        infoTitles = rawInsights == true ? rawMetricsLabels : [
+        infoTitles = isRawInsights ? rawMetricsLabels : [
             Strings.eR,
             Strings.eRR,
             Strings.eRI
         ]
             
-        infoMessages = rawInsights == true ?
+        infoMessages = isRawInsights ?
         [
             "\n\(Strings.engagementDefinition)",
             "\n\(Strings.reachDefinition)",
@@ -190,6 +190,28 @@ extension AnalyticsNew {
             "\n\(Strings.eRRDefiniton)",
             "\n\(Strings.eRIDefinition)"
         ]
+    }
+    
+    private func changeInsightType() {
+        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+        impactMed.impactOccurred()
+            
+        rawInsights = !rawInsights
+        updateLabels(isRawInsights: rawInsights)
+        
+        swiftUIData.getJsonFromDir()
+    }
+    
+    private func switchInsightToRate() {
+        let impactMed = UIImpactFeedbackGenerator(style: .soft)
+        impactMed.impactOccurred()
+            
+        mode += 1
+        if mode == Constants.maxNumberOfModes {
+            mode = 0
+        }
+        
+        swiftUIData.getJsonFromDir()
     }
 }
 
@@ -342,43 +364,20 @@ extension AnalyticsNew {
                 .foregroundColor(Color(UIColor.label))
         }
     }
-}
 
-extension AnalyticsNew {
     var graphSectionHeaderButtons: some View {
         HStack {
             // Insights - Rates button toggle
             Toggle(isOn: $isToggled) {
-                Image(
-                    systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
+                Image(systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
                     .foregroundColor(Color("Color4"))
             }
             .toggleStyle(DarkToggleStyle())
             .padding(.trailing, Constants.graphSectionHeaderTraillingPadding)
-            .onChange(of: isToggled)
-            { _ in
-                let impactMed = UIImpactFeedbackGenerator(style: .medium)
-                impactMed.impactOccurred()
-                    
-                rawInsights = !rawInsights
-                updateLabels()
-                
-                swiftUIData.getJsonFromDir()
-            }
+            .onChange(of: isToggled) { _ in changeInsightType() }
 
             //Switch mode Button
-            Button(action: {
-                let impactMed = UIImpactFeedbackGenerator(style: .soft)
-                impactMed.impactOccurred()
-                    
-                mode += 1
-                if mode == Constants.maxNumberOfModes {
-                    mode = 0
-                }
-                
-                swiftUIData.getJsonFromDir()
-
-            }) {
+            Button(action: { switchInsightToRate() }) {
                 Image(systemName: "scale.3d")
                     .foregroundColor(Color("Color4"))
             }

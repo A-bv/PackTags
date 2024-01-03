@@ -849,20 +849,20 @@
 			path = Analytics;
 			sourceTree = "<group>";
 		};
-		02EE53B3284CCB86004E7D5C /* Model */ = {
+		02EE53B3284CCB86004E7D5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */,
 				020621562666DBCC0072C404 /* BarChartPost.swift */,
 				02998A652B44104800B70516 /* Circles.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		02EE53B4284CCD9F004E7D5C /* AnalyticsSUI */ = {
 			isa = PBXGroup;
 			children = (
-				02EE53B3284CCB86004E7D5C /* Model */,
+				02EE53B3284CCB86004E7D5C /* Models */,
 				0231AB1126849DFA007F4FC8 /* ViewModel */,
 				02FB530C25AD3DD00063038C /* UI */,
 			);
