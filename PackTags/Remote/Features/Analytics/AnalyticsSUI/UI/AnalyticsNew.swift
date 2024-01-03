@@ -215,6 +215,54 @@ extension AnalyticsNew {
     }
 }
 
+//MARK: - Buttons
+extension AnalyticsNew {
+    var backButton: some View {
+        Button(action: {
+            rawInsights = true
+            presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "chevron.down.circle")
+                .font(Font.system(.title))
+                .foregroundColor(Color(UIColor.label))
+        }
+    }
+
+    var infoButton: some View {
+        Button(action: {
+            showingAlert = true
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        }) {
+            Image(systemName: "info.circle")
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(
+                title: Text(infoTitles[mode]),
+                message:Text(infoMessages[mode]),
+                dismissButton: .default(Text(Strings.ok)))
+        }
+    }
+
+    var insightsRatesToggleButton: some View {
+        Toggle(isOn: $isToggled) {
+            Image(systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
+                .foregroundColor(Color("Color4"))
+        }
+        .toggleStyle(DarkToggleStyle())
+        .padding(.trailing, Constants.graphSectionHeaderTraillingPadding)
+        .onChange(of: isToggled) { _ in changeInsightType() }
+    }
+
+    var switchModeButton: some View {
+        Button(action: { switchInsightToRate() }) {
+            Image(systemName: "scale.3d")
+                .foregroundColor(Color("Color4"))
+        }
+        .buttonStyle(ColorfulButtonStyle())
+        .padding(.trailing, 0)
+    }
+}
+
 //MARK: - Elements
 // Header
 extension AnalyticsNew {
@@ -225,22 +273,13 @@ extension AnalyticsNew {
                     .font(.largeTitle)
                     .foregroundColor(Color(UIColor.label))
                     .fontWeight(.bold)
-                    
+                
                 Text(swiftUIData.processedJson?.usr ?? " ")
                     .font(.subheadline)
                     .foregroundColor(Color(UIColor.label))
             }
-            
             Spacer()
-            
-            Button(action: {
-                rawInsights = true
-                presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "chevron.down.circle")
-                    .font(Font.system(.title))
-                    .foregroundColor(Color(UIColor.label))
-            }
+            backButton
         }
         .padding()
     }
@@ -301,7 +340,6 @@ extension AnalyticsNew {
     var overviewSection: some View{
         LazyVGrid(columns: columns) {
             ForEach(swiftUIData.overviewSectionData) { overviewCell in
-                //ZStack{
                 VStack(spacing: Constants.overviewCellHeaderToValuePadding){
                     HStack{
                         Text(swiftUIData.processedJson?.postsCount == 1 ? "" : Strings.average)
@@ -343,21 +381,7 @@ extension AnalyticsNew {
                 Text(titles[mode])
                     .font(.title)
                     .foregroundColor(Color(UIColor.label))
-                //Info Button
-                Button(
-                    action: {
-                        showingAlert = true
-                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                    }
-                ) {
-                    Image(systemName: "info.circle")
-                }
-                .alert(isPresented: $showingAlert) {
-                    Alert(
-                        title: Text(infoTitles[mode]),
-                        message:Text(infoMessages[mode]),
-                        dismissButton: .default(Text(Strings.ok)))
-                }
+                infoButton
             }
             Text(subtitles[mode])
                 .font(.subheadline)
@@ -367,22 +391,8 @@ extension AnalyticsNew {
 
     var graphSectionHeaderButtons: some View {
         HStack {
-            // Insights - Rates button toggle
-            Toggle(isOn: $isToggled) {
-                Image(systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
-                    .foregroundColor(Color("Color4"))
-            }
-            .toggleStyle(DarkToggleStyle())
-            .padding(.trailing, Constants.graphSectionHeaderTraillingPadding)
-            .onChange(of: isToggled) { _ in changeInsightType() }
-
-            //Switch mode Button
-            Button(action: { switchInsightToRate() }) {
-                Image(systemName: "scale.3d")
-                    .foregroundColor(Color("Color4"))
-            }
-            .buttonStyle(ColorfulButtonStyle())
-            .padding(.trailing,0)
+            insightsRatesToggleButton
+            switchModeButton
         }
     }
 }
