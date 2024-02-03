@@ -12,7 +12,7 @@ import Foundation
 extension ApiService {
     static func loadProfileForAnalytics(completion: @escaping (Profile) -> Void) {
         findMediaLimit { value in
-            guard let encodedUrl = self.buildURLAPIGraph(foundLimit: value) else { return }
+            guard let encodedUrl = self.buildAPIGraphUrlString(foundLimit: value) else { return }
             
             DocumentDirectory.isOkToSaveJsonDataInDir = true //local save
             
@@ -32,7 +32,7 @@ extension ApiService {
         let group = DispatchGroup()
         
         for i in 1...12 {
-            guard let encodedUrl = self.buildURLAPIGraph(foundLimit: i) else { return }
+            guard let encodedUrl = self.buildAPIGraphUrlString(foundLimit: i) else { return }
           
             group.enter()
             
@@ -57,10 +57,54 @@ extension ApiService {
         }
     }
     
-    class private func buildURLAPIGraph(foundLimit: Int) -> String? {
+    class private func buildAPIGraphUrlString(foundLimit: Int) -> String? {
         let limit = "\(foundLimit)"
-        let url = "https://graph.facebook.com/\(apiGph_version)/\(igBId)?fields=biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,recently_searched_hashtags,insights.metric(reach,impressions,profile_views,follower_count).period(day),media.limit(\(limit)){media_type,caption,timestamp,media_url,comments_count,comments,is_comment_enabled,username,like_count,media_product_type,insights.metric(reach,impressions,engagement)}&access_token=\(fbToken)&checkType=FULL"
+
+        let insightsMetricsFields = [
+            "reach",
+            "impressions",
+            "profile_views",
+            "follower_count"
+        ]
+
+        let mediaMetricsFields = [
+            "media_type",
+            "caption",
+            "timestamp",
+            "media_url",
+            "comments_count",
+            "comments",
+            "is_comment_enabled",
+            "username",
+            "like_count",
+            "media_product_type"
+        ]
+        /*
+            "insights.metric(reach,impressions,engagement)"
+        ]*/
+
+        let fields = [
+            "biography",
+            "name",
+            "followers_count",
+            "follows_count",
+            "id",
+            "ig_id",
+            "media_count",
+            "profile_picture_url",
+            "username",
+            "website",
+            "recently_searched_hashtags",
+            "insights.metric(\(insightsMetricsFields.joined(separator: ","))).period(day)",
+            "media.limit(\(limit)){\(mediaMetricsFields.joined(separator: ","))}"
+        ]
         
+        let startPath = "https://graph.facebook.com/" + apiGraphVersion + "/" + igBId
+        let fieldsPath = "?fields=" + fields.joined(separator: ",")
+        let endPath = "&access_token=\(fbToken)&checkType=FULL"
+
+        let url = startPath + fieldsPath + endPath
+
         return url.encodeUrl()
     }
 }

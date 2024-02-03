@@ -65,7 +65,7 @@ extension ApiService {
 
 extension ApiService {
     private static func constructHashtagSearchURL(searchedHashtag: String) -> String? {
-        let url = "https://graph.facebook.com/\(apiGph_version)/ig_hashtag_search?user_id=\(igBId)&q=\(searchedHashtag)&access_token=\(fbToken)"
+        let url = "https://graph.facebook.com/\(apiGraphVersion)/ig_hashtag_search?user_id=\(igBId)&q=\(searchedHashtag)&access_token=\(fbToken)"
         return url.encodeUrl()
     }
 
@@ -86,7 +86,7 @@ extension ApiService {
 
         let fields = "fields=" + fieldsArray.joined(separator: ",")
         let options = "\(m_type)?\(fields)&user_id=\(igBId)&limit=\(limit)"
-        let htgUrl = "\(base)/\(apiGph_version)/\(hashtagID)/\(options)&access_token=\(fbToken)"
+        let htgUrl = "\(base)/\(apiGraphVersion)/\(hashtagID)/\(options)&access_token=\(fbToken)"
         return htgUrl.encodeUrl()
     }
 }

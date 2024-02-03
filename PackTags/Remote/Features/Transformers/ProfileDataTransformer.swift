@@ -78,24 +78,28 @@ extension DataTransformer.ProfileDataTransformer {
         var times = [Double?]()
         var captions = [String?]()
     
-        guard let numberOfMedias = profileResponse.media?.data.count else { return nil }
+        guard let numberOfMedias = profileResponse.media?.data.count else {
+            print("No media")
+            return nil
+        }
         
         for i in 0..<numberOfMedias {
             let mediaData = profileResponse.media?.data[i]
-            guard let insightsData = mediaData?.insights?.data else { return nil }
             
             likeArray.append(mediaData?.like_count ?? 0)
             commentArray.append(mediaData?.comments_count ?? 0)
             captions.append(mediaData?.caption ?? "")
-            
-            let mediaSumLikesComment = CGFloat(mediaData?.insights?.data[2]?.values[0]?.value ?? 0)
-            let mediaImpressions = CGFloat(mediaData?.insights?.data[1]?.values[0]?.value ?? 0)
-            let mediaReach = CGFloat(mediaData?.insights?.data[0]?.values[0]?.value ?? 0)
-            
-            if insightsData.count > 2 {
+ 
+            if let insightsData = mediaData?.insights?.data, insightsData.count > 2 {
+                let mediaSumLikesComment = CGFloat(mediaData?.insights?.data[2]?.values[0]?.value ?? 0)
+                let mediaImpressions = CGFloat(mediaData?.insights?.data[1]?.values[0]?.value ?? 0)
+                let mediaReach = CGFloat(mediaData?.insights?.data[0]?.values[0]?.value ?? 0)
+
                 sumLikesCommentsArray.append(mediaSumLikesComment)
                 impressions.append(mediaImpressions)
                 reachArray.append(mediaReach)
+            } else {
+                print("media has no insights")
             }
             
             //time_stamp

@@ -9,6 +9,10 @@
 import UIKit
 
 extension ThemeTableViewController {
+    private enum UserDefaultsKeys {
+        static let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
+    }
+    
     func handleSelectedThemeData(sender: Any?, destination: UIViewController) {
         guard let selectedThemeCell = sender as? ThemeCell else {
             fatalError("Unexpected sender: \(String(describing: sender))")
@@ -22,13 +26,19 @@ extension ThemeTableViewController {
         let selectedTheme = themes[indexPath.row]
         themeDetailViewController.theme = selectedTheme
     }
-    
+        
     func shouldNavigateToShowAnalytics(segueIdentifier: String) -> Bool {
-        if ThemeTableViewControllerSegueOrigin(rawValue: segueIdentifier) == .showAnalytics {
-            let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
-            if !isCorrectSetup { showFBLoginScreenFromThemeTVC() }
-            return isCorrectSetup
-        } else {
+        guard let segueOrigin = ThemeTableViewControllerSegueOrigin(rawValue: segueIdentifier) else {
+            return true
+        }
+
+        switch segueOrigin {
+        case .showAnalytics:
+            if !UserDefaultsKeys.isCorrectSetup {
+                showFBLoginScreenFromThemeTVC()
+            }
+            return UserDefaultsKeys.isCorrectSetup
+        default:
             return true
         }
     }

@@ -113,10 +113,13 @@ struct AnalyticsNew : View {
     
     var body: some View {
         ZStack {
-            Color.bgFillColor.ignoresSafeArea()
+            Color.bgFillColor
+                .ignoresSafeArea()
             
             VStack {
                 header
+                
+                Spacer()
                 
                 if !monitor.isConnected {
                     OfflineView()
@@ -124,13 +127,9 @@ struct AnalyticsNew : View {
                     LoadingView(loading: $loading)
                 } else {
                     if swiftUIData.processedJson?.isPrivateProfile == true {
-                        Color.bgFillColor
-                            .edgesIgnoringSafeArea(.all)
                         Text(Strings.privateProfile)
                     } else if swiftUIData.processedJson?.rates == Optional([]) {
                         // Screen when data is invalid
-                        Color.bgFillColor
-                            .edgesIgnoringSafeArea(.all)
                         if swiftUIData.processedJson?.usr != nil {
                             Text(Strings.noMedia)
                                 .multilineTextAlignment(.center)
@@ -143,6 +142,8 @@ struct AnalyticsNew : View {
                         scrollView
                     }
                 }
+                
+                Spacer()
             }
         }
     }

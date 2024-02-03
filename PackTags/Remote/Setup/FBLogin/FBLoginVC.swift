@@ -33,12 +33,19 @@ class FBLoginVC: UIViewController {
         static let troubleShootingAlertMessage = "troubleShootingAlertMessage".localized()
     }
     
+    private enum UserDefaultsKeys {
+        static let setupInfoShown = UserDefaults.standard.object(forKey: "setupInfoShownOnce")
+        static let triedASetup = UserDefaults.standard.object(forKey: "pressedFBLoginButton")
+        static let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
+    }
+
     private enum Permissions {
         static let list = [
             "instagram_basic",
             "pages_show_list",
             "instagram_manage_insights",
-            "business_management"]
+            "business_management"
+        ]
     }
     
     private let viewModel: FBLoginViewModel
@@ -55,23 +62,23 @@ class FBLoginVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        showApiGraphSetupVCIfneeded()
+        showApiGraphSetupVCIfNeeded()
         showWrongSetupAlertIfNeeded()
     }
 }
     
 extension FBLoginVC {
-    private func showApiGraphSetupVCIfneeded() {
-        if UserDefaults.standard.object(forKey: "continuedApiGraphSetupOnce") == nil {
+    private func showApiGraphSetupVCIfNeeded() {
+        if UserDefaultsKeys.setupInfoShown == nil {
             showSetupScreen()
         }
     }
     
     private func showWrongSetupAlertIfNeeded() {
-        let triedASetup = UserDefaults.standard.object(forKey: "pressedFBLoginButton")
-        let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
-        if isCorrectSetup == false, triedASetup != nil {
-            showTroubleShootingAlert()
+        if UserDefaultsKeys.isCorrectSetup == false,
+           UserDefaultsKeys.triedASetup != nil
+        {
+            showTroubleshootingAlert()
         }
     }
 }
@@ -96,7 +103,7 @@ extension FBLoginVC: LoginButtonDelegate {
 
 // MARK: - Delegates
 extension FBLoginVC {
-    // triggered when just after login
+    // When login is pressed
     func loginButton(
         _ loginButton: FBLoginButton,
         didCompleteWith result: LoginManagerLoginResult?,
@@ -106,7 +113,7 @@ extension FBLoginVC {
             print("Fb login error:", error)
         }
         viewModel.savePushedFBLoginButtonOnce()
-        apiCallGetIgBusinessId()
+        performIgBusinessIdAPICall()
     }
 
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
@@ -114,18 +121,19 @@ extension FBLoginVC {
 
 // MARK: - Actions
 extension FBLoginVC {
-    private func apiCallGetIgBusinessId() {
+    private func performIgBusinessIdAPICall() {
         let token = viewModel.getToken()
-        if token.isValid {
-            viewModel.apiCallGetIgBusinessId(completion: { [weak self] isCorrectSetup in
-                if isCorrectSetup {
-                    self?.showSuccessfulSetupAlert()
-                } else {
-                    self?.showTroubleShootingAlert()
-                }
-            })
-        } else {
-            showTroubleShootingAlert()
+        guard token.isValid else {
+            showTroubleshootingAlert()
+            return
+        }
+
+        viewModel.apiCallGetIgBusinessId { [weak self] isCorrectSetup in
+            if isCorrectSetup {
+                self?.showSuccessfulSetupAlert()
+            } else {
+                self?.showTroubleshootingAlert()
+            }
         }
     }
     
@@ -137,7 +145,7 @@ extension FBLoginVC {
             shouldDissmissPresentingVCWhenConfirmed: true)
     }
     
-    private func showTroubleShootingAlert() {
+    private func showTroubleshootingAlert() {
         UserDefaults.standard.set(false, forKey: "isCorrectSetup")
         Alerts.simpleShortAlert(
             title: Strings.editYourSetup,

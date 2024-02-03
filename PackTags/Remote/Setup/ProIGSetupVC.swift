@@ -176,8 +176,8 @@ class ProIGSetupVC: UIViewController {
     }
 
     private func checkIsFirstTime() {
-        if UserDefaults.standard.object(forKey: "continuedApiGraphSetupOnce") == nil {
-            UserDefaults.standard.set("true", forKey: "continuedApiGraphSetupOnce")
+        if UserDefaults.standard.object(forKey: "setupInfoShownOnce") == nil {
+            UserDefaults.standard.set("true", forKey: "setupInfoShownOnce")
         }
     }
 

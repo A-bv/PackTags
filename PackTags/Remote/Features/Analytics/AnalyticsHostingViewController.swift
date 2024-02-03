@@ -17,16 +17,10 @@ class AnalyticsHostingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //view under blur adjustment
-        self.view.backgroundColor = UIColor.morphicWhite.withAlphaComponent(0.70)
-        
         self.add(UIHostingController(rootView: AnyView(AnalyticsNew())))
     }
-}
 
-extension UIViewController {
-    func add(_ child: UIViewController) {
+    private func add(_ child: UIViewController) {
         addChild(child)
         child.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         child.view.frame = view.bounds
@@ -34,10 +28,11 @@ extension UIViewController {
         child.didMove(toParent: self)
     }
 
+    /*
     func remove() {
         guard parent != nil else {return}
         willMove(toParent: nil)
         view.removeFromSuperview()
         removeFromParent()
-    }
+    }*/
 }
