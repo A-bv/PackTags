@@ -8,10 +8,6 @@
 
 import UIKit
 
-let apiGraphVersion = "v19.0"
-let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
-let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
-
 // Analytics
 extension AnalyticsSUIViewModel {
     // 1. local import (called when refreshing data without web)
@@ -42,13 +38,13 @@ extension AnalyticsSUIViewModel {
     
     private func load(profileJson: Profile) {
         jsonOfficial = profileJson
-        processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson)
+        processedJson = fakeProcessedJson3()//DataTransformer.ProfileDataTransformer.transform(response: profileJson)
         // QQQ
+
         /*
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            // self?.processedJson = self?.fakeProcessedJson0()
-            //self?.jsonOfficial = nil
-            //self?.processedJson = nil
+            self?.processedJson = self?.fakeProcessedJson0()
+            self?.updateData()
         }*/
         updateData()
     }

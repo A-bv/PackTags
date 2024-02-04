@@ -53,11 +53,11 @@
 		02491C692680883800F98E17 /* UIColors+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C682680883700F98E17 /* UIColors+AppColors.swift */; };
 		025479DF26C7EEA000E28724 /* SeedData in Resources */ = {isa = PBXBuildFile; fileRef = 025479DE26C7EEA000E28724 /* SeedData */; };
 		026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */; };
-		0264B817264A7CE900E1EEFA /* ASuiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* ASuiVM.swift */; };
+		0264B817264A7CE900E1EEFA /* AnalyticsSUIVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* AnalyticsSUIVM.swift */; };
 		0264B837264B25E100E1EEFA /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */; };
 		0269E2AC2564B838005FE14B /* AnalyticsHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269E2AB2564B838005FE14B /* AnalyticsHostingViewController.swift */; };
 		026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */; };
-		026D16DD2A3E474500228DEA /* Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* Import.swift */; };
+		026D16DD2A3E474500228DEA /* AnalyticsSUIVM+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* AnalyticsSUIVM+Import.swift */; };
 		026D16DE2A3E474500228DEA /* ApiService+SmartG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D82A3E474500228DEA /* ApiService+SmartG.swift */; };
 		026D16DF2A3E474500228DEA /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D92A3E474500228DEA /* ApiService.swift */; };
 		026D16E02A3E474500228DEA /* ApiService+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16DA2A3E474500228DEA /* ApiService+Analytics.swift */; };
@@ -90,7 +90,7 @@
 		02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */; };
 		02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarchartView.swift */; };
 		02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */; };
-		02B0D7572A48CBB900EF1500 /* Import+TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */; };
+		02B0D7572A48CBB900EF1500 /* AnalyticsSUIVM+ImportTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D7562A48CBB900EF1500 /* AnalyticsSUIVM+ImportTestCase.swift */; };
 		02B104A727697B6C00C9EC6C /* SmartGVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGVM.swift */; };
 		02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */; };
 		02BC8D592602B79900441349 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsVC.swift */; };
@@ -204,11 +204,11 @@
 		02491C682680883700F98E17 /* UIColors+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColors+AppColors.swift"; sourceTree = "<group>"; };
 		025479DE26C7EEA000E28724 /* SeedData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SeedData; sourceTree = "<group>"; };
 		026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
-		0264B816264A7CE900E1EEFA /* ASuiVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASuiVM.swift; sourceTree = "<group>"; };
+		0264B816264A7CE900E1EEFA /* AnalyticsSUIVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSUIVM.swift; sourceTree = "<group>"; };
 		0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		0269E2AB2564B838005FE14B /* AnalyticsHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsHostingViewController.swift; sourceTree = "<group>"; };
 		026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
-		026D16D62A3E474500228DEA /* Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Import.swift; sourceTree = "<group>"; };
+		026D16D62A3E474500228DEA /* AnalyticsSUIVM+Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnalyticsSUIVM+Import.swift"; sourceTree = "<group>"; };
 		026D16D82A3E474500228DEA /* ApiService+SmartG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiService+SmartG.swift"; sourceTree = "<group>"; };
 		026D16D92A3E474500228DEA /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		026D16DA2A3E474500228DEA /* ApiService+Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiService+Analytics.swift"; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 		02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoCircleView.swift; sourceTree = "<group>"; };
 		02B0D74C2A48B73700EF1500 /* BarchartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartView.swift; sourceTree = "<group>"; };
 		02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartArrowsView.swift; sourceTree = "<group>"; };
-		02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Import+TestCase.swift"; sourceTree = "<group>"; };
+		02B0D7562A48CBB900EF1500 /* AnalyticsSUIVM+ImportTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnalyticsSUIVM+ImportTestCase.swift"; sourceTree = "<group>"; };
 		02B104A627697B6C00C9EC6C /* SmartGVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGVM.swift; sourceTree = "<group>"; };
 		02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Navigation.swift"; sourceTree = "<group>"; };
 		02BC8D582602B79900441349 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -399,9 +399,9 @@
 		0231AB1126849DFA007F4FC8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0264B816264A7CE900E1EEFA /* ASuiVM.swift */,
-				026D16D62A3E474500228DEA /* Import.swift */,
-				02B0D7562A48CBB900EF1500 /* Import+TestCase.swift */,
+				0264B816264A7CE900E1EEFA /* AnalyticsSUIVM.swift */,
+				026D16D62A3E474500228DEA /* AnalyticsSUIVM+Import.swift */,
+				02B0D7562A48CBB900EF1500 /* AnalyticsSUIVM+ImportTestCase.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1218,7 +1218,7 @@
 				02FA30852A118D71006A48CC /* JsonParsingError.swift in Sources */,
 				0229863D27BD6DF60048F9E9 /* AsyncImage.swift in Sources */,
 				02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */,
-				0264B817264A7CE900E1EEFA /* ASuiVM.swift in Sources */,
+				0264B817264A7CE900E1EEFA /* AnalyticsSUIVM.swift in Sources */,
 				02D709D12A58F7330009F7C3 /* UITVC+ThumbnailDimensions.swift in Sources */,
 				024347D827119E2100F86A64 /* TextRecognitionUtility.swift in Sources */,
 				02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */,
@@ -1229,10 +1229,10 @@
 				026D16DE2A3E474500228DEA /* ApiService+SmartG.swift in Sources */,
 				021AFD5C278A1BE40008735E /* Alerts.swift in Sources */,
 				02CAC9B7259105B400BE5E57 /* TVC.swift in Sources */,
-				026D16DD2A3E474500228DEA /* Import.swift in Sources */,
+				026D16DD2A3E474500228DEA /* AnalyticsSUIVM+Import.swift in Sources */,
 				02B104A727697B6C00C9EC6C /* SmartGVM.swift in Sources */,
 				02385DFD2A634F190050FFDE /* PackTVC+NavigationLogic.swift in Sources */,
-				02B0D7572A48CBB900EF1500 /* Import+TestCase.swift in Sources */,
+				02B0D7572A48CBB900EF1500 /* AnalyticsSUIVM+ImportTestCase.swift in Sources */,
 				02FA30812A004C7D006A48CC /* InteractionBarView.swift in Sources */,
 				02FA30732A00405D006A48CC /* StoryCardLabel.swift in Sources */,
 				026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */,

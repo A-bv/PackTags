@@ -10,6 +10,10 @@ import UIKit
 
 final class ApiService {
     typealias ResultHandler<T> = (Result<T, Error>) -> Void
+    
+    static let apiGraphVersion = "v19.0"
+    static let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
+    static let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
 
     static func fetchDataFromUrl<T: Decodable>(
         of type: T.Type,
