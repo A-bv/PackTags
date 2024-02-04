@@ -48,7 +48,7 @@
 		023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B982A4D0A5E006E2D35 /* OfflineView.swift */; };
 		024347D827119E2100F86A64 /* TextRecognitionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024347D727119E2100F86A64 /* TextRecognitionUtility.swift */; };
 		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
-		02491C5926779A4900F98E17 /* ProIGSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* ProIGSetupVC.swift */; };
+		02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */; };
 		02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */; };
 		02491C692680883800F98E17 /* UIColors+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C682680883700F98E17 /* UIColors+AppColors.swift */; };
 		025479DF26C7EEA000E28724 /* SeedData in Resources */ = {isa = PBXBuildFile; fileRef = 025479DE26C7EEA000E28724 /* SeedData */; };
@@ -199,7 +199,7 @@
 		023D2B982A4D0A5E006E2D35 /* OfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
 		024347D727119E2100F86A64 /* TextRecognitionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionUtility.swift; sourceTree = "<group>"; };
 		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
-		02491C5826779A4900F98E17 /* ProIGSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProIGSetupVC.swift; sourceTree = "<group>"; };
+		02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSetupIGCreatorVC.swift; sourceTree = "<group>"; };
 		02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSwiftUI.swift; sourceTree = "<group>"; };
 		02491C682680883700F98E17 /* UIColors+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColors+AppColors.swift"; sourceTree = "<group>"; };
 		025479DE26C7EEA000E28724 /* SeedData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SeedData; sourceTree = "<group>"; };
@@ -461,7 +461,7 @@
 		02491C5A26779AE400F98E17 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
-				02491C5826779A4900F98E17 /* ProIGSetupVC.swift */,
+				02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */,
 				02CD2DA62990795A00EDE077 /* FBLogin */,
 			);
 			path = Setup;
@@ -1186,7 +1186,7 @@
 				026D16E02A3E474500228DEA /* ApiService+Analytics.swift in Sources */,
 				023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
-				02491C5926779A4900F98E17 /* ProIGSetupVC.swift in Sources */,
+				02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */,
 				02D709CD2A58C4AE0009F7C3 /* QuantityPickerViewModel.swift in Sources */,
 				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsNew.swift in Sources */,
