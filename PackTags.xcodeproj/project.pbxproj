@@ -342,13 +342,13 @@
 			path = SmartG;
 			sourceTree = "<group>";
 		};
-		021D7621275A9BBB00F54054 /* Remote */ = {
+		021D7621275A9BBB00F54054 /* MetaApi */ = {
 			isa = PBXGroup;
 			children = (
 				02491C5A26779AE400F98E17 /* Setup */,
 				026D16E22A3E47A400228DEA /* Features */,
 			);
-			path = Remote;
+			path = MetaApi;
 			sourceTree = "<group>";
 		};
 		021D7622275A9E6200F54054 /* Models */ = {
@@ -984,7 +984,7 @@
 			isa = PBXGroup;
 			children = (
 				02D066BC296B3FFC00536E3A /* Notebook */,
-				021D7621275A9BBB00F54054 /* Remote */,
+				021D7621275A9BBB00F54054 /* MetaApi */,
 				02FAE2AB260ADA9200324724 /* Settings */,
 				02A4235A2843FFF300A25067 /* OnBoarding */,
 				0273D1532655B9260043011C /* Modules */,
