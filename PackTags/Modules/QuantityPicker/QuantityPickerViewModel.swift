@@ -12,15 +12,16 @@ class QuantityPickerViewModel {
     private enum Constants {
         static let minCount = 5
         static let maxCount = 30
+        static let key = "QuantityOfTagsPerPack"
     }
     
     var selectedValue: Int {
         get {
-            let savedTagQuantity = UserDefaults.standard.integer(forKey: "QuantityOfTagsPerPack")
-            return savedTagQuantity == 0 ? Constants.maxCount : savedTagQuantity
+            let savedValue = UserDefaults.standard.integer(forKey: Constants.key)
+            return savedValue == 0 ? Constants.maxCount : savedValue
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "QuantityOfTagsPerPack")
+            UserDefaults.standard.set(newValue, forKey: Constants.key)
         }
     }
     
