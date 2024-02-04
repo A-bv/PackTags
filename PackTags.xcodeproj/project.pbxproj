@@ -507,7 +507,6 @@
 				02B05C1E27F90BA3000026B8 /* TextView */,
 				02962683284BA65E009B0F58 /* TableView */,
 				02B05C1F27F90BB9000026B8 /* Image */,
-				02D709CB2A58C48C0009F7C3 /* QuantityPicker */,
 				02FA30832A118D58006A48CC /* Network */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
 				0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */,
@@ -943,6 +942,7 @@
 		02FAE2AB260ADA9200324724 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				02D709CB2A58C48C0009F7C3 /* QuantityPicker */,
 				02D10F0A2920673200287248 /* UI */,
 			);
 			path = Settings;
