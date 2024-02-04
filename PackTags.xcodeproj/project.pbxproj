@@ -346,7 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				02491C5A26779AE400F98E17 /* Setup */,
-				026D16E22A3E47A400228DEA /* Features */,
+				026D16E22A3E47A400228DEA /* Network */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -486,7 +486,7 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		026D16E22A3E47A400228DEA /* Features */ = {
+		026D16E22A3E47A400228DEA /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				026D16D72A3E474500228DEA /* Service */,
@@ -495,7 +495,7 @@
 				02E4B9D325CC97C700949213 /* Analytics */,
 				021AFD542787857B0008735E /* SmartG */,
 			);
-			path = Features;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		0273D1532655B9260043011C /* Modules */ = {
