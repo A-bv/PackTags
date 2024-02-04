@@ -186,7 +186,7 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemPurple
                         ) {[weak self] in
-                            self?.showPage(vc: ProIGSetupVC())
+                            self?.showPage(vc: InfoSetupIGCreatorVC())
                         })]))
 
         models.append(

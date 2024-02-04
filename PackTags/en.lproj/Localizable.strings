@@ -1,17 +1,17 @@
-// ProIGSetupVC
+// InfoSetupIGCreatorVC
 "topTextViewText" =
 "
 ⭑ Go to your Instagram page.
 ⭑ Tap  \"≡\".
 ⭑ Tap \"Settings\".
 ⭑ Tap \"Tools\".
-⭑ Switch account type.
+⭑ Switch the account type.
 ";
 
 "bottomTextViewText" =
 " 
 ⭑ Go to your Instagram page.
-⭑ \"Edit Profile\".
+⭑ Tap \"Edit Profile\".
 ⭑ Create/Link a Facebook page.
 ";
 

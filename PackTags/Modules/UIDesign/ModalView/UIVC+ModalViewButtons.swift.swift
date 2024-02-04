@@ -25,7 +25,7 @@ extension UIViewController {
         placeHelpButton(
             title: Strings.setupTitle,
             target: self,
-            action: #selector(showProIGSetupVC(_:))
+            action: #selector(showInfoSetupIGCreatorVC(_:))
         )
     }
     
@@ -72,9 +72,8 @@ extension UIViewController {
         self.present(viewController, animated: true)
     }
 
-    @objc func showProIGSetupVC(_ sender: Any) {
-        let vc = ProIGSetupVC()
-        presentViewController(vc)
+    @objc func showInfoSetupIGCreatorVC(_ sender: Any) {
+        presentViewController(InfoSetupIGCreatorVC())
     }
 
     @objc func showWebSetBusinessIG(_ sender: Any) {

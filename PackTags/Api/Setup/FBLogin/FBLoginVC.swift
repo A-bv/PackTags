@@ -155,7 +155,7 @@ extension FBLoginVC {
     }
     
     private func showSetupScreen() {
-        let controller = ProIGSetupVC()
+        let controller = InfoSetupIGCreatorVC()
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
         self.present(controller, animated: true, completion: nil)

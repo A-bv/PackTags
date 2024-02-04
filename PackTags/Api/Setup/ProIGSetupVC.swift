@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ProIGSetupVC: UIViewController {
-
+class InfoSetupIGCreatorVC: UIViewController {
     // MARK: - Constants
 
     private enum Constants {
