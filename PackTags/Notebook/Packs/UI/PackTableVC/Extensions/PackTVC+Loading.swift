@@ -10,22 +10,21 @@ import Foundation
 
 //MARK: - Loading
 extension PackTableVC {
-    func loadPack() {
+    func loadPacks() {
         guard let content = theme?.content else {
             packs = []
             return
         }
         
         let text = content
-        let numTagsPerPack = QuantityPickerViewModel().numTagsInPack
-        packs = Unique.reorganizeTags(from: text, with: numTagsPerPack)
-        .components(separatedBy: "\n\n")
+        let numTagsPerPack = QuantityPickerViewModel().selectedValue
+        packs = Unique.reorganizeTags(from: text, with: numTagsPerPack).components(separatedBy: "\n\n")
     }
 }
 
 extension PackTableVC {
     func updatePackTableVC() {
-        loadPack()
+        loadPacks()
         tableView.reloadData()
         navigationItem.title = theme?.name
         DispatchQueue.main.async {

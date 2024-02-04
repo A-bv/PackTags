@@ -9,20 +9,22 @@
 import Foundation
 
 class QuantityPickerViewModel {
-    private let minimumTagNumber = 5
-    private let maximumTagNumber = 30
+    private enum Constants {
+        static let minCount = 5
+        static let maxCount = 30
+    }
     
-    var numTagsInPack: Int {
+    var selectedValue: Int {
         get {
             let savedTagQuantity = UserDefaults.standard.integer(forKey: "QuantityOfTagsPerPack")
-            return savedTagQuantity == 0 ? maximumTagNumber : savedTagQuantity
+            return savedTagQuantity == 0 ? Constants.maxCount : savedTagQuantity
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "QuantityOfTagsPerPack")
         }
     }
     
-    var dataArray: [Int] {
-        return Array(minimumTagNumber...maximumTagNumber).reversed()
+    var pickerValuesArray: [Int] {
+        return Array(Constants.minCount...Constants.maxCount).reversed()
     }
 }

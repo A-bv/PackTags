@@ -46,7 +46,7 @@ class PackTableVC: UITableViewController {
         super.viewDidLoad()
         self.title = theme?.name
     
-        loadPack() //load
+        loadPacks() //load
         TVinset()
         setupTableViewBackgroundImage()
         tableView.backgroundColor = bkgdColor

@@ -498,7 +498,7 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
-		0273D1532655B9260043011C /* Tools */ = {
+		0273D1532655B9260043011C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				02FD6CB326D8178800AB16E4 /* Rating */,
@@ -520,7 +520,7 @@
 				02CD2D8E29904F0D00EDE077 /* String+UrlEncoding.swift */,
 				021EB81328846AD100463B42 /* Localizable.swift */,
 			);
-			path = Tools;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		0281B9782879874900344D3E /* UIDesign */ = {
@@ -987,7 +987,7 @@
 				021D7621275A9BBB00F54054 /* Remote */,
 				02FAE2AB260ADA9200324724 /* Settings */,
 				02A4235A2843FFF300A25067 /* OnBoarding */,
-				0273D1532655B9260043011C /* Tools */,
+				0273D1532655B9260043011C /* Modules */,
 				0226F19A259E0346006E086C /* Supporting Files */,
 				02FB550F24FFA2AA00174E34 /* Main.storyboard */,
 			);
