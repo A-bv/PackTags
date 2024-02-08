@@ -16,13 +16,10 @@ extension PackTableVC {
             return
         }
         
-        let text = content
-        let numTagsPerPack = QuantityPickerViewModel().selectedValue
-        packs = Unique.reorganizeTags(from: text, with: numTagsPerPack).components(separatedBy: "\n\n")
+        let numTagsPerPack = QuantityPickerData.selectedValue
+        packs = Unique.reorganizeTags(from: content, with: numTagsPerPack).components(separatedBy: "\n\n")
     }
-}
 
-extension PackTableVC {
     func updatePackTableVC() {
         loadPacks()
         tableView.reloadData()

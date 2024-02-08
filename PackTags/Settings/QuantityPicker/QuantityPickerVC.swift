@@ -18,9 +18,8 @@ class QuantityPickerVC: UIViewController {
         static let row30 = 0
     }
 
-    private var viewModel = QuantityPickerViewModel()
     private var numTagsInPack: Int {
-        return viewModel.selectedValue
+        return QuantityPickerData.selectedValue
     }
         
     override func viewDidLoad() {
@@ -37,7 +36,7 @@ class QuantityPickerVC: UIViewController {
         pickerView.dataSource = self
         pickerView.center = self.view.center
         
-        let defaultRowIndex = viewModel.pickerValuesArray.firstIndex(of: numTagsInPack) ?? Constants.row30
+        let defaultRowIndex = QuantityPickerData.pickerValuesArray.firstIndex(of: numTagsInPack) ?? Constants.row30
         pickerView.selectRow(defaultRowIndex, inComponent: 0, animated: false)
         self.view.addSubview(pickerView)
     }
@@ -49,16 +48,16 @@ extension QuantityPickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        viewModel.pickerValuesArray.count
+        QuantityPickerData.pickerValuesArray.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let row = String(viewModel.pickerValuesArray[row])
+        let row = String(QuantityPickerData.pickerValuesArray[row])
         return row
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedRow = viewModel.pickerValuesArray[row]
-        viewModel.selectedValue = selectedRow
+        let selectedRow = QuantityPickerData.pickerValuesArray[row]
+        QuantityPickerData.selectedValue = selectedRow
     }
 }

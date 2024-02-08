@@ -59,7 +59,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavi
         }
     }
     
-    var numTagsPerPack = QuantityPickerViewModel().selectedValue
+    var numTagsPerPack = QuantityPickerData.selectedValue
     
     override func viewDidLoad() {
         super.viewDidLoad()

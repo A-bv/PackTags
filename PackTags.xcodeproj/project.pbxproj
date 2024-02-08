@@ -103,7 +103,7 @@
 		02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BF296B606F00536E3A /* RoundedShape.swift */; };
 		02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */; };
 		02D1A119255387590045E56F /* Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D1A118255387590045E56F /* Unique.swift */; };
-		02D709CD2A58C4AE0009F7C3 /* QuantityPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D709CC2A58C4AE0009F7C3 /* QuantityPickerViewModel.swift */; };
+		02D709CD2A58C4AE0009F7C3 /* QuantityPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D709CC2A58C4AE0009F7C3 /* QuantityPickerData.swift */; };
 		02D709D12A58F7330009F7C3 /* UITVC+ThumbnailDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D709D02A58F7330009F7C3 /* UITVC+ThumbnailDimensions.swift */; };
 		02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */; };
 		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
@@ -254,7 +254,7 @@
 		02D066BF296B606F00536E3A /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+delegate.swift"; sourceTree = "<group>"; };
 		02D1A118255387590045E56F /* Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unique.swift; sourceTree = "<group>"; };
-		02D709CC2A58C4AE0009F7C3 /* QuantityPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerViewModel.swift; sourceTree = "<group>"; };
+		02D709CC2A58C4AE0009F7C3 /* QuantityPickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerData.swift; sourceTree = "<group>"; };
 		02D709D02A58F7330009F7C3 /* UITVC+ThumbnailDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITVC+ThumbnailDimensions.swift"; sourceTree = "<group>"; };
 		02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsView.swift; sourceTree = "<group>"; };
 		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
@@ -787,7 +787,7 @@
 			isa = PBXGroup;
 			children = (
 				0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */,
-				02D709CC2A58C4AE0009F7C3 /* QuantityPickerViewModel.swift */,
+				02D709CC2A58C4AE0009F7C3 /* QuantityPickerData.swift */,
 			);
 			path = QuantityPicker;
 			sourceTree = "<group>";
@@ -1195,7 +1195,7 @@
 				023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */,
-				02D709CD2A58C4AE0009F7C3 /* QuantityPickerViewModel.swift in Sources */,
+				02D709CD2A58C4AE0009F7C3 /* QuantityPickerData.swift in Sources */,
 				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsNew.swift in Sources */,
 				02F89B2929743EF9008F363D /* SmartGViewContainer.swift in Sources */,

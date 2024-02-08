@@ -8,14 +8,14 @@
 
 import Foundation
 
-class QuantityPickerViewModel {
+enum QuantityPickerData {
     private enum Constants {
         static let minCount = 5
         static let maxCount = 30
         static let key = "QuantityOfTagsPerPack"
     }
     
-    var selectedValue: Int {
+    static var selectedValue: Int {
         get {
             let savedValue = UserDefaults.standard.integer(forKey: Constants.key)
             return savedValue == 0 ? Constants.maxCount : savedValue
@@ -25,7 +25,7 @@ class QuantityPickerViewModel {
         }
     }
     
-    var pickerValuesArray: [Int] {
+    static var pickerValuesArray: [Int] {
         return Array(Constants.minCount...Constants.maxCount).reversed()
     }
 }
