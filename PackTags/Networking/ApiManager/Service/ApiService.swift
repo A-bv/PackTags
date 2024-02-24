@@ -59,32 +59,39 @@ final class ApiService {
 extension ApiService {
     static func searchHashtag(
         searchedHashtag: String,
-        completion: @escaping ([DataMedia]) -> Void
+        completion: @escaping (Result<[DataMedia], Error>) -> Void
     ) {
-        findHashtagUrl(searchedHashtag: searchedHashtag) { mediaSearchURL in
-            getMedia(for: mediaSearchURL, completion: completion)
+        findHashtagUrl(searchedHashtag: searchedHashtag) { result in
+            switch result {
+            case .success(let mediaSearchURL):
+                getMedia(for: mediaSearchURL, completion: completion)
+            case .failure(let error):
+                print("Error finding hashtag URL: \(error)")
+                completion(.failure(error))
+            }
         }
     }
 
     private static func getMedia(
         for url: String,
-        completion: @escaping ([DataMedia]) -> Void
+        completion: @escaping (Result<[DataMedia], Error>) -> Void
     ) {
         fetchDataFromUrl(of: Media.self, from: url) { result in
             switch result {
             case .failure(let error):
                 print("Error: \(error)")
+                completion(.failure(error))
             case .success(let data):
                 if let dataMedia = data as? [DataMedia] {
-                    completion(dataMedia)
+                    completion(.success(dataMedia))
                 } else {
-                    print("Error")
+                    print("Error: getMedia has no dataMedia")
                 }
             }
         }
     }
 
-    private static func findHashtagUrl(searchedHashtag: String, completion: @escaping (String) -> Void) {
+    private static func findHashtagUrl(searchedHashtag: String, completion: @escaping (Result<String, Error>) -> Void) {
         guard let searchURL = constructHashtagSearchURL(searchedHashtag: searchedHashtag) else { return }
 
         GenericJSONParser.download(fromURLString: searchURL) { result in
@@ -93,13 +100,15 @@ extension ApiService {
                 handleHashtagIdResponse(data: data) { result in
                     switch result {
                     case .success(let mediaSearchURL):
-                        completion(mediaSearchURL)
+                        completion(.success(mediaSearchURL))
                     case .failure(let error):
                         print("Error decoding JSON: \(error)")
+                        completion(.failure(error))
                     }
                 }
             case .failure(let error):
                 print("download json:", error)
+                completion(.failure(error))
             }
         }
     }

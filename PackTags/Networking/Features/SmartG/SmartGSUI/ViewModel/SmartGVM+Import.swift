@@ -16,8 +16,13 @@ extension SmartGViewModel {
             searchedHashtag: hashtag,
             completion: { [weak self] result in
                 DispatchQueue.main.async {
-                    self?.dataMedias = result
-                    self?.processSmartGModel()
+                    switch result {
+                    case .success(let medias):
+                        self?.dataMedias = medias
+                        self?.processSmartGModel()
+                    case .failure(let error):
+                        print("Error fetch: \(error)")
+                    }
                     onLoaded()
                 }
             })
