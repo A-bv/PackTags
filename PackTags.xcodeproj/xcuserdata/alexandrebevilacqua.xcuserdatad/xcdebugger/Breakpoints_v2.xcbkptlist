@@ -444,10 +444,10 @@
             filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "loadProfileForAnalytics(completion:)"
-            landmarkType = "7">
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -460,10 +460,10 @@
             filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "loadProfileForAnalytics(completion:)"
-            landmarkType = "7">
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "ApiService"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -476,10 +476,865 @@
             filePath = "PackTags/Networking/Features/SmartG/SmartGSUI/UI/Elements/InteractionBar/InteractionBarView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "refresh()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51F4A9E7-DA27-4B95-B8F4-A60CF4A60E0C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "loadProfileForAnalytics(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "51F4A9E7-DA27-4B95-B8F4-A60CF4A60E0C - fa628721b0a3c2c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.constructHashtagMediaSearchURL(hashtagID: Swift.String) -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "1408">
+               </Location>
+               <Location
+                  uuid = "51F4A9E7-DA27-4B95-B8F4-A60CF4A60E0C - fa628721b0a3c2c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.constructHashtagMediaSearchURL(hashtagID: Swift.String) -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "2012">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD38AB67-74D0-408F-9A1F-3C761654C035"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "constructHashtagMediaSearchURL(hashtagID:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DD38AB67-74D0-408F-9A1F-3C761654C035 - 1036c2fbdd48685e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.handleHashtagIdResponse(data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "624">
+               </Location>
+               <Location
+                  uuid = "DD38AB67-74D0-408F-9A1F-3C761654C035 - 1036c2fbdd48685e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.handleHashtagIdResponse(data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "948">
+               </Location>
+               <Location
+                  uuid = "DD38AB67-74D0-408F-9A1F-3C761654C035 - fa628721b0a33e8a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.constructHashtagMediaSearchURL(hashtagID: Swift.String) -&gt; Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D71D696-3A1D-4FED-827F-4A770DFD89C2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "ApiService"
+            landmarkType = "21">
+            <Locations>
+               <Location
+                  uuid = "0D71D696-3A1D-4FED-827F-4A770DFD89C2 - 1036c2fbdd48687f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.handleHashtagIdResponse(data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "572">
+               </Location>
+               <Location
+                  uuid = "0D71D696-3A1D-4FED-827F-4A770DFD89C2 - 1036c2fbdd48681c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.handleHashtagIdResponse(data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "572">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0848326B-C363-4CB1-A06D-0656CD0B2EA0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "handleHashtagIdResponse(data:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0848326B-C363-4CB1-A06D-0656CD0B2EA0 - deb0cdeab025bd87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "0848326B-C363-4CB1-A06D-0656CD0B2EA0 - deb0cdeab025bd87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "0848326B-C363-4CB1-A06D-0656CD0B2EA0 - deb0cdeab025bd87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D21C3A5A-76C8-4686-960B-90456CD2AC8A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "handleHashtagIdResponse(data:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D21C3A5A-76C8-4686-960B-90456CD2AC8A - deb0cdeab025bdc5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  uuid = "D21C3A5A-76C8-4686-960B-90456CD2AC8A - deb0cdeab025bdc5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "332">
+               </Location>
+               <Location
+                  uuid = "D21C3A5A-76C8-4686-960B-90456CD2AC8A - 1036c2fbdd486ec2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.handleHashtagIdResponse(data: Foundation.Data, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0017CD5E-FD7C-4F20-9639-4230C56FC18E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "getMedia(for:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0017CD5E-FD7C-4F20-9639-4230C56FC18E - 666dc6bbb36e03df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; () in static PackTags.ApiService.searchHashtag(searchedHashtag: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "380">
+               </Location>
+               <Location
+                  uuid = "0017CD5E-FD7C-4F20-9639-4230C56FC18E - 82e51d11e1ed2074"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.getMedia(for: Swift.String, completion: (Swift.Array&lt;PackTags.DataMedia&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F4282EFA-3654-4674-B872-CB936B1976AD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "getMedia(for:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F4282EFA-3654-4674-B872-CB936B1976AD - 666dc6bbb36e039d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; () in static PackTags.ApiService.searchHashtag(searchedHashtag: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "460">
+               </Location>
+               <Location
+                  uuid = "F4282EFA-3654-4674-B872-CB936B1976AD - 82e51d11e1ed2074"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.getMedia(for: Swift.String, completion: (Swift.Array&lt;PackTags.DataMedia&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "F4282EFA-3654-4674-B872-CB936B1976AD - 6c63b8ece86afa3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Any, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.getMedia(for: Swift.String, completion: (Swift.Array&lt;PackTags.DataMedia&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A234E1E9-FFFD-4E8E-8D37-5F4FA04D6CDE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "searchHashtag(searchedHashtag:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A234E1E9-FFFD-4E8E-8D37-5F4FA04D6CDE - 666dc6bbb36e02a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; () in static PackTags.ApiService.searchHashtag(searchedHashtag: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "332">
+               </Location>
+               <Location
+                  uuid = "A234E1E9-FFFD-4E8E-8D37-5F4FA04D6CDE - 7ae0b89c860bd517"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; () in static PackTags.ApiService.searchHashtag(searchedHashtag: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61F5F862-E662-4523-890E-11012C58E420"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "fetch(hashtag:onLoaded:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "61F5F862-E662-4523-890E-11012C58E420 - 32d6725842b5d115"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; () in PackTags.SmartGViewModel.fetch(hashtag: Swift.String, onLoaded: () -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "852">
+               </Location>
+               <Location
+                  uuid = "61F5F862-E662-4523-890E-11012C58E420 - 32d6725842b5d134"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; () in PackTags.SmartGViewModel.fetch(hashtag: Swift.String, onLoaded: () -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "564">
+               </Location>
+               <Location
+                  uuid = "61F5F862-E662-4523-890E-11012C58E420 - 858c0575e11cfc03"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Array&lt;PackTags.DataMedia&gt;) -&gt; () in PackTags.SmartGViewModel.fetch(hashtag: Swift.String, onLoaded: () -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "376">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6AC4C980-CF77-4D1B-A51F-32DFF896BC98"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "fetch(hashtag:onLoaded:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6AC4C980-CF77-4D1B-A51F-32DFF896BC98 - 32d6725842b5d172"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; () in PackTags.SmartGViewModel.fetch(hashtag: Swift.String, onLoaded: () -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  uuid = "6AC4C980-CF77-4D1B-A51F-32DFF896BC98 - 32d6725842b5d172"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; () in PackTags.SmartGViewModel.fetch(hashtag: Swift.String, onLoaded: () -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "372">
+               </Location>
+               <Location
+                  uuid = "6AC4C980-CF77-4D1B-A51F-32DFF896BC98 - 858c0575e11cfc45"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Array&lt;PackTags.DataMedia&gt;) -&gt; () in PackTags.SmartGViewModel.fetch(hashtag: Swift.String, onLoaded: () -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "240">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4DA35FB8-0D0B-4E75-97CA-F1D21FA2D7F7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "fetch(hashtag:onLoaded:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4DA35FB8-0D0B-4E75-97CA-F1D21FA2D7F7 - c2e38049cebee10d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; () in PackTags.SmartGViewModel.fetch(hashtag: Swift.String, onLoaded: () -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "276">
+               </Location>
+               <Location
+                  uuid = "4DA35FB8-0D0B-4E75-97CA-F1D21FA2D7F7 - 32d6725842b5d02c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; () in PackTags.SmartGViewModel.fetch(hashtag: Swift.String, onLoaded: () -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "4DA35FB8-0D0B-4E75-97CA-F1D21FA2D7F7 - a45f62f664ddd094"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PackTags.SmartGViewModel.fetch(hashtag: Swift.String, onLoaded: () -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/Features/SmartG/SmartGSUI/ViewModel/SmartGVM+Import.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4D48AA1A-E4C5-40D9-914B-85053B8DEFB0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "ApiService"
+            landmarkType = "21">
+            <Locations>
+               <Location
+                  uuid = "4D48AA1A-E4C5-40D9-914B-85053B8DEFB0 - 7ae0b89c860bd517"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;Swift.Result&lt;Swift.String, Swift.Error&gt;&gt;) -&gt; () in static PackTags.ApiService.searchHashtag(searchedHashtag: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "4D48AA1A-E4C5-40D9-914B-85053B8DEFB0 - 82e51d11e1ed2074"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.getMedia(for: Swift.String, completion: (Swift.Array&lt;PackTags.DataMedia&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D8E8D43-7F62-40B1-BB86-7D4B799E01B1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "findHashtagUrl(searchedHashtag:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0D8E8D43-7F62-40B1-BB86-7D4B799E01B1 - 9bb3afcefbef0dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Any, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.getMedia(for: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "608">
+               </Location>
+               <Location
+                  uuid = "0D8E8D43-7F62-40B1-BB86-7D4B799E01B1 - 337d3f31cb1c7041"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AC04888-5440-4FF5-8DD7-7BB47F74B27D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "findHashtagUrl(searchedHashtag:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7AC04888-5440-4FF5-8DD7-7BB47F74B27D - 9bb3afcefbef09e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Any, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.getMedia(for: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  uuid = "7AC04888-5440-4FF5-8DD7-7BB47F74B27D - 337d3f31cb1c7007"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "7AC04888-5440-4FF5-8DD7-7BB47F74B27D - 98bf6ece20bef020"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "144">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "03F23C89-E380-4C64-83B7-401AB03CDB8D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "findHashtagUrl(searchedHashtag:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "03F23C89-E380-4C64-83B7-401AB03CDB8D - 9bb3afcefbeff1a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Any, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.getMedia(for: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;PackTags.DataMedia&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "708">
+               </Location>
+               <Location
+                  uuid = "03F23C89-E380-4C64-83B7-401AB03CDB8D - 98bf6ece20bef041"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "03F23C89-E380-4C64-83B7-401AB03CDB8D - ccbfd00f7c9c4a48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in static PackTags.ApiService.findHashtagUrl(searchedHashtag: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "PackTags"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexandrebevilacqua/Desktop/PackTags/PackTags/Networking/ApiManager/Service/ApiService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "132">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

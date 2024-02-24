@@ -10,11 +10,11 @@ import SwiftUI
 
 struct SmartGSavedTagsView: View {
     private enum Strings {
-        static let smartGSavedTagsFooter = "Instagram allows only 30 saved hashtags per week."
+        static let smartGSavedTagsFooter = "Instagram allows only 30 saved hashtags per week.".localized()
         static func savedHashtagCount(count: Int) -> String {
             return "Count: \(count)"
         }
-        static let savedHashtagsHeadline: String = "Saved Hashtags"
+        static let savedHashtagsHeadline: String = "Saved Hashtags".localized()
         static let left = "left"
         static let days = "days"
     }

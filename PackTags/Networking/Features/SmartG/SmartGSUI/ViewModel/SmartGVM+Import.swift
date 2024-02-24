@@ -21,7 +21,6 @@ extension SmartGViewModel {
                     onLoaded()
                 }
             })
-        
         //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
     }
 }

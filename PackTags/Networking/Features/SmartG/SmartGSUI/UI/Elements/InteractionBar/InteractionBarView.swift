@@ -26,12 +26,11 @@ struct InteractionBarView: View {
     }
     
     private enum Strings {
-        static let popoverTitle = "Top 10 hashtags copied!"
-        static func popoverMessage(for hashtagEntry: String) -> String {
-            "The most used hashtags of the page \(hashtagEntry) were copied into the clipboard."
-        }
+        static let popoverTitle = "Top 10 hashtags copied!".localized()
+        static let popoverMessage =
+            "The most used hashtags of the page were copied into the clipboard.".localized()
         static let popoverDismissButton = "Ok"
-        static let enterHashtagPlaceholder = "Enter a hashtag"
+        static let enterHashtagPlaceholder = "Enter a hashtag".localized()
     }
     
     var textField: some View {
@@ -72,7 +71,7 @@ struct InteractionBarView: View {
             .alert(isPresented: $showingAlert) {
                 Alert(
                     title: Text(Strings.popoverTitle),
-                    message: Text(Strings.popoverMessage(for: hashtagEntry)),
+                    message: Text(Strings.popoverMessage),
                     dismissButton: .default(Text(Strings.popoverDismissButton)))
             }
 

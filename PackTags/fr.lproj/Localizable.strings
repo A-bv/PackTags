@@ -121,6 +121,11 @@
 "Loading..." = "Chargement...";
 "Smart Hashtags" = "Smart Hashtags";
 "Hashtag page search" = "Page de recherche d'hashtags";
+"Top 10 hashtags copied!" = "Top 10 hashtags copiés!";
+"The most used hashtags of the page were copied into the clipboard." = "Les hashtags les plus utilisés de la page on été copiés dans le presse-papier.";
+"Enter a hashtag" = "Entrez un hashtag";
+"Saved hashtags" = "HASHTAGS SAUVEGARDÉS";
+"Instagram allows only 30 saved hashtags per week." = "Instagram limite la sauvegrade d'hashtags à 30 par semaine.";
 
 //OnBoardingVc
 "WELCOME TO PACKTAGS" = "BIENVENUE SUR PACKTAGS";
