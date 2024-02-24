@@ -32,14 +32,14 @@ extension DataTransformer.ProfileDataTransformer {
         
         let avg0 = StringFormatter.averageElementsOfArray(array: metrics.likeArray)
         let avg1 = StringFormatter.averageElementsOfArray(array: metrics.commentArray)
-
+        
         let captions = metrics.captions
         let times = metrics.times
-
+        
         //Basic
         let usr = top.username
         let isPv = false
-
+        
         let engagementRates = [
             metrics.engagementRateFollowers,
             metrics.engagementRateReach,
@@ -68,7 +68,9 @@ extension DataTransformer.ProfileDataTransformer {
         
         return data
     }
+}
 
+extension DataTransformer.ProfileDataTransformer {
     static private func computeMetrics(profileResponse:Profile) -> SubTransformedProfileModel? {
         var likeArray = [Int]()
         var commentArray = [Int]()

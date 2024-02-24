@@ -58,10 +58,7 @@
 		0269E2AC2564B838005FE14B /* AnalyticsHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269E2AB2564B838005FE14B /* AnalyticsHostingViewController.swift */; };
 		026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */; };
 		026D16DD2A3E474500228DEA /* AnalyticsSUIVM+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* AnalyticsSUIVM+Import.swift */; };
-		026D16DE2A3E474500228DEA /* ApiService+SmartG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D82A3E474500228DEA /* ApiService+SmartG.swift */; };
 		026D16DF2A3E474500228DEA /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D92A3E474500228DEA /* ApiService.swift */; };
-		026D16E02A3E474500228DEA /* ApiService+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16DA2A3E474500228DEA /* ApiService+Analytics.swift */; };
-		026D16E12A3E474500228DEA /* ApiService+Discovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16DB2A3E474500228DEA /* ApiService+Discovery.swift */; };
 		0274105826207D2100D82F6D /* PackTVC+Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274105726207D2000D82F6D /* PackTVC+Instagram.swift */; };
 		0274DB3026848948005F9C9C /* DocumentDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* DocumentDirectory.swift */; };
 		0281B97A2879877C00344D3E /* UIVC+NavigationBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9792879877C00344D3E /* UIVC+NavigationBarDimensions.swift */; };
@@ -209,10 +206,7 @@
 		0269E2AB2564B838005FE14B /* AnalyticsHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsHostingViewController.swift; sourceTree = "<group>"; };
 		026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
 		026D16D62A3E474500228DEA /* AnalyticsSUIVM+Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnalyticsSUIVM+Import.swift"; sourceTree = "<group>"; };
-		026D16D82A3E474500228DEA /* ApiService+SmartG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiService+SmartG.swift"; sourceTree = "<group>"; };
 		026D16D92A3E474500228DEA /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
-		026D16DA2A3E474500228DEA /* ApiService+Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiService+Analytics.swift"; sourceTree = "<group>"; };
-		026D16DB2A3E474500228DEA /* ApiService+Discovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiService+Discovery.swift"; sourceTree = "<group>"; };
 		0274105726207D2000D82F6D /* PackTVC+Instagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Instagram.swift"; sourceTree = "<group>"; };
 		0274DB2F26848948005F9C9C /* DocumentDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDirectory.swift; sourceTree = "<group>"; };
 		0281B9792879877C00344D3E /* UIVC+NavigationBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+NavigationBarDimensions.swift"; sourceTree = "<group>"; };
@@ -480,9 +474,6 @@
 			isa = PBXGroup;
 			children = (
 				026D16D92A3E474500228DEA /* ApiService.swift */,
-				026D16D82A3E474500228DEA /* ApiService+SmartG.swift */,
-				026D16DA2A3E474500228DEA /* ApiService+Analytics.swift */,
-				026D16DB2A3E474500228DEA /* ApiService+Discovery.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1191,7 +1182,6 @@
 				02CAC9B52591054400BE5E57 /* TVC+ImgPicker.swift in Sources */,
 				02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */,
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,
-				026D16E02A3E474500228DEA /* ApiService+Analytics.swift in Sources */,
 				023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */,
@@ -1202,7 +1192,6 @@
 				020584D3284D6FFC00020FB8 /* UITextView+KbToolBar.swift in Sources */,
 				0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */,
 				02BC8D3025FD7DC800441349 /* PackTVC+Navigation.swift in Sources */,
-				026D16E12A3E474500228DEA /* ApiService+Discovery.swift in Sources */,
 				023A2F7E2856497800EE6CDE /* PackTVC+TVHeader.swift in Sources */,
 				0281B9812879C5E600344D3E /* UITVC+CellsHeight.swift in Sources */,
 				02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */,
@@ -1226,7 +1215,6 @@
 				0274DB3026848948005F9C9C /* DocumentDirectory.swift in Sources */,
 				02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */,
 				02FD6CB026D8006400AB16E4 /* UIVC+RateAndReview.swift in Sources */,
-				026D16DE2A3E474500228DEA /* ApiService+SmartG.swift in Sources */,
 				021AFD5C278A1BE40008735E /* Alerts.swift in Sources */,
 				02CAC9B7259105B400BE5E57 /* TVC.swift in Sources */,
 				026D16DD2A3E474500228DEA /* AnalyticsSUIVM+Import.swift in Sources */,

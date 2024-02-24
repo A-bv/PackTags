@@ -39,17 +39,20 @@ struct BarChartItemView: View {
 
     var body: some View {
         VStack {
-            Spacer()
-            RoundedShape()
-                .fill(fillGradient)
-                .frame(height: post.barHeight)
-                .onTapGesture {
-                    handleTapGesture()
-                }
+            VStack {
+                Color(.clear)
+                RoundedShape()
+                    .fill(fillGradient)
+                    .frame(height: post.barHeight)
+                    .onTapGesture {
+                        handleTapGesture()
+                    }
+            }
+            .frame(height: Constants.barMaxHeight + Constants.barChartTopPadding)
+            
             Text(post.post)
                 .font(.caption2)
                 .foregroundColor(Color(UIColor.label))
         }
-        .frame(height: Constants.barMaxHeight + Constants.barChartTopPadding)
     }
 }

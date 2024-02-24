@@ -38,7 +38,7 @@ extension AnalyticsSUIViewModel {
     
     private func load(profileJson: Profile) {
         jsonOfficial = profileJson
-        processedJson = fakeProcessedJson3()//DataTransformer.ProfileDataTransformer.transform(response: profileJson)
+        processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson)
         // QQQ
 
         /*
