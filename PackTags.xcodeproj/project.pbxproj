@@ -491,6 +491,8 @@
 		026E73732B704AB800FB454F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
+				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
 				02E4B9D325CC97C700949213 /* Analytics */,
 				021AFD542787857B0008735E /* SmartG */,
 			);
@@ -953,8 +955,6 @@
 				02FBAFE425A93C6100E32D73 /* AnalyticsNew.swift */,
 				023D2B952A48F101006E2D35 /* Circles */,
 				02B0D7582A48E9EB00EF1500 /* Barchart */,
-				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
-				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
 				02D066BF296B606F00536E3A /* RoundedShape.swift */,
 			);
 			path = UI;
@@ -1431,7 +1431,7 @@
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ANNM3BXP39;
 				INFOPLIST_FILE = PackTags/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1454,7 +1454,7 @@
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ANNM3BXP39;
 				INFOPLIST_FILE = PackTags/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

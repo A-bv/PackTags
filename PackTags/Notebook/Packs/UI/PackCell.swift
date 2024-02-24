@@ -68,7 +68,6 @@ class PackCell: UITableViewCell {
         btn.layer.cornerRadius = Constants.subButtonCornerRadius
         btn.clipsToBounds = true
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.showsTouchWhenHighlighted = true
         return btn
     }()
     

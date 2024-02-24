@@ -279,7 +279,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B0D7FFB3-5898-4CCA-AD9D-7A8C884E9AAC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Networking/Features/Analytics/AnalyticsSUI/ViewModel/AnalyticsSUIVM+Import.swift"
@@ -342,7 +342,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9A5C0B43-75DE-4A5A-810C-A7AF8E48DEB2"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Networking/ApiManager/Transformers/ProfileDataTransformer.swift"
@@ -422,7 +422,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "27447E58-9062-4DBC-8283-A8C75649B4B6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Networking/ApiManager/Transformers/ProfileDataTransformer.swift"
@@ -438,7 +438,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CC34B181-355E-4C88-AF40-574579E610D1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
@@ -454,7 +454,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "9978B0F1-5581-4EAC-A846-03F4EEC9586C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PackTags/Networking/ApiManager/Service/ApiService.swift"
@@ -463,6 +463,22 @@
             startingLineNumber = "156"
             endingLineNumber = "156"
             landmarkName = "loadProfileForAnalytics(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6FCE38F-F134-48C0-86C1-8702B34567FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PackTags/Networking/Features/SmartG/SmartGSUI/UI/Elements/InteractionBar/InteractionBarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "refresh()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

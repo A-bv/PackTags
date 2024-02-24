@@ -9,7 +9,7 @@
 import SwiftUI
 
 private enum Strings {
-    static let defaultHashtag = "#travel"
+    static let defaultHashtag = ""
     static let defaultHashtagWithoutHash = "travel"
 }
 
@@ -22,25 +22,41 @@ struct SmartGView: View {
     @State var showingAlert = false
     
     @State var showingPopover = false
+    @State var loading = true
+    
+    //Network Status
+    @ObservedObject var monitor = NetworkMonitor()
     
     var body: some View {
         ZStack{
             Color.bgFillColor.ignoresSafeArea()
-            ScrollView{
-                SmartGHeader()
-                interactionBar
-                FloatingListView(viewModel: self.smartGViewModel)
-                collection
+            if !monitor.isConnected {
+                OfflineView()
+            } else if loading {
+                LoadingView(loading: $loading).opacity(0.5)
+            } else {
+                ScrollView{
+                    SmartGHeader()
+                    interactionBar
+                    FloatingListView(viewModel: self.smartGViewModel)
+                    collection
+                }
+                .ignoresSafeArea(.keyboard)
             }
-            .ignoresSafeArea(.keyboard)
         }
         .onAppear {
-            smartGViewModel.fetch(hashtag: Strings.defaultHashtagWithoutHash)
+            loading = true
+            smartGViewModel.fetch(
+                hashtag: Strings.defaultHashtagWithoutHash,
+                onLoaded: {
+                    loading = false
+                })
         }
     }
     
     var interactionBar: some View {
         InteractionBarView(
+            loading: $loading,
             showingPopover: $showingPopover,
             hashtagEntry: $hashtagEntry,
             showingAlert: $showingAlert,

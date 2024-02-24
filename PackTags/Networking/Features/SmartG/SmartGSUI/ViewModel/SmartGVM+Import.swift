@@ -11,13 +11,14 @@ import Foundation
 // SmartG
 extension SmartGViewModel {
     // 1. Api import
-    func fetch(hashtag: String) {
+    func fetch(hashtag: String, onLoaded: @escaping () -> Void) {
         ApiService.searchHashtag(
             searchedHashtag: hashtag,
             completion: { [weak self] result in
                 DispatchQueue.main.async {
                     self?.dataMedias = result
                     self?.processSmartGModel()
+                    onLoaded()
                 }
             })
         
