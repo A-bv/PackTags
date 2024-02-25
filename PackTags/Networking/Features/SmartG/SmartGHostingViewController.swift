@@ -16,7 +16,19 @@ class SmartGHostingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.add(UIHostingController(rootView: AnyView(SmartGViewContainer())))
+        showView()
+    }
+    
+    private func showView() {
+        let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
+        if isCorrectSetup {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let dataController = appDelegate.dataController
+            let hostingController = UIHostingController(rootView: SmartGViewContainer(dataController: dataController))
+            add(hostingController)
+        } else {
+            showFBLoginScreenFromThemeVC()
+        }
     }
 
     private func add(_ child: UIViewController) {
@@ -25,5 +37,13 @@ class SmartGHostingViewController: UIViewController {
         child.view.frame = view.bounds
         view.addSubview(child.view)
         child.didMove(toParent: self)
+    }
+    
+    private func showFBLoginScreenFromThemeVC() {
+        let viewModel = FBLoginViewModel()
+        let viewController = FBLoginVC(viewModel: viewModel)
+        viewController.modalPresentationStyle = .overFullScreen
+        viewController.modalTransitionStyle = .coverVertical
+        self.present(viewController, animated: true, completion: nil)
     }
 }
