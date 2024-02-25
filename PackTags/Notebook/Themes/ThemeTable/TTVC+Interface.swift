@@ -20,8 +20,8 @@ extension ThemeTableViewController {
     }
     
     func configureNavBar () {
-        settingsButton.image = UIImage(systemName: "gearshape")
-        analyticsButton.image = UIImage(systemName: "chart.pie")
+        settingsButton.image = UIImage(systemName: "gearshape.2.fill")
+        analyticsButton.image = UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill")
         addThemeButton.image = UIImage(systemName: "plus")
 
         navigationController?.navigationBar.putShadow()
@@ -45,5 +45,10 @@ extension ThemeTableViewController {
         self.setNavBarAppearance(color: bkgdColor)
         self.navigationController?.navigationBar.putShadow()
         self.navigationController?.navigationBar.tintColor = UITextView.appearance().tintColor
+    }
+    
+    func addFloatingButton() {
+        let button = FloatingButtonFactory.createFloatingButton(onView: self.view)
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
     }
 }

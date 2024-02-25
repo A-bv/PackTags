@@ -51,3 +51,9 @@ extension ThemeTableViewController {
         self.present(viewController, animated: true, completion: nil)
     }
 }
+
+extension ThemeTableViewController {
+    @objc func didTapButton() {
+        self.performSegue(withIdentifier: "addItem", sender: self)
+    }
+}

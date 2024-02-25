@@ -21,34 +21,20 @@ extension ThemeTableViewController {
         return themes.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCell", for: indexPath) as? ThemeCell
-        else {
-            fatalError("The dequeued cell is not an instance of ThemeTableViewCell.")
-        }
-        
-        // Fetches the appropriate theme for the data source layout.
-        let theme = themes[indexPath.row]
-        
-        cell.nameLabel.text = theme.name
-            
-        if let thumbnail = theme.thumbnail {
-            cell.themeImageView.image = UIImage(data: thumbnail)
-        }
-           
-        return cell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return makeCell(indexPath: indexPath)
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete { presentDeletionSafeAlert(indexpath: indexPath) }
-        else if editingStyle == .insert {}
+        if editingStyle == .delete {
+            presentDeletionSafeAlert(indexpath: indexPath)
+        }
     }
-    
+
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool { return false }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -61,5 +47,21 @@ extension ThemeTableViewController {
     override func setEditing (_ editing:Bool, animated:Bool) {
         super.setEditing(editing,animated:animated)
         showEditButton()
+    }
+}
+
+extension ThemeTableViewController {
+    private func makeCell(indexPath: IndexPath) -> UITableViewCell {
+        guard 
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCell", for: indexPath) as? ThemeCell
+        else {
+            fatalError("The dequeued cell is not an instance of ThemeTableViewCell.")
+        }
+        let theme = themes[indexPath.row] // Fetches the appropriate theme for the data source layout.
+        cell.nameLabel.text = theme.name
+        if let thumbnail = theme.thumbnail {
+            cell.themeImageView.image = UIImage(data: thumbnail)
+        }
+        return cell
     }
 }

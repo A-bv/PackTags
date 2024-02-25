@@ -39,9 +39,11 @@ class ThemeTableViewController: UITableViewController {
         configureNavBar ()
         configureTableView ()
         themes = CoreDataHelper.retrieveThemes()
+        addFloatingButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         handleNewUserFlow()
-    }}
+    }
+}
