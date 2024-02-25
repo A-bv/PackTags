@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension PackTableVC {
     private enum Strings {
@@ -22,7 +23,7 @@ extension PackTableVC {
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
 
-        contextItem.backgroundColor = tableView.tintColor
+        contextItem.backgroundColor = UIColor(Color("CustomBarColor").opacity(0.7)) //tableView.tintColor
         return swipeActions
     }
 }

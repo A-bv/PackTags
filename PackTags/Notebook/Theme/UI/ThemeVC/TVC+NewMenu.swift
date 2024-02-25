@@ -47,6 +47,7 @@ extension ThemeVC{
             vc?.setImagePicker()
         }
         
+        /*
         let smartGen = UIAction(
             title: Strings.smartHashtags,
             image: UIImage(systemName: "chart.bar.doc.horizontal.fill")
@@ -57,7 +58,7 @@ extension ThemeVC{
             } else {
                 self?.showFBLoginScreenFromThemeVC()
             }
-        }
+        }*/
         
         let search = UIAction(
             title: Strings.searchHashtags,
@@ -93,7 +94,7 @@ extension ThemeVC{
         let htgImport = UIMenu(
             title: Strings.menuSectionImport,
             options: .displayInline,
-            children: [textRecon,smartGen])
+            children: [textRecon]) //[textRecon,smartGen])
         
         let manage = UIMenu(
             title: Strings.menuSectionManage,
@@ -111,13 +112,14 @@ extension ThemeVC{
 }
 
 extension ThemeVC {
+    /*
     private func showSmartGScreen() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let dataController = appDelegate.dataController
         let hostingController = UIHostingController(rootView: SmartGViewContainer(dataController: dataController))
         hostingController.modalPresentationStyle = .overFullScreen
         self.present(hostingController, animated: true, completion: nil)
-    }
+    }*/
     
     private func showFBLoginScreenFromThemeVC() {
         let viewModel = FBLoginViewModel()

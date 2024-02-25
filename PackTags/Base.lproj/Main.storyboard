@@ -52,28 +52,29 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Themes" id="bbI-w9-2Ss">
-                        <leftBarButtonItems>
-                            <barButtonItem id="Q5d-RW-Iii">
-                                <connections>
-                                    <segue destination="xD6-oJ-mpg" kind="show" identifier="showSettings" id="rJ4-7Q-PRJ"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem id="L3j-Zt-8rO">
-                                <connections>
-                                    <segue destination="bZ1-1X-cml" kind="presentation" identifier="showAnalytics" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="plm-bL-2pW"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" id="qap-mE-lrt">
+                        <barButtonItem key="leftBarButtonItem" id="Q5d-RW-Iii">
                             <connections>
-                                <segue destination="0sW-rf-UIL" kind="presentation" identifier="addItem" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="wVY-d4-Pxc"/>
+                                <segue destination="xD6-oJ-mpg" kind="show" identifier="showSettings" id="rJ4-7Q-PRJ"/>
                             </connections>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem id="L3j-Zt-8rO">
+                                <connections>
+                                    <segue destination="bZ1-1X-cml" kind="presentation" identifier="showSettings" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="plm-bL-2pW"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem id="qap-mE-lrt">
+                                <connections>
+                                    <segue destination="NfC-k8-Pim" kind="presentation" identifier="showAnalytics" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="Apu-9L-aou"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="addThemeButton" destination="qap-mE-lrt" id="HGm-VL-bjm"/>
                         <outlet property="analyticsButton" destination="L3j-Zt-8rO" id="Hdy-cy-eas"/>
                         <outlet property="settingsButton" destination="Q5d-RW-Iii" id="y6p-QF-50R"/>
+                        <outlet property="smartGButton" destination="qap-mE-lrt" id="HGm-VL-bjm"/>
+                        <segue destination="0sW-rf-UIL" kind="presentation" identifier="addItem" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="h4b-KS-PSk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fur-dN-J5Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -352,9 +353,38 @@
             </objects>
             <point key="canvasLocation" x="-2064" y="-537"/>
         </scene>
+        <!--SmartG Hosting View Controller-->
+        <scene sceneID="xf0-EL-Trh">
+            <objects>
+                <viewController id="NfC-k8-Pim" customClass="SmartGHostingViewController" customModule="PackTags" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lMq-Rb-q1A">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SmartGHostingView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLR-fd-Zaa">
+                                <rect key="frame" x="118" y="183" width="154" height="478"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4P3-ls-mUp"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pLR-fd-Zaa" firstAttribute="top" secondItem="4P3-ls-mUp" secondAttribute="top" constant="183" id="0kQ-Yg-ZVN"/>
+                            <constraint firstItem="pLR-fd-Zaa" firstAttribute="centerX" secondItem="lMq-Rb-q1A" secondAttribute="centerX" id="8sN-0I-cTe"/>
+                            <constraint firstItem="pLR-fd-Zaa" firstAttribute="centerY" secondItem="lMq-Rb-q1A" secondAttribute="centerY" id="Xf1-Aw-k73"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zEt-6f-N0C"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="90d-LS-PFk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-522" y="272"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wVY-d4-Pxc"/>
+        <segue reference="h4b-KS-PSk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="EditPic" width="25" height="25"/>

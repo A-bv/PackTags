@@ -10,7 +10,7 @@ import UIKit
 
 class ThemeTableViewController: UITableViewController {
     
-    @IBOutlet weak var addThemeButton: UIBarButtonItem!
+    @IBOutlet weak var smartGButton: UIBarButtonItem!
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var analyticsButton: UIBarButtonItem!
     

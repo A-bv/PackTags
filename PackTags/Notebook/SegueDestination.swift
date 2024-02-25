@@ -11,6 +11,7 @@ enum ThemeTableViewControllerSegueOrigin: String {
     case showTheme = "showTheme"
     case showAnalytics = "showAnalytics"
     case showSettings = "showSettings"
+    case showSmartG =  "showSmartG"
 }
 
 enum PackTableVCSegueOrigin: String {

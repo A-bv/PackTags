@@ -16,16 +16,17 @@ class FloatingButtonFactory {
         // Create and configure the gradient layer
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = button.bounds
-        gradientLayer.colors = [UIColor.systemRed.withAlphaComponent(1).cgColor, UIColor.systemBlue.withAlphaComponent(1).cgColor]
+        gradientLayer.colors = [UIColor.customPurple.withAlphaComponent(0.5).cgColor, UIColor.systemBlue.withAlphaComponent(0.7).cgColor]
         gradientLayer.cornerRadius = 15
         gradientLayer.masksToBounds = true
         button.layer.addSublayer(gradientLayer)
         
         // Create and configure the blurred background view
-        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+        let blur = UIVisualEffectView(
+            effect: UIBlurEffect(style: DarkMode.isDarkMode() ? .systemMaterialLight : .regular))
         blur.frame = button.bounds
         blur.isUserInteractionEnabled = false
-        button.addSubview(blur)
+        //button.addSubview(blur)
         
         // Configure the button appearance
         button.layer.cornerRadius = 15
@@ -34,7 +35,7 @@ class FloatingButtonFactory {
         // Add the plus icon
         let image = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .medium))
         let imageView = UIImageView(image: image)
-        imageView.tintColor = .white
+        imageView.tintColor = UIColor.colorBkgd
         imageView.translatesAutoresizingMaskIntoConstraints = false
         button.addSubview(imageView)
         

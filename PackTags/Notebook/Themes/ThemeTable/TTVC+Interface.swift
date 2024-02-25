@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension ThemeTableViewController {
     private enum Constants {
@@ -22,10 +23,10 @@ extension ThemeTableViewController {
     func configureNavBar () {
         settingsButton.image = UIImage(systemName: "gearshape.2.fill")
         analyticsButton.image = UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill")
-        addThemeButton.image = UIImage(systemName: "plus")
+        smartGButton.image = UIImage(systemName: "number.circle.fill")
 
         navigationController?.navigationBar.putShadow()
-        navigationItem.rightBarButtonItems = [addThemeButton]
+        navigationItem.rightBarButtonItems = [analyticsButton, smartGButton]
         updateLogo()
     }
     
@@ -44,7 +45,7 @@ extension ThemeTableViewController {
     func setupNavigationBarAppearance () {
         self.setNavBarAppearance(color: bkgdColor)
         self.navigationController?.navigationBar.putShadow()
-        self.navigationController?.navigationBar.tintColor = UITextView.appearance().tintColor
+        self.navigationController?.navigationBar.tintColor = UIColor(Color("CustomBarColor").opacity(0.7)) //UITextView.appearance().tintColor
     }
     
     func addFloatingButton() {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020215642B8BE1A000E78061 /* SmartGHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020215632B8BE1A000E78061 /* SmartGHostingViewController.swift */; };
 		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D3284D6FFC00020FB8 /* UITextView+KbToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D2284D6FFC00020FB8 /* UITextView+KbToolBar.swift */; };
 		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
@@ -154,6 +155,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020215632B8BE1A000E78061 /* SmartGHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGHostingViewController.swift; sourceTree = "<group>"; };
 		020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		020584D2284D6FFC00020FB8 /* UITextView+KbToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+KbToolBar.swift"; sourceTree = "<group>"; };
 		020584D4284D715D00020FB8 /* UIView+BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BlurView.swift"; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 		021AFD542787857B0008735E /* SmartG */ = {
 			isa = PBXGroup;
 			children = (
+				020215632B8BE1A000E78061 /* SmartGHostingViewController.swift */,
 				02D709D32A58FCDA0009F7C3 /* SmartGSUI */,
 			);
 			path = SmartG;
@@ -1214,6 +1217,7 @@
 				0281B9882879D60700344D3E /* UINC+BarShadow.swift in Sources */,
 				02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */,
 				023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */,
+				020215642B8BE1A000E78061 /* SmartGHostingViewController.swift in Sources */,
 				02FA307A2A004441006A48CC /* TagView.swift in Sources */,
 				0281B98B287A007200344D3E /* UINC+BarAppearance.swift in Sources */,
 				02FA30852A118D71006A48CC /* JsonParsingError.swift in Sources */,

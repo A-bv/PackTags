@@ -27,6 +27,8 @@ extension ThemeTableViewController {
                 os_log("Showing analytics.", log: OSLog.default, type: .debug)
             case .showSettings:
                 os_log("Showing settings.", log: OSLog.default, type: .debug)
+            case .showSmartG:
+                os_log("Showing smart G.", log: OSLog.default, type: .debug)
             }
         } else {
             fatalError("Unexpected Segue Identifier; \(String(describing: identifier))")

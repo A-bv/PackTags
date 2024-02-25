@@ -73,6 +73,6 @@ extension ThemeTableViewController {
 
 extension ThemeTableViewController {
     func showEditButton() {
-        navigationItem.rightBarButtonItems = self.isEditing ? [editButtonItem, addThemeButton] : [addThemeButton]
+        navigationItem.leftBarButtonItems = self.isEditing ? [settingsButton, editButtonItem] : [settingsButton]
     }
 }
