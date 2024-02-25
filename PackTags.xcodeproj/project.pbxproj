@@ -34,7 +34,6 @@
 		0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* SmartGModel.swift */; };
 		0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */; };
 		02385DFA2A63420E0050FFDE /* SegueDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DF92A63420E0050FFDE /* SegueDestination.swift */; };
-		02385DFD2A634F190050FFDE /* PackTVC+NavigationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFC2A634F190050FFDE /* PackTVC+NavigationLogic.swift */; };
 		02385E002A634FAB0050FFDE /* TTVC+NavigationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* TTVC+NavigationLogic.swift */; };
 		02385E032A63523B0050FFDE /* TVC+NavigationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E022A63523B0050FFDE /* TVC+NavigationLogic.swift */; };
 		02385E082A64430E0050FFDE /* AppUrlHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E072A64430E0050FFDE /* AppUrlHandler.swift */; };
@@ -184,7 +183,6 @@
 		0229864127BD9CBA0048F9E9 /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
 		0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNavigationController.swift; sourceTree = "<group>"; };
 		02385DF92A63420E0050FFDE /* SegueDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueDestination.swift; sourceTree = "<group>"; };
-		02385DFC2A634F190050FFDE /* PackTVC+NavigationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+NavigationLogic.swift"; sourceTree = "<group>"; };
 		02385DFF2A634FAB0050FFDE /* TTVC+NavigationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+NavigationLogic.swift"; sourceTree = "<group>"; };
 		02385E022A63523B0050FFDE /* TVC+NavigationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+NavigationLogic.swift"; sourceTree = "<group>"; };
 		02385E072A64430E0050FFDE /* AppUrlHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUrlHandler.swift; sourceTree = "<group>"; };
@@ -416,7 +414,6 @@
 			isa = PBXGroup;
 			children = (
 				02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */,
-				02385DFC2A634F190050FFDE /* PackTVC+NavigationLogic.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -1234,7 +1231,6 @@
 				02CAC9B7259105B400BE5E57 /* TVC.swift in Sources */,
 				026D16DD2A3E474500228DEA /* AnalyticsSUIVM+Import.swift in Sources */,
 				02B104A727697B6C00C9EC6C /* SmartGVM.swift in Sources */,
-				02385DFD2A634F190050FFDE /* PackTVC+NavigationLogic.swift in Sources */,
 				02B0D7572A48CBB900EF1500 /* AnalyticsSUIVM+ImportTestCase.swift in Sources */,
 				02FA30812A004C7D006A48CC /* InteractionBarView.swift in Sources */,
 				02FA30732A00405D006A48CC /* StoryCardLabel.swift in Sources */,

@@ -46,3 +46,25 @@ extension PackTableVC {
         //if false -> it will ignore and continue to the second it encounters in hierarchy (TTVC's one)
     }
 }
+
+//MARK: - Direction
+extension PackTableVC {
+    func handleSelectedThemeData(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navigationVC = segue.destination as? UINavigationController else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
+        guard let themeDetailViewController = navigationVC.topViewController as? ThemeVC else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
+        let selectedTheme = theme
+        themeDetailViewController.theme = selectedTheme
+        themeDetailViewController.isNotNewTheme = true
+        
+        if sender as? Any.Type == UISwipeActionsConfiguration.self {
+            themeDetailViewController.isFromShow = true
+            themeDetailViewController.packFromShow = chosenPack
+        }
+    }
+}
