@@ -23,6 +23,7 @@ struct SmartGView: View {
     
     @State var showingPopover = false
     @State var loading = true
+    @State var isErrorState = false
     
     //Network Status
     @ObservedObject var monitor = NetworkMonitor()
@@ -32,23 +33,35 @@ struct SmartGView: View {
             Color.bgFillColor.ignoresSafeArea()
             if !monitor.isConnected {
                 OfflineView()
-            } else if loading {
-                LoadingView(loading: $loading).opacity(0.5)
             } else {
-                ScrollView{
+                VStack() {
                     SmartGHeader()
                     interactionBar
-                    FloatingListView(viewModel: self.smartGViewModel)
-                    collection
+                    Spacer()
+                    if loading {
+                        LoadingView(loading: $loading).opacity(0.8)
+                    } else if isErrorState {
+                        SmartGErrorStateView()
+                    } else {
+                        ScrollView{
+                            VStack {
+                                FloatingListView(viewModel: self.smartGViewModel)
+                                collection
+                                    .padding(.vertical)
+                            }
+                        }
+                        .ignoresSafeArea(.keyboard)
+                    }
+                    Spacer()
                 }
-                .ignoresSafeArea(.keyboard)
             }
         }
         .onAppear {
             loading = true
             smartGViewModel.fetch(
                 hashtag: Strings.defaultHashtagWithoutHash,
-                onLoaded: {
+                onLoaded: { state in
+                    isErrorState = state
                     loading = false
                 })
         }
@@ -59,7 +72,8 @@ struct SmartGView: View {
             loading: $loading,
             showingPopover: $showingPopover,
             hashtagEntry: $hashtagEntry,
-            showingAlert: $showingAlert,
+            showingAlert: $showingAlert, 
+            isErrorState: $isErrorState,
             smartGViewModel: smartGViewModel)
     }
 }

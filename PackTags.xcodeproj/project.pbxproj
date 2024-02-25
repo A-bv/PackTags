@@ -67,6 +67,7 @@
 		0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */; };
 		0281B9882879D60700344D3E /* UINC+BarShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* UINC+BarShadow.swift */; };
 		0281B98B287A007200344D3E /* UINC+BarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* UINC+BarAppearance.swift */; };
+		029122842B8AAF56007EB7ED /* SmartGErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029122832B8AAF56007EB7ED /* SmartGErrorStateView.swift */; };
 		02962685284BC2FD009B0F58 /* TTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */; };
 		02998A642B43735F00B70516 /* SmartGVM+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A632B43735F00B70516 /* SmartGVM+Import.swift */; };
@@ -215,6 +216,7 @@
 		0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Seed.swift"; sourceTree = "<group>"; };
 		0281B9872879D60700344D3E /* UINC+BarShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINC+BarShadow.swift"; sourceTree = "<group>"; };
 		0281B98A287A007200344D3E /* UINC+BarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINC+BarAppearance.swift"; sourceTree = "<group>"; };
+		029122832B8AAF56007EB7ED /* SmartGErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGErrorStateView.swift; sourceTree = "<group>"; };
 		02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerVC.swift; sourceTree = "<group>"; };
 		02998A632B43735F00B70516 /* SmartGVM+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartGVM+Import.swift"; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				02F89B2A29743FE4008F363D /* SmartGHeader.swift */,
+				029122832B8AAF56007EB7ED /* SmartGErrorStateView.swift */,
 				02D709D42A5915F80009F7C3 /* InteractionBar */,
 				02FA30782A00442C006A48CC /* FloatingListView */,
 				02FA307B2A00459A006A48CC /* CollectionView */,
@@ -1158,6 +1161,7 @@
 				021D7620275A99D500F54054 /* TransformedProfileModel.swift in Sources */,
 				021D76172759A00D00F54054 /* SmartGView.swift in Sources */,
 				0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */,
+				029122842B8AAF56007EB7ED /* SmartGErrorStateView.swift in Sources */,
 				02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */,
 				0229863F27BD6DF60048F9E9 /* ImageCache.swift in Sources */,
 				02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */,

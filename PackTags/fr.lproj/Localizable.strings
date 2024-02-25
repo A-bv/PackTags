@@ -126,6 +126,7 @@
 "Enter a hashtag" = "Entrez un hashtag";
 "Saved hashtags" = "HASHTAGS SAUVEGARDÉS";
 "Instagram allows only 30 saved hashtags per week." = "Instagram limite la sauvegrade d'hashtags à 30 par semaine.";
+"Oups! Could not find hashtags.\nCheck your entry." = "Oups! Aucun hashtag trouvé.\nVérifiez votre saisie.";
 
 //OnBoardingVc
 "WELCOME TO PACKTAGS" = "BIENVENUE SUR PACKTAGS";

@@ -13,6 +13,9 @@ struct InteractionBarView: View {
     @Binding var showingPopover: Bool
     @Binding var hashtagEntry: String
     @Binding var showingAlert: Bool
+    @Binding var isErrorState: Bool
+    @State var searchedHashtag: String = ""
+
     @Environment(\.managedObjectContext) var moc
     @FocusState private var showKeyBoard: Bool
 
@@ -87,7 +90,6 @@ struct InteractionBarView: View {
             .popover(isPresented: $showingPopover) {
                 SmartGSavedTagsView(isPresented: $showingPopover)
             }
-            
         }
         .padding(.horizontal)
     }
@@ -95,14 +97,18 @@ struct InteractionBarView: View {
     private func refresh() {
         let impactMed = UIImpactFeedbackGenerator(style: .soft)
         impactMed.impactOccurred()
-        let searchedHashtag = hashtagEntry.filter { $0 != "#" }
-        loading = true
-        smartGViewModel.fetch(
-            hashtag: searchedHashtag,
-            onLoaded: {
-                loading = false
-            })
-        updateHashtag(entry: hashtagEntry)
+        let newEntry = hashtagEntry.filter { $0 != "#" }
+        if searchedHashtag != newEntry {
+            searchedHashtag = newEntry
+            loading = true
+            smartGViewModel.fetch(
+                hashtag: searchedHashtag,
+                onLoaded: { state in
+                    isErrorState = state
+                    loading = false
+                })
+            updateHashtag(entry: hashtagEntry)
+        }
         showKeyBoard = false
     }
 }
@@ -116,6 +122,7 @@ struct InteractionBarView_Previews: PreviewProvider {
             showingPopover: .constant(false),
             hashtagEntry: .constant(""),
             showingAlert: .constant(false),
+            isErrorState: .constant(false),
             smartGViewModel: SmartGViewModel())
         .padding()
     }

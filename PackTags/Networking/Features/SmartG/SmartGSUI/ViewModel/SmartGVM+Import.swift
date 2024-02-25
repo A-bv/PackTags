@@ -11,7 +11,7 @@ import Foundation
 // SmartG
 extension SmartGViewModel {
     // 1. Api import
-    func fetch(hashtag: String, onLoaded: @escaping () -> Void) {
+    func fetch(hashtag: String, onLoaded: @escaping (_ errorState: Bool) -> Void) {
         ApiService.searchHashtag(
             searchedHashtag: hashtag,
             completion: { [weak self] result in
@@ -20,10 +20,11 @@ extension SmartGViewModel {
                     case .success(let medias):
                         self?.dataMedias = medias
                         self?.processSmartGModel()
+                        onLoaded(false)
                     case .failure(let error):
                         print("Error fetch: \(error)")
+                        onLoaded(true)
                     }
-                    onLoaded()
                 }
             })
         //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
