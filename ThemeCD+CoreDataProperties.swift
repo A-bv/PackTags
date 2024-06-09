@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension ThemeCD {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ThemeCD> {
@@ -23,5 +22,4 @@ extension ThemeCD {
     @NSManaged public var name: String?
     @NSManaged public var name2: String?
     @NSManaged public var thumbnail: Data?
-
 }

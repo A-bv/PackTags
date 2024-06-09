@@ -74,38 +74,32 @@ extension CoreDataHelper {
         }
         return Int32(0)
     }
-
-    static func tagsAlreadyInCoreData (tags: [String]) -> [String] {
-        
+    
+    static func tagsAlreadyInCoreData(tags: [String]) -> [String] {
         guard !tags.isEmpty else { return [] }
         
-        var tagsR = [String]()
+        // Create a regex pattern to match any of the tags
+        let regex = tags.map { NSRegularExpression.escapedPattern(for: $0) }.joined(separator: "|")
+        let predicate = NSPredicate(format: "content MATCHES %@", ".*(\(regex))\\b.*")
         
-        //condition for the predicate
-        let regex = ".*(" + tags.map {
-            NSRegularExpression.escapedPattern(for: $0)
-        }.joined(separator: "|") + ")\\b.*"
-        
-        //build the predicate to prepare the filter for Core Data
-        let predicate = NSPredicate(format: "content MATCHES %@", regex)
-        
-        //build the request
+        // Prepare the fetch request
         let fetchRequest = NSFetchRequest<ThemeCD>(entityName: "ThemeCD")
         fetchRequest.predicate = predicate
         
-        do  {
-            let fetchedResult = try context.fetch(fetchRequest)
-            for data in fetchedResult {
-                
-                let listOfTagsInFetchedObject = (data.value(forKey: "content")! as AnyObject).components(separatedBy: " ")
-                
-                let tagAlreadyInFetchedObject = Array(Set(listOfTagsInFetchedObject).intersection(Set(tags)))
-                
-                tagsR += tagAlreadyInFetchedObject
+        var matchedTags = [String]()
+        do {
+            let fetchedResults = try context.fetch(fetchRequest)
+            
+            for result in fetchedResults {
+                if let content = result.value(forKey: "content") as? String {
+                    let contentTags = Set(content.components(separatedBy: " "))
+                    matchedTags.append(contentsOf: contentTags.intersection(tags))
+                }
             }
         } catch {
             print(error.localizedDescription)
         }
-        return tagsR
+        
+        return Array(Set(matchedTags))
     }
 }

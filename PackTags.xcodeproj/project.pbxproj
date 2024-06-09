@@ -326,6 +326,7 @@
 		0216113D25D864860098CE5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
 				02D8C17729201663002585C7 /* Themes */,
 				02D8C17829201678002585C7 /* SmartG */,
 			);
@@ -341,14 +342,14 @@
 			path = SmartG;
 			sourceTree = "<group>";
 		};
-		021D7621275A9BBB00F54054 /* Networking */ = {
+		021D7621275A9BBB00F54054 /* Meta */ = {
 			isa = PBXGroup;
 			children = (
 				02491C5A26779AE400F98E17 /* Setup */,
 				026D16E22A3E47A400228DEA /* ApiManager */,
 				026E73732B704AB800FB454F /* Features */,
 			);
-			path = Networking;
+			path = Meta;
 			sourceTree = "<group>";
 		};
 		021D7622275A9E6200F54054 /* Models */ = {
@@ -842,7 +843,6 @@
 		02D8C17729201663002585C7 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
 				021EB876289E8A2E00463B42 /* ThemeCD */,
 				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
 			);
@@ -996,10 +996,10 @@
 		02FB550824FFA2AA00174E34 /* PackTags */ = {
 			isa = PBXGroup;
 			children = (
-				02D066BC296B3FFC00536E3A /* Notebook */,
-				021D7621275A9BBB00F54054 /* Networking */,
-				02FAE2AB260ADA9200324724 /* Settings */,
 				02A4235A2843FFF300A25067 /* OnBoarding */,
+				02FAE2AB260ADA9200324724 /* Settings */,
+				02D066BC296B3FFC00536E3A /* Notebook */,
+				021D7621275A9BBB00F54054 /* Meta */,
 				0273D1532655B9260043011C /* Modules */,
 				0226F19A259E0346006E086C /* Supporting Files */,
 				02FB550F24FFA2AA00174E34 /* Main.storyboard */,
@@ -1453,7 +1453,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1.6;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Nordkapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PackTags.Nordkapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1476,7 +1476,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1.6;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Nordkapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PackTags.Nordkapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

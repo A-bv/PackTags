@@ -17,7 +17,7 @@ final class Unique {
     }
     
     static func cleanTagList(rawText: String, coreDataModel: ThemeCD?, shuffle: Bool) -> String {
-        var cleanTags = rawText.detectHashtags().removingDuplicates()
+        var cleanTags: [String] = rawText.detectHashtags().removingDuplicates()
         
         if !cleanTags.isEmpty {
             cleanTags = removeDuplicatesInCoreData(initialTags: cleanTags, themesInCoreData: coreDataModel)
@@ -36,8 +36,8 @@ final class Unique {
         if let content = themesInCoreData?.content, !content.isEmpty {
             var newContent = content
             newContent = newContent.replacingOccurrences(of: "\n\n", with: " ")
-            
             let contentTags = newContent.components(separatedBy: " ")
+            
             let commonTags = Array(Set(contentTags).intersection(Set(initialTags)))
             let differentTags = commonTags.differenceArrays(from: initialTags)
             
@@ -47,7 +47,6 @@ final class Unique {
         }
         
         print("Tags already in Core Data:", existingTags.count)
-    
         return initialTags.filter { !existingTags.contains($0) }
     }
 }
