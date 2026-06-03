@@ -10,12 +10,20 @@ import UIKit
 import MessageUI
 import WebKit
 
-extension UIViewController: MFMailComposeViewControllerDelegate {
+private final class MailComposerHandler: NSObject, MFMailComposeViewControllerDelegate {
+    static let shared = MailComposerHandler()
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+}
+
+extension UIViewController {
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-            mail.mailComposeDelegate = self
+            mail.mailComposeDelegate = MailComposerHandler.shared
             mail.setToRecipients(["packtagsapp@gmail.com"])
             //mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
 
@@ -24,9 +32,4 @@ extension UIViewController: MFMailComposeViewControllerDelegate {
             print("No Email associated with this device")
         }
     }
-
-    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-    }
-    
 }

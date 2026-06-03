@@ -18,7 +18,7 @@ struct ColorfulButtonStyle: ButtonStyle {
                 ColorfulBackground(
                     isHighlighted: configuration.isPressed,
                     shape: RoundedRectangle(cornerRadius: 10))) //shape: Circle())
-            .animation(nil)
+            .animation(nil, value: configuration.isPressed)
     }
 }
 
