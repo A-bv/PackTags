@@ -9,32 +9,18 @@
 import UIKit
 
 extension ThemeVC {
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         super.prepare(for: segue, sender: sender)
-
-         guard let segueIdentifier = segue.identifier else {
-             return
-         }
-         
-         if let origin = ThemeVCSegueOrigin(rawValue: segueIdentifier) {
-             switch origin {
-             case .cancel:
-                 return
-             case .save:
-                 handleSelectedThemeData(for: segue, sender: sender)
-             }
-         }
-     }
-     
-     @IBAction func cancel(_ sender: UIBarButtonItem) {
-          let isPresentingInAddThemeMode = presentingViewController is UINavigationController
-          if isPresentingInAddThemeMode {
-              dismiss(animated: true, completion: nil)
-             performSegue(withIdentifier: "cancel", sender: self)
-          } else if let owningNavigationController = navigationController {
-              owningNavigationController.popViewController(animated: false)
-          } else {
-              fatalError("func cancel")
-          }
-     }
+    @objc func cancel() {
+        if presentingViewController is UINavigationController {
+            dismiss(animated: true) { [weak self] in
+                self?.onCancel?()
+            }
+        } else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: false)
+            onCancel?()
+        } else {
+            dismiss(animated: true) { [weak self] in
+                self?.onCancel?()
+            }
+        }
+    }
 }

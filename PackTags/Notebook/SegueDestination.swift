@@ -7,15 +7,5 @@
 //
 
 enum ThemeTableViewControllerSegueOrigin: String {
-    case addItem = "addItem"
     case showTheme = "showTheme"
-}
-
-enum PackTableVCSegueOrigin: String {
-    case showDetail = "showDetail"
-}
-
-enum ThemeVCSegueOrigin: String {
-    case cancel = "cancel"
-    case save = "save"
 }

@@ -45,12 +45,15 @@ class PackTableVC: UITableViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         self.title = theme?.name
-    
+
+        composeButton.target = self
+        composeButton.action = #selector(didTapCompose)
+
         loadPacks() //load
         TVinset()
         setupTableViewBackgroundImage()
         tableView.backgroundColor = bkgdColor
-        
+
         self.setNavBarTransparent(alpha: alpha)
     }
     

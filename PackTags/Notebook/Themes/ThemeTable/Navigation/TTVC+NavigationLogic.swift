@@ -34,7 +34,14 @@ extension ThemeTableViewController {
 
 extension ThemeTableViewController {
     @objc func didTapButton() {
-        self.performSegue(withIdentifier: "addItem", sender: self)
+        let themeVC = ThemeVC()
+        themeVC.onSave = { [weak self] _ in
+            self?.themes = CoreDataHelper.retrieveThemes()
+        }
+        let navigationController = UINavigationController(rootViewController: themeVC)
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.modalTransitionStyle = .coverVertical
+        present(navigationController, animated: true)
     }
 
     @objc func didTapSettings() {

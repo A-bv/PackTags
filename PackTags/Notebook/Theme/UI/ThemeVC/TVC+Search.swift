@@ -19,7 +19,7 @@ extension ThemeVC {
 //MARK: - searchBar actions
 extension ThemeVC {
     
-    @IBAction func toolBarDown(_ sender: Any) { //Edit button
+    @objc func toolBarDown(_ sender: Any) { //Edit button
         themeTextView.isEditable = true
         searchLockLabel.text = "\u{1F513}"
         view.endEditing(true)
@@ -33,7 +33,7 @@ extension ThemeVC {
         toolBarSearch.becomeFirstResponder()
     }
     
-    @IBAction func searchBarOK(_ sender: Any) {
+    @objc func searchBarOK(_ sender: Any) {
         toolBarSearch.text = ""
         themeTextView.highlightColorsForSearchedWords(keyword: [""])
         searchView.isHidden = true

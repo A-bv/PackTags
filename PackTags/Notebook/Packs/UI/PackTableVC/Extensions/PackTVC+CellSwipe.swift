@@ -15,11 +15,10 @@ extension PackTableVC {
     }
     
     func addSCellSwipeAccessory (indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let contextItem = UIContextualAction(style: .normal, title: Strings.show) {  (contextualAction, view, boolValue) in
+        let contextItem = UIContextualAction(style: .normal, title: Strings.show) { [weak self] (contextualAction, view, boolValue) in
+            guard let self else { return }
             self.chosenPack = self.packs[indexPath.row]
-            self.performSegue(
-                withIdentifier: PackTableVCSegueOrigin.showDetail.rawValue,
-                sender: UISwipeActionsConfiguration.self)
+            self.presentThemeVC(fromSwipe: true)
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
 

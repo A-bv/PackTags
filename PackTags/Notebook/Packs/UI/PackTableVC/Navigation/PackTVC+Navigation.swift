@@ -10,61 +10,38 @@ import UIKit
 
 // MARK: - Navigation
 extension PackTableVC {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        guard let segueIdentifier = segue.identifier else {
-            return
-        }
-        
-        if let origin = PackTableVCSegueOrigin(rawValue: segueIdentifier) {
-            if origin == .showDetail {
-                handleSelectedThemeData(for: segue, sender: sender)
-                resetStatusBarColor = true
-            }
-        }
+    @objc func didTapCompose() {
+        presentThemeVC(fromSwipe: false)
     }
-}
 
-//MARK: - Unwind
-extension PackTableVC {
-    @IBAction func unwindToThemeList(sender: UIStoryboardSegue) {
-        updatePackTableVC()
-        resetStatusBarColor = false
-    }
-    
-    @IBAction func unwindFromCancel(segue: UIStoryboardSegue) {
-        resetStatusBarColor = false
-    }
-    
-    override func canPerformUnwindSegueAction(_ action: Selector,
-        from fromViewController: UIViewController,
-        withSender sender: Any) -> Bool
-    {
-        return true
-        //if true -> unwind segue will execute first unwindToThemeList it encounters in hierarchy (PackTableVC's one)
-        //if false -> it will ignore and continue to the second it encounters in hierarchy (TTVC's one)
-    }
-}
+    func presentThemeVC(fromSwipe: Bool) {
+        let themeVC = ThemeVC()
+        configure(themeVC, fromSwipe: fromSwipe)
 
-//MARK: - Direction
-extension PackTableVC {
-    func handleSelectedThemeData(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navigationVC = segue.destination as? UINavigationController else {
-            fatalError("Unexpected destination: \(segue.destination)")
+        let navigationController = UINavigationController(rootViewController: themeVC)
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.modalTransitionStyle = .crossDissolve
+
+        resetStatusBarColor = true
+        present(navigationController, animated: true)
+    }
+
+    private func configure(_ themeVC: ThemeVC, fromSwipe: Bool) {
+        themeVC.theme = theme
+        themeVC.isNotNewTheme = true
+
+        if fromSwipe {
+            themeVC.isFromShow = true
+            themeVC.packFromShow = chosenPack
         }
-        
-        guard let themeDetailViewController = navigationVC.topViewController as? ThemeVC else {
-            fatalError("Unexpected destination: \(segue.destination)")
+
+        themeVC.onSave = { [weak self] _ in
+            self?.updatePackTableVC()
+            self?.resetStatusBarColor = false
         }
-        
-        let selectedTheme = theme
-        themeDetailViewController.theme = selectedTheme
-        themeDetailViewController.isNotNewTheme = true
-        
-        if sender as? Any.Type == UISwipeActionsConfiguration.self {
-            themeDetailViewController.isFromShow = true
-            themeDetailViewController.packFromShow = chosenPack
+
+        themeVC.onCancel = { [weak self] in
+            self?.resetStatusBarColor = false
         }
     }
 }

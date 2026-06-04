@@ -14,7 +14,7 @@ extension ThemeVC {
         static let jpegCompressionQuality = CGFloat(0.8)
     }
 
-    func handleSelectedThemeData(for segue: UIStoryboardSegue, sender: Any?) {
+    func handleSelectedThemeData() {
         //Text treatment (no duplicates, no wrong tags)
         let text = Unique.cleanTagList(
            rawText: themeTextView.text,
