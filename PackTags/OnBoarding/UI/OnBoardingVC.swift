@@ -9,9 +9,26 @@
 import UIKit
 
 class OnBoardingController: UIViewController, UIScrollViewDelegate {
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var pageControl: UIPageControl!
-    @IBOutlet var getStartedBtn: UIButton!
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
+    let pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.pageIndicatorTintColor = UIColor(white: 0.667, alpha: 1)
+        pageControl.currentPageIndicatorTintColor = .systemPurple
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        return pageControl
+    }()
+
+    let getStartedBtn: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Get Started", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     var scrollWidth: CGFloat! = 0.0
     var scrollHeight: CGFloat! = 0.0
@@ -75,13 +92,40 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layoutIfNeeded() // used to call viewDidLayoutSubviews()
         self.view.backgroundColor = welcomeScreenColor
+
+        setupViewHierarchy()
+        setupConstraints()
+        self.view.layoutIfNeeded() // used to call viewDidLayoutSubviews()
 
         setupGetStartedButton ()
         setupScrollView()
         setupSlides()
         initializePageControl()
+    }
+
+    private func setupViewHierarchy() {
+        view.addSubview(scrollView)
+        view.addSubview(pageControl)
+        view.addSubview(getStartedBtn)
+    }
+
+    private func setupConstraints() {
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
+            scrollView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16),
+
+            pageControl.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 20),
+            pageControl.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
+            pageControl.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -32),
+
+            getStartedBtn.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: 20),
+            getStartedBtn.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
+            getStartedBtn.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -32),
+            safeArea.bottomAnchor.constraint(equalTo: getStartedBtn.bottomAnchor, constant: 35),
+        ])
     }
 
     private func setupSlides() {
@@ -96,9 +140,14 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
         getStartedBtn.isHidden = true
     }
 
+    private func setupPageControlTarget() {
+        pageControl.addTarget(self, action: #selector(pageChanged(_:)), for: .valueChanged)
+    }
+
     private func initializePageControl() {
         pageControl.numberOfPages = titles.count
         pageControl.currentPage = 0
+        setupPageControlTarget()
     }
 
     private func setupScrollView() {
@@ -173,19 +222,19 @@ extension OnBoardingController {
     }
 
     func setIndiactorForCurrentPage()  {
-        let page = (scrollView?.contentOffset.x)!/scrollWidth
-        pageControl?.currentPage = Int(page)
+        let page = scrollView.contentOffset.x / scrollWidth
+        pageControl.currentPage = Int(page)
         getStartedBtn.isHidden = Int(page) != titles.count - 1
     }
-    
-    @IBAction func pageChanged(_ sender: Any) {
-        let currentPage = CGFloat((pageControl?.currentPage)!)
+
+    @objc func pageChanged(_ sender: Any) {
+        let currentPage = CGFloat(pageControl.currentPage)
         let pageControlFrame = CGRect(
             x: scrollWidth * currentPage,
             y: 0,
             width: scrollWidth,
             height: scrollHeight)
-        scrollView!.scrollRectToVisible(pageControlFrame,animated: true)
+        scrollView.scrollRectToVisible(pageControlFrame, animated: true)
     }
 
     @objc func didTap(_ sender: UIButton) {
@@ -196,7 +245,7 @@ extension OnBoardingController {
 
 extension UIViewController {
     func showOnboardingScreen(completion: (() -> Void)?) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "welcome") as! OnBoardingController
+        let viewController = OnBoardingController()
         viewController.modalPresentationStyle = .fullScreen
         viewController.onDismiss = completion
         present(viewController, animated: true)
