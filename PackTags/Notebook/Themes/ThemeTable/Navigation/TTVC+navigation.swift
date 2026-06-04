@@ -23,20 +23,10 @@ extension ThemeTableViewController {
                 os_log("Adding a new theme.", log: OSLog.default, type: .debug)
             case .showTheme:
                 handleSelectedThemeData(sender: sender, destination: segue.destination)
-            case .showAnalytics:
-                os_log("Showing analytics.", log: OSLog.default, type: .debug)
-            case .showSettings:
-                os_log("Showing settings (legacy storyboard id, actual destination is analytics).", log: OSLog.default, type: .debug)
-            case .showSmartG:
-                os_log("Showing smart G.", log: OSLog.default, type: .debug)
             }
         } else {
-            fatalError("Unexpected Segue Identifier; \(String(describing: identifier))")
+            os_log("Unexpected segue identifier: %{public}@", log: OSLog.default, type: .error, String(describing: identifier))
         }
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        shouldNavigateToShowAnalytics(segueIdentifier: identifier)
     }
 }
 

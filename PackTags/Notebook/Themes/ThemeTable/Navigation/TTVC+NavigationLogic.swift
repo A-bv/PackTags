@@ -9,10 +9,6 @@
 import UIKit
 
 extension ThemeTableViewController {
-    private enum UserDefaultsKeys {
-        static let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
-    }
-    
     func handleSelectedThemeData(sender: Any?, destination: UIViewController) {
         guard let selectedThemeCell = sender as? ThemeCell else {
             fatalError("Unexpected sender: \(String(describing: sender))")
@@ -26,23 +22,7 @@ extension ThemeTableViewController {
         let selectedTheme = themes[indexPath.row]
         themeDetailViewController.theme = selectedTheme
     }
-        
-    func shouldNavigateToShowAnalytics(segueIdentifier: String) -> Bool {
-        guard let segueOrigin = ThemeTableViewControllerSegueOrigin(rawValue: segueIdentifier) else {
-            return true
-        }
 
-        switch segueOrigin {
-        case .showAnalytics:
-            if !UserDefaultsKeys.isCorrectSetup {
-                showFBLoginScreenFromThemeTVC()
-            }
-            return UserDefaultsKeys.isCorrectSetup
-        default:
-            return true
-        }
-    }
-    
     private func showFBLoginScreenFromThemeTVC() {
         let viewModel = FBLoginViewModel()
         let viewController = FBLoginVC(viewModel: viewModel)
@@ -60,5 +40,24 @@ extension ThemeTableViewController {
     @objc func didTapSettings() {
         let settingsVC = SettingsVC()
         navigationController?.pushViewController(settingsVC, animated: true)
+    }
+
+    @objc func didTapAnalytics() {
+        let analyticsVC = AnalyticsHostingViewController()
+        analyticsVC.modalPresentationStyle = .overFullScreen
+        analyticsVC.modalTransitionStyle = .coverVertical
+        present(analyticsVC, animated: true)
+    }
+
+    @objc func didTapSmartG() {
+        let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
+        guard isCorrectSetup else {
+            showFBLoginScreenFromThemeTVC()
+            return
+        }
+        let smartGVC = SmartGHostingViewController()
+        smartGVC.modalPresentationStyle = .overFullScreen
+        smartGVC.modalTransitionStyle = .coverVertical
+        present(smartGVC, animated: true)
     }
 }

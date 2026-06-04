@@ -25,7 +25,11 @@ extension ThemeTableViewController {
         settingsButton.target = self
         settingsButton.action = #selector(didTapSettings)
         analyticsButton.image = UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill")
+        analyticsButton.target = self
+        analyticsButton.action = #selector(didTapAnalytics)
         smartGButton.image = UIImage(systemName: "number.circle.fill")
+        smartGButton.target = self
+        smartGButton.action = #selector(didTapSmartG)
 
         navigationController?.navigationBar.putShadow()
         navigationItem.rightBarButtonItems = [analyticsButton, smartGButton]
