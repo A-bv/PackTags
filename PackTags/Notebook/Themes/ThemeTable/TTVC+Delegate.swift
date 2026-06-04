@@ -11,6 +11,10 @@ import UIKit
 extension ThemeTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.isUserInteractionEnabled = false //(fix p1)
+
+        let packVC = PackTableVC(style: .plain)
+        packVC.theme = themes[indexPath.row]
+        navigationController?.pushViewController(packVC, animated: true)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

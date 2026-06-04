@@ -41,9 +41,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ODT-3n-pug" kind="show" identifier="showTheme" id="mNK-GL-Gby"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -51,31 +48,7 @@
                             <outlet property="delegate" destination="g5o-SH-Iyg" id="mMO-dW-col"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Themes" id="bbI-w9-2Ss">
-                        <barButtonItem key="leftBarButtonItem" id="Q5d-RW-Iii">
-                            <connections>
-                                <segue destination="xD6-oJ-mpg" kind="show" identifier="showSettings" id="rJ4-7Q-PRJ"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem id="L3j-Zt-8rO">
-                                <connections>
-                                    <segue destination="bZ1-1X-cml" kind="presentation" identifier="showSettings" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="plm-bL-2pW"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem id="qap-mE-lrt">
-                                <connections>
-                                    <segue destination="NfC-k8-Pim" kind="presentation" identifier="showAnalytics" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="Apu-9L-aou"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="analyticsButton" destination="L3j-Zt-8rO" id="Hdy-cy-eas"/>
-                        <outlet property="settingsButton" destination="Q5d-RW-Iii" id="y6p-QF-50R"/>
-                        <outlet property="smartGButton" destination="qap-mE-lrt" id="HGm-VL-bjm"/>
-                        <segue destination="0sW-rf-UIL" kind="presentation" identifier="addItem" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="h4b-KS-PSk"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Themes" id="bbI-w9-2Ss"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fur-dN-J5Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -132,23 +105,7 @@
                             <outlet property="delegate" destination="ODT-3n-pug" id="CjO-CC-N43"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="jgf-ZM-Ahe">
-                        <rightBarButtonItems>
-                            <barButtonItem image="EditPic" id="vsr-DK-Loq">
-                                <connections>
-                                    <segue destination="0sW-rf-UIL" kind="presentation" identifier="showDetail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="eAe-I4-Dlb"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="insta2" id="5wO-tP-6UG">
-                                <connections>
-                                    <action selector="autoInstagram:" destination="ODT-3n-pug" id="oLp-B2-UVJ"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="composeButton" destination="vsr-DK-Loq" id="M5X-Jd-brm"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="jgf-ZM-Ahe"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3S-6E-nHV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,9 +340,6 @@
             <point key="canvasLocation" x="-522" y="272"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="h4b-KS-PSk"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="EditPic" width="25" height="25"/>
         <image name="insta2" width="25" height="25"/>

@@ -32,13 +32,15 @@ extension ThemeTableViewController {
         smartGButton.action = #selector(didTapSmartG)
 
         navigationController?.navigationBar.putShadow()
+        navigationItem.leftBarButtonItem = settingsButton
         navigationItem.rightBarButtonItems = [analyticsButton, smartGButton]
         updateLogo()
     }
     
     func configureTableView () {
         self.tableView.backgroundColor = bkgdColor
-        
+        self.tableView.register(ThemeCell.self, forCellReuseIdentifier: "ThemeCell")
+
         let navigationBarHeight = currentNavBarHeight + statusBarHeight
 
         self.tableView.rowHeight = getThemeTableViewControllerCellHeight(

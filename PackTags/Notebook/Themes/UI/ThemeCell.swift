@@ -77,8 +77,17 @@ class ThemeCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
 
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupUI()
+    }
+
+    private func setupUI() {
         self.contentView.backgroundColor = bkgdColor
 
         containerView.addSubview(nameLabel)

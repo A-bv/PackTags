@@ -13,9 +13,10 @@ class PackTableVC: UITableViewController {
     deinit {
         print("deinit PackTableVC")
     }
-    
-    @IBOutlet weak var composeButton: UIBarButtonItem!
-    
+
+    let composeButton = UIBarButtonItem()
+    let instaButton = UIBarButtonItem()
+
     //Models
     var theme: ThemeCD?
     var packs = [""]
@@ -46,8 +47,18 @@ class PackTableVC: UITableViewController {
         super.viewDidLoad()
         self.title = theme?.name
 
+        composeButton.image = UIImage(named: "EditPic")
         composeButton.target = self
         composeButton.action = #selector(didTapCompose)
+
+        instaButton.image = UIImage(named: "insta2")
+        instaButton.target = self
+        instaButton.action = #selector(didTapInstagram)
+
+        navigationItem.rightBarButtonItems = [composeButton, instaButton]
+
+        tableView.register(PackCell.self, forCellReuseIdentifier: "PackCell")
+        tableView.rowHeight = 81
 
         loadPacks() //load
         TVinset()
@@ -56,8 +67,8 @@ class PackTableVC: UITableViewController {
 
         self.setNavBarTransparent(alpha: alpha)
     }
-    
-    @IBAction func autoInstagram(_ sender: Any) {
-        statusAutoDirectToInstagram ()
+
+    @objc func didTapInstagram() {
+        statusAutoDirectToInstagram()
     }
 }

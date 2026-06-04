@@ -113,19 +113,32 @@ class PackCell: UITableViewCell {
         subButtonTapCallback()
     }
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupUI()
+    }
+
+    private func setupUI() {
         self.contentView.backgroundColor = bkgdColor
-        
+
         containerView.addSubview(cellLabel)
         containerView.addSubview(subButton)
         self.contentView.addSubview(containerView)
         self.contentView.addSubview(copyButton)
-        
+
         copyButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         copyButton.addTarget(self, action: #selector(startTap), for: .touchDown)
         copyButton.addTarget(self, action: #selector(dragOutButton(sender:)), for: .touchDragExit)
-        
+
         subButton.addTarget(self, action: #selector(showMore), for: .touchUpInside)
         
         // ---------- containerView ----------

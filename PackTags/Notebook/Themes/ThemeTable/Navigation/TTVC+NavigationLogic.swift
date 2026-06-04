@@ -9,20 +9,6 @@
 import UIKit
 
 extension ThemeTableViewController {
-    func handleSelectedThemeData(sender: Any?, destination: UIViewController) {
-        guard let selectedThemeCell = sender as? ThemeCell else {
-            fatalError("Unexpected sender: \(String(describing: sender))")
-        }
-        guard let themeDetailViewController = destination as? PackTableVC else {
-            fatalError("Unexpected destination: \(destination)")
-        }
-        guard let indexPath = tableView.indexPath(for: selectedThemeCell) else {
-            fatalError("The selected cell is not being displayed by the table")
-        }
-        let selectedTheme = themes[indexPath.row]
-        themeDetailViewController.theme = selectedTheme
-    }
-
     private func showFBLoginScreenFromThemeTVC() {
         let viewModel = FBLoginViewModel()
         let viewController = FBLoginVC(viewModel: viewModel)

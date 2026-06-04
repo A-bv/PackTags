@@ -9,11 +9,11 @@
 import UIKit
 
 class ThemeTableViewController: UITableViewController {
-    
-    @IBOutlet weak var smartGButton: UIBarButtonItem!
-    @IBOutlet weak var settingsButton: UIBarButtonItem!
-    @IBOutlet weak var analyticsButton: UIBarButtonItem!
-    
+
+    let smartGButton = UIBarButtonItem()
+    let settingsButton = UIBarButtonItem()
+    let analyticsButton = UIBarButtonItem()
+
     var themes = [ThemeCD](){
         didSet {
             //reloadeding after adding a new theme (safe)
