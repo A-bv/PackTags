@@ -56,4 +56,9 @@ extension ThemeTableViewController {
     @objc func didTapButton() {
         self.performSegue(withIdentifier: "addItem", sender: self)
     }
+
+    @objc func didTapSettings() {
+        let settingsVC = SettingsVC()
+        navigationController?.pushViewController(settingsVC, animated: true)
+    }
 }

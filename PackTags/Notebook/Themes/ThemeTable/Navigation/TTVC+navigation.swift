@@ -26,7 +26,7 @@ extension ThemeTableViewController {
             case .showAnalytics:
                 os_log("Showing analytics.", log: OSLog.default, type: .debug)
             case .showSettings:
-                os_log("Showing settings.", log: OSLog.default, type: .debug)
+                os_log("Showing settings (legacy storyboard id, actual destination is analytics).", log: OSLog.default, type: .debug)
             case .showSmartG:
                 os_log("Showing smart G.", log: OSLog.default, type: .debug)
             }

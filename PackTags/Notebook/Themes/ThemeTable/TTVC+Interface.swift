@@ -22,6 +22,8 @@ extension ThemeTableViewController {
     
     func configureNavBar () {
         settingsButton.image = UIImage(systemName: "gearshape.2.fill")
+        settingsButton.target = self
+        settingsButton.action = #selector(didTapSettings)
         analyticsButton.image = UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill")
         smartGButton.image = UIImage(systemName: "number.circle.fill")
 
