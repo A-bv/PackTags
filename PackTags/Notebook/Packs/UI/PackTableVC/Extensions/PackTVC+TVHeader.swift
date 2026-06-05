@@ -17,7 +17,7 @@ extension PackTableVC {
             x: 0,
             y: 0,
             width: UIScreen.main.bounds.width,
-            height: self.view.frame.midY + cR)
+            height: UIScreen.main.bounds.height / 2 + cR)
         
             let tableViewBackgroundView = UIView()
             tableViewBackgroundView.addSubview(self.uiiv)

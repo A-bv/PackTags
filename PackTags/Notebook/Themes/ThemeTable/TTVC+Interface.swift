@@ -10,10 +10,10 @@ import UIKit
 import SwiftUI
 
 extension ThemeTableViewController {
-    private enum Constants {
+    enum Constants {
         static let tableViewBottomPadding = CGFloat(14)
     }
-    
+
     func updateLogo() {
         navigationItem.titleView = DarkMode.isDarkMode() ?
         UIImageView(image: UIImage(named: "logoBlack")) :
@@ -40,14 +40,18 @@ extension ThemeTableViewController {
     func configureTableView () {
         self.tableView.backgroundColor = bkgdColor
         self.tableView.register(ThemeCell.self, forCellReuseIdentifier: "ThemeCell")
-
-        let navigationBarHeight = currentNavBarHeight + statusBarHeight
-
-        self.tableView.rowHeight = getThemeTableViewControllerCellHeight(
-            navigationBarHeight: navigationBarHeight,
-            paddingBottom: Constants.tableViewBottomPadding)
         self.setThemeTableViewControllerThumbnailsDimension()
         self.addLongPressToTableView() // reorder cells
+    }
+
+    func updateRowHeightIfNeeded() {
+        let navigationBarHeight = currentNavBarHeight + statusBarHeight
+        let newHeight = getThemeTableViewControllerCellHeight(
+            navigationBarHeight: navigationBarHeight,
+            paddingBottom: Constants.tableViewBottomPadding)
+        if newHeight > 0, tableView.rowHeight != newHeight {
+            tableView.rowHeight = newHeight
+        }
     }
     
     func setupNavigationBarAppearance () {

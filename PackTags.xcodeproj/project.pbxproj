@@ -124,7 +124,6 @@
 		02FAE2A5260AC79C00324724 /* SettingsCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FAE2A4260AC79C00324724 /* SettingsCell2.swift */; };
 		02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550924FFA2AA00174E34 /* AppDelegate.swift */; };
 		02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */; };
-		02FB551124FFA2AA00174E34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FB550F24FFA2AA00174E34 /* Main.storyboard */; };
 		02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */; };
 		02FB551624FFA2AC00174E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551524FFA2AC00174E34 /* Assets.xcassets */; };
 		02FB551924FFA2AC00174E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551724FFA2AC00174E34 /* LaunchScreen.storyboard */; };
@@ -166,7 +165,6 @@
 		021D76162759A00D00F54054 /* SmartGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGView.swift; sourceTree = "<group>"; };
 		021D761F275A99D500F54054 /* TransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformedProfileModel.swift; sourceTree = "<group>"; };
 		021EB81328846AD100463B42 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
-		021EB81528846F1B00463B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		021EB81928846FDE00463B42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		021EB81B28846FEE00463B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		021EB84C288C1EB000463B42 /* TTVC+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Operations.swift"; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 		02FB550624FFA2AA00174E34 /* PackTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02FB550924FFA2AA00174E34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		02FB551024FFA2AA00174E34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02FB551324FFA2AA00174E34 /* PackTags.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PackTags.xcdatamodel; sourceTree = "<group>"; };
 		02FB551524FFA2AC00174E34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02FB551824FFA2AC00174E34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -996,7 +993,6 @@
 				021D7621275A9BBB00F54054 /* Meta */,
 				0273D1532655B9260043011C /* Modules */,
 				0226F19A259E0346006E086C /* Supporting Files */,
-				02FB550F24FFA2AA00174E34 /* Main.storyboard */,
 			);
 			path = PackTags;
 			sourceTree = "<group>";
@@ -1113,7 +1109,6 @@
 				025479DF26C7EEA000E28724 /* SeedData in Resources */,
 				02FB551924FFA2AC00174E34 /* LaunchScreen.storyboard in Resources */,
 				02FB551624FFA2AC00174E34 /* Assets.xcassets in Resources */,
-				02FB551124FFA2AA00174E34 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1285,15 +1280,6 @@
 				021EB81B28846FEE00463B42 /* fr */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		02FB550F24FFA2AA00174E34 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				02FB551024FFA2AA00174E34 /* Base */,
-				021EB81528846F1B00463B42 /* fr */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		02FB551724FFA2AC00174E34 /* LaunchScreen.storyboard */ = {

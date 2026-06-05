@@ -46,4 +46,9 @@ class ThemeTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         handleNewUserFlow()
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateRowHeightIfNeeded()
+    }
 }
