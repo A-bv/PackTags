@@ -34,8 +34,8 @@
 		0229863F27BD6DF60048F9E9 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229863B27BD6DF60048F9E9 /* ImageCache.swift */; };
 		0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* SmartGModel.swift */; };
 		0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */; };
-		02385E002A634FAB0050FFDE /* TTVC+NavigationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* TTVC+NavigationLogic.swift */; };
-		02385E032A63523B0050FFDE /* TVC+NavigationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E022A63523B0050FFDE /* TVC+NavigationLogic.swift */; };
+		02385E002A634FAB0050FFDE /* TTVC+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* TTVC+Navigation.swift */; };
+		02385E032A63523B0050FFDE /* TVC+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E022A63523B0050FFDE /* TVC+Save.swift */; };
 		02385E082A64430E0050FFDE /* AppUrlHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E072A64430E0050FFDE /* AppUrlHandler.swift */; };
 		023A2F7A2856493C00EE6CDE /* PackTVC+AutoReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F792856493C00EE6CDE /* PackTVC+AutoReorder.swift */; };
 		023A2F7C2856495800EE6CDE /* PackTVC+ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7B2856495800EE6CDE /* PackTVC+ConfigCell.swift */; };
@@ -180,8 +180,8 @@
 		0229863B27BD6DF60048F9E9 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0229864127BD9CBA0048F9E9 /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
 		0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNavigationController.swift; sourceTree = "<group>"; };
-		02385DFF2A634FAB0050FFDE /* TTVC+NavigationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+NavigationLogic.swift"; sourceTree = "<group>"; };
-		02385E022A63523B0050FFDE /* TVC+NavigationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+NavigationLogic.swift"; sourceTree = "<group>"; };
+		02385DFF2A634FAB0050FFDE /* TTVC+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TTVC+Navigation.swift"; sourceTree = "<group>"; };
+		02385E022A63523B0050FFDE /* TVC+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+Save.swift"; sourceTree = "<group>"; };
 		02385E072A64430E0050FFDE /* AppUrlHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUrlHandler.swift; sourceTree = "<group>"; };
 		023A2F792856493C00EE6CDE /* PackTVC+AutoReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+AutoReorder.swift"; sourceTree = "<group>"; };
 		023A2F7B2856495800EE6CDE /* PackTVC+ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+ConfigCell.swift"; sourceTree = "<group>"; };
@@ -418,7 +418,7 @@
 		02385DFE2A634F910050FFDE /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				02385DFF2A634FAB0050FFDE /* TTVC+NavigationLogic.swift */,
+				02385DFF2A634FAB0050FFDE /* TTVC+Navigation.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -427,7 +427,6 @@
 			isa = PBXGroup;
 			children = (
 				02A423542842C1D000A25067 /* TVC+Navigation.swift */,
-				02385E022A63523B0050FFDE /* TVC+NavigationLogic.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -696,6 +695,7 @@
 				0216110D25D46C180098CE5E /* TVC+NewMenu.swift */,
 				02B02AC42594238100586352 /* TVC+Search.swift */,
 				02B05C222809CD76000026B8 /* SearcheableTextView.swift */,
+				02385E022A63523B0050FFDE /* TVC+Save.swift */,
 			);
 			path = ThemeVC;
 			sourceTree = "<group>";
@@ -1165,7 +1165,7 @@
 				02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */,
 				0229863F27BD6DF60048F9E9 /* ImageCache.swift in Sources */,
 				02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */,
-				02385E032A63523B0050FFDE /* TVC+NavigationLogic.swift in Sources */,
+				02385E032A63523B0050FFDE /* TVC+Save.swift in Sources */,
 				02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */,
 				0281B97A2879877C00344D3E /* UIVC+NavigationBarDimensions.swift in Sources */,
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
@@ -1235,7 +1235,7 @@
 				02AD94A929A5936500D893E5 /* UIVC+ModalViewButtons.swift.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				0269E2AC2564B838005FE14B /* AnalyticsHostingViewController.swift in Sources */,
-				02385E002A634FAB0050FFDE /* TTVC+NavigationLogic.swift in Sources */,
+				02385E002A634FAB0050FFDE /* TTVC+Navigation.swift in Sources */,
 				02FDEDCF2903062400B9BCFD /* DataController.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
 				0229863C27BD6DF60048F9E9 /* ImageLoader.swift in Sources */,
