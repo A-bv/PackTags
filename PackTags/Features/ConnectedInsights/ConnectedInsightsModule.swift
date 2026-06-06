@@ -10,21 +10,70 @@ protocol ConnectedInsightsRouting {
     func makeViewController(for destination: ConnectedInsightsDestination) -> UIViewController
 }
 
+protocol ConnectedInsightsSettingsProtocol {
+    var isCorrectSetup: Bool { get set }
+    var facebookToken: String? { get set }
+    var instagramBusinessAccountId: String? { get set }
+    var setupInfoShown: Bool { get set }
+    var pressedFacebookLoginButton: Bool { get set }
+}
+
+final class UserDefaultsConnectedInsightsSettings: ConnectedInsightsSettingsProtocol {
+    private enum Key {
+        static let isCorrectSetup = "isCorrectSetup"
+        static let facebookToken = "fbToken"
+        static let instagramBusinessAccountId = "IgBId"
+        static let setupInfoShown = "setupInfoShownOnce"
+        static let pressedFacebookLoginButton = "pressedFBLoginButton"
+    }
+
+    private let defaults: UserDefaults
+
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+    }
+
+    var isCorrectSetup: Bool {
+        get { defaults.bool(forKey: Key.isCorrectSetup) }
+        set { defaults.set(newValue, forKey: Key.isCorrectSetup) }
+    }
+
+    var facebookToken: String? {
+        get { defaults.string(forKey: Key.facebookToken) }
+        set { defaults.set(newValue, forKey: Key.facebookToken) }
+    }
+
+    var instagramBusinessAccountId: String? {
+        get { defaults.string(forKey: Key.instagramBusinessAccountId) }
+        set { defaults.set(newValue, forKey: Key.instagramBusinessAccountId) }
+    }
+
+    var setupInfoShown: Bool {
+        get { defaults.bool(forKey: Key.setupInfoShown) }
+        set { defaults.set(newValue, forKey: Key.setupInfoShown) }
+    }
+
+    var pressedFacebookLoginButton: Bool {
+        get { defaults.bool(forKey: Key.pressedFacebookLoginButton) }
+        set { defaults.set(newValue, forKey: Key.pressedFacebookLoginButton) }
+    }
+}
+
 final class ConnectedInsightsModule: ConnectedInsightsRouting {
-    private let appSettings: any ConnectedInsightsSettingsProtocol
+    private let settings: any ConnectedInsightsSettingsProtocol
     private let instagramGraphService: any InstagramGraphServicing
 
     init(
-        appSettings: any ConnectedInsightsSettingsProtocol,
-        instagramGraphService: any InstagramGraphServicing
+        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
+        instagramGraphService: (any InstagramGraphServicing)? = nil
     ) {
-        self.appSettings = appSettings
-        self.instagramGraphService = instagramGraphService
+        self.settings = settings
+        self.instagramGraphService = instagramGraphService ?? InstagramGraphService(settings: settings)
     }
 
     func makeViewController(for destination: ConnectedInsightsDestination) -> UIViewController {
-        guard appSettings.isCorrectSetup else {
-            return FBLoginVC(settings: appSettings)
+        guard settings.isCorrectSetup else {
+            return FBLoginVC(settings: settings)
         }
 
         switch destination {

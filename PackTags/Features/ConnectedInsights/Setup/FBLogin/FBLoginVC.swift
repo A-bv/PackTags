@@ -19,7 +19,7 @@ class FBLoginVC: UIViewController {
     
     init(
         viewModel: FBLoginViewModel,
-        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsAppSettings()
+        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()
     ) {
         self.viewModel = viewModel
         self.settings = settings

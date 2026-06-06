@@ -11,7 +11,7 @@ import FBSDKLoginKit
 final class FBLoginViewModel {
     private var settings: any ConnectedInsightsSettingsProtocol
 
-    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsAppSettings()) {
+    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()) {
         self.settings = settings
     }
 

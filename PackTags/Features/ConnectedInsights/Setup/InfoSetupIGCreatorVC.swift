@@ -11,7 +11,7 @@ import UIKit
 class InfoSetupIGCreatorVC: UIViewController {
     private var settings: any ConnectedInsightsSettingsProtocol
 
-    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsAppSettings()) {
+    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()) {
         self.settings = settings
         super.init(nibName: nil, bundle: nil)
     }

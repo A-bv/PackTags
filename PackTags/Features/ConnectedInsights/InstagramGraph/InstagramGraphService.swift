@@ -22,7 +22,7 @@ final class InstagramGraphService: InstagramGraphServicing {
     private let apiGraphVersion = "v19.0"
     private let settings: any ConnectedInsightsSettingsProtocol
 
-    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsAppSettings()) {
+    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()) {
         self.settings = settings
     }
 
