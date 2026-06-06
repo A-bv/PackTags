@@ -9,7 +9,9 @@
 import UIKit
 
 class PackTableVC: UITableViewController {
-    
+
+    weak var coordinator: ThemeCoordinator?
+
     deinit {
         print("deinit PackTableVC")
     }

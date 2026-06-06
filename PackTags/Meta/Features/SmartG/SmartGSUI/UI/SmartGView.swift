@@ -26,7 +26,7 @@ struct SmartGView: View {
     @State var isErrorState = false
     
     //Network Status
-    @ObservedObject var monitor = NetworkMonitor()
+    @StateObject var monitor = NetworkMonitor()
     
     var body: some View {
         ZStack{

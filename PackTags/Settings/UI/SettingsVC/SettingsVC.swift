@@ -86,6 +86,8 @@ class SettingsVC: UIViewController {
         return table
     }()
     
+    weak var coordinator: ThemeCoordinator?
+
     var models = [SettingsSection]()
     
     override func viewDidLoad() {
@@ -168,7 +170,7 @@ class SettingsVC: UIViewController {
                             iconBackgroundColor: .systemTeal
                         ) {[weak self] in
                             UserDefaults.standard.setValue(false, forKey: "isNewUser")
-                            self?.showOnboardingScreen(completion: nil)
+                            self?.coordinator?.showOnboarding(completion: nil)
                         }),
                     .staticCell(
                         model: SettingsOption(

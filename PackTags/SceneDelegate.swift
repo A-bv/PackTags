@@ -12,6 +12,7 @@ import FBSDKCoreKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private var appCoordinator: AppCoordinator?
 
     //Fb login
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -25,9 +26,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        let rootVC = ThemeTableViewController(style: .plain)
-        window.rootViewController = ThemeNavigationController(rootViewController: rootVC)
         self.window = window
+        let coordinator = AppCoordinator(window: window)
+        appCoordinator = coordinator
+        coordinator.start()
         window.makeKeyAndVisible()
     }
 

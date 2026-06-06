@@ -242,12 +242,3 @@ extension OnBoardingController {
         dismiss(animated: true)
     }
 }
-
-extension UIViewController {
-    func showOnboardingScreen(completion: (() -> Void)?) {
-        let viewController = OnBoardingController()
-        viewController.modalPresentationStyle = .fullScreen
-        viewController.onDismiss = completion
-        present(viewController, animated: true)
-    }
-}

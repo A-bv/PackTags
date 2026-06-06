@@ -59,7 +59,7 @@ struct AnalyticsNew : View {
     }
     
     //
-    @ObservedObject var swiftUIData = AnalyticsSUIViewModel()
+    @StateObject var swiftUIData = AnalyticsSUIViewModel()
     
     //
     @State private var showingAlert = false
@@ -68,7 +68,7 @@ struct AnalyticsNew : View {
     @Environment(\.presentationMode) var presentationMode
     
     //Network Status
-    @ObservedObject var monitor = NetworkMonitor()
+    @StateObject var monitor = NetworkMonitor()
     
     //
     @State var selectedBarChartPostId = 0

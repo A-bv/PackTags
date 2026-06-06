@@ -15,33 +15,19 @@ extension PackTableVC {
     }
 
     func presentThemeVC(fromSwipe: Bool) {
-        let themeVC = ThemeVC()
-        configure(themeVC, fromSwipe: fromSwipe)
-
-        let navigationController = UINavigationController(rootViewController: themeVC)
-        navigationController.modalPresentationStyle = .overFullScreen
-        navigationController.modalTransitionStyle = .crossDissolve
-
+        guard let theme = theme else { return }
         resetStatusBarColor = true
-        present(navigationController, animated: true)
-    }
-
-    private func configure(_ themeVC: ThemeVC, fromSwipe: Bool) {
-        themeVC.theme = theme
-        themeVC.isNotNewTheme = true
-
-        if fromSwipe {
-            themeVC.isFromShow = true
-            themeVC.packFromShow = chosenPack
-        }
-
-        themeVC.onSave = { [weak self] _ in
-            self?.updatePackTableVC()
-            self?.resetStatusBarColor = false
-        }
-
-        themeVC.onCancel = { [weak self] in
-            self?.resetStatusBarColor = false
-        }
+        coordinator?.showThemeEditor(
+            for: theme,
+            fromSwipe: fromSwipe,
+            chosenPack: fromSwipe ? chosenPack : "",
+            onSave: { [weak self] in
+                self?.updatePackTableVC()
+                self?.resetStatusBarColor = false
+            },
+            onCancel: { [weak self] in
+                self?.resetStatusBarColor = false
+            }
+        )
     }
 }

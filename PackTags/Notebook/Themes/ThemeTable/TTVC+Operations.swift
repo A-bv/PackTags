@@ -54,13 +54,13 @@ extension ThemeTableViewController {
             return
         }
 
-        showOnboardingScreen(completion: {
+        coordinator?.showOnboarding {
             let tipsAlertShown = UserDefaults.standard.bool(forKey: "showTipsAlertShown")
             if !tipsAlertShown {
                 UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
                 Alerts.showFirstTimeTipsAlert(presentingViewController: self)
             }
-        })
+        }
     }
 
     func deleteRow(indexPath: IndexPath) {

@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		020215642B8BE1A000E78061 /* SmartGHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020215632B8BE1A000E78061 /* SmartGHostingViewController.swift */; };
 		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D3284D6FFC00020FB8 /* UITextView+KbToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D2284D6FFC00020FB8 /* UITextView+KbToolBar.swift */; };
 		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
 		020584D7284D7B4E00020FB8 /* PackTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */; };
 		0206214E2663A2AE0072C404 /* JsonResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0206214D2663A2AE0072C404 /* JsonResponseModels.swift */; };
 		020621572666DBCC0072C404 /* BarChartPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* BarChartPost.swift */; };
+		0207BB852FD3736C0007F3D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB842FD3736C0007F3D3 /* Coordinator.swift */; };
+		0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */; };
+		0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */; };
+		0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		0216110E25D46C180098CE5E /* TVC+NewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216110D25D46C180098CE5E /* TVC+NewMenu.swift */; };
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
@@ -54,7 +57,6 @@
 		026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */; };
 		0264B817264A7CE900E1EEFA /* AnalyticsSUIVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* AnalyticsSUIVM.swift */; };
 		0264B837264B25E100E1EEFA /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */; };
-		0269E2AC2564B838005FE14B /* AnalyticsHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269E2AB2564B838005FE14B /* AnalyticsHostingViewController.swift */; };
 		026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */; };
 		026D16DD2A3E474500228DEA /* AnalyticsSUIVM+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* AnalyticsSUIVM+Import.swift */; };
 		026D16DF2A3E474500228DEA /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D92A3E474500228DEA /* ApiService.swift */; };
@@ -152,13 +154,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		020215632B8BE1A000E78061 /* SmartGHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGHostingViewController.swift; sourceTree = "<group>"; };
 		020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		020584D2284D6FFC00020FB8 /* UITextView+KbToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+KbToolBar.swift"; sourceTree = "<group>"; };
 		020584D4284D715D00020FB8 /* UIView+BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BlurView.swift"; sourceTree = "<group>"; };
 		020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackTVC+Delegate.swift"; sourceTree = "<group>"; };
 		0206214D2663A2AE0072C404 /* JsonResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponseModels.swift; sourceTree = "<group>"; };
 		020621562666DBCC0072C404 /* BarChartPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPost.swift; sourceTree = "<group>"; };
+		0207BB842FD3736C0007F3D3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
+		0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		0216110D25D46C180098CE5E /* TVC+NewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+NewMenu.swift"; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -200,7 +205,6 @@
 		026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0264B816264A7CE900E1EEFA /* AnalyticsSUIVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSUIVM.swift; sourceTree = "<group>"; };
 		0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
-		0269E2AB2564B838005FE14B /* AnalyticsHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsHostingViewController.swift; sourceTree = "<group>"; };
 		026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
 		026D16D62A3E474500228DEA /* AnalyticsSUIVM+Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnalyticsSUIVM+Import.swift"; sourceTree = "<group>"; };
 		026D16D92A3E474500228DEA /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -316,6 +320,16 @@
 			path = TapTextView;
 			sourceTree = "<group>";
 		};
+		0207BB832FD372660007F3D3 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				0207BB842FD3736C0007F3D3 /* Coordinator.swift */,
+				0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */,
+				0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		0216113D25D864860098CE5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,7 +343,6 @@
 		021AFD542787857B0008735E /* SmartG */ = {
 			isa = PBXGroup;
 			children = (
-				020215632B8BE1A000E78061 /* SmartGHostingViewController.swift */,
 				02D709D32A58FCDA0009F7C3 /* SmartGSUI */,
 			);
 			path = SmartG;
@@ -852,7 +865,6 @@
 		02E4B9D325CC97C700949213 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				0269E2AB2564B838005FE14B /* AnalyticsHostingViewController.swift */,
 				02EE53B4284CCD9F004E7D5C /* AnalyticsSUI */,
 			);
 			path = Analytics;
@@ -993,6 +1005,7 @@
 				021D7621275A9BBB00F54054 /* Meta */,
 				0273D1532655B9260043011C /* Modules */,
 				0226F19A259E0346006E086C /* Supporting Files */,
+				0207BB832FD372660007F3D3 /* Coordinators */,
 			);
 			path = PackTags;
 			sourceTree = "<group>";
@@ -1002,6 +1015,7 @@
 			children = (
 				02FB552324FFA2AC00174E34 /* PackTagsTests.swift */,
 				02FB552524FFA2AC00174E34 /* Info.plist */,
+				0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */,
 			);
 			path = PackTagsTests;
 			sourceTree = "<group>";
@@ -1133,6 +1147,7 @@
 				02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */,
 				023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */,
 				02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */,
+				0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */,
 				02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */,
 				02FA30772A004254006A48CC /* CollectionView.swift in Sources */,
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
@@ -1169,11 +1184,13 @@
 				02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */,
 				0281B97A2879877C00344D3E /* UIVC+NavigationBarDimensions.swift in Sources */,
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
+				0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */,
 				023A2F7C2856495800EE6CDE /* PackTVC+ConfigCell.swift in Sources */,
 				0206214E2663A2AE0072C404 /* JsonResponseModels.swift in Sources */,
 				021EB84D288C1EB000463B42 /* TTVC+Operations.swift in Sources */,
 				02998A642B43735F00B70516 /* SmartGVM+Import.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
+				0207BB852FD3736C0007F3D3 /* Coordinator.swift in Sources */,
 				02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */,
 				02F89B272974306F008F363D /* StoryCard.swift in Sources */,
 				02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */,
@@ -1205,7 +1222,6 @@
 				0281B9882879D60700344D3E /* UINC+BarShadow.swift in Sources */,
 				02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */,
 				023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */,
-				020215642B8BE1A000E78061 /* SmartGHostingViewController.swift in Sources */,
 				02FA307A2A004441006A48CC /* TagView.swift in Sources */,
 				0281B98B287A007200344D3E /* UINC+BarAppearance.swift in Sources */,
 				02FA30852A118D71006A48CC /* JsonParsingError.swift in Sources */,
@@ -1234,7 +1250,6 @@
 				02FEF5B7263304EC0001B525 /* UIVC+SendMail.swift in Sources */,
 				02AD94A929A5936500D893E5 /* UIVC+ModalViewButtons.swift.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
-				0269E2AC2564B838005FE14B /* AnalyticsHostingViewController.swift in Sources */,
 				02385E002A634FAB0050FFDE /* TTVC+Navigation.swift in Sources */,
 				02FDEDCF2903062400B9BCFD /* DataController.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
@@ -1258,6 +1273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */,
 				02FBAFE825A93E8400E32D73 /* PackTagsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1470,7 +1486,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ANNM3BXP39;
 				INFOPLIST_FILE = PackTagsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1492,7 +1508,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ANNM3BXP39;
 				INFOPLIST_FILE = PackTagsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
