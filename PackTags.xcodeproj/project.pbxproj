@@ -327,6 +327,7 @@
 				0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */,
 				0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */,
 				0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */,
+				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -395,7 +396,6 @@
 				02FB551A24FFA2AC00174E34 /* Info.plist */,
 				025479DE26C7EEA000E28724 /* SeedData */,
 				021EB81A28846FDE00463B42 /* Localizable.strings */,
-				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
