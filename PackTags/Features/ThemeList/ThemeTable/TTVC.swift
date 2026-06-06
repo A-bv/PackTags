@@ -10,7 +10,7 @@ import UIKit
 
 class ThemeTableViewController: UITableViewController {
 
-    weak var coordinator: ThemeCoordinator?
+    weak var coordinator: (any ThemeCoordinatorProtocol)?
 
     let smartGButton = UIBarButtonItem()
     let settingsButton = UIBarButtonItem()

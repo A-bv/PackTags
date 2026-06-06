@@ -17,6 +17,7 @@
 		0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */; };
 		0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */; };
 		0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */; };
+		0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		0216110E25D46C180098CE5E /* TVC+NewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216110D25D46C180098CE5E /* TVC+NewMenu.swift */; };
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
@@ -164,6 +165,7 @@
 		0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
 		0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
+		0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		0216110D25D46C180098CE5E /* TVC+NewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVC+NewMenu.swift"; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				0207BB842FD3736C0007F3D3 /* Coordinator.swift */,
 				0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */,
 				0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */,
+				0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1075,6 +1078,7 @@
 				02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */,
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,
 				023A2F80285649B900EE6CDE /* PackTVC+Loading.swift in Sources */,
+				0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */,
 				02D709CD2A58C4AE0009F7C3 /* QuantityPickerData.swift in Sources */,

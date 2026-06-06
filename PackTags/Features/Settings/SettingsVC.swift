@@ -86,7 +86,7 @@ class SettingsVC: UIViewController {
         return table
     }()
     
-    weak var coordinator: ThemeCoordinator?
+    weak var coordinator: (any ThemeCoordinatorProtocol)?
 
     var models = [SettingsSection]()
     

@@ -1,7 +1,7 @@
 import UIKit
 import SwiftUI
 
-final class ThemeCoordinator: Coordinator {
+final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     let navigationController: UINavigationController
     weak var parentCoordinator: AppCoordinator?
