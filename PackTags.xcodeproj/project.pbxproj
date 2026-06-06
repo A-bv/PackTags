@@ -330,6 +330,31 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		0207BB8C2FD4645D0007F3D3 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				02A4235A2843FFF300A25067 /* Onboarding */,
+				02FAE2AB260ADA9200324724 /* Settings */,
+				02A4235B2844002600A25067 /* ThemeList */,
+				02A4235C2844007200A25067 /* PackList */,
+				02A4235D284400FC00A25067 /* ThemeEditor */,
+				02491C5A26779AE400F98E17 /* Authentication */,
+				02EE53B4284CCD9F004E7D5C /* Analytics */,
+				02D709D32A58FCDA0009F7C3 /* SmartG */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		0207BB8D2FD4645D0007F3D3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				021D7622275A9E6200F54054 /* Models */,
+				026D16D42A3E474500228DEA /* Transformers */,
+				026D16D92A3E474500228DEA /* ApiService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		0216113D25D864860098CE5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,24 +363,6 @@
 				02D8C17829201678002585C7 /* SmartG */,
 			);
 			name = CoreData;
-			sourceTree = "<group>";
-		};
-		021AFD542787857B0008735E /* SmartG */ = {
-			isa = PBXGroup;
-			children = (
-				02D709D32A58FCDA0009F7C3 /* SmartGSUI */,
-			);
-			path = SmartG;
-			sourceTree = "<group>";
-		};
-		021D7621275A9BBB00F54054 /* Meta */ = {
-			isa = PBXGroup;
-			children = (
-				02491C5A26779AE400F98E17 /* Setup */,
-				026D16E22A3E47A400228DEA /* ApiManager */,
-				026E73732B704AB800FB454F /* Features */,
-			);
-			path = Meta;
 			sourceTree = "<group>";
 		};
 		021D7622275A9E6200F54054 /* Models */ = {
@@ -376,7 +383,7 @@
 			name = ThemeCD;
 			sourceTree = "<group>";
 		};
-		0226F19A259E0346006E086C /* Supporting Files */ = {
+		0226F19A259E0346006E086C /* App */ = {
 			isa = PBXGroup;
 			children = (
 				02FB551524FFA2AC00174E34 /* Assets.xcassets */,
@@ -388,7 +395,7 @@
 				025479DE26C7EEA000E28724 /* SeedData */,
 				021EB81A28846FDE00463B42 /* Localizable.strings */,
 			);
-			name = "Supporting Files";
+			name = App;
 			sourceTree = "<group>";
 		};
 		0229864027BD6E070048F9E9 /* AsyncImageForSui */ = {
@@ -412,47 +419,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		0234E7B9287ADE3500D7A2AF /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		02385DFB2A634F030050FFDE /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		02385DFE2A634F910050FFDE /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				02385DFF2A634FAB0050FFDE /* TTVC+Navigation.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		02385E012A6352230050FFDE /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				02A423542842C1D000A25067 /* TVC+Navigation.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		023A2F772856486D00EE6CDE /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				0226F19B259EAB93006E086C /* PackCell.swift */,
-				02AEA5E725B9D2B00063076F /* PackTableVC */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
 		023D2B952A48F101006E2D35 /* Circles */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,13 +428,13 @@
 			path = Circles;
 			sourceTree = "<group>";
 		};
-		02491C5A26779AE400F98E17 /* Setup */ = {
+		02491C5A26779AE400F98E17 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
 				02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */,
 				02CD2DA62990795A00EDE077 /* FBLogin */,
 			);
-			path = Setup;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		026D16D42A3E474500228DEA /* Transformers */ = {
@@ -479,36 +445,7 @@
 			path = Transformers;
 			sourceTree = "<group>";
 		};
-		026D16D72A3E474500228DEA /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				026D16D92A3E474500228DEA /* ApiService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		026D16E22A3E47A400228DEA /* ApiManager */ = {
-			isa = PBXGroup;
-			children = (
-				026D16D72A3E474500228DEA /* Service */,
-				026D16D42A3E474500228DEA /* Transformers */,
-				021D7622275A9E6200F54054 /* Models */,
-			);
-			path = ApiManager;
-			sourceTree = "<group>";
-		};
-		026E73732B704AB800FB454F /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
-				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
-				02E4B9D325CC97C700949213 /* Analytics */,
-				021AFD542787857B0008735E /* SmartG */,
-			);
-			path = Features;
-			sourceTree = "<group>";
-		};
-		0273D1532655B9260043011C /* Modules */ = {
+		0273D1532655B9260043011C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				02FD6CB326D8178800AB16E4 /* Rating */,
@@ -529,8 +466,10 @@
 				02FEF5B6263304EC0001B525 /* UIVC+SendMail.swift */,
 				02CD2D8E29904F0D00EDE077 /* String+UrlEncoding.swift */,
 				021EB81328846AD100463B42 /* Localizable.swift */,
+				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
+				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
 			);
-			path = Modules;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		0281B9782879874900344D3E /* UIDesign */ = {
@@ -566,15 +505,6 @@
 			path = NavigationBar;
 			sourceTree = "<group>";
 		};
-		029122872B8B4391007EB7ED /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
-				022688922624F9B1007DBD98 /* ThemeCell.swift */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
 		02962683284BA65E009B0F58 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,39 +515,41 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		02A4235A2843FFF300A25067 /* OnBoarding */ = {
+		02A4235A2843FFF300A25067 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				02D10F0B2920675600287248 /* UI */,
 				0281B9822879CA7900344D3E /* Core.swift */,
+				029FDDC0264E75600063DF1D /* OnBoardingVC.swift */,
 			);
-			path = OnBoarding;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		02A4235B2844002600A25067 /* Themes */ = {
+		02A4235B2844002600A25067 /* ThemeList */ = {
 			isa = PBXGroup;
 			children = (
-				0234E7B9287ADE3500D7A2AF /* Navigation */,
 				02AEA5EA25B9D2F10063076F /* ThemeTable */,
-				029122872B8B4391007EB7ED /* UI */,
+				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
+				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
+				022688922624F9B1007DBD98 /* ThemeCell.swift */,
 			);
-			path = Themes;
+			path = ThemeList;
 			sourceTree = "<group>";
 		};
-		02A4235C2844007200A25067 /* Packs */ = {
+		02A4235C2844007200A25067 /* PackList */ = {
 			isa = PBXGroup;
 			children = (
-				023A2F772856486D00EE6CDE /* UI */,
+				0226F19B259EAB93006E086C /* PackCell.swift */,
+				02AEA5E725B9D2B00063076F /* PackTableVC */,
 			);
-			path = Packs;
+			path = PackList;
 			sourceTree = "<group>";
 		};
-		02A4235D284400FC00A25067 /* Theme */ = {
+		02A4235D284400FC00A25067 /* ThemeEditor */ = {
 			isa = PBXGroup;
 			children = (
-				02D10F092920661B00287248 /* UI */,
+				02CAC9B82591061B00BE5E57 /* ThemeVC */,
 			);
-			path = Theme;
+			path = ThemeEditor;
 			sourceTree = "<group>";
 		};
 		02AD94B429AC2A0A00D893E5 /* Model */ = {
@@ -642,8 +574,8 @@
 			children = (
 				0226F19D259EABB4006E086C /* PackTVC.swift */,
 				020584D6284D7B4E00020FB8 /* PackTVC+Delegate.swift */,
-				02385DFB2A634F030050FFDE /* Navigation */,
 				0281B97F2879B1CC00344D3E /* Extensions */,
+				02BC8D2F25FD7DC800441349 /* PackTVC+Navigation.swift */,
 			);
 			path = PackTableVC;
 			sourceTree = "<group>";
@@ -652,10 +584,10 @@
 			isa = PBXGroup;
 			children = (
 				02FB552E24FFA78B00174E34 /* TTVC.swift */,
-				02385DFE2A634F910050FFDE /* Navigation */,
 				022688B22628BCCC007DBD98 /* TTVC+Interface.swift */,
 				021EB84C288C1EB000463B42 /* TTVC+Operations.swift */,
 				02962684284BC2FD009B0F58 /* TTVC+Delegate.swift */,
+				02385DFF2A634FAB0050FFDE /* TTVC+Navigation.swift */,
 			);
 			path = ThemeTable;
 			sourceTree = "<group>";
@@ -703,12 +635,12 @@
 			isa = PBXGroup;
 			children = (
 				02CAC9B6259105B400BE5E57 /* TVC.swift */,
-				02385E012A6352230050FFDE /* Navigation */,
 				02CAC9B42591054400BE5E57 /* TVC+ImgPicker.swift */,
 				0216110D25D46C180098CE5E /* TVC+NewMenu.swift */,
 				02B02AC42594238100586352 /* TVC+Search.swift */,
 				02B05C222809CD76000026B8 /* SearcheableTextView.swift */,
 				02385E022A63523B0050FFDE /* TVC+Save.swift */,
+				02A423542842C1D000A25067 /* TVC+Navigation.swift */,
 			);
 			path = ThemeVC;
 			sourceTree = "<group>";
@@ -741,59 +673,6 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		02D066BC296B3FFC00536E3A /* Notebook */ = {
-			isa = PBXGroup;
-			children = (
-				02A4235B2844002600A25067 /* Themes */,
-				02A4235C2844007200A25067 /* Packs */,
-				02A4235D284400FC00A25067 /* Theme */,
-			);
-			path = Notebook;
-			sourceTree = "<group>";
-		};
-		02D10F092920661B00287248 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				02CAC9B82591061B00BE5E57 /* ThemeVC */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		02D10F0A2920673200287248 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				02D10F112920FBEC00287248 /* SettingsCells */,
-				02D10F0E2920FA9F00287248 /* SettingsVC */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		02D10F0B2920675600287248 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				029FDDC0264E75600063DF1D /* OnBoardingVC.swift */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		02D10F0E2920FA9F00287248 /* SettingsVC */ = {
-			isa = PBXGroup;
-			children = (
-				02BC8D582602B79900441349 /* SettingsVC.swift */,
-				02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */,
-			);
-			path = SettingsVC;
-			sourceTree = "<group>";
-		};
-		02D10F112920FBEC00287248 /* SettingsCells */ = {
-			isa = PBXGroup;
-			children = (
-				02FAE2A4260AC79C00324724 /* SettingsCell2.swift */,
-				02FAE29E260A9BA900324724 /* SettingsCell.swift */,
-			);
-			path = SettingsCells;
-			sourceTree = "<group>";
-		};
 		02D709CB2A58C48C0009F7C3 /* QuantityPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,7 +682,7 @@
 			path = QuantityPicker;
 			sourceTree = "<group>";
 		};
-		02D709D32A58FCDA0009F7C3 /* SmartGSUI */ = {
+		02D709D32A58FCDA0009F7C3 /* SmartG */ = {
 			isa = PBXGroup;
 			children = (
 				02F89B2829743EF9008F363D /* SmartGViewContainer.swift */,
@@ -811,7 +690,7 @@
 				02AD94B529AC2A1700D893E5 /* ViewModel */,
 				02F89B25297427AE008F363D /* UI */,
 			);
-			path = SmartGSUI;
+			path = SmartG;
 			sourceTree = "<group>";
 		};
 		02D709D42A5915F80009F7C3 /* InteractionBar */ = {
@@ -862,14 +741,6 @@
 			name = SmartG;
 			sourceTree = "<group>";
 		};
-		02E4B9D325CC97C700949213 /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				02EE53B4284CCD9F004E7D5C /* AnalyticsSUI */,
-			);
-			path = Analytics;
-			sourceTree = "<group>";
-		};
 		02EE53B3284CCB86004E7D5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -880,14 +751,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		02EE53B4284CCD9F004E7D5C /* AnalyticsSUI */ = {
+		02EE53B4284CCD9F004E7D5C /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
 				02EE53B3284CCB86004E7D5C /* Models */,
 				0231AB1126849DFA007F4FC8 /* ViewModel */,
 				02FB530C25AD3DD00063038C /* UI */,
 			);
-			path = AnalyticsSUI;
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		02F60AA926809FD5004022CA /* AppStyle */ = {
@@ -961,7 +832,10 @@
 			isa = PBXGroup;
 			children = (
 				02D709CB2A58C48C0009F7C3 /* QuantityPicker */,
-				02D10F0A2920673200287248 /* UI */,
+				02BC8D582602B79900441349 /* SettingsVC.swift */,
+				02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */,
+				02FAE29E260A9BA900324724 /* SettingsCell.swift */,
+				02FAE2A4260AC79C00324724 /* SettingsCell2.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -999,13 +873,11 @@
 		02FB550824FFA2AA00174E34 /* PackTags */ = {
 			isa = PBXGroup;
 			children = (
-				02A4235A2843FFF300A25067 /* OnBoarding */,
-				02FAE2AB260ADA9200324724 /* Settings */,
-				02D066BC296B3FFC00536E3A /* Notebook */,
-				021D7621275A9BBB00F54054 /* Meta */,
-				0273D1532655B9260043011C /* Modules */,
-				0226F19A259E0346006E086C /* Supporting Files */,
+				0273D1532655B9260043011C /* Shared */,
+				0226F19A259E0346006E086C /* App */,
 				0207BB832FD372660007F3D3 /* Coordinators */,
+				0207BB8C2FD4645D0007F3D3 /* Features */,
+				0207BB8D2FD4645D0007F3D3 /* Networking */,
 			);
 			path = PackTags;
 			sourceTree = "<group>";
