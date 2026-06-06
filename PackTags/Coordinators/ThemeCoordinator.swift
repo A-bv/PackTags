@@ -15,6 +15,8 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     func start() {
         let vc = ThemeTableViewController(style: .plain)
         vc.coordinator = self
+        vc.themeRepository = dependencies.themeRepository
+        vc.appSettings = dependencies.appSettings
         navigationController.setViewControllers([vc], animated: false)
     }
 
@@ -24,11 +26,13 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
         let vc = PackListViewController(style: .plain)
         vc.theme = theme
         vc.coordinator = self
+        vc.themeRepository = dependencies.themeRepository
         navigationController.pushViewController(vc, animated: true)
     }
 
     func showNewThemeEditor(onSave: @escaping () -> Void) {
         let vc = ThemeEditorViewController()
+        vc.themeRepository = dependencies.themeRepository
         vc.onSave = { _ in onSave() }
         presentInNavController(vc, transition: .coverVertical)
     }
@@ -47,26 +51,18 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     }
 
     func showAnalytics() {
-        let vc = UIHostingController(rootView: AnalyticsNew())
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .coverVertical
-        navigationController.present(vc, animated: true)
+        presentConnectedInsights(.analytics)
     }
 
     func showSmartG() {
-        let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
-        let vc: UIViewController = isCorrectSetup
-            ? UIHostingController(rootView: SmartGViewContainer())
-            : FBLoginVC(viewModel: FBLoginViewModel())
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .coverVertical
-        navigationController.present(vc, animated: true)
+        presentConnectedInsights(.smartG)
     }
 
     // MARK: - From PackListViewController
 
     func showThemeEditor(for theme: ThemeCD, fromSwipe: Bool, chosenPack: String, onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
         let vc = ThemeEditorViewController()
+        vc.themeRepository = dependencies.themeRepository
         vc.theme = theme
         vc.isNotNewTheme = true
         vc.onSave = { _ in onSave() }
@@ -85,5 +81,12 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
         nc.modalPresentationStyle = .overFullScreen
         nc.modalTransitionStyle = transition
         navigationController.present(nc, animated: true)
+    }
+
+    private func presentConnectedInsights(_ destination: ConnectedInsightsDestination) {
+        let vc = dependencies.connectedInsights.makeViewController(for: destination)
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .coverVertical
+        navigationController.present(vc, animated: true)
     }
 }

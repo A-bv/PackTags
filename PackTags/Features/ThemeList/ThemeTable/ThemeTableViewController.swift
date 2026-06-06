@@ -11,6 +11,8 @@ import UIKit
 class ThemeTableViewController: UITableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
+    var themeRepository: any ThemeRepositoryProtocol = CoreDataThemeRepository()
+    var appSettings: any AppSettingsProtocol = UserDefaultsAppSettings()
 
     let smartGButton = UIBarButtonItem()
     let settingsButton = UIBarButtonItem()
@@ -40,7 +42,7 @@ class ThemeTableViewController: UITableViewController {
         super.viewDidLoad()
         configureNavBar ()
         configureTableView ()
-        themes = CoreDataHelper.retrieveThemes()
+        themes = themeRepository.fetchAll()
         addFloatingButton()
     }
     

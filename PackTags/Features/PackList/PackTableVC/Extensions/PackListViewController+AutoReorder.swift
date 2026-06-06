@@ -19,8 +19,7 @@ extension PackListViewController {
             //save new order
             let newSt = self.packs.joined(separator: " ")
             self.theme?.content = newSt
-            CoreDataHelper.saveTheme()
+            self.themeRepository.save()
         }
     }
 }
-

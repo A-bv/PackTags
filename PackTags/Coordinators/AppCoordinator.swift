@@ -9,7 +9,12 @@ final class AppCoordinator: Coordinator {
     init(window: UIWindow) {
         self.window = window
         self.navigationController = ThemeNavigationController()
-        self.dependencies = AppDependencies(themeRepository: CoreDataThemeRepository())
+        let appSettings = UserDefaultsAppSettings()
+        self.dependencies = AppDependencies(
+            themeRepository: CoreDataThemeRepository(),
+            appSettings: appSettings,
+            connectedInsights: ConnectedInsightsModule(appSettings: appSettings)
+        )
     }
 
     func start() {

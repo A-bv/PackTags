@@ -19,6 +19,7 @@ extension ThemeEditorViewController {
         let text = Unique.cleanTagList(
            rawText: themeTextView.text,
            coreDataModel:theme,
+           themeRepository: themeRepository,
            shuffle: false)
         
         //Downsampling
@@ -29,25 +30,25 @@ extension ThemeEditorViewController {
                 compressionQuality: Constants.jpegCompressionQuality)
         
         //OPTIONAL: Reorder tableView
-        let index = CoreDataHelper.getRecordsCount()
+        let index = themeRepository.count()
         
         if theme != nil {
             theme?.name = themeTitle
             theme?.content = text
             theme?.image = image
             theme?.thumbnail = thumbnail
-            CoreDataHelper.saveTheme()
+            themeRepository.save()
             
             //Storekit (app review)
             StoreKitHelper.displayStoreKit()
         } else if theme == nil {
-            let newTheme = CoreDataHelper.newTheme()
+            let newTheme = themeRepository.create()
             newTheme.name = themeTitle
             newTheme.content = text
             newTheme.image = image
             newTheme.thumbnail = thumbnail
             newTheme.orderIndex = index
-            CoreDataHelper.saveTheme()
+            themeRepository.save()
         }
     }
 }

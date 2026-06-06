@@ -11,6 +11,7 @@ import UIKit
 class PackListViewController: UITableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
+    var themeRepository: any ThemeRepositoryProtocol = CoreDataThemeRepository()
 
     let composeButton = UIBarButtonItem()
     let instaButton = UIBarButtonItem()

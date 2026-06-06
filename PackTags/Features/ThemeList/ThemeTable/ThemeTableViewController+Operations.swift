@@ -18,7 +18,7 @@ extension ThemeTableViewController {
         for (index, element) in themes.enumerated() {
             element.orderIndex = Int32(index)
         }
-        CoreDataHelper.saveTheme()
+        themeRepository.save()
     }
 }
 
@@ -55,9 +55,8 @@ extension ThemeTableViewController {
         }
 
         coordinator?.showOnboarding {
-            let tipsAlertShown = UserDefaults.standard.bool(forKey: "showTipsAlertShown")
-            if !tipsAlertShown {
-                UserDefaults.standard.set(true, forKey: "showTipsAlertShown")
+            if !self.appSettings.tipsAlertShown {
+                self.appSettings.tipsAlertShown = true
                 Alerts.showFirstTimeTipsAlert(presentingViewController: self)
             }
         }
@@ -65,8 +64,8 @@ extension ThemeTableViewController {
 
     func deleteRow(indexPath: IndexPath) {
         let themeToDelete = self.themes[indexPath.row]
-        CoreDataHelper.delete(theme: themeToDelete)
-        themes = CoreDataHelper.retrieveThemes()
+        themeRepository.delete(themeToDelete)
+        themes = themeRepository.fetchAll()
         tableView.deleteRows(at: [indexPath], with: .none)
     }
 }

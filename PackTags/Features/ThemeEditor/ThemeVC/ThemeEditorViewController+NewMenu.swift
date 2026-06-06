@@ -81,6 +81,7 @@ extension ThemeEditorViewController{
             let text = Unique.cleanTagList(
                 rawText: textToShuffle,
                 coreDataModel: self?.theme,
+                themeRepository: self?.themeRepository ?? CoreDataThemeRepository(),
                 shuffle: true)
             
             themeTextView.text = Unique.reorganizeTags(from: text, with: numTagsPerPack)

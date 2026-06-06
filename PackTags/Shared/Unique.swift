@@ -16,11 +16,19 @@ final class Unique {
         return newText
     }
     
-    static func cleanTagList(rawText: String, coreDataModel: ThemeCD?, shuffle: Bool) -> String {
+    static func cleanTagList(
+        rawText: String,
+        coreDataModel: ThemeCD?,
+        themeRepository: any ThemeRepositoryProtocol = CoreDataThemeRepository(),
+        shuffle: Bool
+    ) -> String {
         var cleanTags: [String] = rawText.detectHashtags().removingDuplicates()
         
         if !cleanTags.isEmpty {
-            cleanTags = removeDuplicatesInCoreData(initialTags: cleanTags, themesInCoreData: coreDataModel)
+            cleanTags = removeDuplicatesInCoreData(
+                initialTags: cleanTags,
+                themesInCoreData: coreDataModel,
+                themeRepository: themeRepository)
         }
         
         if UserDefaults.standard.bool(forKey: "Save & Shuffle") || shuffle {
@@ -30,7 +38,11 @@ final class Unique {
         return cleanTags.joined(separator: " ")
     }
 
-    static func removeDuplicatesInCoreData(initialTags: [String], themesInCoreData: ThemeCD?) -> [String] {
+    static func removeDuplicatesInCoreData(
+        initialTags: [String],
+        themesInCoreData: ThemeCD?,
+        themeRepository: any ThemeRepositoryProtocol = CoreDataThemeRepository()
+    ) -> [String] {
         var existingTags = [""]
         
         if let content = themesInCoreData?.content, !content.isEmpty {
@@ -41,9 +53,9 @@ final class Unique {
             let commonTags = Array(Set(contentTags).intersection(Set(initialTags)))
             let differentTags = commonTags.differenceArrays(from: initialTags)
             
-            existingTags = CoreDataHelper.tagsAlreadyInCoreData(tags: differentTags)
+            existingTags = themeRepository.tagsAlreadyStored(tags: differentTags)
         } else {
-            existingTags = CoreDataHelper.tagsAlreadyInCoreData(tags: initialTags)
+            existingTags = themeRepository.tagsAlreadyStored(tags: initialTags)
         }
         
         print("Tags already in Core Data:", existingTags.count)

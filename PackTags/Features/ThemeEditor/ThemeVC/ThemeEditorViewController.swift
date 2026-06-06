@@ -10,6 +10,8 @@ import UIKit
 
 class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
 
+    var themeRepository: any ThemeRepositoryProtocol = CoreDataThemeRepository()
+
     deinit {
         print("deinit ThemeEditorViewController")
     }
