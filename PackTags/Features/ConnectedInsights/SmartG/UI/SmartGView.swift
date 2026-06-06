@@ -16,7 +16,7 @@ private enum Strings {
 struct SmartGView: View {
     // @State private var igHash: String =  "hashtag theme?"
     @State private var textstyle = UIFont.TextStyle.body
-    @StateObject var smartGViewModel = SmartGViewModel()
+    @StateObject var smartGViewModel: SmartGViewModel
     
     @State var hashtagEntry: String = Strings.defaultHashtag
     @State var showingAlert = false
@@ -27,6 +27,11 @@ struct SmartGView: View {
     
     //Network Status
     @StateObject var monitor = NetworkMonitor()
+
+    init(instagramGraphService: any InstagramGraphServicing = InstagramGraphService()) {
+        _smartGViewModel = StateObject(
+            wrappedValue: SmartGViewModel(instagramGraphService: instagramGraphService))
+    }
     
     var body: some View {
         ZStack{

@@ -10,8 +10,14 @@ import SwiftUI
 
 struct SmartGViewContainer: View {
     @StateObject var dataController = DataController()
+    private let instagramGraphService: any InstagramGraphServicing
+
+    init(instagramGraphService: any InstagramGraphServicing = InstagramGraphService()) {
+        self.instagramGraphService = instagramGraphService
+    }
+
     var body: some View {
-        SmartGView()
+        SmartGView(instagramGraphService: instagramGraphService)
             .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
     }
 }

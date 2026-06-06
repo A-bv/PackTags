@@ -10,10 +10,14 @@ final class AppCoordinator: Coordinator {
         self.window = window
         self.navigationController = ThemeNavigationController()
         let appSettings = UserDefaultsAppSettings()
+        let instagramGraphService = InstagramGraphService()
         self.dependencies = AppDependencies(
             themeRepository: CoreDataThemeRepository(),
             appSettings: appSettings,
-            connectedInsights: ConnectedInsightsModule(appSettings: appSettings)
+            instagramGraphService: instagramGraphService,
+            connectedInsights: ConnectedInsightsModule(
+                appSettings: appSettings,
+                instagramGraphService: instagramGraphService)
         )
     }
 

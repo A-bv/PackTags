@@ -64,7 +64,7 @@
 		0264B837264B25E100E1EEFA /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */; };
 		026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */; };
 		026D16DD2A3E474500228DEA /* AnalyticsSUIVM+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* AnalyticsSUIVM+Import.swift */; };
-		026D16DF2A3E474500228DEA /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D92A3E474500228DEA /* ApiService.swift */; };
+		026D16DF2A3E474500228DEA /* InstagramGraphService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D92A3E474500228DEA /* InstagramGraphService.swift */; };
 		0274105826207D2100D82F6D /* PackListViewController+Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274105726207D2000D82F6D /* PackListViewController+Instagram.swift */; };
 		0274DB3026848948005F9C9C /* DocumentDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* DocumentDirectory.swift */; };
 		0281B97A2879877C00344D3E /* UIVC+NavigationBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9792879877C00344D3E /* UIVC+NavigationBarDimensions.swift */; };
@@ -216,7 +216,7 @@
 		0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
 		026D16D62A3E474500228DEA /* AnalyticsSUIVM+Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnalyticsSUIVM+Import.swift"; sourceTree = "<group>"; };
-		026D16D92A3E474500228DEA /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		026D16D92A3E474500228DEA /* InstagramGraphService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramGraphService.swift; sourceTree = "<group>"; };
 		0274105726207D2000D82F6D /* PackListViewController+Instagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Instagram.swift"; sourceTree = "<group>"; };
 		0274DB2F26848948005F9C9C /* DocumentDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDirectory.swift; sourceTree = "<group>"; };
 		0281B9792879877C00344D3E /* UIVC+NavigationBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+NavigationBarDimensions.swift"; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 			children = (
 				021D7622275A9E6200F54054 /* Models */,
 				026D16D42A3E474500228DEA /* Transformers */,
-				026D16D92A3E474500228DEA /* ApiService.swift */,
+				026D16D92A3E474500228DEA /* InstagramGraphService.swift */,
 			);
 			path = InstagramGraph;
 			sourceTree = "<group>";
@@ -1051,7 +1051,7 @@
 			files = (
 				0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */,
 				02B05C1A27F90333000026B8 /* UITextView+PlaceHolder.swift in Sources */,
-				026D16DF2A3E474500228DEA /* ApiService.swift in Sources */,
+				026D16DF2A3E474500228DEA /* InstagramGraphService.swift in Sources */,
 				02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */,
 				023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */,
 				02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */,

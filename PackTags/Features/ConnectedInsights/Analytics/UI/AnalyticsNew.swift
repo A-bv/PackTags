@@ -59,7 +59,7 @@ struct AnalyticsNew : View {
     }
     
     //
-    @StateObject var swiftUIData = AnalyticsSUIViewModel()
+    @StateObject var swiftUIData: AnalyticsSUIViewModel
     
     //
     @State private var showingAlert = false
@@ -74,6 +74,16 @@ struct AnalyticsNew : View {
     @State var selectedBarChartPostId = 0
 
     var colors = [Color("Color1"),Color("Color")]
+
+    init(instagramGraphService: any InstagramGraphServicing = InstagramGraphService()) {
+        _swiftUIData = StateObject(
+            wrappedValue: AnalyticsSUIViewModel(instagramGraphService: instagramGraphService))
+        //Navigation bar customization
+        UINavigationBar.appearance().titleTextAttributes = [
+            .foregroundColor: UIColor.clear
+        ]
+    }
+
     var columns = Array(
         repeating:
             GridItem(
@@ -103,13 +113,6 @@ struct AnalyticsNew : View {
     
     //Toggle button
     @State private var isToggled = false
-    
-    init() {
-        //Navigation bar customization
-        UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor.clear
-        ]
-    }
     
     var body: some View {
         ZStack {

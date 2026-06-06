@@ -9,10 +9,16 @@
 import SwiftUI
 
 class SmartGViewModel: ObservableObject {
+    let instagramGraphService: any InstagramGraphServicing
+
     @Published var dataMedias: [DataMedia] = []
     @Published var computedData: [SmartGModel] = []
     @Published var topHashtags: [String] = []
     @Published var topHashtagsCount: [Int] = []
+
+    init(instagramGraphService: any InstagramGraphServicing = InstagramGraphService()) {
+        self.instagramGraphService = instagramGraphService
+    }
 }
 
 extension SmartGViewModel {

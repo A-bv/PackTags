@@ -31,5 +31,6 @@ final class UserDefaultsAppSettings: AppSettingsProtocol {
 struct AppDependencies {
     let themeRepository: any ThemeRepositoryProtocol
     let appSettings: any AppSettingsProtocol
+    let instagramGraphService: any InstagramGraphServicing
     let connectedInsights: any ConnectedInsightsRouting
 }

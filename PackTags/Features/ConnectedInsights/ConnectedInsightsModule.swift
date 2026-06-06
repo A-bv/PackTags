@@ -12,9 +12,14 @@ protocol ConnectedInsightsRouting {
 
 final class ConnectedInsightsModule: ConnectedInsightsRouting {
     private let appSettings: any AppSettingsProtocol
+    private let instagramGraphService: any InstagramGraphServicing
 
-    init(appSettings: any AppSettingsProtocol) {
+    init(
+        appSettings: any AppSettingsProtocol,
+        instagramGraphService: any InstagramGraphServicing
+    ) {
         self.appSettings = appSettings
+        self.instagramGraphService = instagramGraphService
     }
 
     func makeViewController(for destination: ConnectedInsightsDestination) -> UIViewController {
@@ -24,9 +29,11 @@ final class ConnectedInsightsModule: ConnectedInsightsRouting {
 
         switch destination {
         case .analytics:
-            return UIHostingController(rootView: AnalyticsNew())
+            return UIHostingController(
+                rootView: AnalyticsNew(instagramGraphService: instagramGraphService))
         case .smartG:
-            return UIHostingController(rootView: SmartGViewContainer())
+            return UIHostingController(
+                rootView: SmartGViewContainer(instagramGraphService: instagramGraphService))
         }
     }
 }

@@ -16,6 +16,8 @@ class AnalyticsSUIViewModel: ObservableObject {
         static let average = "Average".localized()
         static let selection = "Selection".localized()
     }
+
+    let instagramGraphService: any InstagramGraphServicing
     
     //MARK: - Live Variables
     @Published var processedJson : TransformedProfileModel?
@@ -54,7 +56,8 @@ class AnalyticsSUIViewModel: ObservableObject {
     @Published var barChartData: [BarChartPost] = [BarChartPost(id: 0, post: "", rate: 0, barHeight: 0)]
     
     //MARK: - Init
-    init() {
+    init(instagramGraphService: any InstagramGraphServicing = InstagramGraphService()) {
+        self.instagramGraphService = instagramGraphService
         self.loadDataForAnalyticsNew()
     }
     

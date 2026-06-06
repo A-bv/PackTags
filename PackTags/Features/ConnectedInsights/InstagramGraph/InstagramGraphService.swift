@@ -8,14 +8,33 @@
 
 import UIKit
 
-final class ApiService {
+protocol InstagramGraphServicing {
+    func searchHashtag(
+        searchedHashtag: String,
+        completion: @escaping (Result<[DataMedia], Error>) -> Void
+    )
+    func loadProfileForAnalytics(completion: @escaping (Profile) -> Void)
+}
+
+final class InstagramGraphService: InstagramGraphServicing {
     typealias ResultHandler<T> = (Result<T, Error>) -> Void
     
-    static let apiGraphVersion = "v19.0"
-    static let fbToken = UserDefaults.standard.string(forKey: "fbToken") ?? ""
-    static let igBId = UserDefaults.standard.string(forKey: "IgBId") ?? ""
+    private let apiGraphVersion = "v19.0"
+    private let defaults: UserDefaults
 
-    static func fetchDataFromUrl<T: Decodable>(
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+    }
+
+    private var fbToken: String {
+        defaults.string(forKey: "fbToken") ?? ""
+    }
+
+    private var igBId: String {
+        defaults.string(forKey: "IgBId") ?? ""
+    }
+
+    func fetchDataFromUrl<T: Decodable>(
         of type: T.Type,
         from url: String,
         completion: @escaping ResultHandler<Any>
@@ -25,12 +44,12 @@ final class ApiService {
             case .failure(let error):
                 print(error)
             case .success(let data):
-                handleSuccessResult(of: T.self, data: data, completion: completion)
+                self.handleSuccessResult(of: T.self, data: data, completion: completion)
             }
         }
     }
 
-    private static func handleSuccessResult<T: Decodable>(
+    private func handleSuccessResult<T: Decodable>(
         of type: T.Type,
         data: Data,
         completion: @escaping ResultHandler<Any>
@@ -56,15 +75,15 @@ final class ApiService {
 }
 
 //MARK: - SmartG
-extension ApiService {
-    static func searchHashtag(
+extension InstagramGraphService {
+    func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
     ) {
         findHashtagUrl(searchedHashtag: searchedHashtag) { result in
             switch result {
             case .success(let mediaSearchURL):
-                getMedia(for: mediaSearchURL, completion: completion)
+                self.getMedia(for: mediaSearchURL, completion: completion)
             case .failure(let error):
                 print("Error finding hashtag URL: \(error)")
                 completion(.failure(error))
@@ -72,7 +91,7 @@ extension ApiService {
         }
     }
 
-    private static func getMedia(
+    private func getMedia(
         for url: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
     ) {
@@ -91,13 +110,13 @@ extension ApiService {
         }
     }
 
-    private static func findHashtagUrl(searchedHashtag: String, completion: @escaping (Result<String, Error>) -> Void) {
+    private func findHashtagUrl(searchedHashtag: String, completion: @escaping (Result<String, Error>) -> Void) {
         guard let searchURL = constructHashtagSearchURL(searchedHashtag: searchedHashtag) else { return }
 
         GenericJSONParser.download(fromURLString: searchURL) { result in
             switch result {
             case .success(let data):
-                handleHashtagIdResponse(data: data) { result in
+                self.handleHashtagIdResponse(data: data) { result in
                     switch result {
                     case .success(let mediaSearchURL):
                         completion(.success(mediaSearchURL))
@@ -113,7 +132,7 @@ extension ApiService {
         }
     }
 
-    private static func handleHashtagIdResponse(data: Data, completion: @escaping (Result<String, Error>) -> Void) {
+    private func handleHashtagIdResponse(data: Data, completion: @escaping (Result<String, Error>) -> Void) {
         do {
             let response = try JSONDecoder().decode(HashtagIdResponse.self, from: data)
             guard let id = response.data.first?.id else { return }
@@ -128,13 +147,13 @@ extension ApiService {
     }
 }
 
-extension ApiService {
-    private static func constructHashtagSearchURL(searchedHashtag: String) -> String? {
+extension InstagramGraphService {
+    private func constructHashtagSearchURL(searchedHashtag: String) -> String? {
         let url = "https://graph.facebook.com/\(apiGraphVersion)/ig_hashtag_search?user_id=\(igBId)&q=\(searchedHashtag)&access_token=\(fbToken)"
         return url.encodeUrl()
     }
 
-    private static func constructHashtagMediaSearchURL(hashtagID: String) -> String? {
+    private func constructHashtagMediaSearchURL(hashtagID: String) -> String? {
         let limit = "25"
         let m_type = "top_media"
         let base = "https://graph.facebook.com"
@@ -158,14 +177,14 @@ extension ApiService {
 
 //MARK: -Analytics
 //Functions for analytics
-extension ApiService {
-    static func loadProfileForAnalytics(completion: @escaping (Profile) -> Void) {
+extension InstagramGraphService {
+    func loadProfileForAnalytics(completion: @escaping (Profile) -> Void) {
         findMediaLimit { value in
             guard let encodedUrl = self.buildAPIGraphUrlString(foundLimit: value) else { return }
             
             DocumentDirectory.isOkToSaveJsonDataInDir = true //local save
             
-            ApiService.fetchDataFromUrl(of: Profile.self, from: encodedUrl) { result in
+            self.fetchDataFromUrl(of: Profile.self, from: encodedUrl) { result in
                 if case let .success(profileJson) = result, let profile = profileJson as? Profile {
                     completion(profile)
                 }
@@ -174,8 +193,8 @@ extension ApiService {
     }
 }
 
-extension ApiService {
-    private static func findMediaLimit(completion: @escaping ((Int) -> Void)) {
+extension InstagramGraphService {
+    private func findMediaLimit(completion: @escaping ((Int) -> Void)) {
         var mCount: [Int] = []
         let group = DispatchGroup()
         
@@ -184,7 +203,7 @@ extension ApiService {
           
             group.enter()
             
-            ApiService.fetchDataFromUrl(of: Profile.self, from: encodedUrl) { result in
+            fetchDataFromUrl(of: Profile.self, from: encodedUrl) { result in
                 if case let .success(profileJson) = result, let profile = profileJson as? Profile {
                     if profile.username != nil {
                         //means no error returned
@@ -205,7 +224,7 @@ extension ApiService {
         }
     }
     
-    private static func buildAPIGraphUrlString(foundLimit: Int) -> String? {
+    private func buildAPIGraphUrlString(foundLimit: Int) -> String? {
         let limit = "\(foundLimit)"
 
         let insightsMetricsFields = [
@@ -256,9 +275,9 @@ extension ApiService {
 }
 
 // MARK: - Discovery
-extension ApiService {
+extension InstagramGraphService {
     // FIX URL
-    static func business_discovery_url (account:String) -> String? {
+    func business_discovery_url (account:String) -> String? {
         let limit = 12
         let url = "https://graph.facebook.com/\(apiGraphVersion)/\(igBId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(fbToken)"
         return url.encodeUrl()
