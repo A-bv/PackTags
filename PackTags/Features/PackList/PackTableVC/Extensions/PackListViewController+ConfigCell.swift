@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PackTableVC {
+extension PackListViewController {
     private enum Strings {
         static let oneHashtag = "1 Hashtag".localized()
         static let more = "more".localized()

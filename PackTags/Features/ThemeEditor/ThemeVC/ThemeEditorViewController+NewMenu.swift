@@ -1,5 +1,5 @@
 //
-//  ThemeVC+Menu2.swift
+//  ThemeEditorViewController+Menu2.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 10/02/2021.
@@ -10,7 +10,7 @@
 import UIKit
 import SwiftUI
 
-extension ThemeVC{
+extension ThemeEditorViewController{
     private enum Strings {
         static let rename = "Rename".localized()
         static let editPicture = "Edit picture".localized()
@@ -56,7 +56,7 @@ extension ThemeVC{
             if isCorrectSetup {
                 self?.showSmartGScreen()
             } else {
-                self?.showFBLoginScreenFromThemeVC()
+                self?.showFBLoginScreenFromThemeEditorViewController()
             }
         }*/
         
@@ -111,7 +111,7 @@ extension ThemeVC{
     }
 }
 
-extension ThemeVC {
+extension ThemeEditorViewController {
     /*
     private func showSmartGScreen() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -121,7 +121,7 @@ extension ThemeVC {
         self.present(hostingController, animated: true, completion: nil)
     }*/
     
-    private func showFBLoginScreenFromThemeVC() {
+    private func showFBLoginScreenFromThemeEditorViewController() {
         let viewModel = FBLoginViewModel()
         let viewController = FBLoginVC(viewModel: viewModel)
         viewController.modalPresentationStyle = .overFullScreen

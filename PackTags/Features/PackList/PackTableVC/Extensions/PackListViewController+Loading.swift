@@ -9,7 +9,7 @@
 import Foundation
 
 //MARK: - Loading
-extension PackTableVC {
+extension PackListViewController {
     func loadPacks() {
         guard let content = theme?.content else {
             packs = []
@@ -20,7 +20,7 @@ extension PackTableVC {
         packs = Unique.reorganizeTags(from: content, with: numTagsPerPack).components(separatedBy: "\n\n")
     }
 
-    func updatePackTableVC() {
+    func updatePackListViewController() {
         loadPacks()
         tableView.reloadData()
         navigationItem.title = theme?.name

@@ -208,7 +208,7 @@ extension SettingsVC {
     }
 }
 
-extension ThemeVC {
+extension ThemeEditorViewController {
     private enum Strings {
         static let editName = NSLocalizedString("Edit Name", comment: "")
         static let enterName = NSLocalizedString("Enter Name", comment: "")

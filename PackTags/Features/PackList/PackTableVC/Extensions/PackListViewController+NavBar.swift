@@ -1,5 +1,5 @@
 //
-//  PackTableVC+Header.swift
+//  PackListViewController+Header.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 18/01/2021.
@@ -9,7 +9,7 @@
 import UIKit
 
 // Fade Navigation Bar
-extension PackTableVC {
+extension PackListViewController {
     //Scroll operations
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
@@ -20,7 +20,7 @@ extension PackTableVC {
 }
     
 // Navigation Bar Color and opacity variations
-extension PackTableVC {
+extension PackListViewController {
     func setNavBarOpacityAndColors() {
         self.setNavBarTransparent(alpha: alpha)
     }
@@ -34,7 +34,7 @@ extension PackTableVC {
 }
 
 // Status Bar color
-extension PackTableVC {
+extension PackListViewController {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if resetStatusBarColor {
             return .default

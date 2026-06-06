@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
+class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
 
     deinit {
-        print("deinit ThemeVC")
+        print("deinit ThemeEditorViewController")
     }
 
     //MARK: - UI
@@ -240,7 +240,7 @@ class ThemeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavi
     }
 }
 
-extension ThemeVC {
+extension ThemeEditorViewController {
     //MARK: - UITextViewDelegate
     //Placeholder
     func textViewDidChange(_ textView: UITextView) {
@@ -249,7 +249,7 @@ extension ThemeVC {
 }
 
 // Status Bar color
-extension ThemeVC {
+extension ThemeEditorViewController {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return  .default
     }

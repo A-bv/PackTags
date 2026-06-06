@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ThemeVC {
+extension ThemeEditorViewController {
     @objc func cancel() {
         if presentingViewController is UINavigationController {
             dismiss(animated: true) { [weak self] in

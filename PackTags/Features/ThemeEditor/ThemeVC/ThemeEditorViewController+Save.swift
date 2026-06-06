@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ThemeVC {
+extension ThemeEditorViewController {
     private enum Constants {
         static let thumbnailResizedSize = CGSize(width: 135.333, height: 135.333)
         static let jpegCompressionQuality = CGFloat(0.8)

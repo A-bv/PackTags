@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ThemeVC: UIImagePickerControllerDelegate {
+extension ThemeEditorViewController: UIImagePickerControllerDelegate {
     private enum Constants {
         static let imageSize = 600
     }
@@ -39,7 +39,7 @@ extension ThemeVC: UIImagePickerControllerDelegate {
     }
 }
 
-extension ThemeVC {
+extension ThemeEditorViewController {
     private func handleRegularImageSelection(_ image: UIImage) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }

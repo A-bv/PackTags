@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-extension PackTableVC {
+extension PackListViewController {
     private enum Strings {
         static let show = "Show".localized()
     }

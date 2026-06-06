@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PackTableVC {
+extension PackListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return configureCell(indexPath: indexPath)
     }

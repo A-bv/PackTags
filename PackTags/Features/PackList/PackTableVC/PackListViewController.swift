@@ -8,12 +8,12 @@
 
 import UIKit
 
-class PackTableVC: UITableViewController {
+class PackListViewController: UITableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
 
     deinit {
-        print("deinit PackTableVC")
+        print("deinit PackListViewController")
     }
 
     let composeButton = UIBarButtonItem()

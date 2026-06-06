@@ -80,34 +80,34 @@ private func makeTheme() -> ThemeCD {
 
     // MARK: showPackList
 
-    @Test func showPackList_pushesPackTableVC() {
+    @Test func showPackList_pushesPackListViewController() {
         let (sut, nav) = makeSUT()
         sut.showPackList(for: makeTheme())
-        #expect(nav.pushedVC is PackTableVC)
+        #expect(nav.pushedVC is PackListViewController)
     }
 
     @Test func showPackList_assignsThemeAndCoordinator() {
         let (sut, nav) = makeSUT()
         let theme = makeTheme()
         sut.showPackList(for: theme)
-        let vc = nav.pushedVC as? PackTableVC
+        let vc = nav.pushedVC as? PackListViewController
         #expect(vc?.theme === theme)
         #expect(vc?.coordinator === sut)
     }
 
     // MARK: showNewThemeEditor
 
-    @Test func showNewThemeEditor_presentsThemeVCInsideNavController() {
+    @Test func showNewThemeEditor_presentsThemeEditorViewControllerInsideNavController() {
         let (sut, nav) = makeSUT()
         sut.showNewThemeEditor(onSave: {})
         let nc = nav.presentedVC as? UINavigationController
-        #expect(nc?.topViewController is ThemeVC)
+        #expect(nc?.topViewController is ThemeEditorViewController)
     }
 
     @Test func showNewThemeEditor_themeVCHasNoThemeAndIsNew() {
         let (sut, nav) = makeSUT()
         sut.showNewThemeEditor(onSave: {})
-        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeVC
+        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
         #expect(themeVC?.theme == nil)
         #expect(themeVC?.isNotNewTheme == false)
     }
@@ -178,18 +178,18 @@ private func makeTheme() -> ThemeCD {
 
     // MARK: showThemeEditor
 
-    @Test func showThemeEditor_presentsThemeVCInsideNavController() {
+    @Test func showThemeEditor_presentsThemeEditorViewControllerInsideNavController() {
         let (sut, nav) = makeSUT()
         sut.showThemeEditor(for: makeTheme(), fromSwipe: false, chosenPack: "", onSave: {}, onCancel: {})
         let nc = nav.presentedVC as? UINavigationController
-        #expect(nc?.topViewController is ThemeVC)
+        #expect(nc?.topViewController is ThemeEditorViewController)
     }
 
     @Test func showThemeEditor_setsThemeAndMarksAsExisting() {
         let (sut, nav) = makeSUT()
         let theme = makeTheme()
         sut.showThemeEditor(for: theme, fromSwipe: false, chosenPack: "", onSave: {}, onCancel: {})
-        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeVC
+        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
         #expect(themeVC?.theme === theme)
         #expect(themeVC?.isNotNewTheme == true)
     }
@@ -197,7 +197,7 @@ private func makeTheme() -> ThemeCD {
     @Test func showThemeEditor_fromSwipe_setsIsFromShowAndPack() {
         let (sut, nav) = makeSUT()
         sut.showThemeEditor(for: makeTheme(), fromSwipe: true, chosenPack: "#travel", onSave: {}, onCancel: {})
-        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeVC
+        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
         #expect(themeVC?.isFromShow == true)
         #expect(themeVC?.packFromShow == "#travel")
     }
@@ -205,7 +205,7 @@ private func makeTheme() -> ThemeCD {
     @Test func showThemeEditor_notFromSwipe_isFromShowIsFalse() {
         let (sut, nav) = makeSUT()
         sut.showThemeEditor(for: makeTheme(), fromSwipe: false, chosenPack: "", onSave: {}, onCancel: {})
-        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeVC
+        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
         #expect(themeVC?.isFromShow == false)
     }
 

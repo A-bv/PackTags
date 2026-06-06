@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PackTableVC {
+extension PackListViewController {
     private enum Strings {
         static let instagram = "Instagram".localized()
         static let username = "Username".localized()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PackTableVC {
+extension PackListViewController {
     func setupTableViewBackgroundImage() {
         updateTableViewBackgroundImage()
         uiiv.contentMode = .scaleAspectFill
@@ -32,7 +32,7 @@ extension PackTableVC {
     }
 }
 
-extension PackTableVC {
+extension PackListViewController {
     func TVinset () {
         let demiS = UIScreen.main.bounds.height/2
         let navheight = 96.0 // TODO: Get max height constant

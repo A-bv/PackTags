@@ -1,5 +1,5 @@
 //
-//  ThemeVC+toolbar.swift
+//  ThemeEditorViewController+toolbar.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 17.12.20.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-extension ThemeVC {
+extension ThemeEditorViewController {
     func initSearchToolbar() {
         searchView.isHidden = true
         searchCountLabel.isHidden = true //!
@@ -17,7 +17,7 @@ extension ThemeVC {
 }
 
 //MARK: - searchBar actions
-extension ThemeVC {
+extension ThemeEditorViewController {
     
     @objc func toolBarDown(_ sender: Any) { //Edit button
         themeTextView.isEditable = true
@@ -46,7 +46,7 @@ extension ThemeVC {
 }
 
 //MARK: - UISearchBarDelegate
-extension ThemeVC: UISearchBarDelegate {
+extension ThemeEditorViewController: UISearchBarDelegate {
     private enum Strings {
         static let results = "results".localized()
     }
@@ -74,7 +74,7 @@ extension ThemeVC: UISearchBarDelegate {
 }
 
 //MARK: - Find pack from show button (PackTableVC)
-extension ThemeVC {
+extension ThemeEditorViewController {
     func isScreenLoadedFromShowButton () {
         DispatchQueue.main.async { [self] in
             guard let firstTag = packFromShow.components(separatedBy: " ").first

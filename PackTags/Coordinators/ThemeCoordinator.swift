@@ -19,14 +19,14 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     // MARK: - From ThemeTableVC
 
     func showPackList(for theme: ThemeCD) {
-        let vc = PackTableVC(style: .plain)
+        let vc = PackListViewController(style: .plain)
         vc.theme = theme
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
 
     func showNewThemeEditor(onSave: @escaping () -> Void) {
-        let vc = ThemeVC()
+        let vc = ThemeEditorViewController()
         vc.onSave = { _ in onSave() }
         presentInNavController(vc, transition: .coverVertical)
     }
@@ -61,10 +61,10 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
         navigationController.present(vc, animated: true)
     }
 
-    // MARK: - From PackTableVC
+    // MARK: - From PackListViewController
 
     func showThemeEditor(for theme: ThemeCD, fromSwipe: Bool, chosenPack: String, onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
-        let vc = ThemeVC()
+        let vc = ThemeEditorViewController()
         vc.theme = theme
         vc.isNotNewTheme = true
         vc.onSave = { _ in onSave() }
@@ -78,7 +78,7 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
 
     // MARK: - Private
 
-    private func presentInNavController(_ vc: ThemeVC, transition: UIModalTransitionStyle) {
+    private func presentInNavController(_ vc: ThemeEditorViewController, transition: UIModalTransitionStyle) {
         let nc = UINavigationController(rootViewController: vc)
         nc.modalPresentationStyle = .overFullScreen
         nc.modalTransitionStyle = transition

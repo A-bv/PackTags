@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Navigation
-extension PackTableVC {
+extension PackListViewController {
     @objc func didTapCompose() {
         presentThemeVC(fromSwipe: false)
     }
@@ -22,7 +22,7 @@ extension PackTableVC {
             fromSwipe: fromSwipe,
             chosenPack: fromSwipe ? chosenPack : "",
             onSave: { [weak self] in
-                self?.updatePackTableVC()
+                self?.updatePackListViewController()
                 self?.resetStatusBarColor = false
             },
             onCancel: { [weak self] in
