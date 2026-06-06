@@ -349,9 +349,6 @@
 				02A4235C2844007200A25067 /* PackList */,
 				02A4235D284400FC00A25067 /* ThemeEditor */,
 				0207BB9A2FD5F0000007F3D3 /* ConnectedInsights */,
-				02491C5A26779AE400F98E17 /* Authentication */,
-				02EE53B4284CCD9F004E7D5C /* Analytics */,
-				02D709D32A58FCDA0009F7C3 /* SmartG */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -360,6 +357,9 @@
 			isa = PBXGroup;
 			children = (
 				0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */,
+				02491C5A26779AE400F98E17 /* Setup */,
+				02EE53B4284CCD9F004E7D5C /* Analytics */,
+				02D709D32A58FCDA0009F7C3 /* SmartG */,
 			);
 			path = ConnectedInsights;
 			sourceTree = "<group>";
@@ -464,13 +464,13 @@
 			path = Circles;
 			sourceTree = "<group>";
 		};
-		02491C5A26779AE400F98E17 /* Authentication */ = {
+		02491C5A26779AE400F98E17 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
 				02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */,
 				02CD2DA62990795A00EDE077 /* FBLogin */,
 			);
-			path = Authentication;
+			path = Setup;
 			sourceTree = "<group>";
 		};
 		026D16D42A3E474500228DEA /* Transformers */ = {
