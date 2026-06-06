@@ -20,18 +20,18 @@ final class InstagramGraphService: InstagramGraphServicing {
     typealias ResultHandler<T> = (Result<T, Error>) -> Void
     
     private let apiGraphVersion = "v19.0"
-    private let defaults: UserDefaults
+    private let settings: any ConnectedInsightsSettingsProtocol
 
-    init(defaults: UserDefaults = .standard) {
-        self.defaults = defaults
+    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsAppSettings()) {
+        self.settings = settings
     }
 
     private var fbToken: String {
-        defaults.string(forKey: "fbToken") ?? ""
+        settings.facebookToken ?? ""
     }
 
     private var igBId: String {
-        defaults.string(forKey: "IgBId") ?? ""
+        settings.instagramBusinessAccountId ?? ""
     }
 
     func fetchDataFromUrl<T: Decodable>(

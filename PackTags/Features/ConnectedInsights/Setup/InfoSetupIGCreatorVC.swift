@@ -9,6 +9,17 @@
 import UIKit
 
 class InfoSetupIGCreatorVC: UIViewController {
+    private var settings: any ConnectedInsightsSettingsProtocol
+
+    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsAppSettings()) {
+        self.settings = settings
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Constants
 
     private enum Constants {
@@ -175,8 +186,8 @@ class InfoSetupIGCreatorVC: UIViewController {
     }
 
     private func checkIsFirstTime() {
-        if UserDefaults.standard.object(forKey: "setupInfoShownOnce") == nil {
-            UserDefaults.standard.set("true", forKey: "setupInfoShownOnce")
+        if !settings.setupInfoShown {
+            settings.setupInfoShown = true
         }
     }
 

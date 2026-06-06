@@ -11,11 +11,11 @@ protocol ConnectedInsightsRouting {
 }
 
 final class ConnectedInsightsModule: ConnectedInsightsRouting {
-    private let appSettings: any AppSettingsProtocol
+    private let appSettings: any ConnectedInsightsSettingsProtocol
     private let instagramGraphService: any InstagramGraphServicing
 
     init(
-        appSettings: any AppSettingsProtocol,
+        appSettings: any ConnectedInsightsSettingsProtocol,
         instagramGraphService: any InstagramGraphServicing
     ) {
         self.appSettings = appSettings
@@ -24,7 +24,7 @@ final class ConnectedInsightsModule: ConnectedInsightsRouting {
 
     func makeViewController(for destination: ConnectedInsightsDestination) -> UIViewController {
         guard appSettings.isCorrectSetup else {
-            return FBLoginVC(viewModel: FBLoginViewModel())
+            return FBLoginVC(settings: appSettings)
         }
 
         switch destination {

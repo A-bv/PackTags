@@ -9,6 +9,12 @@
 import FBSDKLoginKit
 
 final class FBLoginViewModel {
+    private var settings: any ConnectedInsightsSettingsProtocol
+
+    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsAppSettings()) {
+        self.settings = settings
+    }
+
     func getToken() -> FBToken {
         let token = FBToken()
         saveCorrectStatus(token: token)
@@ -106,21 +112,21 @@ extension FBLoginViewModel {
 // MARK: - Saving
 extension FBLoginViewModel {
     private func saveInstagramBusinessAccountID(id: String) {
-        UserDefaults.standard.set(id, forKey: "IgBId")
+        settings.instagramBusinessAccountId = id
     }
 
     private func saveFBToken(token: FBToken) {
         let tokenString = token.tokenString
-        UserDefaults.standard.set(tokenString, forKey: "fbToken")
+        settings.facebookToken = tokenString
     }
     
     private func saveCorrectStatus(token: FBToken) {
-        UserDefaults.standard.set(token.isValid, forKey: "isCorrectSetup")
+        settings.isCorrectSetup = token.isValid
     }
 
     func savePushedFBLoginButtonOnce() {
-        if UserDefaults.standard.object(forKey: "pressedFBLoginButton") == nil {
-            UserDefaults.standard.set(true, forKey: "pressedFBLoginButton")
+        if !settings.pressedFacebookLoginButton {
+            settings.pressedFacebookLoginButton = true
         }
     }
 }

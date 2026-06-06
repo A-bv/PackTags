@@ -17,13 +17,23 @@ class FBLoginVC: UIViewController {
         print("deinit FBLoginVC")
     }
     
-    init(viewModel: FBLoginViewModel) {
+    init(
+        viewModel: FBLoginViewModel,
+        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsAppSettings()
+    ) {
         self.viewModel = viewModel
+        self.settings = settings
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    convenience init(settings: any ConnectedInsightsSettingsProtocol) {
+        self.init(
+            viewModel: FBLoginViewModel(settings: settings),
+            settings: settings)
     }
     
     private enum Strings {
@@ -33,12 +43,6 @@ class FBLoginVC: UIViewController {
         static let troubleShootingAlertMessage = "troubleShootingAlertMessage".localized()
     }
     
-    private enum UserDefaultsKeys {
-        static let setupInfoShown = UserDefaults.standard.object(forKey: "setupInfoShownOnce")
-        static let triedASetup = UserDefaults.standard.object(forKey: "pressedFBLoginButton")
-        static let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
-    }
-
     private enum Permissions {
         static let list = [
             "instagram_basic",
@@ -49,6 +53,7 @@ class FBLoginVC: UIViewController {
     }
     
     private let viewModel: FBLoginViewModel
+    private var settings: any ConnectedInsightsSettingsProtocol
     
     private let loginButton: FBLoginButton = {
         let button = FBLoginButton()
@@ -69,14 +74,14 @@ class FBLoginVC: UIViewController {
     
 extension FBLoginVC {
     private func showApiGraphSetupVCIfNeeded() {
-        if UserDefaultsKeys.setupInfoShown == nil {
+        if !settings.setupInfoShown {
             showSetupScreen()
         }
     }
     
     private func showWrongSetupAlertIfNeeded() {
-        if UserDefaultsKeys.isCorrectSetup == false,
-           UserDefaultsKeys.triedASetup != nil
+        if !settings.isCorrectSetup,
+           settings.pressedFacebookLoginButton
         {
             showTroubleshootingAlert()
         }
@@ -146,7 +151,7 @@ extension FBLoginVC {
     }
     
     private func showTroubleshootingAlert() {
-        UserDefaults.standard.set(false, forKey: "isCorrectSetup")
+        settings.isCorrectSetup = false
         Alerts.simpleShortAlert(
             title: Strings.editYourSetup,
             message: Strings.troubleShootingAlertMessage,
@@ -155,7 +160,7 @@ extension FBLoginVC {
     }
     
     private func showSetupScreen() {
-        let controller = InfoSetupIGCreatorVC()
+        let controller = InfoSetupIGCreatorVC(settings: settings)
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
         self.present(controller, animated: true, completion: nil)
