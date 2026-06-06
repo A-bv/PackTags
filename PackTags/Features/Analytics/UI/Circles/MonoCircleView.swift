@@ -1,6 +1,5 @@
 import SwiftUI
 
-// TODO: Get rid of it?
 struct MonoCircleView: View {
     private enum Constants {
         static let padding: CGFloat = 50

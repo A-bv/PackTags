@@ -91,7 +91,6 @@ extension UITextView {
         {
             let rect: CGRect = self.caretRect(for: cursorPosition)
             let point = CGPoint(x: 0, y: rect.origin.y)
-            //print("cursor position:",point)
             self.setContentOffset(point, animated: true)
         }
     }

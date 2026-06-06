@@ -30,7 +30,6 @@ extension DocumentDirectory {
         {
             do {
                 let jsonData = try Data(contentsOf: pathName)
-                //print(try String(contentsOf: pathName!)) //prints Json
                 return jsonData
             } catch {
                 print("getJsonDataFromDir error:", error)
@@ -55,11 +54,9 @@ extension DocumentDirectory {
             let url = documentDirectory.appendingPathComponent("localJsonData")
             do {
                 try jsonData.write(to: url)
-                //print(try String(contentsOf: url)) //prints Json
             } catch {
                 print("saveJsonDataToDir error:", error.localizedDescription)
             }
         }
-        print("Json saved in document directory")
     }
 }

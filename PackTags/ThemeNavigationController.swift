@@ -9,10 +9,6 @@
 import UIKit
 
 class ThemeNavigationController: UINavigationController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // Status bar color in navigation controller
     // Set in infoPlist: "UIViewControllerBasedStatusBarAppearance" to YES
     

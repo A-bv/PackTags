@@ -175,7 +175,6 @@ extension ApiService {
 }
 
 extension ApiService {
-    // TODO: Test if this function is still needed
     private static func findMediaLimit(completion: @escaping ((Int) -> Void)) {
         var mCount: [Int] = []
         let group = DispatchGroup()

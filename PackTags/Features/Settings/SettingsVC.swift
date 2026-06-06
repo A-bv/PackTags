@@ -38,10 +38,6 @@ struct SettingsOption {
 }
 
 class SettingsVC: UIViewController {
-    deinit {
-        print("deinit SettingsVC")
-    }
-    
     private enum Strings {
         static let settingsTitle = "Settings".localized()
         static let settingsSectionTitleAccount = "Account".localized()

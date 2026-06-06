@@ -12,10 +12,6 @@ class PackListViewController: UITableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
 
-    deinit {
-        print("deinit PackListViewController")
-    }
-
     let composeButton = UIBarButtonItem()
     let instaButton = UIBarButtonItem()
 
