@@ -18,6 +18,9 @@
 		0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */; };
 		0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */; };
 		0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */; };
+		0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */; };
+		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
+		0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		0216110E25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */; };
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
@@ -165,6 +168,9 @@
 		0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
 		0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryProtocol.swift; sourceTree = "<group>"; };
+		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
+		0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+NewMenu.swift"; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -355,6 +361,23 @@
 				026D16D92A3E474500228DEA /* ApiService.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		0207BB902FD4ABDA0007F3D3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */,
+				0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0207BB952FD4ABDB0007F3D3 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		0216113D25D864860098CE5E /* CoreData */ = {
@@ -878,6 +901,8 @@
 				0207BB832FD372660007F3D3 /* Coordinators */,
 				0207BB8C2FD4645D0007F3D3 /* Features */,
 				0207BB8D2FD4645D0007F3D3 /* Networking */,
+				0207BB902FD4ABDA0007F3D3 /* Data */,
+				0207BB952FD4ABDB0007F3D3 /* DI */,
 			);
 			path = PackTags;
 			sourceTree = "<group>";
@@ -1080,6 +1105,7 @@
 				02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */,
 				02D709CD2A58C4AE0009F7C3 /* QuantityPickerData.swift in Sources */,
 				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
+				0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsNew.swift in Sources */,
 				02F89B2929743EF9008F363D /* SmartGViewContainer.swift in Sources */,
 				020584D3284D6FFC00020FB8 /* UITextView+KbToolBar.swift in Sources */,
@@ -1100,6 +1126,7 @@
 				0229863D27BD6DF60048F9E9 /* AsyncImage.swift in Sources */,
 				02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */,
 				0264B817264A7CE900E1EEFA /* AnalyticsSUIVM.swift in Sources */,
+				0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */,
 				02D709D12A58F7330009F7C3 /* UITVC+ThumbnailDimensions.swift in Sources */,
 				024347D827119E2100F86A64 /* TextRecognitionUtility.swift in Sources */,
 				02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */,
@@ -1135,6 +1162,7 @@
 				0274105826207D2100D82F6D /* PackListViewController+Instagram.swift in Sources */,
 				022688B32628BCCC007DBD98 /* ThemeTableViewController+Interface.swift in Sources */,
 				02A423552842C1D000A25067 /* ThemeEditorViewController+Navigation.swift in Sources */,
+				0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */,
 				021EB81428846AD100463B42 /* Localizable.swift in Sources */,
 				02998A682B4611B100B70516 /* BarchartItemView.swift in Sources */,
 				02A423642845564900A25067 /* UITVC+LongPressReorder.swift in Sources */,

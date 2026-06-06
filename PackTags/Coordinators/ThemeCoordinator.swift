@@ -5,9 +5,11 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     let navigationController: UINavigationController
     weak var parentCoordinator: AppCoordinator?
+    let dependencies: AppDependencies
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, dependencies: AppDependencies) {
         self.navigationController = navigationController
+        self.dependencies = dependencies
     }
 
     func start() {
