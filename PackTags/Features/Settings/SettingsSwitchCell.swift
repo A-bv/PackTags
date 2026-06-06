@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SettingsCell2: UITableViewCell {
-    static let identifier = "SettingsCell2"
+class SettingsSwitchCell: UITableViewCell {
+    static let identifier = "SettingsSwitchCell"
     
     private enum Constants {
         static let cornerRadius: CGFloat = 8

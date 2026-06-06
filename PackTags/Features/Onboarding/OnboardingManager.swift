@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Core {
-    static let shared = Core()
-    
-    func isNewUser () -> Bool {
+class OnboardingManager {
+    static let shared = OnboardingManager()
+
+    func isNewUser() -> Bool {
         return !UserDefaults.standard.bool(forKey: "isNewUser")
     }
-    
-    func setIsNotNewUser () {
+
+    func setIsNotNewUser() {
         UserDefaults.standard.setValue(true, forKey: "isNewUser")
     }
 }

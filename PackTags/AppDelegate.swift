@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Thread.sleep(forTimeInterval: 0.5)
         
         //Load samples
-        if Core.shared.isNewUser() { seedData() }
+        if OnboardingManager.shared.isNewUser() { seedData() }
         
         setupAppearance()
         //coredatavisu()

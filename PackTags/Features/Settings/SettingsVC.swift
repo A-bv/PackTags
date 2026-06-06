@@ -81,8 +81,8 @@ class SettingsVC: UIViewController {
             SettingsCell.self,
             forCellReuseIdentifier: SettingsCell.identifier)
         table.register(
-            SettingsCell2.self,
-            forCellReuseIdentifier: SettingsCell2.identifier)
+            SettingsSwitchCell.self,
+            forCellReuseIdentifier: SettingsSwitchCell.identifier)
         return table
     }()
     

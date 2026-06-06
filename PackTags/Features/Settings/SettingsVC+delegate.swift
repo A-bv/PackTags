@@ -39,9 +39,9 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
             //mod --
         case .switchCell(let model):
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SettingsCell2.identifier,
+                withIdentifier: SettingsSwitchCell.identifier,
                 for: indexPath
-            ) as? SettingsCell2 else {
+            ) as? SettingsSwitchCell else {
                 return UITableViewCell()
             }
             cell.name = model.title

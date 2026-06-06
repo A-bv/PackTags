@@ -238,7 +238,7 @@ extension OnBoardingController {
     }
 
     @objc func didTap(_ sender: UIButton) {
-        Core.shared.setIsNotNewUser()
+        OnboardingManager.shared.setIsNotNewUser()
         dismiss(animated: true)
     }
 }
