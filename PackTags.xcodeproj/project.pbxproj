@@ -360,18 +360,19 @@
 				02491C5A26779AE400F98E17 /* Setup */,
 				02EE53B4284CCD9F004E7D5C /* Analytics */,
 				02D709D32A58FCDA0009F7C3 /* SmartG */,
+				0207BB8D2FD4645D0007F3D3 /* InstagramGraph */,
 			);
 			path = ConnectedInsights;
 			sourceTree = "<group>";
 		};
-		0207BB8D2FD4645D0007F3D3 /* Networking */ = {
+		0207BB8D2FD4645D0007F3D3 /* InstagramGraph */ = {
 			isa = PBXGroup;
 			children = (
 				021D7622275A9E6200F54054 /* Models */,
 				026D16D42A3E474500228DEA /* Transformers */,
 				026D16D92A3E474500228DEA /* ApiService.swift */,
 			);
-			path = Networking;
+			path = InstagramGraph;
 			sourceTree = "<group>";
 		};
 		0207BB902FD4ABDA0007F3D3 /* Data */ = {
@@ -911,7 +912,6 @@
 				0226F19A259E0346006E086C /* App */,
 				0207BB832FD372660007F3D3 /* Coordinators */,
 				0207BB8C2FD4645D0007F3D3 /* Features */,
-				0207BB8D2FD4645D0007F3D3 /* Networking */,
 				0207BB902FD4ABDA0007F3D3 /* Data */,
 				0207BB952FD4ABDB0007F3D3 /* DI */,
 			);
