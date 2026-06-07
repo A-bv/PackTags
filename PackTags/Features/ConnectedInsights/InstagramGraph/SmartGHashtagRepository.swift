@@ -1,6 +1,6 @@
 import Foundation
 
-protocol SmartGHashtagRepositoryProtocol {
+protocol SmartGHashtagRepositoryProtocol: SmartGDataProviding {
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void

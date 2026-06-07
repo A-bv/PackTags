@@ -22,6 +22,7 @@
 		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
 		0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */; };
 		0207BB982FD5F0000007F3D3 /* ConnectedInsightsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */; };
+		0207BBC52FD5C0000007F3D3 /* ConnectedInsightsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC62FD5C0000007F3D3 /* ConnectedInsightsGateway.swift */; };
 		0207BBB72FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBC2FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift */; };
 		0207BBB82FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBD2FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift */; };
 		0207BBB92FD5A0000007F3D3 /* InstagramGraphClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBE2FD5A0000007F3D3 /* InstagramGraphClient.swift */; };
@@ -184,6 +185,7 @@
 		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
 		0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsModule.swift; sourceTree = "<group>"; };
+		0207BBC62FD5C0000007F3D3 /* ConnectedInsightsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsGateway.swift; sourceTree = "<group>"; };
 		0207BBBC2FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramGraphCredentialsProvider.swift; sourceTree = "<group>"; };
 		0207BBBD2FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramGraphEndpointBuilder.swift; sourceTree = "<group>"; };
 		0207BBBE2FD5A0000007F3D3 /* InstagramGraphClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramGraphClient.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */,
+				0207BBC62FD5C0000007F3D3 /* ConnectedInsightsGateway.swift */,
 				02491C5A26779AE400F98E17 /* Setup */,
 				02EE53B4284CCD9F004E7D5C /* Analytics */,
 				02D709D32A58FCDA0009F7C3 /* SmartG */,
@@ -1116,6 +1119,7 @@
 				023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */,
 				02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */,
 				0207BB982FD5F0000007F3D3 /* ConnectedInsightsModule.swift in Sources */,
+				0207BBC52FD5C0000007F3D3 /* ConnectedInsightsGateway.swift in Sources */,
 				0207BBB92FD5A0000007F3D3 /* InstagramGraphClient.swift in Sources */,
 				0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */,
 				02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */,

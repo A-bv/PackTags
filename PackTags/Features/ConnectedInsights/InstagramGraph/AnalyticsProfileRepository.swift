@@ -1,6 +1,6 @@
 import Foundation
 
-protocol AnalyticsProfileRepositoryProtocol {
+protocol AnalyticsProfileRepositoryProtocol: AnalyticsDataProviding {
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void)
 }
 

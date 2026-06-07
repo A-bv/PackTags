@@ -28,7 +28,7 @@ extension AnalyticsSUIViewModel {
     
     // 2. Api import
     func getOnlineJsonAPIGraph () {
-        instagramGraphService.loadProfileForAnalytics(
+        analyticsDataProvider.loadProfileForAnalytics(
             completion: { result in
                 DispatchQueue.main.async { [weak self] in
                     switch result {

@@ -28,9 +28,9 @@ struct SmartGView: View {
     //Network Status
     @StateObject var monitor = NetworkMonitor()
 
-    init(instagramGraphService: any InstagramGraphServicing = InstagramGraphService()) {
+    init(smartGDataProvider: any SmartGDataProviding = UnavailableSmartGDataProvider()) {
         _smartGViewModel = StateObject(
-            wrappedValue: SmartGViewModel(instagramGraphService: instagramGraphService))
+            wrappedValue: SmartGViewModel(smartGDataProvider: smartGDataProvider))
     }
     
     var body: some View {

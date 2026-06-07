@@ -3,17 +3,17 @@ import SwiftUI
 
 final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
     private let settings: any ConnectedInsightsSettingsProtocol
-    private let instagramGraphService: any InstagramGraphServicing
+    private let gateway: any ConnectedInsightsGatewayProtocol
 
     init(
         settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
         configuration: ConnectedInsightsConfiguration = .production,
-        instagramGraphService: (any InstagramGraphServicing)? = nil
+        gateway: (any ConnectedInsightsGatewayProtocol)? = nil
     ) {
         self.settings = settings
-        self.instagramGraphService = instagramGraphService ?? InstagramGraphService(
+        self.gateway = gateway ?? ConnectedInsightsGateway(
             settings: settings,
-            apiGraphVersion: configuration.graphAPIVersion
+            configuration: configuration
         )
     }
 
@@ -26,18 +26,13 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         }
     }
 
-    private var isSessionReady: Bool {
-        settings.isCorrectSetup &&
-        settings.facebookToken != nil &&
-        settings.instagramBusinessAccountId != nil
-    }
-
     private func openFeature(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
-        if isSessionReady {
-            print("[ConnectedInsights][Coordinator] Session ready; presenting \(destination).")
+        switch gateway.accessState() {
+        case .ready:
+            print("[ConnectedInsights][Coordinator] Access ready; presenting \(destination).")
             presentFeature(destination, from: presenter)
-        } else {
-            print("[ConnectedInsights][Coordinator] Setup required for \(destination); presenting setup flow.")
+        case .needsSetup(let error):
+            print("[ConnectedInsights][Coordinator] \(error.localizedDescription) Presenting setup flow for \(destination).")
             presentSetupScreen(.setup, from: presenter) { [weak self] in
                 self?.presentFeature(destination, from: presenter)
             }
@@ -48,9 +43,9 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         let vc: UIViewController
         switch destination {
         case .analytics:
-            vc = UIHostingController(rootView: AnalyticsNew(instagramGraphService: instagramGraphService))
+            vc = UIHostingController(rootView: AnalyticsNew(analyticsDataProvider: gateway.analyticsDataProvider))
         case .smartG:
-            vc = UIHostingController(rootView: SmartGViewContainer(instagramGraphService: instagramGraphService))
+            vc = UIHostingController(rootView: SmartGViewContainer(smartGDataProvider: gateway.smartGDataProvider))
         default:
             return
         }

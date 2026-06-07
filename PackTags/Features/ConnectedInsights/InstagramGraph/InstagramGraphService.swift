@@ -1,6 +1,6 @@
 import Foundation
 
-protocol InstagramGraphServicing {
+protocol InstagramGraphServicing: SmartGDataProviding, AnalyticsDataProviding {
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void

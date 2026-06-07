@@ -75,9 +75,9 @@ struct AnalyticsNew : View {
 
     var colors = [Color("Color1"),Color("Color")]
 
-    init(instagramGraphService: any InstagramGraphServicing = InstagramGraphService()) {
+    init(analyticsDataProvider: any AnalyticsDataProviding = UnavailableAnalyticsDataProvider()) {
         _swiftUIData = StateObject(
-            wrappedValue: AnalyticsSUIViewModel(instagramGraphService: instagramGraphService))
+            wrappedValue: AnalyticsSUIViewModel(analyticsDataProvider: analyticsDataProvider))
         //Navigation bar customization
         UINavigationBar.appearance().titleTextAttributes = [
             .foregroundColor: UIColor.clear
