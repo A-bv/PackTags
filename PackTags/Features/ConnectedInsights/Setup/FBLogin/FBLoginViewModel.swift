@@ -6,137 +6,33 @@
 //  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
 //
 
-import FBSDKLoginKit
-
 final class FBLoginViewModel {
     private var settings: any ConnectedInsightsSettingsProtocol
+    private let facebookSetupService: any FacebookSetupServicing
+    private let facebookSessionService: any FacebookSessionServicing
 
-    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()) {
+    init(
+        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
+        facebookSetupService: any FacebookSetupServicing = FacebookSetupService(),
+        facebookSessionService: any FacebookSessionServicing = FacebookSessionService()
+    ) {
         self.settings = settings
+        self.facebookSetupService = facebookSetupService
+        self.facebookSessionService = facebookSessionService
     }
 
     func getToken() -> FBToken {
-        FBToken()
+        facebookSessionService.currentToken()
     }
     
     func apiCallGetIgBusinessId(completion: @escaping (Bool) -> ()) {
-        verifyCorrectFbPagesSetup { [weak self] isCorrectSetup in
-            self?.verifySetupIgBAndGetIgBId { [weak self] validId in
-                if let validId = validId {
-                    self?.saveInstagramBusinessAccountID(id: validId)
-                    self?.saveCorrectStatus(isCorrectSetup)
-                    completion(isCorrectSetup)
-                } else {
-                    self?.saveCorrectStatus(false)
-                    completion(false)
-                }
+        facebookSetupService.validateSetup { [weak self] result in
+            if let instagramBusinessAccountId = result.instagramBusinessAccountId {
+                self?.saveInstagramBusinessAccountID(id: instagramBusinessAccountId)
             }
+            self?.saveCorrectStatus(result.isCorrectSetup)
+            completion(result.isCorrectSetup)
         }
-    }
-}
-
-// MARK: - Walkthrough
-extension FBLoginViewModel {
-    private func verifyCorrectFbPagesSetup(completion: @escaping (Bool) -> ()) {
-        let request = GraphRequest(
-            graphPath: "/me/accounts",
-            httpMethod: .get)
-
-        logSetup("Request /me/accounts")
-        
-        request.start { [weak self] connection, result, error in
-            self?.handleCorrectFbPagesSetupResponse(connection, result, error, completion: completion)
-        }
-    }
-    
-    private func verifySetupIgBAndGetIgBId(completion: @escaping (String?) -> ()) {
-        let request = GraphRequest(
-            graphPath: "/me/accounts",
-            parameters: ["fields": "instagram_business_account"],
-            httpMethod: .get)
-
-        logSetup("Request /me/accounts fields=instagram_business_account")
-        
-        request.start { [weak self] connection, result, error in
-            self?.handleSetupIgBResponse(connection, result, error, completion: completion)
-        }
-    }
-}
-
-extension FBLoginViewModel {
-    private func handleCorrectFbPagesSetupResponse(
-        _ connection: GraphRequestConnection?,
-        _ result: Any?,
-        _ error: (any Error)?,
-        completion: @escaping (Bool) -> ()
-    ) {
-        let key = "data.name"
-        if let error = error {
-            logSetup("Facebook page request failed: \(error.localizedDescription)")
-            completion(false)
-            return
-        }
-
-        guard let response = result as? NSDictionary else {
-            logUnexpectedResult(result, context: "Facebook page request")
-            completion(false)
-            return
-        }
-
-        guard let pages = response.value(forKeyPath: key) as? [String] else {
-            logSetup("Facebook page request returned no page names. Response: \(responsePreview(response))")
-            completion(false)
-            return
-        }
-
-        logSetup("Facebook page request returned \(pages.count) page(s).")
-        completion(!pages.isEmpty)
-    }
-
-    private func handleSetupIgBResponse(
-        _ connection: GraphRequestConnection?,
-        _ result: Any?,
-        _ error: Error?,
-        completion: @escaping (String?) -> ()
-    ) {
-        let key = "data.instagram_business_account.id"
-        if let error = error {
-            logSetup("Instagram business account request failed: \(error.localizedDescription)")
-            completion(nil)
-            return
-        }
-        
-        guard let response = result as? NSDictionary else {
-            logUnexpectedResult(result, context: "Instagram business account request")
-            completion(nil)
-            return
-        }
-        
-        if let igBIds = response.value(forKeyPath: key) as? [String] {
-            logSetup("Instagram business account request returned \(igBIds.count) id(s).")
-            completion(igBIds.first)
-        } else {
-            logSetup("No business account linked or wrong pages selected. Response: \(responsePreview(response))")
-            completion(nil)
-        }
-    }
-
-    private func logUnexpectedResult(_ result: Any?, context: String) {
-        logSetup("\(context) returned an unexpected result: \(String(describing: result))")
-    }
-
-    private func responsePreview(_ response: NSDictionary) -> String {
-        if JSONSerialization.isValidJSONObject(response),
-           let data = try? JSONSerialization.data(withJSONObject: response, options: [.sortedKeys]),
-           let body = String(data: data, encoding: .utf8) {
-            return String(body.prefix(1_500))
-        }
-
-        return String(String(describing: response).prefix(1_500))
-    }
-
-    private func logSetup(_ message: String) {
-        print("[ConnectedInsights][Setup] \(message)")
     }
 }
 
@@ -162,7 +58,7 @@ extension FBLoginViewModel {
     }
 
     func resetFacebookSession() {
-        LoginManager().logOut()
+        facebookSessionService.resetSession()
         settings.facebookToken = nil
         settings.instagramBusinessAccountId = nil
         settings.isCorrectSetup = false

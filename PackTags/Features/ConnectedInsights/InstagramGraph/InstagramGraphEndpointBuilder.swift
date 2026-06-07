@@ -1,0 +1,94 @@
+import Foundation
+
+struct InstagramGraphEndpointBuilder {
+    private let apiGraphVersion: String
+    private let baseURL = "https://graph.facebook.com"
+
+    init(apiGraphVersion: String = ConnectedInsightsConfiguration.production.graphAPIVersion) {
+        self.apiGraphVersion = apiGraphVersion
+    }
+
+    func hashtagSearchURL(
+        searchedHashtag: String,
+        credentials: InstagramGraphCredentials
+    ) -> String? {
+        let url = "\(baseURL)/\(apiGraphVersion)/ig_hashtag_search?user_id=\(credentials.instagramBusinessAccountId)&q=\(searchedHashtag)&access_token=\(credentials.facebookToken)"
+        return url.encodeUrl()
+    }
+
+    func hashtagMediaSearchURL(
+        hashtagID: String,
+        credentials: InstagramGraphCredentials
+    ) -> String? {
+        let limit = "25"
+        let mediaType = "top_media"
+        let fields = [
+            "caption",
+            "comments_count",
+            "like_count",
+            "media_type",
+            "media_url",
+            "timestamp",
+            "id",
+            "media_product_type"
+        ].joined(separator: ",")
+
+        let options = "\(mediaType)?fields=\(fields)&user_id=\(credentials.instagramBusinessAccountId)&limit=\(limit)"
+        let url = "\(baseURL)/\(apiGraphVersion)/\(hashtagID)/\(options)&access_token=\(credentials.facebookToken)"
+        return url.encodeUrl()
+    }
+
+    func analyticsProfileURL(
+        mediaLimit: Int,
+        credentials: InstagramGraphCredentials
+    ) -> String? {
+        let insightsMetricsFields = [
+            "reach",
+            "impressions",
+            "profile_views",
+            "follower_count"
+        ]
+
+        let mediaMetricsFields = [
+            "media_type",
+            "caption",
+            "timestamp",
+            "media_url",
+            "comments_count",
+            "comments",
+            "is_comment_enabled",
+            "username",
+            "like_count",
+            "media_product_type",
+            "insights.metric(reach,impressions,total_interactions)"
+        ]
+
+        let fields = [
+            "biography",
+            "name",
+            "followers_count",
+            "follows_count",
+            "id",
+            "ig_id",
+            "media_count",
+            "profile_picture_url",
+            "username",
+            "website",
+            "recently_searched_hashtags",
+            "insights.metric(\(insightsMetricsFields.joined(separator: ","))).period(day)",
+            "media.limit(\(mediaLimit)){\(mediaMetricsFields.joined(separator: ","))}"
+        ]
+
+        let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=\(fields.joined(separator: ","))&access_token=\(credentials.facebookToken)&checkType=FULL"
+        return url.encodeUrl()
+    }
+
+    func businessDiscoveryURL(
+        account: String,
+        credentials: InstagramGraphCredentials
+    ) -> String? {
+        let limit = 12
+        let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(credentials.facebookToken)"
+        return url.encodeUrl()
+    }
+}

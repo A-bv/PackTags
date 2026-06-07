@@ -29,9 +29,14 @@ extension AnalyticsSUIViewModel {
     // 2. Api import
     func getOnlineJsonAPIGraph () {
         instagramGraphService.loadProfileForAnalytics(
-            completion: { (profileJson) in
+            completion: { result in
                 DispatchQueue.main.async { [weak self] in
-                    self?.load(profileJson: profileJson)
+                    switch result {
+                    case .success(let profileJson):
+                        self?.load(profileJson: profileJson)
+                    case .failure(let error):
+                        print("Error loading analytics profile: \(error)")
+                    }
                 }
             })
     }

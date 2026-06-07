@@ -22,6 +22,13 @@
 		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
 		0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */; };
 		0207BB982FD5F0000007F3D3 /* ConnectedInsightsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */; };
+		0207BBB72FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBC2FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift */; };
+		0207BBB82FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBD2FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift */; };
+		0207BBB92FD5A0000007F3D3 /* InstagramGraphClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBE2FD5A0000007F3D3 /* InstagramGraphClient.swift */; };
+		0207BBBA2FD5A0000007F3D3 /* SmartGHashtagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBF2FD5A0000007F3D3 /* SmartGHashtagRepository.swift */; };
+		0207BBBB2FD5A0000007F3D3 /* AnalyticsProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC02FD5A0000007F3D3 /* AnalyticsProfileRepository.swift */; };
+		0207BBC22FD5B0000007F3D3 /* FacebookSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC12FD5B0000007F3D3 /* FacebookSetupService.swift */; };
+		0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */; };
 		0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */; };
 		0207BBB12FD564090007F3D3 /* PackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB02FD564090007F3D3 /* PackListViewModel.swift */; };
 		0207BBB42FD5640A0007F3D3 /* ThemeEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */; };
@@ -177,6 +184,13 @@
 		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
 		0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsModule.swift; sourceTree = "<group>"; };
+		0207BBBC2FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramGraphCredentialsProvider.swift; sourceTree = "<group>"; };
+		0207BBBD2FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramGraphEndpointBuilder.swift; sourceTree = "<group>"; };
+		0207BBBE2FD5A0000007F3D3 /* InstagramGraphClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramGraphClient.swift; sourceTree = "<group>"; };
+		0207BBBF2FD5A0000007F3D3 /* SmartGHashtagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGHashtagRepository.swift; sourceTree = "<group>"; };
+		0207BBC02FD5A0000007F3D3 /* AnalyticsProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProfileRepository.swift; sourceTree = "<group>"; };
+		0207BBC12FD5B0000007F3D3 /* FacebookSetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSetupService.swift; sourceTree = "<group>"; };
+		0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionService.swift; sourceTree = "<group>"; };
 		0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewModel.swift; sourceTree = "<group>"; };
 		0207BBB02FD564090007F3D3 /* PackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewModel.swift; sourceTree = "<group>"; };
 		0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewModel.swift; sourceTree = "<group>"; };
@@ -366,6 +380,11 @@
 			children = (
 				021D7622275A9E6200F54054 /* Models */,
 				026D16D42A3E474500228DEA /* Transformers */,
+				0207BBBC2FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift */,
+				0207BBBD2FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift */,
+				0207BBBE2FD5A0000007F3D3 /* InstagramGraphClient.swift */,
+				0207BBBF2FD5A0000007F3D3 /* SmartGHashtagRepository.swift */,
+				0207BBC02FD5A0000007F3D3 /* AnalyticsProfileRepository.swift */,
 				026D16D92A3E474500228DEA /* InstagramGraphService.swift */,
 			);
 			path = InstagramGraph;
@@ -721,6 +740,8 @@
 			isa = PBXGroup;
 			children = (
 				02AD94B029AC078E00D893E5 /* FBLoginModel.swift */,
+				0207BBC12FD5B0000007F3D3 /* FacebookSetupService.swift */,
+				0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */,
 				02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */,
 				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
 			);
@@ -1088,16 +1109,20 @@
 				0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */,
 				02B05C1A27F90333000026B8 /* UITextView+PlaceHolder.swift in Sources */,
 				0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */,
+				0207BBB72FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift in Sources */,
 				026D16DF2A3E474500228DEA /* InstagramGraphService.swift in Sources */,
+				0207BBB82FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift in Sources */,
 				02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */,
 				023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */,
 				02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */,
 				0207BB982FD5F0000007F3D3 /* ConnectedInsightsModule.swift in Sources */,
+				0207BBB92FD5A0000007F3D3 /* InstagramGraphClient.swift in Sources */,
 				0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */,
 				02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */,
 				02FA30772A004254006A48CC /* CollectionView.swift in Sources */,
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
 				02D1A119255387590045E56F /* Unique.swift in Sources */,
+				0207BBBA2FD5A0000007F3D3 /* SmartGHashtagRepository.swift in Sources */,
 				02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */,
 				02962685284BC2FD009B0F58 /* ThemeTableViewController+Delegate.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */,
@@ -1128,11 +1153,14 @@
 				02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */,
 				02385E032A63523B0050FFDE /* ThemeEditorViewController+Save.swift in Sources */,
 				02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */,
+				0207BBC22FD5B0000007F3D3 /* FacebookSetupService.swift in Sources */,
+				0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */,
 				0281B97A2879877C00344D3E /* UIVC+NavigationBarDimensions.swift in Sources */,
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
 				0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */,
 				023A2F7C2856495800EE6CDE /* PackListViewController+ConfigCell.swift in Sources */,
 				0206214E2663A2AE0072C404 /* JsonResponseModels.swift in Sources */,
+				0207BBBB2FD5A0000007F3D3 /* AnalyticsProfileRepository.swift in Sources */,
 				021EB84D288C1EB000463B42 /* ThemeTableViewController+Operations.swift in Sources */,
 				02998A642B43735F00B70516 /* SmartGVM+Import.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
