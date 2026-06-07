@@ -24,6 +24,31 @@ private final class SpyNavigationController: UINavigationController {
     }
 }
 
+private final class SpyConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
+    private(set) var openedDestination: ConnectedInsightsDestination?
+    private(set) var presenter: UIViewController?
+
+    func open(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
+        openedDestination = destination
+        self.presenter = presenter
+    }
+}
+
+private final class FakeAppSettings: AppSettingsProtocol {
+    var tipsAlertShown = false
+}
+
+private final class FakeThemeRepository: ThemeRepositoryProtocol {
+    private(set) var didSave = false
+
+    func fetchAll() -> [ThemeCD] { [] }
+    func create() -> ThemeCD { makeTheme() }
+    func save() { didSave = true }
+    func delete(_ theme: ThemeCD) {}
+    func count() -> Int32 { 0 }
+    func tagsAlreadyStored(tags: [String]) -> [String] { [] }
+}
+
 // MARK: - Helpers
 
 private func makeTheme() -> ThemeCD {
@@ -33,6 +58,16 @@ private func makeTheme() -> ThemeCD {
     container.persistentStoreDescriptions = [desc]
     container.loadPersistentStores { _, _ in }
     return ThemeCD(context: container.viewContext)
+}
+
+private func makeDependencies(
+    connectedInsights: ConnectedInsightsCoordinating = SpyConnectedInsightsCoordinator()
+) -> AppDependencies {
+    AppDependencies(
+        themeRepository: FakeThemeRepository(),
+        appSettings: FakeAppSettings(),
+        connectedInsights: connectedInsights
+    )
 }
 
 // MARK: - AppCoordinator
@@ -60,7 +95,7 @@ private func makeTheme() -> ThemeCD {
 
     private func makeSUT() -> (ThemeCoordinator, SpyNavigationController) {
         let nav = SpyNavigationController()
-        return (ThemeCoordinator(navigationController: nav), nav)
+        return (ThemeCoordinator(navigationController: nav, dependencies: makeDependencies()), nav)
     }
 
     // MARK: start
@@ -91,7 +126,7 @@ private func makeTheme() -> ThemeCD {
         let theme = makeTheme()
         sut.showPackList(for: theme)
         let vc = nav.pushedVC as? PackListViewController
-        #expect(vc?.theme === theme)
+        #expect(vc?.viewModel.theme === theme)
         #expect(vc?.coordinator === sut)
     }
 
@@ -108,8 +143,8 @@ private func makeTheme() -> ThemeCD {
         let (sut, nav) = makeSUT()
         sut.showNewThemeEditor(onSave: {})
         let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
-        #expect(themeVC?.theme == nil)
-        #expect(themeVC?.isNotNewTheme == false)
+        #expect(themeVC?.viewModel.theme == nil)
+        #expect(themeVC?.viewModel.isNewTheme == true)
     }
 
     // MARK: showOnboarding
@@ -152,28 +187,34 @@ private func makeTheme() -> ThemeCD {
 
     // MARK: showAnalytics
 
-    @Test func showAnalytics_presentsHostingControllerWithAnalyticsNew() {
-        let (sut, nav) = makeSUT()
+    @Test func showAnalytics_routesToConnectedInsights() {
+        let nav = SpyNavigationController()
+        let connectedInsights = SpyConnectedInsightsCoordinator()
+        let sut = ThemeCoordinator(
+            navigationController: nav,
+            dependencies: makeDependencies(connectedInsights: connectedInsights)
+        )
+
         sut.showAnalytics()
-        #expect(nav.presentedVC is UIHostingController<AnalyticsNew>)
+
+        #expect(connectedInsights.openedDestination == .analytics)
+        #expect(connectedInsights.presenter === nav)
     }
 
     // MARK: showSmartG
 
-    @Test func showSmartG_whenSetup_presentsSmartGHostingController() {
-        UserDefaults.standard.set(true, forKey: "isCorrectSetup")
-        let (sut, nav) = makeSUT()
-        sut.showSmartG()
-        #expect(nav.presentedVC is UIHostingController<SmartGViewContainer>)
-        UserDefaults.standard.removeObject(forKey: "isCorrectSetup")
-    }
+    @Test func showSmartG_routesToConnectedInsights() {
+        let nav = SpyNavigationController()
+        let connectedInsights = SpyConnectedInsightsCoordinator()
+        let sut = ThemeCoordinator(
+            navigationController: nav,
+            dependencies: makeDependencies(connectedInsights: connectedInsights)
+        )
 
-    @Test func showSmartG_whenNotSetup_presentsFBLoginVC() {
-        UserDefaults.standard.set(false, forKey: "isCorrectSetup")
-        let (sut, nav) = makeSUT()
         sut.showSmartG()
-        #expect(nav.presentedVC is FBLoginVC)
-        UserDefaults.standard.removeObject(forKey: "isCorrectSetup")
+
+        #expect(connectedInsights.openedDestination == .smartG)
+        #expect(connectedInsights.presenter === nav)
     }
 
     // MARK: showThemeEditor
@@ -190,8 +231,8 @@ private func makeTheme() -> ThemeCD {
         let theme = makeTheme()
         sut.showThemeEditor(for: theme, fromSwipe: false, chosenPack: "", onSave: {}, onCancel: {})
         let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
-        #expect(themeVC?.theme === theme)
-        #expect(themeVC?.isNotNewTheme == true)
+        #expect(themeVC?.viewModel.theme === theme)
+        #expect(themeVC?.viewModel.isNewTheme == false)
     }
 
     @Test func showThemeEditor_fromSwipe_setsIsFromShowAndPack() {
@@ -214,7 +255,7 @@ private func makeTheme() -> ThemeCD {
     @Test func childDidFinish_removesChildFromParent() {
         let nav = SpyNavigationController()
         let parent = AppCoordinator(window: UIWindow())
-        let child = ThemeCoordinator(navigationController: nav)
+        let child = ThemeCoordinator(navigationController: nav, dependencies: makeDependencies())
         parent.childCoordinators.append(child)
         parent.childDidFinish(child)
         #expect(parent.childCoordinators.isEmpty)
