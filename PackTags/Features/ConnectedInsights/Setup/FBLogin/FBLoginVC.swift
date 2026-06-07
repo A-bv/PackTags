@@ -93,7 +93,9 @@ extension FBLoginVC: LoginButtonDelegate {
     private func setupFBLoginVC () {
         self.view.applyBlur()
         self.placeTopRightButton(arrowButton: false)
-        self.placeHelpButtonForFBLoginSetup()
+        self.placeHelpButtonForFBLoginSetup(
+            target: self,
+            action: #selector(showInfoSetupScreenFromHelpButton(_:)))
         self.placeFBLogingButton()
     }
     
@@ -164,5 +166,9 @@ extension FBLoginVC {
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
         self.present(controller, animated: true, completion: nil)
+    }
+
+    @objc private func showInfoSetupScreenFromHelpButton(_ sender: Any) {
+        showSetupScreen()
     }
 }

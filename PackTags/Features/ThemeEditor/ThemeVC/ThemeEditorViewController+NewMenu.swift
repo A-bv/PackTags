@@ -123,8 +123,7 @@ extension ThemeEditorViewController {
     }*/
     
     private func showFBLoginScreenFromThemeEditorViewController() {
-        let viewModel = FBLoginViewModel()
-        let viewController = FBLoginVC(viewModel: viewModel)
+        let viewController = ConnectedInsightsModule().makeViewController(for: .setup)
         viewController.modalPresentationStyle = .overFullScreen
         viewController.modalTransitionStyle = .coverVertical
         self.present(viewController, animated: true, completion: nil)

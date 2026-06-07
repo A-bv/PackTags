@@ -21,11 +21,14 @@ extension UIViewController {
         static let facebookSetupHelpUrl = "https://www.facebook.com/business/help/502981923235522"
     }
     
-    func placeHelpButtonForFBLoginSetup() {
+    func placeHelpButtonForFBLoginSetup(
+        target: Any? = nil,
+        action: Selector? = nil
+    ) {
         placeHelpButton(
             title: Strings.setupTitle,
-            target: self,
-            action: #selector(showInfoSetupIGCreatorVC(_:))
+            target: target ?? self,
+            action: action ?? #selector(showInfoSetupIGCreatorVC(_:))
         )
     }
     
@@ -73,7 +76,8 @@ extension UIViewController {
     }
 
     @objc func showInfoSetupIGCreatorVC(_ sender: Any) {
-        presentViewController(InfoSetupIGCreatorVC())
+        let viewController = ConnectedInsightsModule().makeViewController(for: .setupInfo)
+        presentViewController(viewController)
     }
 
     @objc func showWebSetBusinessIG(_ sender: Any) {

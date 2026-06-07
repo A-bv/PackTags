@@ -47,6 +47,7 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     func showSettings() {
         let vc = SettingsVC()
         vc.coordinator = self
+        vc.connectedInsights = dependencies.connectedInsights
         navigationController.pushViewController(vc, animated: true)
     }
 

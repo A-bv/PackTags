@@ -4,6 +4,8 @@ import UIKit
 enum ConnectedInsightsDestination {
     case analytics
     case smartG
+    case setup
+    case setupInfo
 }
 
 protocol ConnectedInsightsRouting {
@@ -72,17 +74,23 @@ final class ConnectedInsightsModule: ConnectedInsightsRouting {
     }
 
     func makeViewController(for destination: ConnectedInsightsDestination) -> UIViewController {
-        guard settings.isCorrectSetup else {
-            return FBLoginVC(settings: settings)
-        }
-
         switch destination {
         case .analytics:
+            guard settings.isCorrectSetup else {
+                return FBLoginVC(settings: settings)
+            }
             return UIHostingController(
                 rootView: AnalyticsNew(instagramGraphService: instagramGraphService))
         case .smartG:
+            guard settings.isCorrectSetup else {
+                return FBLoginVC(settings: settings)
+            }
             return UIHostingController(
                 rootView: SmartGViewContainer(instagramGraphService: instagramGraphService))
+        case .setup:
+            return FBLoginVC(settings: settings)
+        case .setupInfo:
+            return InfoSetupIGCreatorVC(settings: settings)
         }
     }
 }

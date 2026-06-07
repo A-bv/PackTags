@@ -83,6 +83,7 @@ class SettingsVC: UIViewController {
     }()
     
     weak var coordinator: (any ThemeCoordinatorProtocol)?
+    var connectedInsights: any ConnectedInsightsRouting = ConnectedInsightsModule()
 
     var models = [SettingsSection]()
     
@@ -124,9 +125,9 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemOrange
                         ) { [weak self] in
-                            let viewModel = FBLoginViewModel()
-                            let vwc = FBLoginVC(viewModel: viewModel)
-                            self?.showPage(vc: vwc)
+                            guard let self else { return }
+                            let viewController = connectedInsights.makeViewController(for: .setup)
+                            showPage(vc: viewController)
                         })]))
         
         models.append(
@@ -184,7 +185,9 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemPurple
                         ) {[weak self] in
-                            self?.showPage(vc: InfoSetupIGCreatorVC())
+                            guard let self else { return }
+                            let viewController = connectedInsights.makeViewController(for: .setupInfo)
+                            showPage(vc: viewController)
                         })]))
 
         models.append(
