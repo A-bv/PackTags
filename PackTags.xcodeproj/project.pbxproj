@@ -29,6 +29,7 @@
 		0207BBB72FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBC2FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift */; };
 		0207BBB82FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBD2FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift */; };
 		0207BBB92FD5A0000007F3D3 /* InstagramGraphClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBE2FD5A0000007F3D3 /* InstagramGraphClient.swift */; };
+		0207BBB92FD5AB370007F3D3 /* ConnectedInsightsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB82FD5AB370007F3D3 /* ConnectedInsightsSettings.swift */; };
 		0207BBBA2FD5A0000007F3D3 /* SmartGHashtagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBBF2FD5A0000007F3D3 /* SmartGHashtagRepository.swift */; };
 		0207BBBB2FD5A0000007F3D3 /* AnalyticsProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC02FD5A0000007F3D3 /* AnalyticsProfileRepository.swift */; };
 		0207BBC22FD5B0000007F3D3 /* FacebookSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC12FD5B0000007F3D3 /* FacebookSetupService.swift */; };
@@ -190,6 +191,7 @@
 		0207BBB02FD564090007F3D3 /* PackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewModel.swift; sourceTree = "<group>"; };
 		0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewModel.swift; sourceTree = "<group>"; };
 		0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsCoordinator.swift; sourceTree = "<group>"; };
+		0207BBB82FD5AB370007F3D3 /* ConnectedInsightsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsSettings.swift; sourceTree = "<group>"; };
 		0207BBBC2FD5A0000007F3D3 /* InstagramGraphCredentialsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramGraphCredentialsProvider.swift; sourceTree = "<group>"; };
 		0207BBBD2FD5A0000007F3D3 /* InstagramGraphEndpointBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramGraphEndpointBuilder.swift; sourceTree = "<group>"; };
 		0207BBBE2FD5A0000007F3D3 /* InstagramGraphClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramGraphClient.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				0207BBC62FD5C0000007F3D3 /* ConnectedInsightsGateway.swift */,
+				0207BBB82FD5AB370007F3D3 /* ConnectedInsightsSettings.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1173,6 +1176,7 @@
 				029122842B8AAF56007EB7ED /* SmartGErrorStateView.swift in Sources */,
 				02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */,
 				0229863F27BD6DF60048F9E9 /* ImageCache.swift in Sources */,
+				0207BBB92FD5AB370007F3D3 /* ConnectedInsightsSettings.swift in Sources */,
 				02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */,
 				02385E032A63523B0050FFDE /* ThemeEditorViewController+Save.swift in Sources */,
 				02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */,
