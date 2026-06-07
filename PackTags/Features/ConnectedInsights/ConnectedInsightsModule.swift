@@ -1,4 +1,3 @@
-import SwiftUI
 import UIKit
 
 enum ConnectedInsightsDestination {
@@ -8,8 +7,8 @@ enum ConnectedInsightsDestination {
     case setupInfo
 }
 
-protocol ConnectedInsightsRouting {
-    func makeViewController(for destination: ConnectedInsightsDestination) -> UIViewController
+protocol ConnectedInsightsCoordinating: AnyObject {
+    func open(_ destination: ConnectedInsightsDestination, from presenter: UIViewController)
 }
 
 protocol ConnectedInsightsSettingsProtocol {
@@ -64,50 +63,5 @@ final class UserDefaultsConnectedInsightsSettings: ConnectedInsightsSettingsProt
     var pressedFacebookLoginButton: Bool {
         get { defaults.bool(forKey: Key.pressedFacebookLoginButton) }
         set { defaults.set(newValue, forKey: Key.pressedFacebookLoginButton) }
-    }
-}
-
-final class ConnectedInsightsModule: ConnectedInsightsRouting {
-    private let settings: any ConnectedInsightsSettingsProtocol
-    private let instagramGraphService: any InstagramGraphServicing
-
-    init(
-        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
-        configuration: ConnectedInsightsConfiguration = .production,
-        instagramGraphService: (any InstagramGraphServicing)? = nil
-    ) {
-        self.settings = settings
-        self.instagramGraphService = instagramGraphService ?? InstagramGraphService(
-            settings: settings,
-            apiGraphVersion: configuration.graphAPIVersion
-        )
-    }
-
-    func makeViewController(for destination: ConnectedInsightsDestination) -> UIViewController {
-        print("[ConnectedInsights][Module] Resolving \(destination), isCorrectSetup=\(settings.isCorrectSetup)")
-        switch destination {
-        case .analytics:
-            guard settings.isCorrectSetup else {
-                print("[ConnectedInsights][Module] Analytics requires setup; showing Facebook Login.")
-                return FBLoginVC(settings: settings)
-            }
-            print("[ConnectedInsights][Module] Showing Analytics.")
-            return UIHostingController(
-                rootView: AnalyticsNew(instagramGraphService: instagramGraphService))
-        case .smartG:
-            guard settings.isCorrectSetup else {
-                print("[ConnectedInsights][Module] SmartG requires setup; showing Facebook Login.")
-                return FBLoginVC(settings: settings)
-            }
-            print("[ConnectedInsights][Module] Showing SmartG.")
-            return UIHostingController(
-                rootView: SmartGViewContainer(instagramGraphService: instagramGraphService))
-        case .setup:
-            print("[ConnectedInsights][Module] Showing setup.")
-            return FBLoginVC(settings: settings)
-        case .setupInfo:
-            print("[ConnectedInsights][Module] Showing setup info.")
-            return InfoSetupIGCreatorVC(settings: settings)
-        }
     }
 }

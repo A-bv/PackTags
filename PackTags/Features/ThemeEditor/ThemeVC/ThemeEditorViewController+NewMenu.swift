@@ -8,14 +8,12 @@
 // Menu iOS 14+
 
 import UIKit
-import SwiftUI
 
 extension ThemeEditorViewController{
     private enum Strings {
         static let rename = "Rename".localized()
         static let editPicture = "Edit picture".localized()
         static let textRecognition = "Text Recognition".localized()
-        static let smartHashtags = "Smart hashtags".localized()
         static let searchHashtags = "Search hashtags".localized()
         static let shuffleHashtags = "Shuffle hashtags".localized()
         static let menuSectionEdit = "Edit...".localized()
@@ -46,20 +44,7 @@ extension ThemeEditorViewController{
             vc?.recognizeText = true
             vc?.setImagePicker()
         }
-        
-        /*
-        let smartGen = UIAction(
-            title: Strings.smartHashtags,
-            image: UIImage(systemName: "chart.bar.doc.horizontal.fill")
-        ) { [weak self] action in
-            let isCorrectSetup = UserDefaults.standard.bool(forKey: "isCorrectSetup")
-            if isCorrectSetup {
-                self?.showSmartGScreen()
-            } else {
-                self?.showFBLoginScreenFromThemeEditorViewController()
-            }
-        }*/
-        
+
         let search = UIAction(
             title: Strings.searchHashtags,
             image: UIImage(systemName: "magnifyingglass")
@@ -84,7 +69,7 @@ extension ThemeEditorViewController{
         let htgImport = UIMenu(
             title: Strings.menuSectionImport,
             options: .displayInline,
-            children: [textRecon]) //[textRecon,smartGen])
+            children: [textRecon])
         
         let manage = UIMenu(
             title: Strings.menuSectionManage,
@@ -98,23 +83,5 @@ extension ThemeEditorViewController{
         let optionsBarItem = UIBarButtonItem(image:symbol, primaryAction: nil, menu: barButtonMenu)
         
         return optionsBarItem
-    }
-}
-
-extension ThemeEditorViewController {
-    /*
-    private func showSmartGScreen() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let dataController = appDelegate.dataController
-        let hostingController = UIHostingController(rootView: SmartGViewContainer(dataController: dataController))
-        hostingController.modalPresentationStyle = .overFullScreen
-        self.present(hostingController, animated: true, completion: nil)
-    }*/
-    
-    private func showFBLoginScreenFromThemeEditorViewController() {
-        let viewController = ConnectedInsightsModule().makeViewController(for: .setup)
-        viewController.modalPresentationStyle = .overFullScreen
-        viewController.modalTransitionStyle = .coverVertical
-        self.present(viewController, animated: true, completion: nil)
     }
 }

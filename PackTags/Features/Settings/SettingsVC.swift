@@ -83,7 +83,7 @@ class SettingsVC: UIViewController {
     }()
     
     weak var coordinator: (any ThemeCoordinatorProtocol)?
-    var connectedInsights: any ConnectedInsightsRouting = ConnectedInsightsModule()
+    var connectedInsights: any ConnectedInsightsCoordinating = ConnectedInsightsCoordinator()
 
     var models = [SettingsSection]()
     
@@ -126,8 +126,7 @@ class SettingsVC: UIViewController {
                             iconBackgroundColor: .systemOrange
                         ) { [weak self] in
                             guard let self else { return }
-                            let viewController = connectedInsights.makeViewController(for: .setup)
-                            showPage(vc: viewController)
+                            connectedInsights.open(.setup, from: self)
                         })]))
         
         models.append(
@@ -186,8 +185,7 @@ class SettingsVC: UIViewController {
                             iconBackgroundColor: .systemPurple
                         ) {[weak self] in
                             guard let self else { return }
-                            let viewController = connectedInsights.makeViewController(for: .setupInfo)
-                            showPage(vc: viewController)
+                            connectedInsights.open(.setupInfo, from: self)
                         })]))
 
         models.append(

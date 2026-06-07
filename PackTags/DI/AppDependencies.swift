@@ -24,5 +24,5 @@ final class UserDefaultsAppSettings: AppSettingsProtocol {
 struct AppDependencies {
     let themeRepository: any ThemeRepositoryProtocol
     let appSettings: any AppSettingsProtocol
-    let connectedInsights: any ConnectedInsightsRouting
+    let connectedInsights: any ConnectedInsightsCoordinating
 }

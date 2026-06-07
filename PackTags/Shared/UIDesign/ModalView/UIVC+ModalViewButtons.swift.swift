@@ -22,13 +22,13 @@ extension UIViewController {
     }
     
     func placeHelpButtonForFBLoginSetup(
-        target: Any? = nil,
-        action: Selector? = nil
+        target: Any,
+        action: Selector
     ) {
         placeHelpButton(
             title: Strings.setupTitle,
-            target: target ?? self,
-            action: action ?? #selector(showInfoSetupIGCreatorVC(_:))
+            target: target,
+            action: action
         )
     }
     
@@ -73,11 +73,6 @@ extension UIViewController {
         viewController.modalPresentationStyle = .overFullScreen
         viewController.modalTransitionStyle = .crossDissolve
         self.present(viewController, animated: true)
-    }
-
-    @objc func showInfoSetupIGCreatorVC(_ sender: Any) {
-        let viewController = ConnectedInsightsModule().makeViewController(for: .setupInfo)
-        presentViewController(viewController)
     }
 
     @objc func showWebSetBusinessIG(_ sender: Any) {

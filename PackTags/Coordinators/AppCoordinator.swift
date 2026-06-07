@@ -13,7 +13,7 @@ final class AppCoordinator: Coordinator {
         self.dependencies = AppDependencies(
             themeRepository: CoreDataThemeRepository(),
             appSettings: appSettings,
-            connectedInsights: ConnectedInsightsModule()
+            connectedInsights: ConnectedInsightsCoordinator()
         )
     }
 

@@ -82,10 +82,6 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     }
 
     private func presentConnectedInsights(_ destination: ConnectedInsightsDestination) {
-        print("[ConnectedInsights][Routing] Presenting \(destination)")
-        let vc = dependencies.connectedInsights.makeViewController(for: destination)
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .coverVertical
-        navigationController.present(vc, animated: true)
+        dependencies.connectedInsights.open(destination, from: navigationController)
     }
 }

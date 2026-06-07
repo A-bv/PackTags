@@ -58,6 +58,8 @@ class FBLoginVC: UIViewController {
         ]
     }
 
+    var onSetupComplete: (() -> Void)?
+
     private let viewModel: FBLoginViewModel
     private var settings: any ConnectedInsightsSettingsProtocol
     private var hasStartedSetupValidation = false
@@ -220,11 +222,16 @@ extension FBLoginVC {
     }
 
     private func showSuccessfulSetupAlert() {
-        Alerts.simpleShortAlert(
+        let alert = UIAlertController(
             title: Strings.connectedAlertTitle,
             message: Strings.accessAnalyticsConfirm,
-            presentingViewController: self,
-            shouldDissmissPresentingVCWhenConfirmed: true)
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.dismiss(animated: true) {
+                self?.onSetupComplete?()
+            }
+        })
+        present(alert, animated: true)
     }
 
     private func showTroubleshootingAlert(detail: String? = nil) {
