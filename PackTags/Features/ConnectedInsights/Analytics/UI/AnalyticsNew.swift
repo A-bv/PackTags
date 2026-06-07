@@ -193,22 +193,22 @@ extension AnalyticsNew {
     private func changeInsightType() {
         let impactMed = UIImpactFeedbackGenerator(style: .medium)
         impactMed.impactOccurred()
-            
-        rawInsights = !rawInsights
-        updateLabels(isRawInsights: rawInsights)
-        
+
+        swiftUIData.rawInsights.toggle()
+        updateLabels(isRawInsights: swiftUIData.rawInsights)
+
         swiftUIData.getJsonFromDir()
     }
-    
+
     private func switchInsightToRate() {
         let impactMed = UIImpactFeedbackGenerator(style: .soft)
         impactMed.impactOccurred()
-            
-        mode += 1
-        if mode == Constants.maxNumberOfModes {
-            mode = 0
+
+        swiftUIData.mode += 1
+        if swiftUIData.mode == Constants.maxNumberOfModes {
+            swiftUIData.mode = 0
         }
-        
+
         swiftUIData.getJsonFromDir()
     }
 }
@@ -217,7 +217,7 @@ extension AnalyticsNew {
 extension AnalyticsNew {
     var backButton: some View {
         Button(action: {
-            rawInsights = true
+            swiftUIData.rawInsights = true
             presentationMode.wrappedValue.dismiss()
         }) {
             Image(systemName: "chevron.down.circle")
@@ -235,8 +235,8 @@ extension AnalyticsNew {
         }
         .alert(isPresented: $showingAlert) {
             Alert(
-                title: Text(infoTitles[mode]),
-                message:Text(infoMessages[mode]),
+                title: Text(infoTitles[swiftUIData.mode]),
+                message:Text(infoMessages[swiftUIData.mode]),
                 dismissButton: .default(Text(Strings.ok)))
         }
     }
@@ -303,12 +303,12 @@ extension AnalyticsNew {
                     if postCount == 1 {
                         MonoCircleView(
                             monoCircleValue: Double(average),
-                            isRate: !rawInsights)
+                            isRate: !swiftUIData.rawInsights)
                         Spacer()
                     } else {
                         CirclesView(
                             circles: $swiftUIData.circlesData,
-                            isRate: !rawInsights,
+                            isRate: !swiftUIData.rawInsights,
                             columns: columns)
                         BarchartView(
                             selectedBarChartPostId: $selectedBarChartPostId,
@@ -376,12 +376,12 @@ extension AnalyticsNew {
     var graphSectionHeader: some View {
         VStack(alignment: .leading, spacing: Constants.graphSectionHeaderVerticalSpacing) {
             HStack {
-                Text(titles[mode])
+                Text(titles[swiftUIData.mode])
                     .font(.title)
                     .foregroundColor(Color(UIColor.label))
                 infoButton
             }
-            Text(subtitles[mode])
+            Text(subtitles[swiftUIData.mode])
                 .font(.subheadline)
                 .foregroundColor(Color(UIColor.label))
         }

@@ -8,12 +8,6 @@
 
 import Foundation
 
-var mode: Int = 0
-var rawInsights = true
-
-//MARK: - Process
-// Additional operations on the obtained Json data
-
 enum DataTransformer {}
 
 extension DataTransformer {
@@ -21,57 +15,60 @@ extension DataTransformer {
 }
 
 extension DataTransformer.ProfileDataTransformer {
-    static func transform(response: Profile) -> TransformedProfileModel? {
+    static func transform(
+        response: Profile,
+        mode: Int = 0,
+        rawInsights: Bool = true
+    ) -> TransformedProfileModel? {
         let top = response
-        
-        guard let metrics = computeMetrics(profileResponse: response) else { return nil }
-        
-        // 0: likes 1:comments
-        let sum0 = (metrics.likeArray as NSArray).value(forKeyPath: "@sum.floatValue")
-        let sum1 = (metrics.commentArray as NSArray).value(forKeyPath: "@sum.floatValue")
-        
-        let avg0 = StringFormatter.averageElementsOfArray(array: metrics.likeArray)
-        let avg1 = StringFormatter.averageElementsOfArray(array: metrics.commentArray)
-        
-        let captions = metrics.captions
-        let times = metrics.times
-        
-        //Basic
-        let usr = top.username
-        let isPv = false
-        
+
+        guard let metrics = computeMetrics(profileResponse: response, rawInsights: rawInsights) else { return nil }
+
+        let avg0 = averageInt(metrics.likeArray)
+        let avg1 = averageInt(metrics.commentArray)
+
         let engagementRates = [
             metrics.engagementRateFollowers,
             metrics.engagementRateReach,
             metrics.engagementRateImpressions]
-        
+
         var avg2 = [CGFloat?]()
         var maxR = [CGFloat?]()
-        
+
         for er in engagementRates {
-            avg2.append(StringFormatter.averageElementOfArrayCGFloat(array: er))
+            avg2.append(averageCGFloat(er))
             maxR.append(er.reduce(CGFloat.leastNormalMagnitude, { max($0, CGFloat($1)) }))
         }
-        
-        let data = TransformedProfileModel(
-            usr: usr,
-            isPv: isPv,
-            sum0: (sum0 as! Int),
-            sum1: (sum1 as! Int),
+
+        let safeMode = min(mode, engagementRates.count - 1)
+
+        return TransformedProfileModel(
+            usr: top.username,
+            isPv: false,
+            sum0: metrics.likeArray.reduce(0, +),
+            sum1: metrics.commentArray.reduce(0, +),
             avg0: avg0,
             avg1: avg1,
-            rates: engagementRates[mode],
-            pTimes: times,
-            avg2: avg2[mode],
-            maxR: maxR[mode],
-            captions: captions)
-        
-        return data
+            rates: engagementRates[safeMode],
+            pTimes: metrics.times,
+            avg2: avg2[safeMode],
+            maxR: maxR[safeMode],
+            captions: metrics.captions)
+    }
+
+    private static func averageInt(_ array: [Int]) -> Double {
+        guard !array.isEmpty else { return 0 }
+        return Double(array.reduce(0, +)) / Double(array.count)
+    }
+
+    private static func averageCGFloat(_ array: [CGFloat]) -> CGFloat {
+        guard !array.isEmpty else { return 0 }
+        return array.reduce(0, +) / CGFloat(array.count)
     }
 }
 
 extension DataTransformer.ProfileDataTransformer {
-    static private func computeMetrics(profileResponse:Profile) -> SubTransformedProfileModel? {
+    static private func computeMetrics(profileResponse: Profile, rawInsights: Bool) -> SubTransformedProfileModel? {
         var likeArray = [Int]()
         var commentArray = [Int]()
         var sumLikesCommentsArray = [CGFloat]()

@@ -18,7 +18,10 @@ class AnalyticsSUIViewModel: ObservableObject {
     }
 
     let analyticsDataProvider: any AnalyticsDataProviding
-    
+
+    @Published var mode: Int = 0
+    @Published var rawInsights: Bool = true
+
     //MARK: - Live Variables
     @Published var processedJson : TransformedProfileModel?
     @Published var jsonOfficial : Profile? //Api Graph

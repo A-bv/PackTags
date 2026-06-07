@@ -15,8 +15,8 @@ struct TransformedProfileModel {
     
     let sum0: Int?                  //0. Total likes
     let sum1: Int?                  //1. Total comments
-    let avg0: String?               //2. Avg likes
-    let avg1: String?               //3. Avg comments
+    let avg0: Double?               //2. Avg likes
+    let avg1: Double?               //3. Avg comments
     let rates: [CGFloat?]           //4. Engagement rates
     let pTimes: [Double?]           //5. Posting times
     let avg2: CGFloat?              //6. Avg Engagement
@@ -28,8 +28,8 @@ struct TransformedProfileModel {
         isPv: Bool? = nil,
         sum0: Int? = nil,
         sum1: Int? = nil,
-        avg0: String? = nil,
-        avg1: String? = nil,
+        avg0: Double? = nil,
+        avg1: Double? = nil,
         rates: [CGFloat?] = [nil],
         pTimes: [CDouble?] = [nil],
         avg2: CGFloat? = nil,

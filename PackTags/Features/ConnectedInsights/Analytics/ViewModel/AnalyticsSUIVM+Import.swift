@@ -43,7 +43,7 @@ extension AnalyticsSUIViewModel {
     
     private func load(profileJson: Profile) {
         jsonOfficial = profileJson
-        processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson)
+        processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson, mode: mode, rawInsights: rawInsights)
         // QQQ
 
         /*
@@ -83,8 +83,8 @@ extension AnalyticsSUIViewModel {
             return
         }
 
-        overviewSectionData[0].value = processedJson?.avg0 ?? "0"
-        overviewSectionData[1].value = processedJson?.avg1 ?? "0"
+        overviewSectionData[0].value = StringFormatter.formatNum(value: processedJson?.avg0 ?? 0)
+        overviewSectionData[1].value = StringFormatter.formatNum(value: processedJson?.avg1 ?? 0)
 
         circlesData[1].value = CGFloat(rates[0] ?? 0)
         circlesData[1].maxValue = getMaxRate()
