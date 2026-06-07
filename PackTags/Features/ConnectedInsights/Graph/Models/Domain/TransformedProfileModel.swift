@@ -6,7 +6,7 @@
 //  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct TransformedProfileModel {
     let usr: String?                //. Basic: username
