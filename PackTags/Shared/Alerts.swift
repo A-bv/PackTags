@@ -218,17 +218,18 @@ extension ThemeEditorViewController {
     
     func showNameThemeAlert() {
         let tips = ""
-        let title = themeTitle.isEmpty ? Strings.newTheme : themeTitle
-        let message = themeTitle.isEmpty ? tips : Strings.editName
-        let placeholder = themeTitle.isEmpty ? Strings.enterName : Strings.enterNewName
-        
+        let currentTitle = viewModel.themeTitle
+        let title = currentTitle.isEmpty ? Strings.newTheme : currentTitle
+        let message = currentTitle.isEmpty ? tips : Strings.editName
+        let placeholder = currentTitle.isEmpty ? Strings.enterName : Strings.enterNewName
+
         Alerts.showTextInputAlert(
             targetVC: self,
             title: title,
             message: message,
             placeholder: placeholder
         ) { [weak vc = self] (inputName) in
-            vc?.themeTitle = inputName
+            vc?.viewModel.themeTitle = inputName
             vc?.updateSaveButtonState()
         }
     }

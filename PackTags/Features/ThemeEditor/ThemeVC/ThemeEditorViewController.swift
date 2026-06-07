@@ -10,7 +10,7 @@ import UIKit
 
 class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
 
-    var themeRepository: any ThemeRepositoryProtocol = CoreDataThemeRepository()
+    var viewModel: ThemeEditorViewModel!
 
     deinit {
         print("deinit ThemeEditorViewController")
@@ -106,13 +106,7 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
 
     //MARK: - Model
 
-    var theme: ThemeCD?
-
     var themeImageView = DarkMode.isDarkMode() ? UIImage(named: "Logo-BlackLong") : UIImage(named: "Logo-PurpleLong")
-
-    var themeTitle = String()
-
-    var isNotNewTheme = false
 
     //"show" button (PackTableVC) variables
     var isFromShow = false
@@ -135,8 +129,6 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
     }
 
-    var numTagsPerPack = QuantityPickerData.selectedValue
-
     //MARK: - Callbacks
     var onSave: ((ThemeCD?) -> Void)?
     var onCancel: (() -> Void)?
@@ -152,7 +144,7 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
         navigationItem.leftBarButtonItem = cancelButton
         navigationController?.view.tintColor = UITextView.appearance().tintColor
 
-        if isNotNewTheme == false { showNameThemeAlert() }
+        if viewModel.isNewTheme { showNameThemeAlert() }
 
         loadbuttons()
         loadEntries()
@@ -196,22 +188,15 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
 
     //MARK: - Setup
-    func updateSaveButtonState() { saveButton.isEnabled = !themeTitle.isEmpty }
+    func updateSaveButtonState() { saveButton.isEnabled = !viewModel.themeTitle.isEmpty }
 
     private func loadEntries() {
-        guard let theme else { return }
-        themeTitle = theme.name ?? ""
-
-        //Packing by 30 from Core Data on textView
-        if let content = theme.content {
-            let text = content
-            let hashtags = Unique.reorganizeTags(from: text, with: numTagsPerPack)
-            themeTextView.text = hashtags
+        guard viewModel.theme != nil else { return }
+        if let text = viewModel.contentForDisplay() {
+            themeTextView.text = text
         }
-
-        //image
-        if let image = theme.image {
-            themeImageView = UIImage(data: image)
+        if let imageData = viewModel.theme?.image {
+            themeImageView = UIImage(data: imageData)
         }
     }
 
@@ -234,8 +219,11 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
 
     //MARK: - Save
     @objc func save() {
-        handleSelectedThemeData()
-        let savedTheme = theme
+        let imageData = themeImageView?.jpegData(compressionQuality: 0.8)
+        let thumbnailData = themeImageView?.resized(to: CGSize(width: 135.333, height: 135.333))
+            .jpegData(compressionQuality: 0.8)
+        viewModel.save(rawText: themeTextView.text, imageData: imageData, thumbnailData: thumbnailData)
+        let savedTheme = viewModel.theme
         dismiss(animated: true) { [weak self] in
             self?.onSave?(savedTheme)
         }

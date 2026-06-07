@@ -10,16 +10,10 @@ import UIKit
 
 extension PackListViewController {
     //If redirected to instagram after copy, move pack to bottom
-    func copiedPacksToBottom (packIdx:Int) {
+    func copiedPacksToBottom(packIdx: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let element = self.packs.remove(at: packIdx)
-            self.packs.append(element)
+            self.viewModel.movePack(at: packIdx)
             self.tableView.reloadData()
-            
-            //save new order
-            let newSt = self.packs.joined(separator: " ")
-            self.theme?.content = newSt
-            self.themeRepository.save()
         }
     }
 }

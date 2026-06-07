@@ -72,19 +72,8 @@ extension ThemeEditorViewController{
             title: Strings.shuffleHashtags,
             image: UIImage(systemName: "shuffle.circle")
         ) { [weak self] action in
-            guard let themeTextView = self?.themeTextView,
-                  let textToShuffle = themeTextView.text,
-                  let numTagsPerPack = self?.numTagsPerPack else {
-                return
-            }
-            
-            let text = Unique.cleanTagList(
-                rawText: textToShuffle,
-                coreDataModel: self?.theme,
-                themeRepository: self?.themeRepository ?? CoreDataThemeRepository(),
-                shuffle: true)
-            
-            themeTextView.text = Unique.reorganizeTags(from: text, with: numTagsPerPack)
+            guard let self, let textToShuffle = self.themeTextView.text else { return }
+            self.themeTextView.text = self.viewModel.shuffleContent(rawText: textToShuffle)
         }
         
         let edit = UIMenu(

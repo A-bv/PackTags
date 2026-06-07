@@ -11,14 +11,7 @@ import UIKit
 // MARK: - Reorder theme
 extension ThemeTableViewController {
     func reorderRow(initial: IndexPath, final: IndexPath) {
-        let movedObject = self.themes[initial.row]
-        themes.remove(at: initial.row)
-        themes.insert(movedObject, at: final.row)
-        
-        for (index, element) in themes.enumerated() {
-            element.orderIndex = Int32(index)
-        }
-        themeRepository.save()
+        viewModel.reorderTheme(from: initial.row, to: final.row)
     }
 }
 
@@ -63,9 +56,7 @@ extension ThemeTableViewController {
     }
 
     func deleteRow(indexPath: IndexPath) {
-        let themeToDelete = self.themes[indexPath.row]
-        themeRepository.delete(themeToDelete)
-        themes = themeRepository.fetchAll()
+        viewModel.deleteTheme(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .none)
     }
 }

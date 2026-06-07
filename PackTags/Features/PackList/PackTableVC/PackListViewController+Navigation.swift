@@ -15,10 +15,9 @@ extension PackListViewController {
     }
 
     func presentThemeVC(fromSwipe: Bool) {
-        guard let theme = theme else { return }
         resetStatusBarColor = true
         coordinator?.showThemeEditor(
-            for: theme,
+            for: viewModel.theme,
             fromSwipe: fromSwipe,
             chosenPack: fromSwipe ? chosenPack : "",
             onSave: { [weak self] in

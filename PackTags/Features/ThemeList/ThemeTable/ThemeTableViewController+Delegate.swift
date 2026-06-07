@@ -11,7 +11,7 @@ import UIKit
 extension ThemeTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.isUserInteractionEnabled = false //(fix p1)
-        coordinator?.showPackList(for: themes[indexPath.row])
+        coordinator?.showPackList(for: viewModel.themes[indexPath.row])
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -19,7 +19,7 @@ extension ThemeTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return themes.count
+        return viewModel.themes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,7 +58,7 @@ extension ThemeTableViewController {
         else {
             fatalError("The dequeued cell is not an instance of ThemeTableViewCell.")
         }
-        let theme = themes[indexPath.row] // Fetches the appropriate theme for the data source layout.
+        let theme = viewModel.themes[indexPath.row]
         cell.nameLabel.text = theme.name
         if let thumbnail = theme.thumbnail {
             cell.themeImageView.image = UIImage(data: thumbnail)

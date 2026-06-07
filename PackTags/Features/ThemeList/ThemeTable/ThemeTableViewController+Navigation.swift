@@ -11,8 +11,7 @@ import UIKit
 extension ThemeTableViewController {
     @objc func didTapButton() {
         coordinator?.showNewThemeEditor { [weak self] in
-            guard let self else { return }
-            self.themes = self.themeRepository.fetchAll()
+            self?.viewModel.loadThemes()
         }
     }
 

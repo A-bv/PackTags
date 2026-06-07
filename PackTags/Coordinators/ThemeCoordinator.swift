@@ -15,8 +15,8 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     func start() {
         let vc = ThemeTableViewController(style: .plain)
         vc.coordinator = self
-        vc.themeRepository = dependencies.themeRepository
         vc.appSettings = dependencies.appSettings
+        vc.viewModel = ThemeListViewModel(repository: dependencies.themeRepository)
         navigationController.setViewControllers([vc], animated: false)
     }
 
@@ -24,15 +24,14 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
 
     func showPackList(for theme: ThemeCD) {
         let vc = PackListViewController(style: .plain)
-        vc.theme = theme
         vc.coordinator = self
-        vc.themeRepository = dependencies.themeRepository
+        vc.viewModel = PackListViewModel(theme: theme, repository: dependencies.themeRepository)
         navigationController.pushViewController(vc, animated: true)
     }
 
     func showNewThemeEditor(onSave: @escaping () -> Void) {
         let vc = ThemeEditorViewController()
-        vc.themeRepository = dependencies.themeRepository
+        vc.viewModel = ThemeEditorViewModel(theme: nil, repository: dependencies.themeRepository)
         vc.onSave = { _ in onSave() }
         presentInNavController(vc, transition: .coverVertical)
     }
@@ -63,9 +62,7 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
 
     func showThemeEditor(for theme: ThemeCD, fromSwipe: Bool, chosenPack: String, onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
         let vc = ThemeEditorViewController()
-        vc.themeRepository = dependencies.themeRepository
-        vc.theme = theme
-        vc.isNotNewTheme = true
+        vc.viewModel = ThemeEditorViewModel(theme: theme, repository: dependencies.themeRepository)
         vc.onSave = { _ in onSave() }
         vc.onCancel = onCancel
         if fromSwipe {
@@ -85,6 +82,7 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     }
 
     private func presentConnectedInsights(_ destination: ConnectedInsightsDestination) {
+        print("[ConnectedInsights][Routing] Presenting \(destination)")
         let vc = dependencies.connectedInsights.makeViewController(for: destination)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .coverVertical

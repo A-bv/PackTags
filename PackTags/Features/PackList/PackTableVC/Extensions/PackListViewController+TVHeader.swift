@@ -26,7 +26,7 @@ extension PackListViewController {
     }
     
     func updateTableViewBackgroundImage() {
-        if let theme = theme, let imageData = theme.image, let image = UIImage(data: imageData) {
+        if let imageData = viewModel.theme.image, let image = UIImage(data: imageData) {
             uiiv = UIImageView(image: image)
         }
     }

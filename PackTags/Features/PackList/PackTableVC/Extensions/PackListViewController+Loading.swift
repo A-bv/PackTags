@@ -11,21 +11,14 @@ import Foundation
 //MARK: - Loading
 extension PackListViewController {
     func loadPacks() {
-        guard let content = theme?.content else {
-            packs = []
-            return
-        }
-        
-        let numTagsPerPack = QuantityPickerData.selectedValue
-        packs = Unique.reorganizeTags(from: content, with: numTagsPerPack).components(separatedBy: "\n\n")
+        viewModel.loadPacks()
     }
 
     func updatePackListViewController() {
         loadPacks()
         tableView.reloadData()
-        navigationItem.title = theme?.name
+        navigationItem.title = viewModel.theme.name
         DispatchQueue.main.async {
-            // TODO: Check if can only update image
             self.setupTableViewBackgroundImage()
         }
     }

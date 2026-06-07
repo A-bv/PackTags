@@ -11,14 +11,12 @@ import UIKit
 class PackListViewController: UITableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
-    var themeRepository: any ThemeRepositoryProtocol = CoreDataThemeRepository()
+    var viewModel: PackListViewModel!
 
     let composeButton = UIBarButtonItem()
     let instaButton = UIBarButtonItem()
 
-    //Models
-    var theme: ThemeCD?
-    var packs = [""]
+    var packs: [String] { viewModel.packs }
     
     let pasteboard = UIPasteboard.general
     var chosenPack = String()
@@ -44,7 +42,7 @@ class PackListViewController: UITableViewController {
     // MARK: - Interface
     override func viewDidLoad(){
         super.viewDidLoad()
-        self.title = theme?.name
+        self.title = viewModel.theme.name
 
         composeButton.image = UIImage(named: "EditPic")
         composeButton.target = self
