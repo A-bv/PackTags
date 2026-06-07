@@ -84,22 +84,29 @@ final class ConnectedInsightsModule: ConnectedInsightsRouting {
     }
 
     func makeViewController(for destination: ConnectedInsightsDestination) -> UIViewController {
+        print("[ConnectedInsights][Module] Resolving \(destination), isCorrectSetup=\(settings.isCorrectSetup)")
         switch destination {
         case .analytics:
             guard settings.isCorrectSetup else {
+                print("[ConnectedInsights][Module] Analytics requires setup; showing Facebook Login.")
                 return FBLoginVC(settings: settings)
             }
+            print("[ConnectedInsights][Module] Showing Analytics.")
             return UIHostingController(
                 rootView: AnalyticsNew(instagramGraphService: instagramGraphService))
         case .smartG:
             guard settings.isCorrectSetup else {
+                print("[ConnectedInsights][Module] SmartG requires setup; showing Facebook Login.")
                 return FBLoginVC(settings: settings)
             }
+            print("[ConnectedInsights][Module] Showing SmartG.")
             return UIHostingController(
                 rootView: SmartGViewContainer(instagramGraphService: instagramGraphService))
         case .setup:
+            print("[ConnectedInsights][Module] Showing setup.")
             return FBLoginVC(settings: settings)
         case .setupInfo:
+            print("[ConnectedInsights][Module] Showing setup info.")
             return InfoSetupIGCreatorVC(settings: settings)
         }
     }

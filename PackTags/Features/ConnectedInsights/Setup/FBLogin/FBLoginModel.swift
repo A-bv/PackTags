@@ -11,14 +11,18 @@ import FBSDKLoginKit
 struct FBToken {
     let tokenString: String?
     let isValid: Bool
+    let diagnostic: String
     
     init() {
-        if let token = AccessToken.current, !token.isExpired {
-            tokenString = token.tokenString
-            isValid = true
-        } else {
+        guard let token = AccessToken.current else {
             tokenString = nil
             isValid = false
+            diagnostic = "AccessToken.current=nil"
+            return
         }
+
+        tokenString = token.tokenString
+        isValid = !token.isExpired
+        diagnostic = "AccessToken.current=present, isExpired=\(token.isExpired), expirationDate=\(token.expirationDate)"
     }
 }

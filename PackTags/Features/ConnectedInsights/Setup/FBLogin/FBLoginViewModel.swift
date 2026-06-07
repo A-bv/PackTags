@@ -16,10 +16,7 @@ final class FBLoginViewModel {
     }
 
     func getToken() -> FBToken {
-        let token = FBToken()
-        saveCorrectStatus(token: token)
-        saveFBToken(token: token)
-        return token
+        FBToken()
     }
     
     func apiCallGetIgBusinessId(completion: @escaping (Bool) -> ()) {
@@ -27,8 +24,10 @@ final class FBLoginViewModel {
             self?.verifySetupIgBAndGetIgBId { [weak self] validId in
                 if let validId = validId {
                     self?.saveInstagramBusinessAccountID(id: validId)
+                    self?.saveCorrectStatus(isCorrectSetup)
                     completion(isCorrectSetup)
                 } else {
+                    self?.saveCorrectStatus(false)
                     completion(false)
                 }
             }
@@ -147,18 +146,27 @@ extension FBLoginViewModel {
         settings.instagramBusinessAccountId = id
     }
 
-    private func saveFBToken(token: FBToken) {
+    func saveFacebookToken(_ token: FBToken) {
         let tokenString = token.tokenString
         settings.facebookToken = tokenString
     }
     
-    private func saveCorrectStatus(token: FBToken) {
-        settings.isCorrectSetup = token.isValid
+    private func saveCorrectStatus(_ isCorrectSetup: Bool) {
+        settings.isCorrectSetup = isCorrectSetup
     }
 
     func savePushedFBLoginButtonOnce() {
         if !settings.pressedFacebookLoginButton {
             settings.pressedFacebookLoginButton = true
         }
+    }
+
+    func resetFacebookSession() {
+        LoginManager().logOut()
+        settings.facebookToken = nil
+        settings.instagramBusinessAccountId = nil
+        settings.isCorrectSetup = false
+        settings.pressedFacebookLoginButton = false
+        print("[ConnectedInsights][Login] Facebook SDK session and connected insights setup were reset.")
     }
 }
