@@ -19,7 +19,7 @@ struct InteractionBarView: View {
     @Environment(\.managedObjectContext) var moc
     @FocusState private var showKeyBoard: Bool
 
-    @FetchRequest(sortDescriptors: [])
+    @FetchRequest(entity: Hashtag.entity(), sortDescriptors: [])
     var hashtags: FetchedResults<Hashtag>
     
     var smartGViewModel: SmartGViewModel

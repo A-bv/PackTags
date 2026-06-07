@@ -27,7 +27,7 @@ struct SmartGSavedTagsView: View {
     }
     
     @Binding var isPresented: Bool
-    @FetchRequest(sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
+    @FetchRequest(entity: Hashtag.entity(), sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
     @Environment(\.managedObjectContext) var moc
     
     private var button: some View {
