@@ -135,13 +135,13 @@ final class SmartGHashtagRepository: SmartGHashtagRepositoryProtocol {
         completion: @escaping (Result<Any, Error>) -> Void
     ) {
         if T.self == Media.self {
-            guard let decodedMedia = GenericJSONParser.ParseJs(of: T.self, data: data) as? Media else {
+            guard let decodedMedia = try? JSONDecoder().decode(Media.self, from: data) else {
                 completion(.failure(decodingError(for: T.self, data: data, sourceURL: sourceURL)))
                 return
             }
             completion(.success(decodedMedia.data.compactMap { $0 }))
         } else {
-            guard let decodedObject = GenericJSONParser.ParseJs2(of: T.self, data: data) else {
+            guard let decodedObject = try? JSONDecoder().decode([T].self, from: data) else {
                 completion(.failure(decodingError(for: T.self, data: data, sourceURL: sourceURL)))
                 return
             }

@@ -9,15 +9,18 @@ final class AnalyticsProfileRepository: AnalyticsProfileRepositoryProtocol {
     private let endpointBuilder: InstagramGraphEndpointBuilder
     private let client: any InstagramGraphClientProtocol
     private let mediaLimitQueue = DispatchQueue(label: "com.packtags.connectedInsights.mediaLimit")
+    private let onDataFetched: ((Data) -> Void)?
 
     init(
         credentialsProvider: any InstagramGraphCredentialsProviding,
         endpointBuilder: InstagramGraphEndpointBuilder,
-        client: any InstagramGraphClientProtocol
+        client: any InstagramGraphClientProtocol,
+        onDataFetched: ((Data) -> Void)? = nil
     ) {
         self.credentialsProvider = credentialsProvider
         self.endpointBuilder = endpointBuilder
         self.client = client
+        self.onDataFetched = onDataFetched
     }
 
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
@@ -34,8 +37,6 @@ final class AnalyticsProfileRepository: AnalyticsProfileRepositoryProtocol {
                     completion(.failure(InstagramGraphServiceError.invalidURL("analytics profile")))
                     return
                 }
-
-                DocumentDirectory.isOkToSaveJsonDataInDir = true
 
                 self.fetchProfile(from: encodedUrl) { result in
                     completion(result)
@@ -88,10 +89,11 @@ final class AnalyticsProfileRepository: AnalyticsProfileRepositoryProtocol {
                 self.logGraphFailure(error, url: url)
                 completion(.failure(error))
             case .success(let data):
-                guard let profile = GenericJSONParser.ParseJs(of: Profile.self, data: data) as? Profile else {
+                guard let profile = try? JSONDecoder().decode(Profile.self, from: data) else {
                     completion(.failure(self.decodingError(data: data, sourceURL: url)))
                     return
                 }
+                self.onDataFetched?(data)
                 completion(.success(profile))
             }
         }

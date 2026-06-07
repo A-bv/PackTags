@@ -11,10 +11,27 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         gateway: (any ConnectedInsightsGatewayProtocol)? = nil
     ) {
         self.settings = settings
-        self.gateway = gateway ?? ConnectedInsightsGateway(
-            settings: settings,
-            configuration: configuration
-        )
+        if let gateway {
+            self.gateway = gateway
+        } else {
+            let credentialsProvider = SettingsInstagramGraphCredentialsProvider(settings: settings)
+            let endpointBuilder = InstagramGraphEndpointBuilder(apiGraphVersion: configuration.graphAPIVersion)
+            let client = InstagramGraphClient(apiGraphVersion: configuration.graphAPIVersion)
+            self.gateway = ConnectedInsightsGateway(
+                settings: settings,
+                smartGDataProvider: SmartGHashtagRepository(
+                    credentialsProvider: credentialsProvider,
+                    endpointBuilder: endpointBuilder,
+                    client: client
+                ),
+                analyticsDataProvider: AnalyticsProfileRepository(
+                    credentialsProvider: credentialsProvider,
+                    endpointBuilder: endpointBuilder,
+                    client: client,
+                    onDataFetched: { data in DocumentDirectory.saveJsonDataLocally(data: data) }
+                )
+            )
+        }
     }
 
     func open(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {

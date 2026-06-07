@@ -9,13 +9,8 @@
 import UIKit
 
 final class DocumentDirectory {
-    static var isOkToSaveJsonDataInDir = false
-    
     static func saveJsonDataLocally(data: Data) {
-        if isOkToSaveJsonDataInDir {
-            saveJsonDataToDir(jsonString: data)
-            isOkToSaveJsonDataInDir = false
-        }
+        saveJsonDataToDir(jsonString: data)
     }
 }
 
