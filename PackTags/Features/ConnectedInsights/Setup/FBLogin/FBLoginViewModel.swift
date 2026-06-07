@@ -42,6 +42,8 @@ extension FBLoginViewModel {
         let request = GraphRequest(
             graphPath: "/me/accounts",
             httpMethod: .get)
+
+        logSetup("Request /me/accounts")
         
         request.start { [weak self] connection, result, error in
             self?.handleCorrectFbPagesSetupResponse(connection, result, error, completion: completion)
@@ -53,6 +55,8 @@ extension FBLoginViewModel {
             graphPath: "/me/accounts",
             parameters: ["fields": "instagram_business_account"],
             httpMethod: .get)
+
+        logSetup("Request /me/accounts fields=instagram_business_account")
         
         request.start { [weak self] connection, result, error in
             self?.handleSetupIgBResponse(connection, result, error, completion: completion)
@@ -69,18 +73,24 @@ extension FBLoginViewModel {
     ) {
         let key = "data.name"
         if let error = error {
-            print("Error during Facebook page request:", error)
+            logSetup("Facebook page request failed: \(error.localizedDescription)")
+            completion(false)
             return
         }
 
         guard let response = result as? NSDictionary else {
+            logUnexpectedResult(result, context: "Facebook page request")
+            completion(false)
             return
         }
 
         guard let pages = response.value(forKeyPath: key) as? [String] else {
+            logSetup("Facebook page request returned no page names. Response: \(responsePreview(response))")
+            completion(false)
             return
         }
 
+        logSetup("Facebook page request returned \(pages.count) page(s).")
         completion(!pages.isEmpty)
     }
 
@@ -92,20 +102,42 @@ extension FBLoginViewModel {
     ) {
         let key = "data.instagram_business_account.id"
         if let error = error {
-            print("igBRequest error:", error)
+            logSetup("Instagram business account request failed: \(error.localizedDescription)")
+            completion(nil)
             return
         }
         
         guard let response = result as? NSDictionary else {
+            logUnexpectedResult(result, context: "Instagram business account request")
+            completion(nil)
             return
         }
         
         if let igBIds = response.value(forKeyPath: key) as? [String] {
+            logSetup("Instagram business account request returned \(igBIds.count) id(s).")
             completion(igBIds.first)
         } else {
-            print("No business account linked or wrong pages selected")
+            logSetup("No business account linked or wrong pages selected. Response: \(responsePreview(response))")
             completion(nil)
         }
+    }
+
+    private func logUnexpectedResult(_ result: Any?, context: String) {
+        logSetup("\(context) returned an unexpected result: \(String(describing: result))")
+    }
+
+    private func responsePreview(_ response: NSDictionary) -> String {
+        if JSONSerialization.isValidJSONObject(response),
+           let data = try? JSONSerialization.data(withJSONObject: response, options: [.sortedKeys]),
+           let body = String(data: data, encoding: .utf8) {
+            return String(body.prefix(1_500))
+        }
+
+        return String(String(describing: response).prefix(1_500))
+    }
+
+    private func logSetup(_ message: String) {
+        print("[ConnectedInsights][Setup] \(message)")
     }
 }
 

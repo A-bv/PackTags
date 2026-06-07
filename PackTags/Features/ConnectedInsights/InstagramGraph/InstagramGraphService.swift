@@ -16,14 +16,44 @@ protocol InstagramGraphServicing {
     func loadProfileForAnalytics(completion: @escaping (Profile) -> Void)
 }
 
+private enum InstagramGraphServiceError: LocalizedError {
+    case invalidURL(String)
+    case missingCredentials(hasToken: Bool, hasInstagramBusinessId: Bool)
+    case emptyResponse
+    case unexpectedResponse
+    case graphHTTPError(statusCode: Int, body: String)
+    case decodingFailed(type: String, body: String)
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidURL(let url):
+            return "Invalid Instagram Graph URL: \(url)"
+        case let .missingCredentials(hasToken, hasInstagramBusinessId):
+            return "Missing Instagram Graph credentials. hasToken=\(hasToken), hasInstagramBusinessId=\(hasInstagramBusinessId)"
+        case .emptyResponse:
+            return "Instagram Graph returned an empty response."
+        case .unexpectedResponse:
+            return "Instagram Graph returned an unexpected response."
+        case let .graphHTTPError(statusCode, body):
+            return "Instagram Graph HTTP error \(statusCode): \(body)"
+        case let .decodingFailed(type, body):
+            return "Could not decode Instagram Graph response as \(type): \(body)"
+        }
+    }
+}
+
 final class InstagramGraphService: InstagramGraphServicing {
     typealias ResultHandler<T> = (Result<T, Error>) -> Void
     
-    private let apiGraphVersion = "v19.0"
+    private let apiGraphVersion: String
     private let settings: any ConnectedInsightsSettingsProtocol
 
-    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()) {
+    init(
+        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
+        apiGraphVersion: String = ConnectedInsightsConfiguration.production.graphAPIVersion
+    ) {
         self.settings = settings
+        self.apiGraphVersion = apiGraphVersion
     }
 
     private var fbToken: String {
@@ -39,12 +69,13 @@ final class InstagramGraphService: InstagramGraphServicing {
         from url: String,
         completion: @escaping ResultHandler<Any>
     ) {
-        GenericJSONParser.download(fromURLString: url) { result in
+        fetchGraphData(from: url) { result in
             switch result {
             case .failure(let error):
-                print(error)
+                self.logGraphFailure(error, url: url)
+                completion(.failure(error))
             case .success(let data):
-                self.handleSuccessResult(of: T.self, data: data, completion: completion)
+                self.handleSuccessResult(of: T.self, data: data, sourceURL: url, completion: completion)
             }
         }
     }
@@ -52,25 +83,110 @@ final class InstagramGraphService: InstagramGraphServicing {
     private func handleSuccessResult<T: Decodable>(
         of type: T.Type,
         data: Data,
+        sourceURL: String,
         completion: @escaping ResultHandler<Any>
     ) {
         if T.self == Profile.self {
             guard let decodedProfile = GenericJSONParser.ParseJs(of: T.self, data: data) as? Profile else {
+                completion(.failure(decodingError(for: T.self, data: data, sourceURL: sourceURL)))
                 return
             }
             completion(.success(decodedProfile))
         } else if T.self == Media.self {
             guard let decodedMedia = GenericJSONParser.ParseJs(of: T.self, data: data) as? Media else {
+                completion(.failure(decodingError(for: T.self, data: data, sourceURL: sourceURL)))
                 return
             }
             let mediaData = decodedMedia.data.compactMap { $0 }
             completion(.success(mediaData))
         } else {
             guard let decodedObject = GenericJSONParser.ParseJs2(of: T.self, data: data) else {
+                completion(.failure(decodingError(for: T.self, data: data, sourceURL: sourceURL)))
                 return
             }
             completion(.success(decodedObject))
         }
+    }
+
+    private func fetchGraphData(
+        from urlString: String,
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
+        let hasToken = !fbToken.isEmpty
+        let hasInstagramBusinessId = !igBId.isEmpty
+
+        guard hasToken, hasInstagramBusinessId else {
+            completion(.failure(InstagramGraphServiceError.missingCredentials(
+                hasToken: hasToken,
+                hasInstagramBusinessId: hasInstagramBusinessId
+            )))
+            return
+        }
+
+        guard let url = URL(string: urlString) else {
+            completion(.failure(InstagramGraphServiceError.invalidURL(redacted(urlString))))
+            return
+        }
+
+        print("[ConnectedInsights][Graph] Request \(apiGraphVersion): \(redacted(urlString))")
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(InstagramGraphServiceError.unexpectedResponse))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(InstagramGraphServiceError.emptyResponse))
+                return
+            }
+
+            guard (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(InstagramGraphServiceError.graphHTTPError(
+                    statusCode: httpResponse.statusCode,
+                    body: self.responsePreview(data)
+                )))
+                return
+            }
+
+            completion(.success(data))
+        }.resume()
+    }
+
+    private func decodingError<T: Decodable>(
+        for type: T.Type,
+        data: Data,
+        sourceURL: String
+    ) -> Error {
+        let error = InstagramGraphServiceError.decodingFailed(
+            type: String(describing: type),
+            body: responsePreview(data)
+        )
+        logGraphFailure(error, url: sourceURL)
+        return error
+    }
+
+    private func logGraphFailure(_ error: Error, url: String) {
+        print("[ConnectedInsights][Graph] Failure: \(error.localizedDescription)")
+        print("[ConnectedInsights][Graph] URL: \(redacted(url))")
+    }
+
+    private func responsePreview(_ data: Data) -> String {
+        let body = String(data: data, encoding: .utf8) ?? "<non-utf8 response>"
+        return redacted(String(body.prefix(1_500)))
+    }
+
+    private func redacted(_ value: String) -> String {
+        value.replacingOccurrences(
+            of: #"access_token=[^&\s]+"#,
+            with: "access_token=<redacted>",
+            options: .regularExpression
+        )
     }
 }
 
@@ -111,9 +227,12 @@ extension InstagramGraphService {
     }
 
     private func findHashtagUrl(searchedHashtag: String, completion: @escaping (Result<String, Error>) -> Void) {
-        guard let searchURL = constructHashtagSearchURL(searchedHashtag: searchedHashtag) else { return }
+        guard let searchURL = constructHashtagSearchURL(searchedHashtag: searchedHashtag) else {
+            completion(.failure(InstagramGraphServiceError.invalidURL(searchedHashtag)))
+            return
+        }
 
-        GenericJSONParser.download(fromURLString: searchURL) { result in
+        fetchGraphData(from: searchURL) { result in
             switch result {
             case .success(let data):
                 self.handleHashtagIdResponse(data: data) { result in
@@ -126,7 +245,7 @@ extension InstagramGraphService {
                     }
                 }
             case .failure(let error):
-                print("download json:", error)
+                self.logGraphFailure(error, url: searchURL)
                 completion(.failure(error))
             }
         }
@@ -135,9 +254,15 @@ extension InstagramGraphService {
     private func handleHashtagIdResponse(data: Data, completion: @escaping (Result<String, Error>) -> Void) {
         do {
             let response = try JSONDecoder().decode(HashtagIdResponse.self, from: data)
-            guard let id = response.data.first?.id else { return }
+            guard let id = response.data.first?.id else {
+                completion(.failure(InstagramGraphServiceError.decodingFailed(
+                    type: String(describing: HashtagIdResponse.self),
+                    body: responsePreview(data)
+                )))
+                return
+            }
             guard let mediaSearchURL = constructHashtagMediaSearchURL(hashtagID: id) else {
-                print("Could not construct Hashtag Media Search URL")
+                completion(.failure(InstagramGraphServiceError.invalidURL(id)))
                 return
             }
             completion(.success(mediaSearchURL))

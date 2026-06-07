@@ -20,6 +20,12 @@ protocol ConnectedInsightsSettingsProtocol {
     var pressedFacebookLoginButton: Bool { get set }
 }
 
+struct ConnectedInsightsConfiguration {
+    var graphAPIVersion: String
+
+    static let production = ConnectedInsightsConfiguration(graphAPIVersion: "v23.0")
+}
+
 final class UserDefaultsConnectedInsightsSettings: ConnectedInsightsSettingsProtocol {
     private enum Key {
         static let isCorrectSetup = "isCorrectSetup"
@@ -67,10 +73,14 @@ final class ConnectedInsightsModule: ConnectedInsightsRouting {
 
     init(
         settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
+        configuration: ConnectedInsightsConfiguration = .production,
         instagramGraphService: (any InstagramGraphServicing)? = nil
     ) {
         self.settings = settings
-        self.instagramGraphService = instagramGraphService ?? InstagramGraphService(settings: settings)
+        self.instagramGraphService = instagramGraphService ?? InstagramGraphService(
+            settings: settings,
+            apiGraphVersion: configuration.graphAPIVersion
+        )
     }
 
     func makeViewController(for destination: ConnectedInsightsDestination) -> UIViewController {
