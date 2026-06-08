@@ -2,6 +2,7 @@ import XCTest
 @testable import InstagramGraph
 
 final class ConnectedInsightsGraphTests: XCTestCase {
+    private let productionGraphAPIVersion = ConnectedInsightsConfiguration.production.graphAPIVersion
 
     func testAccessState_whenSetupIsMissing_requiresSetup() {
         let sut = makeGateway(settings: FakeConnectedInsightsSettings(isCorrectSetup: false))
@@ -82,7 +83,7 @@ final class ConnectedInsightsGraphTests: XCTestCase {
     }
 
     func testEndpointBuilder_buildsEncodedHashtagSearchURL() throws {
-        let sut = InstagramGraphEndpointBuilder(apiGraphVersion: "v99.0")
+        let sut = InstagramGraphEndpointBuilder(apiGraphVersion: productionGraphAPIVersion)
         let credentials = InstagramGraphCredentials(
             facebookToken: "token value",
             instagramBusinessAccountId: "1789"
@@ -93,14 +94,39 @@ final class ConnectedInsightsGraphTests: XCTestCase {
             credentials: credentials
         ))
 
-        XCTAssertTrue(url.contains("https://graph.facebook.com/v99.0/ig_hashtag_search"))
+        XCTAssertTrue(url.contains("https://graph.facebook.com/\(productionGraphAPIVersion)/ig_hashtag_search"))
         XCTAssertTrue(url.contains("user_id=1789"))
         XCTAssertTrue(url.contains("q=summer%20tag"))
         XCTAssertTrue(url.contains("access_token=token%20value"))
     }
 
-    func testEndpointBuilder_buildsAnalyticsProfileURLWithRequestedMediaLimit() throws {
-        let sut = InstagramGraphEndpointBuilder(apiGraphVersion: "v99.0")
+    func testEndpointBuilder_hashtagMediaURL_containsOnlyFieldsUsedBySmartG() throws {
+        let sut = InstagramGraphEndpointBuilder(apiGraphVersion: productionGraphAPIVersion)
+        let credentials = InstagramGraphCredentials(
+            facebookToken: "facebook-token",
+            instagramBusinessAccountId: "1789"
+        )
+
+        let url = try XCTUnwrap(sut.hashtagMediaSearchURL(
+            hashtagID: "17843819167049166",
+            credentials: credentials
+        ))
+
+        XCTAssertTrue(url.contains("17843819167049166/top_media"))
+        XCTAssertTrue(url.contains("caption"))
+        XCTAssertTrue(url.contains("comments_count"))
+        XCTAssertTrue(url.contains("like_count"))
+        XCTAssertTrue(url.contains("media_type"))
+        XCTAssertTrue(url.contains("timestamp"))
+        XCTAssertTrue(url.contains("user_id=1789"))
+        XCTAssertTrue(url.contains("limit=10"))
+        XCTAssertFalse(url.contains("media_url"))
+        // media_product_type is not a valid top_media field in the production Graph API version.
+        XCTAssertFalse(url.contains("media_product_type"))
+    }
+
+    func testEndpointBuilder_analyticsProfileURL_containsOnlyFieldsUsedByPackTags() throws {
+        let sut = InstagramGraphEndpointBuilder(apiGraphVersion: productionGraphAPIVersion)
         let credentials = InstagramGraphCredentials(
             facebookToken: "facebook-token",
             instagramBusinessAccountId: "1789"
@@ -111,10 +137,32 @@ final class ConnectedInsightsGraphTests: XCTestCase {
             credentials: credentials
         ))
 
-        XCTAssertTrue(url.contains("https://graph.facebook.com/v99.0/1789?fields="))
+        XCTAssertTrue(url.contains("https://graph.facebook.com/\(productionGraphAPIVersion)/1789?fields="))
         XCTAssertTrue(url.contains("media.limit(7)"))
         XCTAssertTrue(url.contains("access_token=facebook-token"))
-        XCTAssertTrue(url.contains("checkType=FULL"))
+        XCTAssertFalse(url.contains("checkType=FULL"))
+        XCTAssertFalse(url.contains("profile_views"))
+        XCTAssertFalse(url.contains("insights.metric(reach%2Cprofile_views"))
+        XCTAssertFalse(url.contains("insights.metric(reach%2Cfollower_count"))
+        // media_product_type is not a valid field on any endpoint
+        XCTAssertFalse(url.contains("media_product_type"))
+    }
+
+    func testEndpointBuilder_businessDiscoveryURL_buildsValidMediaLimitSyntax() throws {
+        let sut = InstagramGraphEndpointBuilder(apiGraphVersion: productionGraphAPIVersion)
+        let credentials = InstagramGraphCredentials(
+            facebookToken: "facebook-token",
+            instagramBusinessAccountId: "1789"
+        )
+
+        let url = try XCTUnwrap(sut.businessDiscoveryURL(
+            account: "packtags.app",
+            credentials: credentials
+        ))
+
+        XCTAssertTrue(url.contains("business_discovery.username(packtags.app)"))
+        XCTAssertTrue(url.contains("media.limit(12)"))
+        XCTAssertFalse(url.contains("media.limit(12%7B"))
     }
 
     func testHashtagRepository_whenCredentialsAreMissing_doesNotCallGraphClient() {
@@ -124,7 +172,7 @@ final class ConnectedInsightsGraphTests: XCTestCase {
                 facebookToken: nil,
                 instagramBusinessAccountId: "ig-business-id"
             ),
-            endpointBuilder: InstagramGraphEndpointBuilder(apiGraphVersion: "v99.0"),
+            endpointBuilder: InstagramGraphEndpointBuilder(apiGraphVersion: productionGraphAPIVersion),
             client: client
         )
         let expectation = expectation(description: "search completes")
@@ -158,7 +206,7 @@ final class ConnectedInsightsGraphTests: XCTestCase {
                 facebookToken: "facebook-token",
                 instagramBusinessAccountId: "ig-business-id"
             ),
-            endpointBuilder: InstagramGraphEndpointBuilder(apiGraphVersion: "v99.0"),
+            endpointBuilder: InstagramGraphEndpointBuilder(apiGraphVersion: productionGraphAPIVersion),
             client: client
         )
         let expectation = expectation(description: "search completes")
@@ -178,6 +226,73 @@ final class ConnectedInsightsGraphTests: XCTestCase {
         XCTAssertEqual(firstMedia.caption, "Hello")
         XCTAssertEqual(firstMedia.comments_count, 3)
         XCTAssertEqual(firstMedia.like_count, 9)
+    }
+
+    func testHashtagRepository_whenTopMediaReturns500_propagatesError() {
+        let reduceDataError: Result<Data, Error> = .failure(InstagramGraphServiceError.graphHTTPError(
+            statusCode: 500,
+            body: #"{"error":{"code":1,"message":"Please reduce the amount of data you're asking for, then retry your request"}}"#
+        ))
+        let client = FakeInstagramGraphClient(responses: [
+            .success(#"{"data":[{"id":"17843819167049166"}]}"#.data(using: .utf8)!),
+            reduceDataError,
+            reduceDataError,
+            reduceDataError
+        ])
+        let sut = InstagramHashtagRepository(
+            credentialsProvider: FakeInstagramGraphCredentialsProvider(
+                facebookToken: "facebook-token",
+                instagramBusinessAccountId: "ig-business-id"
+            ),
+            endpointBuilder: InstagramGraphEndpointBuilder(apiGraphVersion: productionGraphAPIVersion),
+            client: client
+        )
+        let expectation = expectation(description: "search completes")
+        var receivedError: Error?
+
+        sut.searchHashtag(searchedHashtag: "travel") { result in
+            if case .failure(let error) = result { receivedError = error }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 1)
+        guard let serviceError = receivedError as? InstagramGraphServiceError,
+              case .graphHTTPError(let statusCode, _) = serviceError else {
+            XCTFail("Expected graphHTTPError, got \(String(describing: receivedError))")
+            return
+        }
+        XCTAssertEqual(statusCode, 500)
+    }
+
+    func testProfileRepository_whenInsightsMetricInvalid_propagates400Error() {
+        let invalidMetricBody = #"{"error":{"message":"(#100) metric[1] must be one of the following values: reach, follower_count, ...","type":"OAuthException","code":100}}"#
+        // findMediaLimit probes limits 1-12 (12 requests) + 1 final fetch = 13 total
+        let failure: Result<Data, Error> = .failure(InstagramGraphServiceError.graphHTTPError(statusCode: 400, body: invalidMetricBody))
+        let client = FakeInstagramGraphClient(responses: Array(repeating: failure, count: 13))
+        let sut = InstagramProfileRepository(
+            credentialsProvider: FakeInstagramGraphCredentialsProvider(
+                facebookToken: "facebook-token",
+                instagramBusinessAccountId: "ig-business-id"
+            ),
+            endpointBuilder: InstagramGraphEndpointBuilder(apiGraphVersion: productionGraphAPIVersion),
+            client: client,
+            onDataFetched: { _ in }
+        )
+        let expectation = expectation(description: "load completes")
+        var receivedError: Error?
+
+        sut.loadProfileForAnalytics { result in
+            if case .failure(let error) = result { receivedError = error }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 1)
+        guard let serviceError = receivedError as? InstagramGraphServiceError,
+              case .graphHTTPError(let statusCode, _) = serviceError else {
+            XCTFail("Expected graphHTTPError, got \(String(describing: receivedError))")
+            return
+        }
+        XCTAssertEqual(statusCode, 400)
     }
 
     func testUnavailableProvidersReturnUnavailableError() {

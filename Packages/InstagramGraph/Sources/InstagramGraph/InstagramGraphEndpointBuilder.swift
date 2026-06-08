@@ -20,14 +20,13 @@ public struct InstagramGraphEndpointBuilder {
         hashtagID: String,
         credentials: InstagramGraphCredentials
     ) -> String? {
-        let limit = "25"
+        let limit = "10"
         let mediaType = "top_media"
         let fields = [
             "caption",
             "comments_count",
             "like_count",
             "media_type",
-            "media_url",
             "timestamp",
             "id"
         ].joined(separator: ",")
@@ -41,12 +40,6 @@ public struct InstagramGraphEndpointBuilder {
         mediaLimit: Int,
         credentials: InstagramGraphCredentials
     ) -> String? {
-        let insightsMetricsFields = [
-            "reach",
-            "profile_views",
-            "follower_count"
-        ]
-
         let mediaMetricsFields = [
             "media_type",
             "caption",
@@ -72,11 +65,10 @@ public struct InstagramGraphEndpointBuilder {
             "username",
             "website",
             "recently_searched_hashtags",
-            "insights.metric(\(insightsMetricsFields.joined(separator: ","))).period(day)",
             "media.limit(\(mediaLimit)){\(mediaMetricsFields.joined(separator: ","))}"
         ]
 
-        let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=\(fields.joined(separator: ","))&access_token=\(credentials.facebookToken)&checkType=FULL"
+        let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=\(fields.joined(separator: ","))&access_token=\(credentials.facebookToken)"
         return encoded(url)
     }
 
@@ -85,7 +77,7 @@ public struct InstagramGraphEndpointBuilder {
         credentials: InstagramGraphCredentials
     ) -> String? {
         let limit = 12
-        let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count}}&access_token=\(credentials.facebookToken)"
+        let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit)){media_type,caption,timestamp,media_url,comments_count,username,like_count}}&access_token=\(credentials.facebookToken)"
         return encoded(url)
     }
 
