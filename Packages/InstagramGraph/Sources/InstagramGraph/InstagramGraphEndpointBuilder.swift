@@ -29,8 +29,7 @@ public struct InstagramGraphEndpointBuilder {
             "media_type",
             "media_url",
             "timestamp",
-            "id",
-            "media_product_type"
+            "id"
         ].joined(separator: ",")
 
         let options = "\(mediaType)?fields=\(fields)&user_id=\(credentials.instagramBusinessAccountId)&limit=\(limit)"
@@ -44,7 +43,6 @@ public struct InstagramGraphEndpointBuilder {
     ) -> String? {
         let insightsMetricsFields = [
             "reach",
-            "impressions",
             "profile_views",
             "follower_count"
         ]
@@ -59,7 +57,6 @@ public struct InstagramGraphEndpointBuilder {
             "is_comment_enabled",
             "username",
             "like_count",
-            "media_product_type",
             "insights.metric(reach,impressions,total_interactions)"
         ]
 
@@ -88,7 +85,7 @@ public struct InstagramGraphEndpointBuilder {
         credentials: InstagramGraphCredentials
     ) -> String? {
         let limit = 12
-        let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(credentials.facebookToken)"
+        let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count}}&access_token=\(credentials.facebookToken)"
         return encoded(url)
     }
 

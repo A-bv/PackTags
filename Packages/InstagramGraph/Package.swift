@@ -9,5 +9,6 @@ let package = Package(
     ],
     targets: [
         .target(name: "InstagramGraph"),
+        .testTarget(name: "InstagramGraphTests", dependencies: ["InstagramGraph"]),
     ]
 )

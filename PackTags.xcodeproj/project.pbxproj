@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,9 +25,9 @@
 		0207BBB12FD564090007F3D3 /* PackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB02FD564090007F3D3 /* PackListViewModel.swift */; };
 		0207BBB42FD5640A0007F3D3 /* ThemeEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */; };
 		0207BBB62FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */; };
+		0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */; };
 		0207BBC22FD5B0000007F3D3 /* FacebookSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC12FD5B0000007F3D3 /* FacebookSetupService.swift */; };
 		0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */; };
-		0207BBCA2FD621000007F3D3 /* ConnectedInsightsGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC92FD621000007F3D3 /* ConnectedInsightsGraphTests.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		0216110E25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */; };
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
@@ -182,7 +182,6 @@
 		0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsCoordinator.swift; sourceTree = "<group>"; };
 		0207BBC12FD5B0000007F3D3 /* FacebookSetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSetupService.swift; sourceTree = "<group>"; };
 		0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionService.swift; sourceTree = "<group>"; };
-		0207BBC92FD621000007F3D3 /* ConnectedInsightsGraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsGraphTests.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+NewMenu.swift"; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -315,6 +314,7 @@
 			files = (
 				02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */,
 				02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */,
+				0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,7 +935,6 @@
 				02FB552324FFA2AC00174E34 /* PackTagsTests.swift */,
 				02FB552524FFA2AC00174E34 /* Info.plist */,
 				0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */,
-				0207BBC92FD621000007F3D3 /* ConnectedInsightsGraphTests.swift */,
 			);
 			path = PackTagsTests;
 			sourceTree = "<group>";
@@ -968,6 +967,7 @@
 			packageProductDependencies = (
 				02FE9EC928DF5BF000193A15 /* FacebookCore */,
 				02FE9ECB28DF5BF000193A15 /* FacebookLogin */,
+				0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */,
 			);
 			productName = PackTags;
 			productReference = 02FB550624FFA2AA00174E34 /* PackTags.app */;
@@ -1023,6 +1023,7 @@
 			mainGroup = 02FB54FD24FFA2AA00174E34;
 			packageReferences = (
 				02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				0207BBBB2FD6B08E0007F3D3 /* XCLocalSwiftPackageReference "Packages/InstagramGraph" */,
 			);
 			productRefGroup = 02FB550724FFA2AA00174E34 /* Products */;
 			projectDirPath = "";
@@ -1201,7 +1202,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */,
-				0207BBCA2FD621000007F3D3 /* ConnectedInsightsGraphTests.swift in Sources */,
 				02FBAFE825A93E8400E32D73 /* PackTagsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1480,6 +1480,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		0207BBBB2FD6B08E0007F3D3 /* XCLocalSwiftPackageReference "Packages/InstagramGraph" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/InstagramGraph;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1492,6 +1499,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = InstagramGraph;
+		};
 		02FE9EC928DF5BF000193A15 /* FacebookCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import InstagramGraph
 
 private enum Constants {
     static let cardWidth: CGFloat = 190
