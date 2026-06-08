@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,6 +36,7 @@
 		021EB81428846AD100463B42 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB81328846AD100463B42 /* Localizable.swift */; };
 		021EB81828846FDE00463B42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 021EB81A28846FDE00463B42 /* Localizable.strings */; };
 		021EB84D288C1EB000463B42 /* ThemeTableViewController+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB84C288C1EB000463B42 /* ThemeTableViewController+Operations.swift */; };
+		02211DD02FD7074D002FDB14 /* InstagramGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 02211DCF2FD7074D002FDB14 /* InstagramGraph */; };
 		022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022479C4250D1ED900E0E489 /* CoreDataHelper.swift */; };
 		022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688922624F9B1007DBD98 /* ThemeCell.swift */; };
 		0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* Neumorphic.swift */; };
@@ -314,6 +315,7 @@
 			files = (
 				02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */,
 				02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */,
+				02211DD02FD7074D002FDB14 /* InstagramGraph in Frameworks */,
 				0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -968,6 +970,7 @@
 				02FE9EC928DF5BF000193A15 /* FacebookCore */,
 				02FE9ECB28DF5BF000193A15 /* FacebookLogin */,
 				0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */,
+				02211DCF2FD7074D002FDB14 /* InstagramGraph */,
 			);
 			productName = PackTags;
 			productReference = 02FB550624FFA2AA00174E34 /* PackTags.app */;
@@ -1023,7 +1026,7 @@
 			mainGroup = 02FB54FD24FFA2AA00174E34;
 			packageReferences = (
 				02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
-				0207BBBB2FD6B08E0007F3D3 /* XCLocalSwiftPackageReference "Packages/InstagramGraph" */,
+				02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */,
 			);
 			productRefGroup = 02FB550724FFA2AA00174E34 /* Products */;
 			projectDirPath = "";
@@ -1480,14 +1483,15 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		0207BBBB2FD6B08E0007F3D3 /* XCLocalSwiftPackageReference "Packages/InstagramGraph" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/InstagramGraph;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
+		02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/A-bv/InstagramGraph";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
@@ -1501,6 +1505,11 @@
 /* Begin XCSwiftPackageProductDependency section */
 		0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = InstagramGraph;
+		};
+		02211DCF2FD7074D002FDB14 /* InstagramGraph */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */;
 			productName = InstagramGraph;
 		};
 		02FE9EC928DF5BF000193A15 /* FacebookCore */ = {

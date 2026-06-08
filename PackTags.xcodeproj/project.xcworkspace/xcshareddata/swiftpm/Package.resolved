@@ -1,4 +1,5 @@
 {
+  "originHash" : "1bd7cfe286a08ab62345bba0d8305511ca24f5acb0e80777788deee2a8fbda98",
   "pins" : [
     {
       "identity" : "facebook-ios-sdk",
@@ -8,7 +9,16 @@
         "revision" : "c3d367656ae8ced1149c2c6a5e6b5dd91ecad63c",
         "version" : "9.3.0"
       }
+    },
+    {
+      "identity" : "instagramgraph",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/A-bv/InstagramGraph",
+      "state" : {
+        "revision" : "7e91708fe2b3fe4d87d3e7dcf6e8e9371c644a8a",
+        "version" : "1.0.0"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
