@@ -1,10 +1,10 @@
 import Foundation
 
-protocol AnalyticsProfileRepositoryProtocol: AnalyticsDataProviding {
+protocol InstagramProfileRepositoryProtocol: ProfileDataProviding {
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void)
 }
 
-final class AnalyticsProfileRepository: AnalyticsProfileRepositoryProtocol {
+final class InstagramProfileRepository: InstagramProfileRepositoryProtocol {
     private let credentialsProvider: any InstagramGraphCredentialsProviding
     private let endpointBuilder: InstagramGraphEndpointBuilder
     private let client: any InstagramGraphClientProtocol

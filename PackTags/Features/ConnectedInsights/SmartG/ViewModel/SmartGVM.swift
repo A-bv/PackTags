@@ -9,15 +9,15 @@
 import SwiftUI
 
 class SmartGViewModel: ObservableObject {
-    let smartGDataProvider: any SmartGDataProviding
+    let hashtagProvider: any HashtagSearchProviding
 
     @Published var dataMedias: [DataMedia] = []
     @Published var computedData: [SmartGModel] = []
     @Published var topHashtags: [String] = []
     @Published var topHashtagsCount: [Int] = []
 
-    init(smartGDataProvider: any SmartGDataProviding = UnavailableSmartGDataProvider()) {
-        self.smartGDataProvider = smartGDataProvider
+    init(hashtagProvider: any HashtagSearchProviding = UnavailableHashtagProvider()) {
+        self.hashtagProvider = hashtagProvider
     }
 }
 

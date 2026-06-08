@@ -1,6 +1,6 @@
 import Foundation
 
-protocol InstagramGraphServicing: SmartGDataProviding, AnalyticsDataProviding {
+protocol InstagramGraphServicing: HashtagSearchProviding, ProfileDataProviding {
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
@@ -10,8 +10,8 @@ protocol InstagramGraphServicing: SmartGDataProviding, AnalyticsDataProviding {
 }
 
 final class InstagramGraphService: InstagramGraphServicing {
-    private let smartGRepository: any SmartGHashtagRepositoryProtocol
-    private let analyticsRepository: any AnalyticsProfileRepositoryProtocol
+    private let hashtagRepository: any InstagramHashtagRepositoryProtocol
+    private let profileRepository: any InstagramProfileRepositoryProtocol
     private let credentialsProvider: any InstagramGraphCredentialsProviding
     private let endpointBuilder: InstagramGraphEndpointBuilder
 
@@ -25,12 +25,12 @@ final class InstagramGraphService: InstagramGraphServicing {
         self.init(
             credentialsProvider: credentialsProvider,
             endpointBuilder: endpointBuilder,
-            smartGRepository: SmartGHashtagRepository(
+            hashtagRepository: InstagramHashtagRepository(
                 credentialsProvider: credentialsProvider,
                 endpointBuilder: endpointBuilder,
                 client: client
             ),
-            analyticsRepository: AnalyticsProfileRepository(
+            profileRepository: InstagramProfileRepository(
                 credentialsProvider: credentialsProvider,
                 endpointBuilder: endpointBuilder,
                 client: client
@@ -41,24 +41,24 @@ final class InstagramGraphService: InstagramGraphServicing {
     init(
         credentialsProvider: any InstagramGraphCredentialsProviding,
         endpointBuilder: InstagramGraphEndpointBuilder,
-        smartGRepository: any SmartGHashtagRepositoryProtocol,
-        analyticsRepository: any AnalyticsProfileRepositoryProtocol
+        hashtagRepository: any InstagramHashtagRepositoryProtocol,
+        profileRepository: any InstagramProfileRepositoryProtocol
     ) {
         self.credentialsProvider = credentialsProvider
         self.endpointBuilder = endpointBuilder
-        self.smartGRepository = smartGRepository
-        self.analyticsRepository = analyticsRepository
+        self.hashtagRepository = hashtagRepository
+        self.profileRepository = profileRepository
     }
 
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
     ) {
-        smartGRepository.searchHashtag(searchedHashtag: searchedHashtag, completion: completion)
+        hashtagRepository.searchHashtag(searchedHashtag: searchedHashtag, completion: completion)
     }
 
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
-        analyticsRepository.loadProfileForAnalytics(completion: completion)
+        profileRepository.loadProfileForAnalytics(completion: completion)
     }
 
     func business_discovery_url(account: String) -> String? {

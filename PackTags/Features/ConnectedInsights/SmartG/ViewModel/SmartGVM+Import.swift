@@ -12,7 +12,7 @@ import Foundation
 extension SmartGViewModel {
     // 1. Api import
     func fetch(hashtag: String, onLoaded: @escaping (_ errorState: Bool) -> Void) {
-        smartGDataProvider.searchHashtag(
+        hashtagProvider.searchHashtag(
             searchedHashtag: hashtag,
             completion: { [weak self] result in
                 DispatchQueue.main.async {

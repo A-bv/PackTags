@@ -10,14 +10,14 @@ import SwiftUI
 
 struct SmartGViewContainer: View {
     @StateObject var dataController = DataController()
-    private let smartGDataProvider: any SmartGDataProviding
+    private let hashtagProvider: any HashtagSearchProviding
 
-    init(smartGDataProvider: any SmartGDataProviding = UnavailableSmartGDataProvider()) {
-        self.smartGDataProvider = smartGDataProvider
+    init(hashtagProvider: any HashtagSearchProviding = UnavailableHashtagProvider()) {
+        self.hashtagProvider = hashtagProvider
     }
 
     var body: some View {
-        SmartGView(smartGDataProvider: smartGDataProvider)
+        SmartGView(hashtagProvider: hashtagProvider)
             .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
     }
 }

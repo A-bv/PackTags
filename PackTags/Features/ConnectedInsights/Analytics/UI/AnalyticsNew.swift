@@ -75,9 +75,9 @@ struct AnalyticsNew : View {
 
     var colors = [Color("Color1"),Color("Color")]
 
-    init(analyticsDataProvider: any AnalyticsDataProviding = UnavailableAnalyticsDataProvider()) {
+    init(profileProvider: any ProfileDataProviding = UnavailableProfileProvider()) {
         _swiftUIData = StateObject(
-            wrappedValue: AnalyticsSUIViewModel(analyticsDataProvider: analyticsDataProvider))
+            wrappedValue: AnalyticsSUIViewModel(profileProvider: profileProvider))
         //Navigation bar customization
         UINavigationBar.appearance().titleTextAttributes = [
             .foregroundColor: UIColor.clear

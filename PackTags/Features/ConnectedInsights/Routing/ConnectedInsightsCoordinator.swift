@@ -19,12 +19,12 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
             let client = InstagramGraphClient(apiGraphVersion: configuration.graphAPIVersion)
             self.gateway = ConnectedInsightsGateway(
                 settings: settings,
-                smartGDataProvider: SmartGHashtagRepository(
+                hashtagProvider: InstagramHashtagRepository(
                     credentialsProvider: credentialsProvider,
                     endpointBuilder: endpointBuilder,
                     client: client
                 ),
-                analyticsDataProvider: AnalyticsProfileRepository(
+                profileProvider: InstagramProfileRepository(
                     credentialsProvider: credentialsProvider,
                     endpointBuilder: endpointBuilder,
                     client: client,
@@ -60,9 +60,9 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         let vc: UIViewController
         switch destination {
         case .analytics:
-            vc = UIHostingController(rootView: AnalyticsNew(analyticsDataProvider: gateway.analyticsDataProvider))
+            vc = UIHostingController(rootView: AnalyticsNew(profileProvider: gateway.profileProvider))
         case .smartG:
-            vc = UIHostingController(rootView: SmartGViewContainer(smartGDataProvider: gateway.smartGDataProvider))
+            vc = UIHostingController(rootView: SmartGViewContainer(hashtagProvider: gateway.hashtagProvider))
         default:
             return
         }

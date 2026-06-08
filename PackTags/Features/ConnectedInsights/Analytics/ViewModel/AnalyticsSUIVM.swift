@@ -17,7 +17,7 @@ class AnalyticsSUIViewModel: ObservableObject {
         static let selection = "Selection".localized()
     }
 
-    let analyticsDataProvider: any AnalyticsDataProviding
+    let profileProvider: any ProfileDataProviding
 
     @Published var mode: Int = 0
     @Published var rawInsights: Bool = true
@@ -59,8 +59,8 @@ class AnalyticsSUIViewModel: ObservableObject {
     @Published var barChartData: [BarChartPost] = [BarChartPost(id: 0, post: "", rate: 0, barHeight: 0)]
     
     //MARK: - Init
-    init(analyticsDataProvider: any AnalyticsDataProviding = UnavailableAnalyticsDataProvider()) {
-        self.analyticsDataProvider = analyticsDataProvider
+    init(profileProvider: any ProfileDataProviding = UnavailableProfileProvider()) {
+        self.profileProvider = profileProvider
         self.loadDataForAnalyticsNew()
     }
     

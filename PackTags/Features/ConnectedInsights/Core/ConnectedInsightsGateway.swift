@@ -30,28 +30,28 @@ enum ConnectedInsightsAccessState {
     case needsSetup(ConnectedInsightsError)
 }
 
-protocol SmartGDataProviding {
+protocol HashtagSearchProviding {
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
     )
 }
 
-protocol AnalyticsDataProviding {
+protocol ProfileDataProviding {
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void)
 }
 
 protocol ConnectedInsightsGatewayProtocol {
-    var smartGDataProvider: any SmartGDataProviding { get }
-    var analyticsDataProvider: any AnalyticsDataProviding { get }
+    var hashtagProvider: any HashtagSearchProviding { get }
+    var profileProvider: any ProfileDataProviding { get }
 
     func accessState() -> ConnectedInsightsAccessState
 }
 
 final class ConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
     private let settings: any ConnectedInsightsSettingsProtocol
-    let smartGDataProvider: any SmartGDataProviding
-    let analyticsDataProvider: any AnalyticsDataProviding
+    let hashtagProvider: any HashtagSearchProviding
+    let profileProvider: any ProfileDataProviding
 
     convenience init(
         settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
@@ -62,12 +62,12 @@ final class ConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
         let client = InstagramGraphClient(apiGraphVersion: configuration.graphAPIVersion)
         self.init(
             settings: settings,
-            smartGDataProvider: SmartGHashtagRepository(
+            hashtagProvider: InstagramHashtagRepository(
                 credentialsProvider: credentialsProvider,
                 endpointBuilder: endpointBuilder,
                 client: client
             ),
-            analyticsDataProvider: AnalyticsProfileRepository(
+            profileProvider: InstagramProfileRepository(
                 credentialsProvider: credentialsProvider,
                 endpointBuilder: endpointBuilder,
                 client: client
@@ -77,12 +77,12 @@ final class ConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
 
     init(
         settings: any ConnectedInsightsSettingsProtocol,
-        smartGDataProvider: any SmartGDataProviding,
-        analyticsDataProvider: any AnalyticsDataProviding
+        hashtagProvider: any HashtagSearchProviding,
+        profileProvider: any ProfileDataProviding
     ) {
         self.settings = settings
-        self.smartGDataProvider = smartGDataProvider
-        self.analyticsDataProvider = analyticsDataProvider
+        self.hashtagProvider = hashtagProvider
+        self.profileProvider = profileProvider
     }
 
     func accessState() -> ConnectedInsightsAccessState {
@@ -107,7 +107,7 @@ final class ConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
     }
 }
 
-struct UnavailableSmartGDataProvider: SmartGDataProviding {
+struct UnavailableHashtagProvider: HashtagSearchProviding {
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
@@ -116,7 +116,7 @@ struct UnavailableSmartGDataProvider: SmartGDataProviding {
     }
 }
 
-struct UnavailableAnalyticsDataProvider: AnalyticsDataProviding {
+struct UnavailableProfileProvider: ProfileDataProviding {
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
         completion(.failure(ConnectedInsightsError.dataProviderUnavailable))
     }

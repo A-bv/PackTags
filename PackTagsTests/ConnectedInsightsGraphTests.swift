@@ -117,9 +117,9 @@ final class ConnectedInsightsGraphTests: XCTestCase {
         XCTAssertTrue(url.contains("checkType=FULL"))
     }
 
-    func testSmartGRepository_whenCredentialsAreMissing_doesNotCallGraphClient() {
+    func testHashtagRepository_whenCredentialsAreMissing_doesNotCallGraphClient() {
         let client = FakeInstagramGraphClient()
-        let sut = SmartGHashtagRepository(
+        let sut = InstagramHashtagRepository(
             credentialsProvider: FakeInstagramGraphCredentialsProvider(
                 facebookToken: nil,
                 instagramBusinessAccountId: "ig-business-id"
@@ -148,12 +148,12 @@ final class ConnectedInsightsGraphTests: XCTestCase {
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
 
-    func testSmartGRepository_fetchesHashtagMediaWithGraphClient() throws {
+    func testHashtagRepository_fetchesHashtagMediaWithGraphClient() throws {
         let client = FakeInstagramGraphClient(responses: [
             .success(#"{"data":[{"id":"17841562498105353"}]}"#.data(using: .utf8)!),
             .success(#"{"data":[{"media_type":"IMAGE","caption":"Hello","timestamp":"2026-06-07T08:00:00+0000","media_url":"https://example.com/image.jpg","comments_count":3,"like_count":9}]}"#.data(using: .utf8)!)
         ])
-        let sut = SmartGHashtagRepository(
+        let sut = InstagramHashtagRepository(
             credentialsProvider: FakeInstagramGraphCredentialsProvider(
                 facebookToken: "facebook-token",
                 instagramBusinessAccountId: "ig-business-id"
@@ -181,20 +181,20 @@ final class ConnectedInsightsGraphTests: XCTestCase {
     }
 
     func testUnavailableProvidersReturnUnavailableError() {
-        let smartGExpectation = expectation(description: "smartG unavailable completes")
-        let analyticsExpectation = expectation(description: "analytics unavailable completes")
+        let hashtagExpectation = expectation(description: "hashtag unavailable completes")
+        let profileExpectation = expectation(description: "profile unavailable completes")
 
-        UnavailableSmartGDataProvider().searchHashtag(searchedHashtag: "travel") { result in
+        UnavailableHashtagProvider().searchHashtag(searchedHashtag: "travel") { result in
             XCTAssertThrowsUnavailableError(result)
-            smartGExpectation.fulfill()
+            hashtagExpectation.fulfill()
         }
 
-        UnavailableAnalyticsDataProvider().loadProfileForAnalytics { result in
+        UnavailableProfileProvider().loadProfileForAnalytics { result in
             XCTAssertThrowsUnavailableError(result)
-            analyticsExpectation.fulfill()
+            profileExpectation.fulfill()
         }
 
-        wait(for: [smartGExpectation, analyticsExpectation], timeout: 1)
+        wait(for: [hashtagExpectation, profileExpectation], timeout: 1)
     }
 
     private func makeGateway(
@@ -202,8 +202,8 @@ final class ConnectedInsightsGraphTests: XCTestCase {
     ) -> ConnectedInsightsGateway {
         ConnectedInsightsGateway(
             settings: settings,
-            smartGDataProvider: FakeSmartGDataProvider(),
-            analyticsDataProvider: FakeAnalyticsDataProvider()
+            hashtagProvider: FakeHashtagProvider(),
+            profileProvider: FakeProfileProvider()
         )
     }
 
@@ -270,7 +270,7 @@ private final class FakeInstagramGraphClient: InstagramGraphClientProtocol {
     }
 }
 
-private struct FakeSmartGDataProvider: SmartGDataProviding {
+private struct FakeHashtagProvider: HashtagSearchProviding {
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
@@ -279,7 +279,7 @@ private struct FakeSmartGDataProvider: SmartGDataProviding {
     }
 }
 
-private struct FakeAnalyticsDataProvider: AnalyticsDataProviding {
+private struct FakeProfileProvider: ProfileDataProviding {
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
         completion(.failure(ConnectedInsightsError.dataProviderUnavailable))
     }

@@ -1,13 +1,13 @@
 import Foundation
 
-protocol SmartGHashtagRepositoryProtocol: SmartGDataProviding {
+protocol InstagramHashtagRepositoryProtocol: HashtagSearchProviding {
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
     )
 }
 
-final class SmartGHashtagRepository: SmartGHashtagRepositoryProtocol {
+final class InstagramHashtagRepository: InstagramHashtagRepositoryProtocol {
     private let credentialsProvider: any InstagramGraphCredentialsProviding
     private let endpointBuilder: InstagramGraphEndpointBuilder
     private let client: any InstagramGraphClientProtocol
