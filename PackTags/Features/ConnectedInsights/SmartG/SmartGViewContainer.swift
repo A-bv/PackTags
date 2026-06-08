@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import InstagramGraph
 
 struct SmartGViewContainer: View {
     @StateObject var dataController = DataController()

@@ -1,32 +1,37 @@
 import Foundation
 
-protocol InstagramGraphCredentialsProviding {
+public protocol InstagramGraphCredentialsProviding {
     var facebookToken: String? { get }
     var instagramBusinessAccountId: String? { get }
 }
 
-struct InstagramGraphCredentials {
-    let facebookToken: String
-    let instagramBusinessAccountId: String
+public struct InstagramGraphCredentials {
+    public let facebookToken: String
+    public let instagramBusinessAccountId: String
+
+    public init(facebookToken: String, instagramBusinessAccountId: String) {
+        self.facebookToken = facebookToken
+        self.instagramBusinessAccountId = instagramBusinessAccountId
+    }
 }
 
-final class SettingsInstagramGraphCredentialsProvider: InstagramGraphCredentialsProviding {
+public final class SettingsInstagramGraphCredentialsProvider: InstagramGraphCredentialsProviding {
     private let settings: any ConnectedInsightsSettingsProtocol
 
-    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()) {
+    public init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()) {
         self.settings = settings
     }
 
-    var facebookToken: String? {
+    public var facebookToken: String? {
         settings.facebookToken
     }
 
-    var instagramBusinessAccountId: String? {
+    public var instagramBusinessAccountId: String? {
         settings.instagramBusinessAccountId
     }
 }
 
-extension InstagramGraphCredentialsProviding {
+public extension InstagramGraphCredentialsProviding {
     func validCredentials() -> Result<InstagramGraphCredentials, Error> {
         let token = facebookToken ?? ""
         let instagramBusinessAccountId = instagramBusinessAccountId ?? ""

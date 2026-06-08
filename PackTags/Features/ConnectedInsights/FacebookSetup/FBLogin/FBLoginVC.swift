@@ -9,6 +9,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import InstagramGraph
 
 // MARK: - Class
 class FBLoginVC: UIViewController {

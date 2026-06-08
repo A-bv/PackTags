@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import InstagramGraph
 
 class SmartGViewModel: ObservableObject {
     let hashtagProvider: any HashtagSearchProviding

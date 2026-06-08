@@ -1,17 +1,22 @@
 import Foundation
 
-struct ConnectedInsightsSession {
-    let facebookToken: String
-    let instagramBusinessAccountId: String
+public struct ConnectedInsightsSession {
+    public let facebookToken: String
+    public let instagramBusinessAccountId: String
+
+    public init(facebookToken: String, instagramBusinessAccountId: String) {
+        self.facebookToken = facebookToken
+        self.instagramBusinessAccountId = instagramBusinessAccountId
+    }
 }
 
-enum ConnectedInsightsError: LocalizedError {
+public enum ConnectedInsightsError: LocalizedError {
     case setupRequired
     case missingFacebookToken
     case missingInstagramBusinessAccountId
     case dataProviderUnavailable
 
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .setupRequired:
             return "Connected Insights setup is required."
@@ -25,35 +30,35 @@ enum ConnectedInsightsError: LocalizedError {
     }
 }
 
-enum ConnectedInsightsAccessState {
+public enum ConnectedInsightsAccessState {
     case ready(ConnectedInsightsSession)
     case needsSetup(ConnectedInsightsError)
 }
 
-protocol HashtagSearchProviding {
+public protocol HashtagSearchProviding {
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
     )
 }
 
-protocol ProfileDataProviding {
+public protocol ProfileDataProviding {
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void)
 }
 
-protocol ConnectedInsightsGatewayProtocol {
+public protocol ConnectedInsightsGatewayProtocol {
     var hashtagProvider: any HashtagSearchProviding { get }
     var profileProvider: any ProfileDataProviding { get }
 
     func accessState() -> ConnectedInsightsAccessState
 }
 
-final class ConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
+public final class ConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
     private let settings: any ConnectedInsightsSettingsProtocol
-    let hashtagProvider: any HashtagSearchProviding
-    let profileProvider: any ProfileDataProviding
+    public let hashtagProvider: any HashtagSearchProviding
+    public let profileProvider: any ProfileDataProviding
 
-    convenience init(
+    public convenience init(
         settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
         configuration: ConnectedInsightsConfiguration = .production
     ) {
@@ -75,7 +80,7 @@ final class ConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
         )
     }
 
-    init(
+    public init(
         settings: any ConnectedInsightsSettingsProtocol,
         hashtagProvider: any HashtagSearchProviding,
         profileProvider: any ProfileDataProviding
@@ -85,7 +90,7 @@ final class ConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
         self.profileProvider = profileProvider
     }
 
-    func accessState() -> ConnectedInsightsAccessState {
+    public func accessState() -> ConnectedInsightsAccessState {
         guard settings.isCorrectSetup else {
             return .needsSetup(.setupRequired)
         }
@@ -107,8 +112,10 @@ final class ConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
     }
 }
 
-struct UnavailableHashtagProvider: HashtagSearchProviding {
-    func searchHashtag(
+public struct UnavailableHashtagProvider: HashtagSearchProviding {
+    public init() {}
+
+    public func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
     ) {
@@ -116,8 +123,10 @@ struct UnavailableHashtagProvider: HashtagSearchProviding {
     }
 }
 
-struct UnavailableProfileProvider: ProfileDataProviding {
-    func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
+public struct UnavailableProfileProvider: ProfileDataProviding {
+    public init() {}
+
+    public func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
         completion(.failure(ConnectedInsightsError.dataProviderUnavailable))
     }
 }

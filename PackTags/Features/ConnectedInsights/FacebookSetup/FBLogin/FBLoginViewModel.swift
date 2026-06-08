@@ -6,6 +6,8 @@
 //  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
 //
 
+import InstagramGraph
+
 final class FBLoginViewModel {
     private var settings: any ConnectedInsightsSettingsProtocol
     private let facebookSetupService: any FacebookSetupServicing

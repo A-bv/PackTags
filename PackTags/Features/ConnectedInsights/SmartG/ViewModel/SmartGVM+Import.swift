@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import InstagramGraph
 
 // SmartG
 extension SmartGViewModel {

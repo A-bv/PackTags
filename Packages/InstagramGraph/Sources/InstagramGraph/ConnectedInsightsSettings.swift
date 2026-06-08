@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ConnectedInsightsSettingsProtocol {
+public protocol ConnectedInsightsSettingsProtocol {
     var isCorrectSetup: Bool { get set }
     var facebookToken: String? { get set }
     var instagramBusinessAccountId: String? { get set }
@@ -8,13 +8,17 @@ protocol ConnectedInsightsSettingsProtocol {
     var pressedFacebookLoginButton: Bool { get set }
 }
 
-struct ConnectedInsightsConfiguration {
-    var graphAPIVersion: String
+public struct ConnectedInsightsConfiguration {
+    public var graphAPIVersion: String
 
-    static let production = ConnectedInsightsConfiguration(graphAPIVersion: "v23.0")
+    public init(graphAPIVersion: String) {
+        self.graphAPIVersion = graphAPIVersion
+    }
+
+    public static let production = ConnectedInsightsConfiguration(graphAPIVersion: "v23.0")
 }
 
-final class UserDefaultsConnectedInsightsSettings: ConnectedInsightsSettingsProtocol {
+public final class UserDefaultsConnectedInsightsSettings: ConnectedInsightsSettingsProtocol {
     private enum Key {
         static let isCorrectSetup = "isCorrectSetup"
         static let facebookToken = "fbToken"
@@ -25,31 +29,31 @@ final class UserDefaultsConnectedInsightsSettings: ConnectedInsightsSettingsProt
 
     private let defaults: UserDefaults
 
-    init(defaults: UserDefaults = .standard) {
+    public init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
     }
 
-    var isCorrectSetup: Bool {
+    public var isCorrectSetup: Bool {
         get { defaults.bool(forKey: Key.isCorrectSetup) }
         set { defaults.set(newValue, forKey: Key.isCorrectSetup) }
     }
 
-    var facebookToken: String? {
+    public var facebookToken: String? {
         get { defaults.string(forKey: Key.facebookToken) }
         set { defaults.set(newValue, forKey: Key.facebookToken) }
     }
 
-    var instagramBusinessAccountId: String? {
+    public var instagramBusinessAccountId: String? {
         get { defaults.string(forKey: Key.instagramBusinessAccountId) }
         set { defaults.set(newValue, forKey: Key.instagramBusinessAccountId) }
     }
 
-    var setupInfoShown: Bool {
+    public var setupInfoShown: Bool {
         get { defaults.bool(forKey: Key.setupInfoShown) }
         set { defaults.set(newValue, forKey: Key.setupInfoShown) }
     }
 
-    var pressedFacebookLoginButton: Bool {
+    public var pressedFacebookLoginButton: Bool {
         get { defaults.bool(forKey: Key.pressedFacebookLoginButton) }
         set { defaults.set(newValue, forKey: Key.pressedFacebookLoginButton) }
     }

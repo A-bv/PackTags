@@ -9,6 +9,7 @@
 // D = dismiss view operations
 
 import SwiftUI
+import InstagramGraph
 
 struct AnalyticsNew_Previews: PreviewProvider {
     static var previews: some View {

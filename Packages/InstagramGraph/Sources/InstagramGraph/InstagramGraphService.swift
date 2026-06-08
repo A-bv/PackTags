@@ -1,6 +1,6 @@
 import Foundation
 
-protocol InstagramGraphServicing: HashtagSearchProviding, ProfileDataProviding {
+public protocol InstagramGraphServicing: HashtagSearchProviding, ProfileDataProviding {
     func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
@@ -9,13 +9,13 @@ protocol InstagramGraphServicing: HashtagSearchProviding, ProfileDataProviding {
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void)
 }
 
-final class InstagramGraphService: InstagramGraphServicing {
+public final class InstagramGraphService: InstagramGraphServicing {
     private let hashtagRepository: any InstagramHashtagRepositoryProtocol
     private let profileRepository: any InstagramProfileRepositoryProtocol
     private let credentialsProvider: any InstagramGraphCredentialsProviding
     private let endpointBuilder: InstagramGraphEndpointBuilder
 
-    convenience init(
+    public convenience init(
         settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
         apiGraphVersion: String = ConnectedInsightsConfiguration.production.graphAPIVersion
     ) {
@@ -38,7 +38,7 @@ final class InstagramGraphService: InstagramGraphServicing {
         )
     }
 
-    init(
+    public init(
         credentialsProvider: any InstagramGraphCredentialsProviding,
         endpointBuilder: InstagramGraphEndpointBuilder,
         hashtagRepository: any InstagramHashtagRepositoryProtocol,
@@ -50,18 +50,18 @@ final class InstagramGraphService: InstagramGraphServicing {
         self.profileRepository = profileRepository
     }
 
-    func searchHashtag(
+    public func searchHashtag(
         searchedHashtag: String,
         completion: @escaping (Result<[DataMedia], Error>) -> Void
     ) {
         hashtagRepository.searchHashtag(searchedHashtag: searchedHashtag, completion: completion)
     }
 
-    func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
+    public func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
         profileRepository.loadProfileForAnalytics(completion: completion)
     }
 
-    func business_discovery_url(account: String) -> String? {
+    public func business_discovery_url(account: String) -> String? {
         guard case let .success(credentials) = credentialsProvider.validCredentials() else {
             return nil
         }

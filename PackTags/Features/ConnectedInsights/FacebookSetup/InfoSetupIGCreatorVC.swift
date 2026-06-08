@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import InstagramGraph
 
 class InfoSetupIGCreatorVC: UIViewController {
     private var settings: any ConnectedInsightsSettingsProtocol

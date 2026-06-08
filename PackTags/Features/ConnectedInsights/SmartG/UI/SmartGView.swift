@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import InstagramGraph
 
 private enum Strings {
     static let defaultHashtag = ""

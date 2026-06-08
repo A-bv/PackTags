@@ -1,5 +1,6 @@
 import UIKit
 import SwiftUI
+import InstagramGraph
 
 final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
     private let settings: any ConnectedInsightsSettingsProtocol

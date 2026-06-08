@@ -1,6 +1,6 @@
 import Foundation
 
-enum InstagramGraphServiceError: LocalizedError {
+public enum InstagramGraphServiceError: LocalizedError {
     case invalidURL(String)
     case missingCredentials(hasToken: Bool, hasInstagramBusinessId: Bool)
     case emptyResponse
@@ -8,7 +8,7 @@ enum InstagramGraphServiceError: LocalizedError {
     case graphHTTPError(statusCode: Int, body: String)
     case decodingFailed(type: String, body: String)
 
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .invalidURL(let url):
             return "Invalid Instagram Graph URL: \(url)"
@@ -26,18 +26,18 @@ enum InstagramGraphServiceError: LocalizedError {
     }
 }
 
-protocol InstagramGraphClientProtocol {
+public protocol InstagramGraphClientProtocol {
     func fetchGraphData(
         from urlString: String,
         completion: @escaping (Result<Data, Error>) -> Void
     )
 }
 
-final class InstagramGraphClient: InstagramGraphClientProtocol {
+public final class InstagramGraphClient: InstagramGraphClientProtocol {
     private let apiGraphVersion: String
     private let session: URLSession
 
-    init(
+    public init(
         apiGraphVersion: String = ConnectedInsightsConfiguration.production.graphAPIVersion,
         session: URLSession = .shared
     ) {
@@ -45,16 +45,16 @@ final class InstagramGraphClient: InstagramGraphClientProtocol {
         self.session = session
     }
 
-    func fetchGraphData(
+    public func fetchGraphData(
         from urlString: String,
         completion: @escaping (Result<Data, Error>) -> Void
     ) {
         guard let url = URL(string: urlString) else {
-            completion(.failure(InstagramGraphServiceError.invalidURL(redacted(urlString))))
+            completion(.failure(InstagramGraphServiceError.invalidURL(InstagramGraphLogRedactor.redacted(urlString))))
             return
         }
 
-        print("[ConnectedInsights][Graph] Request \(apiGraphVersion): \(redacted(urlString))")
+        print("[ConnectedInsights][Graph] Request \(apiGraphVersion): \(InstagramGraphLogRedactor.redacted(urlString))")
 
         session.dataTask(with: url) { data, response, error in
             if let error = error {
@@ -73,9 +73,10 @@ final class InstagramGraphClient: InstagramGraphClientProtocol {
             }
 
             guard (200...299).contains(httpResponse.statusCode) else {
+                let body = String(data: data, encoding: .utf8) ?? "<non-utf8 response>"
                 completion(.failure(InstagramGraphServiceError.graphHTTPError(
                     statusCode: httpResponse.statusCode,
-                    body: self.responsePreview(data)
+                    body: InstagramGraphLogRedactor.redacted(String(body.prefix(1_500)))
                 )))
                 return
             }
@@ -83,19 +84,10 @@ final class InstagramGraphClient: InstagramGraphClientProtocol {
             completion(.success(data))
         }.resume()
     }
-
-    private func responsePreview(_ data: Data) -> String {
-        let body = String(data: data, encoding: .utf8) ?? "<non-utf8 response>"
-        return redacted(String(body.prefix(1_500)))
-    }
-
-    private func redacted(_ value: String) -> String {
-        InstagramGraphLogRedactor.redacted(value)
-    }
 }
 
-enum InstagramGraphLogRedactor {
-    static func redacted(_ value: String) -> String {
+public enum InstagramGraphLogRedactor {
+    public static func redacted(_ value: String) -> String {
         value.replacingOccurrences(
             of: #"access_token=[^&\s]+"#,
             with: "access_token=<redacted>",

@@ -1,17 +1,17 @@
 import Foundation
 
-protocol InstagramProfileRepositoryProtocol: ProfileDataProviding {
+public protocol InstagramProfileRepositoryProtocol: ProfileDataProviding {
     func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void)
 }
 
-final class InstagramProfileRepository: InstagramProfileRepositoryProtocol {
+public final class InstagramProfileRepository: InstagramProfileRepositoryProtocol {
     private let credentialsProvider: any InstagramGraphCredentialsProviding
     private let endpointBuilder: InstagramGraphEndpointBuilder
     private let client: any InstagramGraphClientProtocol
     private let mediaLimitQueue = DispatchQueue(label: "com.packtags.connectedInsights.mediaLimit")
     private let onDataFetched: ((Data) -> Void)?
 
-    init(
+    public init(
         credentialsProvider: any InstagramGraphCredentialsProviding,
         endpointBuilder: InstagramGraphEndpointBuilder,
         client: any InstagramGraphClientProtocol,
@@ -23,7 +23,7 @@ final class InstagramProfileRepository: InstagramProfileRepositoryProtocol {
         self.onDataFetched = onDataFetched
     }
 
-    func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
+    public func loadProfileForAnalytics(completion: @escaping (Result<Profile, Error>) -> Void) {
         switch credentialsProvider.validCredentials() {
         case .failure(let error):
             print("[ConnectedInsights][Graph] Failure: \(error.localizedDescription)")

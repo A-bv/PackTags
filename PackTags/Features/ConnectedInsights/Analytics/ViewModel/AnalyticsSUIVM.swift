@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import InstagramGraph
 
 class AnalyticsSUIViewModel: ObservableObject {
     private enum Strings {

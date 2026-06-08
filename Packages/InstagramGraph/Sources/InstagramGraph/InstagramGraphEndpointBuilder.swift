@@ -1,22 +1,22 @@
 import Foundation
 
-struct InstagramGraphEndpointBuilder {
+public struct InstagramGraphEndpointBuilder {
     private let apiGraphVersion: String
     private let baseURL = "https://graph.facebook.com"
 
-    init(apiGraphVersion: String = ConnectedInsightsConfiguration.production.graphAPIVersion) {
+    public init(apiGraphVersion: String = ConnectedInsightsConfiguration.production.graphAPIVersion) {
         self.apiGraphVersion = apiGraphVersion
     }
 
-    func hashtagSearchURL(
+    public func hashtagSearchURL(
         searchedHashtag: String,
         credentials: InstagramGraphCredentials
     ) -> String? {
         let url = "\(baseURL)/\(apiGraphVersion)/ig_hashtag_search?user_id=\(credentials.instagramBusinessAccountId)&q=\(searchedHashtag)&access_token=\(credentials.facebookToken)"
-        return url.encodeUrl()
+        return encoded(url)
     }
 
-    func hashtagMediaSearchURL(
+    public func hashtagMediaSearchURL(
         hashtagID: String,
         credentials: InstagramGraphCredentials
     ) -> String? {
@@ -35,10 +35,10 @@ struct InstagramGraphEndpointBuilder {
 
         let options = "\(mediaType)?fields=\(fields)&user_id=\(credentials.instagramBusinessAccountId)&limit=\(limit)"
         let url = "\(baseURL)/\(apiGraphVersion)/\(hashtagID)/\(options)&access_token=\(credentials.facebookToken)"
-        return url.encodeUrl()
+        return encoded(url)
     }
 
-    func analyticsProfileURL(
+    public func analyticsProfileURL(
         mediaLimit: Int,
         credentials: InstagramGraphCredentials
     ) -> String? {
@@ -80,15 +80,22 @@ struct InstagramGraphEndpointBuilder {
         ]
 
         let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=\(fields.joined(separator: ","))&access_token=\(credentials.facebookToken)&checkType=FULL"
-        return url.encodeUrl()
+        return encoded(url)
     }
 
-    func businessDiscoveryURL(
+    public func businessDiscoveryURL(
         account: String,
         credentials: InstagramGraphCredentials
     ) -> String? {
         let limit = 12
         let url = "\(baseURL)/\(apiGraphVersion)/\(credentials.instagramBusinessAccountId)?fields=business_discovery.username(\(account)){biography,name,followers_count,follows_count,id,ig_id,media_count,profile_picture_url,username,website,media.limit(\(limit){media_type,caption,timestamp,media_url,comments_count,username,like_count,media_product_type}}&access_token=\(credentials.facebookToken)"
-        return url.encodeUrl()
+        return encoded(url)
+    }
+
+    private func encoded(_ url: String) -> String? {
+        guard let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return nil
+        }
+        return encodedUrl.replacingOccurrences(of: ",", with: "%2C")
     }
 }

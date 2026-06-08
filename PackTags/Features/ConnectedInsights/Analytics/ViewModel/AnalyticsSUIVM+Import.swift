@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import InstagramGraph
 
 // Analytics
 extension AnalyticsSUIViewModel {
