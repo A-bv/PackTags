@@ -459,6 +459,16 @@
 			path = Routing;
 			sourceTree = "<group>";
 		};
+		0207BBBA2FD648610007F3D3 /* Transform */ = {
+			isa = PBXGroup;
+			children = (
+				026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */,
+				021D761F275A99D500F54054 /* TransformedProfileModel.swift */,
+				02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */,
+			);
+			path = Transform;
+			sourceTree = "<group>";
+		};
 		0207BBCB2FD628000007F3D3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,7 +563,6 @@
 		026D16D42A3E474500228DEA /* Transformers */ = {
 			isa = PBXGroup;
 			children = (
-				026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */,
 			);
 			path = Transformers;
 			sourceTree = "<group>";
@@ -784,8 +793,6 @@
 		02CD2DAC2991C1DD00EDE077 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				021D761F275A99D500F54054 /* TransformedProfileModel.swift */,
-				02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -874,6 +881,7 @@
 				02EE53B3284CCB86004E7D5C /* Models */,
 				0231AB1126849DFA007F4FC8 /* ViewModel */,
 				02FB530C25AD3DD00063038C /* UI */,
+				0207BBBA2FD648610007F3D3 /* Transform */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
