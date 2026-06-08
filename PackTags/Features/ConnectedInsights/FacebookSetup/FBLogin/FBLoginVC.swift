@@ -213,7 +213,7 @@ extension FBLoginVC {
 
         logLogin("Valid Facebook access token from \(source); starting Graph setup validation.")
         viewModel.saveFacebookToken(token)
-        viewModel.apiCallGetIgBusinessId(token: token) { [weak self] isCorrectSetup in
+        viewModel.validateConnectedInsightsSetup(token: token) { [weak self] isCorrectSetup in
             if isCorrectSetup {
                 self?.showSuccessfulSetupAlert()
             } else {

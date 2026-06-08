@@ -27,7 +27,7 @@ final class FBLoginViewModel {
         facebookSessionService.currentToken()
     }
     
-    func apiCallGetIgBusinessId(token: FBToken, completion: @escaping (Bool) -> ()) {
+    func validateConnectedInsightsSetup(token: FBToken, completion: @escaping (Bool) -> ()) {
         guard let tokenString = token.tokenString else {
             saveCorrectStatus(false)
             completion(false)
