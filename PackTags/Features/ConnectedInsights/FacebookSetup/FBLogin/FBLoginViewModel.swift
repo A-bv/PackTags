@@ -27,8 +27,14 @@ final class FBLoginViewModel {
         facebookSessionService.currentToken()
     }
     
-    func apiCallGetIgBusinessId(completion: @escaping (Bool) -> ()) {
-        facebookSetupService.validateSetup { [weak self] result in
+    func apiCallGetIgBusinessId(token: FBToken, completion: @escaping (Bool) -> ()) {
+        guard let tokenString = token.tokenString else {
+            saveCorrectStatus(false)
+            completion(false)
+            return
+        }
+
+        facebookSetupService.validateSetup(facebookToken: tokenString) { [weak self] result in
             if let instagramBusinessAccountId = result.instagramBusinessAccountId {
                 self?.saveInstagramBusinessAccountID(id: instagramBusinessAccountId)
             }
