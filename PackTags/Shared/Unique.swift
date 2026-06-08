@@ -19,7 +19,7 @@ final class Unique {
     static func cleanTagList(
         rawText: String,
         coreDataModel: ThemeCD?,
-        themeRepository: any ThemeRepositoryProtocol = CoreDataThemeRepository(),
+        themeRepository: any ThemeRepositoryProtocol,
         shuffle: Bool
     ) -> String {
         var cleanTags: [String] = rawText.detectHashtags().removingDuplicates()
@@ -38,10 +38,10 @@ final class Unique {
         return cleanTags.joined(separator: " ")
     }
 
-    static func removeDuplicatesInCoreData(
+    private static func removeDuplicatesInCoreData(
         initialTags: [String],
         themesInCoreData: ThemeCD?,
-        themeRepository: any ThemeRepositoryProtocol = CoreDataThemeRepository()
+        themeRepository: any ThemeRepositoryProtocol
     ) -> [String] {
         var existingTags = [""]
         

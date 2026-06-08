@@ -83,7 +83,16 @@ class SettingsVC: UIViewController {
     }()
     
     weak var coordinator: (any ThemeCoordinatorProtocol)?
-    var connectedInsights: any ConnectedInsightsCoordinating = ConnectedInsightsCoordinator()
+    let connectedInsights: any ConnectedInsightsCoordinating
+
+    init(connectedInsights: any ConnectedInsightsCoordinating) {
+        self.connectedInsights = connectedInsights
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     var models = [SettingsSection]()
     
@@ -139,8 +148,7 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemPink
                         ) { [weak self] in
-                            let vwc = QuantityPickerVC()
-                            self?.showPage(vc: vwc)
+                            self?.coordinator?.showQuantityPicker()
                         }),
                     .switchCell(
                         model: SettingsSwitchOption(

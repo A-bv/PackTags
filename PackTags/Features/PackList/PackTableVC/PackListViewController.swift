@@ -11,7 +11,16 @@ import UIKit
 class PackListViewController: UITableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
-    var viewModel: PackListViewModel!
+    let viewModel: PackListViewModel
+
+    init(style: UITableView.Style, viewModel: PackListViewModel) {
+        self.viewModel = viewModel
+        super.init(style: style)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     let composeButton = UIBarButtonItem()
     let instaButton = UIBarButtonItem()

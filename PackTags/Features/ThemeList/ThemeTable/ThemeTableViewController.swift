@@ -11,8 +11,18 @@ import UIKit
 class ThemeTableViewController: UITableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
-    var appSettings: any AppSettingsProtocol = UserDefaultsAppSettings()
-    var viewModel: ThemeListViewModel!
+    var appSettings: any AppSettingsProtocol
+    let viewModel: ThemeListViewModel
+
+    init(style: UITableView.Style, appSettings: any AppSettingsProtocol, viewModel: ThemeListViewModel) {
+        self.appSettings = appSettings
+        self.viewModel = viewModel
+        super.init(style: style)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     let smartGButton = UIBarButtonItem()
     let settingsButton = UIBarButtonItem()

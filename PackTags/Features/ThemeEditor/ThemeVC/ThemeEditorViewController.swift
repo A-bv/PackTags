@@ -10,7 +10,16 @@ import UIKit
 
 class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
 
-    var viewModel: ThemeEditorViewModel!
+    let viewModel: ThemeEditorViewModel
+
+    init(viewModel: ThemeEditorViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     deinit {
         print("deinit ThemeEditorViewController")
