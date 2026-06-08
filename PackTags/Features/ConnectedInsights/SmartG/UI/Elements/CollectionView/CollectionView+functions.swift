@@ -29,8 +29,7 @@ extension CollectionView {
             let stringUrl = media.media_url,
             let url = URL(string: stringUrl),
             let likeCount = media.like_count,
-            let commentsCount = media.comments_count,
-            !viewModel.computedData.isEmpty
+            let commentsCount = media.comments_count
         else {
             return AnyView(EmptyView())
         }
@@ -40,7 +39,12 @@ extension CollectionView {
             noDecimal: true
         )
 
-        let hashtagsCount = String(viewModel.computedData[index].hashtags.count)
+        let hashtagsCount: String
+        if viewModel.computedData.indices.contains(index) {
+            hashtagsCount = String(viewModel.computedData[index].hashtags.count)
+        } else {
+            hashtagsCount = "0"
+        }
 
         return AnyView(
             StoryCard(

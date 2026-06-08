@@ -28,9 +28,7 @@ extension SmartGViewModel {
         var hashtagsFullList: [String] = []
         
         for dataMedia in dataMedias {
-            guard let hashtags = dataMedia.caption?.detectHashtags() else {
-                return
-            }
+            let hashtags = dataMedia.caption?.detectHashtags() ?? []
             processedSmartGModels.append(SmartGModel(hashtags: hashtags))
             hashtagsFullList += hashtags
         }
