@@ -15,11 +15,7 @@ extension AnalyticsSUIViewModel {
     func getJsonFromDir () {
         DispatchQueue.main.async { [weak self] in
             guard let jsonData = DocumentDirectory.getJsonDataFromDir() else { return } //data
-            guard
-                let profileJson = GenericJSONParser.ParseJs(
-                    of: Profile.self,
-                    data: jsonData) as? Profile
-            else { return }
+            guard let profileJson = try? JSONDecoder().decode(Profile.self, from: jsonData) else { return }
      
             DispatchQueue.main.async{ [weak self] in
                 self?.load(profileJson: profileJson)

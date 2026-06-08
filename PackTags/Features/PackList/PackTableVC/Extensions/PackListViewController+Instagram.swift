@@ -26,7 +26,7 @@ extension PackListViewController {
                 self.copiedPacksToBottom(packIdx: packIdx)
             }
             if goInstagram {
-                AppURLHandler.openAppURL(
+                ExternalLinkOpener.openAppURL(
                     appURL: "instagram://user?username=\(Username)",
                     webURL: "https://instagram.com/\(Username)")
             }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AppURLHandler {
+final class ExternalLinkOpener {
     static func openAppURL(appURL: String, webURL: String) {
         let application = UIApplication.shared
         

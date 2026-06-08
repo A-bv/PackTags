@@ -193,6 +193,6 @@ class InfoSetupIGCreatorVC: UIViewController {
     }
 
     @objc private func goProfile(_ sender: Any) {
-        AppURLHandler.openAppURL(appURL: Links.appURL, webURL: Links.webURL)
+        ExternalLinkOpener.openAppURL(appURL: Links.appURL, webURL: Links.webURL)
     }
 }

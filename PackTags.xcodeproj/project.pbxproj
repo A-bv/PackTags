@@ -51,7 +51,7 @@
 		0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */; };
 		02385E002A634FAB0050FFDE /* ThemeTableViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* ThemeTableViewController+Navigation.swift */; };
 		02385E032A63523B0050FFDE /* ThemeEditorViewController+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E022A63523B0050FFDE /* ThemeEditorViewController+Save.swift */; };
-		02385E082A64430E0050FFDE /* AppUrlHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E072A64430E0050FFDE /* AppUrlHandler.swift */; };
+		02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */; };
 		023A2F7A2856493C00EE6CDE /* PackListViewController+AutoReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F792856493C00EE6CDE /* PackListViewController+AutoReorder.swift */; };
 		023A2F7C2856495800EE6CDE /* PackListViewController+ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7B2856495800EE6CDE /* PackListViewController+ConfigCell.swift */; };
 		023A2F7E2856497800EE6CDE /* PackListViewController+TVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7D2856497800EE6CDE /* PackListViewController+TVHeader.swift */; };
@@ -108,7 +108,6 @@
 		02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */; };
 		02CAC9B52591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B42591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift */; };
 		02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */; };
-		02CD2D8F29904F0D00EDE077 /* String+UrlEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD2D8E29904F0D00EDE077 /* String+UrlEncoding.swift */; };
 		02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */; };
 		02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */; };
 		02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BF296B606F00536E3A /* RoundedShape.swift */; };
@@ -149,7 +148,6 @@
 		02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9EC928DF5BF000193A15 /* FacebookCore */; };
 		02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9ECB28DF5BF000193A15 /* FacebookLogin */; };
 		02FEF5B7263304EC0001B525 /* UIVC+SendMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5B6263304EC0001B525 /* UIVC+SendMail.swift */; };
-		02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5C92638951C0001B525 /* GenericJSONParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,7 +204,7 @@
 		0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNavigationController.swift; sourceTree = "<group>"; };
 		02385DFF2A634FAB0050FFDE /* ThemeTableViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeTableViewController+Navigation.swift"; sourceTree = "<group>"; };
 		02385E022A63523B0050FFDE /* ThemeEditorViewController+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+Save.swift"; sourceTree = "<group>"; };
-		02385E072A64430E0050FFDE /* AppUrlHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUrlHandler.swift; sourceTree = "<group>"; };
+		02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkOpener.swift; sourceTree = "<group>"; };
 		023A2F792856493C00EE6CDE /* PackListViewController+AutoReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+AutoReorder.swift"; sourceTree = "<group>"; };
 		023A2F7B2856495800EE6CDE /* PackListViewController+ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+ConfigCell.swift"; sourceTree = "<group>"; };
 		023A2F7D2856497800EE6CDE /* PackListViewController+TVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+TVHeader.swift"; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 		02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+KbNoHide.swift"; sourceTree = "<group>"; };
 		02CAC9B42591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+ImgPicker.swift"; sourceTree = "<group>"; };
 		02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewController.swift; sourceTree = "<group>"; };
-		02CD2D8E29904F0D00EDE077 /* String+UrlEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UrlEncoding.swift"; sourceTree = "<group>"; };
 		02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTreatment.swift; sourceTree = "<group>"; };
 		02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsOverviewModel.swift; sourceTree = "<group>"; };
 		02D066BF296B606F00536E3A /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
@@ -305,7 +302,6 @@
 		02FDEDCC290304E200B9BCFD /* SmartTags.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartTags.xcdatamodel; sourceTree = "<group>"; };
 		02FDEDCE2903062400B9BCFD /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		02FEF5B6263304EC0001B525 /* UIVC+SendMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+SendMail.swift"; sourceTree = "<group>"; };
-		02FEF5C92638951C0001B525 /* GenericJSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericJSONParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,17 +512,15 @@
 				02B05C1E27F90BA3000026B8 /* TextView */,
 				02962683284BA65E009B0F58 /* TableView */,
 				02B05C1F27F90BB9000026B8 /* Image */,
-				02FA30832A118D58006A48CC /* Network */,
-				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
 				0264B836264B25E100E1EEFA /* ActivityIndicatorView.swift */,
+				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
 				024347D727119E2100F86A64 /* TextRecognitionUtility.swift */,
 				0274DB2F26848948005F9C9C /* DocumentDirectory.swift */,
 				021AFD5B278A1BE40008735E /* Alerts.swift */,
-				02385E072A64430E0050FFDE /* AppUrlHandler.swift */,
+				02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */,
 				021044F526446AEF00408CEB /* StringFormatter.swift */,
 				02D1A118255387590045E56F /* Unique.swift */,
 				02FEF5B6263304EC0001B525 /* UIVC+SendMail.swift */,
-				02CD2D8E29904F0D00EDE077 /* String+UrlEncoding.swift */,
 				021EB81328846AD100463B42 /* Localizable.swift */,
 				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
 				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
@@ -860,14 +854,6 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		02FA30832A118D58006A48CC /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				02FEF5C92638951C0001B525 /* GenericJSONParser.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		02FA308A2A11BC3F006A48CC /* ModalView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1096,7 +1082,6 @@
 				02FB550A24FFA2AA00174E34 /* AppDelegate.swift in Sources */,
 				0264B837264B25E100E1EEFA /* ActivityIndicatorView.swift in Sources */,
 				0226F19C259EAB93006E086C /* PackCell.swift in Sources */,
-				02CD2D8F29904F0D00EDE077 /* String+UrlEncoding.swift in Sources */,
 				021D7620275A99D500F54054 /* TransformedProfileModel.swift in Sources */,
 				021D76172759A00D00F54054 /* SmartGView.swift in Sources */,
 				0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */,
@@ -1149,7 +1134,6 @@
 				020621572666DBCC0072C404 /* BarChartPost.swift in Sources */,
 				02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */,
 				0281B9882879D60700344D3E /* UINC+BarShadow.swift in Sources */,
-				02FEF5CA2638951C0001B525 /* GenericJSONParser.swift in Sources */,
 				023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */,
 				02FA307A2A004441006A48CC /* TagView.swift in Sources */,
 				0281B98B287A007200344D3E /* UINC+BarAppearance.swift in Sources */,
@@ -1175,7 +1159,7 @@
 				02FB552F24FFA78B00174E34 /* ThemeTableViewController.swift in Sources */,
 				0229863E27BD6DF60048F9E9 /* EnvironmentValues.swift in Sources */,
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
-				02385E082A64430E0050FFDE /* AppUrlHandler.swift in Sources */,
+				02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* UIVC+SendMail.swift in Sources */,
 				02AD94A929A5936500D893E5 /* UIVC+ModalViewButtons.swift.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,

@@ -198,7 +198,7 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemPink
                         ) {
-                            AppURLHandler.openAppURL(
+                            ExternalLinkOpener.openAppURL(
                                 appURL: Links.settingsInstagramAppUrl,
                                 webURL: Links.settingsInstagramWebUrl)
                         }),
