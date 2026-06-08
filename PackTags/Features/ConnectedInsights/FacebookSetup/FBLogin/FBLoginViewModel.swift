@@ -10,53 +10,29 @@ import InstagramGraph
 
 final class FBLoginViewModel {
     private var settings: any ConnectedInsightsSettingsProtocol
-    private let facebookSetupService: any FacebookSetupServicing
+    private let gateway: any ConnectedInsightsGatewayProtocol
     private let facebookSessionService: any FacebookSessionServicing
 
     init(
         settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
-        facebookSetupService: any FacebookSetupServicing = FacebookSetupService(),
+        gateway: any ConnectedInsightsGatewayProtocol = ConnectedInsightsGateway(),
         facebookSessionService: any FacebookSessionServicing = FacebookSessionService()
     ) {
         self.settings = settings
-        self.facebookSetupService = facebookSetupService
+        self.gateway = gateway
         self.facebookSessionService = facebookSessionService
     }
 
     func getToken() -> FBToken {
         facebookSessionService.currentToken()
     }
-    
-    func validateConnectedInsightsSetup(token: FBToken, completion: @escaping (Bool) -> ()) {
+
+    func setupWithToken(_ token: FBToken, completion: @escaping (Bool) -> Void) {
         guard let tokenString = token.tokenString else {
-            saveCorrectStatus(false)
             completion(false)
             return
         }
-
-        facebookSetupService.validateSetup(facebookToken: tokenString) { [weak self] result in
-            if let instagramBusinessAccountId = result.instagramBusinessAccountId {
-                self?.saveInstagramBusinessAccountID(id: instagramBusinessAccountId)
-            }
-            self?.saveCorrectStatus(result.isCorrectSetup)
-            completion(result.isCorrectSetup)
-        }
-    }
-}
-
-// MARK: - Saving
-extension FBLoginViewModel {
-    private func saveInstagramBusinessAccountID(id: String) {
-        settings.instagramBusinessAccountId = id
-    }
-
-    func saveFacebookToken(_ token: FBToken) {
-        let tokenString = token.tokenString
-        settings.facebookToken = tokenString
-    }
-    
-    private func saveCorrectStatus(_ isCorrectSetup: Bool) {
-        settings.isCorrectSetup = isCorrectSetup
+        gateway.setup(facebookToken: tokenString, completion: completion)
     }
 
     func savePushedFBLoginButtonOnce() {
@@ -67,9 +43,7 @@ extension FBLoginViewModel {
 
     func resetFacebookSession() {
         facebookSessionService.resetSession()
-        settings.facebookToken = nil
-        settings.instagramBusinessAccountId = nil
-        settings.isCorrectSetup = false
+        gateway.reset()
         settings.pressedFacebookLoginButton = false
         print("[ConnectedInsights][Login] Facebook SDK session and connected insights setup were reset.")
     }

@@ -80,7 +80,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         let vc: UIViewController
         switch destination {
         case .setup:
-            let loginVC = FBLoginVC(settings: settings)
+            let loginVC = FBLoginVC(settings: settings, gateway: gateway)
             loginVC.onSetupComplete = onComplete
             vc = loginVC
         case .setupInfo:

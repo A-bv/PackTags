@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/InstagramGraph",
       "state" : {
-        "revision" : "b5186237ac171f6f975fffe1d6c475ad935dd251",
-        "version" : "1.2.1"
+        "revision" : "2d5bd79b3dc327830a3c1871214397b7271b14a3",
+        "version" : "1.2.2"
       }
     }
   ],

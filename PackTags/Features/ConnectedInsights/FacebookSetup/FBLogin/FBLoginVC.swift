@@ -31,9 +31,9 @@ class FBLoginVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(settings: any ConnectedInsightsSettingsProtocol) {
+    convenience init(settings: any ConnectedInsightsSettingsProtocol, gateway: any ConnectedInsightsGatewayProtocol) {
         self.init(
-            viewModel: FBLoginViewModel(settings: settings),
+            viewModel: FBLoginViewModel(settings: settings, gateway: gateway),
             settings: settings)
     }
 
@@ -212,8 +212,7 @@ extension FBLoginVC {
         }
 
         logLogin("Valid Facebook access token from \(source); starting Graph setup validation.")
-        viewModel.saveFacebookToken(token)
-        viewModel.validateConnectedInsightsSetup(token: token) { [weak self] isCorrectSetup in
+        viewModel.setupWithToken(token) { [weak self] isCorrectSetup in
             if isCorrectSetup {
                 self?.showSuccessfulSetupAlert()
             } else {
@@ -236,7 +235,6 @@ extension FBLoginVC {
     }
 
     private func showTroubleshootingAlert(detail: String? = nil) {
-        settings.isCorrectSetup = false
         if let detail {
             logLogin("Showing troubleshooting alert. Detail: \(detail)")
         } else {
