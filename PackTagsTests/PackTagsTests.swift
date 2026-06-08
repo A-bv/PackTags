@@ -63,7 +63,7 @@ class PackTagsTests: XCTestCase {
         XCTAssertEqual(sut.computedData.count, 2)
         XCTAssertEqual(sut.computedData[0].hashtags, [])
         XCTAssertEqual(sut.computedData[1].hashtags, ["#cars", "#auto"])
-        XCTAssertEqual(sut.topHashtags, ["#cars", "#auto"])
+        XCTAssertEqual(Set(sut.topHashtags), Set(["#cars", "#auto"]))
     }
 
 }

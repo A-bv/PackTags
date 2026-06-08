@@ -26,6 +26,7 @@ extension AnalyticsSUIViewModel {
     // 2. Api import
     func getOnlineJsonAPIGraph () {
         profileProvider.loadProfileForAnalytics(
+            mediaLimit: 12,
             completion: { result in
                 DispatchQueue.main.async { [weak self] in
                     switch result {
