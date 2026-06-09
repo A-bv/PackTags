@@ -212,11 +212,12 @@ extension FBLoginVC {
         }
 
         logLogin("Valid Facebook access token from \(source); starting Graph setup validation.")
-        viewModel.setupWithToken(token) { [weak self] isCorrectSetup in
-            if isCorrectSetup {
+        viewModel.setupWithToken(token) { [weak self] result in
+            switch result {
+            case .success:
                 self?.showSuccessfulSetupAlert()
-            } else {
-                self?.showTroubleshootingAlert(detail: Strings.setupValidationFailed)
+            case .failure(let error):
+                self?.showTroubleshootingAlert(detail: error.localizedDescription)
             }
         }
     }

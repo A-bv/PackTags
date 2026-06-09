@@ -15,7 +15,7 @@ final class FBLoginViewModel {
 
     init(
         settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
-        gateway: any ConnectedInsightsGatewayProtocol = ConnectedInsightsGateway(),
+        gateway: any ConnectedInsightsGatewayProtocol = ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider()),
         facebookSessionService: any FacebookSessionServicing = FacebookSessionService()
     ) {
         self.settings = settings
@@ -27,9 +27,9 @@ final class FBLoginViewModel {
         facebookSessionService.currentToken()
     }
 
-    func setupWithToken(_ token: FBToken, completion: @escaping (Bool) -> Void) {
+    func setupWithToken(_ token: FBToken, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let tokenString = token.tokenString else {
-            completion(false)
+            completion(.failure(ConnectedInsightsError.missingFacebookToken))
             return
         }
         gateway.setup(facebookToken: tokenString, completion: completion)

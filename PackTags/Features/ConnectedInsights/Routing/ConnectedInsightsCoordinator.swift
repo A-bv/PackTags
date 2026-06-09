@@ -15,11 +15,16 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         if let gateway {
             self.gateway = gateway
         } else {
-            let credentialsProvider = SettingsInstagramGraphCredentialsProvider(settings: settings)
+            let tokenProvider = FacebookAccessTokenProvider()
+            let credentialsProvider = SettingsInstagramGraphCredentialsProvider(
+                settings: settings,
+                tokenProvider: tokenProvider
+            )
             let endpointBuilder = InstagramGraphEndpointBuilder(apiGraphVersion: configuration.graphAPIVersion)
             let client = InstagramGraphClient(apiGraphVersion: configuration.graphAPIVersion)
             self.gateway = ConnectedInsightsGateway(
                 settings: settings,
+                tokenProvider: tokenProvider,
                 hashtagProvider: InstagramHashtagRepository(
                     credentialsProvider: credentialsProvider,
                     endpointBuilder: endpointBuilder,
