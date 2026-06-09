@@ -120,7 +120,7 @@ extension FBLoginVC {
 
         logLogin("Valid existing Facebook access token found; validating setup.")
         hasStartedSetupValidation = true
-        performIgBusinessIdAPICall(source: "existing session")
+        performConnectedInsightsSetup(source: "existing session")
         return true
     }
 
@@ -187,7 +187,7 @@ extension FBLoginVC {
             logLogin("Facebook Login completed without a result object.")
         }
 
-        performIgBusinessIdAPICall(source: "Facebook Login callback", markLoginAttempt: true)
+        performConnectedInsightsSetup(source: "Facebook Login callback", markLoginAttempt: true)
     }
 
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
@@ -195,7 +195,7 @@ extension FBLoginVC {
 
 // MARK: - Actions
 extension FBLoginVC {
-    private func performIgBusinessIdAPICall(
+    private func performConnectedInsightsSetup(
         source: String,
         markLoginAttempt: Bool = false
     ) {
