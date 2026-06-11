@@ -348,11 +348,9 @@
 		0207BB8C2FD4645D0007F3D3 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AB0000000000000000000205 /* Notebook */,
 				02A4235A2843FFF300A25067 /* Onboarding */,
 				02FAE2AB260ADA9200324724 /* Settings */,
-				02A4235B2844002600A25067 /* ThemeList */,
-				02A4235C2844007200A25067 /* PackList */,
-				02A4235D284400FC00A25067 /* ThemeEditor */,
 				0207BB9A2FD5F0000007F3D3 /* ConnectedInsights */,
 			);
 			path = Features;
@@ -384,6 +382,16 @@
 				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000205 /* Notebook */ = {
+			isa = PBXGroup;
+			children = (
+				02A4235B2844002600A25067 /* ThemeList */,
+				02A4235C2844007200A25067 /* PackList */,
+				02A4235D284400FC00A25067 /* ThemeEditor */,
+			);
+			path = Notebook;
 			sourceTree = "<group>";
 		};
 		AB0000000000000000000201 /* Model */ = {
