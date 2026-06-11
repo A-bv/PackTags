@@ -22,6 +22,7 @@
 		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
 		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */; };
+		AB00000000000000000000E2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* AppSettings.swift */; };
 		0207BB982FD5F0000007F3D3 /* ConnectedInsightsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */; };
 		0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */; };
 		0207BBB12FD564090007F3D3 /* PackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB02FD564090007F3D3 /* PackListViewModel.swift */; };
@@ -73,7 +74,6 @@
 		0274105826207D2100D82F6D /* PackListViewController+Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274105726207D2000D82F6D /* PackListViewController+Instagram.swift */; };
 		0274DB3026848948005F9C9C /* DocumentDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* DocumentDirectory.swift */; };
 		0281B97A2879877C00344D3E /* UIVC+NavigationBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9792879877C00344D3E /* UIVC+NavigationBarDimensions.swift */; };
-		0281B9832879CA7900344D3E /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9822879CA7900344D3E /* OnboardingManager.swift */; };
 		0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */; };
 		0281B9882879D60700344D3E /* UINC+BarShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* UINC+BarShadow.swift */; };
 		0281B98B287A007200344D3E /* UINC+BarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* UINC+BarAppearance.swift */; };
@@ -110,7 +110,6 @@
 		02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BF296B606F00536E3A /* RoundedShape.swift */; };
 		02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */; };
 		02D1A119255387590045E56F /* Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D1A118255387590045E56F /* Unique.swift */; };
-		02D709CD2A58C4AE0009F7C3 /* QuantityPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D709CC2A58C4AE0009F7C3 /* QuantityPickerData.swift */; };
 		02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */; };
 		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
@@ -171,6 +170,7 @@
 		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
 		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		AB00000000000000000000E1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsModule.swift; sourceTree = "<group>"; };
 		0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewModel.swift; sourceTree = "<group>"; };
 		0207BBB02FD564090007F3D3 /* PackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewModel.swift; sourceTree = "<group>"; };
@@ -221,7 +221,6 @@
 		0274105726207D2000D82F6D /* PackListViewController+Instagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Instagram.swift"; sourceTree = "<group>"; };
 		0274DB2F26848948005F9C9C /* DocumentDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDirectory.swift; sourceTree = "<group>"; };
 		0281B9792879877C00344D3E /* UIVC+NavigationBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+NavigationBarDimensions.swift"; sourceTree = "<group>"; };
-		0281B9822879CA7900344D3E /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Seed.swift"; sourceTree = "<group>"; };
 		0281B9872879D60700344D3E /* UINC+BarShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINC+BarShadow.swift"; sourceTree = "<group>"; };
 		0281B98A287A007200344D3E /* UINC+BarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINC+BarAppearance.swift"; sourceTree = "<group>"; };
@@ -258,7 +257,6 @@
 		02D066BF296B606F00536E3A /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+delegate.swift"; sourceTree = "<group>"; };
 		02D1A118255387590045E56F /* Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unique.swift; sourceTree = "<group>"; };
-		02D709CC2A58C4AE0009F7C3 /* QuantityPickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerData.swift; sourceTree = "<group>"; };
 		02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsView.swift; sourceTree = "<group>"; };
 		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -363,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */,
+				AB00000000000000000000E1 /* AppSettings.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -553,7 +552,6 @@
 		02A4235A2843FFF300A25067 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				0281B9822879CA7900344D3E /* OnboardingManager.swift */,
 				029FDDC0264E75600063DF1D /* OnBoardingVC.swift */,
 			);
 			path = Onboarding;
@@ -696,7 +694,6 @@
 			isa = PBXGroup;
 			children = (
 				0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */,
-				02D709CC2A58C4AE0009F7C3 /* QuantityPickerData.swift */,
 			);
 			path = QuantityPicker;
 			sourceTree = "<group>";
@@ -1043,7 +1040,6 @@
 				02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */,
 				02962685284BC2FD009B0F58 /* ThemeTableViewController+Delegate.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */,
-				0281B9832879CA7900344D3E /* OnboardingManager.swift in Sources */,
 				020584D7284D7B4E00020FB8 /* PackListViewController+Delegate.swift in Sources */,
 				02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */,
 				02998A662B44104800B70516 /* Circles.swift in Sources */,
@@ -1092,7 +1088,6 @@
 				0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */,
-				02D709CD2A58C4AE0009F7C3 /* QuantityPickerData.swift in Sources */,
 				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
 				0207BBB12FD564090007F3D3 /* PackListViewModel.swift in Sources */,
 				0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */,
@@ -1115,6 +1110,7 @@
 				02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */,
 				0264B817264A7CE900E1EEFA /* AnalyticsSUIVM.swift in Sources */,
 				0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */,
+				AB00000000000000000000E2 /* AppSettings.swift in Sources */,
 				02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				0274DB3026848948005F9C9C /* DocumentDirectory.swift in Sources */,

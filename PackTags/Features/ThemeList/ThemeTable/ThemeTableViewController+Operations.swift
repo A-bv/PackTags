@@ -43,7 +43,7 @@ extension ThemeTableViewController {
     }
     
     func handleNewUserFlow() {
-        if !OnboardingManager.shared.isNewUser() {
+        if appSettings.hasSeenOnboarding {
             return
         }
 

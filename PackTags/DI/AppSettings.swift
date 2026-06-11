@@ -1,0 +1,59 @@
+import Foundation
+
+protocol AppSettingsProtocol: AnyObject {
+    var hasSeenOnboarding: Bool { get set }
+    var tipsAlertShown: Bool { get set }
+    var tagsPerPack: Int { get set }
+    var saveAndShuffle: Bool { get }
+    var keepPacksOrder: Bool { get }
+    var openInstagramAfterCopy: Bool { get set }
+    var instagramUsername: String? { get set }
+}
+
+final class UserDefaultsAppSettings: AppSettingsProtocol {
+    private enum Default {
+        static let tagsPerPack = 30
+    }
+
+    private let defaults: UserDefaults
+
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+    }
+
+    var hasSeenOnboarding: Bool {
+        get { defaults.bool(forKey: SettingsKey.hasSeenOnboarding) }
+        set { defaults.set(newValue, forKey: SettingsKey.hasSeenOnboarding) }
+    }
+
+    var tipsAlertShown: Bool {
+        get { defaults.bool(forKey: SettingsKey.tipsAlertShown) }
+        set { defaults.set(newValue, forKey: SettingsKey.tipsAlertShown) }
+    }
+
+    var tagsPerPack: Int {
+        get {
+            let saved = defaults.integer(forKey: SettingsKey.quantityOfTagsPerPack)
+            return saved == 0 ? Default.tagsPerPack : saved
+        }
+        set { defaults.set(newValue, forKey: SettingsKey.quantityOfTagsPerPack) }
+    }
+
+    var saveAndShuffle: Bool {
+        defaults.bool(forKey: SettingsKey.saveAndShuffle)
+    }
+
+    var keepPacksOrder: Bool {
+        defaults.bool(forKey: SettingsKey.keepPacksOrder)
+    }
+
+    var openInstagramAfterCopy: Bool {
+        get { defaults.bool(forKey: SettingsKey.openInstagramAfterCopy) }
+        set { defaults.set(newValue, forKey: SettingsKey.openInstagramAfterCopy) }
+    }
+
+    var instagramUsername: String? {
+        get { defaults.string(forKey: SettingsKey.instagramUsername) }
+        set { defaults.set(newValue, forKey: SettingsKey.instagramUsername) }
+    }
+}

@@ -35,7 +35,13 @@ private final class SpyConnectedInsightsCoordinator: ConnectedInsightsCoordinati
 }
 
 private final class FakeAppSettings: AppSettingsProtocol {
+    var hasSeenOnboarding = false
     var tipsAlertShown = false
+    var tagsPerPack = 30
+    var saveAndShuffle = false
+    var keepPacksOrder = false
+    var openInstagramAfterCopy = false
+    var instagramUsername: String?
 }
 
 private final class FakeThemeRepository: ThemeRepositoryProtocol {

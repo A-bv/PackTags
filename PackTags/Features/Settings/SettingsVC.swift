@@ -84,9 +84,11 @@ class SettingsVC: UIViewController {
     
     weak var coordinator: (any ThemeCoordinatorProtocol)?
     let connectedInsights: any ConnectedInsightsCoordinating
+    let appSettings: any AppSettingsProtocol
 
-    init(connectedInsights: any ConnectedInsightsCoordinating) {
+    init(connectedInsights: any ConnectedInsightsCoordinating, appSettings: any AppSettingsProtocol) {
         self.connectedInsights = connectedInsights
+        self.appSettings = appSettings
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -175,7 +177,7 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemTeal
                         ) {[weak self] in
-                            UserDefaults.standard.setValue(false, forKey: SettingsKey.hasSeenOnboarding)
+                            self?.appSettings.hasSeenOnboarding = false
                             self?.coordinator?.showOnboarding(completion: nil)
                         }),
                     .staticCell(

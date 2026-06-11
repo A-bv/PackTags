@@ -35,6 +35,7 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     
     var onDismiss: (() -> Void)?
+    var appSettings: (any AppSettingsProtocol)?
     
     deinit {
         onDismiss?()
@@ -238,7 +239,7 @@ extension OnBoardingController {
     }
 
     @objc func didTap(_ sender: UIButton) {
-        OnboardingManager.shared.setIsNotNewUser()
+        appSettings?.hasSeenOnboarding = true
         dismiss(animated: true)
     }
 }

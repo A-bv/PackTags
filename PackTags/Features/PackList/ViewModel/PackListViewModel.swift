@@ -2,12 +2,14 @@ import Foundation
 
 final class PackListViewModel {
     private let repository: any ThemeRepositoryProtocol
+    private let settings: any AppSettingsProtocol
     let theme: ThemeCD
     private(set) var packs: [String] = []
 
-    init(theme: ThemeCD, repository: any ThemeRepositoryProtocol) {
+    init(theme: ThemeCD, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
         self.theme = theme
         self.repository = repository
+        self.settings = settings
     }
 
     func loadPacks() {
@@ -15,7 +17,7 @@ final class PackListViewModel {
             packs = []
             return
         }
-        let numTagsPerPack = QuantityPickerData.selectedValue
+        let numTagsPerPack = settings.tagsPerPack
         packs = Unique.reorganizeTags(from: content, with: numTagsPerPack).components(separatedBy: "\n\n")
     }
 

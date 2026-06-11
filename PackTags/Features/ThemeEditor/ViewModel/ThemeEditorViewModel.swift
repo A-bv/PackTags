@@ -2,14 +2,16 @@ import Foundation
 
 final class ThemeEditorViewModel {
     private let repository: any ThemeRepositoryProtocol
+    private let settings: any AppSettingsProtocol
     private(set) var theme: ThemeCD?
     var themeTitle: String
-    var numTagsPerPack: Int { QuantityPickerData.selectedValue }
+    var numTagsPerPack: Int { settings.tagsPerPack }
     var isNewTheme: Bool { theme == nil }
 
-    init(theme: ThemeCD?, repository: any ThemeRepositoryProtocol) {
+    init(theme: ThemeCD?, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
         self.theme = theme
         self.repository = repository
+        self.settings = settings
         self.themeTitle = theme?.name ?? ""
     }
 

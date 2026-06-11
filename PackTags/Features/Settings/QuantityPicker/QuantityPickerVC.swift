@@ -11,13 +11,22 @@ import UIKit
 class QuantityPickerVC: UIViewController {
     private enum Constants {
         static let pickerNumberOfComponents = 1
-        static let row30 = 0
+        static let defaultRowIndex = 0
+        static let pickerValues = Array((5...30).reversed())
     }
 
-    private var numTagsInPack: Int {
-        return QuantityPickerData.selectedValue
+    private let appSettings: any AppSettingsProtocol
+
+    init(appSettings: any AppSettingsProtocol) {
+        self.appSettings = appSettings
+        super.init(nibName: nil, bundle: nil)
     }
-        
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -32,8 +41,8 @@ class QuantityPickerVC: UIViewController {
         pickerView.dataSource = self
         pickerView.center = self.view.center
         
-        let defaultRowIndex = QuantityPickerData.pickerValuesArray.firstIndex(of: numTagsInPack) ?? Constants.row30
-        pickerView.selectRow(defaultRowIndex, inComponent: 0, animated: false)
+        let selectedRowIndex = Constants.pickerValues.firstIndex(of: appSettings.tagsPerPack) ?? Constants.defaultRowIndex
+        pickerView.selectRow(selectedRowIndex, inComponent: 0, animated: false)
         self.view.addSubview(pickerView)
     }
 }
@@ -44,16 +53,14 @@ extension QuantityPickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        QuantityPickerData.pickerValuesArray.count
+        Constants.pickerValues.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let row = String(QuantityPickerData.pickerValuesArray[row])
-        return row
+        String(Constants.pickerValues[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedRow = QuantityPickerData.pickerValuesArray[row]
-        QuantityPickerData.selectedValue = selectedRow
+        appSettings.tagsPerPack = Constants.pickerValues[row]
     }
 }

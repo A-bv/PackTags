@@ -28,33 +28,34 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     func showPackList(for theme: ThemeCD) {
         let vc = PackListViewController(
             style: .plain,
-            viewModel: PackListViewModel(theme: theme, repository: dependencies.themeRepository)
+            viewModel: PackListViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings)
         )
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
 
     func showNewThemeEditor(onSave: @escaping () -> Void) {
-        let vc = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: nil, repository: dependencies.themeRepository))
+        let vc = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: nil, repository: dependencies.themeRepository, settings: dependencies.appSettings))
         vc.onSave = { _ in onSave() }
         presentInNavController(vc, transition: .coverVertical)
     }
 
     func showOnboarding(completion: (() -> Void)?) {
         let vc = OnBoardingController()
+        vc.appSettings = dependencies.appSettings
         vc.modalPresentationStyle = .fullScreen
         vc.onDismiss = completion
         navigationController.present(vc, animated: true)
     }
 
     func showSettings() {
-        let vc = SettingsVC(connectedInsights: dependencies.connectedInsights)
+        let vc = SettingsVC(connectedInsights: dependencies.connectedInsights, appSettings: dependencies.appSettings)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
 
     func showQuantityPicker() {
-        let vc = QuantityPickerVC()
+        let vc = QuantityPickerVC(appSettings: dependencies.appSettings)
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         navigationController.present(vc, animated: true)
@@ -71,7 +72,7 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     // MARK: - From PackListViewController
 
     func showThemeEditor(for theme: ThemeCD, fromSwipe: Bool, chosenPack: String, onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
-        let vc = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: dependencies.themeRepository))
+        let vc = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings))
         vc.onSave = { _ in onSave() }
         vc.onCancel = onCancel
         if fromSwipe {
