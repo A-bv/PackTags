@@ -4,6 +4,7 @@ import InstagramGraph
 
 class PackTagsTests: XCTestCase {
 
+    @MainActor
     func testSmartGProcessing_whenFirstMediaHasNoCaption_keepsMediaAlignment() throws {
         let sut = SmartGViewModel()
         let mediaResponse = """

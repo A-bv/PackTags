@@ -5,7 +5,7 @@ import InstagramGraph
 extension SmartGViewModel {
     // 1. Api import
     func fetch(hashtag: String, onLoaded: @escaping (_ errorState: Bool) -> Void) {
-        Task { @MainActor in
+        Task {
             do {
                 let medias = try await gateway.searchHashtag(searchedHashtag: hashtag)
                 dataMedias = medias

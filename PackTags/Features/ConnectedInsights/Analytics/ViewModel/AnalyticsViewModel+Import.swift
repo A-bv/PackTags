@@ -22,7 +22,7 @@ extension AnalyticsViewModel {
 
     // 2. Api import
     func getOnlineJsonAPIGraph() {
-        Task { @MainActor in
+        Task {
             do {
                 let profileJson = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
                 load(profileJson: profileJson)

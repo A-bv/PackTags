@@ -1,7 +1,8 @@
 import SwiftUI
 import InstagramGraph
 
-class SmartGViewModel: ObservableObject {
+@MainActor
+final class SmartGViewModel: ObservableObject {
     let gateway: any ConnectedInsightsGatewayProtocol
 
     @Published var dataMedias: [InstagramPost] = []

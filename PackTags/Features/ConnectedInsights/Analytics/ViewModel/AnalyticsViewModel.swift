@@ -2,7 +2,8 @@ import SwiftUI
 import Combine
 import InstagramGraph
 
-class AnalyticsViewModel: ObservableObject {
+@MainActor
+final class AnalyticsViewModel: ObservableObject {
     private enum Strings {
         static let likes = "Likes".localized()
         static let comments = "Comments".localized()
