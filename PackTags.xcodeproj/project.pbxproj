@@ -380,6 +380,8 @@
 		AB0000000000000000000207 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */,
+				AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
 				021044F526446AEF00408CEB /* StringFormatter.swift */,
 				0274DB2F26848948005F9C9C /* AnalyticsCache.swift */,
@@ -523,10 +525,36 @@
 		02491C5A26779AE400F98E17 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
-				02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */,
-				02CD2DA62990795A00EDE077 /* FBLogin */,
+				AB0000000000000000000601 /* View */,
+				AB0000000000000000000602 /* ViewModel */,
+				AB0000000000000000000603 /* Model */,
 			);
 			path = Setup;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000601 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
+				02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000602 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000603 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02AD94B029AC078E00D893E5 /* FBLoginModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0273D1532655B9260043011C /* Shared */ = {
@@ -679,18 +707,6 @@
 				AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		02CD2DA62990795A00EDE077 /* FBLogin */ = {
-			isa = PBXGroup;
-			children = (
-				02AD94B029AC078E00D893E5 /* FBLoginModel.swift */,
-				0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */,
-				AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */,
-				02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */,
-				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
-			);
-			path = FBLogin;
 			sourceTree = "<group>";
 		};
 		02D709CB2A58C48C0009F7C3 /* QuantityPicker */ = {
