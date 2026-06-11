@@ -338,6 +338,8 @@
 				0207BB842FD3736C0007F3D3 /* Coordinator.swift */,
 				0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */,
 				0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */,
+				0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */,
+				0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */,
 				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
 			);
 			path = Coordinators;
@@ -444,7 +446,6 @@
 				02491C5A26779AE400F98E17 /* FacebookSetup */,
 				02EE53B4284CCD9F004E7D5C /* Analytics */,
 				02D709D32A58FCDA0009F7C3 /* SmartG */,
-				0207BBB72FD5A7B00007F3D3 /* Routing */,
 			);
 			path = ConnectedInsights;
 			sourceTree = "<group>";
@@ -471,15 +472,6 @@
 				0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		0207BBB72FD5A7B00007F3D3 /* Routing */ = {
-			isa = PBXGroup;
-			children = (
-				0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */,
-				0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */,
-			);
-			path = Routing;
 			sourceTree = "<group>";
 		};
 		0207BBBA2FD648610007F3D3 /* Transform */ = {
