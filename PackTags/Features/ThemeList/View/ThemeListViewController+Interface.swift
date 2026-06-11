@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-extension ThemeTableViewController {
+extension ThemeListViewController {
     enum Constants {
         static let tableViewBottomPadding = CGFloat(14)
     }
@@ -40,13 +40,13 @@ extension ThemeTableViewController {
     func configureTableView () {
         self.tableView.backgroundColor = bkgdColor
         self.tableView.register(ThemeCell.self, forCellReuseIdentifier: "ThemeCell")
-        self.setThemeTableViewControllerThumbnailsDimension()
+        self.setThemeListViewControllerThumbnailsDimension()
         self.addLongPressToTableView() // reorder cells
     }
 
     func updateRowHeightIfNeeded() {
         let navigationBarHeight = currentNavBarHeight + statusBarHeight
-        let newHeight = getThemeTableViewControllerCellHeight(
+        let newHeight = getThemeListViewControllerCellHeight(
             navigationBarHeight: navigationBarHeight,
             paddingBottom: Constants.tableViewBottomPadding)
         if newHeight > 0, tableView.rowHeight != newHeight {

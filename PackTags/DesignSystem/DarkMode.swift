@@ -24,7 +24,7 @@ extension ThemeCell {
     }
 }
 
-extension ThemeTableViewController {
+extension ThemeListViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateLogo ()

@@ -37,7 +37,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         let vc: UIViewController
         switch destination {
         case .analytics:
-            vc = UIHostingController(rootView: AnalyticsNew(gateway: gateway))
+            vc = UIHostingController(rootView: AnalyticsView(gateway: gateway))
         case .smartG:
             vc = UIHostingController(rootView: SmartGViewContainer(gateway: gateway, context: smartTagsPersistence.viewContext))
         default:

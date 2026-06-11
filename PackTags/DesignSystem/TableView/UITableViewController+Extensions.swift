@@ -22,7 +22,7 @@ extension UITableViewController {
 
     // MARK: - Cell Height
 
-    func getThemeTableViewControllerCellHeight(
+    func getThemeListViewControllerCellHeight(
         navigationBarHeight: CGFloat,
         paddingBottom: CGFloat
     ) -> CGFloat {
@@ -37,7 +37,7 @@ extension UITableViewController {
 
     // MARK: - Thumbnail Dimensions
 
-    func setThemeTableViewControllerThumbnailsDimension() {
+    func setThemeListViewControllerThumbnailsDimension() {
         let iPhoneSEWidth: CGFloat = 320
         thumbnailDim = UIScreen.main.bounds.width <= iPhoneSEWidth ? 115 : 132
     }

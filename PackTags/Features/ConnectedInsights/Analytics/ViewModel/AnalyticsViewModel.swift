@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 import InstagramGraph
 
-class AnalyticsSUIViewModel: ObservableObject {
+class AnalyticsViewModel: ObservableObject {
     private enum Strings {
         static let likes = "Likes".localized()
         static let comments = "Comments".localized()
@@ -62,15 +62,15 @@ class AnalyticsSUIViewModel: ObservableObject {
     //MARK: - Init
     init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
         self.gateway = gateway
-        self.loadDataForAnalyticsNew()
+        self.loadDataForAnalyticsView()
     }
     
-    private func loadDataForAnalyticsNew() {
+    private func loadDataForAnalyticsView() {
         canRefresh() == true ? getOnlineJsonAPIGraph() : getJsonFromDir()
     }
 }
 
-extension AnalyticsSUIViewModel {
+extension AnalyticsViewModel {
     private enum Constants {
         static let minimumSecondsBetweenRefreshes: TimeInterval = 5
     }

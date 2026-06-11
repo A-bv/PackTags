@@ -9,14 +9,14 @@
 import UIKit
 
 // MARK: - Reorder theme
-extension ThemeTableViewController {
+extension ThemeListViewController {
     func reorderRow(initial: IndexPath, final: IndexPath) {
         viewModel.reorderTheme(from: initial.row, to: final.row)
     }
 }
 
 // MARK: - Delete theme + alert
-extension ThemeTableViewController {
+extension ThemeListViewController {
     private enum Strings {
         static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is unreversible.".localized()
         static let yes = "Yes".localized()
@@ -61,7 +61,7 @@ extension ThemeTableViewController {
     }
 }
 
-extension ThemeTableViewController {
+extension ThemeListViewController {
     func showEditButton() {
         navigationItem.leftBarButtonItems = self.isEditing ? [settingsButton, editButtonItem] : [settingsButton]
     }

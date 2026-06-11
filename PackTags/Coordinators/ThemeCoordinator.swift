@@ -14,7 +14,7 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     }
 
     func start() {
-        let vc = ThemeTableViewController(
+        let vc = ThemeListViewController(
             style: .plain,
             appSettings: dependencies.appSettings,
             viewModel: ThemeListViewModel(repository: dependencies.themeRepository)

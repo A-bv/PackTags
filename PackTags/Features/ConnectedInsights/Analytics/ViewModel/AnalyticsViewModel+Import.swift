@@ -10,7 +10,7 @@ import UIKit
 import InstagramGraph
 
 // Analytics
-extension AnalyticsSUIViewModel {
+extension AnalyticsViewModel {
     // 1. local import (called when refreshing data without web)
     func getJsonFromDir () {
         DispatchQueue.main.async { [weak self] in

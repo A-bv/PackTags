@@ -107,13 +107,13 @@ private func makeDependencies(
     @Test func start_setsThemeTableVCAsRoot() {
         let (sut, nav) = makeSUT()
         sut.start()
-        #expect(nav.setRootVC is ThemeTableViewController)
+        #expect(nav.setRootVC is ThemeListViewController)
     }
 
     @Test func start_assignsCoordinatorOnThemeTableVC() {
         let (sut, nav) = makeSUT()
         sut.start()
-        let vc = nav.setRootVC as? ThemeTableViewController
+        let vc = nav.setRootVC as? ThemeListViewController
         #expect(vc?.coordinator === sut)
     }
 

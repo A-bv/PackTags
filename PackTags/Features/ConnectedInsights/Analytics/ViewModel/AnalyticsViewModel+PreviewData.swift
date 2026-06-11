@@ -8,9 +8,11 @@
 
 import SwiftUI
 
+#if DEBUG
+
 // Preview Testing cases purposes QQQ:
 // ***
-extension AnalyticsSUIViewModel {
+extension AnalyticsViewModel {
     func fakeProcessedJson0 () -> TransformedProfileModel {
         TransformedProfileModel(
             usr: "packtags.app",
@@ -57,3 +59,4 @@ extension AnalyticsSUIViewModel {
     }
 }
 // ***
+#endif

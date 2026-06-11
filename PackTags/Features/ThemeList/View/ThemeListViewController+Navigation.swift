@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ThemeTableViewController {
+extension ThemeListViewController {
     @objc func didTapButton() {
         coordinator?.showNewThemeEditor { [weak self] in
             self?.viewModel.loadThemes()

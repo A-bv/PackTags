@@ -1,5 +1,5 @@
 //
-//  SearcheableTextView.swift
+//  SearchableTextView.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 15.04.22.

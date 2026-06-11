@@ -1,5 +1,5 @@
 //
-//  AnalyticsNew.swift
+//  AnalyticsView.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 09.01.21.
@@ -11,13 +11,13 @@
 import SwiftUI
 import InstagramGraph
 
-struct AnalyticsNew_Previews: PreviewProvider {
+struct AnalyticsView_Previews: PreviewProvider {
     static var previews: some View {
-        AnalyticsNew()
+        AnalyticsView()
     }
 }
 
-struct AnalyticsNew : View {
+struct AnalyticsView : View {
     
     private enum Strings {
         static let average = "Average".localized()
@@ -60,7 +60,7 @@ struct AnalyticsNew : View {
     }
     
     //
-    @StateObject var swiftUIData: AnalyticsSUIViewModel
+    @StateObject var swiftUIData: AnalyticsViewModel
     
     //
     @State private var showingAlert = false
@@ -78,7 +78,7 @@ struct AnalyticsNew : View {
 
     init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
         _swiftUIData = StateObject(
-            wrappedValue: AnalyticsSUIViewModel(gateway: gateway))
+            wrappedValue: AnalyticsViewModel(gateway: gateway))
         //Navigation bar customization
         UINavigationBar.appearance().titleTextAttributes = [
             .foregroundColor: UIColor.clear
@@ -154,7 +154,7 @@ struct AnalyticsNew : View {
 }
 
 //MARK: - Functions
-extension AnalyticsNew {  
+extension AnalyticsView {  
     private func updateLabels(isRawInsights: Bool) {
         let rawMetricsLabels = [
             Strings.engagement,
@@ -215,7 +215,7 @@ extension AnalyticsNew {
 }
 
 //MARK: - Buttons
-extension AnalyticsNew {
+extension AnalyticsView {
     var backButton: some View {
         Button(action: {
             swiftUIData.rawInsights = true
@@ -264,7 +264,7 @@ extension AnalyticsNew {
 
 //MARK: - Elements
 // Header
-extension AnalyticsNew {
+extension AnalyticsView {
     var header: some View {
         HStack {
             VStack(alignment: .leading, spacing: Constants.headerVerticalSpacing) {
@@ -285,7 +285,7 @@ extension AnalyticsNew {
 }
 
 // Scrollview
-extension AnalyticsNew {
+extension AnalyticsView {
     var scrollView: some View {
         ScrollView(.vertical, showsIndicators: false) {
             //MARK: - Graph part
@@ -335,7 +335,7 @@ extension AnalyticsNew {
 }
 
 // Overview
-extension AnalyticsNew {
+extension AnalyticsView {
     var overviewSection: some View{
         LazyVGrid(columns: columns) {
             ForEach(swiftUIData.overviewSectionData) { overviewCell in
@@ -373,7 +373,7 @@ extension AnalyticsNew {
 }
 
 // GraphsHeader
-extension AnalyticsNew {
+extension AnalyticsView {
     var graphSectionHeader: some View {
         VStack(alignment: .leading, spacing: Constants.graphSectionHeaderVerticalSpacing) {
             HStack {

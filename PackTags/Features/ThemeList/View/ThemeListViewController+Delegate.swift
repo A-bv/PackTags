@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ThemeTableViewController {
+extension ThemeListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.isUserInteractionEnabled = false //(fix p1)
         coordinator?.showPackList(for: viewModel.themes[indexPath.row])
@@ -51,7 +51,7 @@ extension ThemeTableViewController {
     }
 }
 
-extension ThemeTableViewController {
+extension ThemeListViewController {
     private func makeCell(indexPath: IndexPath) -> UITableViewCell {
         guard 
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCell", for: indexPath) as? ThemeCell

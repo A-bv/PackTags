@@ -1,5 +1,5 @@
 //
-//  ThemeTableViewController.swift
+//  ThemeListViewController.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 02.09.20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThemeTableViewController: UITableViewController {
+class ThemeListViewController: UITableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
     var appSettings: any AppSettingsProtocol
