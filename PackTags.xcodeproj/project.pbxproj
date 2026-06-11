@@ -355,9 +355,31 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
+		AB0000000000000000000201 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */,
+				02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */,
+				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
+				02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000202 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				02FB550924FFA2AA00174E34 /* AppDelegate.swift */,
+				0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */,
+				02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		0207BB902FD4ABDA0007F3D3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				AB0000000000000000000201 /* Model */,
 				AB00000000000000000000B1 /* PersistenceController.swift */,
 				0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */,
 				0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */,
@@ -446,37 +468,16 @@
 			path = Transform;
 			sourceTree = "<group>";
 		};
-		0216113D25D864860098CE5E /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				02D8C17729201663002585C7 /* Themes */,
-				02D8C17829201678002585C7 /* SmartG */,
-			);
-			name = CoreData;
-			sourceTree = "<group>";
-		};
-		021EB876289E8A2E00463B42 /* ThemeCD */ = {
-			isa = PBXGroup;
-			children = (
-				02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */,
-				02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */,
-			);
-			name = ThemeCD;
-			sourceTree = "<group>";
-		};
-		0226F19A259E0346006E086C /* App */ = {
+		0226F19A259E0346006E086C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				02FB551524FFA2AC00174E34 /* Assets.xcassets */,
-				02FB550924FFA2AA00174E34 /* AppDelegate.swift */,
-				0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */,
-				02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */,
 				02FB551724FFA2AC00174E34 /* LaunchScreen.storyboard */,
 				02FB551A24FFA2AC00174E34 /* Info.plist */,
 				025479DE26C7EEA000E28724 /* SeedData */,
 				021EB81A28846FDE00463B42 /* Localizable.strings */,
 			);
-			name = App;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		0231AB1126849DFA007F4FC8 /* ViewModel */ = {
@@ -765,23 +766,6 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		02D8C17729201663002585C7 /* Themes */ = {
-			isa = PBXGroup;
-			children = (
-				021EB876289E8A2E00463B42 /* ThemeCD */,
-				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
-			);
-			name = Themes;
-			sourceTree = "<group>";
-		};
-		02D8C17829201678002585C7 /* SmartG */ = {
-			isa = PBXGroup;
-			children = (
-				02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */,
-			);
-			name = SmartG;
-			sourceTree = "<group>";
-		};
 		02EE53B3284CCB86004E7D5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,7 +871,6 @@
 		02FB54FD24FFA2AA00174E34 = {
 			isa = PBXGroup;
 			children = (
-				0216113D25D864860098CE5E /* CoreData */,
 				02FB550824FFA2AA00174E34 /* PackTags */,
 				02FB552224FFA2AC00174E34 /* PackTagsTests */,
 				02FB550724FFA2AA00174E34 /* Products */,
@@ -907,7 +890,8 @@
 			isa = PBXGroup;
 			children = (
 				0273D1532655B9260043011C /* Shared */,
-				0226F19A259E0346006E086C /* App */,
+				AB0000000000000000000202 /* App */,
+				0226F19A259E0346006E086C /* Resources */,
 				0207BB832FD372660007F3D3 /* Coordinators */,
 				0207BB8C2FD4645D0007F3D3 /* Features */,
 				0207BB902FD4ABDA0007F3D3 /* Data */,
