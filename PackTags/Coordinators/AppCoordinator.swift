@@ -10,12 +10,17 @@ final class AppCoordinator: Coordinator {
     init(window: UIWindow) {
         self.window = window
         self.navigationController = ThemeNavigationController()
-        let appSettings = UserDefaultsAppSettings()
+        let persistence = PersistenceController()
         self.dependencies = AppDependencies(
-            themeRepository: CoreDataThemeRepository(),
-            appSettings: appSettings,
+            persistence: persistence,
+            themeRepository: CoreDataThemeRepository(context: persistence.viewContext),
+            appSettings: UserDefaultsAppSettings(),
             connectedInsights: ConnectedInsightsCoordinator()
         )
+    }
+
+    func saveChanges() {
+        dependencies.persistence.saveIfNeeded()
     }
 
     func start() {

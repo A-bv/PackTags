@@ -19,6 +19,7 @@
 		0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */; };
 		0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */; };
 		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
+		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */; };
 		0207BB982FD5F0000007F3D3 /* ConnectedInsightsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */; };
 		0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */; };
@@ -40,7 +41,6 @@
 		02211DD22FD71B39002FDB14 /* UITableViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD12FD71B39002FDB14 /* UITableViewController+Extensions.swift */; };
 		02211DD42FD75F76002FDB14 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */; };
 		02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */; };
-		022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022479C4250D1ED900E0E489 /* CoreDataHelper.swift */; };
 		022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688922624F9B1007DBD98 /* ThemeCell.swift */; };
 		0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* Neumorphic.swift */; };
 		022688B32628BCCC007DBD98 /* ThemeTableViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688B22628BCCC007DBD98 /* ThemeTableViewController+Interface.swift */; };
@@ -171,6 +171,7 @@
 		0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
+		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsModule.swift; sourceTree = "<group>"; };
 		0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewModel.swift; sourceTree = "<group>"; };
@@ -191,7 +192,6 @@
 		02211DD12FD71B39002FDB14 /* UITableViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extensions.swift"; sourceTree = "<group>"; };
 		02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionUtility.swift; sourceTree = "<group>"; };
-		022479C4250D1ED900E0E489 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		022688922624F9B1007DBD98 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		0226889C2626F332007DBD98 /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
 		022688B22628BCCC007DBD98 /* ThemeTableViewController+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeTableViewController+Interface.swift"; sourceTree = "<group>"; };
@@ -358,6 +358,7 @@
 		0207BB902FD4ABDA0007F3D3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				AB00000000000000000000B1 /* PersistenceController.swift */,
 				0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */,
 				0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */,
 			);
@@ -429,7 +430,6 @@
 		0216113D25D864860098CE5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				022479C4250D1ED900E0E489 /* CoreDataHelper.swift */,
 				02D8C17729201663002585C7 /* Themes */,
 				02D8C17829201678002585C7 /* SmartG */,
 			);
@@ -1064,7 +1064,6 @@
 				020584D7284D7B4E00020FB8 /* PackListViewController+Delegate.swift in Sources */,
 				02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */,
 				02998A662B44104800B70516 /* Circles.swift in Sources */,
-				022479C5250D1ED900E0E489 /* CoreDataHelper.swift in Sources */,
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
 				023A2F822856554600EE6CDE /* PackListViewController+CellSwipe.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */,
@@ -1169,6 +1168,7 @@
 				022688B32628BCCC007DBD98 /* ThemeTableViewController+Interface.swift in Sources */,
 				02A423552842C1D000A25067 /* ThemeEditorViewController+Navigation.swift in Sources */,
 				0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */,
+				AB00000000000000000000B2 /* PersistenceController.swift in Sources */,
 				021EB81428846AD100463B42 /* Localizable.swift in Sources */,
 				02998A682B4611B100B70516 /* BarchartItemView.swift in Sources */,
 				02211DD42FD75F76002FDB14 /* ActivityIndicatorView.swift in Sources */,

@@ -65,6 +65,7 @@ private func makeDependencies(
     connectedInsights: ConnectedInsightsCoordinating? = nil
 ) -> AppDependencies {
     AppDependencies(
+        persistence: PersistenceController(inMemory: true),
         themeRepository: FakeThemeRepository(),
         appSettings: FakeAppSettings(),
         connectedInsights: connectedInsights ?? SpyConnectedInsightsCoordinator()
