@@ -87,10 +87,48 @@ import CoreData
 
 @Suite struct ThemeListViewModelTests {
 
+    private final class FakeSettings: AppSettingsProtocol {
+        var hasSeenOnboarding = false
+        var tipsAlertShown = false
+        var tagsPerPack = 30
+        var saveAndShuffle = false
+        var keepPacksOrder = false
+        var openInstagramAfterCopy = false
+        var instagramUsername: String?
+    }
+
     private func makeSUT() -> (viewModel: ThemeListViewModel, repository: CoreDataThemeRepository) {
         let persistence = PersistenceController(inMemory: true)
         let repository = CoreDataThemeRepository(context: persistence.viewContext)
-        return (ThemeListViewModel(repository: repository), repository)
+        return (ThemeListViewModel(repository: repository, settings: FakeSettings()), repository)
+    }
+
+    private func makeSUTWithSettings() -> (ThemeListViewModel, FakeSettings) {
+        let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
+        let settings = FakeSettings()
+        return (ThemeListViewModel(repository: repository, settings: settings), settings)
+    }
+
+    @Test func shouldShowOnboarding_followsTheSettingsFlag() {
+        let (sut, settings) = makeSUTWithSettings()
+        #expect(sut.shouldShowOnboarding)
+
+        settings.hasSeenOnboarding = true
+        #expect(!sut.shouldShowOnboarding)
+    }
+
+    @Test func consumeFirstTimeTipsAlert_returnsTrueExactlyOnce() {
+        let (sut, settings) = makeSUTWithSettings()
+
+        #expect(sut.consumeFirstTimeTipsAlert())
+        #expect(settings.tipsAlertShown)
+        #expect(!sut.consumeFirstTimeTipsAlert())
+    }
+
+    @Test func deleteTheme_withInvalidIndex_doesNothing() {
+        let (sut, _) = makeSUTWithSettings()
+        sut.deleteTheme(at: 5)
+        #expect(sut.themes.isEmpty)
     }
 
     private func seedThemes(_ names: [String], in repository: CoreDataThemeRepository) {

@@ -16,8 +16,7 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     func start() {
         let vc = ThemeListViewController(
             style: .plain,
-            appSettings: dependencies.appSettings,
-            viewModel: ThemeListViewModel(repository: dependencies.themeRepository)
+            viewModel: ThemeListViewModel(repository: dependencies.themeRepository, settings: dependencies.appSettings)
         )
         vc.coordinator = self
         navigationController.setViewControllers([vc], animated: false)

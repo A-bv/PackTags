@@ -35,15 +35,11 @@ extension ThemeListViewController {
     }
     
     func handleNewUserFlow() {
-        if appSettings.hasSeenOnboarding {
-            return
-        }
+        guard viewModel.shouldShowOnboarding else { return }
 
-        coordinator?.showOnboarding {
-            if !self.appSettings.tipsAlertShown {
-                self.appSettings.tipsAlertShown = true
-                Alerts.showFirstTimeTipsAlert(presentingViewController: self)
-            }
+        coordinator?.showOnboarding { [weak self] in
+            guard let self, self.viewModel.consumeFirstTimeTipsAlert() else { return }
+            Alerts.showFirstTimeTipsAlert(presentingViewController: self)
         }
     }
 

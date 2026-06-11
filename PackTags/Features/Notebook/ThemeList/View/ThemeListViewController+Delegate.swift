@@ -2,7 +2,9 @@ import UIKit
 
 extension ThemeListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.view.isUserInteractionEnabled = false //(fix p1)
+        // pushViewController updates the stack synchronously, so a second fast
+        // tap fails this guard instead of pushing the screen twice.
+        guard navigationController?.topViewController === self else { return }
         coordinator?.showPackList(for: viewModel.themes[indexPath.row])
     }
     
@@ -52,9 +54,7 @@ extension ThemeListViewController {
         }
         let theme = viewModel.themes[indexPath.row]
         cell.nameLabel.text = theme.name
-        if let thumbnail = theme.thumbnail {
-            cell.themeImageView.image = UIImage(data: thumbnail)
-        }
+        cell.themeImageView.image = theme.thumbnail.flatMap(UIImage.init(data:))
         return cell
     }
 }

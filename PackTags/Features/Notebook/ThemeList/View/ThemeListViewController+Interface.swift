@@ -43,6 +43,7 @@ extension ThemeListViewController {
             paddingBottom: Constants.tableViewBottomPadding)
         if newHeight > 0, tableView.rowHeight != newHeight {
             tableView.rowHeight = newHeight
+            tableView.reloadData()
         }
     }
     

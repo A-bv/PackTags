@@ -3,11 +3,9 @@ import UIKit
 class ThemeListViewController: UITableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
-    var appSettings: any AppSettingsProtocol
     let viewModel: ThemeListViewModel
 
-    init(style: UITableView.Style, appSettings: any AppSettingsProtocol, viewModel: ThemeListViewModel) {
-        self.appSettings = appSettings
+    init(style: UITableView.Style, viewModel: ThemeListViewModel) {
         self.viewModel = viewModel
         super.init(style: style)
     }
@@ -21,12 +19,9 @@ class ThemeListViewController: UITableViewController {
     let analyticsButton = UIBarButtonItem()
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupNavigationBarAppearance()
-        self.view.isUserInteractionEnabled = true //(fix p1)
-        OperationQueue.main.addOperation {
-            //(p1): fast clicks opens views multiple times
-            self.tableView.reloadData()
-        }
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -34,9 +29,7 @@ class ThemeListViewController: UITableViewController {
         configureNavBar()
         configureTableView()
         viewModel.onUpdate = { [weak self] in
-            OperationQueue.main.addOperation {
-                self?.tableView.reloadData()
-            }
+            self?.tableView.reloadData()
         }
         viewModel.loadThemes()
         addFloatingButton()
