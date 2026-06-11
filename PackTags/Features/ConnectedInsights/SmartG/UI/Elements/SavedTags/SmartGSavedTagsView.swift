@@ -97,6 +97,12 @@ struct SmartGSavedTagsView: View {
             let hashtag = hashtags[index]
             moc.delete(hashtag)
         }
+
+        do {
+            try moc.save()
+        } catch {
+            AppLogger.persistence.error("Failed to save saved-tag deletion: \(error.localizedDescription, privacy: .public)")
+        }
     }
     
     private func timeLeft(date: Date) -> String? {
