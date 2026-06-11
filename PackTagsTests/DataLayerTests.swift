@@ -222,3 +222,39 @@ import CoreData
         #expect(settings.openInstagramAfterCopy)
     }
 }
+
+// MARK: - SettingsKey contract
+
+/// These raw values are the app's on-disk contract: shipped devices already
+/// store data under these exact strings. Renaming one orphans user data —
+/// most dangerously hasSeenOnboarding, whose loss would re-trigger first-run
+/// seeding in AppDelegate and overwrite the user's database with samples.
+@Suite struct SettingsKeyContractTests {
+
+    @Test func rawValues_matchTheShippedOnDiskContract() {
+        #expect(SettingsKey.hasSeenOnboarding == "isNewUser")
+        #expect(SettingsKey.tipsAlertShown == "showTipsAlertShown")
+        #expect(SettingsKey.instagramUsername == "Instagram Username")
+        #expect(SettingsKey.openInstagramAfterCopy == "goInsta")
+        #expect(SettingsKey.keepPacksOrder == "Keep Packs Order")
+        #expect(SettingsKey.saveAndShuffle == "Save & Shuffle")
+        #expect(SettingsKey.setupInfoShown == "setupInfoShown")
+        #expect(SettingsKey.pressedFBLoginButton == "pressedFBLoginButton")
+        #expect(SettingsKey.lastStatsRefresh == "LastStatsRefresh")
+        #expect(SettingsKey.quantityOfTagsPerPack == "QuantityOfTagsPerPack")
+        #expect(SettingsKey.timesLaunched == "numberOfTimesLaunched")
+        #expect(SettingsKey.lastVersionPromptedForReview == "lastVersion")
+        #expect(SettingsKey.lastBuildPromptedForReview == "lastBuild")
+    }
+
+    @Test func seedTrigger_onlyFiresWhenOnboardingWasNeverSeen() {
+        let defaults = UserDefaults(suiteName: "SettingsKeyContractTests")!
+        defaults.removePersistentDomain(forName: "SettingsKeyContractTests")
+        let settings = UserDefaultsAppSettings(defaults: defaults)
+
+        #expect(settings.hasSeenOnboarding == false)
+
+        defaults.set(true, forKey: "isNewUser")
+        #expect(settings.hasSeenOnboarding == true)
+    }
+}
