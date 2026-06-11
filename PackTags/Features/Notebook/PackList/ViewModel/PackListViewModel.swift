@@ -20,6 +20,18 @@ final class PackListViewModel {
         packs = TagPackFormatter.packs(from: content, tagsPerPack: settings.tagsPerPack)
     }
 
+    struct PackRow {
+        let firstTag: String?
+        let tagCount: Int
+    }
+
+    /// Presentation data for one pack row; nil when the index is stale.
+    func packRow(at index: Int) -> PackRow? {
+        guard packs.indices.contains(index) else { return nil }
+        let tags = packs[index].components(separatedBy: " ").filter { !$0.isEmpty }
+        return PackRow(firstTag: tags.first, tagCount: tags.count)
+    }
+
     struct PostCopyAction {
         let shouldMovePackToBottom: Bool
         /// Non-nil when the app should redirect to this Instagram profile.

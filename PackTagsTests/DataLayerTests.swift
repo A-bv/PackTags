@@ -204,6 +204,22 @@ import CoreData
         #expect(sut.packs == ["#a #b", "#c"])
     }
 
+    @Test func packRow_exposesFirstTagAndCountPerPack() {
+        let (sut, _) = makeSUT()
+        sut.loadPacks()
+
+        #expect(sut.packRow(at: 0)?.firstTag == "#a")
+        #expect(sut.packRow(at: 0)?.tagCount == 2)
+        #expect(sut.packRow(at: 1)?.firstTag == "#c")
+        #expect(sut.packRow(at: 1)?.tagCount == 1)
+    }
+
+    @Test func packRow_withStaleIndex_isNil() {
+        let (sut, _) = makeSUT()
+        sut.loadPacks()
+        #expect(sut.packRow(at: 9) == nil)
+    }
+
     @Test func postCopyAction_respectsKeepPacksOrderAndRedirectSettings() {
         let (sut, settings) = makeSUT()
         settings.keepPacksOrder = true

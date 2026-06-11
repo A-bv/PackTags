@@ -48,11 +48,16 @@ extension PackListViewController {
         }
 
         let pack = self.packs[indexPath.row]
-        let tags = pack.components(separatedBy: " ")
+        let row = viewModel.packRow(at: indexPath.row)
 
-        cell.cellLabel.text = tags.first
-        let btnLabel = tags.count != 1 ? " + \(tags.count - 1) \(Strings.more) " : " \(Strings.oneHashtag) "
-        cell.subButton.setTitle(pack.isEmpty ? " \(Strings.zeroHashtags) " : btnLabel, for: .normal)
+        cell.cellLabel.text = row?.firstTag
+        let badge: String
+        switch row?.tagCount ?? 0 {
+        case 0: badge = " \(Strings.zeroHashtags) "
+        case 1: badge = " \(Strings.oneHashtag) "
+        case let count: badge = " + \(count - 1) \(Strings.more) "
+        }
+        cell.subButton.setTitle(badge, for: .normal)
 
         cell.buttonTapCallback = { [weak self] in
             self?.pasteboard.string = pack

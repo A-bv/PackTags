@@ -97,7 +97,6 @@ class PackCell: UITableViewCell {
     
     @objc func dragOutButton(sender: UIButton) {
         sender.addNeumorphicShadows()
-        buttonTapCallback()
     }
     
     @objc func showMore(sender: UIButton) {
