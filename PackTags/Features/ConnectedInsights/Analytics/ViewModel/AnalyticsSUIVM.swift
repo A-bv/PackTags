@@ -72,29 +72,16 @@ class AnalyticsSUIViewModel: ObservableObject {
 
 extension AnalyticsSUIViewModel {
     private enum Constants {
-        static let timeForRefresh = 5
+        static let minimumSecondsBetweenRefreshes: TimeInterval = 5
     }
-    
-    func canRefresh () -> Bool {
+
+    func canRefresh() -> Bool {
         let defaults = UserDefaults.standard
-        guard let lastRefreshTime = defaults.object(forKey: SettingsKey.lastStatsRefresh) else { return true }
-        
-        let date0 = lastRefreshTime as! Date
-        
-        /*
-         let df = DateFormatter()
-         df.dateFormat = "dd/MM/yyyy HH:mm"
-         print("Last refresh at",df.string(from: date0))
-         */
-        
-        //Allow a fetch each day
-        let timeInterval = Constants.timeForRefresh//7200//2hours 86400//day  // Seconds
-        if date0 + TimeInterval(timeInterval) > Date() {
-            return false
-        } else {
-            defaults.set(Date(), forKey: SettingsKey.lastStatsRefresh)
-            print("Time updated")
-            return true
-        }
+        guard let lastRefresh = defaults.object(forKey: SettingsKey.lastStatsRefresh) as? Date else { return true }
+
+        guard lastRefresh + Constants.minimumSecondsBetweenRefreshes <= Date() else { return false }
+
+        defaults.set(Date(), forKey: SettingsKey.lastStatsRefresh)
+        return true
     }
 }
