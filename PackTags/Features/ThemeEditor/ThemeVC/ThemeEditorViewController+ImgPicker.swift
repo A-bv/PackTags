@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ThemeEditorViewController+ImgPicker.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 02.09.20.
@@ -12,18 +12,20 @@ extension ThemeEditorViewController: UIImagePickerControllerDelegate {
     private enum Constants {
         static let imageSize = 600
     }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let image = info[.originalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+            AppLogger.ui.error("Image picker returned no usable image (keys: \(info.keys.map(\.rawValue), privacy: .public)).")
+            picker.dismiss(animated: true, completion: nil)
+            return
         }
-        
+
         if !recognizeText {
             handleRegularImageSelection(image)
         } else {
             handleTextRecognitionImageSelection(image)
         }
-        
+
         picker.dismiss(animated: true, completion: nil)
     }
     
