@@ -1441,7 +1441,7 @@
 			repositoryURL = "https://github.com/A-bv/InstagramGraph";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 3.0.1;
 			};
 		};
 		02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
