@@ -20,6 +20,5 @@ extension ThemeCD {
     @NSManaged public var content: String?
     @NSManaged public var image: Data?
     @NSManaged public var name: String?
-    @NSManaged public var name2: String?
     @NSManaged public var thumbnail: Data?
 }
