@@ -20,9 +20,9 @@ extension PackListViewController {
     
     func goInsta(packIdx: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            let goInstagram = UserDefaults.standard.bool(forKey: "goInsta")
-            let Username = UserDefaults.standard.string(forKey: "Instagram Username") ?? ""
-            if UserDefaults.standard.bool(forKey: "Keep Packs Order") == false {
+            let goInstagram = UserDefaults.standard.bool(forKey: SettingsKey.openInstagramAfterCopy)
+            let Username = UserDefaults.standard.string(forKey: SettingsKey.instagramUsername) ?? ""
+            if UserDefaults.standard.bool(forKey: SettingsKey.keepPacksOrder) == false {
                 self.copiedPacksToBottom(packIdx: packIdx)
             }
             if goInstagram {
@@ -34,8 +34,8 @@ extension PackListViewController {
     }
     
     func statusAutoDirectToInstagram() {
-        let username = UserDefaults.standard.string(forKey: "Instagram Username")  ?? ""
-        let key = "goInsta"
+        let username = UserDefaults.standard.string(forKey: SettingsKey.instagramUsername)  ?? ""
+        let key = SettingsKey.openInstagramAfterCopy
         
         if username.isEmpty {
             Alerts.showTextInputAlert(
@@ -45,7 +45,7 @@ extension PackListViewController {
                 placeholder: Strings.enterUsername
             ) { [weak self] inputName in
                 let name = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
-                UserDefaults.standard.set(name, forKey: "Instagram Username")
+                UserDefaults.standard.set(name, forKey: SettingsKey.instagramUsername)
                 UserDefaults.standard.set(true, forKey: key)
                 
                 self?.subBtnAlert(

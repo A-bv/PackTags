@@ -14,10 +14,6 @@ final class FBLoginViewModel {
     private let gateway: any ConnectedInsightsGatewayProtocol
     private let facebookSessionService: any FacebookSessionServicing
 
-    private enum UserDefaultsKey {
-        static let pressedFBLoginButton = "pressedFBLoginButton"
-    }
-
     init(
         gateway: any ConnectedInsightsGatewayProtocol,
         facebookSessionService: any FacebookSessionServicing = FacebookSessionService()
@@ -46,7 +42,7 @@ final class FBLoginViewModel {
     }
 
     func savePushedFBLoginButtonOnce() {
-        let key = UserDefaultsKey.pressedFBLoginButton
+        let key = SettingsKey.pressedFBLoginButton
         if !UserDefaults.standard.bool(forKey: key) {
             UserDefaults.standard.set(true, forKey: key)
         }
@@ -55,7 +51,7 @@ final class FBLoginViewModel {
     func resetFacebookSession() {
         facebookSessionService.resetSession()
         gateway.reset()
-        UserDefaults.standard.set(false, forKey: UserDefaultsKey.pressedFBLoginButton)
+        UserDefaults.standard.set(false, forKey: SettingsKey.pressedFBLoginButton)
         print("[ConnectedInsights][Login] Facebook SDK session and connected insights setup were reset.")
     }
 }

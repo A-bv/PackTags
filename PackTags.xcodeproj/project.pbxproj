@@ -30,6 +30,7 @@
 		0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
+		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
 		0216110E25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */; };
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
 		021D76172759A00D00F54054 /* SmartGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartGView.swift */; };
@@ -180,6 +181,7 @@
 		0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionService.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
 		0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+NewMenu.swift"; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		021D76162759A00D00F54054 /* SmartGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGView.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				02962683284BA65E009B0F58 /* TableView */,
 				02B05C1F27F90BB9000026B8 /* Image */,
 				AB00000000000000000000A1 /* AppLogger.swift */,
+				AB00000000000000000000C1 /* SettingsKey.swift */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
 				0274DB2F26848948005F9C9C /* DocumentDirectory.swift */,
 				021AFD5B278A1BE40008735E /* Alerts.swift */,
@@ -1097,6 +1100,7 @@
 				02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */,
 				021044F626446AEF00408CEB /* StringFormatter.swift in Sources */,
 				AB00000000000000000000A2 /* AppLogger.swift in Sources */,
+				AB00000000000000000000C2 /* SettingsKey.swift in Sources */,
 				02FAE2A5260AC79C00324724 /* SettingsSwitchCell.swift in Sources */,
 				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
 				02CAC9B52591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift in Sources */,

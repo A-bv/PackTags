@@ -191,7 +191,7 @@ extension SettingsVC {
 
     
     func setInstaUserAlert() {
-        let username = UserDefaults.standard.string(forKey: "Instagram Username") ?? ""
+        let username = UserDefaults.standard.string(forKey: SettingsKey.instagramUsername) ?? ""
         let message = username.isEmpty ? Strings.username : username
         let placeholder = username.isEmpty ? Strings.enterUsername : Strings.editUsername
         
@@ -203,7 +203,7 @@ extension SettingsVC {
             placeholder: placeholder
         ) { (inputName) in
             let name = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
-            UserDefaults.standard.set(name, forKey: "Instagram Username")
+            UserDefaults.standard.set(name, forKey: SettingsKey.instagramUsername)
         }
     }
 }

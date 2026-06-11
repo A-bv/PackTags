@@ -31,7 +31,7 @@ final class Unique {
                 themeRepository: themeRepository)
         }
         
-        if UserDefaults.standard.bool(forKey: "Save & Shuffle") || shuffle {
+        if UserDefaults.standard.bool(forKey: SettingsKey.saveAndShuffle) || shuffle {
             cleanTags = cleanTags.shuffled()
         }
         

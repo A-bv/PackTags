@@ -5,10 +5,6 @@ protocol AppSettingsProtocol {
 }
 
 final class UserDefaultsAppSettings: AppSettingsProtocol {
-    private enum Key {
-        static let tipsAlertShown = "showTipsAlertShown"
-    }
-
     private let defaults: UserDefaults
 
     init(defaults: UserDefaults = .standard) {
@@ -16,8 +12,8 @@ final class UserDefaultsAppSettings: AppSettingsProtocol {
     }
 
     var tipsAlertShown: Bool {
-        get { defaults.bool(forKey: Key.tipsAlertShown) }
-        set { defaults.set(newValue, forKey: Key.tipsAlertShown) }
+        get { defaults.bool(forKey: SettingsKey.tipsAlertShown) }
+        set { defaults.set(newValue, forKey: SettingsKey.tipsAlertShown) }
     }
 }
 

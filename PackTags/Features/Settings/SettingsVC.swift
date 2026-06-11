@@ -173,7 +173,7 @@ class SettingsVC: UIViewController {
                             icon: icon,
                             iconBackgroundColor: .systemTeal
                         ) {[weak self] in
-                            UserDefaults.standard.setValue(false, forKey: "isNewUser")
+                            UserDefaults.standard.setValue(false, forKey: SettingsKey.hasSeenOnboarding)
                             self?.coordinator?.showOnboarding(completion: nil)
                         }),
                     .staticCell(

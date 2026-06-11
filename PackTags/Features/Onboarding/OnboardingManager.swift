@@ -12,10 +12,10 @@ class OnboardingManager {
     static let shared = OnboardingManager()
 
     func isNewUser() -> Bool {
-        return !UserDefaults.standard.bool(forKey: "isNewUser")
+        return !UserDefaults.standard.bool(forKey: SettingsKey.hasSeenOnboarding)
     }
 
     func setIsNotNewUser() {
-        UserDefaults.standard.setValue(true, forKey: "isNewUser")
+        UserDefaults.standard.setValue(true, forKey: SettingsKey.hasSeenOnboarding)
     }
 }

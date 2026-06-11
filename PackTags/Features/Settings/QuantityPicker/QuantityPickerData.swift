@@ -12,16 +12,15 @@ enum QuantityPickerData {
     private enum Constants {
         static let minCount = 5
         static let maxCount = 30
-        static let key = "QuantityOfTagsPerPack"
     }
     
     static var selectedValue: Int {
         get {
-            let savedValue = UserDefaults.standard.integer(forKey: Constants.key)
+            let savedValue = UserDefaults.standard.integer(forKey: SettingsKey.quantityOfTagsPerPack)
             return savedValue == 0 ? Constants.maxCount : savedValue
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Constants.key)
+            UserDefaults.standard.set(newValue, forKey: SettingsKey.quantityOfTagsPerPack)
         }
     }
     

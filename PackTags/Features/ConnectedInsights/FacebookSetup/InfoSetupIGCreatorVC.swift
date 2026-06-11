@@ -184,7 +184,7 @@ class InfoSetupIGCreatorVC: UIViewController {
     }
 
     private func checkIsFirstTime() {
-        let key = "setupInfoShown"
+        let key = SettingsKey.setupInfoShown
         if !UserDefaults.standard.bool(forKey: key) {
             UserDefaults.standard.set(true, forKey: key)
         }

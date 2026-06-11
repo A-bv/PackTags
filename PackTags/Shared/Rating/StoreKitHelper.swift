@@ -13,7 +13,6 @@ import StoreKit
 struct StoreKitHelper {
     private enum Constants {
         static let limitTimesLaunched: Int = 7
-        static let timesLaunched: String = "numberOfTimesLaunched"
     }
     
     static func displayStoreKit() {
@@ -28,14 +27,14 @@ struct StoreKitHelper {
         }
         
         //Get saved previous build and version
-        let lastBuildPromptedForReview = UserDefaults.standard.string(forKey: "lastBuild")
-        let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: "lastVersion")
+        let lastBuildPromptedForReview = UserDefaults.standard.string(forKey: SettingsKey.lastBuildPromptedForReview)
+        let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: SettingsKey.lastVersionPromptedForReview)
         
         //Exit if app have not been updated
         guard (currentVersion != lastVersionPromptedForReview || currentBuild != lastBuildPromptedForReview) else {return}
         
         //Get number of times launched
-        let numberOfTimesLaunched = UserDefaults.standard.integer(forKey: Constants.timesLaunched)
+        let numberOfTimesLaunched = UserDefaults.standard.integer(forKey: SettingsKey.timesLaunched)
         
         //Enter if over 10th launch
         if numberOfTimesLaunched > Constants.limitTimesLaunched {
@@ -44,14 +43,14 @@ struct StoreKitHelper {
                 SKStoreReviewController.requestReview(in: scene)
             }
             
-            UserDefaults.standard.set(currentVersion, forKey: "lastVersion")
+            UserDefaults.standard.set(currentVersion, forKey: SettingsKey.lastVersionPromptedForReview)
         
-            UserDefaults.standard.set(currentBuild, forKey: "lastBuild")
+            UserDefaults.standard.set(currentBuild, forKey: SettingsKey.lastBuildPromptedForReview)
         }
     }
     
     static func incrementNumberOftimesLaunched() {
-        let newValue = UserDefaults.standard.integer(forKey: Constants.timesLaunched) + 1
-        UserDefaults.standard.set(newValue, forKey:  Constants.timesLaunched)
+        let newValue = UserDefaults.standard.integer(forKey: SettingsKey.timesLaunched) + 1
+        UserDefaults.standard.set(newValue, forKey:  SettingsKey.timesLaunched)
     }
 }

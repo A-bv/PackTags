@@ -38,7 +38,7 @@ extension DocumentDirectory {
     static func saveJsonDataToDir(jsonString: Data?) {
         
         //Saving time
-        UserDefaults.standard.set(Date(), forKey: "LastStatsRefresh")
+        UserDefaults.standard.set(Date(), forKey: SettingsKey.lastStatsRefresh)
         
         //Saving Json
         if let jsonData = jsonString,

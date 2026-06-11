@@ -77,7 +77,7 @@ extension AnalyticsSUIViewModel {
     
     func canRefresh () -> Bool {
         let defaults = UserDefaults.standard
-        guard let lastRefreshTime = defaults.object(forKey: "LastStatsRefresh") else { return true }
+        guard let lastRefreshTime = defaults.object(forKey: SettingsKey.lastStatsRefresh) else { return true }
         
         let date0 = lastRefreshTime as! Date
         
@@ -92,7 +92,7 @@ extension AnalyticsSUIViewModel {
         if date0 + TimeInterval(timeInterval) > Date() {
             return false
         } else {
-            defaults.set(Date(), forKey: "LastStatsRefresh")
+            defaults.set(Date(), forKey: SettingsKey.lastStatsRefresh)
             print("Time updated")
             return true
         }
