@@ -62,7 +62,7 @@
 		AB0000000000000000000506 /* PackListViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000505 /* PackListViewController+Appearance.swift */; };
 		0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* SmartGModel.swift */; };
 		0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */; };
-		02385E002A634FAB0050FFDE /* ThemeListViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* ThemeListViewController+Navigation.swift */; };
+		02385E002A634FAB0050FFDE /* ThemeListViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* ThemeListViewController+Actions.swift */; };
 		02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */; };
 		023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B932A48EC60006E2D35 /* CirclesView.swift */; };
 		023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B962A4D085E006E2D35 /* LoadingView.swift */; };
@@ -89,7 +89,6 @@
 		02998A662B44104800B70516 /* Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A652B44104800B70516 /* Circles.swift */; };
 		02998A682B4611B100B70516 /* BarchartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A672B4611B000B70516 /* BarchartItemView.swift */; };
 		029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnBoardingVC.swift */; };
-		02A423552842C1D000A25067 /* ThemeEditorViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A423542842C1D000A25067 /* ThemeEditorViewController+Navigation.swift */; };
 		02AD94A929A5936500D893E5 /* UIViewController+ModalViewButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* UIViewController+ModalViewButtons.swift */; };
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
@@ -210,7 +209,7 @@
 		AB0000000000000000000505 /* PackListViewController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Appearance.swift"; sourceTree = "<group>"; };
 		0229864127BD9CBA0048F9E9 /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
 		0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNavigationController.swift; sourceTree = "<group>"; };
-		02385DFF2A634FAB0050FFDE /* ThemeListViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeListViewController+Navigation.swift"; sourceTree = "<group>"; };
+		02385DFF2A634FAB0050FFDE /* ThemeListViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeListViewController+Actions.swift"; sourceTree = "<group>"; };
 		02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkOpener.swift; sourceTree = "<group>"; };
 		023D2B932A48EC60006E2D35 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
 		023D2B962A4D085E006E2D35 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -237,7 +236,6 @@
 		02998A652B44104800B70516 /* Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circles.swift; sourceTree = "<group>"; };
 		02998A672B4611B000B70516 /* BarchartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartItemView.swift; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
-		02A423542842C1D000A25067 /* ThemeEditorViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+Navigation.swift"; sourceTree = "<group>"; };
 		02AD94A829A5936500D893E5 /* UIViewController+ModalViewButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ModalViewButtons.swift"; sourceTree = "<group>"; };
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
@@ -636,7 +634,7 @@
 				022688B22628BCCC007DBD98 /* ThemeListViewController+Interface.swift */,
 				021EB84C288C1EB000463B42 /* ThemeListViewController+Operations.swift */,
 				02962684284BC2FD009B0F58 /* ThemeListViewController+Delegate.swift */,
-				02385DFF2A634FAB0050FFDE /* ThemeListViewController+Navigation.swift */,
+				02385DFF2A634FAB0050FFDE /* ThemeListViewController+Actions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -679,7 +677,6 @@
 				02B02AC42594238100586352 /* ThemeEditorViewController+Search.swift */,
 				02B05C222809CD76000026B8 /* SearchableTextView.swift */,
 				AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */,
-				02A423542842C1D000A25067 /* ThemeEditorViewController+Navigation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1104,7 +1101,7 @@
 				02FEF5B7263304EC0001B525 /* UIViewController+Mail.swift in Sources */,
 				02AD94A929A5936500D893E5 /* UIViewController+ModalViewButtons.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
-				02385E002A634FAB0050FFDE /* ThemeListViewController+Navigation.swift in Sources */,
+				02385E002A634FAB0050FFDE /* ThemeListViewController+Actions.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
 				02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */,
 				02B02AC52594238100586352 /* ThemeEditorViewController+Search.swift in Sources */,
@@ -1112,7 +1109,6 @@
 				0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */,
 				02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */,
 				022688B32628BCCC007DBD98 /* ThemeListViewController+Interface.swift in Sources */,
-				02A423552842C1D000A25067 /* ThemeEditorViewController+Navigation.swift in Sources */,
 				0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */,
 				AB00000000000000000000B2 /* PersistenceController.swift in Sources */,
 				021EB81428846AD100463B42 /* Localizable.swift in Sources */,
