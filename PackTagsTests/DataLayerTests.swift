@@ -258,3 +258,54 @@ import CoreData
         #expect(settings.hasSeenOnboarding == true)
     }
 }
+
+// MARK: - Settings catalog
+
+@Suite @MainActor struct SettingsSectionsTests {
+
+    private func makeActions(
+        onInstagram: @escaping () -> Void = {},
+        onWebPage: @escaping (String) -> Void = { _ in }
+    ) -> SettingsActions {
+        SettingsActions(
+            editInstagramUsername: onInstagram,
+            openFacebookSetup: {},
+            showQuantityPicker: {},
+            replayOnboarding: {},
+            openSetupInfo: {},
+            openWebPage: onWebPage,
+            openOurInstagram: {},
+            shareApp: {},
+            rateApp: {},
+            contactSupport: {}
+        )
+    }
+
+    @Test func make_buildsTheFiveSections() {
+        #expect(SettingsSections.make(actions: makeActions()).count == 5)
+    }
+
+    @Test func firstAccountRow_editsTheInstagramUsername() {
+        var fired = false
+        let sections = SettingsSections.make(actions: makeActions(onInstagram: { fired = true }))
+
+        guard case .staticCell(let option) = sections[0].options[0] else {
+            Issue.record("expected a static cell")
+            return
+        }
+        option.handler()
+
+        #expect(fired)
+    }
+
+    @Test func legalSection_opensAWebPagePerRow() {
+        var openedURLs: [String] = []
+        let sections = SettingsSections.make(actions: makeActions(onWebPage: { openedURLs.append($0) }))
+
+        for option in sections[4].options {
+            if case .staticCell(let model) = option { model.handler() }
+        }
+
+        #expect(openedURLs.count == 3)
+    }
+}

@@ -173,65 +173,11 @@ extension UIViewController {
     }
 }
 
-extension SettingsVC {
-    private enum Strings {
-        static let username = NSLocalizedString("Username", comment: "")
-        static let enterUsername = NSLocalizedString("Enter Username", comment: "")
-        static let editUsername = NSLocalizedString("Edit Username", comment: "")
-        static let instagram = NSLocalizedString("Instagram", comment: "")
-    }
-
-    
-    func setInstaUserAlert() {
-        let username = UserDefaults.standard.string(forKey: SettingsKey.instagramUsername) ?? ""
-        let message = username.isEmpty ? Strings.username : username
-        let placeholder = username.isEmpty ? Strings.enterUsername : Strings.editUsername
-        
-        // Shows alert pop-up
-        Alerts.showTextInputAlert(
-            targetVC: self,
-            title: Strings.instagram,
-            message: message,
-            placeholder: placeholder
-        ) { (inputName) in
-            let name = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
-            UserDefaults.standard.set(name, forKey: SettingsKey.instagramUsername)
-        }
-    }
-}
-
-extension ThemeEditorViewController {
-    private enum Strings {
-        static let editName = NSLocalizedString("Edit Name", comment: "")
-        static let enterName = NSLocalizedString("Enter Name", comment: "")
-        static let enterNewName = NSLocalizedString("Enter New Name", comment: "")
-        static let newTheme = NSLocalizedString("New Theme", comment: "")
-    }
-    
-    func showNameThemeAlert() {
-        let tips = ""
-        let currentTitle = viewModel.themeTitle
-        let title = currentTitle.isEmpty ? Strings.newTheme : currentTitle
-        let message = currentTitle.isEmpty ? tips : Strings.editName
-        let placeholder = currentTitle.isEmpty ? Strings.enterName : Strings.enterNewName
-
-        Alerts.showTextInputAlert(
-            targetVC: self,
-            title: title,
-            message: message,
-            placeholder: placeholder
-        ) { [weak vc = self] (inputName) in
-            vc?.viewModel.themeTitle = inputName
-            vc?.updateSaveButtonState()
-        }
-    }
-}
-
-
 extension String {
+    /// Validation for the text-input alert above: 1-30 chars, letters,
+    /// numbers, dots, underscores; no leading/trailing/consecutive dots.
     var isValidName: Bool {
-        let RegEx = "^(?=.{1,30}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9._]+(?<![.])$" //"^\\w{7,18}$"
-        let Test = NSPredicate(format: "SELF MATCHES %@", RegEx)
-        return Test.evaluate(with: self)
+        let regex = "^(?=.{1,30}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9._]+(?<![.])$"
+        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: self)
     }
 }

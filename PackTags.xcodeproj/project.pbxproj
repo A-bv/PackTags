@@ -38,6 +38,9 @@
 		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
+		AB0000000000000000000402 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000401 /* SettingsSections.swift */; };
+		AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000403 /* SettingsVC+Alerts.swift */; };
+		AB0000000000000000000406 /* ThemeEditorViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */; };
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
 		0216110E25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */; };
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
@@ -190,6 +193,9 @@
 		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		AB0000000000000000000401 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
+		AB0000000000000000000403 /* SettingsVC+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Alerts.swift"; sourceTree = "<group>"; };
+		AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+Alerts.swift"; sourceTree = "<group>"; };
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
 		0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+NewMenu.swift"; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -693,6 +699,7 @@
 				02B02AC42594238100586352 /* ThemeEditorViewController+Search.swift */,
 				02B05C222809CD76000026B8 /* SearchableTextView.swift */,
 				02385E022A63523B0050FFDE /* ThemeEditorViewController+Save.swift */,
+				AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */,
 				02A423542842C1D000A25067 /* ThemeEditorViewController+Navigation.swift */,
 			);
 			path = View;
@@ -821,6 +828,8 @@
 			children = (
 				02D709CB2A58C48C0009F7C3 /* QuantityPicker */,
 				02BC8D582602B79900441349 /* SettingsVC.swift */,
+				AB0000000000000000000401 /* SettingsSections.swift */,
+				AB0000000000000000000403 /* SettingsVC+Alerts.swift */,
 				02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */,
 				02FAE29E260A9BA900324724 /* SettingsCell.swift */,
 				02FAE2A4260AC79C00324724 /* SettingsSwitchCell.swift */,
@@ -1064,6 +1073,9 @@
 				AB00000000000000000000C2 /* SettingsKey.swift in Sources */,
 				02FAE2A5260AC79C00324724 /* SettingsSwitchCell.swift in Sources */,
 				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
+				AB0000000000000000000402 /* SettingsSections.swift in Sources */,
+				AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */,
+				AB0000000000000000000406 /* ThemeEditorViewController+Alerts.swift in Sources */,
 				02CAC9B52591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift in Sources */,
 				02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */,
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,

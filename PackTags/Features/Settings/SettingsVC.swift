@@ -1,67 +1,14 @@
 import UIKit
 import SafariServices
 
-struct SettingsSection {
-    let title: String
-    let options: [SettingsOptionType] //mod
-}
-
-//mod --
-enum SettingsOptionType {
-    case staticCell(model: SettingsOption)
-    case switchCell(model: SettingsSwitchOption)
-    
-}
-
-struct SettingsSwitchOption {
-    let title: String
-    let storageKey: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
-    let handler: (() -> Void)
-    var isOn: Bool
-}
-// --
-
-struct SettingsOption {
-    let title: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
-    let handler: (() -> Void)
-}
-
 class SettingsVC: UIViewController {
     private enum Strings {
         static let settingsTitle = "Settings".localized()
-        static let settingsSectionTitleAccount = "Account".localized()
-        static let settingsTitleInstagram = "Instagram".localized()
-        static let settingsTitleFacebookLogin = "Facebook Login".localized()
-        static let settingsSectionTitleHashtags = "Hastags".localized()
-        static let settingsTitleQuantityPerPack = "Quantity Per Pack".localized()
-        static let settingsTitleSaveAndShuffle = "Save & Shuffle".localized()
-        static let settingsTitleKeepPackOrder = "Keep Packs Order".localized()
-        static let settingsSectionTitleHelp = "Help".localized()
-        static let settingsTitleOnBoard = "On Board".localized()
-        static let settingsTitleTricksAndTips = "Tricks & Tips".localized()
-        static let settingsTitleInstaSetup = "Instagram Setup".localized()
-        static let settingsSectionTitleAboutUs = "About us".localized()
-        static let settingsSectionTitleOurInstagram = "Our Instagram".localized()
-        static let settingsTitleShare = "Share".localized()
-        static let settingsTitleRateAndReview = "Rate & Review".localized()
-        static let settingsTitleContactUs = "Contact Us".localized()
-        static let settingsSectionTitleLegal = "Legal".localized()
-        static let settingsTitlePrivacy = "Privacy".localized()
-        static let settingsTitleTermsAndConditions = "Terms & Conditions".localized()
-        static let settingsTitleDisclaimer = "Disclaimer".localized()
     }
     
     private enum Links {
         static let settingsInstagramAppUrl = "instagram://user?username=packtags.app"
         static let settingsInstagramWebUrl = "https://instagram.com/packtags.app"
-        static let settingsPrivacyPolicyUrl = "https://sites.google.com/view/packtags-privacy-policy/accueil"
-        static let settingsTermsAndConditionsUrl = "https://sites.google.com/view/packtagstc/accueil"
-        static let settingsDisclaimerUrl = "https://sites.google.com/view/packtagsdisclaimer/accueil"
-        static let settingsTricksAndTipsUrl = "https://sites.google.com/view/packtags-tricks-tips/accueil"
     }
     
     private let tableView: UITableView = {
@@ -105,174 +52,37 @@ class SettingsVC: UIViewController {
     }
     
     
-    func configure () {
-        let icon = UIImage(systemName: "gearshape")!
-        self.tableView.backgroundColor = bkgdColor
-        
-        models.append(
-            SettingsSection(
-                title: Strings.settingsSectionTitleAccount,
-                options: [
-                    .staticCell(
-                        model:
-                            SettingsOption(
-                                title: Strings.settingsTitleInstagram,
-                                icon: icon,
-                                iconBackgroundColor: .systemRed
-                            ) { [weak self] in
-                                self?.setInstaUserAlert ()
-                            }),
-                    
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleFacebookLogin,
-                            icon: icon,
-                            iconBackgroundColor: .systemOrange
-                        ) { [weak self] in
-                            guard let self else { return }
-                            connectedInsights.open(.setup, from: self)
-                        })]))
-        
-        models.append(
-            SettingsSection(
-                title: Strings.settingsSectionTitleHashtags,
-                options: [
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleQuantityPerPack,
-                            icon: icon,
-                            iconBackgroundColor: .systemPink
-                        ) { [weak self] in
-                            self?.coordinator?.showQuantityPicker()
-                        }),
-                    .switchCell(
-                        model: SettingsSwitchOption(
-                            title: Strings.settingsTitleSaveAndShuffle,
-                            storageKey: SettingsKey.saveAndShuffle,
-                            icon: icon,
-                            iconBackgroundColor: .systemYellow,
-                            handler: {}, isOn: false)),
-                    .switchCell(
-                        model: SettingsSwitchOption(
-                            title: Strings.settingsTitleKeepPackOrder,
-                            storageKey: SettingsKey.keepPacksOrder,
-                            icon: icon,
-                            iconBackgroundColor: .systemRed,
-                            handler: {}, isOn: false))]))
-        
-        models.append(
-            SettingsSection(
-                title: Strings.settingsSectionTitleHelp,
-                options: [
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleOnBoard,
-                            icon: icon,
-                            iconBackgroundColor: .systemTeal
-                        ) {[weak self] in
-                            self?.appSettings.hasSeenOnboarding = false
-                            self?.coordinator?.showOnboarding(completion: nil)
-                        }),
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleTricksAndTips,
-                            icon: icon,
-                            iconBackgroundColor: .systemBlue
-                        ) { [weak self] in
-                            guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
-                            let vc = SFSafariViewController(url: url)
-                            self?.showPage(vc: vc)
-                        }),
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleInstaSetup,
-                            icon: icon,
-                            iconBackgroundColor: .systemPurple
-                        ) {[weak self] in
-                            guard let self else { return }
-                            connectedInsights.open(.setupInfo, from: self)
-                        })]))
+    func configure() {
+        tableView.backgroundColor = bkgdColor
 
-        models.append(
-            SettingsSection(
-                title: Strings.settingsSectionTitleAboutUs,
-                options: [
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsSectionTitleOurInstagram,
-                            icon: icon,
-                            iconBackgroundColor: .systemPink
-                        ) {
-                            ExternalLinkOpener.openAppURL(
-                                appURL: Links.settingsInstagramAppUrl,
-                                webURL: Links.settingsInstagramWebUrl)
-                        }),
-                    
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleShare,
-                            icon: icon,
-                            iconBackgroundColor: .systemGreen
-                        ) { [weak self] in
-                            self?.shareApp()
-                        }),
-                    
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleRateAndReview,
-                            icon: icon,
-                            iconBackgroundColor: .systemYellow
-                        ) { [weak self] in
-                            self?.showReviewPopUp ()
-                            //self?.writeReview()
-                        }),
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleContactUs,
-                            icon: icon,
-                            iconBackgroundColor: .systemOrange
-                        ) {[weak self] in
-                            self?.sendEmail()
-                        })]))
-        
-        models.append(
-            SettingsSection(
-                title: Strings.settingsSectionTitleLegal,
-                options: [
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitlePrivacy,
-                            icon: icon,
-                            iconBackgroundColor: .systemPurple
-                        ) { [weak self] in
-                            guard let url = URL(string: Links.settingsPrivacyPolicyUrl) else { return }
-                            let vc = SFSafariViewController(url: url)
-                            self?.showPage(vc: vc)
-                        }),
-                    
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleTermsAndConditions,
-                            icon: icon,
-                            iconBackgroundColor: .systemYellow
-                        ) { [weak self] in
-                            guard let url = URL(string: Links.settingsTermsAndConditionsUrl) else { return }
-                            let vc = SFSafariViewController(url: url)
-                            self?.showPage(vc: vc)
-                        }),
-                    
-                    .staticCell(
-                        model: SettingsOption(
-                            title: Strings.settingsTitleDisclaimer,
-                            icon: icon,
-                            iconBackgroundColor: .systemRed
-                        ) { [weak self] in
-                            guard let url = URL(string: Links.settingsDisclaimerUrl) else { return }
-                            let vc = SFSafariViewController(url: url)
-                            self?.showPage(vc: vc)
-                        })
-                ]))
-        
+        models = SettingsSections.make(actions: SettingsActions(
+            editInstagramUsername: { [weak self] in self?.setInstaUserAlert() },
+            openFacebookSetup: { [weak self] in
+                guard let self else { return }
+                connectedInsights.open(.setup, from: self)
+            },
+            showQuantityPicker: { [weak self] in self?.coordinator?.showQuantityPicker() },
+            replayOnboarding: { [weak self] in
+                self?.appSettings.hasSeenOnboarding = false
+                self?.coordinator?.showOnboarding(completion: nil)
+            },
+            openSetupInfo: { [weak self] in
+                guard let self else { return }
+                connectedInsights.open(.setupInfo, from: self)
+            },
+            openWebPage: { [weak self] urlString in
+                guard let url = URL(string: urlString) else { return }
+                self?.showPage(vc: SFSafariViewController(url: url))
+            },
+            openOurInstagram: {
+                ExternalLinkOpener.openAppURL(
+                    appURL: Links.settingsInstagramAppUrl,
+                    webURL: Links.settingsInstagramWebUrl)
+            },
+            shareApp: { [weak self] in self?.shareApp() },
+            rateApp: { [weak self] in self?.showReviewPopUp() },
+            contactSupport: { [weak self] in self?.sendEmail() }
+        ))
     }
 }
 
