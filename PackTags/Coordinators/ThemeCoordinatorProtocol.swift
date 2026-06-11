@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 protocol ThemeCoordinatorProtocol: AnyObject {
     func showPackList(for theme: ThemeCD)
     func showNewThemeEditor(onSave: @escaping () -> Void)
