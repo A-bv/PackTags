@@ -33,7 +33,6 @@ final class ThemeEditorViewModel {
             theme.image = imageData
             theme.thumbnail = thumbnailData
             repository.save()
-            StoreKitHelper.displayStoreKit()
         } else {
             let index = repository.count()
             let newTheme = repository.create()

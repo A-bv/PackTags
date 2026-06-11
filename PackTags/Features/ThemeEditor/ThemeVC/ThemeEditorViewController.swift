@@ -227,10 +227,14 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
         let imageData = themeImageView?.jpegData(compressionQuality: 0.8)
         let thumbnailData = themeImageView?.resized(to: CGSize(width: 135.333, height: 135.333))
             .jpegData(compressionQuality: 0.8)
+        let isUpdatingExistingTheme = !viewModel.isNewTheme
         viewModel.save(rawText: themeTextView.text, imageData: imageData, thumbnailData: thumbnailData)
         let savedTheme = viewModel.theme
         dismiss(animated: true) { [weak self] in
             self?.onSave?(savedTheme)
+            if isUpdatingExistingTheme {
+                StoreKitHelper.displayStoreKit()
+            }
         }
     }
 }
