@@ -10,15 +10,15 @@ import SwiftUI
 import InstagramGraph
 
 class SmartGViewModel: ObservableObject {
-    let hashtagProvider: any HashtagSearchProviding
+    let gateway: any ConnectedInsightsGatewayProtocol
 
-    @Published var dataMedias: [DataMedia] = []
+    @Published var dataMedias: [InstagramPost] = []
     @Published var computedData: [SmartGModel] = []
     @Published var topHashtags: [String] = []
     @Published var topHashtagsCount: [Int] = []
 
-    init(hashtagProvider: any HashtagSearchProviding = UnavailableHashtagProvider()) {
-        self.hashtagProvider = hashtagProvider
+    init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
+        self.gateway = gateway
     }
 }
 

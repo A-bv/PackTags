@@ -2,42 +2,12 @@ import UIKit
 import SwiftUI
 import InstagramGraph
 
+@MainActor
 final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
-    private let settings: any ConnectedInsightsSettingsProtocol
     private let gateway: any ConnectedInsightsGatewayProtocol
 
-    init(
-        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
-        configuration: ConnectedInsightsConfiguration = .production,
-        gateway: (any ConnectedInsightsGatewayProtocol)? = nil
-    ) {
-        self.settings = settings
-        if let gateway {
-            self.gateway = gateway
-        } else {
-            let tokenProvider = FacebookAccessTokenProvider()
-            let credentialsProvider = SettingsInstagramGraphCredentialsProvider(
-                settings: settings,
-                tokenProvider: tokenProvider
-            )
-            let endpointBuilder = InstagramGraphEndpointBuilder(apiGraphVersion: configuration.graphAPIVersion)
-            let client = InstagramGraphClient(apiGraphVersion: configuration.graphAPIVersion)
-            self.gateway = ConnectedInsightsGateway(
-                settings: settings,
-                tokenProvider: tokenProvider,
-                hashtagProvider: InstagramHashtagRepository(
-                    credentialsProvider: credentialsProvider,
-                    endpointBuilder: endpointBuilder,
-                    client: client
-                ),
-                profileProvider: InstagramProfileRepository(
-                    credentialsProvider: credentialsProvider,
-                    endpointBuilder: endpointBuilder,
-                    client: client,
-                    onDataFetched: { data in DocumentDirectory.saveJsonDataLocally(data: data) }
-                )
-            )
-        }
+    init(gateway: (any ConnectedInsightsGatewayProtocol)? = nil) {
+        self.gateway = gateway ?? ConnectedInsightsGateway()
     }
 
     func open(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
@@ -66,9 +36,9 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         let vc: UIViewController
         switch destination {
         case .analytics:
-            vc = UIHostingController(rootView: AnalyticsNew(profileProvider: gateway.profileProvider))
+            vc = UIHostingController(rootView: AnalyticsNew(gateway: gateway))
         case .smartG:
-            vc = UIHostingController(rootView: SmartGViewContainer(hashtagProvider: gateway.hashtagProvider))
+            vc = UIHostingController(rootView: SmartGViewContainer(gateway: gateway))
         default:
             return
         }
@@ -85,11 +55,11 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         let vc: UIViewController
         switch destination {
         case .setup:
-            let loginVC = FBLoginVC(settings: settings, gateway: gateway)
+            let loginVC = FBLoginVC(gateway: gateway)
             loginVC.onSetupComplete = onComplete
             vc = loginVC
         case .setupInfo:
-            vc = InfoSetupIGCreatorVC(settings: settings)
+            vc = InfoSetupIGCreatorVC()
         default:
             return
         }

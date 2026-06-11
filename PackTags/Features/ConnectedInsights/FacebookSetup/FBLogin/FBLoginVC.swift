@@ -18,12 +18,8 @@ class FBLoginVC: UIViewController {
         print("deinit FBLoginVC")
     }
 
-    init(
-        viewModel: FBLoginViewModel,
-        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()
-    ) {
+    init(viewModel: FBLoginViewModel) {
         self.viewModel = viewModel
-        self.settings = settings
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -31,10 +27,8 @@ class FBLoginVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(settings: any ConnectedInsightsSettingsProtocol, gateway: any ConnectedInsightsGatewayProtocol) {
-        self.init(
-            viewModel: FBLoginViewModel(settings: settings, gateway: gateway),
-            settings: settings)
+    convenience init(gateway: any ConnectedInsightsGatewayProtocol) {
+        self.init(viewModel: FBLoginViewModel(gateway: gateway))
     }
 
     private enum Strings {
@@ -62,7 +56,6 @@ class FBLoginVC: UIViewController {
     var onSetupComplete: (() -> Void)?
 
     private let viewModel: FBLoginViewModel
-    private var settings: any ConnectedInsightsSettingsProtocol
     private var hasStartedSetupValidation = false
 
     private let loginButton: FBLoginButton = {
@@ -80,7 +73,7 @@ class FBLoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        logLogin("FBLoginVC viewDidLoad. isCorrectSetup=\(settings.isCorrectSetup), setupInfoShown=\(settings.setupInfoShown)")
+        logLogin("FBLoginVC viewDidLoad.")
         setupFBLoginVC()
     }
 
@@ -98,7 +91,7 @@ class FBLoginVC: UIViewController {
 
 extension FBLoginVC {
     private func showApiGraphSetupVCIfNeeded() -> Bool {
-        if !settings.setupInfoShown {
+        if !UserDefaults.standard.bool(forKey: "setupInfoShown") {
             logLogin("Showing setup info before login.")
             showSetupScreen()
             return true
@@ -260,7 +253,7 @@ extension FBLoginVC {
     }
 
     private func showSetupScreen() {
-        let controller = InfoSetupIGCreatorVC(settings: settings)
+        let controller = InfoSetupIGCreatorVC()
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
         self.present(controller, animated: true, completion: nil)

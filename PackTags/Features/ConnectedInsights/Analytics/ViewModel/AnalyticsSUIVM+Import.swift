@@ -15,28 +15,29 @@ extension AnalyticsSUIViewModel {
     func getJsonFromDir () {
         DispatchQueue.main.async { [weak self] in
             guard let jsonData = DocumentDirectory.getJsonDataFromDir() else { return } //data
-            guard let profileJson = try? JSONDecoder().decode(Profile.self, from: jsonData) else { return }
-     
+            let decoder = JSONDecoder()
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            decoder.dateDecodingStrategy = .formatted(formatter)
+            guard let profileJson = try? decoder.decode(Profile.self, from: jsonData) else { return }
+
             DispatchQueue.main.async{ [weak self] in
                 self?.load(profileJson: profileJson)
             }
         }
     }
-    
+
     // 2. Api import
-    func getOnlineJsonAPIGraph () {
-        profileProvider.loadProfileForAnalytics(
-            mediaLimit: 12,
-            completion: { result in
-                DispatchQueue.main.async { [weak self] in
-                    switch result {
-                    case .success(let profileJson):
-                        self?.load(profileJson: profileJson)
-                    case .failure(let error):
-                        print("Error loading analytics profile: \(error)")
-                    }
-                }
-            })
+    func getOnlineJsonAPIGraph() {
+        Task { @MainActor in
+            do {
+                let profileJson = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
+                load(profileJson: profileJson)
+            } catch {
+                print("Error loading analytics profile: \(error)")
+            }
+        }
     }
     
     private func load(profileJson: Profile) {

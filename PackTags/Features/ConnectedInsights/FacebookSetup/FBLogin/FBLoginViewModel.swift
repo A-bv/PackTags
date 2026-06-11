@@ -6,19 +6,22 @@
 //  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
 //
 
+import Foundation
 import InstagramGraph
 
+@MainActor
 final class FBLoginViewModel {
-    private var settings: any ConnectedInsightsSettingsProtocol
     private let gateway: any ConnectedInsightsGatewayProtocol
     private let facebookSessionService: any FacebookSessionServicing
 
+    private enum UserDefaultsKey {
+        static let pressedFBLoginButton = "pressedFBLoginButton"
+    }
+
     init(
-        settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings(),
-        gateway: any ConnectedInsightsGatewayProtocol = ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider()),
+        gateway: any ConnectedInsightsGatewayProtocol,
         facebookSessionService: any FacebookSessionServicing = FacebookSessionService()
     ) {
-        self.settings = settings
         self.gateway = gateway
         self.facebookSessionService = facebookSessionService
     }
@@ -32,19 +35,27 @@ final class FBLoginViewModel {
             completion(.failure(ConnectedInsightsError.missingFacebookToken))
             return
         }
-        gateway.setup(facebookToken: tokenString, completion: completion)
+        Task {
+            do {
+                try await gateway.setup(facebookToken: tokenString)
+                completion(.success(()))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
 
     func savePushedFBLoginButtonOnce() {
-        if !settings.pressedFacebookLoginButton {
-            settings.pressedFacebookLoginButton = true
+        let key = UserDefaultsKey.pressedFBLoginButton
+        if !UserDefaults.standard.bool(forKey: key) {
+            UserDefaults.standard.set(true, forKey: key)
         }
     }
 
     func resetFacebookSession() {
         facebookSessionService.resetSession()
         gateway.reset()
-        settings.pressedFacebookLoginButton = false
+        UserDefaults.standard.set(false, forKey: UserDefaultsKey.pressedFBLoginButton)
         print("[ConnectedInsights][Login] Facebook SDK session and connected insights setup were reset.")
     }
 }

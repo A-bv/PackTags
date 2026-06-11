@@ -29,9 +29,9 @@ struct SmartGView: View {
     //Network Status
     @StateObject var monitor = NetworkMonitor()
 
-    init(hashtagProvider: any HashtagSearchProviding = UnavailableHashtagProvider()) {
+    init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
         _smartGViewModel = StateObject(
-            wrappedValue: SmartGViewModel(hashtagProvider: hashtagProvider))
+            wrappedValue: SmartGViewModel(gateway: gateway))
     }
     
     var body: some View {

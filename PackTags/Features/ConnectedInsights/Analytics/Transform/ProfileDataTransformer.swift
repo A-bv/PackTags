@@ -86,14 +86,14 @@ extension DataTransformer.ProfileDataTransformer {
         for i in 0..<numberOfMedias {
             let mediaData = profileResponse.media?.data[i]
             
-            likeArray.append(mediaData?.like_count ?? 0)
-            commentArray.append(mediaData?.comments_count ?? 0)
+            likeArray.append(mediaData?.likeCount ?? 0)
+            commentArray.append(mediaData?.commentsCount ?? 0)
             captions.append(mediaData?.caption ?? "")
- 
+
             if let insightsData = mediaData?.insights?.data, insightsData.count > 2 {
-                let mediaSumLikesComment = CGFloat(mediaData?.insights?.data[2]?.values[0]?.value ?? 0)
-                let mediaImpressions = CGFloat(mediaData?.insights?.data[1]?.values[0]?.value ?? 0)
-                let mediaReach = CGFloat(mediaData?.insights?.data[0]?.values[0]?.value ?? 0)
+                let mediaSumLikesComment = CGFloat(insightsData[2].values.first?.value ?? 0)
+                let mediaImpressions = CGFloat(insightsData[1].values.first?.value ?? 0)
+                let mediaReach = CGFloat(insightsData[0].values.first?.value ?? 0)
 
                 sumLikesCommentsArray.append(mediaSumLikesComment)
                 impressions.append(mediaImpressions)
@@ -101,19 +101,12 @@ extension DataTransformer.ProfileDataTransformer {
             } else {
                 print("media has no insights")
             }
-            
-            //time_stamp
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
-            if let stringDate = mediaData?.timestamp {
-                let date = dateFormatter.date(from:(stringDate))
-                times.append(date?.timeIntervalSince1970)
-            }
+
+            times.append(mediaData?.timestamp?.timeIntervalSince1970)
         }
-        
+
         let engagementRateFollowers = getEngagementByFollowerRates(
-            engagementArray: sumLikesCommentsArray, followersCount: profileResponse.followers_count)
+            engagementArray: sumLikesCommentsArray, followersCount: profileResponse.followersCount)
         let engagementRateImpressions = getEngagementByImpressionRates(
             engagementArray: sumLikesCommentsArray, impressions: impressions)
         let engagementRateReach = getEngagementByReachRates(

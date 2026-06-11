@@ -13,21 +13,16 @@ import InstagramGraph
 extension SmartGViewModel {
     // 1. Api import
     func fetch(hashtag: String, onLoaded: @escaping (_ errorState: Bool) -> Void) {
-        hashtagProvider.searchHashtag(
-            searchedHashtag: hashtag,
-            completion: { [weak self] result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let medias):
-                        self?.dataMedias = medias
-                        self?.processSmartGModel()
-                        onLoaded(false)
-                    case .failure(let error):
-                        print("Error fetch: \(error)")
-                        onLoaded(true)
-                    }
-                }
-            })
-        //_ = SmartG_SwiftUI.prJs_HashatgMedia(decodedJson: decodedJson as! Media)
+        Task { @MainActor in
+            do {
+                let medias = try await gateway.searchHashtag(searchedHashtag: hashtag)
+                dataMedias = medias
+                processSmartGModel()
+                onLoaded(false)
+            } catch {
+                print("Error fetch: \(error)")
+                onLoaded(true)
+            }
+        }
     }
 }

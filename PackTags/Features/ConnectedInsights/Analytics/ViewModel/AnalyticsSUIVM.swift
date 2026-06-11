@@ -18,7 +18,7 @@ class AnalyticsSUIViewModel: ObservableObject {
         static let selection = "Selection".localized()
     }
 
-    let profileProvider: any ProfileDataProviding
+    let gateway: any ConnectedInsightsGatewayProtocol
 
     @Published var mode: Int = 0
     @Published var rawInsights: Bool = true
@@ -60,8 +60,8 @@ class AnalyticsSUIViewModel: ObservableObject {
     @Published var barChartData: [BarChartPost] = [BarChartPost(id: 0, post: "", rate: 0, barHeight: 0)]
     
     //MARK: - Init
-    init(profileProvider: any ProfileDataProviding = UnavailableProfileProvider()) {
-        self.profileProvider = profileProvider
+    init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
+        self.gateway = gateway
         self.loadDataForAnalyticsNew()
     }
     

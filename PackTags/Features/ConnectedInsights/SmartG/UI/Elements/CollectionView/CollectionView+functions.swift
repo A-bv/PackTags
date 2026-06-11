@@ -24,12 +24,11 @@ extension CollectionView {
         }
     }
 
-    private func makeStoryCard(from media: DataMedia, index: Int) -> some View {
+    private func makeStoryCard(from media: InstagramPost, index: Int) -> some View {
         guard
-            let stringUrl = media.media_url,
-            let url = URL(string: stringUrl),
-            let likeCount = media.like_count,
-            let commentsCount = media.comments_count
+            let url = media.mediaUrl,
+            let likeCount = media.likeCount,
+            let commentsCount = media.commentsCount
         else {
             return AnyView(EmptyView())
         }

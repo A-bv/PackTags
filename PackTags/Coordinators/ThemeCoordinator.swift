@@ -1,6 +1,7 @@
 import UIKit
 import SwiftUI
 
+@MainActor
 final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     let navigationController: UINavigationController

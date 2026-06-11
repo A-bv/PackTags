@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import InstagramGraph
 
 class InfoSetupIGCreatorVC: UIViewController {
-    private var settings: any ConnectedInsightsSettingsProtocol
 
-    init(settings: any ConnectedInsightsSettingsProtocol = UserDefaultsConnectedInsightsSettings()) {
-        self.settings = settings
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -187,8 +184,9 @@ class InfoSetupIGCreatorVC: UIViewController {
     }
 
     private func checkIsFirstTime() {
-        if !settings.setupInfoShown {
-            settings.setupInfoShown = true
+        let key = "setupInfoShown"
+        if !UserDefaults.standard.bool(forKey: key) {
+            UserDefaults.standard.set(true, forKey: key)
         }
     }
 

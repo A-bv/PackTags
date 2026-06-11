@@ -11,14 +11,14 @@ import InstagramGraph
 
 struct SmartGViewContainer: View {
     @StateObject var dataController = DataController()
-    private let hashtagProvider: any HashtagSearchProviding
+    private let gateway: any ConnectedInsightsGatewayProtocol
 
-    init(hashtagProvider: any HashtagSearchProviding = UnavailableHashtagProvider()) {
-        self.hashtagProvider = hashtagProvider
+    init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
+        self.gateway = gateway
     }
 
     var body: some View {
-        SmartGView(hashtagProvider: hashtagProvider)
+        SmartGView(gateway: gateway)
             .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
     }
 }
