@@ -54,6 +54,7 @@ class FBLoginVC: UIViewController {
     }
 
     var onSetupComplete: (() -> Void)?
+    var onShowSetupInfo: (() -> Void)?
 
     private let viewModel: FBLoginViewModel
     private var hasStartedSetupValidation = false
@@ -253,10 +254,7 @@ extension FBLoginVC {
     }
 
     private func showSetupScreen() {
-        let controller = InfoSetupIGCreatorVC()
-        controller.modalPresentationStyle = .overFullScreen
-        controller.modalTransitionStyle = .crossDissolve
-        self.present(controller, animated: true, completion: nil)
+        onShowSetupInfo?()
     }
 
     @objc private func showInfoSetupScreenFromHelpButton(_ sender: Any) {

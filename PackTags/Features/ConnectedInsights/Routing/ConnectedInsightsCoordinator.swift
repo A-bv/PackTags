@@ -57,9 +57,17 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         case .setup:
             let loginVC = FBLoginVC(gateway: gateway)
             loginVC.onSetupComplete = onComplete
+            loginVC.onShowSetupInfo = { [weak self, weak loginVC] in
+                guard let self, let loginVC else { return }
+                self.presentSetupScreen(.setupInfo, from: loginVC, onComplete: nil)
+            }
             vc = loginVC
         case .setupInfo:
-            vc = InfoSetupIGCreatorVC()
+            let infoVC = InfoSetupIGCreatorVC()
+            infoVC.modalPresentationStyle = .overFullScreen
+            infoVC.modalTransitionStyle = .crossDissolve
+            presenter.present(infoVC, animated: true)
+            return
         default:
             return
         }
