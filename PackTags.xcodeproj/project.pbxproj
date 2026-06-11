@@ -324,14 +324,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0204B61A25C2BFFF00F2DD21 /* TapTextView */ = {
-			isa = PBXGroup;
-			children = (
-				02B05C1727F8BFBF000026B8 /* TapTextView.swift */,
-			);
-			path = TapTextView;
-			sourceTree = "<group>";
-		};
 		0207BB832FD372660007F3D3 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +372,16 @@
 				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
 				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
 				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000206 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				02B05C1727F8BFBF000026B8 /* TapTextView.swift */,
+				02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */,
+				02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -536,7 +538,6 @@
 			isa = PBXGroup;
 			children = (
 				02FD6CB326D8178800AB16E4 /* Rating */,
-				02B05C1F27F90BB9000026B8 /* Image */,
 				AB00000000000000000000E0 /* Extensions */,
 				AB00000000000000000000A1 /* AppLogger.swift */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
@@ -546,7 +547,6 @@
 				021044F526446AEF00408CEB /* StringFormatter.swift */,
 				02FEF5B6263304EC0001B525 /* UIViewController+Mail.swift */,
 				021EB81328846AD100463B42 /* Localizable.swift */,
-				02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -601,6 +601,7 @@
 		02A4235D284400FC00A25067 /* ThemeEditor */ = {
 			isa = PBXGroup;
 			children = (
+				AB0000000000000000000206 /* Components */,
 				02CAC9B82591061B00BE5E57 /* View */,
 				0207BBB22FD564090007F3D3 /* ViewModel */,
 			);
@@ -656,20 +657,11 @@
 		02B05C1E27F90BA3000026B8 /* TextView */ = {
 			isa = PBXGroup;
 			children = (
-				0204B61A25C2BFFF00F2DD21 /* TapTextView */,
 				02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */,
 				02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */,
 				020584D2284D6FFC00020FB8 /* UITextView+KbToolBar.swift */,
 			);
 			path = TextView;
-			sourceTree = "<group>";
-		};
-		02B05C1F27F90BB9000026B8 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */,
-			);
-			path = Image;
 			sourceTree = "<group>";
 		};
 		02B0D7292A3F08C000EF1500 /* Neumorphic */ = {

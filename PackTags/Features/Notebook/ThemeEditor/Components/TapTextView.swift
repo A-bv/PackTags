@@ -10,16 +10,6 @@ protocol TapTextViewDelegate: AnyObject {
     func tapTextViewDidFinishSelection(_ textView: TapTextView)
 }
 
-extension UIViewController: TapTextViewDelegate {
-    func tapTextViewDidStartSelection(_ textView: TapTextView) {
-        navigationController?.setToolbarHidden(false, animated: false)
-    }
-    
-    func tapTextViewDidFinishSelection(_ textView: TapTextView) {
-        navigationController?.setToolbarHidden(true, animated: false)
-    }
-}
-
 @IBDesignable
 class TapTextView: UITextView {
     private enum Strings {

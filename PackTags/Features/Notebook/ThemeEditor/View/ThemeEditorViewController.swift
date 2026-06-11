@@ -245,3 +245,13 @@ extension ThemeEditorViewController {
         return  .default
     }
 }
+
+extension ThemeEditorViewController: TapTextViewDelegate {
+    func tapTextViewDidStartSelection(_ textView: TapTextView) {
+        navigationController?.setToolbarHidden(false, animated: false)
+    }
+
+    func tapTextViewDidFinishSelection(_ textView: TapTextView) {
+        navigationController?.setToolbarHidden(true, animated: false)
+    }
+}
