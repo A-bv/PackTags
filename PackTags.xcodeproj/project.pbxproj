@@ -78,7 +78,7 @@
 		026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */; };
 		026D16DD2A3E474500228DEA /* AnalyticsViewModel+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */; };
 		0274105826207D2100D82F6D /* PackListViewController+Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274105726207D2000D82F6D /* PackListViewController+Instagram.swift */; };
-		0274DB3026848948005F9C9C /* DocumentDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* DocumentDirectory.swift */; };
+		0274DB3026848948005F9C9C /* AnalyticsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* AnalyticsCache.swift */; };
 		0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */; };
 		0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */; };
 		0281B9882879D60700344D3E /* UINavigationController+BarShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* UINavigationController+BarShadow.swift */; };
@@ -230,7 +230,7 @@
 		026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
 		026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnalyticsViewModel+Import.swift"; sourceTree = "<group>"; };
 		0274105726207D2000D82F6D /* PackListViewController+Instagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Instagram.swift"; sourceTree = "<group>"; };
-		0274DB2F26848948005F9C9C /* DocumentDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDirectory.swift; sourceTree = "<group>"; };
+		0274DB2F26848948005F9C9C /* AnalyticsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCache.swift; sourceTree = "<group>"; };
 		0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBarDimensions.swift"; sourceTree = "<group>"; };
 		0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Seed.swift"; sourceTree = "<group>"; };
 		0281B9872879D60700344D3E /* UINavigationController+BarShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+BarShadow.swift"; sourceTree = "<group>"; };
@@ -386,6 +386,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		AB0000000000000000000207 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
+				021044F526446AEF00408CEB /* StringFormatter.swift */,
+				0274DB2F26848948005F9C9C /* AnalyticsCache.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		AB0000000000000000000205 /* Notebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,7 +463,8 @@
 		0207BB9A2FD5F0000007F3D3 /* ConnectedInsights */ = {
 			isa = PBXGroup;
 			children = (
-				02491C5A26779AE400F98E17 /* FacebookSetup */,
+				AB0000000000000000000207 /* Support */,
+				02491C5A26779AE400F98E17 /* Setup */,
 				02EE53B4284CCD9F004E7D5C /* Analytics */,
 				02D709D32A58FCDA0009F7C3 /* SmartG */,
 			);
@@ -484,16 +495,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		0207BBBA2FD648610007F3D3 /* Transform */ = {
-			isa = PBXGroup;
-			children = (
-				026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */,
-				021D761F275A99D500F54054 /* TransformedProfileModel.swift */,
-				02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */,
-			);
-			path = Transform;
-			sourceTree = "<group>";
-		};
 		0226F19A259E0346006E086C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +510,9 @@
 		0231AB1126849DFA007F4FC8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */,
+				021D761F275A99D500F54054 /* TransformedProfileModel.swift */,
+				02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */,
 				0264B816264A7CE900E1EEFA /* AnalyticsViewModel.swift */,
 				026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */,
 				02B0D7562A48CBB900EF1500 /* AnalyticsViewModel+PreviewData.swift */,
@@ -525,13 +529,13 @@
 			path = Circles;
 			sourceTree = "<group>";
 		};
-		02491C5A26779AE400F98E17 /* FacebookSetup */ = {
+		02491C5A26779AE400F98E17 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
 				02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */,
 				02CD2DA62990795A00EDE077 /* FBLogin */,
 			);
-			path = FacebookSetup;
+			path = Setup;
 			sourceTree = "<group>";
 		};
 		0273D1532655B9260043011C /* Shared */ = {
@@ -540,11 +544,8 @@
 				02FD6CB326D8178800AB16E4 /* Rating */,
 				AB00000000000000000000E0 /* Extensions */,
 				AB00000000000000000000A1 /* AppLogger.swift */,
-				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
-				0274DB2F26848948005F9C9C /* DocumentDirectory.swift */,
 				021AFD5B278A1BE40008735E /* Alerts.swift */,
 				02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */,
-				021044F526446AEF00408CEB /* StringFormatter.swift */,
 				02FEF5B6263304EC0001B525 /* UIViewController+Mail.swift */,
 				021EB81328846AD100463B42 /* Localizable.swift */,
 			);
@@ -723,7 +724,7 @@
 				02F89B2829743EF9008F363D /* SmartGViewContainer.swift */,
 				02AD94B429AC2A0A00D893E5 /* Model */,
 				02AD94B529AC2A1700D893E5 /* ViewModel */,
-				02F89B25297427AE008F363D /* UI */,
+				02F89B25297427AE008F363D /* View */,
 			);
 			path = SmartG;
 			sourceTree = "<group>";
@@ -758,34 +759,33 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		02EE53B3284CCB86004E7D5C /* Models */ = {
+		02EE53B3284CCB86004E7D5C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */,
 				020621562666DBCC0072C404 /* BarChartPost.swift */,
 				02998A652B44104800B70516 /* Circles.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		02EE53B4284CCD9F004E7D5C /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				02EE53B3284CCB86004E7D5C /* Models */,
+				02EE53B3284CCB86004E7D5C /* Model */,
 				0231AB1126849DFA007F4FC8 /* ViewModel */,
-				02FB530C25AD3DD00063038C /* UI */,
-				0207BBBA2FD648610007F3D3 /* Transform */,
+				02FB530C25AD3DD00063038C /* View */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
 		};
-		02F89B25297427AE008F363D /* UI */ = {
+		02F89B25297427AE008F363D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				021D76162759A00D00F54054 /* SmartGView.swift */,
 				02D709DF2A5C06D90009F7C3 /* Elements */,
 			);
-			path = UI;
+			path = View;
 			sourceTree = "<group>";
 		};
 		02FA30782A00442C006A48CC /* FloatingListView */ = {
@@ -828,7 +828,7 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		02FB530C25AD3DD00063038C /* UI */ = {
+		02FB530C25AD3DD00063038C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */,
@@ -836,7 +836,7 @@
 				02B0D7582A48E9EB00EF1500 /* Barchart */,
 				02D066BF296B606F00536E3A /* RoundedShape.swift */,
 			);
-			path = UI;
+			path = View;
 			sourceTree = "<group>";
 		};
 		02FB54FD24FFA2AA00174E34 = {
@@ -1100,7 +1100,7 @@
 				AB00000000000000000000F8 /* String+Hashtags.swift in Sources */,
 				02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
-				0274DB3026848948005F9C9C /* DocumentDirectory.swift in Sources */,
+				0274DB3026848948005F9C9C /* AnalyticsCache.swift in Sources */,
 				02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */,
 				02FD6CB026D8006400AB16E4 /* UIViewController+RateAndReview.swift in Sources */,
 				021AFD5C278A1BE40008735E /* Alerts.swift in Sources */,

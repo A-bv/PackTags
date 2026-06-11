@@ -6,7 +6,7 @@ extension AnalyticsViewModel {
     // 1. local import (called when refreshing data without web)
     func getJsonFromDir () {
         DispatchQueue.main.async { [weak self] in
-            guard let jsonData = DocumentDirectory.getJsonDataFromDir() else { return } //data
+            guard let jsonData = AnalyticsCache.getJsonDataFromDir() else { return } //data
             let decoder = JSONDecoder()
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "en_US_POSIX")

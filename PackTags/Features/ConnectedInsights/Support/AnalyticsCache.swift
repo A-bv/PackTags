@@ -1,13 +1,13 @@
 import UIKit
 
-final class DocumentDirectory {
+final class AnalyticsCache {
     static func saveJsonDataLocally(data: Data) {
         saveJsonDataToDir(jsonString: data)
     }
 }
 
 //MARK: - General Save/read Json functions into document directory
-extension DocumentDirectory {
+extension AnalyticsCache {
     static func getJsonDataFromDir() -> Data? {
         let fm = FileManager.default
         if let pathName = fm.urls(
