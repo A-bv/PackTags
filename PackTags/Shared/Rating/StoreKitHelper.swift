@@ -1,11 +1,3 @@
-//
-//  StoreKitHelper.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 26/08/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import Foundation
 import StoreKit
 

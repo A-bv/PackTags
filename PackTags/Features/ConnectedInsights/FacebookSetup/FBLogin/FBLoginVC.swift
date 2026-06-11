@@ -1,10 +1,3 @@
-//
-//  FBLoginVc.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 25/05/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
 //User needs to have a Facebook User account that can perform Tasks on the Page connected to the targeted Instagram Business or Creator Account
 
 import UIKit

@@ -1,11 +1,3 @@
-//
-//  NeuMphSwiftUI.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 19/06/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import SwiftUI
 
 //MARK: - Styles

@@ -1,11 +1,3 @@
-//
-//  SearchableTextView.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 15.04.22.
-//  Copyright © 2022 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 
 //Set colors for NSAttributeString extension

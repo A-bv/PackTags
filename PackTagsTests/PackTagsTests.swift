@@ -1,11 +1,3 @@
-//
-//  PackTagsTests.swift
-//  PackTagsTests
-//
-//  Created by Alexandre Bevilacqua on 02.09.20.
-//  Copyright © 2020 Alexandre Bevilacqua. All rights reserved.
-//
-
 import XCTest
 import InstagramGraph
 @testable import PackTags

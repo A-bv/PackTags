@@ -1,11 +1,3 @@
-//
-//  ThemeColors.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 21/06/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 import SwiftUI
 //MARK: - Analytics New Colors

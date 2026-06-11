@@ -1,11 +1,3 @@
-//
-//  TTVC+Operations.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 23.07.22.
-//  Copyright © 2022 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 
 // MARK: - Reorder theme

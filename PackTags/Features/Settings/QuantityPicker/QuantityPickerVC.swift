@@ -1,11 +1,3 @@
-//
-//  QuantityPickerVC.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 31/03/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 
 class QuantityPickerVC: UIViewController {

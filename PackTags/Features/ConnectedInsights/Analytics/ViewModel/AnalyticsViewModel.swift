@@ -1,11 +1,3 @@
-//
-//  SwiftUIData.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 11/05/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import SwiftUI
 import Combine
 import InstagramGraph

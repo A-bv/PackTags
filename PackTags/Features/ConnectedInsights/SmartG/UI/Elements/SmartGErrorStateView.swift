@@ -1,11 +1,3 @@
-//
-//  SmartGErrorStateView.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 25.02.2024.
-//  Copyright © 2024 Alexandre Bevilacqua. All rights reserved.
-//
-
 import SwiftUI
 
 struct SmartGErrorStateView: View {    

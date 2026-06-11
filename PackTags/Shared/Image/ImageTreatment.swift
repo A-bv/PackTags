@@ -1,9 +1,3 @@
-//
-//  Resizer.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 04/02/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
 //https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
 
 import UIKit

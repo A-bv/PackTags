@@ -1,11 +1,3 @@
-//
-//  BarchartItemView.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 03.01.2024.
-//  Copyright © 2024 Alexandre Bevilacqua. All rights reserved.
-//
-
 import SwiftUI
 
 struct BarChartItemView: View {

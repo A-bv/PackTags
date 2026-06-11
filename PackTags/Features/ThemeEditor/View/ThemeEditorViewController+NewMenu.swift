@@ -1,10 +1,3 @@
-//
-//  ThemeEditorViewController+Menu2.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 10/02/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
 // Menu iOS 14+
 
 import UIKit

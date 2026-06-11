@@ -1,11 +1,3 @@
-//
-//  Pack.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 26.10.20.
-//  Copyright © 2020 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 
 class PackCell: UITableViewCell {

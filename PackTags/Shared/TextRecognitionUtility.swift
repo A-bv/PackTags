@@ -1,11 +1,3 @@
-//
-//  Image_Recon.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 09/10/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 import Vision
 

@@ -1,11 +1,3 @@
-//
-//  SmartGStoryCard.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 15.01.23.
-//  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
-//
-
 import SwiftUI
 
 private enum Strings {

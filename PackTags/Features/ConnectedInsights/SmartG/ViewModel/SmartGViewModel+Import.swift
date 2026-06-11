@@ -1,11 +1,3 @@
-//
-//  Import.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 01.01.2024.
-//  Copyright © 2024 Alexandre Bevilacqua. All rights reserved.
-//
-
 import Foundation
 import InstagramGraph
 

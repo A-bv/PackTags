@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 02.09.20.
-//  Copyright © 2020 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 import FBSDKCoreKit
 

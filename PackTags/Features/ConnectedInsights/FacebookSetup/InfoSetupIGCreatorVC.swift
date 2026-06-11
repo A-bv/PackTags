@@ -1,11 +1,3 @@
-//
-//  HowToSetupIGVC.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 14/06/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 
 class InfoSetupIGCreatorVC: UIViewController {

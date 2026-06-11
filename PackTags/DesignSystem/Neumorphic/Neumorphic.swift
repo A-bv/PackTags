@@ -1,11 +1,3 @@
-//
-//  Neumorphic.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 14/04/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 
 extension UIView {

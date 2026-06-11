@@ -1,11 +1,3 @@
-//
-//  File.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 22.02.23.
-//  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 import SafariServices
 

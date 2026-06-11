@@ -1,11 +1,3 @@
-//
-//  File.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 29.06.23.
-//  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
-//
-
 import SwiftUI
 
 struct LoadingView: View {

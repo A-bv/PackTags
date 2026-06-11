@@ -1,11 +1,3 @@
-//
-//  SmartGen_SwiftUI.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 26/11/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import SwiftUI
 import InstagramGraph
 

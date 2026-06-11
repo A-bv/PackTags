@@ -1,10 +1,3 @@
-//
-//  AnalyticsView.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 09.01.21.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
 //(U) = data loading operations
 // D = dismiss view operations
 

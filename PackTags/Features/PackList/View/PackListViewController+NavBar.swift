@@ -1,11 +1,3 @@
-//
-//  PackListViewController+Header.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 18/01/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 
 // Fade Navigation Bar

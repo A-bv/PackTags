@@ -1,11 +1,3 @@
-//
-//  DocumentDirectory.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 24/06/2021.
-//  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 
 final class DocumentDirectory {

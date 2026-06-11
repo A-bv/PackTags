@@ -1,11 +1,3 @@
-//
-//  processedSmarGModel.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 16/02/2022.
-//  Copyright © 2022 Alexandre Bevilacqua. All rights reserved.
-//
-
 import Foundation
 
 struct SmartGModel: Hashable, Decodable {

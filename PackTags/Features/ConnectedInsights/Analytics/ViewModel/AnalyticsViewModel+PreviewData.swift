@@ -1,11 +1,3 @@
-//
-//  Import+TestCase.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 25.06.23.
-//  Copyright © 2023 Alexandre Bevilacqua. All rights reserved.
-//
-
 import SwiftUI
 
 #if DEBUG

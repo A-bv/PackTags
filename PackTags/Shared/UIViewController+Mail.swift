@@ -1,11 +1,3 @@
-//
-//  External.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 23/04/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 import MessageUI
 import WebKit

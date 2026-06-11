@@ -1,11 +1,3 @@
-//
-//  ThemeTVC+Interface.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 15/04/2021.
-//  Copyright © 2021 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 import SwiftUI
 

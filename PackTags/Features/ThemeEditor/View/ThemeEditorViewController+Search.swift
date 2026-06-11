@@ -1,11 +1,3 @@
-//
-//  ThemeEditorViewController+toolbar.swift
-//  PackTags
-//
-//  Created by Alexandre Bevilacqua on 17.12.20.
-//  Copyright © 2020 Alexandre Bevilacqua. All rights reserved.
-//
-
 import UIKit
 import SwiftUI
 
