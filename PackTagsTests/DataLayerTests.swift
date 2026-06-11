@@ -136,3 +136,89 @@ import CoreData
         #expect(repository.count() == 1)
     }
 }
+
+// MARK: - PackListViewModel
+
+@Suite struct PackListViewModelTests {
+
+    private final class FakeSettings: AppSettingsProtocol {
+        var hasSeenOnboarding = false
+        var tipsAlertShown = false
+        var tagsPerPack = 2
+        var saveAndShuffle = false
+        var keepPacksOrder = false
+        var openInstagramAfterCopy = false
+        var instagramUsername: String?
+    }
+
+    private func makeSUT(content: String? = "#a #b #c") -> (PackListViewModel, FakeSettings) {
+        let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
+        let theme = repository.create()
+        theme.content = content
+        repository.save()
+        let settings = FakeSettings()
+        return (PackListViewModel(theme: theme, repository: repository, settings: settings), settings)
+    }
+
+    @Test func loadPacks_chunksContentByTagsPerPack() {
+        let (sut, _) = makeSUT()
+        sut.loadPacks()
+        #expect(sut.packs == ["#a #b", "#c"])
+    }
+
+    @Test func postCopyAction_respectsKeepPacksOrderAndRedirectSettings() {
+        let (sut, settings) = makeSUT()
+        settings.keepPacksOrder = true
+        settings.openInstagramAfterCopy = true
+        settings.instagramUsername = "packtags"
+
+        let action = sut.postCopyAction()
+
+        #expect(action.shouldMovePackToBottom == false)
+        #expect(action.instagramUsername == "packtags")
+    }
+
+    @Test func postCopyAction_withRedirectOff_hasNoUsername() {
+        let (sut, settings) = makeSUT()
+        settings.openInstagramAfterCopy = false
+
+        #expect(sut.postCopyAction().instagramUsername == nil)
+        #expect(sut.postCopyAction().shouldMovePackToBottom == true)
+    }
+
+    @Test func toggleInstagramRedirect_withoutUsername_promptsForIt() {
+        let (sut, _) = makeSUT()
+        guard case .promptForUsername = sut.toggleInstagramRedirect() else {
+            Issue.record("expected promptForUsername")
+            return
+        }
+    }
+
+    @Test func toggleInstagramRedirect_flipsTheSettingBothWays() {
+        let (sut, settings) = makeSUT()
+        settings.instagramUsername = "packtags"
+
+        guard case .enabled(let enabledName) = sut.toggleInstagramRedirect() else {
+            Issue.record("expected enabled")
+            return
+        }
+        #expect(enabledName == "packtags")
+        #expect(settings.openInstagramAfterCopy)
+
+        guard case .disabled = sut.toggleInstagramRedirect() else {
+            Issue.record("expected disabled")
+            return
+        }
+        #expect(!settings.openInstagramAfterCopy)
+    }
+
+    @Test func saveInstagramUsername_trimsAndEnablesRedirect() {
+        let (sut, settings) = makeSUT()
+
+        let saved = sut.saveInstagramUsername("  packtags \n")
+
+        #expect(saved == "packtags")
+        #expect(settings.instagramUsername == "packtags")
+        #expect(settings.openInstagramAfterCopy)
+    }
+}
