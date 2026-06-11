@@ -35,6 +35,7 @@
 		0207BBB62FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */; };
 		0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */; };
 		0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */; };
+		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
@@ -186,6 +187,7 @@
 		0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewModel.swift; sourceTree = "<group>"; };
 		0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsCoordinator.swift; sourceTree = "<group>"; };
 		0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionService.swift; sourceTree = "<group>"; };
+		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
@@ -715,6 +717,7 @@
 			children = (
 				02AD94B029AC078E00D893E5 /* FBLoginModel.swift */,
 				0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */,
+				AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */,
 				02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */,
 				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
 			);
@@ -1058,6 +1061,7 @@
 				02385E032A63523B0050FFDE /* ThemeEditorViewController+Save.swift in Sources */,
 				02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */,
 				0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */,
+				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
 				0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */,
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
 				0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */,
@@ -1441,7 +1445,7 @@
 			repositoryURL = "https://github.com/A-bv/InstagramGraph";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.1;
+				minimumVersion = 3.0.2;
 			};
 		};
 		02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {

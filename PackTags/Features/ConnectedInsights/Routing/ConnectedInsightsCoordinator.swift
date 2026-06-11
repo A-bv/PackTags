@@ -8,7 +8,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
     private lazy var smartTagsPersistence = PersistenceController(modelName: "SmartTags")
 
     init(gateway: (any ConnectedInsightsGatewayProtocol)? = nil) {
-        self.gateway = gateway ?? ConnectedInsightsGateway()
+        self.gateway = gateway ?? ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider())
     }
 
     func open(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
