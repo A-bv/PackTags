@@ -60,13 +60,14 @@ private func makeTheme() -> ThemeCD {
     return ThemeCD(context: container.viewContext)
 }
 
+@MainActor
 private func makeDependencies(
-    connectedInsights: ConnectedInsightsCoordinating = SpyConnectedInsightsCoordinator()
+    connectedInsights: ConnectedInsightsCoordinating? = nil
 ) -> AppDependencies {
     AppDependencies(
         themeRepository: FakeThemeRepository(),
         appSettings: FakeAppSettings(),
-        connectedInsights: connectedInsights
+        connectedInsights: connectedInsights ?? SpyConnectedInsightsCoordinator()
     )
 }
 
