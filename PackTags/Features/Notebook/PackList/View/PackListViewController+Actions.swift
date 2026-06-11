@@ -1,9 +1,35 @@
+import UIKit
+
+// MARK: - Compose & show
+// MARK: - Navigation
+extension PackListViewController {
+    @objc func didTapCompose() {
+        presentThemeVC(fromSwipe: false)
+    }
+
+    func presentThemeVC(fromSwipe: Bool) {
+        resetStatusBarColor = true
+        coordinator?.showThemeEditor(
+            for: viewModel.theme,
+            fromSwipe: fromSwipe,
+            chosenPack: fromSwipe ? chosenPack : "",
+            onSave: { [weak self] in
+                self?.updatePackListViewController()
+                self?.resetStatusBarColor = false
+            },
+            onCancel: { [weak self] in
+                self?.resetStatusBarColor = false
+            }
+        )
+    }
+}
+
+// MARK: - Instagram redirect
 //
 //  PackListViewController+Instagram.swift
 //  PackTags
 //
 
-import UIKit
 
 extension PackListViewController {
     private enum Strings {
@@ -60,6 +86,17 @@ extension PackListViewController {
                 title: name,
                 message: Strings.redirectionAlertMessage + "  \n\n " + Strings.undoRedirection
             )
+        }
+    }
+}
+
+// MARK: - Post-copy reorder
+extension PackListViewController {
+    //If redirected to instagram after copy, move pack to bottom
+    func copiedPacksToBottom(packIdx: Int) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.viewModel.movePack(at: packIdx)
+            self.tableView.reloadData()
         }
     }
 }

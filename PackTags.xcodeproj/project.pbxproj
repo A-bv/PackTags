@@ -10,7 +10,6 @@
 		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D3284D6FFC00020FB8 /* UITextView+KbToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D2284D6FFC00020FB8 /* UITextView+KbToolBar.swift */; };
 		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
-		020584D7284D7B4E00020FB8 /* PackListViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D6284D7B4E00020FB8 /* PackListViewController+Delegate.swift */; };
 		020621572666DBCC0072C404 /* BarChartPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* BarChartPost.swift */; };
 		0207BB852FD3736C0007F3D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB842FD3736C0007F3D3 /* Coordinator.swift */; };
 		0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */; };
@@ -58,15 +57,13 @@
 		022688B32628BCCC007DBD98 /* ThemeListViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688B22628BCCC007DBD98 /* ThemeListViewController+Interface.swift */; };
 		0226F19C259EAB93006E086C /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19B259EAB93006E086C /* PackCell.swift */; };
 		0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19D259EABB4006E086C /* PackListViewController.swift */; };
+		AB0000000000000000000502 /* PackListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000501 /* PackListViewController+TableView.swift */; };
+		AB0000000000000000000504 /* PackListViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000503 /* PackListViewController+Actions.swift */; };
+		AB0000000000000000000506 /* PackListViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000505 /* PackListViewController+Appearance.swift */; };
 		0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* SmartGModel.swift */; };
 		0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */; };
 		02385E002A634FAB0050FFDE /* ThemeListViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* ThemeListViewController+Navigation.swift */; };
 		02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */; };
-		023A2F7A2856493C00EE6CDE /* PackListViewController+AutoReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F792856493C00EE6CDE /* PackListViewController+AutoReorder.swift */; };
-		023A2F7C2856495800EE6CDE /* PackListViewController+ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7B2856495800EE6CDE /* PackListViewController+ConfigCell.swift */; };
-		023A2F7E2856497800EE6CDE /* PackListViewController+TVHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7D2856497800EE6CDE /* PackListViewController+TVHeader.swift */; };
-		023A2F80285649B900EE6CDE /* PackListViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7F285649B900EE6CDE /* PackListViewController+Loading.swift */; };
-		023A2F822856554600EE6CDE /* PackListViewController+CellSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F812856554600EE6CDE /* PackListViewController+CellSwipe.swift */; };
 		023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B932A48EC60006E2D35 /* CirclesView.swift */; };
 		023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B962A4D085E006E2D35 /* LoadingView.swift */; };
 		023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B982A4D0A5E006E2D35 /* OfflineView.swift */; };
@@ -79,7 +76,6 @@
 		0264B817264A7CE900E1EEFA /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* AnalyticsViewModel.swift */; };
 		026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */; };
 		026D16DD2A3E474500228DEA /* AnalyticsViewModel+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */; };
-		0274105826207D2100D82F6D /* PackListViewController+Instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274105726207D2000D82F6D /* PackListViewController+Instagram.swift */; };
 		0274DB3026848948005F9C9C /* AnalyticsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0274DB2F26848948005F9C9C /* AnalyticsCache.swift */; };
 		0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */; };
 		0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */; };
@@ -98,7 +94,6 @@
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
 		02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */; };
-		02AEA58725B630B10063076F /* PackListViewController+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AEA58625B630B10063076F /* PackListViewController+NavBar.swift */; };
 		02B02AC52594238100586352 /* ThemeEditorViewController+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B02AC42594238100586352 /* ThemeEditorViewController+Search.swift */; };
 		02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1727F8BFBF000026B8 /* TapTextView.swift */; };
 		02B05C1A27F90333000026B8 /* UITextView+PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */; };
@@ -108,7 +103,6 @@
 		02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */; };
 		02B0D7572A48CBB900EF1500 /* AnalyticsViewModel+PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D7562A48CBB900EF1500 /* AnalyticsViewModel+PreviewData.swift */; };
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
-		02BC8D3025FD7DC800441349 /* PackListViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D2F25FD7DC800441349 /* PackListViewController+Navigation.swift */; };
 		02BC8D592602B79900441349 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsVC.swift */; };
 		02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */; };
 		02CAC9B52591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B42591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift */; };
@@ -165,7 +159,6 @@
 		020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		020584D2284D6FFC00020FB8 /* UITextView+KbToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+KbToolBar.swift"; sourceTree = "<group>"; };
 		020584D4284D715D00020FB8 /* UIView+BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BlurView.swift"; sourceTree = "<group>"; };
-		020584D6284D7B4E00020FB8 /* PackListViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Delegate.swift"; sourceTree = "<group>"; };
 		020621562666DBCC0072C404 /* BarChartPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPost.swift; sourceTree = "<group>"; };
 		0207BB842FD3736C0007F3D3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -212,15 +205,13 @@
 		022688B22628BCCC007DBD98 /* ThemeListViewController+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeListViewController+Interface.swift"; sourceTree = "<group>"; };
 		0226F19B259EAB93006E086C /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
 		0226F19D259EABB4006E086C /* PackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewController.swift; sourceTree = "<group>"; };
+		AB0000000000000000000501 /* PackListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+TableView.swift"; sourceTree = "<group>"; };
+		AB0000000000000000000503 /* PackListViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Actions.swift"; sourceTree = "<group>"; };
+		AB0000000000000000000505 /* PackListViewController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Appearance.swift"; sourceTree = "<group>"; };
 		0229864127BD9CBA0048F9E9 /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
 		0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNavigationController.swift; sourceTree = "<group>"; };
 		02385DFF2A634FAB0050FFDE /* ThemeListViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeListViewController+Navigation.swift"; sourceTree = "<group>"; };
 		02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkOpener.swift; sourceTree = "<group>"; };
-		023A2F792856493C00EE6CDE /* PackListViewController+AutoReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+AutoReorder.swift"; sourceTree = "<group>"; };
-		023A2F7B2856495800EE6CDE /* PackListViewController+ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+ConfigCell.swift"; sourceTree = "<group>"; };
-		023A2F7D2856497800EE6CDE /* PackListViewController+TVHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+TVHeader.swift"; sourceTree = "<group>"; };
-		023A2F7F285649B900EE6CDE /* PackListViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Loading.swift"; sourceTree = "<group>"; };
-		023A2F812856554600EE6CDE /* PackListViewController+CellSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+CellSwipe.swift"; sourceTree = "<group>"; };
 		023D2B932A48EC60006E2D35 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
 		023D2B962A4D085E006E2D35 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		023D2B982A4D0A5E006E2D35 /* OfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
@@ -233,7 +224,6 @@
 		0264B816264A7CE900E1EEFA /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
 		026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
 		026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnalyticsViewModel+Import.swift"; sourceTree = "<group>"; };
-		0274105726207D2000D82F6D /* PackListViewController+Instagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Instagram.swift"; sourceTree = "<group>"; };
 		0274DB2F26848948005F9C9C /* AnalyticsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCache.swift; sourceTree = "<group>"; };
 		0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBarDimensions.swift"; sourceTree = "<group>"; };
 		0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Seed.swift"; sourceTree = "<group>"; };
@@ -252,7 +242,6 @@
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
 		02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
-		02AEA58625B630B10063076F /* PackListViewController+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+NavBar.swift"; sourceTree = "<group>"; };
 		02B02AC42594238100586352 /* ThemeEditorViewController+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+Search.swift"; sourceTree = "<group>"; };
 		02B05C1727F8BFBF000026B8 /* TapTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTextView.swift; sourceTree = "<group>"; };
 		02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+PlaceHolder.swift"; sourceTree = "<group>"; };
@@ -262,7 +251,6 @@
 		02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartArrowsView.swift; sourceTree = "<group>"; };
 		02B0D7562A48CBB900EF1500 /* AnalyticsViewModel+PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnalyticsViewModel+PreviewData.swift"; sourceTree = "<group>"; };
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
-		02BC8D2F25FD7DC800441349 /* PackListViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Navigation.swift"; sourceTree = "<group>"; };
 		02BC8D582602B79900441349 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+KbNoHide.swift"; sourceTree = "<group>"; };
 		02CAC9B42591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+ImgPicker.swift"; sourceTree = "<group>"; };
@@ -632,16 +620,10 @@
 			isa = PBXGroup;
 			children = (
 				0226F19D259EABB4006E086C /* PackListViewController.swift */,
+				AB0000000000000000000501 /* PackListViewController+TableView.swift */,
+				AB0000000000000000000503 /* PackListViewController+Actions.swift */,
+				AB0000000000000000000505 /* PackListViewController+Appearance.swift */,
 				0226F19B259EAB93006E086C /* PackCell.swift */,
-				020584D6284D7B4E00020FB8 /* PackListViewController+Delegate.swift */,
-				02AEA58625B630B10063076F /* PackListViewController+NavBar.swift */,
-				023A2F812856554600EE6CDE /* PackListViewController+CellSwipe.swift */,
-				023A2F7F285649B900EE6CDE /* PackListViewController+Loading.swift */,
-				023A2F7D2856497800EE6CDE /* PackListViewController+TVHeader.swift */,
-				0274105726207D2000D82F6D /* PackListViewController+Instagram.swift */,
-				023A2F792856493C00EE6CDE /* PackListViewController+AutoReorder.swift */,
-				023A2F7B2856495800EE6CDE /* PackListViewController+ConfigCell.swift */,
-				02BC8D2F25FD7DC800441349 /* PackListViewController+Navigation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1028,15 +1010,15 @@
 				02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */,
 				02962685284BC2FD009B0F58 /* ThemeListViewController+Delegate.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */,
-				020584D7284D7B4E00020FB8 /* PackListViewController+Delegate.swift in Sources */,
+				AB0000000000000000000502 /* PackListViewController+TableView.swift in Sources */,
+				AB0000000000000000000504 /* PackListViewController+Actions.swift in Sources */,
+				AB0000000000000000000506 /* PackListViewController+Appearance.swift in Sources */,
 				02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */,
 				02998A662B44104800B70516 /* Circles.swift in Sources */,
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
-				023A2F822856554600EE6CDE /* PackListViewController+CellSwipe.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */,
 				0216110E25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift in Sources */,
 				02B05C232809CD76000026B8 /* SearchableTextView.swift in Sources */,
-				023A2F7A2856493C00EE6CDE /* PackListViewController+AutoReorder.swift in Sources */,
 				02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */,
 				023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */,
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,
@@ -1054,7 +1036,6 @@
 				0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */,
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
 				0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */,
-				023A2F7C2856495800EE6CDE /* PackListViewController+ConfigCell.swift in Sources */,
 				021EB84D288C1EB000463B42 /* ThemeListViewController+Operations.swift in Sources */,
 				02998A642B43735F00B70516 /* SmartGViewModel+Import.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
@@ -1075,7 +1056,6 @@
 				02CAC9B52591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift in Sources */,
 				02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */,
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,
-				023A2F80285649B900EE6CDE /* PackListViewController+Loading.swift in Sources */,
 				0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */,
@@ -1087,8 +1067,6 @@
 				0207BBB62FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift in Sources */,
 				020584D3284D6FFC00020FB8 /* UITextView+KbToolBar.swift in Sources */,
 				0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */,
-				02BC8D3025FD7DC800441349 /* PackListViewController+Navigation.swift in Sources */,
-				023A2F7E2856497800EE6CDE /* PackListViewController+TVHeader.swift in Sources */,
 				02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */,
 				02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */,
 				02491C692680883800F98E17 /* UIColors+AppColors.swift in Sources */,
@@ -1133,8 +1111,6 @@
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
 				0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */,
 				02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */,
-				02AEA58725B630B10063076F /* PackListViewController+NavBar.swift in Sources */,
-				0274105826207D2100D82F6D /* PackListViewController+Instagram.swift in Sources */,
 				022688B32628BCCC007DBD98 /* ThemeListViewController+Interface.swift in Sources */,
 				02A423552842C1D000A25067 /* ThemeEditorViewController+Navigation.swift in Sources */,
 				0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */,
