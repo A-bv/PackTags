@@ -5,6 +5,7 @@ import InstagramGraph
 @MainActor
 final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
     private let gateway: any ConnectedInsightsGatewayProtocol
+    private lazy var smartTagsPersistence = PersistenceController(modelName: "SmartTags")
 
     init(gateway: (any ConnectedInsightsGatewayProtocol)? = nil) {
         self.gateway = gateway ?? ConnectedInsightsGateway()
@@ -38,7 +39,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         case .analytics:
             vc = UIHostingController(rootView: AnalyticsNew(gateway: gateway))
         case .smartG:
-            vc = UIHostingController(rootView: SmartGViewContainer(gateway: gateway))
+            vc = UIHostingController(rootView: SmartGViewContainer(gateway: gateway, context: smartTagsPersistence.viewContext))
         default:
             return
         }

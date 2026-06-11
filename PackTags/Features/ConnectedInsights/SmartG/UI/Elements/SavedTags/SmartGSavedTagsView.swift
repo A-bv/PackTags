@@ -119,36 +119,35 @@ struct SmartGSavedTagsView: View {
 }
 
 struct SmartGSavedTagsView_Previews: PreviewProvider {
-    static var dataController: DataController = {
-        let controller = DataController()
-        let context = controller.persistantContainer.viewContext
-        
+    static var persistence: PersistenceController = {
+        let persistence = PersistenceController(modelName: "SmartTags", inMemory: true)
+        let context = persistence.viewContext
+
         let hashtagTitles = [
             "Example Hashtag 1",
             "Example Hashtag 2",
             "Example Hashtag 3"
         ]
-        let hashtags = hashtagTitles.map { title -> Hashtag in
+        for title in hashtagTitles {
             let hashtag = Hashtag(context: context)
             hashtag.title = title
             hashtag.addDate = Date()
-            return hashtag
         }
-        
-        return controller
+
+        return persistence
     }()
-    
+
     static var previews: some View {
         Group {
             SmartGSavedTagsView(isPresented: .constant(true))
                 .previewDisplayName("Hashtags Preview")
-                .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
-                .preferredColorScheme(.light) // Preview in light mode
+                .environment(\.managedObjectContext, persistence.viewContext)
+                .preferredColorScheme(.light)
 
             SmartGSavedTagsView(isPresented: .constant(true))
                 .previewDisplayName("Hashtags Preview")
-                .environment(\.managedObjectContext, dataController.persistantContainer.viewContext)
-                .preferredColorScheme(.dark) // Preview in dark mode
+                .environment(\.managedObjectContext, persistence.viewContext)
+                .preferredColorScheme(.dark)
         }
     }
 }

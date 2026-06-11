@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import FBSDKCoreKit
 
 @UIApplicationMain
@@ -55,8 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             name: "Default Configuration",
             sessionRole: connectingSceneSession.role)
     }
-
-    lazy var dataController = DataController()
 
     // MARK: - Core Data data visualisation
     func coredatavisu(){ // custom func

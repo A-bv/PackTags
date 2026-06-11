@@ -142,7 +142,6 @@
 		02FD6CB026D8006400AB16E4 /* UIVC+RateAndReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CAF26D8006400AB16E4 /* UIVC+RateAndReview.swift */; };
 		02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CB126D8008400AB16E4 /* StoreKitHelper.swift */; };
 		02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */; };
-		02FDEDCF2903062400B9BCFD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDEDCE2903062400B9BCFD /* DataController.swift */; };
 		02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9EC928DF5BF000193A15 /* FacebookCore */; };
 		02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9ECB28DF5BF000193A15 /* FacebookLogin */; };
 		02FEF5B7263304EC0001B525 /* UIVC+SendMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5B6263304EC0001B525 /* UIVC+SendMail.swift */; };
@@ -296,7 +295,6 @@
 		02FD6CAF26D8006400AB16E4 /* UIVC+RateAndReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+RateAndReview.swift"; sourceTree = "<group>"; };
 		02FD6CB126D8008400AB16E4 /* StoreKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitHelper.swift; sourceTree = "<group>"; };
 		02FDEDCC290304E200B9BCFD /* SmartTags.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartTags.xcdatamodel; sourceTree = "<group>"; };
-		02FDEDCE2903062400B9BCFD /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		02FEF5B6263304EC0001B525 /* UIVC+SendMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+SendMail.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -772,7 +770,6 @@
 			isa = PBXGroup;
 			children = (
 				02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */,
-				02FDEDCE2903062400B9BCFD /* DataController.swift */,
 			);
 			name = SmartG;
 			sourceTree = "<group>";
@@ -1155,7 +1152,6 @@
 				02AD94A929A5936500D893E5 /* UIVC+ModalViewButtons.swift.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				02385E002A634FAB0050FFDE /* ThemeTableViewController+Navigation.swift in Sources */,
-				02FDEDCF2903062400B9BCFD /* DataController.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
 				0229863C27BD6DF60048F9E9 /* ImageLoader.swift in Sources */,
 				02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */,
