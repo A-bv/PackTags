@@ -44,7 +44,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
             ) as? SettingsSwitchCell else {
                 return UITableViewCell()
             }
-            cell.name = model.title
+            cell.storageKey = model.storageKey
             cell.configure(with: model)
             
             cell.backgroundColor = UIColor.systemBackground

@@ -22,7 +22,7 @@ enum SettingsOptionType {
 
 struct SettingsSwitchOption {
     let title: String
-    //let id: String
+    let storageKey: String
     let icon: UIImage?
     let iconBackgroundColor: UIColor
     let handler: (() -> Void)
@@ -153,12 +153,14 @@ class SettingsVC: UIViewController {
                     .switchCell(
                         model: SettingsSwitchOption(
                             title: Strings.settingsTitleSaveAndShuffle,
+                            storageKey: SettingsKey.saveAndShuffle,
                             icon: icon,
                             iconBackgroundColor: .systemYellow,
                             handler: {}, isOn: false)),
                     .switchCell(
                         model: SettingsSwitchOption(
                             title: Strings.settingsTitleKeepPackOrder,
+                            storageKey: SettingsKey.keepPacksOrder,
                             icon: icon,
                             iconBackgroundColor: .systemRed,
                             handler: {}, isOn: false))]))

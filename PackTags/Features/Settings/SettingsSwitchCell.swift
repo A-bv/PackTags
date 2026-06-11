@@ -21,7 +21,7 @@ class SettingsSwitchCell: UITableViewCell {
         static let sizeOffset: CGFloat = 12
     }
     
-    var name: String?
+    var storageKey: String?
     
     private let iconContainer: UIView = {
         let view = UIView()
@@ -107,14 +107,14 @@ class SettingsSwitchCell: UITableViewCell {
         iconContainer.backgroundColor = model.iconBackgroundColor
         mySwitch.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
         
-        if let name = name {
-            mySwitch.isOn = UserDefaults.standard.bool(forKey: name)
+        if let storageKey {
+            mySwitch.isOn = UserDefaults.standard.bool(forKey: storageKey)
         }
     }
     
     @objc private func valueChanged(sender: UISwitch) {
-        if let name = name {
-            UserDefaults.standard.set(sender.isOn, forKey: name)
+        if let storageKey {
+            UserDefaults.standard.set(sender.isOn, forKey: storageKey)
         }
     }
 }
