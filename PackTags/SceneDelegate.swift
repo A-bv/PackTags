@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             sourceApplication: context.options.sourceApplication,
             annotation: context.options.annotation
         )
-        print("[ConnectedInsights][Login] Facebook openURL handled: \(handled)")
+        AppLogger.login.info("Facebook openURL handled: \(handled, privacy: .public)")
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

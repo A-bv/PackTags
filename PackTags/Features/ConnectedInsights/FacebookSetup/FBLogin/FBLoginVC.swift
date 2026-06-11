@@ -280,6 +280,6 @@ extension FBLoginVC {
     }
 
     private func logLogin(_ message: String) {
-        print("[ConnectedInsights][Login] \(message)")
+        AppLogger.login.info("\(message, privacy: .public)")
     }
 }

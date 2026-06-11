@@ -22,10 +22,10 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
     private func openFeature(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
         switch gateway.accessState() {
         case .ready:
-            print("[ConnectedInsights][Coordinator] Access ready; presenting \(destination).")
+            AppLogger.insights.info("Access ready; presenting \(String(describing: destination), privacy: .public).")
             presentFeature(destination, from: presenter)
         case .needsSetup(let error):
-            print("[ConnectedInsights][Coordinator] \(error.localizedDescription) Presenting setup flow for \(destination).")
+            AppLogger.insights.info("\(error.localizedDescription, privacy: .public) Presenting setup flow for \(String(describing: destination), privacy: .public).")
             presentSetupScreen(.setup, from: presenter) { [weak self] in
                 self?.presentFeature(destination, from: presenter)
             }
