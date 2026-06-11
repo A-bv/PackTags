@@ -17,8 +17,7 @@ final class PackListViewModel {
             packs = []
             return
         }
-        let numTagsPerPack = settings.tagsPerPack
-        packs = Unique.reorganizeTags(from: content, with: numTagsPerPack).components(separatedBy: "\n\n")
+        packs = TagPackFormatter.packs(from: content, tagsPerPack: settings.tagsPerPack)
     }
 
     func movePack(at index: Int) {
