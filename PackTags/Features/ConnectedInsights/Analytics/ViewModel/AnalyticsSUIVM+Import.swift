@@ -35,7 +35,7 @@ extension AnalyticsSUIViewModel {
                 let profileJson = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
                 load(profileJson: profileJson)
             } catch {
-                print("Error loading analytics profile: \(error)")
+                AppLogger.insights.error("Failed to load analytics profile: \(error.localizedDescription, privacy: .public)")
             }
         }
     }
@@ -60,7 +60,7 @@ extension AnalyticsSUIViewModel {
     
     private func fillGraphData() {
         guard let rates = processedJson?.rates, !rates.isEmpty else {
-            print("No rates available.")
+            AppLogger.insights.info("No engagement rates available.")
             return
         }
         

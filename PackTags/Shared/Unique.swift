@@ -58,7 +58,7 @@ final class Unique {
             existingTags = themeRepository.tagsAlreadyStored(tags: initialTags)
         }
         
-        print("Tags already in Core Data:", existingTags.count)
+        AppLogger.persistence.debug("Tags already stored: \(existingTags.count)")
         return initialTags.filter { !existingTags.contains($0) }
     }
 }

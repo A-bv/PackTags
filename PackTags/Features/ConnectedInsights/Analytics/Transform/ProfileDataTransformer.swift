@@ -79,7 +79,7 @@ extension DataTransformer.ProfileDataTransformer {
         var captions = [String?]()
     
         guard let numberOfMedias = profileResponse.media?.data.count else {
-            print("No media")
+            AppLogger.insights.info("Profile has no media to transform.")
             return nil
         }
         
@@ -99,7 +99,7 @@ extension DataTransformer.ProfileDataTransformer {
                 impressions.append(mediaImpressions)
                 reachArray.append(mediaReach)
             } else {
-                print("media has no insights")
+                AppLogger.insights.debug("Media item has no insights data.")
             }
 
             times.append(mediaData?.timestamp?.timeIntervalSince1970)

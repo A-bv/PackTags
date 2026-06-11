@@ -14,10 +14,6 @@ import InstagramGraph
 // MARK: - Class
 class FBLoginVC: UIViewController {
 
-    deinit {
-        print("deinit FBLoginVC")
-    }
-
     init(viewModel: FBLoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

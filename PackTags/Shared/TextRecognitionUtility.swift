@@ -41,7 +41,7 @@ final class TextRecognitionUtility {
         do {
             try handler.perform([request])
         } catch {
-            print("\(error)")
+            AppLogger.ui.error("Text recognition failed: \(error.localizedDescription, privacy: .public)")
         }
     }
 }

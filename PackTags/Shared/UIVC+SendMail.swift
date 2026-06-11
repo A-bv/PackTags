@@ -29,7 +29,7 @@ extension UIViewController {
 
             present(mail, animated: true)
         } else {
-            print("No Email associated with this device")
+            AppLogger.ui.info("No email account configured on this device.")
         }
     }
 }

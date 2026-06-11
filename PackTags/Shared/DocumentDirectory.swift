@@ -27,7 +27,7 @@ extension DocumentDirectory {
                 let jsonData = try Data(contentsOf: pathName)
                 return jsonData
             } catch {
-                print("getJsonDataFromDir error:", error)
+                AppLogger.persistence.error("Failed to read cached stats JSON: \(error.localizedDescription, privacy: .public)")
                 return nil
             }
         } else {
@@ -50,7 +50,7 @@ extension DocumentDirectory {
             do {
                 try jsonData.write(to: url)
             } catch {
-                print("saveJsonDataToDir error:", error.localizedDescription)
+                AppLogger.persistence.error("Failed to save stats JSON: \(error.localizedDescription, privacy: .public)")
             }
         }
     }

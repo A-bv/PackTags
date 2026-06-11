@@ -143,12 +143,6 @@ struct InteractionBarView_Previews: PreviewProvider {
 
 // MARK: - Functions
 extension InteractionBarView {
-    //AAA - Just a function to print out values
-    func printdd (value: Any) -> Bool {
-        print(value)
-        return true
-    }
-    
     func updateHashtag (entry: String) {
         if let index = hashtags.firstIndex(where: { $0.title == entry }) {
             moc.delete(hashtags[index])

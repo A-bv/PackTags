@@ -52,6 +52,6 @@ final class FBLoginViewModel {
         facebookSessionService.resetSession()
         gateway.reset()
         UserDefaults.standard.set(false, forKey: SettingsKey.pressedFBLoginButton)
-        print("[ConnectedInsights][Login] Facebook SDK session and connected insights setup were reset.")
+        AppLogger.login.info("Facebook SDK session and connected insights setup were reset.")
     }
 }

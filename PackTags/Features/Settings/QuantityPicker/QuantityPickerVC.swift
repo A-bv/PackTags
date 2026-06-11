@@ -9,10 +9,6 @@
 import UIKit
 
 class QuantityPickerVC: UIViewController {
-    deinit {
-        print("deinit QuantityPickerVC")
-    }
-    
     private enum Constants {
         static let pickerNumberOfComponents = 1
         static let row30 = 0

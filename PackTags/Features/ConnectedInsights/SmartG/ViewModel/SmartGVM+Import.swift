@@ -20,7 +20,7 @@ extension SmartGViewModel {
                 processSmartGModel()
                 onLoaded(false)
             } catch {
-                print("Error fetch: \(error)")
+                AppLogger.insights.error("Hashtag search failed: \(error.localizedDescription, privacy: .public)")
                 onLoaded(true)
             }
         }
