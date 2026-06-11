@@ -173,7 +173,7 @@ extension UIViewController {
     }
 }
 
-extension String {
+fileprivate extension String {
     /// Validation for the text-input alert above: 1-30 chars, letters,
     /// numbers, dots, underscores; no leading/trailing/consecutive dots.
     var isValidName: Bool {

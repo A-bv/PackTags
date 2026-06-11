@@ -61,7 +61,6 @@
 		0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* SmartGModel.swift */; };
 		0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */; };
 		02385E002A634FAB0050FFDE /* ThemeListViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* ThemeListViewController+Navigation.swift */; };
-		02385E032A63523B0050FFDE /* ThemeEditorViewController+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E022A63523B0050FFDE /* ThemeEditorViewController+Save.swift */; };
 		02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */; };
 		023A2F7A2856493C00EE6CDE /* PackListViewController+AutoReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F792856493C00EE6CDE /* PackListViewController+AutoReorder.swift */; };
 		023A2F7C2856495800EE6CDE /* PackListViewController+ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A2F7B2856495800EE6CDE /* PackListViewController+ConfigCell.swift */; };
@@ -216,7 +215,6 @@
 		0229864127BD9CBA0048F9E9 /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
 		0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNavigationController.swift; sourceTree = "<group>"; };
 		02385DFF2A634FAB0050FFDE /* ThemeListViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeListViewController+Navigation.swift"; sourceTree = "<group>"; };
-		02385E022A63523B0050FFDE /* ThemeEditorViewController+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+Save.swift"; sourceTree = "<group>"; };
 		02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkOpener.swift; sourceTree = "<group>"; };
 		023A2F792856493C00EE6CDE /* PackListViewController+AutoReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+AutoReorder.swift"; sourceTree = "<group>"; };
 		023A2F7B2856495800EE6CDE /* PackListViewController+ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+ConfigCell.swift"; sourceTree = "<group>"; };
@@ -376,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
+				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
 				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
 				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
 			);
@@ -588,8 +587,6 @@
 			isa = PBXGroup;
 			children = (
 				02AEA5EA25B9D2F10063076F /* View */,
-				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
-				022688922624F9B1007DBD98 /* ThemeCell.swift */,
 				0207BBAC2FD564080007F3D3 /* ViewModel */,
 			);
 			path = ThemeList;
@@ -598,7 +595,6 @@
 		02A4235C2844007200A25067 /* PackList */ = {
 			isa = PBXGroup;
 			children = (
-				0226F19B259EAB93006E086C /* PackCell.swift */,
 				02AEA5E725B9D2B00063076F /* View */,
 				0207BBAF2FD564090007F3D3 /* ViewModel */,
 			);
@@ -636,6 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				0226F19D259EABB4006E086C /* PackListViewController.swift */,
+				0226F19B259EAB93006E086C /* PackCell.swift */,
 				020584D6284D7B4E00020FB8 /* PackListViewController+Delegate.swift */,
 				02AEA58625B630B10063076F /* PackListViewController+NavBar.swift */,
 				023A2F812856554600EE6CDE /* PackListViewController+CellSwipe.swift */,
@@ -653,6 +650,7 @@
 			isa = PBXGroup;
 			children = (
 				02FB552E24FFA78B00174E34 /* ThemeListViewController.swift */,
+				022688922624F9B1007DBD98 /* ThemeCell.swift */,
 				022688B22628BCCC007DBD98 /* ThemeListViewController+Interface.swift */,
 				021EB84C288C1EB000463B42 /* ThemeListViewController+Operations.swift */,
 				02962684284BC2FD009B0F58 /* ThemeListViewController+Delegate.swift */,
@@ -698,7 +696,6 @@
 				0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */,
 				02B02AC42594238100586352 /* ThemeEditorViewController+Search.swift */,
 				02B05C222809CD76000026B8 /* SearchableTextView.swift */,
-				02385E022A63523B0050FFDE /* ThemeEditorViewController+Save.swift */,
 				AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */,
 				02A423542842C1D000A25067 /* ThemeEditorViewController+Navigation.swift */,
 			);
@@ -1051,7 +1048,6 @@
 				029122842B8AAF56007EB7ED /* SmartGErrorStateView.swift in Sources */,
 				02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */,
 				02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */,
-				02385E032A63523B0050FFDE /* ThemeEditorViewController+Save.swift in Sources */,
 				02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */,
 				0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */,
 				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
