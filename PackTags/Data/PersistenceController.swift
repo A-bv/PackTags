@@ -1,6 +1,21 @@
 import CoreData
 
 final class PersistenceController {
+    /// Managed object models must be loaded once per process — a second load of
+    /// the same model registers duplicate NSEntityDescriptions for the same
+    /// NSManagedObject subclasses and breaks entity resolution (notably when
+    /// tests create many short-lived containers).
+    private static let sharedModels: [String: NSManagedObjectModel] = {
+        var models: [String: NSManagedObjectModel] = [:]
+        for name in ["PackTags", "SmartTags"] {
+            if let url = Bundle.main.url(forResource: name, withExtension: "momd"),
+               let model = NSManagedObjectModel(contentsOf: url) {
+                models[name] = model
+            }
+        }
+        return models
+    }()
+
     let container: NSPersistentContainer
 
     var viewContext: NSManagedObjectContext { container.viewContext }
@@ -8,7 +23,11 @@ final class PersistenceController {
     private(set) var loadError: Error?
 
     init(modelName: String = "PackTags", inMemory: Bool = false) {
-        container = NSPersistentContainer(name: modelName)
+        if let model = Self.sharedModels[modelName] {
+            container = NSPersistentContainer(name: modelName, managedObjectModel: model)
+        } else {
+            container = NSPersistentContainer(name: modelName)
+        }
 
         if inMemory, let description = container.persistentStoreDescriptions.first {
             description.url = URL(fileURLWithPath: "/dev/null")

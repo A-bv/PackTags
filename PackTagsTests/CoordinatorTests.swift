@@ -52,12 +52,8 @@ private final class FakeThemeRepository: ThemeRepositoryProtocol {
 // MARK: - Helpers
 
 private func makeTheme() -> ThemeCD {
-    let desc = NSPersistentStoreDescription()
-    desc.type = NSInMemoryStoreType
-    let container = NSPersistentContainer(name: "PackTags")
-    container.persistentStoreDescriptions = [desc]
-    container.loadPersistentStores { _, _ in }
-    return ThemeCD(context: container.viewContext)
+    let persistence = PersistenceController(inMemory: true)
+    return ThemeCD(context: persistence.viewContext)
 }
 
 @MainActor
