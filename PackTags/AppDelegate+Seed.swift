@@ -1,5 +1,5 @@
 //
-//  AppDelegate+Extra.swift
+//  AppDelegate+Seed.swift
 //  PackTags
 //
 //  Created by Alexandre Bevilacqua on 09.07.22.
@@ -9,48 +9,29 @@
 import Foundation
 
 extension AppDelegate {
+    /// Copies the bundled sample database into Application Support so first-time
+    /// users start with example themes. Must run before the Core Data store loads.
     func seedData() {
-        let fm = FileManager.default
-        
-        //Destination URL of application folder
-        let libURL = fm.urls(for: .libraryDirectory, in: .userDomainMask).first!
-        let destFolder = libURL.appendingPathComponent("Application Support").path
-        //Or
-        //let l1 = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).last!
-        //
-        
-        //Start URL of Testt
-        let folderPath = Bundle.main.resourceURL!.appendingPathComponent("SeedData").path
-        
         let fileManager = FileManager.default
-            let urls = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-            if let applicationSupportURL = urls.last {
-                do{
-                    try fileManager.createDirectory(at: applicationSupportURL, withIntermediateDirectories: true, attributes: nil)
-                }
-                catch{
-                    print(error)
-                }
-            }
-        copyFiles(pathFromBundle: folderPath, pathDestDocs: destFolder)
-    }
-  
 
-    func copyFiles(pathFromBundle : String, pathDestDocs: String) {
-        let fm = FileManager.default
+        guard let seedFolderURL = Bundle.main.resourceURL?.appendingPathComponent("SeedData"),
+              let applicationSupportURL = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
+            AppLogger.lifecycle.error("Seed data source or destination unavailable.")
+            return
+        }
+
         do {
-            let filelist = try fm.contentsOfDirectory(atPath: pathFromBundle)
-            let fileDestList = try fm.contentsOfDirectory(atPath: pathDestDocs)
+            try fileManager.createDirectory(at: applicationSupportURL, withIntermediateDirectories: true)
 
-            for filename in fileDestList {
-                try FileManager.default.removeItem(atPath: "\(pathDestDocs)/\(filename)")
+            for existingFile in try fileManager.contentsOfDirectory(at: applicationSupportURL, includingPropertiesForKeys: nil) {
+                try fileManager.removeItem(at: existingFile)
             }
-            
-            for filename in filelist {
-                try? fm.copyItem(atPath: "\(pathFromBundle)/\(filename)", toPath: "\(pathDestDocs)/\(filename)")
+
+            for seedFile in try fileManager.contentsOfDirectory(at: seedFolderURL, includingPropertiesForKeys: nil) {
+                try fileManager.copyItem(at: seedFile, to: applicationSupportURL.appendingPathComponent(seedFile.lastPathComponent))
             }
         } catch {
-            print("Error info: \(error)")
+            AppLogger.lifecycle.error("Failed to seed sample data: \(error.localizedDescription, privacy: .public)")
         }
     }
 }

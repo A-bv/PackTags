@@ -15,20 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //Launch screen visible for a second
-        Thread.sleep(forTimeInterval: 0.5)
-        
-        //Load samples
         if OnboardingManager.shared.isNewUser() { seedData() }
-        
+
         setupAppearance()
-        //coredatavisu()
-        
-        //Fb login
+
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        //Storekit (app review)
+
         StoreKitHelper.incrementNumberOftimesLaunched()
 
         return true
@@ -55,28 +47,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             sessionRole: connectingSceneSession.role)
     }
 
-    // MARK: - Core Data data visualisation
-    func coredatavisu(){ // custom func
-        let link = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).last!
-        print(
-            """
-            External device Core Data db:
-            go xcode>window>devices
-            select app>download
-            right click "show package" then content>application support
-            
-            iOS simulator Core Data db:
-            go Finder,
-            press "CMD+N",
-            press "CMD + Shift + G",
-            Paste: \(link)
-            
-            open .sqlite with 'DB browser for SQLite'
-            or press "CMD + shift + ." in the application support folder
-            to reveal external storage images
-            """
-        )
-    }
-
-    //Localize: https://www.youtube.com/watch?v=WSI_LS3Yq8I Change simulator language at 5:55
 }
