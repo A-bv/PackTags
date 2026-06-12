@@ -1,5 +1,4 @@
 import UIKit
-import SwiftUI
 
 // MARK: - Data source & delegate
 extension PackListViewController {
@@ -84,7 +83,7 @@ extension PackListViewController {
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
 
-        contextItem.backgroundColor = UIColor(Color("CustomBarColor").opacity(0.7))
+        contextItem.backgroundColor = customBarTint
         return swipeActions
     }
 }

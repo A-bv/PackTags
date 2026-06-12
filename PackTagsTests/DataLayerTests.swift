@@ -363,3 +363,43 @@ import CoreData
         #expect(openedURLs.count == 3)
     }
 }
+
+// MARK: - ThemeEditorViewModel
+
+@Suite struct ThemeEditorViewModelTests {
+
+    private final class FakeSettings: AppSettingsProtocol {
+        var hasSeenOnboarding = false
+        var tipsAlertShown = false
+        var tagsPerPack = 2
+        var saveAndShuffle = false
+        var keepPacksOrder = false
+        var openInstagramAfterCopy = false
+        var instagramUsername: String?
+    }
+
+    private func makeSUT(theme: ThemeCD? = nil) -> ThemeEditorViewModel {
+        let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
+        return ThemeEditorViewModel(theme: theme, repository: repository, settings: FakeSettings())
+    }
+
+    @Test func canSave_requiresATitle() {
+        let sut = makeSUT()
+        #expect(!sut.canSave)
+
+        sut.themeTitle = "Travel"
+        #expect(sut.canSave)
+    }
+
+    @Test func save_createsANewThemeWithSanitizedContent() {
+        let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
+        let sut = ThemeEditorViewModel(theme: nil, repository: repository, settings: FakeSettings())
+        sut.themeTitle = "Travel"
+
+        sut.save(rawText: "#sea #sea and some #sun", imageData: nil, thumbnailData: nil)
+
+        #expect(repository.count() == 1)
+        #expect(sut.theme?.name == "Travel")
+        #expect(sut.theme?.content == "#sea #sun")
+    }
+}

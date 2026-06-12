@@ -66,6 +66,11 @@ var customPurple: UIColor {
     return UIColor(named: "customPurple") ?? UIColor.systemPurple
 }
 
+/// Brand tint for navigation chrome and accessory actions.
+var customBarTint: UIColor {
+    (UIColor(named: "CustomBarColor") ?? customPurple).withAlphaComponent(0.7)
+}
+
 var welcomeScreenColor: UIColor {
     return UIColor(named: "Color-OnBoardBg" ) ?? bkgdColor
 }

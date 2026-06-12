@@ -20,7 +20,7 @@ class ThemeListViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBarAppearance()
+        applyThemedNavigationBarStyle()
         tableView.reloadData()
     }
 

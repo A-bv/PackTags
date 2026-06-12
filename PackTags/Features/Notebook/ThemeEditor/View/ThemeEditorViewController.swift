@@ -160,7 +160,8 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        self.view.endEditing(true)
+        super.viewWillDisappear(animated)
+        view.endEditing(true)
     }
 
     //MARK: - Layout
@@ -185,7 +186,7 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
 
     //MARK: - Setup
-    func updateSaveButtonState() { saveButton.isEnabled = !viewModel.themeTitle.isEmpty }
+    func updateSaveButtonState() { saveButton.isEnabled = viewModel.canSave }
 
     private func loadEntries() {
         guard viewModel.theme != nil else { return }
@@ -215,10 +216,15 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
 
     //MARK: - Save
+    private enum SaveConstants {
+        static let thumbnailSize = CGSize(width: 135.333, height: 135.333)
+        static let jpegQuality: CGFloat = 0.8
+    }
+
     @objc func save() {
-        let imageData = themeImageView?.jpegData(compressionQuality: 0.8)
-        let thumbnailData = themeImageView?.resized(to: CGSize(width: 135.333, height: 135.333))
-            .jpegData(compressionQuality: 0.8)
+        let imageData = themeImageView?.jpegData(compressionQuality: SaveConstants.jpegQuality)
+        let thumbnailData = themeImageView?.resized(to: SaveConstants.thumbnailSize)
+            .jpegData(compressionQuality: SaveConstants.jpegQuality)
         let isUpdatingExistingTheme = !viewModel.isNewTheme
         viewModel.save(rawText: themeTextView.text, imageData: imageData, thumbnailData: thumbnailData)
         let savedTheme = viewModel.theme

@@ -8,6 +8,7 @@ final class ThemeEditorViewModel {
     var themeTitle: String
     var numTagsPerPack: Int { settings.tagsPerPack }
     var isNewTheme: Bool { theme == nil }
+    var canSave: Bool { !themeTitle.isEmpty }
 
     init(theme: ThemeCD?, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
         self.theme = theme

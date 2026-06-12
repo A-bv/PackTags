@@ -47,12 +47,6 @@ extension ThemeListViewController {
         }
     }
     
-    func setupNavigationBarAppearance () {
-        self.setNavBarAppearance(color: bkgdColor)
-        self.navigationController?.navigationBar.putShadow()
-        self.navigationController?.navigationBar.tintColor = UIColor(Color("CustomBarColor").opacity(0.7)) //UITextView.appearance().tintColor
-    }
-    
     func addFloatingButton() {
         let button = FloatingButtonFactory.createFloatingButton(onView: self.view)
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
