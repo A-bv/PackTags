@@ -17,7 +17,7 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
 
     let getStartedBtn: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Get Started", for: .normal)
+        button.setTitle("Get Started".localized(), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
