@@ -40,61 +40,10 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
         target: self,
         action: #selector(cancel))
 
-    let toolBarSearch: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.searchBarStyle = .minimal
-        searchBar.placeholder = "Search ..."
-        searchBar.autocorrectionType = .no
-        searchBar.spellCheckingType = .no
-        searchBar.keyboardType = .twitter
-        searchBar.smartDashesType = .no
-        searchBar.smartQuotesType = .no
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        return searchBar
-    }()
-
-    let searchLockLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Lk"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    lazy var searchEditButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Edit", for: .normal)
-        button.addTarget(self, action: #selector(toolBarDown(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    lazy var searchDoneButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Done", for: .normal)
-        button.addTarget(self, action: #selector(searchBarOK(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    lazy var searchView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [toolBarSearch, searchLockLabel, searchEditButton, searchDoneButton])
-        stack.axis = .horizontal
-        stack.spacing = 2
-        stack.alignment = .center
-        stack.distribution = .fill
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-
-    let searchCountLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .footnote)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    let searchBar = TextSearchBar()
 
     private lazy var outerStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [searchView, themeTextView, searchCountLabel])
+        let stack = UIStackView(arrangedSubviews: [searchBar, themeTextView, searchBar.resultsLabel])
         stack.axis = .vertical
         stack.spacing = 8
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -119,13 +68,6 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
         return buttonMenu()
     }
 
-    var isSearchMode: Bool = false {
-        didSet {
-            // buttonMenuThemeOptions.isEnabled = !isSearchMode
-            // TODO: issue can't disable button in search mode
-        }
-    }
-
     //MARK: - Callbacks
     var onSave: ((ThemeCD?) -> Void)?
     var onCancel: (() -> Void)?
@@ -137,7 +79,6 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
         setupViewHierarchy()
         setupConstraints()
 
-        toolBarSearch.delegate = self
         navigationItem.leftBarButtonItem = cancelButton
         navigationController?.view.tintColor = UITextView.appearance().tintColor
 
@@ -149,7 +90,7 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
 
         loadProcessingSpinner()
 
-        initSearchToolbar() // Search toolbar
+        searchBar.attach(to: themeTextView)
 
         updateSaveButtonState() // Enable save button if title != empty
 
@@ -178,10 +119,6 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
             outerStack.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -8),
             outerStack.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8),
 
-            searchEditButton.heightAnchor.constraint(equalToConstant: 30),
-            searchEditButton.widthAnchor.constraint(equalTo: searchEditButton.heightAnchor),
-            searchDoneButton.heightAnchor.constraint(equalToConstant: 30),
-            searchDoneButton.widthAnchor.constraint(equalTo: searchDoneButton.heightAnchor),
         ])
     }
 
@@ -276,6 +213,21 @@ extension ThemeEditorViewController {
             dismiss(animated: true) { [weak self] in
                 self?.onCancel?()
             }
+        }
+    }
+}
+
+// MARK: - Pack highlight (PackList "Show" flow)
+extension ThemeEditorViewController {
+    private func isScreenLoadedFromShowButton() {
+        DispatchQueue.main.async { [self] in
+            guard let firstTag = packFromShow.components(separatedBy: " ").first
+            else { return }
+
+            themeTextView.scrollToSubstring(substring: firstTag + " ")
+
+            themeTextView.text = themeTextView.text + "\n" // Last for highlight
+            themeTextView.highlightColorsForSearchedWords(keyword: ["\(packFromShow)\n"])
         }
     }
 }

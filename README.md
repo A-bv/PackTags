@@ -50,7 +50,8 @@ PackTags/
 | TapTextView | ThemeEditor | `Notebook/ThemeEditor/Components/` | tap-to-multi-select hashtags with actions toolbar |
 | TextRecognitionUtility | ThemeEditor | 〃 | Vision OCR — import hashtags from a photo |
 | ImageTreatment | ThemeEditor | 〃 | UIImage resize / orientation for theme covers |
-| SearchableTextView | ThemeEditor | `Notebook/ThemeEditor/View/` | in-editor search + highlight (UIFindInteraction migration planned) |
+| TextSearchBar | app-wide | `DesignSystem/Components/TextSearch/` | drop-in UITextView search: highlight, scroll-to-match, count, edit lock (package candidate) |
+| FloatingButtonFactory | app-wide | `DesignSystem/Components/` | floating gradient action button |
 | Tag engine | app-wide | `Domain/` | hashtag parsing, cross-theme dedup, pack chunking |
 | LoadingView, OfflineView, ActivityIndicator | app-wide | `DesignSystem/Components/` | reusable view states |
 | Neumorphic styles, nav-bar/text-view helpers | app-wide | `DesignSystem/` | the app's visual language |
@@ -109,11 +110,11 @@ xcodebuild -project PackTags.xcodeproj -scheme PackTags \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-48 tests in 9 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the SmartG caption-alignment case, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair.
+56 tests in 11 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the SmartG caption-alignment case, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair.
 
 ## Known tradeoffs / roadmap
 
-- The in-editor search/highlight engine is scheduled for replacement by iOS 16's native `UIFindInteraction`.
+- `TextSearchBar`'s internals are scheduled to move to iOS 16's native `UIFindInteraction` with a keyboard-accessory search field; the component API stays.
 - `UIImagePickerController` (photo-library mode) is deprecated in favor of `PHPickerViewController`.
 - Crash reporting is not yet integrated (vendor decision pending).
 - The analytics refresh throttle is set low pending a product decision.

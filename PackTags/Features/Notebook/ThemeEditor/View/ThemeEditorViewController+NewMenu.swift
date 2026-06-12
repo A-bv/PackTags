@@ -42,8 +42,7 @@ extension ThemeEditorViewController{
             title: Strings.searchHashtags,
             image: UIImage(systemName: "magnifyingglass")
         ) { [weak vc = self] action in
-            vc?.startToSearch()
-            vc?.isSearchMode = true
+            vc?.searchBar.beginSearch()
         }
         
         let shuffle = UIAction(

@@ -1,4 +1,5 @@
 import Testing
+import UIKit
 import CoreData
 @testable import PackTags
 
@@ -401,5 +402,28 @@ import CoreData
         #expect(repository.count() == 1)
         #expect(sut.theme?.name == "Travel")
         #expect(sut.theme?.content == "#sea #sun")
+    }
+}
+
+// MARK: - Text search engine
+
+@Suite @MainActor struct TextSearchEngineTests {
+
+    @Test func matchPositions_findEveryCaseInsensitiveOccurrence() {
+        let textView = UITextView()
+        textView.text = "#sun fun #SUN rerun"
+
+        let positions = textView.getEveryHighlightedWordPosition(word: "#sun")
+
+        #expect(positions.count == 2)
+        #expect(positions.first?.0 == 0)
+        #expect(positions.first?.1 == 4)
+    }
+
+    @Test func matchPositions_emptyWhenNothingMatches() {
+        let textView = UITextView()
+        textView.text = "#sea #beach"
+
+        #expect(textView.getEveryHighlightedWordPosition(word: "#sun").isEmpty)
     }
 }
