@@ -124,6 +124,7 @@
 		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
 		AB00000000000000000000D2 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000D1 /* DataLayerTests.swift */; };
+		AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000911 /* ConnectedInsightsTests.swift */; };
 		AB00000000000000000000E2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* AppSettings.swift */; };
 		AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F1 /* TagPackFormatter.swift */; };
 		AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F3 /* TagDeduplicator.swift */; };
@@ -268,6 +269,7 @@
 		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
 		AB00000000000000000000D1 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
+		AB0000000000000000000911 /* ConnectedInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsTests.swift; sourceTree = "<group>"; };
 		AB00000000000000000000E1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F1 /* TagPackFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPackFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F3 /* TagDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeduplicator.swift; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 				02FB552524FFA2AC00174E34 /* Info.plist */,
 				0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */,
 				AB00000000000000000000D1 /* DataLayerTests.swift */,
+				AB0000000000000000000911 /* ConnectedInsightsTests.swift */,
 				AB0000000000000000000101 /* DomainTests.swift */,
 			);
 			path = PackTagsTests;
@@ -1124,6 +1127,7 @@
 			files = (
 				0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */,
 				AB00000000000000000000D2 /* DataLayerTests.swift in Sources */,
+				AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */,
 				AB0000000000000000000102 /* DomainTests.swift in Sources */,
 				02FBAFE825A93E8400E32D73 /* PackTagsTests.swift in Sources */,
 			);
