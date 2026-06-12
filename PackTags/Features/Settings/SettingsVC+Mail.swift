@@ -10,7 +10,7 @@ private final class MailComposerHandler: NSObject, MFMailComposeViewControllerDe
     }
 }
 
-extension UIViewController {
+extension SettingsVC {
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()

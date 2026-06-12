@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIViewController {
+extension SettingsVC {
     private enum Strings {
         static let rateAndReviewYourFeedback = "Your feedback".localized()
         static let rateAndReviewEnjoyingQuestion = "Are you enjoying PackTags?".localized()

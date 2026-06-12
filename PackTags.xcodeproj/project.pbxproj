@@ -113,12 +113,12 @@
 		02FBAFE525A93C6100E32D73 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */; };
 		02FBAFE825A93E8400E32D73 /* PackTagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB552324FFA2AC00174E34 /* PackTagsTests.swift */; };
 		02FBAFF125A93EBD00E32D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551524FFA2AC00174E34 /* Assets.xcassets */; };
-		02FD6CB026D8006400AB16E4 /* UIViewController+RateAndReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CAF26D8006400AB16E4 /* UIViewController+RateAndReview.swift */; };
+		02FD6CB026D8006400AB16E4 /* SettingsVC+RateAndReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CAF26D8006400AB16E4 /* SettingsVC+RateAndReview.swift */; };
 		02FD6CB226D8008400AB16E4 /* ReviewPromptPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */; };
 		02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */; };
 		02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9EC928DF5BF000193A15 /* FacebookCore */; };
 		02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9ECB28DF5BF000193A15 /* FacebookLogin */; };
-		02FEF5B7263304EC0001B525 /* UIViewController+Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5B6263304EC0001B525 /* UIViewController+Mail.swift */; };
+		02FEF5B7263304EC0001B525 /* SettingsVC+Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5B6263304EC0001B525 /* SettingsVC+Mail.swift */; };
 		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
 		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
@@ -258,10 +258,10 @@
 		02FB552524FFA2AC00174E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02FB552E24FFA78B00174E34 /* ThemeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewController.swift; sourceTree = "<group>"; };
 		02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
-		02FD6CAF26D8006400AB16E4 /* UIViewController+RateAndReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+RateAndReview.swift"; sourceTree = "<group>"; };
+		02FD6CAF26D8006400AB16E4 /* SettingsVC+RateAndReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+RateAndReview.swift"; sourceTree = "<group>"; };
 		02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptPolicy.swift; sourceTree = "<group>"; };
 		02FDEDCC290304E200B9BCFD /* SmartTags.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartTags.xcdatamodel; sourceTree = "<group>"; };
-		02FEF5B6263304EC0001B525 /* UIViewController+Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Mail.swift"; sourceTree = "<group>"; };
+		02FEF5B6263304EC0001B525 /* SettingsVC+Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Mail.swift"; sourceTree = "<group>"; };
 		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
@@ -430,7 +430,6 @@
 				AB00000000000000000000A1 /* AppLogger.swift */,
 				021AFD5B278A1BE40008735E /* Alerts.swift */,
 				02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */,
-				02FEF5B6263304EC0001B525 /* UIViewController+Mail.swift */,
 				021EB81328846AD100463B42 /* Localizable.swift */,
 			);
 			path = Shared;
@@ -681,6 +680,8 @@
 				02BC8D582602B79900441349 /* SettingsVC.swift */,
 				AB0000000000000000000401 /* SettingsSections.swift */,
 				AB0000000000000000000403 /* SettingsVC+Alerts.swift */,
+				02FD6CAF26D8006400AB16E4 /* SettingsVC+RateAndReview.swift */,
+				02FEF5B6263304EC0001B525 /* SettingsVC+Mail.swift */,
 				02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */,
 				02FAE29E260A9BA900324724 /* SettingsCell.swift */,
 				02FAE2A4260AC79C00324724 /* SettingsSwitchCell.swift */,
@@ -748,7 +749,6 @@
 		02FD6CB326D8178800AB16E4 /* Rating */ = {
 			isa = PBXGroup;
 			children = (
-				02FD6CAF26D8006400AB16E4 /* UIViewController+RateAndReview.swift */,
 				02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */,
 			);
 			path = Rating;
@@ -1085,7 +1085,7 @@
 				02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */,
-				02FD6CB026D8006400AB16E4 /* UIViewController+RateAndReview.swift in Sources */,
+				02FD6CB026D8006400AB16E4 /* SettingsVC+RateAndReview.swift in Sources */,
 				021AFD5C278A1BE40008735E /* Alerts.swift in Sources */,
 				02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */,
 				02211DD22FD71B39002FDB14 /* UITableViewController+Extensions.swift in Sources */,
@@ -1098,7 +1098,7 @@
 				02FB552F24FFA78B00174E34 /* ThemeListViewController.swift in Sources */,
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
 				02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */,
-				02FEF5B7263304EC0001B525 /* UIViewController+Mail.swift in Sources */,
+				02FEF5B7263304EC0001B525 /* SettingsVC+Mail.swift in Sources */,
 				02AD94A929A5936500D893E5 /* UIViewController+ModalViewButtons.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				02385E002A634FAB0050FFDE /* ThemeListViewController+Actions.swift in Sources */,
