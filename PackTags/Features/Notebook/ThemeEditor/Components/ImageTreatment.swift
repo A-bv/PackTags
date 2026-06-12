@@ -39,20 +39,30 @@ extension UIImage {
 }
 
 // Add a filter
+private let vignetteContext = CIContext()
+
 extension UIImageView {
-    func putFilter ()
-    {
-        guard let img = self.image else { return }
-        let beginImage = CIImage(image: img)
-        let edgeDetectFilter = CIFilter(name: "CIVignetteEffect")!
-        edgeDetectFilter.setValue(beginImage, forKey: kCIInputImageKey)
-        edgeDetectFilter.setValue(0.12, forKey: "inputIntensity")
-        edgeDetectFilter.setValue(0.2, forKey: "inputRadius")
-    
-        guard let ciImage = edgeDetectFilter.outputImage else { return }
-                
-        let newImage = UIImage(ciImage: ciImage)
-        self.image = newImage
+    /// Applies the vignette and renders it once into a bitmap. A
+    /// CIImage-backed UIImage re-runs Core Image on every draw — with the
+    /// scroll-driven bounce resizing the view each frame, that meant a
+    /// full filter render per frame.
+    func putFilter() {
+        guard
+            let img = self.image,
+            let beginImage = CIImage(image: img),
+            let filter = CIFilter(name: "CIVignetteEffect")
+        else { return }
+
+        filter.setValue(beginImage, forKey: kCIInputImageKey)
+        filter.setValue(0.12, forKey: "inputIntensity")
+        filter.setValue(0.2, forKey: "inputRadius")
+
+        guard
+            let output = filter.outputImage,
+            let rendered = vignetteContext.createCGImage(output, from: beginImage.extent)
+        else { return }
+
+        self.image = UIImage(cgImage: rendered, scale: img.scale, orientation: img.imageOrientation)
     }
 }
 
