@@ -114,7 +114,7 @@ extension FBLoginVC {
 }
 
 // MARK: - UI
-extension FBLoginVC: LoginButtonDelegate {
+extension FBLoginVC: @preconcurrency LoginButtonDelegate {
     private func setupFBLoginVC () {
         self.view.applyBlur()
         chrome.addCloseButton()
@@ -215,13 +215,14 @@ extension FBLoginVC {
 
         logLogin("Valid Facebook access token from \(source); starting Graph setup validation.")
         setValidationInProgress(true)
-        viewModel.setupWithToken(token) { [weak self] result in
-            self?.setValidationInProgress(false)
-            switch result {
-            case .success:
-                self?.showSuccessfulSetupAlert()
-            case .failure(let error):
-                self?.showTroubleshootingAlert(detail: error.localizedDescription)
+        Task {
+            do {
+                try await viewModel.setup(with: token)
+                setValidationInProgress(false)
+                showSuccessfulSetupAlert()
+            } catch {
+                setValidationInProgress(false)
+                showTroubleshootingAlert(detail: error.localizedDescription)
             }
         }
     }

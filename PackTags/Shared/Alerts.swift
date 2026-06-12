@@ -2,6 +2,7 @@ import UIKit
 import SafariServices
 
 // MARK: - Alerts
+@MainActor
 final class Alerts {
     private enum Links {
         static let settingsTricksAndTipsUrl = "https://sites.google.com/view/packtags-tricks-tips/accueil"
@@ -66,9 +67,11 @@ final class Alerts {
                 object: textField,
                 queue: .main
             ) { _ in
-                let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-                let isValidName = placeholder.contains("Username") && title == "Instagram" && text.isValidName
-                saveAction.isEnabled = isValidName || !text.isEmpty
+                Task { @MainActor in
+                    let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                    let isValidName = placeholder.contains("Username") && title == "Instagram" && text.isValidName
+                    saveAction.isEnabled = isValidName || !text.isEmpty
+                }
             }
         }
     }

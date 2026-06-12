@@ -10,14 +10,12 @@ extension AnalyticsViewModel {
         load(profileJson: jsonOfficial)
     }
 
-    func getOnlineJsonAPIGraph() {
-        Task {
-            do {
-                let profileJson = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
-                load(profileJson: profileJson)
-            } catch {
-                AppLogger.insights.error("Failed to load analytics profile: \(error.localizedDescription, privacy: .public)")
-            }
+    func load() async {
+        do {
+            let profileJson = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
+            load(profileJson: profileJson)
+        } catch {
+            AppLogger.insights.error("Failed to load analytics profile: \(error.localizedDescription, privacy: .public)")
         }
     }
     

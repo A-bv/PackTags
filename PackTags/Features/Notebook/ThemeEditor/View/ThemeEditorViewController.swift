@@ -260,8 +260,8 @@ extension ThemeEditorViewController {
         imagePicker.present(from: self) { [weak self] image in
             guard let self else { return }
             self.spinner.startAnimating()
-            TextRecognitionUtility.recognizeText(image: image) { [weak self] text in
-                guard let self else { return }
+            Task {
+                let text = await TextRecognitionUtility.recognizeText(image: image)
                 if !text.isEmpty {
                     self.themeTextView.text = self.viewModel.contentByPrepending(
                         recognizedText: text,
@@ -318,7 +318,7 @@ extension ThemeEditorViewController {
 
 //MARK: - TapTextViewDelegate
 
-extension ThemeEditorViewController: TapTextViewDelegate {
+extension ThemeEditorViewController: @preconcurrency TapTextViewDelegate {
 
     func tapTextViewDidStartSelection(_ textView: TapTextView) {
         navigationController?.setToolbarHidden(false, animated: false)

@@ -179,15 +179,18 @@ extension PackListViewController {
 // MARK: - Instagram redirect
 extension PackListViewController {
     func goInsta(packIdx: Int) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.afterCopy) { [weak self] in
+        Task { [weak self] in
+            try? await Task.sleep(for: .seconds(Constants.afterCopy))
             guard let self else { return }
             let action = self.viewModel.postCopyAction()
 
-            if action.shouldMovePackToBottom {
-                self.copiedPacksToBottom(packIdx: packIdx)
-            }
             if let appURL = action.instagramAppURL, let webURL = action.instagramWebURL {
                 ExternalLinkOpener.openAppURL(appURL: appURL, webURL: webURL)
+            }
+            if action.shouldMovePackToBottom {
+                try? await Task.sleep(for: .seconds(Constants.afterReorder))
+                self.viewModel.movePack(at: packIdx)
+                self.tableView.reloadData()
             }
         }
     }
@@ -219,12 +222,4 @@ extension PackListViewController {
         }
     }
 
-    //If redirected to instagram after copy, move pack to bottom
-    private func copiedPacksToBottom(packIdx: Int) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.afterReorder) { [weak self] in
-            guard let self else { return }
-            self.viewModel.movePack(at: packIdx)
-            self.tableView.reloadData()
-        }
-    }
 }

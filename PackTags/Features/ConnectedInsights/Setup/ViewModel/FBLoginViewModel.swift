@@ -21,19 +21,11 @@ final class FBLoginViewModel {
         facebookSessionService.currentToken()
     }
 
-    func setupWithToken(_ token: FBToken, completion: @escaping (Result<Void, Error>) -> Void) {
+    func setup(with token: FBToken) async throws {
         guard let tokenString = token.tokenString else {
-            completion(.failure(ConnectedInsightsError.missingFacebookToken))
-            return
+            throw ConnectedInsightsError.missingFacebookToken
         }
-        Task {
-            do {
-                try await gateway.setup(facebookToken: tokenString)
-                completion(.success(()))
-            } catch {
-                completion(.failure(error))
-            }
-        }
+        try await gateway.setup(facebookToken: tokenString)
     }
 
     func markLoginButtonPressed() {

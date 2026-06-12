@@ -92,12 +92,10 @@ struct InteractionBarView: View {
         if searchedHashtag != newEntry {
             searchedHashtag = newEntry
             loading = true
-            smartGViewModel.fetch(
-                hashtag: searchedHashtag,
-                onLoaded: { state in
-                    isErrorState = state
-                    loading = false
-                })
+            Task {
+                isErrorState = await smartGViewModel.fetch(hashtag: searchedHashtag)
+                loading = false
+            }
             updateHashtag(entry: hashtagEntry)
         }
         showKeyBoard = false

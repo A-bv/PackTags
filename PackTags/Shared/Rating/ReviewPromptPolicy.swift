@@ -35,6 +35,7 @@ struct ReviewPromptPolicy {
     }
 
     /// Shows the StoreKit review sheet when the policy allows it.
+    @MainActor
     func promptIfEarned() {
         guard
             let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String,

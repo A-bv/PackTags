@@ -28,9 +28,12 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
     
     var onDismiss: (() -> Void)?
     var appSettings: (any AppSettingsProtocol)?
-    
-    deinit {
-        onDismiss?()
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if isBeingDismissed {
+            onDismiss?()
+        }
     }
 
     private enum Strings {
@@ -51,13 +54,13 @@ class OnBoardingController: UIViewController, UIScrollViewDelegate {
         static let imageViewCenterPositionYAdjustment = -CGFloat(50)
         static let subtitleHeight = CGFloat(50)
         static let scrollWidthPadding = CGFloat(64)
-        static let screenWidth = UIScreen.main.bounds.width
+        @MainActor static let screenWidth = UIScreen.main.bounds.width
         static let disableVerticalScrollOrBounceValue = CGFloat(1)
-        
+
         static let smallScreenWidthLimit = CGFloat(320)
-        static let adaptativeImageViewLenght = screenWidth <= smallScreenWidthLimit ? 200 : 300
-        static let fontSize1: CGFloat = screenWidth <= smallScreenWidthLimit ? 15.0 : 20.0
-        static let fontSize2: CGFloat = fontSize1 - 2
+        @MainActor static let adaptativeImageViewLenght = screenWidth <= smallScreenWidthLimit ? 200 : 300
+        @MainActor static let fontSize1: CGFloat = screenWidth <= smallScreenWidthLimit ? 15.0 : 20.0
+        @MainActor static let fontSize2: CGFloat = fontSize1 - 2
     }
 
     var titles = [

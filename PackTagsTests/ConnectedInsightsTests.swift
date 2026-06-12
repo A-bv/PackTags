@@ -177,27 +177,22 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         var pressedFBLoginButton = false
     }
 
-    @Test func setupWithToken_withoutATokenString_failsWithoutCallingTheGateway() async {
+    @Test func setup_withoutATokenString_failsWithoutCallingTheGateway() async {
         let gateway = FakeGateway()
         let sut = FBLoginViewModel(gateway: gateway, settings: FakeSettings(), facebookSessionService: FakeSession())
 
-        let result: Result<Void, Error> = await withCheckedContinuation { continuation in
-            sut.setupWithToken(FBToken(tokenString: nil)) { continuation.resume(returning: $0) }
+        await #expect(throws: (any Error).self) {
+            try await sut.setup(with: FBToken(tokenString: nil))
         }
-
-        guard case .failure = result else { Issue.record("Expected a failure"); return }
         #expect(gateway.setupTokens.isEmpty)
     }
 
-    @Test func setupWithToken_passesTheTokenToTheGateway() async {
+    @Test func setup_passesTheTokenToTheGateway() async throws {
         let gateway = FakeGateway()
         let sut = FBLoginViewModel(gateway: gateway, settings: FakeSettings(), facebookSessionService: FakeSession())
 
-        let result: Result<Void, Error> = await withCheckedContinuation { continuation in
-            sut.setupWithToken(FBToken(tokenString: "token-123")) { continuation.resume(returning: $0) }
-        }
+        try await sut.setup(with: FBToken(tokenString: "token-123"))
 
-        guard case .success = result else { Issue.record("Expected success"); return }
         #expect(gateway.setupTokens == ["token-123"])
     }
 

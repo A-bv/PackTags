@@ -51,6 +51,5 @@ final class AnalyticsViewModel: ObservableObject {
     //MARK: - Init
     init(gateway: any ConnectedInsightsGatewayProtocol) {
         self.gateway = gateway
-        self.getOnlineJsonAPIGraph()
     }
 }

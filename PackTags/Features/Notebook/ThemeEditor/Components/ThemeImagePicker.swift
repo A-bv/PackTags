@@ -5,6 +5,7 @@ import UIKit
 /// orientation normalized. Owns the `PHPickerViewController` delegate so
 /// the host controller doesn't have to. The picker runs out of process,
 /// so no photo-library permission is required.
+@MainActor
 final class ThemeImagePicker: NSObject {
 
     private var completion: ((UIImage) -> Void)?
@@ -33,10 +34,11 @@ extension ThemeImagePicker: PHPickerViewControllerDelegate {
             completion = nil
             return
         }
-        provider.loadObject(ofClass: UIImage.self) { [weak self] object, error in
-            DispatchQueue.main.async {
+        provider.loadObject(ofClass: UIImage.self) { object, error in
+            let image = object as? UIImage
+            Task { @MainActor [weak self] in
                 defer { self?.completion = nil }
-                guard let image = object as? UIImage else {
+                guard let image else {
                     AppLogger.ui.error("Photo picker failed to load the image: \(String(describing: error), privacy: .public).")
                     return
                 }

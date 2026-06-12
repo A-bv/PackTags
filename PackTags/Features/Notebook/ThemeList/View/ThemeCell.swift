@@ -1,6 +1,7 @@
 import UIKit
 
 /// Thumbnail edge length for theme covers; fixed per device class.
+@MainActor
 let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
 
 class ThemeCell: UITableViewCell {
@@ -12,7 +13,7 @@ class ThemeCell: UITableViewCell {
         static let subLabelFontSize = CGFloat(14)
         static let supportingViewCornerRadius = CGFloat(15)
         static let nameLabelFontSize = CGFloat(19)
-        static let thumbnailDimReducedBy10 = thumbnailDim - CGFloat(10)
+        @MainActor static let thumbnailDimReducedBy10 = thumbnailDim - CGFloat(10)
         static let padding20 = CGFloat(20)
         static let themeImageViewLeadingPadding = CGFloat(30)
         static let containerViewHeight = CGFloat(40)
@@ -82,10 +83,6 @@ class ThemeCell: UITableViewCell {
         setupUI()
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupUI()
-    }
 
     private func setupUI() {
         self.contentView.backgroundColor = bkgdColor

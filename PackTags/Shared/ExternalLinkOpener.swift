@@ -1,5 +1,6 @@
 import UIKit
 
+@MainActor
 final class ExternalLinkOpener {
     static func openAppURL(appURL: String, webURL: String) {
         let application = UIApplication.shared

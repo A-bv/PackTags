@@ -5,7 +5,8 @@ final class PersistenceController {
     /// the same model registers duplicate NSEntityDescriptions for the same
     /// NSManagedObject subclasses and breaks entity resolution (notably when
     /// tests create many short-lived containers).
-    private static let sharedModels: [String: NSManagedObjectModel] = {
+    /// Safe across threads: built once, then only ever read.
+    nonisolated(unsafe) private static let sharedModels: [String: NSManagedObjectModel] = {
         var models: [String: NSManagedObjectModel] = [:]
         for name in ["PackTags", "SmartTags"] {
             if let url = Bundle.main.url(forResource: name, withExtension: "momd"),

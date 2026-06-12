@@ -9,10 +9,10 @@ struct CirclesView: View {
         static let circleTitleToCirclePadding: CGFloat = 25
         static let circleTitleFontSize: CGFloat = 20
         static let circleLineWidth: CGFloat = 10
-        static let circleFrameWidthOut: CGFloat = (UIScreen.main.bounds.width - 150 + 20) / 2
-        static let circleFrameHeightOut: CGFloat = (UIScreen.main.bounds.width - 150 + 20) / 2
-        static let circleFrameWidthInner: CGFloat = (UIScreen.main.bounds.width - 150) / 2
-        static let circleFrameHeightInner: CGFloat = (UIScreen.main.bounds.width - 150) / 2
+        @MainActor static let circleFrameWidthOut: CGFloat = (UIScreen.main.bounds.width - 150 + 20) / 2
+        @MainActor static let circleFrameHeightOut: CGFloat = (UIScreen.main.bounds.width - 150 + 20) / 2
+        @MainActor static let circleFrameWidthInner: CGFloat = (UIScreen.main.bounds.width - 150) / 2
+        @MainActor static let circleFrameHeightInner: CGFloat = (UIScreen.main.bounds.width - 150) / 2
         static let circleTrimStart: CGFloat = 0
         static let circleTrimEnd: CGFloat = 1
         static let gradientStartColor = Color("Color4")

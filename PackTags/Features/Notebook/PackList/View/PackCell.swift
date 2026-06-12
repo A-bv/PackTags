@@ -107,11 +107,6 @@ class PackCell: UITableViewCell {
         super.init(coder: coder)
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupUI()
-    }
-
     private func setupUI() {
         self.contentView.backgroundColor = bkgdColor
 

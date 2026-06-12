@@ -52,14 +52,10 @@ struct SmartGView: View {
                 }
             }
         }
-        .onAppear {
+        .task {
             loading = true
-            smartGViewModel.fetch(
-                hashtag: Strings.defaultHashtagWithoutHash,
-                onLoaded: { state in
-                    isErrorState = state
-                    loading = false
-                })
+            isErrorState = await smartGViewModel.fetch(hashtag: Strings.defaultHashtagWithoutHash)
+            loading = false
         }
     }
     

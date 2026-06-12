@@ -2,7 +2,8 @@ import UIKit
 import MessageUI
 import WebKit
 
-private final class MailComposerHandler: NSObject, MFMailComposeViewControllerDelegate {
+@MainActor
+private final class MailComposerHandler: NSObject, @preconcurrency MFMailComposeViewControllerDelegate {
     static let shared = MailComposerHandler()
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

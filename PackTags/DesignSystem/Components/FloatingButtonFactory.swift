@@ -1,5 +1,6 @@
 import UIKit
 
+@MainActor
 class FloatingButtonFactory {
     static func createFloatingButton(onView view: UIView) -> UIButton {
         // Create the button

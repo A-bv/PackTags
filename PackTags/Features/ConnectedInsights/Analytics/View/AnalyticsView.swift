@@ -114,6 +114,9 @@ struct AnalyticsView : View {
                 }
             }
         }
+        .task {
+            await swiftUIData.load()
+        }
     }
 
     private func graphPadding(forWidth width: CGFloat) -> CGFloat {

@@ -3,11 +3,11 @@ import SwiftUI
 private enum Constants {
     static let numberOfTags = 10
     static let tagSpacing: CGFloat = 30
-    static let tagListWidth = UIScreen.main.bounds.width - 40
+    @MainActor static let tagListWidth = UIScreen.main.bounds.width - 40
     static let tagListHeight: CGFloat = 330
     static let tagListPadding: CGFloat = 20
     static let tagColor = Color("Color4").opacity(0.7)
-    static let screenWidth = UIScreen.main.bounds.width
+    @MainActor static let screenWidth = UIScreen.main.bounds.width
     static let tagPadding: CGFloat = 10
     static let tagCornerRadius: CGFloat = 10
 }
