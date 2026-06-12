@@ -70,7 +70,7 @@
 		02998A662B44104800B70516 /* Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A652B44104800B70516 /* Circles.swift */; };
 		02998A682B4611B100B70516 /* BarchartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A672B4611B000B70516 /* BarchartItemView.swift */; };
 		029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnBoardingVC.swift */; };
-		02AD94A929A5936500D893E5 /* UIViewController+ModalViewButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* UIViewController+ModalViewButtons.swift */; };
+		02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* ModalChrome.swift */; };
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
 		02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */; };
@@ -210,7 +210,7 @@
 		02998A652B44104800B70516 /* Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circles.swift; sourceTree = "<group>"; };
 		02998A672B4611B000B70516 /* BarchartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartItemView.swift; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
-		02AD94A829A5936500D893E5 /* UIViewController+ModalViewButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ModalViewButtons.swift"; sourceTree = "<group>"; };
+		02AD94A829A5936500D893E5 /* ModalChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalChrome.swift; sourceTree = "<group>"; };
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
 		02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
@@ -662,7 +662,6 @@
 		02FA308A2A11BC3F006A48CC /* ModalView */ = {
 			isa = PBXGroup;
 			children = (
-				02AD94A829A5936500D893E5 /* UIViewController+ModalViewButtons.swift */,
 			);
 			path = ModalView;
 			sourceTree = "<group>";
@@ -812,6 +811,7 @@
 			children = (
 				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
 				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
+				02AD94A829A5936500D893E5 /* ModalChrome.swift */,
 				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
 				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
 			);
@@ -1091,7 +1091,7 @@
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
 				02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* SettingsVC+Mail.swift in Sources */,
-				02AD94A929A5936500D893E5 /* UIViewController+ModalViewButtons.swift in Sources */,
+				02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				02385E002A634FAB0050FFDE /* ThemeListViewController+Actions.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,

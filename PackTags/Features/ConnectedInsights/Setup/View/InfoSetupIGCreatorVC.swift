@@ -1,6 +1,7 @@
 import UIKit
 
 class InfoSetupIGCreatorVC: UIViewController {
+    private lazy var chrome = ModalChrome(host: self)
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -103,8 +104,8 @@ class InfoSetupIGCreatorVC: UIViewController {
     private func setupUI() {
         view.backgroundColor = bkgdColor
         view.applyBlur()
-        placeHelpButtonForSetupIGProWeb()
-        placeTopRightButton(arrowButton: false)
+        chrome.addBusinessSetupHelpLink()
+        chrome.addCloseButton()
         setupCustomStackHTSProIG()
         setupInstagramButton()
     }

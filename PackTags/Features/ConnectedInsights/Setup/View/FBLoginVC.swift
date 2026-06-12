@@ -64,6 +64,8 @@ class FBLoginVC: UIViewController {
 
     private let setupSpinner = UIActivityIndicatorView(style: .large)
 
+    private lazy var chrome = ModalChrome(host: self)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         logLogin("FBLoginVC viewDidLoad.")
@@ -116,10 +118,10 @@ extension FBLoginVC {
 extension FBLoginVC: LoginButtonDelegate {
     private func setupFBLoginVC () {
         self.view.applyBlur()
-        self.placeTopRightButton(arrowButton: false)
-        self.placeHelpButtonForFBLoginSetup(
-            target: self,
-            action: #selector(showInfoSetupScreenFromHelpButton(_:)))
+        chrome.addCloseButton()
+        chrome.addFacebookSetupHelpButton { [weak self] in
+            self?.showSetupScreen()
+        }
         self.placeFBLogingButton()
         self.placeResetLoginButton()
         self.placeSetupSpinner()
@@ -265,10 +267,6 @@ extension FBLoginVC {
 
     private func showSetupScreen() {
         onShowSetupInfo?()
-    }
-
-    @objc private func showInfoSetupScreenFromHelpButton(_ sender: Any) {
-        showSetupScreen()
     }
 
     @objc private func didTapResetLoginButton(_ sender: Any) {
