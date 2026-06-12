@@ -1,4 +1,5 @@
 import UIKit
+import TapTagKit
 
 private enum Constants {
     static let contentInset: CGFloat = 8
@@ -29,6 +30,10 @@ final class ThemeEditorViewController: UIViewController {
 
     private let themeTextView: TapTextView = {
         let textView = TapTextView()
+        textView.configuration = .init(
+            toolbarInfoTitle: "Actions on selected hashtags".localized(),
+            toolbarInfoMessage: "tapTextViewToolBarDescriptionMessage".localized(),
+            selectButtonAccessibilityLabel: "Select hashtags".localized())
         textView.font = .preferredFont(forTextStyle: .body)
         textView.adjustsFontForContentSizeCategory = true
         textView.textColor = .label

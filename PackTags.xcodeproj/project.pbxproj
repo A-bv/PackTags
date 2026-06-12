@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0000000000000000001003 /* TapTagKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001002 /* TapTagKit */; };
 		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
 		020621572666DBCC0072C404 /* BarChartPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* BarChartPost.swift */; };
@@ -73,7 +74,6 @@
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
 		02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */; };
-		02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1727F8BFBF000026B8 /* TapTextView.swift */; };
 		02B05C1A27F90333000026B8 /* UITextView+PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */; };
 		02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */; };
 		02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarchartView.swift */; };
@@ -216,7 +216,6 @@
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
 		02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
-		02B05C1727F8BFBF000026B8 /* TapTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTextView.swift; sourceTree = "<group>"; };
 		02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+PlaceHolder.swift"; sourceTree = "<group>"; };
 		02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoCircleView.swift; sourceTree = "<group>"; };
 		02B0D74C2A48B73700EF1500 /* BarchartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartView.swift; sourceTree = "<group>"; };
@@ -293,6 +292,7 @@
 				02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */,
 				02211DD02FD7074D002FDB14 /* InstagramGraph in Frameworks */,
 				0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */,
+				AB0000000000000000001003 /* TapTagKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,7 +837,6 @@
 		AB0000000000000000000206 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				02B05C1727F8BFBF000026B8 /* TapTextView.swift */,
 				AB0000000000000000000907 /* KeyboardFindButton.swift */,
 				AB0000000000000000000909 /* ThemeImagePicker.swift */,
 				02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */,
@@ -903,6 +902,7 @@
 				02FE9ECB28DF5BF000193A15 /* FacebookLogin */,
 				0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */,
 				02211DCF2FD7074D002FDB14 /* InstagramGraph */,
+				AB0000000000000000001002 /* TapTagKit */,
 			);
 			productName = PackTags;
 			productReference = 02FB550624FFA2AA00174E34 /* PackTags.app */;
@@ -959,6 +959,7 @@
 			packageReferences = (
 				02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */,
+				AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */,
 			);
 			productRefGroup = 02FB550724FFA2AA00174E34 /* Products */;
 			projectDirPath = "";
@@ -1064,7 +1065,6 @@
 				0207BBB62FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift in Sources */,
 				0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */,
 				02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */,
-				02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */,
 				AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */,
 				AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */,
 				02491C692680883800F98E17 /* UIColors+AppColors.swift in Sources */,
@@ -1404,6 +1404,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/A-bv/TapTagKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/A-bv/InstagramGraph";
@@ -1441,6 +1449,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		AB0000000000000000001002 /* TapTagKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */;
+			productName = TapTagKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
