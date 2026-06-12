@@ -7,6 +7,7 @@ A hashtag notebook for Instagram creators, shipped on the App Store. Users organ
 - **iOS 16+**, **UIKit + SwiftUI hybrid** — the notebook is UIKit; the connected-insights features (SmartG hashtag generation, Analytics) are SwiftUI presented via `UIHostingController`
 - **Core Data** for persistence, **Swift Package Manager** for dependencies
 - [`InstagramGraph`](https://github.com/A-bv/InstagramGraph) — my own SPM package wrapping the Meta Graph API: it is this app's **remote data layer**, extracted so all networking lives outside the app target
+- [`TapTagKit`](https://github.com/A-bv/TapTagKit) — my own SPM package: tappable hashtag selection for any `UITextView`, extracted from the theme editor
 - `facebook-ios-sdk` for authentication
 - **Swift Testing** for the unit suite
 
@@ -41,13 +42,13 @@ PackTags/
 1. `Features/<X>/Components/` — feature-local machinery
 2. `DesignSystem/Components/` — app-wide generic UI
 3. `Shared/` — app-wide non-visual utilities
-4. SPM package — needed beyond the app (`InstagramGraph` earned it)
+4. SPM package — needed beyond the app (`InstagramGraph` and `TapTagKit` earned it)
 
 ## Component inventory
 
 | Component | Scope | Lives in | Does |
 |---|---|---|---|
-| TapTextView | ThemeEditor | `Notebook/ThemeEditor/Components/` | tap-to-multi-select hashtags with actions toolbar |
+| TapTextView | beyond the app | [`TapTagKit`](https://github.com/A-bv/TapTagKit) package | tap-to-multi-select hashtags with actions toolbar |
 | TextRecognitionUtility | ThemeEditor | 〃 | Vision OCR — import hashtags from a photo |
 | ImageTreatment | ThemeEditor | 〃 | UIImage resize / orientation for theme covers |
 | ThemeImagePicker | ThemeEditor | 〃 | photo-library picker that returns an orientation-normalized image |
@@ -110,7 +111,7 @@ xcodebuild -project PackTags.xcodeproj -scheme PackTags \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-70 tests in 13 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the analytics transformer, the SmartG hashtag ranking, the Facebook-login flow, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair.
+70 tests in 13 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the analytics transformer, the SmartG hashtag ranking, the Facebook-login flow, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair; `TapTagKit` carries 5 of its own.
 
 ## Known tradeoffs / roadmap
 
