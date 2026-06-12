@@ -222,13 +222,15 @@ extension ThemeEditorViewController {
 extension ThemeEditorViewController {
     private func isScreenLoadedFromShowButton() {
         DispatchQueue.main.async { [self] in
-            guard let firstTag = packFromShow.components(separatedBy: " ").first
-            else { return }
-
-            themeTextView.scrollToSubstring(substring: firstTag + " ")
-
             themeTextView.text = themeTextView.text + "\n" // Last for highlight
-            themeTextView.highlightColorsForSearchedWords(keyword: ["\(packFromShow)\n"])
+            guard let match = themeTextView.text.range(of: packFromShow + "\n") else { return }
+
+            let highlight = NSRange(match, in: themeTextView.text)
+            themeTextView.textStorage.addAttribute(
+                .backgroundColor,
+                value: UIColor.systemYellow.withAlphaComponent(0.5),
+                range: highlight)
+            themeTextView.scrollRangeToVisible(highlight)
         }
     }
 }
