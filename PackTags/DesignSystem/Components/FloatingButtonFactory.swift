@@ -12,15 +12,7 @@ class FloatingButtonFactory {
         gradientLayer.cornerRadius = 15
         gradientLayer.masksToBounds = true
         button.layer.addSublayer(gradientLayer)
-        
-        // Create and configure the blurred background view
-        let blur = UIVisualEffectView(
-            effect: UIBlurEffect(style: DarkMode.isDarkMode() ? .systemMaterialLight : .regular))
-        blur.frame = button.bounds
-        blur.isUserInteractionEnabled = false
-        //button.addSubview(blur)
-        
-        // Configure the button appearance
+
         button.layer.cornerRadius = 15
         button.layer.masksToBounds = true
         

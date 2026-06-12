@@ -3,10 +3,6 @@ import SwiftUI
 //MARK: - Analytics New Colors
 
 extension Color {
-    // blue for gradient
-    static let lightStart = Color(red: 60 / 255, green: 160 / 255, blue: 240 / 255)
-    static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
-    
     static let mphStart = Color("Color-BkgdGrad1")
     static let mphEnd = Color("Color-BkgdGrad2")
     
@@ -17,8 +13,6 @@ extension Color {
     
     // Fill background
     static let bgFillColor = Color(bkgdColor)
-    
-    static let chartFillColor = bgFillColor
     static let statsFillColor = bgFillColor
 }
 
@@ -36,9 +30,7 @@ var bkgdColor: UIColor {
 
 extension UIColor {
     static let morphicWhite = UIColor(red: 235/255, green: 235/255, blue: 250/255, alpha: 1)
-    static let shadowWhite = UIColor(red: 187/255, green: 190/255, blue: 205/255, alpha: 1)
     static let shadowDark1 = UIColor(red: 45/255, green: 45/255, blue: 45/255, alpha: 1)
-    static let darkMBkgdColor = UIColor.secondarySystemBackground
 }
 
 extension UIColor {
