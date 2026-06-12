@@ -300,7 +300,7 @@ extension ThemeEditorViewController {
             let highlight = NSRange(match, in: themeTextView.text)
             themeTextView.textStorage.addAttribute(
                 .backgroundColor,
-                value: UIColor.systemYellow.withAlphaComponent(0.5),
+                value: themeTextView.tintColor.withAlphaComponent(0.3),
                 range: highlight)
             themeTextView.scrollRangeToVisible(highlight)
         }
