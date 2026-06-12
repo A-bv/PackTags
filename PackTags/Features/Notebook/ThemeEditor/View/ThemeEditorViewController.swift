@@ -303,11 +303,16 @@ extension ThemeEditorViewController {
             self.themeTextView.text = self.themeTextView.text + "\n" // Last for highlight
             guard let match = self.themeTextView.text.range(of: pack + "\n") else { return }
 
+            // Assigning attributedText forces a clean relayout; mutating
+            // textStorage directly leaves TextKit 2 with stale fragments
+            // that render as ghost text.
             let highlight = NSRange(match, in: self.themeTextView.text)
-            self.themeTextView.textStorage.addAttribute(
+            let highlighted = NSMutableAttributedString(attributedString: self.themeTextView.attributedText)
+            highlighted.addAttribute(
                 .backgroundColor,
                 value: self.themeTextView.tintColor.withAlphaComponent(Constants.highlightAlpha),
                 range: highlight)
+            self.themeTextView.attributedText = highlighted
             self.themeTextView.scrollRangeToVisible(highlight)
         }
     }
