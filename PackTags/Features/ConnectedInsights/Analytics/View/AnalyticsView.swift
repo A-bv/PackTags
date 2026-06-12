@@ -161,7 +161,7 @@ extension AnalyticsView {
         impactMed.impactOccurred()
 
         swiftUIData.rawInsights.toggle()
-        swiftUIData.getJsonFromDir()
+        swiftUIData.refreshFromCurrentProfile()
     }
 
     private func switchInsightToRate() {
@@ -173,7 +173,7 @@ extension AnalyticsView {
             swiftUIData.mode = 0
         }
 
-        swiftUIData.getJsonFromDir()
+        swiftUIData.refreshFromCurrentProfile()
     }
 }
 

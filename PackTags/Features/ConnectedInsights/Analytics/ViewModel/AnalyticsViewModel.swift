@@ -2,15 +2,15 @@ import SwiftUI
 import Combine
 import InstagramGraph
 
+private enum Strings {
+    static let likes = "Likes".localized()
+    static let comments = "Comments".localized()
+    static let average = "Average".localized()
+    static let selection = "Selection".localized()
+}
+
 @MainActor
 final class AnalyticsViewModel: ObservableObject {
-    private enum Strings {
-        static let likes = "Likes".localized()
-        static let comments = "Comments".localized()
-        static let average = "Average".localized()
-        static let selection = "Selection".localized()
-    }
-
     let gateway: any ConnectedInsightsGatewayProtocol
 
     @Published var mode: Int = 0
@@ -55,26 +55,6 @@ final class AnalyticsViewModel: ObservableObject {
     //MARK: - Init
     init(gateway: any ConnectedInsightsGatewayProtocol) {
         self.gateway = gateway
-        self.loadDataForAnalyticsView()
-    }
-    
-    private func loadDataForAnalyticsView() {
-        canRefresh() == true ? getOnlineJsonAPIGraph() : getJsonFromDir()
-    }
-}
-
-extension AnalyticsViewModel {
-    private enum Constants {
-        static let minimumSecondsBetweenRefreshes: TimeInterval = 5
-    }
-
-    private func canRefresh() -> Bool {
-        let defaults = UserDefaults.standard
-        guard let lastRefresh = defaults.object(forKey: SettingsKey.lastStatsRefresh) as? Date else { return true }
-
-        guard lastRefresh + Constants.minimumSecondsBetweenRefreshes <= Date() else { return false }
-
-        defaults.set(Date(), forKey: SettingsKey.lastStatsRefresh)
-        return true
+        self.getOnlineJsonAPIGraph()
     }
 }

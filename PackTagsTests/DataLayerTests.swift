@@ -297,7 +297,6 @@ import CoreData
         #expect(SettingsKey.saveAndShuffle == "Save & Shuffle")
         #expect(SettingsKey.setupInfoShown == "setupInfoShown")
         #expect(SettingsKey.pressedFBLoginButton == "pressedFBLoginButton")
-        #expect(SettingsKey.lastStatsRefresh == "LastStatsRefresh")
         #expect(SettingsKey.quantityOfTagsPerPack == "QuantityOfTagsPerPack")
         #expect(SettingsKey.timesLaunched == "numberOfTimesLaunched")
         #expect(SettingsKey.lastVersionPromptedForReview == "lastVersion")

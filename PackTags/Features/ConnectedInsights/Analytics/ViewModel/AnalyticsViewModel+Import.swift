@@ -3,24 +3,13 @@ import InstagramGraph
 
 // Analytics
 extension AnalyticsViewModel {
-    // 1. local import (called when refreshing data without web)
-    func getJsonFromDir () {
-        DispatchQueue.main.async { [weak self] in
-            guard let jsonData = AnalyticsCache.getJsonDataFromDir() else { return } //data
-            let decoder = JSONDecoder()
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            decoder.dateDecodingStrategy = .formatted(formatter)
-            guard let profileJson = try? decoder.decode(Profile.self, from: jsonData) else { return }
-
-            DispatchQueue.main.async{ [weak self] in
-                self?.load(profileJson: profileJson)
-            }
-        }
+    /// Re-runs the transformation after the mode or raw/rate toggle changes,
+    /// using the profile already in memory — no network round trip.
+    func refreshFromCurrentProfile() {
+        guard let jsonOfficial else { return }
+        load(profileJson: jsonOfficial)
     }
 
-    // 2. Api import
     func getOnlineJsonAPIGraph() {
         Task {
             do {
@@ -50,15 +39,13 @@ extension AnalyticsViewModel {
         }
         
         let maxR = getMaxRate()
-        barChartData.removeAll()
-        
-        for i in 0 ... rates.count - 1 {
-            barChartData.append(
-                BarChartPost(
-                    id: i,
-                    post: "\(i+1)",
-                    rate: CGFloat(rates[i]!),
-                    barHeight:  ((rates[i]!) / maxR) * 50 + 5)) //80
+        barChartData = rates.enumerated().map { index, rate in
+            let rate = rate ?? 0
+            return BarChartPost(
+                id: index,
+                post: "\(index + 1)",
+                rate: rate,
+                barHeight: (rate / maxR) * 50 + 5)
         }
     }
     

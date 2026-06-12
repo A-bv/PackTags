@@ -56,7 +56,6 @@ PackTags/
 | Tag engine | app-wide | `Domain/` | hashtag parsing, cross-theme dedup, pack chunking |
 | LoadingView, OfflineView, ActivityIndicator | app-wide | `DesignSystem/Components/` | reusable view states |
 | Neumorphic styles, nav-bar/text-view helpers | app-wide | `DesignSystem/` | the app's visual language |
-| AnalyticsCache | ConnectedInsights | `ConnectedInsights/Support/` | JSON cache for offline analytics |
 
 ## Architecture
 
@@ -116,5 +115,4 @@ xcodebuild -project PackTags.xcodeproj -scheme PackTags \
 ## Known tradeoffs / roadmap
 
 - Crash reporting is not yet integrated (vendor decision pending).
-- The analytics refresh throttle is set low pending a product decision.
 - Swift 6 strict concurrency checking is the next modernization step.
