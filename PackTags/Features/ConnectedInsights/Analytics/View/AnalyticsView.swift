@@ -52,17 +52,16 @@ struct AnalyticsView : View {
         static let graphSectionHeaderTraillingPadding: CGFloat = 10
     }
     
-    @StateObject var swiftUIData: AnalyticsViewModel
+    @State var swiftUIData: AnalyticsViewModel
     @State private var showingAlert = false
-    @Environment(\.presentationMode) var presentationMode
-    @StateObject var monitor = NetworkMonitor()
+    @Environment(\.dismiss) private var dismiss
+    @State private var monitor = NetworkMonitor()
     @State var selectedBarChartPostId = 0
 
     var colors = [Color("Color1"),Color("Color")]
 
     init(gateway: any ConnectedInsightsGatewayProtocol) {
-        _swiftUIData = StateObject(
-            wrappedValue: AnalyticsViewModel(gateway: gateway))
+        _swiftUIData = State(initialValue: AnalyticsViewModel(gateway: gateway))
     }
 
     var columns = Array(
@@ -71,9 +70,7 @@ struct AnalyticsView : View {
                 .flexible(),
                 spacing: Constants.overviewSectionColumnsSpacing),
         count: Constants.overviewSectionColumnsCount)
-    
-    @State var loading = true
-    
+
     //Toggle button
     @State private var isToggled = false
     
@@ -91,7 +88,7 @@ struct AnalyticsView : View {
                     if !monitor.isConnected {
                         OfflineView()
                     } else if swiftUIData.jsonOfficial == nil {
-                        LoadingView(loading: $loading)
+                        LoadingView(loading: .constant(true))
                     } else {
                         if swiftUIData.processedJson?.isPrivateProfile == true {
                             Text(Strings.privateProfile)
@@ -106,7 +103,9 @@ struct AnalyticsView : View {
                             }
                         } else {
                             // Screen when data is available
-                            scrollView(graphPadding: graphPadding(forWidth: geometry.size.width))
+                            scrollView(
+                                graphPadding: graphPadding(forWidth: geometry.size.width),
+                                availableWidth: geometry.size.width)
                         }
                     }
 
@@ -179,7 +178,7 @@ extension AnalyticsView {
     var backButton: some View {
         Button(action: {
             swiftUIData.rawInsights = true
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }) {
             Image(systemName: "chevron.down.circle")
                 .font(Font.system(.title))
@@ -249,7 +248,7 @@ extension AnalyticsView {
 
 // Scrollview
 extension AnalyticsView {
-    func scrollView(graphPadding: CGFloat) -> some View {
+    func scrollView(graphPadding: CGFloat, availableWidth: CGFloat) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             //MARK: - Graph part
             VStack(
@@ -273,7 +272,8 @@ extension AnalyticsView {
                         CirclesView(
                             circles: $swiftUIData.circlesData,
                             isRate: !swiftUIData.rawInsights,
-                            columns: columns)
+                            columns: columns,
+                            availableWidth: availableWidth)
                         BarchartView(
                             selectedBarChartPostId: $selectedBarChartPostId,
                             selectedBarChartPostRateValue: $swiftUIData.circlesData[1].value,

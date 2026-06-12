@@ -1,29 +1,14 @@
 import SwiftUI
 import InstagramGraph
 
-private enum Strings {
-    static let defaultHashtag = ""
-    static let defaultHashtagWithoutHash = "travel"
-}
-
 struct SmartGView: View {
-    @StateObject var smartGViewModel: SmartGViewModel
-    
-    @State var hashtagEntry: String = Strings.defaultHashtag
-    @State var showingAlert = false
-    
-    @State var showingPopover = false
-    @State var loading = true
-    @State var isErrorState = false
-    
-    //Network Status
-    @StateObject var monitor = NetworkMonitor()
+    @State var smartGViewModel: SmartGViewModel
+    @State private var monitor = NetworkMonitor()
 
     init(gateway: any ConnectedInsightsGatewayProtocol) {
-        _smartGViewModel = StateObject(
-            wrappedValue: SmartGViewModel(gateway: gateway))
+        _smartGViewModel = State(initialValue: SmartGViewModel(gateway: gateway))
     }
-    
+
     var body: some View {
         ZStack{
             Color.bgFillColor.ignoresSafeArea()
@@ -32,11 +17,11 @@ struct SmartGView: View {
             } else {
                 VStack() {
                     SmartGHeader()
-                    interactionBar
+                    InteractionBarView(smartGViewModel: smartGViewModel)
                     Spacer()
-                    if loading {
-                        LoadingView(loading: $loading).opacity(0.8)
-                    } else if isErrorState {
+                    if smartGViewModel.loading {
+                        LoadingView(loading: .constant(true)).opacity(0.8)
+                    } else if smartGViewModel.isErrorState {
                         SmartGErrorStateView()
                     } else {
                         ScrollView{
@@ -53,20 +38,8 @@ struct SmartGView: View {
             }
         }
         .task {
-            loading = true
-            isErrorState = await smartGViewModel.fetch(hashtag: Strings.defaultHashtagWithoutHash)
-            loading = false
+            await smartGViewModel.loadDefaultFeed()
         }
-    }
-    
-    var interactionBar: some View {
-        InteractionBarView(
-            loading: $loading,
-            showingPopover: $showingPopover,
-            hashtagEntry: $hashtagEntry,
-            showingAlert: $showingAlert, 
-            isErrorState: $isErrorState,
-            smartGViewModel: smartGViewModel)
     }
 }
 

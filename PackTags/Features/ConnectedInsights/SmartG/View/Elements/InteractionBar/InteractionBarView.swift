@@ -1,24 +1,18 @@
 import SwiftUI
 
 struct InteractionBarView: View {
-    @Binding var loading: Bool
-    @Binding var showingPopover: Bool
-    @Binding var hashtagEntry: String
-    @Binding var showingAlert: Bool
-    @Binding var isErrorState: Bool
-    @State var searchedHashtag: String = ""
+    @Bindable var smartGViewModel: SmartGViewModel
 
     @Environment(\.managedObjectContext) var moc
     @FocusState private var showKeyBoard: Bool
 
     @FetchRequest(entity: Hashtag.entity(), sortDescriptors: [])
     var hashtags: FetchedResults<Hashtag>
-    
-    var smartGViewModel: SmartGViewModel
+
     private enum Constants {
         static let textFieldCornerRadius: CGFloat = 15
     }
-    
+
     private enum Strings {
         static let popoverTitle = "Top 10 hashtags copied!".localized()
         static let popoverMessage =
@@ -26,11 +20,11 @@ struct InteractionBarView: View {
         static let popoverDismissButton = "Ok"
         static let enterHashtagPlaceholder = "Enter a hashtag".localized()
     }
-    
+
     var textField: some View {
         HStack {
             Image(systemName: "number.square.fill")
-            TextField(Strings.enterHashtagPlaceholder, text: $hashtagEntry)
+            TextField(Strings.enterHashtagPlaceholder, text: $smartGViewModel.hashtagEntry)
                 .disableAutocorrection(true)
                 .focused($showKeyBoard)
                 .onSubmit {
@@ -43,26 +37,26 @@ struct InteractionBarView: View {
         .background(Color(UIColor.lightGray).opacity(0.5))
         .cornerRadius(Constants.textFieldCornerRadius)
     }
-    
+
     var body: some View {
         HStack {
             textField
-            
+
             Spacer()
             Spacer()
 
             Button {
                 let impactMed = UIImpactFeedbackGenerator(style: .soft)
                 impactMed.impactOccurred()
-                showingAlert = true
+                smartGViewModel.showingAlert = true
                 UIPasteboard.general.string = smartGViewModel.topHashtags.joined(separator: " ")
-                
+
             } label: {
                 Image(systemName: "paperplane.circle")
                     .foregroundColor(Color("Color4"))
             }
             .buttonStyle(ColorfulButtonStyle())
-            .alert(isPresented: $showingAlert) {
+            .alert(isPresented: $smartGViewModel.showingAlert) {
                 Alert(
                     title: Text(Strings.popoverTitle),
                     message: Text(Strings.popoverMessage),
@@ -72,46 +66,34 @@ struct InteractionBarView: View {
             Button {
                 let impactMed = UIImpactFeedbackGenerator(style: .soft)
                 impactMed.impactOccurred()
-                showingPopover = true
+                smartGViewModel.showingPopover = true
             } label: {
                 Image(systemName: "info.circle")
                     .foregroundColor(Color("Color4"))
             }
             .buttonStyle(ColorfulButtonStyle())
-            .popover(isPresented: $showingPopover) {
-                SmartGSavedTagsView(isPresented: $showingPopover)
+            .popover(isPresented: $smartGViewModel.showingPopover) {
+                SmartGSavedTagsView(isPresented: $smartGViewModel.showingPopover)
             }
         }
         .padding(.horizontal)
     }
-    
+
     private func refresh() {
-        let impactMed = UIImpactFeedbackGenerator(style: .soft)
-        impactMed.impactOccurred()
-        let newEntry = hashtagEntry.filter { $0 != "#" }
-        if searchedHashtag != newEntry {
-            searchedHashtag = newEntry
-            loading = true
-            Task {
-                isErrorState = await smartGViewModel.fetch(hashtag: searchedHashtag)
-                loading = false
-            }
-            updateHashtag(entry: hashtagEntry)
-        }
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+        let entry = smartGViewModel.hashtagEntry
         showKeyBoard = false
+        Task {
+            if await smartGViewModel.submitSearch() {
+                updateHashtag(entry: entry)
+            }
+        }
     }
 }
 
 struct InteractionBarView_Previews: PreviewProvider {
     static var previews: some View {
-        @FetchRequest(sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
-        
-        return InteractionBarView(
-            loading: .constant(false),
-            showingPopover: .constant(false),
-            hashtagEntry: .constant(""),
-            showingAlert: .constant(false),
-            isErrorState: .constant(false),
+        InteractionBarView(
             smartGViewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
         .padding()
     }
@@ -125,7 +107,7 @@ extension InteractionBarView {
         }
         saveHashtag(hastagTitle: entry)
     }
-    
+
     private func saveHashtag(hastagTitle: String) {
         let hashtag = Hashtag(context: moc)
         hashtag.id = UUID()

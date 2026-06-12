@@ -12,7 +12,7 @@ private enum Constants {
 }
 
 struct SmartGHeader: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: Constants.headerInterTitlesPadding) {
@@ -28,7 +28,7 @@ struct SmartGHeader: View {
             }
             Spacer()
             Button(action: {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             }) {
                 Image(systemName: "chevron.down.circle")
                     .font(Font.system(.title))

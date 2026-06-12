@@ -7,7 +7,7 @@ private enum Constants {
 }
 
 struct CollectionView: View {
-    @ObservedObject var viewModel: SmartGViewModel
+    let viewModel: SmartGViewModel
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {

@@ -4,15 +4,12 @@ struct CirclesView: View {
     @Binding var circles: [Circles]
     var isRate: Bool
     let columns: [GridItem]
-    
+    let availableWidth: CGFloat
+
     private enum Constants {
         static let circleTitleToCirclePadding: CGFloat = 25
         static let circleTitleFontSize: CGFloat = 20
         static let circleLineWidth: CGFloat = 10
-        @MainActor static let circleFrameWidthOut: CGFloat = (UIScreen.main.bounds.width - 150 + 20) / 2
-        @MainActor static let circleFrameHeightOut: CGFloat = (UIScreen.main.bounds.width - 150 + 20) / 2
-        @MainActor static let circleFrameWidthInner: CGFloat = (UIScreen.main.bounds.width - 150) / 2
-        @MainActor static let circleFrameHeightInner: CGFloat = (UIScreen.main.bounds.width - 150) / 2
         static let circleTrimStart: CGFloat = 0
         static let circleTrimEnd: CGFloat = 1
         static let gradientStartColor = Color("Color4")
@@ -20,6 +17,9 @@ struct CirclesView: View {
         static let valueRotationDegrees: Double = 90
         static let circleStartRotationDegrees: Double = -90
     }
+
+    private var outerDiameter: CGFloat { (availableWidth - 130) / 2 }
+    private var innerDiameter: CGFloat { (availableWidth - 150) / 2 }
     
     var body: some View {
         LazyVGrid(columns: columns) {
@@ -36,9 +36,7 @@ struct CirclesView: View {
                         Circle()
                             .trim(from: Constants.circleTrimStart, to: Constants.circleTrimEnd)
                             .stroke(Color.clear, lineWidth: Constants.circleLineWidth)
-                            .frame(
-                                width: Constants.circleFrameWidthOut,
-                                height: Constants.circleFrameHeightOut)
+                            .frame(width: outerDiameter, height: outerDiameter)
                             .background(
                                 Circle()
                                     .outerNeumorphism(Color.statsFillColor)
@@ -49,9 +47,7 @@ struct CirclesView: View {
                             .stroke(
                                 LinearGradient(Constants.gradientStartColor, Constants.gradientEndColor),
                                 style: StrokeStyle(lineWidth: Constants.circleLineWidth, lineCap: .round))
-                            .frame(
-                                width: Constants.circleFrameWidthInner,
-                                height: Constants.circleFrameHeightInner)
+                            .frame(width: innerDiameter, height: innerDiameter)
 
                         Text(
                             StringFormatter.formatValueToText(
@@ -83,7 +79,8 @@ struct CirclesView_Previews: PreviewProvider {
                 CirclesView(
                     circles: $circles,
                     isRate: true,
-                    columns: [gridItem])
+                    columns: [gridItem],
+                    availableWidth: 390)
             }
             .padding(50)
         }

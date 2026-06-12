@@ -10,16 +10,17 @@ private enum Strings {
 }
 
 @MainActor
-final class AnalyticsViewModel: ObservableObject {
-    let gateway: any ConnectedInsightsGatewayProtocol
+@Observable
+final class AnalyticsViewModel {
+    @ObservationIgnored let gateway: any ConnectedInsightsGatewayProtocol
 
-    @Published var mode: Int = 0
-    @Published var rawInsights: Bool = true
+    var mode: Int = 0
+    var rawInsights: Bool = true
 
     //MARK: - Live Variables
-    @Published var processedJson : TransformedProfileModel?
-    @Published var jsonOfficial : Profile? //Api Graph
-    @Published var overviewSectionData = [
+    var processedJson : TransformedProfileModel?
+    var jsonOfficial : Profile? //Api Graph
+    var overviewSectionData = [
         AnalyticsOverviewModel(
             id: 0,
             title: Strings.likes,
@@ -31,7 +32,7 @@ final class AnalyticsViewModel: ObservableObject {
             value: "0",
             image: Image(systemName: "text.bubble.fill"))]
     
-    @Published var circlesData = [
+    var circlesData = [
         Circles(
             id: 0,
             title: Strings.average,
@@ -46,7 +47,7 @@ final class AnalyticsViewModel: ObservableObject {
             color: .blue)
     ]
 
-    @Published var barChartData: [BarChartPost] = [BarChartPost(id: 0, post: "", rate: 0, barHeight: 0)]
+    var barChartData: [BarChartPost] = [BarChartPost(id: 0, post: "", rate: 0, barHeight: 0)]
     
     //MARK: - Init
     init(gateway: any ConnectedInsightsGatewayProtocol) {

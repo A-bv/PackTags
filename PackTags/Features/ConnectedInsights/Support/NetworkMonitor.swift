@@ -2,10 +2,11 @@ import Foundation
 import Network
 
 @MainActor
-final class NetworkMonitor: ObservableObject {
-    private let monitor = NWPathMonitor()
+@Observable
+final class NetworkMonitor {
+    @ObservationIgnored private let monitor = NWPathMonitor()
 
-    @Published var isConnected = true
+    var isConnected = true
 
     init() {
         monitor.pathUpdateHandler = { [weak self] path in

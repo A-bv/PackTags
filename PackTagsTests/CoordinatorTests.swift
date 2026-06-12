@@ -49,7 +49,7 @@ private final class FakeThemeRepository: ThemeRepositoryProtocol {
     private(set) var didSave = false
 
     func fetchAll() -> [ThemeCD] { [] }
-    func create() -> ThemeCD { makeTheme() }
+    func create() -> ThemeCD { MainActor.assumeIsolated { makeTheme() } }
     func save() { didSave = true }
     func delete(_ theme: ThemeCD) {}
     func count() -> Int32 { 0 }
@@ -60,8 +60,10 @@ private final class FakeThemeRepository: ThemeRepositoryProtocol {
 
 /// Kept alive for the whole suite: a theme whose context has deallocated
 /// reads all its properties back as nil.
+@MainActor
 private let themeFactoryPersistence = PersistenceController(inMemory: true)
 
+@MainActor
 private func makeTheme(named name: String? = nil) -> ThemeCD {
     let theme = ThemeCD(context: themeFactoryPersistence.viewContext)
     theme.name = name
