@@ -7,6 +7,7 @@ A hashtag notebook for Instagram creators, shipped on the App Store. Users organ
 - **iOS 16+**, **UIKit + SwiftUI hybrid** — the notebook is UIKit; the connected-insights features (SmartG hashtag generation, Analytics) are SwiftUI presented via `UIHostingController`
 - **Core Data** for persistence, **Swift Package Manager** for dependencies
 - [`InstagramGraph`](https://github.com/A-bv/InstagramGraph) — my own SPM package wrapping the Meta Graph API: it is this app's **remote data layer**, extracted so all networking lives outside the app target
+- [`TextSearchKit`](https://github.com/A-bv/TextSearchKit) — my own SPM package: drop-in search/highlight for any `UITextView` (iOS 13+), extracted from the theme editor
 - `facebook-ios-sdk` for authentication
 - **Swift Testing** for the unit suite
 
@@ -41,7 +42,7 @@ PackTags/
 1. `Features/<X>/Components/` — feature-local machinery
 2. `DesignSystem/Components/` — app-wide generic UI
 3. `Shared/` — app-wide non-visual utilities
-4. SPM package — needed beyond the app (`InstagramGraph` is the one that earned it)
+4. SPM package — needed beyond the app (`InstagramGraph` and `TextSearchKit` earned it)
 
 ## Component inventory
 
@@ -50,7 +51,7 @@ PackTags/
 | TapTextView | ThemeEditor | `Notebook/ThemeEditor/Components/` | tap-to-multi-select hashtags with actions toolbar |
 | TextRecognitionUtility | ThemeEditor | 〃 | Vision OCR — import hashtags from a photo |
 | ImageTreatment | ThemeEditor | 〃 | UIImage resize / orientation for theme covers |
-| TextSearchBar | app-wide | `DesignSystem/Components/TextSearch/` | drop-in UITextView search: highlight, scroll-to-match, count, edit lock (package candidate) |
+| TextSearchBar | beyond the app | [`TextSearchKit`](https://github.com/A-bv/TextSearchKit) package | drop-in UITextView search: highlight, scroll-to-match, count, edit lock |
 | FloatingButtonFactory | app-wide | `DesignSystem/Components/` | floating gradient action button |
 | Tag engine | app-wide | `Domain/` | hashtag parsing, cross-theme dedup, pack chunking |
 | LoadingView, OfflineView, ActivityIndicator | app-wide | `DesignSystem/Components/` | reusable view states |
@@ -110,7 +111,7 @@ xcodebuild -project PackTags.xcodeproj -scheme PackTags \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-56 tests in 11 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the SmartG caption-alignment case, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair.
+54 tests in 10 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the SmartG caption-alignment case, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair; `TextSearchKit` carries 4 of its own.
 
 ## Known tradeoffs / roadmap
 

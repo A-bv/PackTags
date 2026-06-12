@@ -1,4 +1,5 @@
 import UIKit
+import TextSearchKit
 
 class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
 
@@ -40,7 +41,7 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
         target: self,
         action: #selector(cancel))
 
-    let searchBar = TextSearchBar()
+    let searchBar = TextSearchBar(configuration: .init(resultsSuffix: "results".localized()))
 
     private lazy var outerStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [searchBar, themeTextView, searchBar.resultsLabel])

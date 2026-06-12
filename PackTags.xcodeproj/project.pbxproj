@@ -32,12 +32,11 @@
 		0207BBB42FD5640A0007F3D3 /* ThemeEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */; };
 		0207BBB62FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */; };
 		0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */; };
+		AB0000000000000000000803 /* TextSearchKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000000802 /* TextSearchKit */; };
 		0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */; };
 		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
 		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
-		AB0000000000000000000702 /* TextSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000701 /* TextSearchBar.swift */; };
-		AB0000000000000000000704 /* UITextView+SearchHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000703 /* UITextView+SearchHighlight.swift */; };
 		AB0000000000000000000402 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000401 /* SettingsSections.swift */; };
 		AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000403 /* SettingsVC+Alerts.swift */; };
 		AB0000000000000000000406 /* ThemeEditorViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */; };
@@ -182,8 +181,6 @@
 		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
-		AB0000000000000000000701 /* TextSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSearchBar.swift; sourceTree = "<group>"; };
-		AB0000000000000000000703 /* UITextView+SearchHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+SearchHighlight.swift"; sourceTree = "<group>"; };
 		AB0000000000000000000401 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
 		AB0000000000000000000403 /* SettingsVC+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Alerts.swift"; sourceTree = "<group>"; };
 		AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+Alerts.swift"; sourceTree = "<group>"; };
@@ -299,6 +296,7 @@
 				02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */,
 				02211DD02FD7074D002FDB14 /* InstagramGraph in Frameworks */,
 				0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */,
+				AB0000000000000000000803 /* TextSearchKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,19 +352,9 @@
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
-		AB0000000000000000000705 /* TextSearch */ = {
-			isa = PBXGroup;
-			children = (
-				AB0000000000000000000701 /* TextSearchBar.swift */,
-				AB0000000000000000000703 /* UITextView+SearchHighlight.swift */,
-			);
-			path = TextSearch;
-			sourceTree = "<group>";
-		};
 		AB0000000000000000000204 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				AB0000000000000000000705 /* TextSearch */,
 				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
 				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
 				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
@@ -920,6 +908,7 @@
 				02FE9ECB28DF5BF000193A15 /* FacebookLogin */,
 				0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */,
 				02211DCF2FD7074D002FDB14 /* InstagramGraph */,
+				AB0000000000000000000802 /* TextSearchKit */,
 			);
 			productName = PackTags;
 			productReference = 02FB550624FFA2AA00174E34 /* PackTags.app */;
@@ -976,6 +965,7 @@
 			packageReferences = (
 				02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */,
+				AB0000000000000000000801 /* XCRemoteSwiftPackageReference "TextSearchKit" */,
 			);
 			productRefGroup = 02FB550724FFA2AA00174E34 /* Products */;
 			projectDirPath = "";
@@ -1064,8 +1054,6 @@
 				02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */,
 				021044F626446AEF00408CEB /* StringFormatter.swift in Sources */,
 				AB00000000000000000000A2 /* AppLogger.swift in Sources */,
-				AB0000000000000000000702 /* TextSearchBar.swift in Sources */,
-				AB0000000000000000000704 /* UITextView+SearchHighlight.swift in Sources */,
 				AB00000000000000000000C2 /* SettingsKey.swift in Sources */,
 				02FAE2A5260AC79C00324724 /* SettingsSwitchCell.swift in Sources */,
 				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
@@ -1424,6 +1412,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AB0000000000000000000801 /* XCRemoteSwiftPackageReference "TextSearchKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/A-bv/TextSearchKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/A-bv/InstagramGraph";
@@ -1461,6 +1457,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		AB0000000000000000000802 /* TextSearchKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0000000000000000000801 /* XCRemoteSwiftPackageReference "TextSearchKit" */;
+			productName = TextSearchKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

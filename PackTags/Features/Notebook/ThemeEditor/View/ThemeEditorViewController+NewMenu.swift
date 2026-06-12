@@ -1,6 +1,7 @@
 // Menu iOS 14+
 
 import UIKit
+import TextSearchKit
 
 extension ThemeEditorViewController{
     private enum Strings {
