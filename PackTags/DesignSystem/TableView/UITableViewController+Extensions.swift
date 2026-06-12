@@ -1,6 +1,7 @@
 import UIKit
 
-public var thumbnailDim = CGFloat(140.00)
+/// Thumbnail edge length for theme covers; fixed per device class.
+let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
 
 extension UITableViewController {
 
@@ -35,10 +36,4 @@ extension UITableViewController {
         return cellHeight
     }
 
-    // MARK: - Thumbnail Dimensions
-
-    func setThemeListViewControllerThumbnailsDimension() {
-        let iPhoneSEWidth: CGFloat = 320
-        thumbnailDim = UIScreen.main.bounds.width <= iPhoneSEWidth ? 115 : 132
-    }
 }

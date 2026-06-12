@@ -32,7 +32,6 @@ extension ThemeListViewController {
     func configureTableView () {
         self.tableView.backgroundColor = bkgdColor
         self.tableView.register(ThemeCell.self, forCellReuseIdentifier: "ThemeCell")
-        self.setThemeListViewControllerThumbnailsDimension()
         self.addLongPressToTableView() // reorder cells
     }
 
