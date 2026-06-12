@@ -1,37 +1,47 @@
+import PhotosUI
 import UIKit
 
 /// Presents the photo library and hands back the picked image with its
-/// orientation normalized. Owns the `UIImagePickerController` delegate so
-/// the host controller doesn't have to.
+/// orientation normalized. Owns the `PHPickerViewController` delegate so
+/// the host controller doesn't have to. The picker runs out of process,
+/// so no photo-library permission is required.
 final class ThemeImagePicker: NSObject {
 
     private var completion: ((UIImage) -> Void)?
 
     func present(from presenter: UIViewController, completion: @escaping (UIImage) -> Void) {
         self.completion = completion
-        let picker = UIImagePickerController()
-        picker.sourceType = .photoLibrary
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        configuration.selectionLimit = 1
+        let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         presenter.present(picker, animated: true)
     }
 }
 
-extension ThemeImagePicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ThemeImagePicker: PHPickerViewControllerDelegate {
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        defer {
-            picker.dismiss(animated: true)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        guard let provider = results.first?.itemProvider else { // Cancelled
             completion = nil
-        }
-        guard let image = info[.originalImage] as? UIImage else {
-            AppLogger.ui.error("Image picker returned no usable image (keys: \(info.keys.map(\.rawValue), privacy: .public)).")
             return
         }
-        completion?(image.upOrientationImage() ?? image)
-    }
-
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true)
-        completion = nil
+        guard provider.canLoadObject(ofClass: UIImage.self) else {
+            AppLogger.ui.error("Photo picker selection cannot be loaded as an image (types: \(provider.registeredTypeIdentifiers, privacy: .public)).")
+            completion = nil
+            return
+        }
+        provider.loadObject(ofClass: UIImage.self) { [weak self] object, error in
+            DispatchQueue.main.async {
+                defer { self?.completion = nil }
+                guard let image = object as? UIImage else {
+                    AppLogger.ui.error("Photo picker failed to load the image: \(String(describing: error), privacy: .public).")
+                    return
+                }
+                self?.completion?(image.upOrientationImage() ?? image)
+            }
+        }
     }
 }
