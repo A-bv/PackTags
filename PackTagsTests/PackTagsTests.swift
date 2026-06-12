@@ -44,8 +44,9 @@ class PackTagsTests: XCTestCase {
 
 @Suite struct ReviewPromptPolicyTests {
 
+    /// A fresh, uniquely named suite per test — the suite runs in parallel.
     private func makeDefaults() -> UserDefaults {
-        let name = "ReviewPromptPolicyTests"
+        let name = "ReviewPromptPolicyTests-\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: name)!
         defaults.removePersistentDomain(forName: name)
         return defaults
