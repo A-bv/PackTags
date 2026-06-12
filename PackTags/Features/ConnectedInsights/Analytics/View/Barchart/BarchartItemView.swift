@@ -2,7 +2,6 @@ import SwiftUI
 
 struct BarChartItemView: View {
     private enum Constants {
-        static let opacity: CGFloat = 0.6
         static let barsOpacity: CGFloat = 0.06
         static let barMaxHeight: CGFloat = 50
         static let barChartTopPadding: CGFloat = 10

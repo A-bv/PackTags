@@ -27,7 +27,6 @@ struct BarchartArrowsView: View {
             Spacer()
             
             let leftArrowText = postsCount != 1 ? Strings.previousPosts : Strings.previousPost
-            // "Last \(num ?? 0) Posts" : Strings.previousPosts
             Text(leftArrowText)
                 .font(.caption)
                 .foregroundColor(Color(UIColor.label).opacity(Constants.opacity))
