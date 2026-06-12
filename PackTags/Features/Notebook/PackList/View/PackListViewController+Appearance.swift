@@ -54,9 +54,14 @@ extension PackListViewController {
     }
     
     private func updateTableViewBackgroundImage() {
-        if let imageData = viewModel.theme.image, let image = UIImage(data: imageData) {
-            uiiv = UIImageView(image: image)
-        }
+        guard let imageData = viewModel.theme.image, let image = UIImage(data: imageData) else { return }
+        // Themes saved before covers were resized at save time can carry
+        // multi-megapixel originals; render at display size so scrolling
+        // never pushes a huge bitmap around.
+        let displaySize = CGSize(
+            width: UIScreen.main.bounds.width,
+            height: UIScreen.main.bounds.height / 2 + cR)
+        uiiv = UIImageView(image: image.resized(to: displaySize))
     }
 }
 
