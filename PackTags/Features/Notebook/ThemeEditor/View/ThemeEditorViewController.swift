@@ -2,16 +2,9 @@ import UIKit
 
 final class ThemeEditorViewController: UIViewController {
 
+    //MARK: - Dependencies
+
     let viewModel: ThemeEditorViewModel
-
-    init(viewModel: ThemeEditorViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     //MARK: - UI
 
@@ -55,8 +48,20 @@ final class ThemeEditorViewController: UIViewController {
     private let imagePicker = ThemeImagePicker()
 
     //MARK: - Callbacks
+
     var onSave: ((ThemeCD?) -> Void)?
     var onCancel: (() -> Void)?
+
+    //MARK: - Init
+
+    init(viewModel: ThemeEditorViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     //MARK: - Lifecycle
 
