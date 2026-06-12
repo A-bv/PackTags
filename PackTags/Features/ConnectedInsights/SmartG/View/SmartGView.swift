@@ -7,8 +7,6 @@ private enum Strings {
 }
 
 struct SmartGView: View {
-    // @State private var igHash: String =  "hashtag theme?"
-    @State private var textstyle = UIFont.TextStyle.body
     @StateObject var smartGViewModel: SmartGViewModel
     
     @State var hashtagEntry: String = Strings.defaultHashtag

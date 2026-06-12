@@ -52,19 +52,10 @@ struct AnalyticsView : View {
         static let graphSectionHeaderTraillingPadding: CGFloat = 10
     }
     
-    //
     @StateObject var swiftUIData: AnalyticsViewModel
-    
-    //
     @State private var showingAlert = false
-    
-    //Dismiss the view
     @Environment(\.presentationMode) var presentationMode
-    
-    //Network Status
     @StateObject var monitor = NetworkMonitor()
-    
-    //
     @State var selectedBarChartPostId = 0
 
     var colors = [Color("Color1"),Color("Color")]
@@ -228,7 +219,6 @@ extension AnalyticsView {
         }
         .accessibilityLabel(Text(Strings.nextMetric))
         .buttonStyle(ColorfulButtonStyle())
-        .padding(.trailing, 0)
     }
 }
 

@@ -21,7 +21,6 @@ struct SettingsSwitchOption {
     let title: String
     let icon: UIImage?
     let iconBackgroundColor: UIColor
-    let handler: (() -> Void)
     var isOn: Bool
     let onToggle: (Bool) -> Void
 }
@@ -100,14 +99,12 @@ enum SettingsSections {
                     title: Strings.saveAndShuffle,
                     icon: icon,
                     iconBackgroundColor: .systemYellow,
-                    handler: {},
                     isOn: settings.saveAndShuffle,
                     onToggle: { settings.saveAndShuffle = $0 })),
                 .switchCell(model: SettingsSwitchOption(
                     title: Strings.keepPackOrder,
                     icon: icon,
                     iconBackgroundColor: .systemRed,
-                    handler: {},
                     isOn: settings.keepPacksOrder,
                     onToggle: { settings.keepPacksOrder = $0 })),
             ]),

@@ -12,7 +12,6 @@ class ThemeCell: UITableViewCell {
         static let subLabelFontSize = CGFloat(14)
         static let supportingViewCornerRadius = CGFloat(15)
         static let nameLabelFontSize = CGFloat(19)
-        static let padding10 = CGFloat(10)
         static let thumbnailDimReducedBy10 = thumbnailDim - CGFloat(10)
         static let padding20 = CGFloat(20)
         static let themeImageViewLeadingPadding = CGFloat(30)

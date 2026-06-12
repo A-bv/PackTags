@@ -25,7 +25,6 @@ class FBLoginVC: UIViewController {
         static let accessAnalyticsConfirm = "You can now access analytics and generate hashtags.".localized()
         static let editYourSetup = "Edit Your Setup".localized()
         static let troubleShootingAlertMessage = "troubleShootingAlertMessage".localized()
-        static let setupValidationFailed = "Facebook setup validation failed.".localized()
         static let resetLogin = "Reset Facebook Login".localized()
         static let resetLoginTitle = "Reset Facebook Login?".localized()
         static let resetLoginMessage = "This will clear the current Facebook session and Instagram setup for this app.".localized()

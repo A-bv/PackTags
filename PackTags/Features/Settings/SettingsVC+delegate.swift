@@ -44,11 +44,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let type = models[indexPath.section].options[indexPath.row]
-        switch type {
-        case .staticCell(let model):
-            model.handler()
-        case .switchCell(let model):
+        if case .staticCell(let model) = models[indexPath.section].options[indexPath.row] {
             model.handler()
         }
     }

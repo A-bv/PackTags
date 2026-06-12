@@ -16,7 +16,6 @@ struct InteractionBarView: View {
     
     var smartGViewModel: SmartGViewModel
     private enum Constants {
-        static let interactionBarPadding: CGFloat = 10
         static let textFieldCornerRadius: CGFloat = 15
     }
     

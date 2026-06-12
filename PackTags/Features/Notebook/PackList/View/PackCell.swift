@@ -21,7 +21,6 @@ class PackCell: UITableViewCell {
         static let value55 = CGFloat(55)
         
         static let cellLabelFontSize = CGFloat(19)
-        static let profileImageViewCornerRadius = CGFloat(35)
     }
     
     let containerView:UIView = {
@@ -29,15 +28,6 @@ class PackCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         return view
-    }()
-    
-    let profileImageView:UIImageView = {
-        let img = UIImageView()
-        img.contentMode = .scaleAspectFill 
-        img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
-        img.layer.cornerRadius = Constants.profileImageViewCornerRadius
-        img.clipsToBounds = true
-        return img
     }()
     
     let cellLabel:UILabel = {
