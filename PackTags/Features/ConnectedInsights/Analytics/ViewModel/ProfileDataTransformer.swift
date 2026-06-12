@@ -17,35 +17,35 @@ extension DataTransformer.ProfileDataTransformer {
 
         guard let metrics = computeMetrics(profileResponse: response, rawInsights: rawInsights) else { return nil }
 
-        let avg0 = averageInt(metrics.likeArray)
-        let avg1 = averageInt(metrics.commentArray)
+        let averageLikes = averageInt(metrics.likeArray)
+        let averageComments = averageInt(metrics.commentArray)
 
         let engagementRates = [
             metrics.engagementRateFollowers,
             metrics.engagementRateReach,
             metrics.engagementRateImpressions]
 
-        var avg2 = [CGFloat?]()
-        var maxR = [CGFloat?]()
+        var averageRate = [CGFloat?]()
+        var maxRate = [CGFloat?]()
 
         for er in engagementRates {
-            avg2.append(averageCGFloat(er))
-            maxR.append(er.reduce(CGFloat.leastNormalMagnitude, { max($0, CGFloat($1)) }))
+            averageRate.append(averageCGFloat(er))
+            maxRate.append(er.reduce(CGFloat.leastNormalMagnitude, { max($0, CGFloat($1)) }))
         }
 
         let safeMode = min(mode, engagementRates.count - 1)
 
         return TransformedProfileModel(
-            usr: top.username,
-            isPv: false,
-            sum0: metrics.likeArray.reduce(0, +),
-            sum1: metrics.commentArray.reduce(0, +),
-            avg0: avg0,
-            avg1: avg1,
+            username: top.username,
+            isPrivateProfile: false,
+            totalLikes: metrics.likeArray.reduce(0, +),
+            totalComments: metrics.commentArray.reduce(0, +),
+            averageLikes: averageLikes,
+            averageComments: averageComments,
             rates: engagementRates[safeMode],
-            pTimes: metrics.times,
-            avg2: avg2[safeMode],
-            maxR: maxR[safeMode],
+            postTimes: metrics.times,
+            averageRate: averageRate[safeMode],
+            maxRate: maxRate[safeMode],
             captions: metrics.captions)
     }
 

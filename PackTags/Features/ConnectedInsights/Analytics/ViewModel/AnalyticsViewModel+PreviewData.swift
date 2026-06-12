@@ -7,46 +7,46 @@ import SwiftUI
 extension AnalyticsViewModel {
     func fakeProcessedJson0 () -> TransformedProfileModel {
         TransformedProfileModel(
-            usr: "packtags.app",
-            isPv: false,
-            sum0: Optional(225),
-            sum1: Optional(26),
-            avg0: Optional(18.8),
-            avg1: Optional(2.2),
+            username: "packtags.app",
+            isPrivateProfile: false,
+            totalLikes: Optional(225),
+            totalComments: Optional(26),
+            averageLikes: Optional(18.8),
+            averageComments: Optional(2.2),
             rates: [],
-            pTimes: [],
-            avg2: 23.0,
-            maxR: 40.0,
+            postTimes: [],
+            averageRate: 23.0,
+            maxRate: 40.0,
             captions: [])
     }
     
     func fakeProcessedJson3 () -> TransformedProfileModel {
         TransformedProfileModel(
-            usr: "packtags.app",
-            isPv: false,
-            sum0: Optional(225),
-            sum1: Optional(26),
-            avg0: Optional(18.8),
-            avg1: Optional(2.2),
+            username: "packtags.app",
+            isPrivateProfile: false,
+            totalLikes: Optional(225),
+            totalComments: Optional(26),
+            averageLikes: Optional(18.8),
+            averageComments: Optional(2.2),
             rates: [Optional(12.0), Optional(23.0), Optional(16.0)],
-            pTimes: [Optional(1639268616.0), Optional(1637529580.0), Optional(1636327207.0)],
-            avg2: 23.0,
-            maxR: 40.0,
+            postTimes: [Optional(1639268616.0), Optional(1637529580.0), Optional(1636327207.0)],
+            averageRate: 23.0,
+            maxRate: 40.0,
             captions: ["A", "B", "C"])
     }
 
     func fakeProcessedJson1 () -> TransformedProfileModel {
         TransformedProfileModel(
-            usr: "packtags.app",
-            isPv: false,
-            sum0: Optional(225),
-            sum1: Optional(26),
-            avg0: Optional(18.8),
-            avg1: Optional(2.2),
+            username: "packtags.app",
+            isPrivateProfile: false,
+            totalLikes: Optional(225),
+            totalComments: Optional(26),
+            averageLikes: Optional(18.8),
+            averageComments: Optional(2.2),
             rates: [Optional(12.0)],
-            pTimes: [Optional(1639268616.0)],
-            avg2: 23.0,
-            maxR: 40.0,
+            postTimes: [Optional(1639268616.0)],
+            averageRate: 23.0,
+            maxRate: 40.0,
             captions: ["A"])
     }
 }

@@ -38,14 +38,14 @@ extension AnalyticsViewModel {
             return
         }
         
-        let maxR = getMaxRate()
+        let maxRate = getMaxRate()
         barChartData = rates.enumerated().map { index, rate in
             let rate = rate ?? 0
             return BarChartPost(
                 id: index,
                 post: "\(index + 1)",
                 rate: rate,
-                barHeight: (rate / maxR) * 50 + 5)
+                barHeight: (rate / maxRate) * 50 + 5)
         }
     }
     
@@ -54,19 +54,19 @@ extension AnalyticsViewModel {
             return
         }
 
-        overviewSectionData[0].value = StringFormatter.formatNum(value: processedJson?.avg0 ?? 0)
-        overviewSectionData[1].value = StringFormatter.formatNum(value: processedJson?.avg1 ?? 0)
+        overviewSectionData[0].value = StringFormatter.formatNum(value: processedJson?.averageLikes ?? 0)
+        overviewSectionData[1].value = StringFormatter.formatNum(value: processedJson?.averageComments ?? 0)
 
         circlesData[1].value = CGFloat(rates[0] ?? 0)
         circlesData[1].maxValue = getMaxRate()
 
-        let avgEngagement: CGFloat = CGFloat(processedJson?.avg2 ?? 0)
+        let avgEngagement: CGFloat = CGFloat(processedJson?.averageRate ?? 0)
         circlesData[0].value = avgEngagement
         circlesData[0].maxValue = avgEngagement
     }
     
     private func getMaxRate() -> CGFloat {
-        let max = processedJson?.maxR
+        let max = processedJson?.maxRate
         return (max == nil || max == 0 ? 1 : max)!
     }
 }

@@ -30,7 +30,7 @@ struct AnalyticsView : View {
         static let eRDefiniton = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers.".localized()
         static let eRRDefiniton = "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content.".localized()
         static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account.".localized()
-        static let ok = "Ok"
+        static let ok = "Ok".localized()
         static let closeAnalytics = "Close analytics".localized()
         static let toggleRawAndRates = "Switch between values and rates".localized()
         static let nextMetric = "Next metric".localized()
@@ -106,7 +106,7 @@ struct AnalyticsView : View {
                             Text(Strings.privateProfile)
                         } else if swiftUIData.processedJson?.rates == Optional([]) {
                             // Screen when data is invalid
-                            if swiftUIData.processedJson?.usr != nil {
+                            if swiftUIData.processedJson?.username != nil {
                                 Text(Strings.noMedia)
                                     .multilineTextAlignment(.center)
                             } else {
@@ -243,7 +243,7 @@ extension AnalyticsView {
                     .foregroundColor(Color(UIColor.label))
                     .fontWeight(.bold)
                 
-                Text(swiftUIData.processedJson?.usr ?? " ")
+                Text(swiftUIData.processedJson?.username ?? " ")
                     .font(.subheadline)
                     .foregroundColor(Color(UIColor.label))
             }
@@ -269,7 +269,7 @@ extension AnalyticsView {
                 }
 
                 if let postCount = swiftUIData.processedJson?.postsCount,
-                   let average = swiftUIData.processedJson?.avg2
+                   let average = swiftUIData.processedJson?.averageRate
                 {
                     if postCount == 1 {
                         MonoCircleView(

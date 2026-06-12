@@ -58,11 +58,11 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
         let model = try #require(DataTransformer.ProfileDataTransformer.transform(response: profile))
 
-        #expect(model.usr == "packtags")
-        #expect(model.sum0 == 30)
-        #expect(model.sum1 == 6)
-        #expect(model.avg0 == 15)
-        #expect(model.avg1 == 3)
+        #expect(model.username == "packtags")
+        #expect(model.totalLikes == 30)
+        #expect(model.totalComments == 6)
+        #expect(model.averageLikes == 15)
+        #expect(model.averageComments == 3)
     }
 
     @Test func transform_rawInsights_exposesEngagementValuesUntouched() throws {
@@ -75,8 +75,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
             response: profile, mode: 0, rawInsights: true))
 
         #expect(model.rates == [12, 24])
-        #expect(model.avg2 == 18)
-        #expect(model.maxR == 24)
+        #expect(model.averageRate == 18)
+        #expect(model.maxRate == 24)
     }
 
     @Test func transform_computedRates_arePercentagesOfFollowers() throws {

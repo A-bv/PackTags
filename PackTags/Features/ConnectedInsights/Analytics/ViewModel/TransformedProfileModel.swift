@@ -1,43 +1,43 @@
 import Foundation
 
 struct TransformedProfileModel {
-    let usr: String?                //. Basic: username
+    let username: String?                //. Basic: username
     let isPrivateProfile: Bool?     //. Basic: is private?
     let postsCount: Int?            //. Basic: post count
     
-    let sum0: Int?                  //0. Total likes
-    let sum1: Int?                  //1. Total comments
-    let avg0: Double?               //2. Avg likes
-    let avg1: Double?               //3. Avg comments
-    let rates: [CGFloat?]           //4. Engagement rates
-    let pTimes: [Double?]           //5. Posting times
-    let avg2: CGFloat?              //6. Avg Engagement
-    let maxR: CGFloat?              //7. Max Engagement
-    let captions: [String?]         //8. Caption
+    let totalLikes: Int?
+    let totalComments: Int?
+    let averageLikes: Double?
+    let averageComments: Double?
+    let rates: [CGFloat?]
+    let postTimes: [Double?]
+    let averageRate: CGFloat?
+    let maxRate: CGFloat?
+    let captions: [String?]
     
     init(
-        usr: String? = nil,
-        isPv: Bool? = nil,
-        sum0: Int? = nil,
-        sum1: Int? = nil,
-        avg0: Double? = nil,
-        avg1: Double? = nil,
+        username: String? = nil,
+        isPrivateProfile: Bool? = nil,
+        totalLikes: Int? = nil,
+        totalComments: Int? = nil,
+        averageLikes: Double? = nil,
+        averageComments: Double? = nil,
         rates: [CGFloat?] = [nil],
-        pTimes: [CDouble?] = [nil],
-        avg2: CGFloat? = nil,
-        maxR: CGFloat? = nil,
+        postTimes: [CDouble?] = [nil],
+        averageRate: CGFloat? = nil,
+        maxRate: CGFloat? = nil,
         captions: [String?] = [nil]
     ) {
-        self.usr = usr
-        self.isPrivateProfile = isPv
-        self.sum0 = sum0
-        self.sum1 = sum1
-        self.avg0 = avg0
-        self.avg1 = avg1
+        self.username = username
+        self.isPrivateProfile = isPrivateProfile
+        self.totalLikes = totalLikes
+        self.totalComments = totalComments
+        self.averageLikes = averageLikes
+        self.averageComments = averageComments
         self.rates = rates
-        self.pTimes = pTimes
-        self.avg2 = avg2
-        self.maxR = maxR
+        self.postTimes = postTimes
+        self.averageRate = averageRate
+        self.maxRate = maxRate
         self.captions = captions
         self.postsCount = rates.count
     }
