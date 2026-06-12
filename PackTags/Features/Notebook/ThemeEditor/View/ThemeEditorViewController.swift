@@ -261,9 +261,11 @@ extension ThemeEditorViewController {
             self.themeTextView.hidePlaceholder()
             TextRecognitionUtility.recognizeText(image: image) { [weak self] text in
                 guard let self else { return }
-                self.themeTextView.text = self.viewModel.contentByPrepending(
-                    recognizedText: text,
-                    to: self.themeTextView.text ?? "")
+                if !text.isEmpty {
+                    self.themeTextView.text = self.viewModel.contentByPrepending(
+                        recognizedText: text,
+                        to: self.themeTextView.text ?? "")
+                }
                 self.spinner.stopAnimating()
             }
         }
