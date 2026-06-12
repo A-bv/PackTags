@@ -25,7 +25,7 @@ extension UIView {
         lightShadow.shadowOpacity = 1
         lightShadow.shadowRadius = shadowRadius
         lightShadow.shadowOffset = CGSize(width: -shadowRadius, height: -shadowRadius)
-        darkShadow.shadowPerformanceBoost()
+        lightShadow.shadowPerformanceBoost()
         self.layer.insertSublayer(lightShadow, at: 0)
     }
     
