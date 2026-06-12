@@ -207,14 +207,14 @@ import CoreData
         #expect(sut.packs == ["#a #b", "#c"])
     }
 
-    @Test func packRow_exposesFirstTagAndCountPerPack() {
+    @Test func packRow_exposesFirstTagAndBadgePerPack() {
         let (sut, _) = makeSUT()
         sut.loadPacks()
 
         #expect(sut.packRow(at: 0)?.firstTag == "#a")
-        #expect(sut.packRow(at: 0)?.tagCount == 2)
+        #expect(sut.packRow(at: 0)?.badge == " + 1 \("more".localized()) ")
         #expect(sut.packRow(at: 1)?.firstTag == "#c")
-        #expect(sut.packRow(at: 1)?.tagCount == 1)
+        #expect(sut.packRow(at: 1)?.badge == " \("1 Hashtag".localized()) ")
     }
 
     @Test func packRow_withStaleIndex_isNil() {

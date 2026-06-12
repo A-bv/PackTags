@@ -1,5 +1,11 @@
 import Foundation
 
+private enum Strings {
+    static let oneHashtag = "1 Hashtag".localized()
+    static let zeroHashtags = "0 Hashtags".localized()
+    static let more = "more".localized()
+}
+
 final class PackListViewModel {
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
@@ -22,14 +28,21 @@ final class PackListViewModel {
 
     struct PackRow {
         let firstTag: String?
-        let tagCount: Int
+        let badge: String
     }
 
     /// Presentation data for one pack row; nil when the index is stale.
     func packRow(at index: Int) -> PackRow? {
         guard packs.indices.contains(index) else { return nil }
         let tags = packs[index].components(separatedBy: " ").filter { !$0.isEmpty }
-        return PackRow(firstTag: tags.first, tagCount: tags.count)
+
+        let badge: String
+        switch tags.count {
+        case 0: badge = " \(Strings.zeroHashtags) "
+        case 1: badge = " \(Strings.oneHashtag) "
+        case let count: badge = " + \(count - 1) \(Strings.more) "
+        }
+        return PackRow(firstTag: tags.first, badge: badge)
     }
 
     struct PostCopyAction {

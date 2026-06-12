@@ -32,9 +32,6 @@ extension PackListViewController {
 // MARK: - Cell configuration & swipe
 extension PackListViewController {
     private enum Strings {
-        static let oneHashtag = "1 Hashtag".localized()
-        static let more = "more".localized()
-        static let zeroHashtags = "0 Hashtags".localized()
         static let tapPencil = "Tap the Pencil button to add Hashtags.".localized()
         static let show = "Show".localized()
     }
@@ -50,13 +47,7 @@ extension PackListViewController {
         let row = viewModel.packRow(at: indexPath.row)
 
         cell.cellLabel.text = row?.firstTag
-        let badge: String
-        switch row?.tagCount ?? 0 {
-        case 0: badge = " \(Strings.zeroHashtags) "
-        case 1: badge = " \(Strings.oneHashtag) "
-        case let count: badge = " + \(count - 1) \(Strings.more) "
-        }
-        cell.subButton.setTitle(badge, for: .normal)
+        cell.subButton.setTitle(row?.badge, for: .normal)
 
         cell.buttonTapCallback = { [weak self] in
             self?.pasteboard.string = pack
@@ -69,7 +60,7 @@ extension PackListViewController {
         }
 
         if indexPath.row == 0 {
-            cell.roundTopCorners(radius: cR)
+            cell.roundTopCorners(radius: coverCornerRadius)
         }
 
         return cell
