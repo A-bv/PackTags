@@ -16,8 +16,8 @@ class FBLoginVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(gateway: any ConnectedInsightsGatewayProtocol) {
-        self.init(viewModel: FBLoginViewModel(gateway: gateway))
+    convenience init(gateway: any ConnectedInsightsGatewayProtocol, settings: any AppSettingsProtocol) {
+        self.init(viewModel: FBLoginViewModel(gateway: gateway, settings: settings))
     }
 
     private enum Strings {
@@ -191,7 +191,7 @@ extension FBLoginVC {
         }
 
         if markLoginAttempt {
-            viewModel.savePushedFBLoginButtonOnce()
+            viewModel.markLoginButtonPressed()
         }
 
         logLogin("Valid Facebook access token from \(source); starting Graph setup validation.")

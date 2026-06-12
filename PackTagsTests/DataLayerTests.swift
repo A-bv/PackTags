@@ -96,6 +96,7 @@ import CoreData
         var keepPacksOrder = false
         var openInstagramAfterCopy = false
         var instagramUsername: String?
+        var pressedFBLoginButton = false
     }
 
     private func makeSUT() -> (viewModel: ThemeListViewModel, repository: CoreDataThemeRepository) {
@@ -188,6 +189,7 @@ import CoreData
         var keepPacksOrder = false
         var openInstagramAfterCopy = false
         var instagramUsername: String?
+        var pressedFBLoginButton = false
     }
 
     private func makeSUT(content: String? = "#a #b #c") -> (PackListViewModel, FakeSettings) {
@@ -377,6 +379,7 @@ import CoreData
         var keepPacksOrder = false
         var openInstagramAfterCopy = false
         var instagramUsername: String?
+        var pressedFBLoginButton = false
     }
 
     private func makeSUT(theme: ThemeCD? = nil) -> ThemeEditorViewModel {

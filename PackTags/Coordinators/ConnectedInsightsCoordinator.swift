@@ -5,9 +5,11 @@ import InstagramGraph
 @MainActor
 final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
     private let gateway: any ConnectedInsightsGatewayProtocol
+    private let settings: any AppSettingsProtocol
     private lazy var smartTagsPersistence = PersistenceController(modelName: "SmartTags")
 
-    init(gateway: (any ConnectedInsightsGatewayProtocol)? = nil) {
+    init(settings: any AppSettingsProtocol, gateway: (any ConnectedInsightsGatewayProtocol)? = nil) {
+        self.settings = settings
         self.gateway = gateway ?? ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider())
     }
 
@@ -56,7 +58,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
         let vc: UIViewController
         switch destination {
         case .setup:
-            let loginVC = FBLoginVC(gateway: gateway)
+            let loginVC = FBLoginVC(gateway: gateway, settings: settings)
             loginVC.onSetupComplete = onComplete
             loginVC.onShowSetupInfo = { [weak self, weak loginVC] in
                 guard let self, let loginVC else { return }

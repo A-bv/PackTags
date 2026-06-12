@@ -4,13 +4,16 @@ import InstagramGraph
 @MainActor
 final class FBLoginViewModel {
     private let gateway: any ConnectedInsightsGatewayProtocol
+    private let settings: any AppSettingsProtocol
     private let facebookSessionService: any FacebookSessionServicing
 
     init(
         gateway: any ConnectedInsightsGatewayProtocol,
+        settings: any AppSettingsProtocol,
         facebookSessionService: any FacebookSessionServicing = FacebookSessionService()
     ) {
         self.gateway = gateway
+        self.settings = settings
         self.facebookSessionService = facebookSessionService
     }
 
@@ -33,17 +36,14 @@ final class FBLoginViewModel {
         }
     }
 
-    func savePushedFBLoginButtonOnce() {
-        let key = SettingsKey.pressedFBLoginButton
-        if !UserDefaults.standard.bool(forKey: key) {
-            UserDefaults.standard.set(true, forKey: key)
-        }
+    func markLoginButtonPressed() {
+        settings.pressedFBLoginButton = true
     }
 
     func resetFacebookSession() {
         facebookSessionService.resetSession()
         gateway.reset()
-        UserDefaults.standard.set(false, forKey: SettingsKey.pressedFBLoginButton)
+        settings.pressedFBLoginButton = false
         AppLogger.login.info("Facebook SDK session and connected insights setup were reset.")
     }
 }

@@ -13,11 +13,12 @@ final class AppCoordinator: Coordinator {
         self.window = window
         self.navigationController = ThemeNavigationController()
         let persistence = PersistenceController()
+        let appSettings = UserDefaultsAppSettings()
         self.dependencies = AppDependencies(
             persistence: persistence,
             themeRepository: CoreDataThemeRepository(context: persistence.viewContext),
-            appSettings: UserDefaultsAppSettings(),
-            connectedInsights: ConnectedInsightsCoordinator()
+            appSettings: appSettings,
+            connectedInsights: ConnectedInsightsCoordinator(settings: appSettings)
         )
     }
 
