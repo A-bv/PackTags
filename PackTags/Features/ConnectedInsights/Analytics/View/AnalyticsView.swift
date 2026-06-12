@@ -1,6 +1,3 @@
-//(U) = data loading operations
-// D = dismiss view operations
-
 import SwiftUI
 import InstagramGraph
 
@@ -72,10 +69,6 @@ struct AnalyticsView : View {
     init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
         _swiftUIData = StateObject(
             wrappedValue: AnalyticsViewModel(gateway: gateway))
-        //Navigation bar customization
-        UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor.clear
-        ]
     }
 
     var columns = Array(
@@ -85,112 +78,89 @@ struct AnalyticsView : View {
                 spacing: Constants.overviewSectionColumnsSpacing),
         count: Constants.overviewSectionColumnsCount)
     
-    //
-    @State var titles = [Strings.engagement, Strings.reach, Strings.impressions]
-    @State var subtitles = [" ", " ", " "]
-    @State var infoTitles = [
-        Strings.eR,
-        Strings.eRR,
-        Strings.eRI]
-    @State var infoMessages = [
-        Strings.engagementDefinition,
-        "\n\(Strings.reachDefinition)",
-        "\n\(Strings.impressionsDefinition)"]
-    
     @State var loading = true
-    
-    //Layout
-    @State var graphSectionHorizontalPadding = UIScreen.main.bounds.size.width
-    < Constants.smallScreenWidthLimit
-    ? 0
-    : Constants.graphSectionHorizontalPadding
     
     //Toggle button
     @State private var isToggled = false
     
     var body: some View {
-        ZStack {
-            Color.bgFillColor
-                .ignoresSafeArea()
-            
-            VStack {
-                header
-                
-                Spacer()
-                
-                if !monitor.isConnected {
-                    OfflineView()
-                } else if swiftUIData.jsonOfficial == nil {
-                    LoadingView(loading: $loading)
-                } else {
-                    if swiftUIData.processedJson?.isPrivateProfile == true {
-                        Text(Strings.privateProfile)
-                    } else if swiftUIData.processedJson?.rates == Optional([]) {
-                        // Screen when data is invalid
-                        if swiftUIData.processedJson?.usr != nil {
-                            Text(Strings.noMedia)
-                                .multilineTextAlignment(.center)
-                        } else {
-                            Text(Strings.dataUnavailable)
-                                .multilineTextAlignment(.center)
-                        }
+        GeometryReader { geometry in
+            ZStack {
+                Color.bgFillColor
+                    .ignoresSafeArea()
+
+                VStack {
+                    header
+
+                    Spacer()
+
+                    if !monitor.isConnected {
+                        OfflineView()
+                    } else if swiftUIData.jsonOfficial == nil {
+                        LoadingView(loading: $loading)
                     } else {
-                        // Screen when data is available
-                        scrollView
+                        if swiftUIData.processedJson?.isPrivateProfile == true {
+                            Text(Strings.privateProfile)
+                        } else if swiftUIData.processedJson?.rates == Optional([]) {
+                            // Screen when data is invalid
+                            if swiftUIData.processedJson?.usr != nil {
+                                Text(Strings.noMedia)
+                                    .multilineTextAlignment(.center)
+                            } else {
+                                Text(Strings.dataUnavailable)
+                                    .multilineTextAlignment(.center)
+                            }
+                        } else {
+                            // Screen when data is available
+                            scrollView(graphPadding: graphPadding(forWidth: geometry.size.width))
+                        }
                     }
+
+                    Spacer()
                 }
-                
-                Spacer()
             }
         }
+    }
+
+    private func graphPadding(forWidth width: CGFloat) -> CGFloat {
+        width < Constants.smallScreenWidthLimit ? 0 : Constants.graphSectionHorizontalPadding
+    }
+}
+
+//MARK: - Mode-dependent labels (computed from the view model, never stored)
+extension AnalyticsView {
+    private var titles: [String] {
+        swiftUIData.rawInsights
+            ? [Strings.engagement, Strings.reach, Strings.impressions]
+            : [Strings.engagement, Strings.engagement, Strings.engagement]
+    }
+
+    private var subtitles: [String] {
+        swiftUIData.rawInsights
+            ? [" ", " ", " "]
+            : [Strings.ratioToFollower, Strings.ratioByReach, Strings.ratioByImpressions]
+    }
+
+    private var infoTitles: [String] {
+        swiftUIData.rawInsights
+            ? [Strings.engagement, Strings.reach, Strings.impressions]
+            : [Strings.eR, Strings.eRR, Strings.eRI]
+    }
+
+    private var infoMessages: [String] {
+        swiftUIData.rawInsights
+            ? ["\n\(Strings.engagementDefinition)", "\n\(Strings.reachDefinition)", "\n\(Strings.impressionsDefinition)"]
+            : ["\n\(Strings.eRDefiniton)", "\n\(Strings.eRRDefiniton)", "\n\(Strings.eRIDefinition)"]
     }
 }
 
 //MARK: - Functions
-extension AnalyticsView {  
-    private func updateLabels(isRawInsights: Bool) {
-        let rawMetricsLabels = [
-            Strings.engagement,
-            Strings.reach,
-            Strings.impressions
-        ]
-        
-        titles = isRawInsights ? rawMetricsLabels : [
-            Strings.engagement,
-            Strings.engagement,
-            Strings.engagement]
-        
-        subtitles = isRawInsights ? [" "," "," "] : [
-            Strings.ratioToFollower,
-            Strings.ratioByReach,
-            Strings.ratioByImpressions
-        ]
-        
-        infoTitles = isRawInsights ? rawMetricsLabels : [
-            Strings.eR,
-            Strings.eRR,
-            Strings.eRI
-        ]
-            
-        infoMessages = isRawInsights ?
-        [
-            "\n\(Strings.engagementDefinition)",
-            "\n\(Strings.reachDefinition)",
-            "\n\(Strings.impressionsDefinition)"
-        ] : [
-            "\n\(Strings.eRDefiniton)",
-            "\n\(Strings.eRRDefiniton)",
-            "\n\(Strings.eRIDefinition)"
-        ]
-    }
-    
+extension AnalyticsView {
     private func changeInsightType() {
         let impactMed = UIImpactFeedbackGenerator(style: .medium)
         impactMed.impactOccurred()
 
         swiftUIData.rawInsights.toggle()
-        updateLabels(isRawInsights: swiftUIData.rawInsights)
-
         swiftUIData.getJsonFromDir()
     }
 
@@ -279,7 +249,7 @@ extension AnalyticsView {
 
 // Scrollview
 extension AnalyticsView {
-    var scrollView: some View {
+    func scrollView(graphPadding: CGFloat) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             //MARK: - Graph part
             VStack(
@@ -317,9 +287,9 @@ extension AnalyticsView {
             .padding(
                 EdgeInsets(
                     top: 0,
-                    leading: CGFloat(graphSectionHorizontalPadding),
+                    leading: graphPadding,
                     bottom: 0,
-                    trailing: CGFloat(graphSectionHorizontalPadding)))
+                    trailing: graphPadding))
                
             //MARK: - Overview part
             overviewSection
