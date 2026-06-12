@@ -35,9 +35,37 @@ extension ThemeListViewController {
         self.addLongPressToTableView() // reorder cells
     }
 
+    // MARK: - Reorder gesture
+
+    private func addLongPressToTableView() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressGesture(sender:)))
+        longPress.minimumPressDuration = 0.8
+        tableView.addGestureRecognizer(longPress)
+    }
+
+    @objc private func onLongPressGesture(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            tableView.isEditing = true
+            setEditing(true, animated: false)
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
+    }
+
+    // MARK: - Row height
+
+    private func cellHeight(navigationBarHeight: CGFloat, paddingBottom: CGFloat) -> CGFloat {
+        let screenHeight = view.frame.height
+        let cellMinimumHeight: CGFloat = 164
+        var cellHeight = (screenHeight - paddingBottom - navigationBarHeight) / 4
+        if cellHeight <= cellMinimumHeight {
+            cellHeight = (screenHeight - navigationBarHeight) / 3
+        }
+        return cellHeight
+    }
+
     func updateRowHeightIfNeeded() {
         let navigationBarHeight = currentNavBarHeight + statusBarHeight
-        let newHeight = getThemeListViewControllerCellHeight(
+        let newHeight = cellHeight(
             navigationBarHeight: navigationBarHeight,
             paddingBottom: Constants.tableViewBottomPadding)
         if newHeight > 0, tableView.rowHeight != newHeight {

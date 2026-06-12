@@ -1,5 +1,8 @@
 import UIKit
 
+/// Thumbnail edge length for theme covers; fixed per device class.
+let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
+
 class ThemeCell: UITableViewCell {
     private enum Constants {
         static let subLabelCornerRadius = CGFloat(5)
