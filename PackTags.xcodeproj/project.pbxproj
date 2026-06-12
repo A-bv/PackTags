@@ -114,7 +114,7 @@
 		02FBAFE825A93E8400E32D73 /* PackTagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB552324FFA2AC00174E34 /* PackTagsTests.swift */; };
 		02FBAFF125A93EBD00E32D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551524FFA2AC00174E34 /* Assets.xcassets */; };
 		02FD6CB026D8006400AB16E4 /* UIViewController+RateAndReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CAF26D8006400AB16E4 /* UIViewController+RateAndReview.swift */; };
-		02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CB126D8008400AB16E4 /* StoreKitHelper.swift */; };
+		02FD6CB226D8008400AB16E4 /* ReviewPromptPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */; };
 		02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */; };
 		02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9EC928DF5BF000193A15 /* FacebookCore */; };
 		02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9ECB28DF5BF000193A15 /* FacebookLogin */; };
@@ -259,7 +259,7 @@
 		02FB552E24FFA78B00174E34 /* ThemeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewController.swift; sourceTree = "<group>"; };
 		02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		02FD6CAF26D8006400AB16E4 /* UIViewController+RateAndReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+RateAndReview.swift"; sourceTree = "<group>"; };
-		02FD6CB126D8008400AB16E4 /* StoreKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitHelper.swift; sourceTree = "<group>"; };
+		02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptPolicy.swift; sourceTree = "<group>"; };
 		02FDEDCC290304E200B9BCFD /* SmartTags.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartTags.xcdatamodel; sourceTree = "<group>"; };
 		02FEF5B6263304EC0001B525 /* UIViewController+Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Mail.swift"; sourceTree = "<group>"; };
 		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
@@ -749,7 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				02FD6CAF26D8006400AB16E4 /* UIViewController+RateAndReview.swift */,
-				02FD6CB126D8008400AB16E4 /* StoreKitHelper.swift */,
+				02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */,
 			);
 			path = Rating;
 			sourceTree = "<group>";
@@ -1018,7 +1018,7 @@
 				02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */,
 				02998A662B44104800B70516 /* Circles.swift in Sources */,
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
-				02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */,
+				02FD6CB226D8008400AB16E4 /* ReviewPromptPolicy.swift in Sources */,
 				02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */,
 				023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */,
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,

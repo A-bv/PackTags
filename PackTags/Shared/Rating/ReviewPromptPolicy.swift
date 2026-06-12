@@ -1,48 +1,50 @@
-import Foundation
+import UIKit
 import StoreKit
 
-//Storekit (app review)
-struct StoreKitHelper {
+/// Decides when to ask for an App Store review: only after enough launches,
+/// and at most once per app version.
+struct ReviewPromptPolicy {
     private enum Constants {
-        static let limitTimesLaunched: Int = 7
+        static let minimumLaunches = 7
     }
-    
-    static func displayStoreKit() {
-        //Current build
-        guard let currentBuild = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String else {
-            return
-        }
-        
-        //Current version
-        guard let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
-           return
-        }
-        
-        //Get saved previous build and version
-        let lastBuildPromptedForReview = UserDefaults.standard.string(forKey: SettingsKey.lastBuildPromptedForReview)
-        let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: SettingsKey.lastVersionPromptedForReview)
-        
-        //Exit if app have not been updated
-        guard (currentVersion != lastVersionPromptedForReview || currentBuild != lastBuildPromptedForReview) else {return}
-        
-        //Get number of times launched
-        let numberOfTimesLaunched = UserDefaults.standard.integer(forKey: SettingsKey.timesLaunched)
-        
-        //Enter if over 10th launch
-        if numberOfTimesLaunched > Constants.limitTimesLaunched {
-            
-            if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-                SKStoreReviewController.requestReview(in: scene)
-            }
-            
-            UserDefaults.standard.set(currentVersion, forKey: SettingsKey.lastVersionPromptedForReview)
-        
-            UserDefaults.standard.set(currentBuild, forKey: SettingsKey.lastBuildPromptedForReview)
-        }
+
+    private let defaults: UserDefaults
+
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
     }
-    
-    static func incrementNumberOftimesLaunched() {
-        let newValue = UserDefaults.standard.integer(forKey: SettingsKey.timesLaunched) + 1
-        UserDefaults.standard.set(newValue, forKey:  SettingsKey.timesLaunched)
+
+    func registerLaunch() {
+        defaults.set(launchCount + 1, forKey: SettingsKey.timesLaunched)
+    }
+
+    var launchCount: Int {
+        defaults.integer(forKey: SettingsKey.timesLaunched)
+    }
+
+    func shouldPrompt(version: String, build: String) -> Bool {
+        let promptedVersion = defaults.string(forKey: SettingsKey.lastVersionPromptedForReview)
+        let promptedBuild = defaults.string(forKey: SettingsKey.lastBuildPromptedForReview)
+        guard version != promptedVersion || build != promptedBuild else { return false }
+        return launchCount > Constants.minimumLaunches
+    }
+
+    func markPrompted(version: String, build: String) {
+        defaults.set(version, forKey: SettingsKey.lastVersionPromptedForReview)
+        defaults.set(build, forKey: SettingsKey.lastBuildPromptedForReview)
+    }
+
+    /// Shows the StoreKit review sheet when the policy allows it.
+    func promptIfEarned() {
+        guard
+            let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String,
+            let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
+            shouldPrompt(version: version, build: build)
+        else { return }
+
+        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: scene)
+        }
+        markPrompted(version: version, build: build)
     }
 }

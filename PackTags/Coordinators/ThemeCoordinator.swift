@@ -72,7 +72,7 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
         let vc = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings))
         vc.onSave = { _ in
             onSave()
-            StoreKitHelper.displayStoreKit() // Review prompt only after updating an existing theme
+            ReviewPromptPolicy().promptIfEarned() // Review prompt only after updating an existing theme
         }
         vc.onCancel = onCancel
         if fromSwipe {

@@ -1,4 +1,5 @@
 import XCTest
+import Testing
 import InstagramGraph
 @testable import PackTags
 
@@ -39,4 +40,34 @@ class PackTagsTests: XCTestCase {
         XCTAssertEqual(Set(sut.topHashtags), Set(["#cars", "#auto"]))
     }
 
+}
+
+@Suite struct ReviewPromptPolicyTests {
+
+    private func makeDefaults() -> UserDefaults {
+        let name = "ReviewPromptPolicyTests"
+        let defaults = UserDefaults(suiteName: name)!
+        defaults.removePersistentDomain(forName: name)
+        return defaults
+    }
+
+    @Test func shouldPrompt_requiresEnoughLaunches() {
+        let policy = ReviewPromptPolicy(defaults: makeDefaults())
+
+        for _ in 1...7 { policy.registerLaunch() }
+        #expect(!policy.shouldPrompt(version: "1.0", build: "1"))
+
+        policy.registerLaunch()
+        #expect(policy.shouldPrompt(version: "1.0", build: "1"))
+    }
+
+    @Test func shouldPrompt_atMostOncePerVersion() {
+        let policy = ReviewPromptPolicy(defaults: makeDefaults())
+        for _ in 1...8 { policy.registerLaunch() }
+
+        policy.markPrompted(version: "1.0", build: "1")
+
+        #expect(!policy.shouldPrompt(version: "1.0", build: "1"))
+        #expect(policy.shouldPrompt(version: "1.1", build: "2"))
+    }
 }

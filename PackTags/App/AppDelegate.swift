@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
-        StoreKitHelper.incrementNumberOftimesLaunched()
+        ReviewPromptPolicy().registerLaunch()
 
         return true
     }
