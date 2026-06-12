@@ -82,7 +82,7 @@ class SettingsVC: UIViewController {
             shareApp: { [weak self] in self?.shareApp() },
             rateApp: { [weak self] in self?.showReviewPopUp() },
             contactSupport: { [weak self] in self?.sendEmail() }
-        ))
+        ), settings: appSettings)
     }
 
     private func showPage(vc: UIViewController) {

@@ -4,8 +4,8 @@ protocol AppSettingsProtocol: AnyObject {
     var hasSeenOnboarding: Bool { get set }
     var tipsAlertShown: Bool { get set }
     var tagsPerPack: Int { get set }
-    var saveAndShuffle: Bool { get }
-    var keepPacksOrder: Bool { get }
+    var saveAndShuffle: Bool { get set }
+    var keepPacksOrder: Bool { get set }
     var openInstagramAfterCopy: Bool { get set }
     var instagramUsername: String? { get set }
     var pressedFBLoginButton: Bool { get set }
@@ -46,11 +46,13 @@ final class UserDefaultsAppSettings: AppSettingsProtocol {
     }
 
     var saveAndShuffle: Bool {
-        defaults.bool(forKey: SettingsKey.saveAndShuffle)
+        get { defaults.bool(forKey: SettingsKey.saveAndShuffle) }
+        set { defaults.set(newValue, forKey: SettingsKey.saveAndShuffle) }
     }
 
     var keepPacksOrder: Bool {
-        defaults.bool(forKey: SettingsKey.keepPacksOrder)
+        get { defaults.bool(forKey: SettingsKey.keepPacksOrder) }
+        set { defaults.set(newValue, forKey: SettingsKey.keepPacksOrder) }
     }
 
     var openInstagramAfterCopy: Bool {

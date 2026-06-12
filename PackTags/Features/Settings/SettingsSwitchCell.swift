@@ -13,8 +13,8 @@ class SettingsSwitchCell: UITableViewCell {
         static let sizeOffset: CGFloat = 12
     }
     
-    var storageKey: String?
-    
+    private var onToggle: ((Bool) -> Void)?
+
     private let iconContainer: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -50,6 +50,7 @@ class SettingsSwitchCell: UITableViewCell {
         
         contentView.clipsToBounds = true
         accessoryView = mySwitch
+        mySwitch.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
     }
     
     required init?(coder: NSCoder) {
@@ -91,22 +92,18 @@ class SettingsSwitchCell: UITableViewCell {
         label.text = nil
         iconContainer.backgroundColor = nil
         mySwitch.isOn = false
+        onToggle = nil
     }
     
     public func configure(with model: SettingsSwitchOption) {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
-        mySwitch.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
-        
-        if let storageKey {
-            mySwitch.isOn = UserDefaults.standard.bool(forKey: storageKey)
-        }
+        mySwitch.isOn = model.isOn
+        onToggle = model.onToggle
     }
-    
+
     @objc private func valueChanged(sender: UISwitch) {
-        if let storageKey {
-            UserDefaults.standard.set(sender.isOn, forKey: storageKey)
-        }
+        onToggle?(sender.isOn)
     }
 }

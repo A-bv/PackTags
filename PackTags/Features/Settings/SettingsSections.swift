@@ -19,11 +19,11 @@ struct SettingsOption {
 
 struct SettingsSwitchOption {
     let title: String
-    let storageKey: String
     let icon: UIImage?
     let iconBackgroundColor: UIColor
     let handler: (() -> Void)
     var isOn: Bool
+    let onToggle: (Bool) -> Void
 }
 
 /// Behaviors the settings list can trigger. The view controller supplies the
@@ -74,7 +74,7 @@ enum SettingsSections {
         static let disclaimer = "https://sites.google.com/view/packtagsdisclaimer/accueil"
     }
 
-    static func make(actions: SettingsActions) -> [SettingsSection] {
+    static func make(actions: SettingsActions, settings: any AppSettingsProtocol) -> [SettingsSection] {
         let icon = UIImage(systemName: "gearshape")!
 
         return [
@@ -98,16 +98,18 @@ enum SettingsSections {
                     handler: actions.showQuantityPicker)),
                 .switchCell(model: SettingsSwitchOption(
                     title: Strings.saveAndShuffle,
-                    storageKey: SettingsKey.saveAndShuffle,
                     icon: icon,
                     iconBackgroundColor: .systemYellow,
-                    handler: {}, isOn: false)),
+                    handler: {},
+                    isOn: settings.saveAndShuffle,
+                    onToggle: { settings.saveAndShuffle = $0 })),
                 .switchCell(model: SettingsSwitchOption(
                     title: Strings.keepPackOrder,
-                    storageKey: SettingsKey.keepPacksOrder,
                     icon: icon,
                     iconBackgroundColor: .systemRed,
-                    handler: {}, isOn: false)),
+                    handler: {},
+                    isOn: settings.keepPacksOrder,
+                    onToggle: { settings.keepPacksOrder = $0 })),
             ]),
             SettingsSection(title: Strings.help, options: [
                 .staticCell(model: SettingsOption(

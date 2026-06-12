@@ -319,6 +319,17 @@ import CoreData
 
 @Suite @MainActor struct SettingsSectionsTests {
 
+    private final class FakeSettings: AppSettingsProtocol {
+        var hasSeenOnboarding = false
+        var tipsAlertShown = false
+        var tagsPerPack = 30
+        var saveAndShuffle = false
+        var keepPacksOrder = false
+        var openInstagramAfterCopy = false
+        var instagramUsername: String?
+        var pressedFBLoginButton = false
+    }
+
     private func makeActions(
         onInstagram: @escaping () -> Void = {},
         onWebPage: @escaping (String) -> Void = { _ in }
@@ -338,12 +349,12 @@ import CoreData
     }
 
     @Test func make_buildsTheFiveSections() {
-        #expect(SettingsSections.make(actions: makeActions()).count == 5)
+        #expect(SettingsSections.make(actions: makeActions(), settings: FakeSettings()).count == 5)
     }
 
     @Test func firstAccountRow_editsTheInstagramUsername() {
         var fired = false
-        let sections = SettingsSections.make(actions: makeActions(onInstagram: { fired = true }))
+        let sections = SettingsSections.make(actions: makeActions(onInstagram: { fired = true }), settings: FakeSettings())
 
         guard case .staticCell(let option) = sections[0].options[0] else {
             Issue.record("expected a static cell")
@@ -356,7 +367,7 @@ import CoreData
 
     @Test func legalSection_opensAWebPagePerRow() {
         var openedURLs: [String] = []
-        let sections = SettingsSections.make(actions: makeActions(onWebPage: { openedURLs.append($0) }))
+        let sections = SettingsSections.make(actions: makeActions(onWebPage: { openedURLs.append($0) }), settings: FakeSettings())
 
         for option in sections[4].options {
             if case .staticCell(let model) = option { model.handler() }
