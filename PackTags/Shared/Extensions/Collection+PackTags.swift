@@ -6,7 +6,8 @@ extension Array where Element: Hashable {
         return filter { seen.insert($0).inserted }
     }
 
-    func differenceArrays(from other: [Element]) -> [Element] {
+    /// Elements in exactly one of the two arrays; order is not preserved.
+    func symmetricDifference(with other: [Element]) -> [Element] {
         Array(Set(self).symmetricDifference(Set(other)))
     }
 }

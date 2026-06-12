@@ -35,7 +35,7 @@ struct TagDeduplicator {
             .replacingOccurrences(of: "\n\n", with: " ")
             .components(separatedBy: " ")
         let tagsAlreadyInCurrentTheme = Array(Set(contentTags).intersection(Set(tags)))
-        let candidates = tagsAlreadyInCurrentTheme.differenceArrays(from: tags)
+        let candidates = tagsAlreadyInCurrentTheme.symmetricDifference(with: tags)
 
         return repository.tagsAlreadyStored(tags: candidates)
     }
