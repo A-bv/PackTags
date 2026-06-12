@@ -1,5 +1,23 @@
 import UIKit
 
+private enum Constants {
+    static let contentInset: CGFloat = 8
+    static let coverImageSize = CGSize(width: 600, height: 600)
+    static let thumbnailSize = CGSize(width: 135.333, height: 135.333)
+    static let jpegQuality: CGFloat = 0.8
+    static let highlightAlpha: CGFloat = 0.3
+}
+
+private enum Strings {
+    static let rename = "Rename".localized()
+    static let editPicture = "Edit picture".localized()
+    static let textRecognition = "Text Recognition".localized()
+    static let shuffleHashtags = "Shuffle hashtags".localized()
+    static let menuSectionEdit = "Edit...".localized()
+    static let menuSectionImport = "Import...".localized()
+    static let menuSectionManage = "Manage...".localized()
+}
+
 final class ThemeEditorViewController: UIViewController {
 
     //MARK: - Dependencies
@@ -71,22 +89,15 @@ final class ThemeEditorViewController: UIViewController {
 
         setupViewHierarchy()
         setupConstraints()
-
-        navigationItem.leftBarButtonItem = cancelButton
-        navigationController?.view.tintColor = UITextView.appearance().tintColor
-
-        if viewModel.isNewTheme { showNameThemeAlert() }
-
-        loadButtons()
-        loadEntries()
+        setupNavigationItems()
+        setupSpinner()
         configureTextView()
-
-        loadProcessingSpinner()
-
         findButton.attach(to: themeTextView, in: view)
 
-        updateSaveButtonState() // Enable save button if title != empty
+        loadEntries()
+        updateSaveButtonState()
 
+        if viewModel.isNewTheme { showNameThemeAlert() }
         if let pack = packToHighlight {
             highlight(pack)
             packToHighlight = nil
@@ -98,7 +109,7 @@ final class ThemeEditorViewController: UIViewController {
         view.endEditing(true)
     }
 
-    //MARK: - Layout
+    //MARK: - Setup
 
     private func setupViewHierarchy() {
         view.addSubview(themeTextView)
@@ -107,38 +118,26 @@ final class ThemeEditorViewController: UIViewController {
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            themeTextView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
-            themeTextView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 8),
-            themeTextView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -8),
-            themeTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8),
+            themeTextView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: Constants.contentInset),
+            themeTextView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: Constants.contentInset),
+            themeTextView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -Constants.contentInset),
+            themeTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -Constants.contentInset),
         ])
     }
 
-    //MARK: - Setup
-
-    private func updateSaveButtonState() { saveButton.isEnabled = viewModel.canSave }
-
-    private func loadEntries() {
-        guard viewModel.theme != nil else { return }
-        if let text = viewModel.contentForDisplay() {
-            themeTextView.text = text
-        }
-        if let imageData = viewModel.theme?.image {
-            themeImage = UIImage(data: imageData)
-        }
+    private func setupNavigationItems() {
+        navigationItem.leftBarButtonItem = cancelButton
+        navigationItem.rightBarButtonItems = [saveButton, buttonMenu(), themeTextView.makeTapTextViewButton()]
+        navigationController?.view.tintColor = UITextView.appearance().tintColor
     }
 
-    private func loadProcessingSpinner() {
+    private func setupSpinner() {
         spinner.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(spinner)
         NSLayoutConstraint.activate([
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
-    }
-
-    private func loadButtons() {
-        navigationItem.rightBarButtonItems = [saveButton, buttonMenu(), themeTextView.makeTapTextViewButton()]
     }
 
     private func configureTextView() {
@@ -149,39 +148,39 @@ final class ThemeEditorViewController: UIViewController {
         themeTextView.notHiddenByKeyboard()
     }
 
-    //MARK: - Save
-
-    private enum SaveConstants {
-        static let thumbnailSize = CGSize(width: 135.333, height: 135.333)
-        static let jpegQuality: CGFloat = 0.8
+    private func loadEntries() {
+        if let text = viewModel.contentForDisplay() {
+            themeTextView.text = text
+        }
+        if let imageData = viewModel.theme?.image {
+            themeImage = UIImage(data: imageData)
+        }
     }
 
-    @objc func save() {
-        let imageData = themeImage?.jpegData(compressionQuality: SaveConstants.jpegQuality)
-        let thumbnailData = themeImage?.resized(to: SaveConstants.thumbnailSize)
-            .jpegData(compressionQuality: SaveConstants.jpegQuality)
-        let isUpdatingExistingTheme = !viewModel.isNewTheme
+    private func updateSaveButtonState() { saveButton.isEnabled = viewModel.canSave }
+
+    //MARK: - Save
+
+    @objc private func save() {
+        let imageData = themeImage?.jpegData(compressionQuality: Constants.jpegQuality)
+        let thumbnailData = themeImage?.resized(to: Constants.thumbnailSize)
+            .jpegData(compressionQuality: Constants.jpegQuality)
         viewModel.save(rawText: themeTextView.text, imageData: imageData, thumbnailData: thumbnailData)
         let savedTheme = viewModel.theme
         dismiss(animated: true) { [weak self] in
             self?.onSave?(savedTheme)
-            if isUpdatingExistingTheme {
-                StoreKitHelper.displayStoreKit()
-            }
         }
     }
-}
 
-//MARK: - Strings
+    //MARK: - Cancel
 
-private enum Strings {
-    static let rename = "Rename".localized()
-    static let editPicture = "Edit picture".localized()
-    static let textRecognition = "Text Recognition".localized()
-    static let shuffleHashtags = "Shuffle hashtags".localized()
-    static let menuSectionEdit = "Edit...".localized()
-    static let menuSectionImport = "Import...".localized()
-    static let menuSectionManage = "Manage...".localized()
+    // The coordinator always presents this editor modally (inside its own
+    // navigation controller), so dismissal is the only exit.
+    @objc private func cancel() {
+        dismiss(animated: true) { [weak self] in
+            self?.onCancel?()
+        }
+    }
 }
 
 //MARK: - Options menu
@@ -244,13 +243,9 @@ extension ThemeEditorViewController {
 
 extension ThemeEditorViewController {
 
-    private enum ImageConstants {
-        static let coverSize = CGSize(width: 600, height: 600)
-    }
-
     private func pickCoverImage() {
         imagePicker.present(from: self) { [weak self] image in
-            self?.themeImage = image.resized(to: ImageConstants.coverSize)
+            self?.themeImage = image.resized(to: Constants.coverImageSize)
         }
     }
 
@@ -295,16 +290,17 @@ extension ThemeEditorViewController {
 extension ThemeEditorViewController {
 
     private func highlight(_ pack: String) {
-        DispatchQueue.main.async { [self] in
-            themeTextView.text = themeTextView.text + "\n" // Last for highlight
-            guard let match = themeTextView.text.range(of: pack + "\n") else { return }
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.themeTextView.text = self.themeTextView.text + "\n" // Last for highlight
+            guard let match = self.themeTextView.text.range(of: pack + "\n") else { return }
 
-            let highlight = NSRange(match, in: themeTextView.text)
-            themeTextView.textStorage.addAttribute(
+            let highlight = NSRange(match, in: self.themeTextView.text)
+            self.themeTextView.textStorage.addAttribute(
                 .backgroundColor,
-                value: themeTextView.tintColor.withAlphaComponent(0.3),
+                value: self.themeTextView.tintColor.withAlphaComponent(Constants.highlightAlpha),
                 range: highlight)
-            themeTextView.scrollRangeToVisible(highlight)
+            self.themeTextView.scrollRangeToVisible(highlight)
         }
     }
 }
@@ -328,18 +324,5 @@ extension ThemeEditorViewController: TapTextViewDelegate {
 
     func tapTextViewDidFinishSelection(_ textView: TapTextView) {
         navigationController?.setToolbarHidden(true, animated: false)
-    }
-}
-
-//MARK: - Cancel
-
-extension ThemeEditorViewController {
-
-    // The coordinator always presents this editor modally (inside its own
-    // navigation controller), so dismissal is the only exit.
-    @objc func cancel() {
-        dismiss(animated: true) { [weak self] in
-            self?.onCancel?()
-        }
     }
 }

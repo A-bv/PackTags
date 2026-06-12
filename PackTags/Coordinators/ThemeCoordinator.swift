@@ -70,7 +70,10 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
 
     func showThemeEditor(for theme: ThemeCD, fromSwipe: Bool, chosenPack: String, onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
         let vc = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings))
-        vc.onSave = { _ in onSave() }
+        vc.onSave = { _ in
+            onSave()
+            StoreKitHelper.displayStoreKit() // Review prompt only after updating an existing theme
+        }
         vc.onCancel = onCancel
         if fromSwipe {
             vc.packToHighlight = chosenPack
