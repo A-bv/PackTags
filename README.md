@@ -111,7 +111,7 @@ xcodebuild -project PackTags.xcodeproj -scheme PackTags \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-58 tests in 10 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the SmartG caption-alignment case, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair.
+70 tests in 13 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the analytics transformer, the SmartG hashtag ranking, the Facebook-login flow, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair.
 
 ## Known tradeoffs / roadmap
 
