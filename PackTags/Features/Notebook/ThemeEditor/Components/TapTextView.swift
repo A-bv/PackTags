@@ -39,7 +39,7 @@ class TapTextView: UITextView {
     var firstTimeGrouped = false
     
     var activateButton = UIBarButtonItem()
-    var presentingViewController: UIViewController? = nil
+    private weak var presentingViewController: UIViewController?
     
     @IBInspectable
     weak var tagDelegate: TapTextViewDelegate?
