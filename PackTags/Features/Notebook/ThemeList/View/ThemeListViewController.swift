@@ -1,4 +1,5 @@
 import UIKit
+import CoreData
 
 class ThemeListViewController: UITableViewController {
 
@@ -18,6 +19,10 @@ class ThemeListViewController: UITableViewController {
     let settingsButton = UIBarButtonItem()
     let analyticsButton = UIBarButtonItem()
 
+    /// Decoded thumbnails keyed by theme; cleared on every data reload so
+    /// scrolling never re-decodes JPEG data row by row.
+    private let thumbnailCache = NSCache<NSManagedObjectID, UIImage>()
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyThemedNavigationBarStyle()
@@ -29,10 +34,18 @@ class ThemeListViewController: UITableViewController {
         configureNavBar()
         configureTableView()
         viewModel.onUpdate = { [weak self] in
+            self?.thumbnailCache.removeAllObjects()
             self?.tableView.reloadData()
         }
         viewModel.loadThemes()
         addFloatingButton()
+    }
+
+    func thumbnail(for theme: ThemeCD) -> UIImage? {
+        if let cached = thumbnailCache.object(forKey: theme.objectID) { return cached }
+        guard let data = theme.thumbnail, let image = UIImage(data: data) else { return nil }
+        thumbnailCache.setObject(image, forKey: theme.objectID)
+        return image
     }
 
     override func viewDidAppear(_ animated: Bool) {

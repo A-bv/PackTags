@@ -54,7 +54,7 @@ extension ThemeListViewController {
         }
         let theme = viewModel.themes[indexPath.row]
         cell.nameLabel.text = theme.name
-        cell.themeImageView.image = theme.thumbnail.flatMap(UIImage.init(data:))
+        cell.themeImageView.image = thumbnail(for: theme)
         return cell
     }
 }
