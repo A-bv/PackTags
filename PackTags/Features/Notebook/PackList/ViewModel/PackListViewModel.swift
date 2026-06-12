@@ -47,8 +47,9 @@ final class PackListViewModel {
 
     struct PostCopyAction {
         let shouldMovePackToBottom: Bool
-        /// Non-nil when the app should redirect to this Instagram profile.
-        let instagramUsername: String?
+        /// Non-nil when the app should redirect to the user's Instagram.
+        let instagramAppURL: String?
+        let instagramWebURL: String?
     }
 
     enum InstagramRedirectToggle {
@@ -58,9 +59,11 @@ final class PackListViewModel {
     }
 
     func postCopyAction() -> PostCopyAction {
-        PostCopyAction(
+        let username = settings.openInstagramAfterCopy ? (settings.instagramUsername ?? "") : nil
+        return PostCopyAction(
             shouldMovePackToBottom: !settings.keepPacksOrder,
-            instagramUsername: settings.openInstagramAfterCopy ? (settings.instagramUsername ?? "") : nil
+            instagramAppURL: username.map { "instagram://user?username=\($0)" },
+            instagramWebURL: username.map { "https://instagram.com/\($0)" }
         )
     }
 

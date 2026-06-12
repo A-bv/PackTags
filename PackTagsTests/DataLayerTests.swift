@@ -232,14 +232,15 @@ import CoreData
         let action = sut.postCopyAction()
 
         #expect(action.shouldMovePackToBottom == false)
-        #expect(action.instagramUsername == "packtags")
+        #expect(action.instagramAppURL == "instagram://user?username=packtags")
+        #expect(action.instagramWebURL == "https://instagram.com/packtags")
     }
 
-    @Test func postCopyAction_withRedirectOff_hasNoUsername() {
+    @Test func postCopyAction_withRedirectOff_hasNoLinks() {
         let (sut, settings) = makeSUT()
         settings.openInstagramAfterCopy = false
 
-        #expect(sut.postCopyAction().instagramUsername == nil)
+        #expect(sut.postCopyAction().instagramAppURL == nil)
         #expect(sut.postCopyAction().shouldMovePackToBottom == true)
     }
 
