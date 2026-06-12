@@ -74,14 +74,12 @@
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
 		02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */; };
-		02B05C1A27F90333000026B8 /* UITextView+PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */; };
 		02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */; };
 		02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarchartView.swift */; };
 		02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */; };
 		02B0D7572A48CBB900EF1500 /* AnalyticsViewModel+PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D7562A48CBB900EF1500 /* AnalyticsViewModel+PreviewData.swift */; };
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
 		02BC8D592602B79900441349 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsVC.swift */; };
-		02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */; };
 		02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */; };
 		02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */; };
 		02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */; };
@@ -216,14 +214,12 @@
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
 		02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
-		02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+PlaceHolder.swift"; sourceTree = "<group>"; };
 		02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoCircleView.swift; sourceTree = "<group>"; };
 		02B0D74C2A48B73700EF1500 /* BarchartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartView.swift; sourceTree = "<group>"; };
 		02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartArrowsView.swift; sourceTree = "<group>"; };
 		02B0D7562A48CBB900EF1500 /* AnalyticsViewModel+PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnalyticsViewModel+PreviewData.swift"; sourceTree = "<group>"; };
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
 		02BC8D582602B79900441349 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+KbNoHide.swift"; sourceTree = "<group>"; };
 		02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewController.swift; sourceTree = "<group>"; };
 		02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTreatment.swift; sourceTree = "<group>"; };
 		02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsOverviewModel.swift; sourceTree = "<group>"; };
@@ -534,8 +530,6 @@
 		02B05C1E27F90BA3000026B8 /* TextView */ = {
 			isa = PBXGroup;
 			children = (
-				02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */,
-				02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */,
 			);
 			path = TextView;
 			sourceTree = "<group>";
@@ -999,7 +993,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */,
-				02B05C1A27F90333000026B8 /* UITextView+PlaceHolder.swift in Sources */,
 				0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */,
 				02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */,
 				023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */,
@@ -1082,7 +1075,6 @@
 				AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */,
 				AB00000000000000000000F6 /* Collection+PackTags.swift in Sources */,
 				AB00000000000000000000F8 /* String+Hashtags.swift in Sources */,
-				02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */,
 				02FD6CB026D8006400AB16E4 /* SettingsVC+RateAndReview.swift in Sources */,
@@ -1409,7 +1401,7 @@
 			repositoryURL = "https://github.com/A-bv/TapTagKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.1.0;
 			};
 		};
 		02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */ = {

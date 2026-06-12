@@ -33,7 +33,9 @@ final class ThemeEditorViewController: UIViewController {
         textView.configuration = .init(
             toolbarInfoTitle: "Actions on selected hashtags".localized(),
             toolbarInfoMessage: "tapTextViewToolBarDescriptionMessage".localized(),
-            selectButtonAccessibilityLabel: "Select hashtags".localized())
+            selectButtonAccessibilityLabel: "Select hashtags".localized(),
+            placeholder: "Paste or enter your hashtags...".localized(),
+            avoidsKeyboard: true)
         textView.font = .preferredFont(forTextStyle: .body)
         textView.adjustsFontForContentSizeCategory = true
         textView.textColor = .label
@@ -147,11 +149,8 @@ final class ThemeEditorViewController: UIViewController {
     }
 
     private func configureTextView() {
-        themeTextView.delegate = self
         themeTextView.tagDelegate = self
-        themeTextView.setPlaceholder()
         themeTextView.addTagSelectorToolBar(viewController: self)
-        themeTextView.notHiddenByKeyboard()
     }
 
     private func loadEntries() {
@@ -261,7 +260,6 @@ extension ThemeEditorViewController {
         imagePicker.present(from: self) { [weak self] image in
             guard let self else { return }
             self.spinner.startAnimating()
-            self.themeTextView.hidePlaceholder()
             TextRecognitionUtility.recognizeText(image: image) { [weak self] text in
                 guard let self else { return }
                 if !text.isEmpty {
@@ -315,15 +313,6 @@ extension ThemeEditorViewController {
             self.themeTextView.attributedText = highlighted
             self.themeTextView.scrollRangeToVisible(highlight)
         }
-    }
-}
-
-//MARK: - UITextViewDelegate
-
-extension ThemeEditorViewController: UITextViewDelegate {
-
-    func textViewDidChange(_ textView: UITextView) {
-        themeTextView.checkPlaceholder()
     }
 }
 
