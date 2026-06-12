@@ -180,3 +180,11 @@ class PackCell: UITableViewCell {
         self.copyButton.addNeumorphicShadows()
     }
 }
+
+//MARK: - Update colors when light/dark mode
+extension PackCell {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        copyButton.addNeumorphicShadows()
+    }
+}

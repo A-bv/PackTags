@@ -145,3 +145,12 @@ class ThemeCell: UITableViewCell {
         subLabel.topAnchor.constraint(equalTo:self.nameLabel.bottomAnchor).isActive = true
     }
 }
+
+//MARK: - Update colors when light/dark mode
+extension ThemeCell {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.contentView.backgroundColor = bkgdColor
+        supportingView.addNeumorphicShadows()
+    }
+}

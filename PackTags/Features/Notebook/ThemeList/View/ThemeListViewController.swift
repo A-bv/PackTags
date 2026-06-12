@@ -45,3 +45,12 @@ class ThemeListViewController: UITableViewController {
         updateRowHeightIfNeeded()
     }
 }
+
+//MARK: - Update colors when light/dark mode
+extension ThemeListViewController {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateLogo ()
+        navigationController?.navigationBar.putShadow()
+    }
+}
