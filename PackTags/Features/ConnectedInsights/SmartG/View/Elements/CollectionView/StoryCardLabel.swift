@@ -4,38 +4,25 @@ private enum Constants {
     static let cardLabelFontSize: CGFloat = 12
 }
 
-enum StoryCardLabelType {
-    case comments
-    case likes
-    case hashtags
-}
-
 struct StoryCardLabel: View {
     let comments: String
     let likes: String
     let hashtagsCount: String
-    
+
     var body: some View {
         HStack {
-            switchType(type: .comments, count: comments)
-            switchType(type: .likes, count: likes)
-            switchType(type: .hashtags, count: hashtagsCount)
+            label(icon: "text.bubble.fill", count: comments)
+            label(icon: "suit.heart.fill", count: likes)
+            label(icon: "number.circle.fill", count: hashtagsCount)
         }
         .foregroundColor(.white)
         .background(Color.clear)
     }
-    
+
     @ViewBuilder
-    private func switchType(type: StoryCardLabelType, count: String) -> some View {
+    private func label(icon: String, count: String) -> some View {
         if count != "0" {
-            switch type {
-            case .comments:
-                Image(systemName: "text.bubble.fill")
-            case .likes:
-                Image(systemName: "suit.heart.fill")
-            case .hashtags:
-                Image(systemName: "number.circle.fill")
-            }
+            Image(systemName: icon)
             Text(count)
                 .font(.system(size: Constants.cardLabelFontSize, weight: .semibold))
         }

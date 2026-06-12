@@ -119,19 +119,6 @@ struct InteractionBarView_Previews: PreviewProvider {
     }
 }
 
-/*
- Button(
- action: {
- let impactMed = UIImpactFeedbackGenerator(style: .soft)
- impactMed.impactOccurred()
- 
- }) {
- Image(systemName: "scale.3d")
- .foregroundColor(Color("Color4"))
- }
- .buttonStyle(ColorfulButtonStyle())
- */
-
 // MARK: - Functions
 extension InteractionBarView {
     private func updateHashtag (entry: String) {

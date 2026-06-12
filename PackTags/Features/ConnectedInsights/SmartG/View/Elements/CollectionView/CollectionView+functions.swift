@@ -16,36 +16,24 @@ extension CollectionView {
         }
     }
 
+    @ViewBuilder
     private func makeStoryCard(from media: InstagramPost, index: Int) -> some View {
-        guard
-            let url = media.mediaUrl,
-            let likeCount = media.likeCount,
-            let commentsCount = media.commentsCount
-        else {
-            return AnyView(EmptyView())
-        }
-
-        let likes = StringFormatter.formatNum(
-            value: Double(likeCount),
-            noDecimal: true
-        )
-
-        let hashtagsCount: String
-        if viewModel.computedData.indices.contains(index) {
-            hashtagsCount = String(viewModel.computedData[index].hashtags.count)
-        } else {
-            hashtagsCount = "0"
-        }
-
-        return AnyView(
+        if let url = media.mediaUrl,
+           let likeCount = media.likeCount,
+           let commentsCount = media.commentsCount {
             StoryCard(
                 url: url,
                 comments: String(commentsCount),
-                likes: likes,
-                hashtagsCount: hashtagsCount,
+                likes: StringFormatter.formatNum(value: Double(likeCount), noDecimal: true),
+                hashtagsCount: hashtagsCount(at: index),
                 cardWidth: Constants.cardWidth,
                 cardHeight: Constants.cardHeight,
                 cardCornerRadius: Constants.cardCornerRadius)
-        )
+        }
+    }
+
+    private func hashtagsCount(at index: Int) -> String {
+        guard viewModel.computedData.indices.contains(index) else { return "0" }
+        return String(viewModel.computedData[index].hashtags.count)
     }
 }
