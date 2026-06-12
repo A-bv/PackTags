@@ -7,8 +7,7 @@ final class ExternalLinkOpener {
         if let appURL = URL(string: appURL),
            application.canOpenURL(appURL) {
             application.open(appURL)
-        } else {
-            let webURLToOpenWithSafari = URL(string: webURL)!
+        } else if let webURLToOpenWithSafari = URL(string: webURL) {
             application.open(webURLToOpenWithSafari)
         }
     }

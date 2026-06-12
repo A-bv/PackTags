@@ -52,14 +52,13 @@ extension UIViewController {
         
         //For iPad, popover
         if UIDevice.current.userInterfaceIdiom == .pad {
-            let pvr = activityViewController
-            pvr.popoverPresentationController?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
-            pvr.popoverPresentationController?.sourceView = view
-            pvr.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+            let popover = activityViewController.popoverPresentationController
+            popover?.sourceRect = CGRect(x: view.center.x, y: view.center.y, width: 0, height: 0)
+            popover?.sourceView = view
+            popover?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         }
-        
+
         present(activityViewController, animated: true, completion: nil)
-        
     }
     
     private func writeReview () {

@@ -1,16 +1,6 @@
 import Foundation
    
-final class StringFormatter {
-    static func averageElementsOfArray (array: [Int]) -> String {
-        let avgNS = (array as NSArray).value(forKeyPath: "@avg.floatValue") as? NSNumber
-        let avgDbl = avgNS?.doubleValue
-        return formatNum(value: avgDbl ?? 0) //String(format: "%.2f", avgDbl ?? 0)
-    }
-
-    static func averageElementOfArrayCGFloat (array: [CGFloat]) -> CGFloat {
-        array.reduce(0.0) { $0 + $1/CGFloat(array.count) }
-    }
-}
+final class StringFormatter {}
 
 extension StringFormatter {
     static func formatNum (value : Double, noDecimal: Bool = false) -> String {

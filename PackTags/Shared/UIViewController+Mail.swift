@@ -17,7 +17,6 @@ extension UIViewController {
             mail.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
             mail.mailComposeDelegate = MailComposerHandler.shared
             mail.setToRecipients(["packtagsapp@gmail.com"])
-            //mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
 
             present(mail, animated: true)
         } else {

@@ -41,7 +41,7 @@ extension UIViewController {
             btn.setBackgroundImage(image, for: .normal)
         }
         
-        btn.addTarget(self, action: #selector(dissmissPicker(sender:)), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(dismissModal(sender:)), for: .touchUpInside)
         
         self.view.addSubview(btn)
         rightButtonSetupConstraints(btn: btn)
@@ -73,7 +73,7 @@ extension UIViewController {
         presentViewController(vc)
     }
     
-    @objc private func dissmissPicker(sender: UIButton) {
+    @objc private func dismissModal(sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
