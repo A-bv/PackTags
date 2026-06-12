@@ -127,13 +127,14 @@ private func makeDependencies(
         #expect(nav.pushedVC is PackListViewController)
     }
 
-    @Test func showPackList_assignsThemeAndCoordinator() {
+    @Test func showPackList_buildsTheViewModelAndWiresEditorNavigation() {
         let (sut, nav) = makeSUT()
         let theme = makeTheme()
+        theme.name = "Travel"
         sut.showPackList(for: theme)
         let vc = nav.pushedVC as? PackListViewController
-        #expect(vc?.viewModel.theme === theme)
-        #expect(vc?.coordinator === sut)
+        #expect(vc?.viewModel.title == "Travel")
+        #expect(vc?.onEditTheme != nil)
     }
 
     // MARK: showNewThemeEditor

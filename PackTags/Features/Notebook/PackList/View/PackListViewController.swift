@@ -23,8 +23,11 @@ private enum Constants {
 
 class PackListViewController: CoverImageTableViewController {
 
-    weak var coordinator: (any ThemeCoordinatorProtocol)?
     let viewModel: PackListViewModel
+
+    /// Wired by the coordinator: opens the theme editor, highlighting the
+    /// given pack when non-nil.
+    var onEditTheme: ((String?) -> Void)?
 
     private let composeButton = UIBarButtonItem()
     private let instaButton = UIBarButtonItem()
@@ -33,7 +36,7 @@ class PackListViewController: CoverImageTableViewController {
     private var packs: [String] { viewModel.packs }
 
     private var coverImage: UIImage? {
-        viewModel.theme.image.flatMap(UIImage.init(data:))
+        viewModel.coverImageData.flatMap(UIImage.init(data:))
     }
 
     init(style: UITableView.Style, viewModel: PackListViewModel) {
@@ -49,7 +52,7 @@ class PackListViewController: CoverImageTableViewController {
 
     override func viewDidLoad(){
         super.viewDidLoad()
-        self.title = viewModel.theme.name
+        self.title = viewModel.title
 
         composeButton.image = UIImage(named: "EditPic")
         composeButton.target = self
@@ -74,13 +77,18 @@ class PackListViewController: CoverImageTableViewController {
     }
 }
 
-// MARK: - Loading
+// MARK: - Editor round trip (called by the coordinator)
 extension PackListViewController {
-    private func updatePackListViewController() {
+    func editorDidSave() {
         viewModel.loadPacks()
         tableView.reloadData()
-        navigationItem.title = viewModel.theme.name
+        navigationItem.title = viewModel.title
         setCoverImage(coverImage)
+        suspendsCoverStatusBarStyle = false
+    }
+
+    func editorDidClose() {
+        suspendsCoverStatusBarStyle = false
     }
 }
 
@@ -164,18 +172,7 @@ extension PackListViewController {
     /// Opens the editor; a non-nil pack gets highlighted there.
     private func presentThemeVC(showingPack pack: String?) {
         suspendsCoverStatusBarStyle = true
-        coordinator?.showThemeEditor(
-            for: viewModel.theme,
-            fromSwipe: pack != nil,
-            chosenPack: pack ?? "",
-            onSave: { [weak self] in
-                self?.updatePackListViewController()
-                self?.suspendsCoverStatusBarStyle = false
-            },
-            onCancel: { [weak self] in
-                self?.suspendsCoverStatusBarStyle = false
-            }
-        )
+        onEditTheme?(pack)
     }
 }
 

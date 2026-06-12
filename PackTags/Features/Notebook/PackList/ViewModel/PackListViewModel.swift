@@ -9,8 +9,11 @@ private enum Strings {
 final class PackListViewModel {
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
-    let theme: ThemeCD
+    private let theme: ThemeCD
     private(set) var packs: [String] = []
+
+    var title: String { theme.name ?? "" }
+    var coverImageData: Data? { theme.image }
 
     init(theme: ThemeCD, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
         self.theme = theme

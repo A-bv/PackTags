@@ -27,7 +27,14 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
             style: .plain,
             viewModel: PackListViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings)
         )
-        vc.coordinator = self
+        vc.onEditTheme = { [weak self, weak vc] pack in
+            self?.showThemeEditor(
+                for: theme,
+                fromSwipe: pack != nil,
+                chosenPack: pack ?? "",
+                onSave: { vc?.editorDidSave() },
+                onCancel: { vc?.editorDidClose() })
+        }
         navigationController.pushViewController(vc, animated: true)
     }
 
