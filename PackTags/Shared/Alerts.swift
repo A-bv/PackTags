@@ -73,30 +73,6 @@ final class Alerts {
         }
     }
     
-    static func simpleShortAlert(
-        title: String,
-        message: String,
-        presentingViewController: UIViewController,
-        shouldDissmissPresentingVCWhenConfirmed: Bool
-    ) {
-        let alertController = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert)
-        
-        alertController.addAction(
-            UIAlertAction(
-                title: "Ok",
-                style: .cancel,
-                handler: { _ in
-                    if shouldDissmissPresentingVCWhenConfirmed {
-                        presentingViewController.dismiss(animated: true, completion: nil)
-                    }
-            }))
-
-        presentingViewController.present(alertController, animated: true)
-    }
-    
     static func showFirstTimeTipsAlert(presentingViewController: UIViewController) {
         let message = "\n" + Strings.discoverPacktagsWithTricksAndTips
         
