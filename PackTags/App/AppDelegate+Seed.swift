@@ -12,12 +12,13 @@ extension AppDelegate {
             return
         }
 
+        // Replaying onboarding resets hasSeenOnboarding, so this can run on a
+        // device full of user data. Never overwrite an existing store.
+        let storeURL = applicationSupportURL.appendingPathComponent("PackTags.sqlite")
+        guard !fileManager.fileExists(atPath: storeURL.path) else { return }
+
         do {
             try fileManager.createDirectory(at: applicationSupportURL, withIntermediateDirectories: true)
-
-            for existingFile in try fileManager.contentsOfDirectory(at: applicationSupportURL, includingPropertiesForKeys: nil) {
-                try fileManager.removeItem(at: existingFile)
-            }
 
             for seedFile in try fileManager.contentsOfDirectory(at: seedFolderURL, includingPropertiesForKeys: nil) {
                 try fileManager.copyItem(at: seedFile, to: applicationSupportURL.appendingPathComponent(seedFile.lastPathComponent))
