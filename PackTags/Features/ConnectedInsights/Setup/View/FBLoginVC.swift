@@ -61,6 +61,8 @@ class FBLoginVC: UIViewController {
         return button
     }()
 
+    private let setupSpinner = UIActivityIndicatorView(style: .large)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         logLogin("FBLoginVC viewDidLoad.")
@@ -119,6 +121,22 @@ extension FBLoginVC: LoginButtonDelegate {
             action: #selector(showInfoSetupScreenFromHelpButton(_:)))
         self.placeFBLogingButton()
         self.placeResetLoginButton()
+        self.placeSetupSpinner()
+    }
+
+    private func placeSetupSpinner() {
+        setupSpinner.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(setupSpinner)
+        NSLayoutConstraint.activate([
+            setupSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            setupSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80),
+        ])
+    }
+
+    private func setValidationInProgress(_ inProgress: Bool) {
+        inProgress ? setupSpinner.startAnimating() : setupSpinner.stopAnimating()
+        loginButton.isEnabled = !inProgress
+        resetLoginButton.isEnabled = !inProgress
     }
 
     private func placeFBLogingButton() {
@@ -195,7 +213,9 @@ extension FBLoginVC {
         }
 
         logLogin("Valid Facebook access token from \(source); starting Graph setup validation.")
+        setValidationInProgress(true)
         viewModel.setupWithToken(token) { [weak self] result in
+            self?.setValidationInProgress(false)
             switch result {
             case .success:
                 self?.showSuccessfulSetupAlert()
