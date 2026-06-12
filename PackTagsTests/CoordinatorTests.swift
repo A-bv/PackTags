@@ -78,11 +78,12 @@ private func makeDependencies(
 
 @Suite @MainActor struct AppCoordinatorTests {
 
-    @Test func start_addsThemeCoordinatorAsOnlyChild() {
+    @Test func start_setsThemeListAsRootAndRetainsItsCoordinator() {
         let sut = AppCoordinator(window: UIWindow())
         sut.start()
-        #expect(sut.childCoordinators.count == 1)
-        #expect(sut.childCoordinators.first is ThemeCoordinator)
+        let root = sut.navigationController.viewControllers.first as? ThemeListViewController
+        #expect(root != nil)
+        #expect(root?.coordinator != nil)
     }
 
     @Test func start_setsNavigationControllerAsWindowRootVC() {
@@ -254,14 +255,4 @@ private func makeDependencies(
         #expect(themeVC?.isFromShow == false)
     }
 
-    // MARK: childDidFinish
-
-    @Test func childDidFinish_removesChildFromParent() {
-        let nav = SpyNavigationController()
-        let parent = AppCoordinator(window: UIWindow())
-        let child = ThemeCoordinator(navigationController: nav, dependencies: makeDependencies())
-        parent.childCoordinators.append(child)
-        parent.childDidFinish(child)
-        #expect(parent.childCoordinators.isEmpty)
-    }
 }
