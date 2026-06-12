@@ -72,6 +72,6 @@ struct FloatingListView: View {
 
 struct FloatingListView_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingListView(viewModel: SmartGViewModel())
+        FloatingListView(viewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
     }
 }

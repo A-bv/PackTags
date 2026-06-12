@@ -53,7 +53,7 @@ final class AnalyticsViewModel: ObservableObject {
     @Published var barChartData: [BarChartPost] = [BarChartPost(id: 0, post: "", rate: 0, barHeight: 0)]
     
     //MARK: - Init
-    init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
+    init(gateway: any ConnectedInsightsGatewayProtocol) {
         self.gateway = gateway
         self.loadDataForAnalyticsView()
     }

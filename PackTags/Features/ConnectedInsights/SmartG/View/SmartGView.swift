@@ -21,7 +21,7 @@ struct SmartGView: View {
     //Network Status
     @StateObject var monitor = NetworkMonitor()
 
-    init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
+    init(gateway: any ConnectedInsightsGatewayProtocol) {
         _smartGViewModel = StateObject(
             wrappedValue: SmartGViewModel(gateway: gateway))
     }
@@ -78,6 +78,6 @@ struct SmartGView: View {
 
 struct SmartGView_Previews: PreviewProvider {
     static var previews: some View {
-        SmartGView()
+        SmartGView(gateway: UnavailableConnectedInsightsGateway())
     }
 }

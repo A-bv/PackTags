@@ -120,7 +120,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 @Suite struct SmartGViewModelTests {
 
     @Test func processSmartGModel_extractsHashtagsPerPost() throws {
-        let sut = SmartGViewModel()
+        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
         sut.dataMedias = try makePosts(captions: ["#sea #sun day", nil, "#sea"])
 
         sut.processSmartGModel()
@@ -131,7 +131,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func processSmartGModel_ranksTopHashtagsByFrequency() throws {
-        let sut = SmartGViewModel()
+        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
         sut.dataMedias = try makePosts(captions: ["#sea #sun", "#sea #sky", "#sea #sun"])
 
         sut.processSmartGModel()

@@ -10,7 +10,7 @@ final class SmartGViewModel: ObservableObject {
     @Published var topHashtags: [String] = []
     @Published var topHashtagsCount: [Int] = []
 
-    init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
+    init(gateway: any ConnectedInsightsGatewayProtocol) {
         self.gateway = gateway
     }
 }

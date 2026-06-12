@@ -28,6 +28,6 @@ extension SmartGView {
 
 struct CollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionView(viewModel: SmartGViewModel())
+        CollectionView(viewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
     }
 }

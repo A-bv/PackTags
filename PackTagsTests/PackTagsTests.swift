@@ -6,7 +6,7 @@ class PackTagsTests: XCTestCase {
 
     @MainActor
     func testSmartGProcessing_whenFirstMediaHasNoCaption_keepsMediaAlignment() throws {
-        let sut = SmartGViewModel()
+        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
         let mediaResponse = """
         {
           "data": [

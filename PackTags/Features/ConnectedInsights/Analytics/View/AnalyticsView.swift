@@ -3,7 +3,7 @@ import InstagramGraph
 
 struct AnalyticsView_Previews: PreviewProvider {
     static var previews: some View {
-        AnalyticsView()
+        AnalyticsView(gateway: UnavailableConnectedInsightsGateway())
     }
 }
 
@@ -66,7 +66,7 @@ struct AnalyticsView : View {
 
     var colors = [Color("Color1"),Color("Color")]
 
-    init(gateway: any ConnectedInsightsGatewayProtocol = UnavailableConnectedInsightsGateway()) {
+    init(gateway: any ConnectedInsightsGatewayProtocol) {
         _swiftUIData = StateObject(
             wrappedValue: AnalyticsViewModel(gateway: gateway))
     }

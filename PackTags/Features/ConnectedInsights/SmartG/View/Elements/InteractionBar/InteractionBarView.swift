@@ -115,7 +115,7 @@ struct InteractionBarView_Previews: PreviewProvider {
             hashtagEntry: .constant(""),
             showingAlert: .constant(false),
             isErrorState: .constant(false),
-            smartGViewModel: SmartGViewModel())
+            smartGViewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
         .padding()
     }
 }
