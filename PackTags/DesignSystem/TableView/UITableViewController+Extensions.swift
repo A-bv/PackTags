@@ -12,7 +12,7 @@ extension UITableViewController {
         tableView.addGestureRecognizer(longPress)
     }
 
-    @objc func onLongPressGesture(sender: UILongPressGestureRecognizer) {
+    @objc private func onLongPressGesture(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             tableView.isEditing = true
             setEditing(true, animated: false)

@@ -28,7 +28,7 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    func setNavBarAppearance(color: UIColor) {
+    private func setNavBarAppearance(color: UIColor) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = color

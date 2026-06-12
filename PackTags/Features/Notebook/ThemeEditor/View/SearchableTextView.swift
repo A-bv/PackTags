@@ -77,7 +77,7 @@ extension UITextView {
         }
     }
     
-    func ScrollToCursorPosition() {
+    private func ScrollToCursorPosition() {
         //coordinates of cursor
         if let cursorPosition = self.selectedTextRange?.start
         {
@@ -95,7 +95,7 @@ extension UITextView {
         self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
     }
     
-    func setCursorPosition (value:Int) {
+    private func setCursorPosition (value:Int) {
         if let newPosition = self.position(from: self.beginningOfDocument, offset: value) {
             self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
         }
@@ -123,7 +123,7 @@ extension UITextView {
         return searchedWords
     }
     
-    func getFirstHighlightedWordPosition (word: String) -> Int {
+    private func getFirstHighlightedWordPosition (word: String) -> Int {
         if let mystring = self.text,
            let range = mystring.range(of: word, options: .caseInsensitive) {
             return mystring.distance(from: mystring.startIndex, to: range.upperBound)

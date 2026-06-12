@@ -39,7 +39,7 @@ extension PackListViewController {
         static let show = "Show".localized()
     }
 
-    func configureCell(indexPath: IndexPath) -> UITableViewCell {
+    private func configureCell(indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "PackCell", for: indexPath) as? PackCell
         else {
@@ -75,7 +75,7 @@ extension PackListViewController {
         return cell
     }
 
-    func addSCellSwipeAccessory(indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    private func addSCellSwipeAccessory(indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contextItem = UIContextualAction(style: .normal, title: Strings.show) { [weak self] (contextualAction, view, boolValue) in
             guard let self else { return }
             self.chosenPack = self.packs[indexPath.row]

@@ -62,7 +62,7 @@ extension UIViewController {
         
     }
     
-    func writeReview () {
+    private func writeReview () {
         guard let productURL = URL(
             string: Links.packTagsAppStoreUrl) else { return }
         var components = URLComponents(url: productURL, resolvingAgainstBaseURL: false)

@@ -35,13 +35,6 @@ extension AnalyticsViewModel {
     private func load(profileJson: Profile) {
         jsonOfficial = profileJson
         processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson, mode: mode, rawInsights: rawInsights)
-        // QQQ
-
-        /*
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.processedJson = self?.fakeProcessedJson0()
-            self?.updateData()
-        }*/
         updateData()
     }
     

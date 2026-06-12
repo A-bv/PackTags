@@ -151,7 +151,7 @@ final class Alerts {
 
 // MARK: - More alerts
 extension UIViewController {
-    @objc func dismissAlertController() {
+    @objc private func dismissAlertController() {
         self.dismiss(animated: true, completion: nil)
     }
     

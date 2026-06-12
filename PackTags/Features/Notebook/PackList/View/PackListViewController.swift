@@ -66,7 +66,7 @@ class PackListViewController: UITableViewController {
         self.setNavBarTransparent(alpha: alpha)
     }
 
-    @objc func didTapInstagram() {
+    @objc private func didTapInstagram() {
         statusAutoDirectToInstagram()
     }
 }

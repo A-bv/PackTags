@@ -214,13 +214,13 @@ extension OnBoardingController {
         setIndiactorForCurrentPage()
     }
 
-    func setIndiactorForCurrentPage()  {
+    private func setIndiactorForCurrentPage()  {
         let page = scrollView.contentOffset.x / scrollWidth
         pageControl.currentPage = Int(page)
         getStartedBtn.isHidden = Int(page) != titles.count - 1
     }
 
-    @objc func pageChanged(_ sender: Any) {
+    @objc private func pageChanged(_ sender: Any) {
         let currentPage = CGFloat(pageControl.currentPage)
         let pageControlFrame = CGRect(
             x: scrollWidth * currentPage,
@@ -230,7 +230,7 @@ extension OnBoardingController {
         scrollView.scrollRectToVisible(pageControlFrame, animated: true)
     }
 
-    @objc func didTap(_ sender: UIButton) {
+    @objc private func didTap(_ sender: UIButton) {
         appSettings?.hasSeenOnboarding = true
         dismiss(animated: true)
     }

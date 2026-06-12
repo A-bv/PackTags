@@ -67,13 +67,13 @@ extension UIViewController {
         self.present(viewController, animated: true)
     }
 
-    @objc func showWebSetBusinessIG(_ sender: Any) {
+    @objc private func showWebSetBusinessIG(_ sender: Any) {
         guard let url = URL(string: Strings.facebookSetupHelpUrl) else { return }
         let vc = SFSafariViewController(url: url)
         presentViewController(vc)
     }
     
-    @objc func dissmissPicker(sender: UIButton) {
+    @objc private func dissmissPicker(sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     

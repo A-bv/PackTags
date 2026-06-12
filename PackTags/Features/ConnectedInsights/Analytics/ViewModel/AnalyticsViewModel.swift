@@ -68,7 +68,7 @@ extension AnalyticsViewModel {
         static let minimumSecondsBetweenRefreshes: TimeInterval = 5
     }
 
-    func canRefresh() -> Bool {
+    private func canRefresh() -> Bool {
         let defaults = UserDefaults.standard
         guard let lastRefresh = defaults.object(forKey: SettingsKey.lastStatsRefresh) as? Date else { return true }
 

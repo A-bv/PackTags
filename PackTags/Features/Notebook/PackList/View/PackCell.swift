@@ -86,7 +86,7 @@ class PackCell: UITableViewCell {
         return btn
     }()
     
-    @objc func startTap(sender: UIButton) {
+    @objc private func startTap(sender: UIButton) {
         sender.addNeumorphicShadows(isButtonViewHeld: true, updateAfterShortDelay:true)
     }
     
@@ -95,11 +95,11 @@ class PackCell: UITableViewCell {
         buttonTapCallback()
     }
     
-    @objc func dragOutButton(sender: UIButton) {
+    @objc private func dragOutButton(sender: UIButton) {
         sender.addNeumorphicShadows()
     }
     
-    @objc func showMore(sender: UIButton) {
+    @objc private func showMore(sender: UIButton) {
         UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         subButtonTapCallback()
     }

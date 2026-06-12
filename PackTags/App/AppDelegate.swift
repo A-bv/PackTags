@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])}
 
     // MARK: - Style
-    func setupAppearance() {
+    private func setupAppearance() {
         let color = customPurple
         UITextView.appearance().tintColor = color
         UITextField.appearance().tintColor = color

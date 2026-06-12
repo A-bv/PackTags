@@ -13,7 +13,7 @@ extension PackListViewController {
     
 // Navigation Bar Color and opacity variations
 extension PackListViewController {
-    func setNavBarOpacityAndColors() {
+    private func setNavBarOpacityAndColors() {
         self.setNavBarTransparent(alpha: alpha)
     }
     
@@ -53,7 +53,7 @@ extension PackListViewController {
             uiiv.putFilter()
     }
     
-    func updateTableViewBackgroundImage() {
+    private func updateTableViewBackgroundImage() {
         if let imageData = viewModel.theme.image, let image = UIImage(data: imageData) {
             uiiv = UIImageView(image: image)
         }
@@ -74,7 +74,7 @@ extension PackListViewController {
 }
 
 extension UITableView {
-    func applyTableViewTopInset(
+    fileprivate func applyTableViewTopInset(
         tableViewTopInset: CGFloat,
         scrollIndicatorsTopInset: CGFloat
     ) {

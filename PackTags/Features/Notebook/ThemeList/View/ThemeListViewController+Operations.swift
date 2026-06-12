@@ -43,7 +43,7 @@ extension ThemeListViewController {
         }
     }
 
-    func deleteRow(indexPath: IndexPath) {
+    private func deleteRow(indexPath: IndexPath) {
         viewModel.deleteTheme(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .none)
     }

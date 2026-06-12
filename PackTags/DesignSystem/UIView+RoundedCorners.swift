@@ -6,16 +6,3 @@ extension UIView {
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 }
-
-/*
-extension UIView{
-    func blurImage()
-    {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.bounds
-
-        self.addSubview(blurEffectView)
-    }
-}
-*/

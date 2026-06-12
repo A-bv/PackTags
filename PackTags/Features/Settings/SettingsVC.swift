@@ -87,7 +87,7 @@ class SettingsVC: UIViewController {
 }
 
 extension UIViewController {
-    func showPage (vc: UIViewController) {
+    fileprivate func showPage (vc: UIViewController) {
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)

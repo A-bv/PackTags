@@ -135,14 +135,14 @@ struct InteractionBarView_Previews: PreviewProvider {
 
 // MARK: - Functions
 extension InteractionBarView {
-    func updateHashtag (entry: String) {
+    private func updateHashtag (entry: String) {
         if let index = hashtags.firstIndex(where: { $0.title == entry }) {
             moc.delete(hashtags[index])
         }
         saveHashtag(hastagTitle: entry)
     }
     
-    func saveHashtag(hastagTitle: String) {
+    private func saveHashtag(hastagTitle: String) {
         let hashtag = Hashtag(context: moc)
         hashtag.id = UUID()
         hashtag.title = "\(hastagTitle)"

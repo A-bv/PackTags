@@ -63,7 +63,7 @@ struct FloatingListView: View {
         })
     }
     
-    func generateTagYPos() -> [CGFloat] {
+    private func generateTagYPos() -> [CGFloat] {
         let initial = -Constants.tagListHeight/2 + Constants.tagListPadding + Constants.tagCornerRadius
         let final = CGFloat(Constants.numberOfTags) * Constants.tagSpacing
         return Array(stride(from: initial, through: final, by: Constants.tagSpacing))
