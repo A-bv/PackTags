@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0000000000000000001007 /* CoverImageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000001006 /* CoverImageTableViewController.swift */; };
 		AB0000000000000000001003 /* TapTagKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001002 /* TapTagKit */; };
 		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
@@ -132,7 +133,6 @@
 		AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000403 /* SettingsVC+Alerts.swift */; };
 		AB0000000000000000000502 /* PackListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000501 /* PackListViewController+TableView.swift */; };
 		AB0000000000000000000504 /* PackListViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000503 /* PackListViewController+Actions.swift */; };
-		AB0000000000000000000506 /* PackListViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000505 /* PackListViewController+Appearance.swift */; };
 		AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000907 /* KeyboardFindButton.swift */; };
 		AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000909 /* ThemeImagePicker.swift */; };
 /* End PBXBuildFile section */
@@ -148,6 +148,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB0000000000000000001006 /* CoverImageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageTableViewController.swift; sourceTree = "<group>"; };
 		020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		020584D4284D715D00020FB8 /* UIView+BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BlurView.swift"; sourceTree = "<group>"; };
 		020621562666DBCC0072C404 /* BarChartPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPost.swift; sourceTree = "<group>"; };
@@ -272,7 +273,6 @@
 		AB0000000000000000000403 /* SettingsVC+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Alerts.swift"; sourceTree = "<group>"; };
 		AB0000000000000000000501 /* PackListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+TableView.swift"; sourceTree = "<group>"; };
 		AB0000000000000000000503 /* PackListViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Actions.swift"; sourceTree = "<group>"; };
-		AB0000000000000000000505 /* PackListViewController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Appearance.swift"; sourceTree = "<group>"; };
 		AB0000000000000000000907 /* KeyboardFindButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFindButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000909 /* ThemeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -498,7 +498,6 @@
 				0226F19D259EABB4006E086C /* PackListViewController.swift */,
 				AB0000000000000000000501 /* PackListViewController+TableView.swift */,
 				AB0000000000000000000503 /* PackListViewController+Actions.swift */,
-				AB0000000000000000000505 /* PackListViewController+Appearance.swift */,
 				0226F19B259EAB93006E086C /* PackCell.swift */,
 			);
 			path = View;
@@ -728,6 +727,7 @@
 			children = (
 				AB00000000000000000000F1 /* TagPackFormatter.swift */,
 				AB00000000000000000000F3 /* TagDeduplicator.swift */,
+				AB00000000000000000000F7 /* String+Hashtags.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -736,7 +736,6 @@
 			isa = PBXGroup;
 			children = (
 				AB00000000000000000000F5 /* Collection+PackTags.swift */,
-				AB00000000000000000000F7 /* String+Hashtags.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -785,6 +784,8 @@
 				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
 				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
 				02AD94A829A5936500D893E5 /* ModalChrome.swift */,
+				AB0000000000000000001006 /* CoverImageTableViewController.swift */,
+				02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */,
 				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
 				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
 			);
@@ -807,7 +808,6 @@
 				AB0000000000000000000907 /* KeyboardFindButton.swift */,
 				AB0000000000000000000909 /* ThemeImagePicker.swift */,
 				02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */,
-				02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -980,7 +980,6 @@
 				0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */,
 				AB0000000000000000000502 /* PackListViewController+TableView.swift in Sources */,
 				AB0000000000000000000504 /* PackListViewController+Actions.swift in Sources */,
-				AB0000000000000000000506 /* PackListViewController+Appearance.swift in Sources */,
 				02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */,
 				02998A662B44104800B70516 /* Circles.swift in Sources */,
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
@@ -1064,6 +1063,7 @@
 				02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* SettingsVC+Mail.swift in Sources */,
 				02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */,
+				AB0000000000000000001007 /* CoverImageTableViewController.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				02385E002A634FAB0050FFDE /* ThemeListViewController+Actions.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,

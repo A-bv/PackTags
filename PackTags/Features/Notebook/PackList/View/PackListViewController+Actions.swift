@@ -8,17 +8,17 @@ extension PackListViewController {
     }
 
     func presentThemeVC(fromSwipe: Bool) {
-        resetStatusBarColor = true
+        overridesStatusBarToDefault = true
         coordinator?.showThemeEditor(
             for: viewModel.theme,
             fromSwipe: fromSwipe,
             chosenPack: fromSwipe ? chosenPack : "",
             onSave: { [weak self] in
                 self?.updatePackListViewController()
-                self?.resetStatusBarColor = false
+                self?.overridesStatusBarToDefault = false
             },
             onCancel: { [weak self] in
-                self?.resetStatusBarColor = false
+                self?.overridesStatusBarToDefault = false
             }
         )
     }

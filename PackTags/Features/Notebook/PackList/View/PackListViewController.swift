@@ -1,6 +1,6 @@
 import UIKit
 
-class PackListViewController: UITableViewController {
+class PackListViewController: CoverImageTableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
     let viewModel: PackListViewModel
@@ -22,24 +22,6 @@ class PackListViewController: UITableViewController {
     let pasteboard = UIPasteboard.general
     var chosenPack = String()
     
-    //Image header
-    var uiiv = UIImageView()
-    
-    //Corner radius table view
-    let cR = CGFloat(22)
-    
-    // Status Bar color && Navigation Bar
-    var alpha = CGFloat(0) {
-        didSet {
-            setNeedsStatusBarAppearanceUpdate()
-        }
-    }
-    var resetStatusBarColor = false {
-        didSet {
-            setNeedsStatusBarAppearanceUpdate()
-        }
-    }
-    
     // MARK: - Interface
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -59,11 +41,12 @@ class PackListViewController: UITableViewController {
         tableView.rowHeight = 81
 
         loadPacks() //load
-        TVinset()
-        setupTableViewBackgroundImage()
-        tableView.backgroundColor = bkgdColor
+        setCoverImage(coverImage)
+        setNavBarTransparent(alpha: barAlpha)
+    }
 
-        self.setNavBarTransparent(alpha: alpha)
+    private var coverImage: UIImage? {
+        viewModel.theme.image.flatMap(UIImage.init(data:))
     }
 
     @objc private func didTapInstagram() {
@@ -81,8 +64,6 @@ extension PackListViewController {
         loadPacks()
         tableView.reloadData()
         navigationItem.title = viewModel.theme.name
-        DispatchQueue.main.async {
-            self.setupTableViewBackgroundImage()
-        }
+        setCoverImage(coverImage)
     }
 }
