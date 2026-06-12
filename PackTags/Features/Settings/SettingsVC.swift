@@ -84,12 +84,10 @@ class SettingsVC: UIViewController {
             contactSupport: { [weak self] in self?.sendEmail() }
         ))
     }
-}
 
-extension UIViewController {
-    fileprivate func showPage (vc: UIViewController) {
+    private func showPage(vc: UIViewController) {
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
-        self.present(vc, animated: true)
+        present(vc, animated: true)
     }
 }

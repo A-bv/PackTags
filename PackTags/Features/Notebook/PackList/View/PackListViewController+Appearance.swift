@@ -68,20 +68,8 @@ extension PackListViewController {
         
         let topInset = demiS - (navheight + statusBarHeight)
         let topInset2 = (demiS - navheight) + cR + insetPadding
-        
-        tableView.applyTableViewTopInset(tableViewTopInset: topInset, scrollIndicatorsTopInset: topInset2)
-    }
-}
 
-extension UITableView {
-    fileprivate func applyTableViewTopInset(
-        tableViewTopInset: CGFloat,
-        scrollIndicatorsTopInset: CGFloat
-    ) {
-        self.contentInset = UIEdgeInsets(
-            top: CGFloat(tableViewTopInset), left: 0, bottom: 0, right: 0)
-        
-        self.scrollIndicatorInsets = UIEdgeInsets(
-            top: scrollIndicatorsTopInset, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+        tableView.scrollIndicatorInsets = UIEdgeInsets(top: topInset2, left: 0, bottom: 0, right: 0)
     }
 }
