@@ -50,11 +50,11 @@ PackTags/
 | Component | Scope | Lives in | Does |
 |---|---|---|---|
 | TapTextView | beyond the app | [`TapTagKit`](https://github.com/A-bv/TapTagKit) package | tap-to-multi-select hashtags with actions toolbar |
-| TextRecognitionUtility | ThemeEditor | 〃 | Vision OCR — import hashtags from a photo |
-| ImageTreatment | ThemeEditor | 〃 | UIImage resize / orientation for theme covers |
+| TextRecognitionUtility | ThemeEditor | `Notebook/ThemeEditor/Components/` | Vision OCR — import hashtags from a photo |
 | ThemeImagePicker | ThemeEditor | 〃 | photo-library picker that returns an orientation-normalized image |
-| KeyboardFindButton | ThemeEditor | `Notebook/ThemeEditor/Components/` | magnifier above the keyboard that presents the system find panel (`UIFindInteraction`) |
-| FloatingButtonFactory | app-wide | `DesignSystem/Components/` | floating gradient action button |
+| KeyboardFindButton | ThemeEditor | 〃 | magnifier above the keyboard that presents the system find panel (`UIFindInteraction`) |
+| ImageTreatment | app-wide | `DesignSystem/Components/` | UIImage resize / orientation for theme covers |
+| FloatingButtonFactory | app-wide | 〃 | floating gradient action button |
 | Tag engine | app-wide | `Domain/` | hashtag parsing, cross-theme dedup, pack chunking |
 | LoadingView, OfflineView, ActivityIndicator | app-wide | `DesignSystem/Components/` | reusable view states |
 | Neumorphic styles, nav-bar/text-view helpers | app-wide | `DesignSystem/` | the app's visual language |
