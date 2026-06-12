@@ -57,7 +57,8 @@ class FBLoginVC: UIViewController {
     private let resetLoginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Strings.resetLogin, for: .normal)
-        button.setTitleColor(customPurple, for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .footnote)
         return button
     }()
 
@@ -156,7 +157,7 @@ extension FBLoginVC: LoginButtonDelegate {
 
         NSLayoutConstraint.activate([
             resetLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            resetLoginButton.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 40)
+            resetLoginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 
