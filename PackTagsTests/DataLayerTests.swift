@@ -403,5 +403,34 @@ import CoreData
         #expect(sut.theme?.name == "Travel")
         #expect(sut.theme?.content == "#sea #sun")
     }
+
+    @Test func nameAlert_withoutATitle_promptsForAName() {
+        let sut = makeSUT()
+
+        let alert = sut.nameAlert
+
+        #expect(alert.title == "New Theme".localized())
+        #expect(alert.message.isEmpty)
+        #expect(alert.placeholder == "Enter Name".localized())
+    }
+
+    @Test func nameAlert_withATitle_promptsForARename() {
+        let sut = makeSUT()
+        sut.themeTitle = "Travel"
+
+        let alert = sut.nameAlert
+
+        #expect(alert.title == "Travel")
+        #expect(alert.message == "Edit Name".localized())
+        #expect(alert.placeholder == "Enter New Name".localized())
+    }
+
+    @Test func contentByPrepending_intoAnEmptyEditor_isTheRecognizedTextAlone() {
+        #expect(makeSUT().contentByPrepending(recognizedText: "#sun", to: "") == "#sun")
+    }
+
+    @Test func contentByPrepending_ontoExistingText_separatesWithABlankLine() {
+        #expect(makeSUT().contentByPrepending(recognizedText: "#sun", to: "#sea") == "#sun\n\n#sea")
+    }
 }
 

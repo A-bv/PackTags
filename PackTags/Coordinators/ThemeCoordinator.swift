@@ -73,8 +73,7 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
         vc.onSave = { _ in onSave() }
         vc.onCancel = onCancel
         if fromSwipe {
-            vc.isFromShow = true
-            vc.packFromShow = chosenPack
+            vc.packToHighlight = chosenPack
         }
         presentInNavController(vc, transition: .crossDissolve)
     }

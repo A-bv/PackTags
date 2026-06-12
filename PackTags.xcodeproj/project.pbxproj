@@ -14,18 +14,10 @@
 		0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */; };
 		0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */; };
 		0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */; };
-		AB00000000000000000000D2 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000D1 /* DataLayerTests.swift */; };
 		0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */; };
 		0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */; };
 		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
-		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */; };
-		AB00000000000000000000E2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* AppSettings.swift */; };
-		AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F1 /* TagPackFormatter.swift */; };
-		AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F3 /* TagDeduplicator.swift */; };
-		AB00000000000000000000F6 /* Collection+PackTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F5 /* Collection+PackTags.swift */; };
-		AB00000000000000000000F8 /* String+Hashtags.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F7 /* String+Hashtags.swift */; };
-		AB0000000000000000000102 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000101 /* DomainTests.swift */; };
 		0207BB982FD5F0000007F3D3 /* ConnectedInsightsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */; };
 		0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */; };
 		0207BBB12FD564090007F3D3 /* PackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB02FD564090007F3D3 /* PackListViewModel.swift */; };
@@ -33,14 +25,7 @@
 		0207BBB62FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */; };
 		0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */; };
 		0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */; };
-		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
 		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
-		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
-		AB0000000000000000000402 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000401 /* SettingsSections.swift */; };
-		AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000403 /* SettingsVC+Alerts.swift */; };
-		AB0000000000000000000406 /* ThemeEditorViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */; };
-		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
-		0216110E25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */; };
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
 		021D76172759A00D00F54054 /* SmartGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartGView.swift */; };
 		021D7620275A99D500F54054 /* TransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D761F275A99D500F54054 /* TransformedProfileModel.swift */; };
@@ -56,9 +41,6 @@
 		022688B32628BCCC007DBD98 /* ThemeListViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688B22628BCCC007DBD98 /* ThemeListViewController+Interface.swift */; };
 		0226F19C259EAB93006E086C /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19B259EAB93006E086C /* PackCell.swift */; };
 		0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19D259EABB4006E086C /* PackListViewController.swift */; };
-		AB0000000000000000000502 /* PackListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000501 /* PackListViewController+TableView.swift */; };
-		AB0000000000000000000504 /* PackListViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000503 /* PackListViewController+Actions.swift */; };
-		AB0000000000000000000506 /* PackListViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000505 /* PackListViewController+Appearance.swift */; };
 		0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* SmartGModel.swift */; };
 		0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */; };
 		02385E002A634FAB0050FFDE /* ThemeListViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385DFF2A634FAB0050FFDE /* ThemeListViewController+Actions.swift */; };
@@ -93,7 +75,6 @@
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
 		02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */; };
 		02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1727F8BFBF000026B8 /* TapTextView.swift */; };
-		AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000907 /* KeyboardFindButton.swift */; };
 		02B05C1A27F90333000026B8 /* UITextView+PlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */; };
 		02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */; };
 		02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarchartView.swift */; };
@@ -102,7 +83,6 @@
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
 		02BC8D592602B79900441349 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsVC.swift */; };
 		02CAC9B32591047D00BE5E57 /* UITextView+KbNoHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */; };
-		02CAC9B52591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B42591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift */; };
 		02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */; };
 		02CEFB6D25CB945000FB70E4 /* ImageTreatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */; };
 		02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */; };
@@ -140,6 +120,24 @@
 		02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9EC928DF5BF000193A15 /* FacebookCore */; };
 		02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9ECB28DF5BF000193A15 /* FacebookLogin */; };
 		02FEF5B7263304EC0001B525 /* UIViewController+Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5B6263304EC0001B525 /* UIViewController+Mail.swift */; };
+		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
+		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
+		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
+		AB00000000000000000000D2 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000D1 /* DataLayerTests.swift */; };
+		AB00000000000000000000E2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* AppSettings.swift */; };
+		AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F1 /* TagPackFormatter.swift */; };
+		AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F3 /* TagDeduplicator.swift */; };
+		AB00000000000000000000F6 /* Collection+PackTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F5 /* Collection+PackTags.swift */; };
+		AB00000000000000000000F8 /* String+Hashtags.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F7 /* String+Hashtags.swift */; };
+		AB0000000000000000000102 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000101 /* DomainTests.swift */; };
+		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
+		AB0000000000000000000402 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000401 /* SettingsSections.swift */; };
+		AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000403 /* SettingsVC+Alerts.swift */; };
+		AB0000000000000000000502 /* PackListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000501 /* PackListViewController+TableView.swift */; };
+		AB0000000000000000000504 /* PackListViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000503 /* PackListViewController+Actions.swift */; };
+		AB0000000000000000000506 /* PackListViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000505 /* PackListViewController+Appearance.swift */; };
+		AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000907 /* KeyboardFindButton.swift */; };
+		AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000909 /* ThemeImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,32 +158,17 @@
 		0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
 		0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
-		AB00000000000000000000D1 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
 		0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
-		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
-		AB00000000000000000000E1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		AB00000000000000000000F1 /* TagPackFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPackFormatter.swift; sourceTree = "<group>"; };
-		AB00000000000000000000F3 /* TagDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeduplicator.swift; sourceTree = "<group>"; };
-		AB00000000000000000000F5 /* Collection+PackTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+PackTags.swift"; sourceTree = "<group>"; };
-		AB00000000000000000000F7 /* String+Hashtags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hashtags.swift"; sourceTree = "<group>"; };
-		AB0000000000000000000101 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsModule.swift; sourceTree = "<group>"; };
 		0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewModel.swift; sourceTree = "<group>"; };
 		0207BBB02FD564090007F3D3 /* PackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewModel.swift; sourceTree = "<group>"; };
 		0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewModel.swift; sourceTree = "<group>"; };
 		0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsCoordinator.swift; sourceTree = "<group>"; };
 		0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionService.swift; sourceTree = "<group>"; };
-		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
-		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
-		AB0000000000000000000401 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
-		AB0000000000000000000403 /* SettingsVC+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Alerts.swift"; sourceTree = "<group>"; };
-		AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+Alerts.swift"; sourceTree = "<group>"; };
-		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
-		0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+NewMenu.swift"; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		021D76162759A00D00F54054 /* SmartGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGView.swift; sourceTree = "<group>"; };
 		021D761F275A99D500F54054 /* TransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformedProfileModel.swift; sourceTree = "<group>"; };
@@ -201,9 +184,6 @@
 		022688B22628BCCC007DBD98 /* ThemeListViewController+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeListViewController+Interface.swift"; sourceTree = "<group>"; };
 		0226F19B259EAB93006E086C /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
 		0226F19D259EABB4006E086C /* PackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewController.swift; sourceTree = "<group>"; };
-		AB0000000000000000000501 /* PackListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+TableView.swift"; sourceTree = "<group>"; };
-		AB0000000000000000000503 /* PackListViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Actions.swift"; sourceTree = "<group>"; };
-		AB0000000000000000000505 /* PackListViewController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Appearance.swift"; sourceTree = "<group>"; };
 		0229864127BD9CBA0048F9E9 /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
 		0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNavigationController.swift; sourceTree = "<group>"; };
 		02385DFF2A634FAB0050FFDE /* ThemeListViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeListViewController+Actions.swift"; sourceTree = "<group>"; };
@@ -238,7 +218,6 @@
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
 		02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
 		02B05C1727F8BFBF000026B8 /* TapTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTextView.swift; sourceTree = "<group>"; };
-		AB0000000000000000000907 /* KeyboardFindButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFindButton.swift; sourceTree = "<group>"; };
 		02B05C1927F90333000026B8 /* UITextView+PlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+PlaceHolder.swift"; sourceTree = "<group>"; };
 		02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoCircleView.swift; sourceTree = "<group>"; };
 		02B0D74C2A48B73700EF1500 /* BarchartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartView.swift; sourceTree = "<group>"; };
@@ -247,7 +226,6 @@
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
 		02BC8D582602B79900441349 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		02CAC9B22591047D00BE5E57 /* UITextView+KbNoHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+KbNoHide.swift"; sourceTree = "<group>"; };
-		02CAC9B42591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEditorViewController+ImgPicker.swift"; sourceTree = "<group>"; };
 		02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewController.swift; sourceTree = "<group>"; };
 		02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTreatment.swift; sourceTree = "<group>"; };
 		02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsOverviewModel.swift; sourceTree = "<group>"; };
@@ -286,6 +264,24 @@
 		02FD6CB126D8008400AB16E4 /* StoreKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitHelper.swift; sourceTree = "<group>"; };
 		02FDEDCC290304E200B9BCFD /* SmartTags.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartTags.xcdatamodel; sourceTree = "<group>"; };
 		02FEF5B6263304EC0001B525 /* UIViewController+Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Mail.swift"; sourceTree = "<group>"; };
+		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
+		AB00000000000000000000D1 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
+		AB00000000000000000000E1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		AB00000000000000000000F1 /* TagPackFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPackFormatter.swift; sourceTree = "<group>"; };
+		AB00000000000000000000F3 /* TagDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeduplicator.swift; sourceTree = "<group>"; };
+		AB00000000000000000000F5 /* Collection+PackTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+PackTags.swift"; sourceTree = "<group>"; };
+		AB00000000000000000000F7 /* String+Hashtags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hashtags.swift"; sourceTree = "<group>"; };
+		AB0000000000000000000101 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
+		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
+		AB0000000000000000000401 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
+		AB0000000000000000000403 /* SettingsVC+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Alerts.swift"; sourceTree = "<group>"; };
+		AB0000000000000000000501 /* PackListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+TableView.swift"; sourceTree = "<group>"; };
+		AB0000000000000000000503 /* PackListViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Actions.swift"; sourceTree = "<group>"; };
+		AB0000000000000000000505 /* PackListViewController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Appearance.swift"; sourceTree = "<group>"; };
+		AB0000000000000000000907 /* KeyboardFindButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFindButton.swift; sourceTree = "<group>"; };
+		AB0000000000000000000909 /* ThemeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,91 +330,6 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
-		AB0000000000000000000203 /* DesignSystem */ = {
-			isa = PBXGroup;
-			children = (
-				AB0000000000000000000204 /* Components */,
-				02B0D7292A3F08C000EF1500 /* Neumorphic */,
-				0281B98F287A344C00344D3E /* NavigationBar */,
-				02FA308A2A11BC3F006A48CC /* ModalView */,
-				02B05C1E27F90BA3000026B8 /* TextView */,
-				02962683284BA65E009B0F58 /* TableView */,
-				0247E585257FEFB900C65245 /* DarkMode.swift */,
-				02491C682680883700F98E17 /* UIColors+AppColors.swift */,
-				020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */,
-				020584D4284D715D00020FB8 /* UIView+BlurView.swift */,
-				02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */,
-			);
-			path = DesignSystem;
-			sourceTree = "<group>";
-		};
-		AB0000000000000000000204 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
-				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
-				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
-				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		AB0000000000000000000206 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				02B05C1727F8BFBF000026B8 /* TapTextView.swift */,
-				AB0000000000000000000907 /* KeyboardFindButton.swift */,
-				02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */,
-				02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		AB0000000000000000000207 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */,
-				AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */,
-				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
-				021044F526446AEF00408CEB /* StringFormatter.swift */,
-				0274DB2F26848948005F9C9C /* AnalyticsCache.swift */,
-			);
-			path = Support;
-			sourceTree = "<group>";
-		};
-		AB0000000000000000000205 /* Notebook */ = {
-			isa = PBXGroup;
-			children = (
-				02A4235B2844002600A25067 /* ThemeList */,
-				02A4235C2844007200A25067 /* PackList */,
-				02A4235D284400FC00A25067 /* ThemeEditor */,
-			);
-			path = Notebook;
-			sourceTree = "<group>";
-		};
-		AB0000000000000000000201 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */,
-				02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */,
-				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
-				02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AB0000000000000000000202 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				02FB550924FFA2AA00174E34 /* AppDelegate.swift */,
-				0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */,
-				02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */,
-				0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */,
-				0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		0207BB902FD4ABDA0007F3D3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,24 +341,6 @@
 				0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		AB00000000000000000000D0 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				AB00000000000000000000F1 /* TagPackFormatter.swift */,
-				AB00000000000000000000F3 /* TagDeduplicator.swift */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		AB00000000000000000000E0 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				AB00000000000000000000F5 /* Collection+PackTags.swift */,
-				AB00000000000000000000F7 /* String+Hashtags.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		0207BB9A2FD5F0000007F3D3 /* ConnectedInsights */ = {
@@ -527,31 +420,6 @@
 				AB0000000000000000000603 /* Model */,
 			);
 			path = Setup;
-			sourceTree = "<group>";
-		};
-		AB0000000000000000000601 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
-				02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AB0000000000000000000602 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		AB0000000000000000000603 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				02AD94B029AC078E00D893E5 /* FBLoginModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0273D1532655B9260043011C /* Shared */ = {
@@ -696,9 +564,6 @@
 			isa = PBXGroup;
 			children = (
 				02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */,
-				02CAC9B42591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift */,
-				0216110D25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift */,
-				AB0000000000000000000405 /* ThemeEditorViewController+Alerts.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -888,6 +753,135 @@
 			path = Rating;
 			sourceTree = "<group>";
 		};
+		AB00000000000000000000D0 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AB00000000000000000000F1 /* TagPackFormatter.swift */,
+				AB00000000000000000000F3 /* TagDeduplicator.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AB00000000000000000000E0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AB00000000000000000000F5 /* Collection+PackTags.swift */,
+				AB00000000000000000000F7 /* String+Hashtags.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000201 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */,
+				02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */,
+				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
+				02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000202 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				02FB550924FFA2AA00174E34 /* AppDelegate.swift */,
+				0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */,
+				02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */,
+				0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */,
+				0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000203 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000204 /* Components */,
+				02B0D7292A3F08C000EF1500 /* Neumorphic */,
+				0281B98F287A344C00344D3E /* NavigationBar */,
+				02FA308A2A11BC3F006A48CC /* ModalView */,
+				02B05C1E27F90BA3000026B8 /* TextView */,
+				02962683284BA65E009B0F58 /* TableView */,
+				0247E585257FEFB900C65245 /* DarkMode.swift */,
+				02491C682680883700F98E17 /* UIColors+AppColors.swift */,
+				020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */,
+				020584D4284D715D00020FB8 /* UIView+BlurView.swift */,
+				02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000204 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
+				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
+				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
+				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000205 /* Notebook */ = {
+			isa = PBXGroup;
+			children = (
+				02A4235B2844002600A25067 /* ThemeList */,
+				02A4235C2844007200A25067 /* PackList */,
+				02A4235D284400FC00A25067 /* ThemeEditor */,
+			);
+			path = Notebook;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000206 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				02B05C1727F8BFBF000026B8 /* TapTextView.swift */,
+				AB0000000000000000000907 /* KeyboardFindButton.swift */,
+				AB0000000000000000000909 /* ThemeImagePicker.swift */,
+				02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */,
+				02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000207 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */,
+				AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */,
+				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
+				021044F526446AEF00408CEB /* StringFormatter.swift */,
+				0274DB2F26848948005F9C9C /* AnalyticsCache.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000601 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
+				02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000602 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000603 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02AD94B029AC078E00D893E5 /* FBLoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1024,7 +1018,6 @@
 				02998A662B44104800B70516 /* Circles.swift in Sources */,
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* StoreKitHelper.swift in Sources */,
-				0216110E25D46C180098CE5E /* ThemeEditorViewController+NewMenu.swift in Sources */,
 				02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */,
 				023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */,
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,
@@ -1058,8 +1051,6 @@
 				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
 				AB0000000000000000000402 /* SettingsSections.swift in Sources */,
 				AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */,
-				AB0000000000000000000406 /* ThemeEditorViewController+Alerts.swift in Sources */,
-				02CAC9B52591054400BE5E57 /* ThemeEditorViewController+ImgPicker.swift in Sources */,
 				02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */,
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,
 				0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */,
@@ -1075,6 +1066,7 @@
 				02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */,
 				02B05C1827F8BFBF000026B8 /* TapTextView.swift in Sources */,
 				AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */,
+				AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */,
 				02491C692680883800F98E17 /* UIColors+AppColors.swift in Sources */,
 				020621572666DBCC0072C404 /* BarChartPost.swift in Sources */,
 				02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */,

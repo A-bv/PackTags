@@ -23,6 +23,33 @@ final class ThemeEditorViewModel {
         return TagPackFormatter.format(content, tagsPerPack: numTagsPerPack)
     }
 
+    // MARK: - Naming
+
+    struct NameAlert: Equatable {
+        let title: String
+        let message: String
+        let placeholder: String
+    }
+
+    var nameAlert: NameAlert {
+        if themeTitle.isEmpty {
+            return NameAlert(
+                title: "New Theme".localized(),
+                message: "",
+                placeholder: "Enter Name".localized())
+        }
+        return NameAlert(
+            title: themeTitle,
+            message: "Edit Name".localized(),
+            placeholder: "Enter New Name".localized())
+    }
+
+    // MARK: - Text recognition
+
+    func contentByPrepending(recognizedText: String, to currentText: String) -> String {
+        currentText.isEmpty ? recognizedText : recognizedText + "\n\n" + currentText
+    }
+
     func save(rawText: String, imageData: Data?, thumbnailData: Data?) {
         let text = deduplicator.sanitize(
             rawText: rawText,

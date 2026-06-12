@@ -1,6 +1,6 @@
 import UIKit
 
-class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
+final class ThemeEditorViewController: UIViewController {
 
     let viewModel: ThemeEditorViewModel
 
@@ -15,7 +15,7 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
 
     //MARK: - UI
 
-    let themeTextView: TapTextView = {
+    private let themeTextView: TapTextView = {
         let textView = TapTextView()
         textView.font = .preferredFont(forTextStyle: .body)
         textView.adjustsFontForContentSizeCategory = true
@@ -30,39 +30,35 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
         return textView
     }()
 
-    lazy var saveButton: UIBarButtonItem = UIBarButtonItem(
+    private lazy var saveButton: UIBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .save,
         target: self,
         action: #selector(save))
 
-    lazy var cancelButton: UIBarButtonItem = UIBarButtonItem(
+    private lazy var cancelButton: UIBarButtonItem = UIBarButtonItem(
         barButtonSystemItem: .cancel,
         target: self,
         action: #selector(cancel))
 
-    let findButton = KeyboardFindButton()
+    private let findButton = KeyboardFindButton()
 
-    //MARK: - Model
+    private let spinner = UIActivityIndicatorView()
 
-    var themeImageView = DarkMode.isDarkMode() ? UIImage(named: "Logo-BlackLong") : UIImage(named: "Logo-PurpleLong")
+    //MARK: - State
 
-    //"show" button (PackTableVC) variables
-    var isFromShow = false
-    var packFromShow = String()
+    private var themeImage = DarkMode.isDarkMode() ? UIImage(named: "Logo-BlackLong") : UIImage(named: "Logo-PurpleLong")
 
-    //Text Recognition in images (iOS < 11) 1/2
-    var recognizeText = false
+    /// Set by the coordinator when this editor opens from a pack's "show"
+    /// action; that pack gets highlighted and scrolled into view.
+    var packToHighlight: String?
 
-    // Processing spinner
-    let spinner = UIActivityIndicatorView()
-
-    var buttonMenuThemeOptions: UIBarButtonItem {
-        return buttonMenu()
-    }
+    private let imagePicker = ThemeImagePicker()
 
     //MARK: - Callbacks
     var onSave: ((ThemeCD?) -> Void)?
     var onCancel: (() -> Void)?
+
+    //MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +72,7 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
 
         if viewModel.isNewTheme { showNameThemeAlert() }
 
-        loadbuttons()
+        loadButtons()
         loadEntries()
         configureTextView()
 
@@ -86,9 +82,9 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
 
         updateSaveButtonState() // Enable save button if title != empty
 
-        if isFromShow == true {
-            isScreenLoadedFromShowButton()
-            isFromShow = false
+        if let pack = packToHighlight {
+            highlight(pack)
+            packToHighlight = nil
         }
     }
 
@@ -114,7 +110,8 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
 
     //MARK: - Setup
-    func updateSaveButtonState() { saveButton.isEnabled = viewModel.canSave }
+
+    private func updateSaveButtonState() { saveButton.isEnabled = viewModel.canSave }
 
     private func loadEntries() {
         guard viewModel.theme != nil else { return }
@@ -122,17 +119,21 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
             themeTextView.text = text
         }
         if let imageData = viewModel.theme?.image {
-            themeImageView = UIImage(data: imageData)
+            themeImage = UIImage(data: imageData)
         }
     }
 
     private func loadProcessingSpinner() {
-        spinner.center = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
-        self.view.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(spinner)
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
 
-    private func loadbuttons() {
-        navigationItem.rightBarButtonItems = [saveButton, buttonMenuThemeOptions, themeTextView.makeTapTextViewButton()]
+    private func loadButtons() {
+        navigationItem.rightBarButtonItems = [saveButton, buttonMenu(), themeTextView.makeTapTextViewButton()]
     }
 
     private func configureTextView() {
@@ -144,14 +145,15 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
 
     //MARK: - Save
+
     private enum SaveConstants {
         static let thumbnailSize = CGSize(width: 135.333, height: 135.333)
         static let jpegQuality: CGFloat = 0.8
     }
 
     @objc func save() {
-        let imageData = themeImageView?.jpegData(compressionQuality: SaveConstants.jpegQuality)
-        let thumbnailData = themeImageView?.resized(to: SaveConstants.thumbnailSize)
+        let imageData = themeImage?.jpegData(compressionQuality: SaveConstants.jpegQuality)
+        let thumbnailData = themeImage?.resized(to: SaveConstants.thumbnailSize)
             .jpegData(compressionQuality: SaveConstants.jpegQuality)
         let isUpdatingExistingTheme = !viewModel.isNewTheme
         viewModel.save(rawText: themeTextView.text, imageData: imageData, thumbnailData: thumbnailData)
@@ -165,22 +167,154 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
 }
 
+//MARK: - Strings
+
+private enum Strings {
+    static let rename = "Rename".localized()
+    static let editPicture = "Edit picture".localized()
+    static let textRecognition = "Text Recognition".localized()
+    static let shuffleHashtags = "Shuffle hashtags".localized()
+    static let menuSectionEdit = "Edit...".localized()
+    static let menuSectionImport = "Import...".localized()
+    static let menuSectionManage = "Manage...".localized()
+}
+
+//MARK: - Options menu
+
 extension ThemeEditorViewController {
-    //MARK: - UITextViewDelegate
-    //Placeholder
+
+    private func buttonMenu() -> UIBarButtonItem {
+        let editName = UIAction(
+            title: Strings.rename,
+            image: UIImage(systemName: "tag")
+        ) { [weak self] _ in
+            self?.showNameThemeAlert()
+        }
+
+        let editPicture = UIAction(
+            title: Strings.editPicture,
+            image: UIImage(systemName: "photo.on.rectangle.angled")
+        ) { [weak self] _ in
+            self?.pickCoverImage()
+        }
+
+        let textRecon = UIAction(
+            title: Strings.textRecognition,
+            image: UIImage(systemName: "doc.text.viewfinder")
+        ) { [weak self] _ in
+            self?.importTextFromPhoto()
+        }
+
+        let shuffle = UIAction(
+            title: Strings.shuffleHashtags,
+            image: UIImage(systemName: "shuffle.circle")
+        ) { [weak self] _ in
+            guard let self, let textToShuffle = self.themeTextView.text else { return }
+            self.themeTextView.text = self.viewModel.shuffleContent(rawText: textToShuffle)
+        }
+
+        let edit = UIMenu(
+            title: Strings.menuSectionEdit,
+            options: .displayInline,
+            children: [editName, editPicture])
+
+        let htgImport = UIMenu(
+            title: Strings.menuSectionImport,
+            options: .displayInline,
+            children: [textRecon])
+
+        let manage = UIMenu(
+            title: Strings.menuSectionManage,
+            options: .displayInline,
+            children: [shuffle])
+
+        return UIBarButtonItem(
+            image: UIImage(systemName: "ellipsis.circle"),
+            primaryAction: nil,
+            menu: UIMenu(title: "", children: [edit, htgImport, manage]))
+    }
+}
+
+//MARK: - Cover image & text recognition
+
+extension ThemeEditorViewController {
+
+    private enum ImageConstants {
+        static let coverSize = CGSize(width: 600, height: 600)
+    }
+
+    private func pickCoverImage() {
+        imagePicker.present(from: self) { [weak self] image in
+            self?.themeImage = image.resized(to: ImageConstants.coverSize)
+        }
+    }
+
+    private func importTextFromPhoto() {
+        imagePicker.present(from: self) { [weak self] image in
+            guard let self else { return }
+            self.spinner.startAnimating()
+            self.themeTextView.hidePlaceholder()
+            TextRecognitionUtility.recognizeText(image: image) { [weak self] text in
+                guard let self else { return }
+                self.themeTextView.text = self.viewModel.contentByPrepending(
+                    recognizedText: text,
+                    to: self.themeTextView.text ?? "")
+                self.spinner.stopAnimating()
+            }
+        }
+    }
+}
+
+//MARK: - Theme name alert
+
+extension ThemeEditorViewController {
+
+    private func showNameThemeAlert() {
+        let alert = viewModel.nameAlert
+        Alerts.showTextInputAlert(
+            targetVC: self,
+            title: alert.title,
+            message: alert.message,
+            placeholder: alert.placeholder
+        ) { [weak self] inputName in
+            self?.viewModel.themeTitle = inputName
+            self?.updateSaveButtonState()
+        }
+    }
+}
+
+//MARK: - Pack highlight (PackList "Show" flow)
+
+extension ThemeEditorViewController {
+
+    private func highlight(_ pack: String) {
+        DispatchQueue.main.async { [self] in
+            themeTextView.text = themeTextView.text + "\n" // Last for highlight
+            guard let match = themeTextView.text.range(of: pack + "\n") else { return }
+
+            let highlight = NSRange(match, in: themeTextView.text)
+            themeTextView.textStorage.addAttribute(
+                .backgroundColor,
+                value: UIColor.systemYellow.withAlphaComponent(0.5),
+                range: highlight)
+            themeTextView.scrollRangeToVisible(highlight)
+        }
+    }
+}
+
+//MARK: - UITextViewDelegate
+
+extension ThemeEditorViewController: UITextViewDelegate {
+
     func textViewDidChange(_ textView: UITextView) {
         themeTextView.checkPlaceholder()
     }
 }
 
-// Status Bar color
-extension ThemeEditorViewController {
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return  .default
-    }
-}
+//MARK: - TapTextViewDelegate
 
 extension ThemeEditorViewController: TapTextViewDelegate {
+
     func tapTextViewDidStartSelection(_ textView: TapTextView) {
         navigationController?.setToolbarHidden(false, animated: false)
     }
@@ -190,37 +324,15 @@ extension ThemeEditorViewController: TapTextViewDelegate {
     }
 }
 
-// MARK: - Cancel
+//MARK: - Cancel
+
 extension ThemeEditorViewController {
+
+    // The coordinator always presents this editor modally (inside its own
+    // navigation controller), so dismissal is the only exit.
     @objc func cancel() {
-        if presentingViewController is UINavigationController {
-            dismiss(animated: true) { [weak self] in
-                self?.onCancel?()
-            }
-        } else if let owningNavigationController = navigationController {
-            owningNavigationController.popViewController(animated: false)
-            onCancel?()
-        } else {
-            dismiss(animated: true) { [weak self] in
-                self?.onCancel?()
-            }
-        }
-    }
-}
-
-// MARK: - Pack highlight (PackList "Show" flow)
-extension ThemeEditorViewController {
-    private func isScreenLoadedFromShowButton() {
-        DispatchQueue.main.async { [self] in
-            themeTextView.text = themeTextView.text + "\n" // Last for highlight
-            guard let match = themeTextView.text.range(of: packFromShow + "\n") else { return }
-
-            let highlight = NSRange(match, in: themeTextView.text)
-            themeTextView.textStorage.addAttribute(
-                .backgroundColor,
-                value: UIColor.systemYellow.withAlphaComponent(0.5),
-                range: highlight)
-            themeTextView.scrollRangeToVisible(highlight)
+        dismiss(animated: true) { [weak self] in
+            self?.onCancel?()
         }
     }
 }

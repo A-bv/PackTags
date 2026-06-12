@@ -50,6 +50,7 @@ PackTags/
 | TapTextView | ThemeEditor | `Notebook/ThemeEditor/Components/` | tap-to-multi-select hashtags with actions toolbar |
 | TextRecognitionUtility | ThemeEditor | 〃 | Vision OCR — import hashtags from a photo |
 | ImageTreatment | ThemeEditor | 〃 | UIImage resize / orientation for theme covers |
+| ThemeImagePicker | ThemeEditor | 〃 | photo-library picker that returns an orientation-normalized image |
 | KeyboardFindButton | ThemeEditor | `Notebook/ThemeEditor/Components/` | magnifier above the keyboard that presents the system find panel (`UIFindInteraction`) |
 | FloatingButtonFactory | app-wide | `DesignSystem/Components/` | floating gradient action button |
 | Tag engine | app-wide | `Domain/` | hashtag parsing, cross-theme dedup, pack chunking |
@@ -110,11 +111,10 @@ xcodebuild -project PackTags.xcodeproj -scheme PackTags \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-54 tests in 10 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the SmartG caption-alignment case, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair.
+58 tests in 10 suites: domain rules, coordinator wiring (spy navigation), repository CRUD on an in-memory store, ViewModel decisions, the settings catalog, the SmartG caption-alignment case, and the frozen UserDefaults key contract. The `InstagramGraph` package carries its own 37-test suite, including the setup → ready regression pair.
 
 ## Known tradeoffs / roadmap
 
-- `UIImagePickerController` (photo-library mode) is deprecated in favor of `PHPickerViewController`.
 - Crash reporting is not yet integrated (vendor decision pending).
 - The analytics refresh throttle is set low pending a product decision.
 - Swift 6 strict concurrency checking is the next modernization step.

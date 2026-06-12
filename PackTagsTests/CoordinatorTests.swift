@@ -240,19 +240,18 @@ private func makeDependencies(
         #expect(themeVC?.viewModel.isNewTheme == false)
     }
 
-    @Test func showThemeEditor_fromSwipe_setsIsFromShowAndPack() {
+    @Test func showThemeEditor_fromSwipe_setsPackToHighlight() {
         let (sut, nav) = makeSUT()
         sut.showThemeEditor(for: makeTheme(), fromSwipe: true, chosenPack: "#travel", onSave: {}, onCancel: {})
         let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
-        #expect(themeVC?.isFromShow == true)
-        #expect(themeVC?.packFromShow == "#travel")
+        #expect(themeVC?.packToHighlight == "#travel")
     }
 
-    @Test func showThemeEditor_notFromSwipe_isFromShowIsFalse() {
+    @Test func showThemeEditor_notFromSwipe_packToHighlightIsNil() {
         let (sut, nav) = makeSUT()
         sut.showThemeEditor(for: makeTheme(), fromSwipe: false, chosenPack: "", onSave: {}, onCancel: {})
         let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
-        #expect(themeVC?.isFromShow == false)
+        #expect(themeVC?.packToHighlight == nil)
     }
 
 }
