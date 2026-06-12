@@ -83,7 +83,7 @@ final class PackListViewModel {
     }
 
     func movePack(at index: Int) {
-        guard index < packs.count else { return }
+        guard packs.indices.contains(index) else { return }
         let element = packs.remove(at: index)
         packs.append(element)
         theme.content = packs.joined(separator: " ")

@@ -12,6 +12,15 @@ private enum Strings {
     static let show = "Show".localized()
 }
 
+private enum Constants {
+    /// Leaves the copy feedback visible before the app switches to Instagram.
+    static let afterCopy: TimeInterval = 0.8
+    /// Lets the Instagram transition start before reordering the table.
+    static let afterReorder: TimeInterval = 0.5
+    /// Each row is a sixth of the visible table.
+    static let rowsPerScreen: CGFloat = 6
+}
+
 class PackListViewController: CoverImageTableViewController {
 
     weak var coordinator: (any ThemeCoordinatorProtocol)?
@@ -20,7 +29,6 @@ class PackListViewController: CoverImageTableViewController {
     private let composeButton = UIBarButtonItem()
     private let instaButton = UIBarButtonItem()
     private let pasteboard = UIPasteboard.general
-    private var chosenPack = String()
 
     private var packs: [String] { viewModel.packs }
 
@@ -54,10 +62,9 @@ class PackListViewController: CoverImageTableViewController {
         navigationItem.rightBarButtonItems = [composeButton, instaButton]
 
         tableView.register(PackCell.self, forCellReuseIdentifier: "PackCell")
-        tableView.rowHeight = 81
         tableView.backgroundColor = bkgdColor
 
-        loadPacks()
+        viewModel.loadPacks()
         barBackgroundColor = bkgdColor
         setCoverImage(coverImage)
     }
@@ -69,12 +76,8 @@ class PackListViewController: CoverImageTableViewController {
 
 // MARK: - Loading
 extension PackListViewController {
-    fileprivate func loadPacks() {
+    private func updatePackListViewController() {
         viewModel.loadPacks()
-    }
-
-    fileprivate func updatePackListViewController() {
-        loadPacks()
         tableView.reloadData()
         navigationItem.title = viewModel.theme.name
         setCoverImage(coverImage)
@@ -99,10 +102,8 @@ extension PackListViewController {
         return packs.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return tableView.frame.size.height/6
-        //return UITableView.automaticDimension //
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        tableView.frame.size.height / Constants.rowsPerScreen
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -145,8 +146,7 @@ extension PackListViewController {
     private func addSCellSwipeAccessory(indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contextItem = UIContextualAction(style: .normal, title: Strings.show) { [weak self] (contextualAction, view, boolValue) in
             guard let self else { return }
-            self.chosenPack = self.packs[indexPath.row]
-            self.presentThemeVC(fromSwipe: true)
+            self.presentThemeVC(showingPack: self.packs[indexPath.row])
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
 
@@ -158,15 +158,16 @@ extension PackListViewController {
 // MARK: - Compose & show
 extension PackListViewController {
     @objc private func didTapCompose() {
-        presentThemeVC(fromSwipe: false)
+        presentThemeVC(showingPack: nil)
     }
 
-    private func presentThemeVC(fromSwipe: Bool) {
+    /// Opens the editor; a non-nil pack gets highlighted there.
+    private func presentThemeVC(showingPack pack: String?) {
         suspendsCoverStatusBarStyle = true
         coordinator?.showThemeEditor(
             for: viewModel.theme,
-            fromSwipe: fromSwipe,
-            chosenPack: fromSwipe ? chosenPack : "",
+            fromSwipe: pack != nil,
+            chosenPack: pack ?? "",
             onSave: { [weak self] in
                 self?.updatePackListViewController()
                 self?.suspendsCoverStatusBarStyle = false
@@ -180,13 +181,8 @@ extension PackListViewController {
 
 // MARK: - Instagram redirect
 extension PackListViewController {
-    private enum Delay {
-        /// Leaves the copy feedback visible before the app switches to Instagram.
-        static let afterCopy: TimeInterval = 0.8
-    }
-
     func goInsta(packIdx: Int) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + Delay.afterCopy) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.afterCopy) { [weak self] in
             guard let self else { return }
             let action = self.viewModel.postCopyAction()
 
@@ -199,7 +195,7 @@ extension PackListViewController {
         }
     }
 
-    fileprivate func statusAutoDirectToInstagram() {
+    private func statusAutoDirectToInstagram() {
         switch viewModel.toggleInstagramRedirect() {
         case .promptForUsername:
             promptForInstagramUsername()
@@ -228,7 +224,8 @@ extension PackListViewController {
 
     //If redirected to instagram after copy, move pack to bottom
     private func copiedPacksToBottom(packIdx: Int) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.afterReorder) { [weak self] in
+            guard let self else { return }
             self.viewModel.movePack(at: packIdx)
             self.tableView.reloadData()
         }
