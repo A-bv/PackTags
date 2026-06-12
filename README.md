@@ -8,6 +8,7 @@ A hashtag notebook for Instagram creators, shipped on the App Store. Users organ
 - **Core Data** for persistence, **Swift Package Manager** for dependencies
 - [`InstagramGraph`](https://github.com/A-bv/InstagramGraph) — my own SPM package wrapping the Meta Graph API: it is this app's **remote data layer**, extracted so all networking lives outside the app target
 - [`TapTagKit`](https://github.com/A-bv/TapTagKit) — my own SPM package: tappable hashtag selection for any `UITextView`, extracted from the theme editor
+- [`TableViewControllerCoverKit`](https://github.com/A-bv/TableViewControllerCoverKit) — my own SPM package: a table list over a stretchy cover image, extracted from the pack list
 - `facebook-ios-sdk` for authentication
 - **Swift Testing** for the unit suite
 
@@ -42,7 +43,7 @@ PackTags/
 1. `Features/<X>/Components/` — feature-local machinery
 2. `DesignSystem/Components/` — app-wide generic UI
 3. `Shared/` — app-wide non-visual utilities
-4. SPM package — needed beyond the app (`InstagramGraph` and `TapTagKit` earned it)
+4. SPM package — needed beyond the app (`InstagramGraph`, `TapTagKit`, and `TableViewControllerCoverKit` earned it)
 
 ## Component inventory
 

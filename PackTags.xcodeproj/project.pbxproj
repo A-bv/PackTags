@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB0000000000000000001007 /* CoverImageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000001006 /* CoverImageTableViewController.swift */; };
-		AB0000000000000000001003 /* TapTagKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001002 /* TapTagKit */; };
+		AB0000000000000000001010 /* TableViewControllerCoverKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001009 /* TableViewControllerCoverKit */; };
 		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
 		020621572666DBCC0072C404 /* BarChartPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* BarChartPost.swift */; };
@@ -121,7 +120,6 @@
 		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
 		AB00000000000000000000D2 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000D1 /* DataLayerTests.swift */; };
-		AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000911 /* ConnectedInsightsTests.swift */; };
 		AB00000000000000000000E2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* AppSettings.swift */; };
 		AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F1 /* TagPackFormatter.swift */; };
 		AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F3 /* TagDeduplicator.swift */; };
@@ -135,6 +133,8 @@
 		AB0000000000000000000504 /* PackListViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000503 /* PackListViewController+Actions.swift */; };
 		AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000907 /* KeyboardFindButton.swift */; };
 		AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000909 /* ThemeImagePicker.swift */; };
+		AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000911 /* ConnectedInsightsTests.swift */; };
+		AB0000000000000000001003 /* TapTagKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001002 /* TapTagKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,7 +148,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AB0000000000000000001006 /* CoverImageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageTableViewController.swift; sourceTree = "<group>"; };
 		020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		020584D4284D715D00020FB8 /* UIView+BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BlurView.swift"; sourceTree = "<group>"; };
 		020621562666DBCC0072C404 /* BarChartPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPost.swift; sourceTree = "<group>"; };
@@ -261,7 +260,6 @@
 		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
 		AB00000000000000000000D1 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
-		AB0000000000000000000911 /* ConnectedInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsTests.swift; sourceTree = "<group>"; };
 		AB00000000000000000000E1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F1 /* TagPackFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPackFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F3 /* TagDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeduplicator.swift; sourceTree = "<group>"; };
@@ -275,6 +273,7 @@
 		AB0000000000000000000503 /* PackListViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Actions.swift"; sourceTree = "<group>"; };
 		AB0000000000000000000907 /* KeyboardFindButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFindButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000909 /* ThemeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePicker.swift; sourceTree = "<group>"; };
+		AB0000000000000000000911 /* ConnectedInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +286,7 @@
 				02211DD02FD7074D002FDB14 /* InstagramGraph in Frameworks */,
 				0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */,
 				AB0000000000000000001003 /* TapTagKit in Frameworks */,
+				AB0000000000000000001010 /* TableViewControllerCoverKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,7 +784,6 @@
 				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
 				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
 				02AD94A829A5936500D893E5 /* ModalChrome.swift */,
-				AB0000000000000000001006 /* CoverImageTableViewController.swift */,
 				02CEFB6C25CB945000FB70E4 /* ImageTreatment.swift */,
 				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
 				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
@@ -870,6 +869,7 @@
 				0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */,
 				02211DCF2FD7074D002FDB14 /* InstagramGraph */,
 				AB0000000000000000001002 /* TapTagKit */,
+				AB0000000000000000001009 /* TableViewControllerCoverKit */,
 			);
 			productName = PackTags;
 			productReference = 02FB550624FFA2AA00174E34 /* PackTags.app */;
@@ -927,6 +927,7 @@
 				02FE9EC828DF5BF000193A15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */,
 				AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */,
+				AB0000000000000000001008 /* XCRemoteSwiftPackageReference "TableViewControllerCoverKit" */,
 			);
 			productRefGroup = 02FB550724FFA2AA00174E34 /* Products */;
 			projectDirPath = "";
@@ -1063,7 +1064,6 @@
 				02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* SettingsVC+Mail.swift in Sources */,
 				02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */,
-				AB0000000000000000001007 /* CoverImageTableViewController.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				02385E002A634FAB0050FFDE /* ThemeListViewController+Actions.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
@@ -1368,12 +1368,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */ = {
+		AB0000000000000000001008 /* XCRemoteSwiftPackageReference "TableViewControllerCoverKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/A-bv/TapTagKit";
+			repositoryURL = "https://github.com/A-bv/TableViewControllerCoverKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 		02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */ = {
@@ -1390,6 +1390,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.0.0;
+			};
+		};
+		AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/A-bv/TapTagKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1418,6 +1426,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */;
 			productName = TapTagKit;
+		};
+		AB0000000000000000001009 /* TableViewControllerCoverKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0000000000000000001008 /* XCRemoteSwiftPackageReference "TableViewControllerCoverKit" */;
+			productName = TableViewControllerCoverKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
