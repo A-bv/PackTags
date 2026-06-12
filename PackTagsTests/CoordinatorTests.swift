@@ -58,9 +58,14 @@ private final class FakeThemeRepository: ThemeRepositoryProtocol {
 
 // MARK: - Helpers
 
-private func makeTheme() -> ThemeCD {
-    let persistence = PersistenceController(inMemory: true)
-    return ThemeCD(context: persistence.viewContext)
+/// Kept alive for the whole suite: a theme whose context has deallocated
+/// reads all its properties back as nil.
+private let themeFactoryPersistence = PersistenceController(inMemory: true)
+
+private func makeTheme(named name: String? = nil) -> ThemeCD {
+    let theme = ThemeCD(context: themeFactoryPersistence.viewContext)
+    theme.name = name
+    return theme
 }
 
 @MainActor
@@ -129,8 +134,7 @@ private func makeDependencies(
 
     @Test func showPackList_buildsTheViewModelAndWiresEditorNavigation() {
         let (sut, nav) = makeSUT()
-        let theme = makeTheme()
-        theme.name = "Travel"
+        let theme = makeTheme(named: "Travel")
         sut.showPackList(for: theme)
         let vc = nav.pushedVC as? PackListViewController
         #expect(vc?.viewModel.title == "Travel")
