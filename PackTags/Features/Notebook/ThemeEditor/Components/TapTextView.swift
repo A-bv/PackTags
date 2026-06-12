@@ -54,6 +54,7 @@ class TapTextView: UITextView {
     func makeTapTextViewButton() -> UIBarButtonItem {
         let img = UIImage(systemName: "hand.point.up.left")!
         activateButton = UIBarButtonItem(image: img, style: .plain, target: self, action: #selector(startTagSelection))
+        activateButton.accessibilityLabel = "Select hashtags".localized()
         return activateButton
     }
     

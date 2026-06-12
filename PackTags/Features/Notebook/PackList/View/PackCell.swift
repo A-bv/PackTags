@@ -42,8 +42,10 @@ class PackCell: UITableViewCell {
     
     let cellLabel:UILabel = {
         let label = UILabel()
-        let fontSize = Constants.cellLabelFontSize
-        label.font = UIFont.boldSystemFont(ofSize: fontSize)
+        label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(
+            for: UIFont.boldSystemFont(ofSize: Constants.cellLabelFontSize),
+            maximumPointSize: 28)
+        label.adjustsFontForContentSizeCategory = true
         label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -53,8 +55,10 @@ class PackCell: UITableViewCell {
     
     let subButton :UIButton = {
         let btn = UIButton()
-        let fontSize = Constants.subButtonFontSize
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
+        btn.titleLabel?.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(
+            for: UIFont.boldSystemFont(ofSize: Constants.subButtonFontSize),
+            maximumPointSize: 18)
+        btn.titleLabel?.adjustsFontForContentSizeCategory = true
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.backgroundColor = UIColor.tagBadgeBlue
         btn.layer.cornerRadius = Constants.subButtonCornerRadius

@@ -24,6 +24,8 @@ class FloatingButtonFactory {
         button.layer.cornerRadius = 15
         button.layer.masksToBounds = true
         
+        button.accessibilityLabel = "New theme".localized()
+
         // Add the plus icon
         let image = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .medium))
         let imageView = UIImageView(image: image)

@@ -16,6 +16,7 @@ private enum Strings {
     static let menuSectionEdit = "Edit...".localized()
     static let menuSectionImport = "Import...".localized()
     static let menuSectionManage = "Manage...".localized()
+    static let themeOptions = "Theme options".localized()
 }
 
 final class ThemeEditorViewController: UIViewController {
@@ -232,10 +233,12 @@ extension ThemeEditorViewController {
             options: .displayInline,
             children: [shuffle])
 
-        return UIBarButtonItem(
+        let item = UIBarButtonItem(
             image: UIImage(systemName: "ellipsis.circle"),
             primaryAction: nil,
             menu: UIMenu(title: "", children: [edit, htgImport, manage]))
+        item.accessibilityLabel = Strings.themeOptions
+        return item
     }
 }
 

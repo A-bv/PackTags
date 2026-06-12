@@ -15,6 +15,7 @@ final class KeyboardFindButton: UIButton {
         configuration?.cornerStyle = .capsule
         translatesAutoresizingMaskIntoConstraints = false
         isHidden = true
+        accessibilityLabel = "Search".localized()
         addAction(UIAction { [weak self] _ in self?.presentSearch() }, for: .touchUpInside)
     }
 

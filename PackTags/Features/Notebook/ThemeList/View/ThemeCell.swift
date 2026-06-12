@@ -34,7 +34,10 @@ class ThemeCell: UITableViewCell {
 
     let nameLabel:UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: Constants.nameLabelFontSize)
+        label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(
+            for: UIFont.boldSystemFont(ofSize: Constants.nameLabelFontSize),
+            maximumPointSize: 28)
+        label.adjustsFontForContentSizeCategory = true
         label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -42,7 +45,10 @@ class ThemeCell: UITableViewCell {
 
     let subLabel:UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: Constants.subLabelFontSize)
+        label.font = UIFontMetrics(forTextStyle: .footnote).scaledFont(
+            for: UIFont.boldSystemFont(ofSize: Constants.subLabelFontSize),
+            maximumPointSize: 20)
+        label.adjustsFontForContentSizeCategory = true
         label.textColor =  .white
         label.backgroundColor = UIColor.tagBadgeBlue
         label.layer.cornerRadius = Constants.subLabelCornerRadius

@@ -31,6 +31,9 @@ struct AnalyticsView : View {
         static let eRRDefiniton = "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content.".localized()
         static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account.".localized()
         static let ok = "Ok"
+        static let closeAnalytics = "Close analytics".localized()
+        static let toggleRawAndRates = "Switch between values and rates".localized()
+        static let nextMetric = "Next metric".localized()
     }
     
     private enum Constants {
@@ -188,6 +191,7 @@ extension AnalyticsView {
                 .font(Font.system(.title))
                 .foregroundColor(Color(UIColor.label))
         }
+        .accessibilityLabel(Text(Strings.closeAnalytics))
     }
 
     var infoButton: some View {
@@ -197,6 +201,7 @@ extension AnalyticsView {
         }) {
             Image(systemName: "info.circle")
         }
+        .accessibilityLabel(Text(infoTitles[swiftUIData.mode]))
         .alert(isPresented: $showingAlert) {
             Alert(
                 title: Text(infoTitles[swiftUIData.mode]),
@@ -210,6 +215,7 @@ extension AnalyticsView {
             Image(systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
                 .foregroundColor(Color("Color4"))
         }
+        .accessibilityLabel(Text(Strings.toggleRawAndRates))
         .toggleStyle(DarkToggleStyle())
         .padding(.trailing, Constants.graphSectionHeaderTraillingPadding)
         .onChange(of: isToggled) { _ in changeInsightType() }
@@ -220,6 +226,7 @@ extension AnalyticsView {
             Image(systemName: "scale.3d")
                 .foregroundColor(Color("Color4"))
         }
+        .accessibilityLabel(Text(Strings.nextMetric))
         .buttonStyle(ColorfulButtonStyle())
         .padding(.trailing, 0)
     }
