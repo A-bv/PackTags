@@ -7,7 +7,7 @@ extension UIViewController {
         let backgroundColor: UIColor = alpha >= 0 ? bkgdColor.withAlphaComponent(alpha) : .clear
         
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
+        appearance.configureWithTransparentBackground()
         appearance.backgroundColor = backgroundColor
         appearance.shadowColor = .clear
         appearance.titleTextAttributes = [.foregroundColor: textColor]
