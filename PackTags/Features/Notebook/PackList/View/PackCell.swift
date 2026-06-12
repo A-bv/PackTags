@@ -56,7 +56,7 @@ class PackCell: UITableViewCell {
         let fontSize = Constants.subButtonFontSize
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
         btn.setTitleColor(UIColor.white, for: .normal)
-        btn.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        btn.backgroundColor = UIColor.tagBadgeBlue
         btn.layer.cornerRadius = Constants.subButtonCornerRadius
         btn.clipsToBounds = true
         btn.translatesAutoresizingMaskIntoConstraints = false

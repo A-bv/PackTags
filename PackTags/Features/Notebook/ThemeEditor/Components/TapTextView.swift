@@ -163,7 +163,7 @@ class TapTextView: UITextView {
 
     private func selectTag(base: String, tag: Int, state: TagSelectionState) {
         var textColorAttribute = [NSAttributedString.Key: UIColor]()
-        let myString = self.attributedText.mutableCopy() as! NSMutableAttributedString
+        let myString = NSMutableAttributedString(attributedString: self.attributedText)
 
         let pattern = "\\#\(base)\\b" //"(\\#[a-zA-Z]+\\b)(?!;)"
         guard let regex = try? NSRegularExpression(pattern: pattern) else { return }

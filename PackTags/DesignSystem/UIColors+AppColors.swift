@@ -54,7 +54,10 @@ extension UIColor {
     static var bottomColor: UIColor {
         return  DarkMode.isDarkMode() == true ? UIColor.black : UIColor.white
     }
-    
+
+    /// The blue badge behind tag counts (theme list) and pack sizes (pack list).
+    static let tagBadgeBlue = UIColor(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+
 }
 
 //Color of text and symbols

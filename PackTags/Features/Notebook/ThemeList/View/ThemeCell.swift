@@ -44,7 +44,7 @@ class ThemeCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: Constants.subLabelFontSize)
         label.textColor =  .white
-        label.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        label.backgroundColor = UIColor.tagBadgeBlue
         label.layer.cornerRadius = Constants.subLabelCornerRadius
         label.clipsToBounds = true
         label.translatesAutoresizingMaskIntoConstraints = false
