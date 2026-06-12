@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB0000000000000000001010 /* TableViewControllerCoverKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001009 /* TableViewControllerCoverKit */; };
 		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
 		020621572666DBCC0072C404 /* BarChartPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* BarChartPost.swift */; };
@@ -129,12 +128,11 @@
 		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
 		AB0000000000000000000402 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000401 /* SettingsSections.swift */; };
 		AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000403 /* SettingsVC+Alerts.swift */; };
-		AB0000000000000000000502 /* PackListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000501 /* PackListViewController+TableView.swift */; };
-		AB0000000000000000000504 /* PackListViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000503 /* PackListViewController+Actions.swift */; };
 		AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000907 /* KeyboardFindButton.swift */; };
 		AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000909 /* ThemeImagePicker.swift */; };
 		AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000911 /* ConnectedInsightsTests.swift */; };
 		AB0000000000000000001003 /* TapTagKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001002 /* TapTagKit */; };
+		AB0000000000000000001010 /* TableViewControllerCoverKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001009 /* TableViewControllerCoverKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,8 +267,6 @@
 		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
 		AB0000000000000000000401 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
 		AB0000000000000000000403 /* SettingsVC+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Alerts.swift"; sourceTree = "<group>"; };
-		AB0000000000000000000501 /* PackListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+TableView.swift"; sourceTree = "<group>"; };
-		AB0000000000000000000503 /* PackListViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PackListViewController+Actions.swift"; sourceTree = "<group>"; };
 		AB0000000000000000000907 /* KeyboardFindButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFindButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000909 /* ThemeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePicker.swift; sourceTree = "<group>"; };
 		AB0000000000000000000911 /* ConnectedInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsTests.swift; sourceTree = "<group>"; };
@@ -496,8 +492,6 @@
 			isa = PBXGroup;
 			children = (
 				0226F19D259EABB4006E086C /* PackListViewController.swift */,
-				AB0000000000000000000501 /* PackListViewController+TableView.swift */,
-				AB0000000000000000000503 /* PackListViewController+Actions.swift */,
 				0226F19B259EAB93006E086C /* PackCell.swift */,
 			);
 			path = View;
@@ -979,8 +973,6 @@
 				02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */,
 				02962685284BC2FD009B0F58 /* ThemeListViewController+Delegate.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */,
-				AB0000000000000000000502 /* PackListViewController+TableView.swift in Sources */,
-				AB0000000000000000000504 /* PackListViewController+Actions.swift in Sources */,
 				02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */,
 				02998A662B44104800B70516 /* Circles.swift in Sources */,
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
@@ -1368,14 +1360,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AB0000000000000000001008 /* XCRemoteSwiftPackageReference "TableViewControllerCoverKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/A-bv/TableViewControllerCoverKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/A-bv/InstagramGraph";
@@ -1398,6 +1382,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.1.0;
+			};
+		};
+		AB0000000000000000001008 /* XCRemoteSwiftPackageReference "TableViewControllerCoverKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/A-bv/TableViewControllerCoverKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

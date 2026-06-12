@@ -1,33 +1,6 @@
 import UIKit
 
 extension UIViewController {
-    func setNavBarTransparent(alpha: CGFloat) {
-        
-        let textColor: UIColor = alpha >= 0 ? .label.withAlphaComponent(alpha) : .white
-        let backgroundColor: UIColor = alpha >= 0 ? bkgdColor.withAlphaComponent(alpha) : .clear
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = backgroundColor
-        appearance.shadowColor = .clear
-        appearance.titleTextAttributes = [.foregroundColor: textColor]
-        appearance.largeTitleTextAttributes = getClearNavigationBarAttributes()
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        navigationItem.compactAppearance = appearance
-        navigationController?.navigationBar.tintColor = textColor
-    }
-    
-    private func getClearNavigationBarAttributes() -> [NSAttributedString.Key : Any] {
-        let font = UIFont.systemFont(
-            ofSize: 31,
-            weight: UIFont.Weight.bold)
-        
-        return [ .foregroundColor: UIColor.white, .font: font ]
-    }
-}
-
-extension UIViewController {
     private func setNavBarAppearance(color: UIColor) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
