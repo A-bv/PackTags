@@ -5,7 +5,6 @@ struct TagView: View {
     let index: Int
     let item: String
     @Binding var childSizes: [CGSize]
-    @Binding var hashtagsL: [String]
     let x: CGFloat
     let y: CGFloat
     let tagPadding: CGFloat

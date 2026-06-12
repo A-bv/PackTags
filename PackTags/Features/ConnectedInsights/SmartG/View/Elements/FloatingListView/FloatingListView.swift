@@ -6,10 +6,7 @@ private enum Constants {
     static let tagListWidth = UIScreen.main.bounds.width - 40
     static let tagListHeight: CGFloat = 330
     static let tagListPadding: CGFloat = 20
-    static let tagListCornerRadius: CGFloat = 20
-    static let tagSize: CGFloat = 50
     static let tagColor = Color("Color4").opacity(0.7)
-    static let tagDefaultColor = Color.black.opacity(0.7)
     static let screenWidth = UIScreen.main.bounds.width
     static let tagPadding: CGFloat = 10
     static let tagCornerRadius: CGFloat = 10
@@ -17,50 +14,33 @@ private enum Constants {
 
 struct FloatingListView: View {
     @ObservedObject var viewModel: SmartGViewModel
-    @State private var hashtagEntry: String = "Tag entry"
     @State private var childSizes = [CGSize](repeating: .zero, count: Constants.numberOfTags)
     @State private var tagYPos = [CGFloat](repeating: .zero, count: Constants.numberOfTags)
-    @State private var topTags: [String] = []
 
     var body: some View {
-        ZStack{
-            VStack() {
-                rHashtagsList
-            }
-        }
-    }
-    
-    var rHashtagsList: some View {
         ZStack {
             Color.clear
-            // if !topTags.isEmpty {
-                ForEach(Array(viewModel.topHashtags.enumerated()), id: \.element) { index, item in
-                    let padding = Constants.tagPadding + Constants.tagListPadding
-                    let maxX = Constants.screenWidth/2 - childSizes[index].width/2 - padding
-                    let x = CGFloat.random(in: -maxX...maxX)
-                    let y = tagYPos[index]
-                    
-                    let color = Constants.tagColor
+            ForEach(Array(viewModel.topHashtags.enumerated()), id: \.element) { index, item in
+                let padding = Constants.tagPadding + Constants.tagListPadding
+                let maxX = Constants.screenWidth/2 - childSizes[index].width/2 - padding
+                let x = CGFloat.random(in: -maxX...maxX)
 
-                    TagView(
-                        color: color,
-                        index: index,
-                        item: item,
-                        childSizes: $childSizes,
-                        hashtagsL: $topTags,
-                        x: x,
-                        y: y,
-                        tagPadding: Constants.tagPadding,
-                        tagCornerRadius: Constants.tagCornerRadius)
-                }
-            // }
+                TagView(
+                    color: Constants.tagColor,
+                    index: index,
+                    item: item,
+                    childSizes: $childSizes,
+                    x: x,
+                    y: tagYPos[index],
+                    tagPadding: Constants.tagPadding,
+                    tagCornerRadius: Constants.tagCornerRadius)
+            }
         }
         .frame(width: Constants.tagListWidth, height: Constants.tagListHeight)
-        // .cornerRadius(Constants.tagListCornerRadius)
         .padding(.horizontal, Constants.tagListPadding)
-        .onAppear(perform: {
+        .onAppear {
             tagYPos = generateTagYPos()
-        })
+        }
     }
     
     private func generateTagYPos() -> [CGFloat] {

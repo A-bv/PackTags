@@ -12,7 +12,6 @@ struct SmartGSavedTagsView: View {
     }
     
     private enum Constants {
-        static let sevenDaysSeconds: TimeInterval = 7 * 24 * 60 * 60
         static let sevenDays: Int = 7
         static let headerHeight: CGFloat = 50
         static let tintColor = Color("Color4")
@@ -54,7 +53,6 @@ struct SmartGSavedTagsView: View {
                         ForEach(hashtags, id: \.self) { hashtag in
                             makeCell(hashtag: hashtag)
                         }
-                        // .onDelete(perform: removeHashtag)
                     } header: {
                         header
                             .padding(.bottom)
@@ -82,19 +80,6 @@ struct SmartGSavedTagsView: View {
         return SmartGSavedTagsCell(
             title: title,
             date: dateString)
-    }
-    
-    private func removeHashtag(at offsets: IndexSet) {
-        for index in offsets {
-            let hashtag = hashtags[index]
-            moc.delete(hashtag)
-        }
-
-        do {
-            try moc.save()
-        } catch {
-            AppLogger.persistence.error("Failed to save saved-tag deletion: \(error.localizedDescription, privacy: .public)")
-        }
     }
     
     private func timeLeft(date: Date) -> String? {
