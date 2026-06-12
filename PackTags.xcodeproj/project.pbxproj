@@ -439,13 +439,6 @@
 			path = NavigationBar;
 			sourceTree = "<group>";
 		};
-		02962683284BA65E009B0F58 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
 		02A4235A2843FFF300A25067 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,13 +515,6 @@
 				02385DFF2A634FAB0050FFDE /* ThemeListViewController+Actions.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		02B05C1E27F90BA3000026B8 /* TextView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TextView;
 			sourceTree = "<group>";
 		};
 		02B0D7292A3F08C000EF1500 /* Neumorphic */ = {
@@ -654,13 +640,6 @@
 				02FA30722A00405C006A48CC /* StoryCardLabel.swift */,
 			);
 			path = CollectionView;
-			sourceTree = "<group>";
-		};
-		02FA308A2A11BC3F006A48CC /* ModalView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ModalView;
 			sourceTree = "<group>";
 		};
 		02FAE2AB260ADA9200324724 /* Settings */ = {
@@ -791,9 +770,6 @@
 				AB0000000000000000000204 /* Components */,
 				02B0D7292A3F08C000EF1500 /* Neumorphic */,
 				0281B98F287A344C00344D3E /* NavigationBar */,
-				02FA308A2A11BC3F006A48CC /* ModalView */,
-				02B05C1E27F90BA3000026B8 /* TextView */,
-				02962683284BA65E009B0F58 /* TableView */,
 				0247E585257FEFB900C65245 /* DarkMode.swift */,
 				02491C682680883700F98E17 /* UIColors+AppColors.swift */,
 				020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */,
