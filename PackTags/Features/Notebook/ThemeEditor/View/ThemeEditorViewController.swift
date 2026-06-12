@@ -1,5 +1,4 @@
 import UIKit
-import TextSearchKit
 
 class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
 
@@ -41,15 +40,7 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
         target: self,
         action: #selector(cancel))
 
-    let searchBar = TextSearchBar(configuration: .init(resultsSuffix: "results".localized()))
-
-    private lazy var outerStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [searchBar, themeTextView, searchBar.resultsLabel])
-        stack.axis = .vertical
-        stack.spacing = 8
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
+    let findButton = KeyboardFindButton()
 
     //MARK: - Model
 
@@ -91,7 +82,7 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
 
         loadProcessingSpinner()
 
-        searchBar.attach(to: themeTextView)
+        findButton.attach(to: themeTextView, in: view)
 
         updateSaveButtonState() // Enable save button if title != empty
 
@@ -109,17 +100,16 @@ class ThemeEditorViewController: UIViewController, UITextFieldDelegate, UITextVi
     //MARK: - Layout
 
     private func setupViewHierarchy() {
-        view.addSubview(outerStack)
+        view.addSubview(themeTextView)
     }
 
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            outerStack.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
-            outerStack.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 8),
-            outerStack.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -8),
-            outerStack.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8),
-
+            themeTextView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
+            themeTextView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 8),
+            themeTextView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -8),
+            themeTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8),
         ])
     }
 

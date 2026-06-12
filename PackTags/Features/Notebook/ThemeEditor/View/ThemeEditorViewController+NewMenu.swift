@@ -1,14 +1,12 @@
 // Menu iOS 14+
 
 import UIKit
-import TextSearchKit
 
 extension ThemeEditorViewController{
     private enum Strings {
         static let rename = "Rename".localized()
         static let editPicture = "Edit picture".localized()
         static let textRecognition = "Text Recognition".localized()
-        static let searchHashtags = "Search hashtags".localized()
         static let shuffleHashtags = "Shuffle hashtags".localized()
         static let menuSectionEdit = "Edit...".localized()
         static let menuSectionImport = "Import...".localized()
@@ -39,13 +37,6 @@ extension ThemeEditorViewController{
             vc?.setImagePicker()
         }
 
-        let search = UIAction(
-            title: Strings.searchHashtags,
-            image: UIImage(systemName: "magnifyingglass")
-        ) { [weak vc = self] action in
-            vc?.searchBar.beginSearch()
-        }
-        
         let shuffle = UIAction(
             title: Strings.shuffleHashtags,
             image: UIImage(systemName: "shuffle.circle")
@@ -67,7 +58,7 @@ extension ThemeEditorViewController{
         let manage = UIMenu(
             title: Strings.menuSectionManage,
             options: .displayInline,
-            children: [shuffle, search])
+            children: [shuffle])
         
         let barButtonMenu = UIMenu(title:"", children: [edit,htgImport,manage])
         

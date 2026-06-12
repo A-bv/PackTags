@@ -1,5 +1,5 @@
 {
-  "originHash" : "6d36e54d1e0ad7ead104a02e0f194116ac0ac2f4e3f203f3c7479cb51addcb6c",
+  "originHash" : "1bd7cfe286a08ab62345bba0d8305511ca24f5acb0e80777788deee2a8fbda98",
   "pins" : [
     {
       "identity" : "facebook-ios-sdk",
@@ -17,15 +17,6 @@
       "state" : {
         "revision" : "b1d7229d97bb52b5247934124a58b5bc853d0817",
         "version" : "3.0.2"
-      }
-    },
-    {
-      "identity" : "textsearchkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/A-bv/TextSearchKit",
-      "state" : {
-        "revision" : "0c53780dfa8b5077483db3965efb9efc24a99824",
-        "version" : "1.0.0"
       }
     }
   ],
