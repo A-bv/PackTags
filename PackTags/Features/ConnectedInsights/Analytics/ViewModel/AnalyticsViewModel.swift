@@ -24,15 +24,11 @@ final class AnalyticsViewModel: ObservableObject {
             id: 0,
             title: Strings.likes,
             value: "0",
-            maxValue: 0,
-            color: .blue,
             image: Image(systemName: "suit.heart.fill")),
         AnalyticsOverviewModel(
             id: 1,
             title: Strings.comments,
             value: "0",
-            maxValue: 0,
-            color: .blue,
             image: Image(systemName: "text.bubble.fill"))]
     
     @Published var circlesData = [

@@ -142,7 +142,6 @@ extension FBLoginVC: LoginButtonDelegate {
     }
 
     private func placeFBLogingButton() {
-        let loginButton = loginButton
         loginButton.delegate = self
         loginButton.center = view.center
         view.addSubview(loginButton)

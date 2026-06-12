@@ -66,7 +66,7 @@ extension AnalyticsViewModel {
     }
     
     private func getMaxRate() -> CGFloat {
-        let max = processedJson?.maxRate
-        return (max == nil || max == 0 ? 1 : max)!
+        guard let max = processedJson?.maxRate, max != 0 else { return 1 }
+        return max
     }
 }

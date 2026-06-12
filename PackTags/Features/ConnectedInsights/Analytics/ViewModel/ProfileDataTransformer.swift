@@ -13,8 +13,6 @@ extension DataTransformer.ProfileDataTransformer {
         mode: Int = 0,
         rawInsights: Bool = true
     ) -> TransformedProfileModel? {
-        let top = response
-
         guard let metrics = computeMetrics(profileResponse: response, rawInsights: rawInsights) else { return nil }
 
         let averageLikes = averageInt(metrics.likeArray)
@@ -36,7 +34,7 @@ extension DataTransformer.ProfileDataTransformer {
         let safeMode = min(mode, engagementRates.count - 1)
 
         return TransformedProfileModel(
-            username: top.username,
+            username: response.username,
             isPrivateProfile: false,
             totalLikes: metrics.likeArray.reduce(0, +),
             totalComments: metrics.commentArray.reduce(0, +),
@@ -99,10 +97,8 @@ extension DataTransformer.ProfileDataTransformer {
 
         let engagementRateFollowers = getEngagementByFollowerRates(
             engagementArray: sumLikesCommentsArray, followersCount: profileResponse.followersCount)
-        let engagementRateImpressions = getEngagementByImpressionRates(
-            engagementArray: sumLikesCommentsArray, impressions: impressions)
-        let engagementRateReach = getEngagementByReachRates(
-            engagementArray: sumLikesCommentsArray, reachArray: reachArray)
+        let engagementRateImpressions = rates(engagement: sumLikesCommentsArray, dividedBy: impressions)
+        let engagementRateReach = rates(engagement: sumLikesCommentsArray, dividedBy: reachArray)
 
         return(
             .init(
@@ -116,36 +112,16 @@ extension DataTransformer.ProfileDataTransformer {
     }
     
     private static func getEngagementByFollowerRates(engagementArray: [CGFloat], followersCount: Int?) -> [CGFloat] {
-        var engFollowers  = [CGFloat]()
-        if let followersCount, followersCount != 0 {
-            engFollowers = engagementArray.map { ($0 * 100.0 / CGFloat(followersCount)) }
-        } else {
-            engFollowers = engagementArray.map { ($0 * 0) }
+        guard let followersCount, followersCount != 0 else {
+            return engagementArray.map { _ in 0 }
         }
-        return engFollowers
+        return engagementArray.map { $0 * 100.0 / CGFloat(followersCount) }
     }
-    
-    private static func getEngagementByImpressionRates(engagementArray: [CGFloat], impressions: [CGFloat]) -> [CGFloat] {
-        var engImpressions = [CGFloat]()
-        impressions.indices.forEach {
-            if impressions[$0] == 0 {
-                engImpressions.append(0) //append 0 when Nan
-            } else {
-                engImpressions.append(engagementArray[$0]*100/CGFloat(impressions[$0]))
-            }
+
+    /// Per-post engagement percentage; 0 where the denominator is 0.
+    private static func rates(engagement: [CGFloat], dividedBy denominators: [CGFloat]) -> [CGFloat] {
+        denominators.indices.map {
+            denominators[$0] == 0 ? 0 : engagement[$0] * 100 / denominators[$0]
         }
-        return engImpressions
-    }
-    
-    private static func getEngagementByReachRates(engagementArray: [CGFloat], reachArray: [CGFloat]) -> [CGFloat] {
-        var engReach = [CGFloat]()
-        reachArray.indices.forEach {
-            if reachArray[$0] == 0 {
-                engReach.append(0) //append 0 when Nan
-            } else {
-                engReach.append(engagementArray[$0]*100/CGFloat(reachArray[$0]))
-            }
-        }
-        return engReach
     }
 }
