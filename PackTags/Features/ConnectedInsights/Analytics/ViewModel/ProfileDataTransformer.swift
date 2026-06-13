@@ -80,16 +80,24 @@ extension DataTransformer.ProfileDataTransformer {
             commentArray.append(mediaData?.commentsCount ?? 0)
             captions.append(mediaData?.caption ?? "")
 
-            if let insightsData = mediaData?.insights?.data, insightsData.count > 2 {
-                let mediaSumLikesComment = CGFloat(insightsData[2].values.first?.value ?? 0)
-                let mediaImpressions = CGFloat(insightsData[1].values.first?.value ?? 0)
-                let mediaReach = CGFloat(insightsData[0].values.first?.value ?? 0)
+            // Look metrics up by name, not array position: the Graph response
+            // may reorder or omit metrics. "views" is Meta's replacement for the
+            // deprecated "impressions" metric (still surfaced as Impressions in
+            // the UI). All three must be present to keep the parallel arrays
+            // aligned.
+            let metrics = mediaData?.insights?.data ?? []
+            func metricValue(_ name: String) -> CGFloat? {
+                metrics.first { $0.name == name }.map { CGFloat($0.values.first?.value ?? 0) }
+            }
 
-                sumLikesCommentsArray.append(mediaSumLikesComment)
-                impressions.append(mediaImpressions)
-                reachArray.append(mediaReach)
+            if let reach = metricValue("reach"),
+               let views = metricValue("views"),
+               let interactions = metricValue("total_interactions") {
+                reachArray.append(reach)
+                impressions.append(views)
+                sumLikesCommentsArray.append(interactions)
             } else {
-                AppLogger.insights.debug("Media item has no insights data.")
+                AppLogger.insights.debug("Media item missing reach/views/total_interactions insights.")
             }
 
             times.append(mediaData?.timestamp?.timeIntervalSince1970)

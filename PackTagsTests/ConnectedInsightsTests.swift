@@ -21,9 +21,9 @@ private func makeProfile(
                 "comments_count": media.comments,
                 "caption": "#sun",
                 "insights": ["data": [
-                    ["values": [["value": media.reach]]],
-                    ["values": [["value": media.impressions]]],
-                    ["values": [["value": media.engagement]]],
+                    ["name": "reach", "values": [["value": media.reach]]],
+                    ["name": "views", "values": [["value": media.impressions]]],
+                    ["name": "total_interactions", "values": [["value": media.engagement]]],
                 ]],
             ]
         }]
