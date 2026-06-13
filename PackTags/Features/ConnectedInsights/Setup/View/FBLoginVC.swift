@@ -50,6 +50,10 @@ class FBLoginVC: UIViewController {
     private let loginButton: FBLoginButton = {
         let button = FBLoginButton()
         button.permissions = Permissions.list
+        // Business permissions (instagram_manage_insights, business_management)
+        // require a classic AccessToken; Limited Login only yields an OIDC
+        // AuthenticationToken, which the Instagram Graph calls can't use.
+        button.loginTracking = .enabled
         return button
     }()
 

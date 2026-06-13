@@ -47,9 +47,10 @@ private final class FakeAppSettings: AppSettingsProtocol {
 
 private final class FakeThemeRepository: ThemeRepositoryProtocol {
     private(set) var didSave = false
+    private let persistence = PersistenceController(inMemory: true)
 
     func fetchAll() -> [ThemeCD] { [] }
-    func create() -> ThemeCD { MainActor.assumeIsolated { makeTheme() } }
+    func create() -> ThemeCD { ThemeCD(context: persistence.viewContext) }
     func save() { didSave = true }
     func delete(_ theme: ThemeCD) {}
     func count() -> Int32 { 0 }
