@@ -1373,7 +1373,7 @@
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 17.0.0;
+				minimumVersion = 18.0.0;
 			};
 		};
 		AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */ = {
