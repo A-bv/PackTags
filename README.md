@@ -4,7 +4,7 @@ A hashtag notebook for Instagram creators, shipped on the App Store. Users organ
 
 ## Tech stack
 
-- **iOS 16+**, **UIKit + SwiftUI hybrid** — the notebook is UIKit; the connected-insights features (SmartG hashtag generation, Analytics) are SwiftUI presented via `UIHostingController`
+- **iOS 17+**, **UIKit + SwiftUI hybrid** — the notebook is UIKit; the connected-insights features (SmartG hashtag generation, Analytics) are SwiftUI presented via `UIHostingController`
 - **Core Data** for persistence, **Swift Package Manager** for dependencies
 - [`InstagramGraph`](https://github.com/A-bv/InstagramGraph) — my own SPM package wrapping the Meta Graph API: it is this app's **remote data layer**, extracted so all networking lives outside the app target
 - [`TapTagKit`](https://github.com/A-bv/TapTagKit) — my own SPM package: tappable hashtag selection for any `UITextView`, extracted from the theme editor
@@ -85,7 +85,7 @@ ThemeCoordinator ──▶ Notebook screens │ Settings │ Onboarding      (UI
 - **Domain layer** — the product's core logic as pure, fully tested types with no UIKit or UserDefaults dependencies.
 - **Repository** — `ThemeRepositoryProtocol` abstracts Core Data; ViewModels are tested against the real implementation on an in-memory store, coordinators against fakes.
 - **Constructor DI** — `AppDependencies` is assembled once in `AppCoordinator` and threaded down explicitly. `AppSettingsProtocol` is the single typed gateway to UserDefaults; no singletons in the data path.
-- **Main-actor isolation** — every ObservableObject ViewModel is `@MainActor`; groundwork for Swift 6 strict concurrency.
+- **Concurrency** — `@Observable` `@MainActor` ViewModels with pure async/await; views drive loading from `.task`. `SWIFT_STRICT_CONCURRENCY = complete` builds with zero warnings.
 
 ## Persistence design
 

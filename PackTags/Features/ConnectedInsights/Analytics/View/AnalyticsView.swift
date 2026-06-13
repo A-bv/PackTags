@@ -55,13 +55,14 @@ struct AnalyticsView : View {
     @State var swiftUIData: AnalyticsViewModel
     @State private var showingAlert = false
     @Environment(\.dismiss) private var dismiss
-    @State private var monitor = NetworkMonitor()
+    @State private var monitor: NetworkMonitor
     @State var selectedBarChartPostId = 0
 
     var colors = [Color("Color1"),Color("Color")]
 
-    init(gateway: any ConnectedInsightsGatewayProtocol) {
+    init(gateway: any ConnectedInsightsGatewayProtocol, monitor: NetworkMonitor = NetworkMonitor()) {
         _swiftUIData = State(initialValue: AnalyticsViewModel(gateway: gateway))
+        _monitor = State(initialValue: monitor)
     }
 
     var columns = Array(

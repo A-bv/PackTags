@@ -3,10 +3,11 @@ import InstagramGraph
 
 struct SmartGView: View {
     @State var smartGViewModel: SmartGViewModel
-    @State private var monitor = NetworkMonitor()
+    @State private var monitor: NetworkMonitor
 
-    init(gateway: any ConnectedInsightsGatewayProtocol) {
+    init(gateway: any ConnectedInsightsGatewayProtocol, monitor: NetworkMonitor = NetworkMonitor()) {
         _smartGViewModel = State(initialValue: SmartGViewModel(gateway: gateway))
+        _monitor = State(initialValue: monitor)
     }
 
     var body: some View {

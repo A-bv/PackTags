@@ -140,6 +140,26 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         #expect(sut.topHashtagsCount.first == 3)
         #expect(sut.topHashtags.count == 3)
     }
+
+    @Test func loadDefaultFeed_flagsTheErrorState_whenTheGatewayFails() async {
+        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+
+        await sut.loadDefaultFeed()
+
+        #expect(sut.isErrorState)
+        #expect(!sut.loading)
+    }
+
+    @Test func submitSearch_runsOncePerDistinctEntry() async {
+        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+
+        sut.hashtagEntry = "#sea"
+        #expect(await sut.submitSearch())
+        #expect(await !sut.submitSearch()) // unchanged entry
+
+        sut.hashtagEntry = "sea" // identical once the # is stripped
+        #expect(await !sut.submitSearch())
+    }
 }
 
 // MARK: - FBLoginViewModel
