@@ -1,56 +1,89 @@
 import UIKit
 import StoreKit
 
-/// Decides when to ask for an App Store review: only after enough launches,
-/// and at most once per app version.
+protocol ReviewPromptStoreProtocol: AnyObject {
+    var launchCount: Int { get }
+    func incrementLaunchCount()
+    var lastPromptedVersion: String? { get set }
+    var lastPromptedBuild: String? { get set }
+}
+
+final class ReviewPromptStore: ReviewPromptStoreProtocol {
+    private let defaults: UserDefaults
+
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+    }
+
+    var launchCount: Int {
+        defaults.integer(forKey: SettingsKey.timesLaunched)
+    }
+
+    func incrementLaunchCount() {
+        defaults.set(launchCount + 1, forKey: SettingsKey.timesLaunched)
+    }
+
+    var lastPromptedVersion: String? {
+        get { defaults.string(forKey: SettingsKey.lastVersionPromptedForReview) }
+        set { defaults.set(newValue, forKey: SettingsKey.lastVersionPromptedForReview) }
+    }
+
+    var lastPromptedBuild: String? {
+        get { defaults.string(forKey: SettingsKey.lastBuildPromptedForReview) }
+        set { defaults.set(newValue, forKey: SettingsKey.lastBuildPromptedForReview) }
+    }
+}
+
 struct ReviewPromptPolicy {
 
     private enum Constants {
         static let minimumLaunches = 7
     }
 
-    private let defaults: UserDefaults
+    private let store: any ReviewPromptStoreProtocol
+    private let presentReview: @MainActor () -> Bool
 
-    private var launchCount: Int {
-        defaults.integer(forKey: SettingsKey.timesLaunched)
-    }
-
-    init(defaults: UserDefaults = .standard) {
-        self.defaults = defaults
+    init(
+        store: any ReviewPromptStoreProtocol = ReviewPromptStore(),
+        presentReview: @MainActor @escaping () -> Bool = ReviewPromptPolicy.presentStoreKitReview
+    ) {
+        self.store = store
+        self.presentReview = presentReview
     }
 
     func registerLaunch() {
-        defaults.set(launchCount + 1, forKey: SettingsKey.timesLaunched)
+        store.incrementLaunchCount()
     }
 
-    /// Shows the StoreKit review sheet when the policy allows it.
     @MainActor
     func promptIfEarned() {
         guard
             let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String,
             let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
-            eligible(
-                version: version,
-                build: build,
-                promptedVersion: defaults.string(forKey: SettingsKey.lastVersionPromptedForReview),
-                promptedBuild: defaults.string(forKey: SettingsKey.lastBuildPromptedForReview))
+            eligible(version: version, build: build)
         else { return }
 
-        if let scene = UIApplication.shared.connectedScenes
-            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: scene)
+        if presentReview() {
             markPrompted(version: version, build: build)
         }
     }
 
-    private func eligible(version: String, build: String,
-                          promptedVersion: String?, promptedBuild: String?) -> Bool {
-        guard launchCount > Constants.minimumLaunches else { return false }
-        return version != promptedVersion || build != promptedBuild
+    private func eligible(version: String, build: String) -> Bool {
+        guard store.launchCount > Constants.minimumLaunches else { return false }
+        return version != store.lastPromptedVersion || build != store.lastPromptedBuild
     }
 
     private func markPrompted(version: String, build: String) {
-        defaults.set(version, forKey: SettingsKey.lastVersionPromptedForReview)
-        defaults.set(build, forKey: SettingsKey.lastBuildPromptedForReview)
+        store.lastPromptedVersion = version
+        store.lastPromptedBuild = build
+    }
+
+    @MainActor
+    private static func presentStoreKitReview() -> Bool {
+        guard let scene = UIApplication.shared.connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+        else { return false }
+        SKStoreReviewController.requestReview(in: scene)
+        return true
     }
 }

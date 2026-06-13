@@ -42,20 +42,60 @@ class PackTagsTests: XCTestCase {
 
 }
 
+@MainActor
 @Suite struct ReviewPromptPolicyTests {
 
-    private func makeDefaults() -> UserDefaults {
-        let name = "ReviewPromptPolicyTests-\(UUID().uuidString)"
-        let defaults = UserDefaults(suiteName: name)!
-        defaults.removePersistentDomain(forName: name)
-        return defaults
+    private final class FakeReviewPromptStore: ReviewPromptStoreProtocol {
+        var launchCount = 0
+        func incrementLaunchCount() { launchCount += 1 }
+        var lastPromptedVersion: String?
+        var lastPromptedBuild: String?
     }
 
     @Test func registerLaunch_incrementsCount() {
-        let defaults = makeDefaults()
-        let policy = ReviewPromptPolicy(defaults: defaults)
+        let store = FakeReviewPromptStore()
+        let policy = ReviewPromptPolicy(store: store)
         policy.registerLaunch()
         policy.registerLaunch()
-        #expect(defaults.integer(forKey: SettingsKey.timesLaunched) == 2)
+        #expect(store.launchCount == 2)
+    }
+
+    @Test func promptIfEarned_presentsOnlyAfterEnoughLaunches() {
+        let store = FakeReviewPromptStore()
+        var presentCount = 0
+        let policy = ReviewPromptPolicy(store: store, presentReview: { presentCount += 1; return true })
+
+        store.launchCount = 7
+        policy.promptIfEarned()
+        #expect(presentCount == 0)
+
+        store.launchCount = 8
+        policy.promptIfEarned()
+        #expect(presentCount == 1)
+    }
+
+    @Test func promptIfEarned_presentsAtMostOncePerVersion() {
+        let store = FakeReviewPromptStore()
+        store.launchCount = 8
+        var presentCount = 0
+        let policy = ReviewPromptPolicy(store: store, presentReview: { presentCount += 1; return true })
+
+        policy.promptIfEarned()
+        policy.promptIfEarned()
+        #expect(presentCount == 1)
+    }
+
+    @Test func promptIfEarned_doesNotRecordWhenTheSheetIsNotShown() {
+        let store = FakeReviewPromptStore()
+        store.launchCount = 8
+
+        let notShown = ReviewPromptPolicy(store: store, presentReview: { false })
+        notShown.promptIfEarned()
+        #expect(store.lastPromptedVersion == nil)
+
+        var shown = false
+        let shownPolicy = ReviewPromptPolicy(store: store, presentReview: { shown = true; return true })
+        shownPolicy.promptIfEarned()
+        #expect(shown)
     }
 }
