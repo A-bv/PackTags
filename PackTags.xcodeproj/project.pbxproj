@@ -103,6 +103,7 @@
 		02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB550B24FFA2AA00174E34 /* SceneDelegate.swift */; };
 		02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */; };
 		02FB551624FFA2AC00174E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551524FFA2AC00174E34 /* Assets.xcassets */; };
+		AB0000000000000000003002 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000003001 /* PrivacyInfo.xcprivacy */; };
 		02FB551924FFA2AC00174E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551724FFA2AC00174E34 /* LaunchScreen.storyboard */; };
 		02FB552F24FFA78B00174E34 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB552E24FFA78B00174E34 /* ThemeListViewController.swift */; };
 		02FBAFE525A93C6100E32D73 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */; };
@@ -243,6 +244,7 @@
 		02FB551524FFA2AC00174E34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02FB551824FFA2AC00174E34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02FB551A24FFA2AC00174E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB0000000000000000003001 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		02FB551F24FFA2AC00174E34 /* PackTagsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PackTagsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02FB552324FFA2AC00174E34 /* PackTagsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackTagsTests.swift; sourceTree = "<group>"; };
 		02FB552524FFA2AC00174E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				02FB551524FFA2AC00174E34 /* Assets.xcassets */,
 				02FB551724FFA2AC00174E34 /* LaunchScreen.storyboard */,
 				02FB551A24FFA2AC00174E34 /* Info.plist */,
+				AB0000000000000000003001 /* PrivacyInfo.xcprivacy */,
 				025479DE26C7EEA000E28724 /* SeedData */,
 				021EB81A28846FDE00463B42 /* Localizable.strings */,
 			);
@@ -939,6 +942,7 @@
 				025479DF26C7EEA000E28724 /* SeedData in Resources */,
 				02FB551924FFA2AC00174E34 /* LaunchScreen.storyboard in Resources */,
 				02FB551624FFA2AC00174E34 /* Assets.xcassets in Resources */,
+				AB0000000000000000003002 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
