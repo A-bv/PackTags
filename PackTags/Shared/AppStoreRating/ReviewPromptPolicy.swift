@@ -83,7 +83,7 @@ struct ReviewPromptPolicy {
         guard let scene = UIApplication.shared.connectedScenes
             .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
         else { return false }
-        SKStoreReviewController.requestReview(in: scene)
+        AppStore.requestReview(in: scene)
         return true
     }
 }
