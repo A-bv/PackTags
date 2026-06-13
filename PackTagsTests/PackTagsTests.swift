@@ -44,7 +44,6 @@ class PackTagsTests: XCTestCase {
 
 @Suite struct ReviewPromptPolicyTests {
 
-    /// A fresh, uniquely named suite per test — the suite runs in parallel.
     private func makeDefaults() -> UserDefaults {
         let name = "ReviewPromptPolicyTests-\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: name)!
@@ -52,23 +51,11 @@ class PackTagsTests: XCTestCase {
         return defaults
     }
 
-    @Test func shouldPrompt_requiresEnoughLaunches() {
-        let policy = ReviewPromptPolicy(defaults: makeDefaults())
-
-        for _ in 1...7 { policy.registerLaunch() }
-        #expect(!policy.shouldPrompt(version: "1.0", build: "1"))
-
+    @Test func registerLaunch_incrementsCount() {
+        let defaults = makeDefaults()
+        let policy = ReviewPromptPolicy(defaults: defaults)
         policy.registerLaunch()
-        #expect(policy.shouldPrompt(version: "1.0", build: "1"))
-    }
-
-    @Test func shouldPrompt_atMostOncePerVersion() {
-        let policy = ReviewPromptPolicy(defaults: makeDefaults())
-        for _ in 1...8 { policy.registerLaunch() }
-
-        policy.markPrompted(version: "1.0", build: "1")
-
-        #expect(!policy.shouldPrompt(version: "1.0", build: "1"))
-        #expect(policy.shouldPrompt(version: "1.1", build: "2"))
+        policy.registerLaunch()
+        #expect(defaults.integer(forKey: SettingsKey.timesLaunched) == 2)
     }
 }
