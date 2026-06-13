@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    name: Build & Test
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: xcodebuild -version
+
+      - name: Resolve packages
+        run: xcodebuild -scheme PackTags -resolvePackageDependencies
+
+      - name: Run tests
+        run: |
+          set -o pipefail
+          # Pick whatever iPhone simulator the runner image actually has,
+          # rather than hardcoding a device that may not exist there.
+          DEVICE=$(xcrun simctl list devices available \
+            | grep -oE 'iPhone [0-9]+( Pro)?' | head -1)
+          echo "Using simulator: ${DEVICE:-iPhone 15}"
+          xcodebuild test \
+            -scheme PackTags \
+            -destination "platform=iOS Simulator,name=${DEVICE:-iPhone 15}"
