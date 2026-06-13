@@ -1,14 +1,18 @@
 import Foundation
 
-/// Splits a flat list of hashtags into fixed-size packs for display and copying.
 enum TagPackFormatter {
     static func packs(from text: String, tagsPerPack: Int) -> [String] {
-        text.components(separatedBy: " ")
-            .chunked(into: tagsPerPack)
+        chunked(text.components(separatedBy: " "), into: tagsPerPack)
             .map { $0.joined(separator: " ") }
     }
 
     static func format(_ text: String, tagsPerPack: Int) -> String {
         packs(from: text, tagsPerPack: tagsPerPack).joined(separator: "\n\n")
+    }
+
+    private static func chunked(_ tags: [String], into size: Int) -> [[String]] {
+        stride(from: 0, to: tags.count, by: size).map {
+            Array(tags[$0 ..< Swift.min($0 + size, tags.count)])
+        }
     }
 }

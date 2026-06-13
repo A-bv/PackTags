@@ -55,15 +55,18 @@ extension SmartGViewModel {
         var hashtagsFullList: [String] = []
 
         for dataMedia in dataMedias {
-            let hashtags = dataMedia.caption?.detectHashtags() ?? []
+            let hashtags = dataMedia.caption.map(HashtagParser.parse) ?? []
             processedSmartGModels.append(SmartGModel(hashtags: hashtags))
             hashtagsFullList += hashtags
         }
 
         self.computedData = processedSmartGModels
 
-        let hashtagsHistogram = hashtagsFullList.histogram.sorted { $0.1 > $1.1 }.prefix(10)
-        self.topHashtags = hashtagsHistogram.map({ $0.key })
-        self.topHashtagsCount = hashtagsHistogram.map({ $0.value })
+        let counts = hashtagsFullList.reduce(into: [String: Int]()) { counts, hashtag in
+            counts[hashtag, default: 0] += 1
+        }
+        let top = counts.sorted { $0.value > $1.value }.prefix(10)
+        self.topHashtags = top.map(\.key)
+        self.topHashtagsCount = top.map(\.value)
     }
 }

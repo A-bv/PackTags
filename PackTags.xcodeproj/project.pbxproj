@@ -121,8 +121,7 @@
 		AB00000000000000000000E2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* AppSettings.swift */; };
 		AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F1 /* TagPackFormatter.swift */; };
 		AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F3 /* TagDeduplicator.swift */; };
-		AB00000000000000000000F6 /* Collection+PackTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F5 /* Collection+PackTags.swift */; };
-		AB00000000000000000000F8 /* String+Hashtags.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F7 /* String+Hashtags.swift */; };
+		AB00000000000000000000F8 /* HashtagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F7 /* HashtagParser.swift */; };
 		AB0000000000000000000102 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000101 /* DomainTests.swift */; };
 		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
 		AB0000000000000000000402 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000401 /* SettingsSections.swift */; };
@@ -260,8 +259,7 @@
 		AB00000000000000000000E1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F1 /* TagPackFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPackFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F3 /* TagDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeduplicator.swift; sourceTree = "<group>"; };
-		AB00000000000000000000F5 /* Collection+PackTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+PackTags.swift"; sourceTree = "<group>"; };
-		AB00000000000000000000F7 /* String+Hashtags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hashtags.swift"; sourceTree = "<group>"; };
+		AB00000000000000000000F7 /* HashtagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashtagParser.swift"; sourceTree = "<group>"; };
 		AB0000000000000000000101 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
 		AB0000000000000000000401 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
@@ -416,7 +414,6 @@
 			isa = PBXGroup;
 			children = (
 				02FD6CB326D8178800AB16E4 /* AppStoreRating */,
-				AB00000000000000000000E0 /* Extensions */,
 				AB00000000000000000000A1 /* AppLogger.swift */,
 				021AFD5B278A1BE40008735E /* Alerts.swift */,
 				02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */,
@@ -721,17 +718,9 @@
 			children = (
 				AB00000000000000000000F1 /* TagPackFormatter.swift */,
 				AB00000000000000000000F3 /* TagDeduplicator.swift */,
-				AB00000000000000000000F7 /* String+Hashtags.swift */,
+				AB00000000000000000000F7 /* HashtagParser.swift */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		AB00000000000000000000E0 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				AB00000000000000000000F5 /* Collection+PackTags.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AB0000000000000000000201 /* Model */ = {
@@ -1039,8 +1028,7 @@
 				AB00000000000000000000E2 /* AppSettings.swift in Sources */,
 				AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */,
 				AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */,
-				AB00000000000000000000F6 /* Collection+PackTags.swift in Sources */,
-				AB00000000000000000000F8 /* String+Hashtags.swift in Sources */,
+				AB00000000000000000000F8 /* HashtagParser.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */,
 				02FD6CB026D8006400AB16E4 /* SettingsVC+RateAndReview.swift in Sources */,

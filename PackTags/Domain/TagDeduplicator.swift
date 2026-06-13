@@ -1,7 +1,5 @@
 import Foundation
 
-/// Extracts hashtags from raw text and removes the ones already stored in other
-/// themes, so a tag only ever lives in one theme.
 struct TagDeduplicator {
     private let repository: any ThemeRepositoryProtocol
 
@@ -10,10 +8,10 @@ struct TagDeduplicator {
     }
 
     func sanitize(rawText: String, currentTheme: ThemeCD?, shuffle: Bool) -> String {
-        var cleanTags = rawText.detectHashtags().removingDuplicates()
+        var cleanTags = deduplicated(HashtagParser.parse(rawText))
 
         if !cleanTags.isEmpty {
-            let alreadyStored = tagsAlreadyStored(among: cleanTags, excluding: currentTheme)
+            let alreadyStored = Set(tagsAlreadyStored(among: cleanTags, excluding: currentTheme))
             cleanTags = cleanTags.filter { !alreadyStored.contains($0) }
         }
 
@@ -24,8 +22,6 @@ struct TagDeduplicator {
         return cleanTags.joined(separator: " ")
     }
 
-    /// Tags in the current theme's own content don't count as duplicates —
-    /// only matches stored in *other* themes are excluded.
     private func tagsAlreadyStored(among tags: [String], excluding theme: ThemeCD?) -> [String] {
         guard let content = theme?.content, !content.isEmpty else {
             return repository.tagsAlreadyStored(tags: tags)
@@ -34,9 +30,13 @@ struct TagDeduplicator {
         let contentTags = content
             .replacingOccurrences(of: "\n\n", with: " ")
             .components(separatedBy: " ")
-        let tagsAlreadyInCurrentTheme = Array(Set(contentTags).intersection(Set(tags)))
-        let candidates = tagsAlreadyInCurrentTheme.symmetricDifference(with: tags)
+        let candidates = Array(Set(tags).subtracting(contentTags))
 
         return repository.tagsAlreadyStored(tags: candidates)
+    }
+
+    private func deduplicated(_ tags: [String]) -> [String] {
+        var seen = Set<String>()
+        return tags.filter { seen.insert($0).inserted }
     }
 }

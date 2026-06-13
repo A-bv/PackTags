@@ -1,6 +1,23 @@
 import Testing
 @testable import PackTags
 
+// MARK: - HashtagParser
+
+@Suite struct HashtagParserTests {
+
+    @Test func parse_extractsHashtagsAndIgnoresPlainText() {
+        #expect(HashtagParser.parse("#sea #sun a day at #beach") == ["#sea", "#sun", "#beach"])
+    }
+
+    @Test func parse_excludesRightToLeftScriptHashtags() {
+        #expect(HashtagParser.parse("#hello #שלום #مرحبا #world") == ["#hello", "#world"])
+    }
+
+    @Test func parse_returnsEmptyWhenNoHashtags() {
+        #expect(HashtagParser.parse("just some words").isEmpty)
+    }
+}
+
 // MARK: - TagPackFormatter
 
 @Suite struct TagPackFormatterTests {
