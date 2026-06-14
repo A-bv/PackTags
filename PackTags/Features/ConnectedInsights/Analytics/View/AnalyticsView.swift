@@ -309,7 +309,7 @@ extension AnalyticsView {
                             .font(.body)
                             .foregroundColor(Color(UIColor.label))
                         Spacer(minLength: 0)
-                        overviewCell.image
+                        Image(systemName: overviewCell.systemImageName)
                             .font(Font.system(.title2))
                     }
                     Text(overviewCell.value)

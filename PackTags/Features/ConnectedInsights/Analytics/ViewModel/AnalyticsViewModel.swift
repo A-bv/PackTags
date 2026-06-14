@@ -1,5 +1,5 @@
-import SwiftUI
-import Combine
+import Foundation
+import Observation
 import InstagramGraph
 
 private enum Strings {
@@ -25,30 +25,28 @@ final class AnalyticsViewModel {
             id: 0,
             title: Strings.likes,
             value: "0",
-            image: Image(systemName: "suit.heart.fill")),
+            systemImageName: "suit.heart.fill"),
         AnalyticsOverviewModel(
             id: 1,
             title: Strings.comments,
             value: "0",
-            image: Image(systemName: "text.bubble.fill"))]
-    
+            systemImageName: "text.bubble.fill")]
+
     var circlesData = [
         Circles(
             id: 0,
             title: Strings.average,
             value: 0,
-            maxValue: 0,
-            color: .blue),
+            maxValue: 0),
         Circles(
             id: 1,
             title: Strings.selection,
             value: 0,
-            maxValue: 0,
-            color: .blue)
+            maxValue: 0)
     ]
 
     var barChartData: [BarChartPost] = [BarChartPost(id: 0, post: "", rate: 0, barHeight: 0)]
-    
+
     //MARK: - Init
     init(gateway: any ConnectedInsightsGatewayProtocol) {
         self.gateway = gateway

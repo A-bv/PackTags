@@ -55,7 +55,7 @@ struct CirclesView: View {
                                 isRate: isRate))
                             .font(.title3)
                             .fontWeight(.bold)
-                            .foregroundColor(circle.color)
+                            .foregroundColor(.blue)
                             .rotationEffect(.init(degrees: Constants.valueRotationDegrees))
                     }
                     .rotationEffect(.init(degrees: Constants.circleStartRotationDegrees))
@@ -67,8 +67,8 @@ struct CirclesView: View {
 
 struct CirclesView_Previews: PreviewProvider {
     @State static var circles: [Circles] = [
-        Circles(id: 0, title: "Average", value: 203.1, maxValue: 7, color: .blue),
-        Circles(id: 1, title: "Selection", value: 133.3, maxValue: 80, color: .blue)
+        Circles(id: 0, title: "Average", value: 203.1, maxValue: 7),
+        Circles(id: 1, title: "Selection", value: 133.3, maxValue: 80)
     ]
     
     static var previews: some View {

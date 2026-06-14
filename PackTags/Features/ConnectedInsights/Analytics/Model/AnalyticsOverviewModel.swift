@@ -1,8 +1,6 @@
-import SwiftUI
-
 struct AnalyticsOverviewModel: Identifiable {
     var id: Int
     var title: String
     var value: String
-    var image: Image
+    var systemImageName: String
 }
