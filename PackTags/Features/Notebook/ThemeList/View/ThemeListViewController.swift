@@ -57,6 +57,15 @@ class ThemeListViewController: UITableViewController {
         super.viewDidLayoutSubviews()
         updateRowHeightIfNeeded()
     }
+
+    private func handleNewUserFlow() {
+        guard viewModel.shouldShowOnboarding else { return }
+
+        coordinator?.showOnboarding { [weak self] in
+            guard let self, self.viewModel.consumeFirstTimeTipsAlert() else { return }
+            Alerts.showFirstTimeTipsAlert(from: self)
+        }
+    }
 }
 
 //MARK: - Update colors when light/dark mode
