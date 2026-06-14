@@ -3,11 +3,13 @@ import CoreData
 
 class ThemeListViewController: UITableViewController {
 
-    weak var coordinator: (any ThemeCoordinatorProtocol)?
     let viewModel: ThemeListViewModel
+    let actions: ThemeListActions
+    var onViewDidAppear: (() -> Void)?
 
-    init(style: UITableView.Style, viewModel: ThemeListViewModel) {
+    init(style: UITableView.Style, viewModel: ThemeListViewModel, actions: ThemeListActions) {
         self.viewModel = viewModel
+        self.actions = actions
         super.init(style: style)
     }
 
@@ -50,21 +52,12 @@ class ThemeListViewController: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        handleNewUserFlow()
+        onViewDidAppear?()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateRowHeightIfNeeded()
-    }
-
-    private func handleNewUserFlow() {
-        guard viewModel.shouldShowOnboarding else { return }
-
-        coordinator?.showOnboarding { [weak self] in
-            guard let self, self.viewModel.consumeFirstTimeTipsAlert() else { return }
-            Alerts.showFirstTimeTipsAlert(from: self)
-        }
     }
 }
 

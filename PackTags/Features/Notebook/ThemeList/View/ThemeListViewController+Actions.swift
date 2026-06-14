@@ -2,20 +2,18 @@ import UIKit
 
 extension ThemeListViewController {
     @objc func didTapButton() {
-        coordinator?.showNewThemeEditor { [weak self] in
-            self?.viewModel.loadThemes()
-        }
+        actions.createTheme()
     }
 
     @objc func didTapSettings() {
-        coordinator?.showSettings()
+        actions.openSettings()
     }
 
     @objc func didTapAnalytics() {
-        coordinator?.showAnalytics()
+        actions.openAnalytics()
     }
 
     @objc func didTapSmartG() {
-        coordinator?.showSmartG()
+        actions.openSmartG()
     }
 }

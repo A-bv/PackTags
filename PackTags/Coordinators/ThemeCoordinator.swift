@@ -2,7 +2,7 @@ import UIKit
 import SwiftUI
 
 @MainActor
-final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
+final class ThemeCoordinator: Coordinator {
     let navigationController: UINavigationController
     let dependencies: AppDependencies
 
@@ -12,11 +12,22 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
     }
 
     func start() {
-        let vc = ThemeListViewController(
-            style: .plain,
-            viewModel: ThemeListViewModel(repository: dependencies.themeRepository, settings: dependencies.appSettings)
+        let viewModel = ThemeListViewModel(repository: dependencies.themeRepository, settings: dependencies.appSettings)
+        let actions = ThemeListActions(
+            selectTheme: { [weak self] theme in self?.showPackList(for: theme) },
+            createTheme: { [weak self] in self?.showNewThemeEditor { viewModel.loadThemes() } },
+            openSettings: { [weak self] in self?.showSettings() },
+            openAnalytics: { [weak self] in self?.showAnalytics() },
+            openSmartG: { [weak self] in self?.showSmartG() }
         )
-        vc.coordinator = self
+        let vc = ThemeListViewController(style: .plain, viewModel: viewModel, actions: actions)
+        vc.onViewDidAppear = { [weak self] in
+            guard let self, viewModel.shouldShowOnboarding else { return }
+            self.showOnboarding { [weak self] in
+                guard let self, viewModel.consumeFirstTimeTipsAlert() else { return }
+                Alerts.showFirstTimeTipsAlert(from: self.navigationController)
+            }
+        }
         navigationController.setViewControllers([vc], animated: false)
     }
 
@@ -54,7 +65,11 @@ final class ThemeCoordinator: Coordinator, ThemeCoordinatorProtocol {
 
     func showSettings() {
         let vc = SettingsVC(connectedInsights: dependencies.connectedInsights, appSettings: dependencies.appSettings)
-        vc.coordinator = self
+        vc.onOpenQuantityPicker = { [weak self] in self?.showQuantityPicker() }
+        vc.onReplayOnboarding = { [weak self] in
+            self?.dependencies.appSettings.hasSeenOnboarding = false
+            self?.showOnboarding(completion: nil)
+        }
         navigationController.pushViewController(vc, animated: true)
     }
 

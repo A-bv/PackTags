@@ -22,7 +22,8 @@ class SettingsVC: UIViewController {
         return table
     }()
     
-    weak var coordinator: (any ThemeCoordinatorProtocol)?
+    var onOpenQuantityPicker: (() -> Void)?
+    var onReplayOnboarding: (() -> Void)?
     let connectedInsights: any ConnectedInsightsCoordinating
     let appSettings: any AppSettingsProtocol
 
@@ -61,11 +62,8 @@ class SettingsVC: UIViewController {
                 guard let self else { return }
                 connectedInsights.open(.setup, from: self)
             },
-            showQuantityPicker: { [weak self] in self?.coordinator?.showQuantityPicker() },
-            replayOnboarding: { [weak self] in
-                self?.appSettings.hasSeenOnboarding = false
-                self?.coordinator?.showOnboarding(completion: nil)
-            },
+            showQuantityPicker: { [weak self] in self?.onOpenQuantityPicker?() },
+            replayOnboarding: { [weak self] in self?.onReplayOnboarding?() },
             openSetupInfo: { [weak self] in
                 guard let self else { return }
                 connectedInsights.open(.setupInfo, from: self)

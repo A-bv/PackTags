@@ -11,7 +11,7 @@ extension ThemeListViewController {
         // pushViewController updates the stack synchronously, so a second fast
         // tap fails this guard instead of pushing the screen twice.
         guard navigationController?.topViewController === self else { return }
-        coordinator?.showPackList(for: viewModel.themes[indexPath.row])
+        actions.selectTheme(viewModel.themes[indexPath.row])
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

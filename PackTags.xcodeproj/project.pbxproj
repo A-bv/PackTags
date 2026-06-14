@@ -14,7 +14,6 @@
 		0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */; };
 		0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */; };
 		0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */; };
-		0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */; };
 		0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */; };
 		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
 		0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */; };
@@ -104,6 +103,7 @@
 		02FB551624FFA2AC00174E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551524FFA2AC00174E34 /* Assets.xcassets */; };
 		02FB551924FFA2AC00174E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551724FFA2AC00174E34 /* LaunchScreen.storyboard */; };
 		02FB552F24FFA78B00174E34 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB552E24FFA78B00174E34 /* ThemeListViewController.swift */; };
+		AB0000000000000000004002 /* ThemeListActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000004001 /* ThemeListActions.swift */; };
 		02FBAFE525A93C6100E32D73 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */; };
 		02FBAFE825A93E8400E32D73 /* PackTagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB552324FFA2AC00174E34 /* PackTagsTests.swift */; };
 		02FBAFF125A93EBD00E32D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551524FFA2AC00174E34 /* Assets.xcassets */; };
@@ -151,7 +151,6 @@
 		0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
 		0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
-		0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
 		0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
@@ -245,6 +244,7 @@
 		02FB552324FFA2AC00174E34 /* PackTagsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackTagsTests.swift; sourceTree = "<group>"; };
 		02FB552524FFA2AC00174E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02FB552E24FFA78B00174E34 /* ThemeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewController.swift; sourceTree = "<group>"; };
+		AB0000000000000000004001 /* ThemeListActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListActions.swift; sourceTree = "<group>"; };
 		02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		02FD6CAF26D8006400AB16E4 /* SettingsVC+RateAndReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+RateAndReview.swift"; sourceTree = "<group>"; };
 		02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptPolicy.swift; sourceTree = "<group>"; };
@@ -297,7 +297,6 @@
 			children = (
 				0207BB842FD3736C0007F3D3 /* Coordinator.swift */,
 				0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */,
-				0207BB8E2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift */,
 				0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */,
 				0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */,
 				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
@@ -496,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				02FB552E24FFA78B00174E34 /* ThemeListViewController.swift */,
+				AB0000000000000000004001 /* ThemeListActions.swift */,
 				022688922624F9B1007DBD98 /* ThemeCell.swift */,
 				022688B22628BCCC007DBD98 /* ThemeListViewController+Interface.swift */,
 				02962684284BC2FD009B0F58 /* ThemeListViewController+Delegate.swift */,
@@ -998,7 +998,6 @@
 				AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */,
 				02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */,
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,
-				0207BB8F2FD468AE0007F3D3 /* ThemeCoordinatorProtocol.swift in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
 				02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */,
 				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
@@ -1036,6 +1035,7 @@
 				02FA30732A00405D006A48CC /* StoryCardLabel.swift in Sources */,
 				026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */,
 				02FB552F24FFA78B00174E34 /* ThemeListViewController.swift in Sources */,
+				AB0000000000000000004002 /* ThemeListActions.swift in Sources */,
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
 				02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */,
 				02FEF5B7263304EC0001B525 /* SettingsVC+Mail.swift in Sources */,

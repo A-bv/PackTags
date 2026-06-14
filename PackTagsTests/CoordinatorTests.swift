@@ -87,12 +87,12 @@ private func makeDependencies(
 
 @Suite @MainActor struct AppCoordinatorTests {
 
-    @Test func start_setsThemeListAsRootAndRetainsItsCoordinator() {
+    @Test func start_setsThemeListAsRootAndWiresItsNavigation() {
         let sut = AppCoordinator(window: UIWindow())
         sut.start()
         let root = sut.navigationController.viewControllers.first as? ThemeListViewController
         #expect(root != nil)
-        #expect(root?.coordinator != nil)
+        #expect(root?.onViewDidAppear != nil)
     }
 
     @Test func start_setsNavigationControllerAsWindowRootVC() {
@@ -120,11 +120,11 @@ private func makeDependencies(
         #expect(nav.setRootVC is ThemeListViewController)
     }
 
-    @Test func start_assignsCoordinatorOnThemeTableVC() {
+    @Test func start_wiresThemeListNavigation() {
         let (sut, nav) = makeSUT()
         sut.start()
         let vc = nav.setRootVC as? ThemeListViewController
-        #expect(vc?.coordinator === sut)
+        #expect(vc?.onViewDidAppear != nil)
     }
 
     // MARK: showPackList
@@ -192,11 +192,12 @@ private func makeDependencies(
         #expect(nav.pushedVC is SettingsVC)
     }
 
-    @Test func showSettings_assignsCoordinatorOnSettingsVC() {
+    @Test func showSettings_wiresSettingsNavigation() {
         let (sut, nav) = makeSUT()
         sut.showSettings()
         let vc = nav.pushedVC as? SettingsVC
-        #expect(vc?.coordinator === sut)
+        #expect(vc?.onOpenQuantityPicker != nil)
+        #expect(vc?.onReplayOnboarding != nil)
     }
 
     // MARK: showAnalytics
