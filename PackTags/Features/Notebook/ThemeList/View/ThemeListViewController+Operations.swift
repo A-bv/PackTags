@@ -26,12 +26,12 @@ extension ThemeListViewController {
             style: .cancel,
             handler: nil)
         
-        Alerts.simpleAlert(
-            presentingViewController: self,
+        Alerts.show(
+            from: self,
             title: "",
             message: Strings.deleteConfirmationMessage,
-            btnAction1: deleteAction,
-            btnAction2: cancelAction)
+            actions: [deleteAction, cancelAction],
+            preferred: cancelAction)
     }
     
     func handleNewUserFlow() {
@@ -39,7 +39,7 @@ extension ThemeListViewController {
 
         coordinator?.showOnboarding { [weak self] in
             guard let self, self.viewModel.consumeFirstTimeTipsAlert() else { return }
-            Alerts.showFirstTimeTipsAlert(presentingViewController: self)
+            Alerts.showFirstTimeTipsAlert(from: self)
         }
     }
 

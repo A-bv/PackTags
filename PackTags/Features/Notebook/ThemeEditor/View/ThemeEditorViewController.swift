@@ -280,7 +280,7 @@ extension ThemeEditorViewController {
     private func showNameThemeAlert() {
         let alert = viewModel.nameAlert
         Alerts.showTextInputAlert(
-            targetVC: self,
+            from: self,
             title: alert.title,
             message: alert.message,
             placeholder: alert.placeholder

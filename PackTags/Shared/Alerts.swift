@@ -16,8 +16,21 @@ enum Alerts {
         static let tricksAndTips = "Tricks & Tips".localized()
     }
 
+    static func show(
+        from presenter: UIViewController,
+        title: String,
+        message: String,
+        actions: [UIAlertAction],
+        preferred: UIAlertAction? = nil
+    ) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        actions.forEach(alert.addAction)
+        alert.preferredAction = preferred
+        presenter.present(alert, animated: true)
+    }
+
     static func showTextInputAlert(
-        targetVC: UIViewController,
+        from presenter: UIViewController,
         title: String,
         message: String,
         placeholder: String,
@@ -39,34 +52,21 @@ enum Alerts {
                 save.isEnabled = !text.isEmpty
             }, for: .editingChanged)
         }
-        targetVC.present(alert, animated: true)
+        presenter.present(alert, animated: true)
     }
 
-    static func simpleAlert(
-        presentingViewController: UIViewController,
-        title: String,
-        message: String,
-        btnAction1: UIAlertAction? = nil,
-        btnAction2: UIAlertAction? = nil
-    ) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        [btnAction1, btnAction2].compactMap { $0 }.forEach(alert.addAction)
-        alert.preferredAction = btnAction2
-        presentingViewController.present(alert, animated: true)
-    }
-
-    static func showFirstTimeTipsAlert(presentingViewController: UIViewController) {
+    static func showFirstTimeTipsAlert(from presenter: UIViewController) {
         let viewLater = UIAlertAction(title: Strings.viewLater, style: .default)
         let letsGo = UIAlertAction(title: Strings.letsGo, style: .default) { _ in
             guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
-            presentingViewController.present(SFSafariViewController(url: url), animated: true)
+            presenter.present(SFSafariViewController(url: url), animated: true)
         }
-        simpleAlert(
-            presentingViewController: presentingViewController,
+        show(
+            from: presenter,
             title: Strings.tricksAndTips,
             message: "\n" + Strings.discoverPacktagsWithTricksAndTips,
-            btnAction1: viewLater,
-            btnAction2: letsGo)
+            actions: [viewLater, letsGo],
+            preferred: letsGo)
     }
 
     static func tapToDismiss(from presenter: UIViewController, title: String, message: String) {

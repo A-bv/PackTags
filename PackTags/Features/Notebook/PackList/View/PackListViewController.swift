@@ -209,7 +209,7 @@ extension PackListViewController {
 
     private func promptForInstagramUsername() {
         Alerts.showTextInputAlert(
-            targetVC: self,
+            from: self,
             title: Strings.instagram,
             message: Strings.username,
             placeholder: Strings.enterUsername

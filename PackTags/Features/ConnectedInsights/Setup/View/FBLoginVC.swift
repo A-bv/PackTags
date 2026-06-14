@@ -232,16 +232,16 @@ extension FBLoginVC {
     }
 
     private func showSuccessfulSetupAlert() {
-        let alert = UIAlertController(
-            title: Strings.connectedAlertTitle,
-            message: Strings.accessAnalyticsConfirm,
-            preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
             self?.dismiss(animated: true) {
                 self?.onSetupComplete?()
             }
-        })
-        present(alert, animated: true)
+        }
+        Alerts.show(
+            from: self,
+            title: Strings.connectedAlertTitle,
+            message: Strings.accessAnalyticsConfirm,
+            actions: [ok])
     }
 
     private func showTroubleshootingAlert(detail: String? = nil) {
@@ -258,14 +258,11 @@ extension FBLoginVC {
             .compactMap { $0 }
             .joined(separator: "\n\n")
 
-        let alert = UIAlertController(
+        Alerts.show(
+            from: self,
             title: Strings.editYourSetup,
             message: message,
-            preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-
-        present(alert, animated: true)
+            actions: [UIAlertAction(title: "Ok", style: .cancel)])
     }
 
     private func showSetupScreen() {
@@ -273,15 +270,15 @@ extension FBLoginVC {
     }
 
     @objc private func didTapResetLoginButton(_ sender: Any) {
-        let alert = UIAlertController(
+        let cancel = UIAlertAction(title: Strings.cancel, style: .cancel)
+        let reset = UIAlertAction(title: Strings.reset, style: .destructive) { [weak self] _ in
+            self?.resetFacebookLogin()
+        }
+        Alerts.show(
+            from: self,
             title: Strings.resetLoginTitle,
             message: Strings.resetLoginMessage,
-            preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.cancel, style: .cancel))
-        alert.addAction(UIAlertAction(title: Strings.reset, style: .destructive) { [weak self] _ in
-            self?.resetFacebookLogin()
-        })
-        present(alert, animated: true)
+            actions: [cancel, reset])
     }
 
     private func resetFacebookLogin() {

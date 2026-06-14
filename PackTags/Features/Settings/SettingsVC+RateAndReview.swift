@@ -13,33 +13,19 @@ extension SettingsVC {
         static let packTagsAppStoreUrl = "https://apps.apple.com/app/id1579377025"
     }
     
-    func showReviewPopUp () {
-        let alert = UIAlertController(
+    func showReviewPopUp() {
+        let dismiss = UIAlertAction(title: Strings.rateAndReviewDismiss, style: .cancel)
+        let rate = UIAlertAction(title: Strings.rateAndReviewRateUsOnAppStore, style: .default) { [weak self] _ in
+            self?.writeReview()
+        }
+        let tellUsWhy = UIAlertAction(title: Strings.rateAndReviewTellUsWhyQuestion, style: .default) { [weak self] _ in
+            self?.sendEmail()
+        }
+        Alerts.show(
+            from: self,
             title: Strings.rateAndReviewYourFeedback,
             message: Strings.rateAndReviewEnjoyingQuestion,
-            preferredStyle: .alert)
-        
-        alert.addAction(
-            UIAlertAction(
-                title: Strings.rateAndReviewDismiss,
-                style: .cancel,
-                handler: nil))
-        
-        alert.addAction(
-            UIAlertAction(
-                title: Strings.rateAndReviewRateUsOnAppStore,
-                style: .default, handler: {  [weak self] _ in
-            self?.writeReview ()
-        }))
-        
-        alert.addAction(
-            UIAlertAction(
-                title: Strings.rateAndReviewTellUsWhyQuestion,
-                style: .default, handler: {  [weak self] _ in
-            self?.sendEmail()
-        }))
-        
-        present(alert, animated: true)
+            actions: [dismiss, rate, tellUsWhy])
     }
     
     func shareApp () {

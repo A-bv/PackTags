@@ -14,7 +14,7 @@ extension SettingsVC {
         let placeholder = username.isEmpty ? Strings.enterUsername : Strings.editUsername
 
         Alerts.showTextInputAlert(
-            targetVC: self,
+            from: self,
             title: Strings.instagram,
             message: message,
             placeholder: placeholder
