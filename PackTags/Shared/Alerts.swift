@@ -1,13 +1,12 @@
 import UIKit
 import SafariServices
 
-// MARK: - Alerts
 @MainActor
-final class Alerts {
+enum Alerts {
     private enum Links {
         static let settingsTricksAndTipsUrl = "https://sites.google.com/view/packtags-tricks-tips/accueil"
     }
-    
+
     private enum Strings {
         static let cancel = "Cancel".localized()
         static let done = "Done".localized()
@@ -16,7 +15,7 @@ final class Alerts {
         static let letsGo = "Let's go!".localized()
         static let tricksAndTips = "Tricks & Tips".localized()
     }
-    
+
     static func showTextInputAlert(
         targetVC: UIViewController,
         title: String,
@@ -24,83 +23,25 @@ final class Alerts {
         placeholder: String,
         completion: @escaping (String) -> Void
     ) {
-        let alertController = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(
-            title: Strings.cancel,
-            style: .cancel,
-            handler: nil)
-        
-        let saveAction = UIAlertAction(
-            title: Strings.done,
-            style: .default
-        ) { _ in
-            let inputName = alertController.textFields?.first?.text ?? ""
-            completion(inputName)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        let save = UIAlertAction(title: Strings.done, style: .default) { _ in
+            completion(alert.textFields?.first?.text ?? "")
         }
-        
-        saveAction.isEnabled = false
-        
-        let textFieldHandler: (UITextField) -> Void = { textField in
+        save.isEnabled = false
+
+        alert.addAction(UIAlertAction(title: Strings.cancel, style: .cancel))
+        alert.addAction(save)
+        alert.addTextField { textField in
             textField.placeholder = placeholder
-            observeTextFieldChanges(textField: textField, placeholder: placeholder, title: title, saveAction: saveAction)
+            textField.addAction(UIAction { _ in
+                let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                save.isEnabled = !text.isEmpty
+            }, for: .editingChanged)
         }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(saveAction)
-        alertController.addTextField { textField in
-            textFieldHandler(textField)
-        }
-        targetVC.present(alertController, animated: true, completion: nil)
-        
-        func observeTextFieldChanges(
-            textField: UITextField,
-            placeholder: String,
-            title: String,
-            saveAction: UIAlertAction
-        ) {
-            NotificationCenter.default.addObserver(
-                forName: UITextField.textDidChangeNotification,
-                object: textField,
-                queue: .main
-            ) { _ in
-                Task { @MainActor in
-                    let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-                    let isValidName = placeholder.contains("Username") && title == "Instagram" && text.isValidName
-                    saveAction.isEnabled = isValidName || !text.isEmpty
-                }
-            }
-        }
+        targetVC.present(alert, animated: true)
     }
-    
-    static func showFirstTimeTipsAlert(presentingViewController: UIViewController) {
-        let message = "\n" + Strings.discoverPacktagsWithTricksAndTips
-        
-        guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
-        let presentedViewController = SFSafariViewController(url: url)
-        
-        let action1 = UIAlertAction(
-            title: Strings.viewLater,
-            style: .default)
-        
-        let action2 = UIAlertAction(
-            title: Strings.letsGo,
-            style: .default
-        ) { _ in
-            presentingViewController.present(presentedViewController, animated: true)
-        }
-        
-        simpleAlert(
-            presentingViewController: presentingViewController,
-            title: Strings.tricksAndTips,
-            message: message,
-            btnAction1: action1,
-            btnAction2: action2)
-    }
-    
+
     static func simpleAlert(
         presentingViewController: UIViewController,
         title: String,
@@ -108,55 +49,43 @@ final class Alerts {
         btnAction1: UIAlertAction? = nil,
         btnAction2: UIAlertAction? = nil
     ) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert)
-        
-        if let btnAction1 = btnAction1 {
-            alert.addAction(btnAction1)
-        }
-        
-        if let btnAction2 = btnAction2 {
-            alert.addAction(btnAction2)
-        }
-        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        [btnAction1, btnAction2].compactMap { $0 }.forEach(alert.addAction)
         alert.preferredAction = btnAction2
-        
-        presentingViewController.present(alert, animated: true, completion: nil)
+        presentingViewController.present(alert, animated: true)
     }
-}
 
-
-// MARK: - More alerts
-extension UIViewController {
-    @objc private func dismissAlertController() {
-        self.dismiss(animated: true, completion: nil)
+    static func showFirstTimeTipsAlert(presentingViewController: UIViewController) {
+        let viewLater = UIAlertAction(title: Strings.viewLater, style: .default)
+        let letsGo = UIAlertAction(title: Strings.letsGo, style: .default) { _ in
+            guard let url = URL(string: Links.settingsTricksAndTipsUrl) else { return }
+            presentingViewController.present(SFSafariViewController(url: url), animated: true)
+        }
+        simpleAlert(
+            presentingViewController: presentingViewController,
+            title: Strings.tricksAndTips,
+            message: "\n" + Strings.discoverPacktagsWithTricksAndTips,
+            btnAction1: viewLater,
+            btnAction2: letsGo)
     }
-    
-    func subBtnAlert(
-        title: String,
-        message: String
-    ) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert)
-        
-        self.present(alert, animated: true) {
-            let tapGesture = UITapGestureRecognizer(
-                target: self,
-                action: #selector(self.dismissAlertController))
-            alert.view.superview?.subviews.first?.addGestureRecognizer(tapGesture)
+
+    static func tapToDismiss(from presenter: UIViewController, title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        presenter.present(alert, animated: true) {
+            let tap = ClosureTapGestureRecognizer { [weak alert] in alert?.dismiss(animated: true) }
+            alert.view.superview?.subviews.first?.addGestureRecognizer(tap)
         }
     }
 }
 
-fileprivate extension String {
-    /// Validation for the text-input alert above: 1-30 chars, letters,
-    /// numbers, dots, underscores; no leading/trailing/consecutive dots.
-    var isValidName: Bool {
-        let regex = "^(?=.{1,30}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9._]+(?<![.])$"
-        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: self)
+private final class ClosureTapGestureRecognizer: UITapGestureRecognizer {
+    private let action: () -> Void
+
+    init(action: @escaping () -> Void) {
+        self.action = action
+        super.init(target: nil, action: nil)
+        addTarget(self, action: #selector(fire))
     }
+
+    @objc private func fire() { action() }
 }

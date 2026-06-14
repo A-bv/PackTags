@@ -140,8 +140,9 @@ extension PackListViewController {
         }
 
         cell.subButtonTapCallback = { [weak self] in
+            guard let self else { return }
             let message = pack.isEmpty ? Strings.tapPencil : pack
-            self?.subBtnAlert(title: "", message: message)
+            Alerts.tapToDismiss(from: self, title: "", message: message)
         }
 
         if indexPath.row == 0 {
@@ -200,9 +201,9 @@ extension PackListViewController {
         case .promptForUsername:
             promptForInstagramUsername()
         case .enabled(let username):
-            subBtnAlert(title: username, message: Strings.redirectionAlertMessage)
+            Alerts.tapToDismiss(from: self, title: username, message: Strings.redirectionAlertMessage)
         case .disabled(let username):
-            subBtnAlert(title: username, message: Strings.stopRedirectionAlertMessage)
+            Alerts.tapToDismiss(from: self, title: username, message: Strings.stopRedirectionAlertMessage)
         }
     }
 
@@ -215,7 +216,8 @@ extension PackListViewController {
         ) { [weak self] inputName in
             guard let self else { return }
             let name = self.viewModel.saveInstagramUsername(inputName)
-            self.subBtnAlert(
+            Alerts.tapToDismiss(
+                from: self,
                 title: name,
                 message: Strings.redirectionAlertMessage + "  \n\n " + Strings.undoRedirection
             )
