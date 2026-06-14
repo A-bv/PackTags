@@ -64,12 +64,18 @@ final class ThemeCoordinator: Coordinator {
     }
 
     func showSettings() {
-        let vc = SettingsVC(connectedInsights: dependencies.connectedInsights, appSettings: dependencies.appSettings)
-        vc.onOpenQuantityPicker = { [weak self] in self?.showQuantityPicker() }
-        vc.onReplayOnboarding = { [weak self] in
-            self?.dependencies.appSettings.hasSeenOnboarding = false
-            self?.showOnboarding(completion: nil)
-        }
+        let navigation = SettingsNavigation(
+            openQuantityPicker: { [weak self] in self?.showQuantityPicker() },
+            replayOnboarding: { [weak self] in
+                self?.dependencies.appSettings.hasSeenOnboarding = false
+                self?.showOnboarding(completion: nil)
+            }
+        )
+        let vc = SettingsVC(
+            connectedInsights: dependencies.connectedInsights,
+            appSettings: dependencies.appSettings,
+            navigation: navigation
+        )
         navigationController.pushViewController(vc, animated: true)
     }
 

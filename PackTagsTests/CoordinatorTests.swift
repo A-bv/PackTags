@@ -192,12 +192,12 @@ private func makeDependencies(
         #expect(nav.pushedVC is SettingsVC)
     }
 
-    @Test func showSettings_wiresSettingsNavigation() {
+    @Test func settingsQuantityPickerAction_presentsQuantityPicker() {
         let (sut, nav) = makeSUT()
         sut.showSettings()
         let vc = nav.pushedVC as? SettingsVC
-        #expect(vc?.onOpenQuantityPicker != nil)
-        #expect(vc?.onReplayOnboarding != nil)
+        vc?.navigation.openQuantityPicker()
+        #expect(nav.presentedVC is QuantityPickerVC)
     }
 
     // MARK: showAnalytics

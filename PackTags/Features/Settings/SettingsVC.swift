@@ -22,14 +22,14 @@ class SettingsVC: UIViewController {
         return table
     }()
     
-    var onOpenQuantityPicker: (() -> Void)?
-    var onReplayOnboarding: (() -> Void)?
+    let navigation: SettingsNavigation
     let connectedInsights: any ConnectedInsightsCoordinating
     let appSettings: any AppSettingsProtocol
 
-    init(connectedInsights: any ConnectedInsightsCoordinating, appSettings: any AppSettingsProtocol) {
+    init(connectedInsights: any ConnectedInsightsCoordinating, appSettings: any AppSettingsProtocol, navigation: SettingsNavigation) {
         self.connectedInsights = connectedInsights
         self.appSettings = appSettings
+        self.navigation = navigation
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -62,8 +62,8 @@ class SettingsVC: UIViewController {
                 guard let self else { return }
                 connectedInsights.open(.setup, from: self)
             },
-            showQuantityPicker: { [weak self] in self?.onOpenQuantityPicker?() },
-            replayOnboarding: { [weak self] in self?.onReplayOnboarding?() },
+            showQuantityPicker: navigation.openQuantityPicker,
+            replayOnboarding: navigation.replayOnboarding,
             openSetupInfo: { [weak self] in
                 guard let self else { return }
                 connectedInsights.open(.setupInfo, from: self)
