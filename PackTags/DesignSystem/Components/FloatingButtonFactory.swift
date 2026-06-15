@@ -1,7 +1,7 @@
 import UIKit
 
 @MainActor
-class FloatingButtonFactory {
+enum FloatingButtonFactory {
     static func createFloatingButton(onView view: UIView) -> UIButton {
         // Create the button
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))

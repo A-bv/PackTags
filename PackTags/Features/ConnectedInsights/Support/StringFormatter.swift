@@ -1,9 +1,9 @@
 import Foundation
    
-final class StringFormatter {}
+enum StringFormatter {}
 
 extension StringFormatter {
-    static func formatNum (value : Double, noDecimal: Bool = false) -> String {
+    static func formatNum(value: Double, noDecimal: Bool = false) -> String {
         var text = String()
         switch value {
         case  ..<0.01:
