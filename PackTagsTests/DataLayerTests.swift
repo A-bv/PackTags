@@ -97,6 +97,7 @@ import CoreData
         var openInstagramAfterCopy = false
         var instagramUsername: String?
         var pressedFBLoginButton = false
+        var setupInfoShown = false
     }
 
     private func makeSUT() -> (viewModel: ThemeListViewModel, repository: CoreDataThemeRepository) {
@@ -190,6 +191,7 @@ import CoreData
         var openInstagramAfterCopy = false
         var instagramUsername: String?
         var pressedFBLoginButton = false
+        var setupInfoShown = false
     }
 
     private func makeSUT(content: String? = "#a #b #c") -> (PackListViewModel, FakeSettings) {
@@ -329,6 +331,7 @@ import CoreData
         var openInstagramAfterCopy = false
         var instagramUsername: String?
         var pressedFBLoginButton = false
+        var setupInfoShown = false
     }
 
     private func makeActions(
@@ -391,6 +394,7 @@ import CoreData
         var openInstagramAfterCopy = false
         var instagramUsername: String?
         var pressedFBLoginButton = false
+        var setupInfoShown = false
     }
 
     private func makeSUT(theme: ThemeCD? = nil) -> ThemeEditorViewModel {

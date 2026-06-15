@@ -66,7 +66,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
             }
             vc = loginVC
         case .setupInfo:
-            let infoVC = InfoSetupIGCreatorVC()
+            let infoVC = InfoSetupIGCreatorVC(appSettings: settings)
             infoVC.modalPresentationStyle = .overFullScreen
             infoVC.modalTransitionStyle = .crossDissolve
             presenter.present(infoVC, animated: true)

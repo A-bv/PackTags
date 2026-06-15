@@ -17,6 +17,10 @@ final class FBLoginViewModel {
         self.facebookSessionService = facebookSessionService
     }
 
+    var hasSeenSetupInfo: Bool {
+        settings.setupInfoShown
+    }
+
     func getToken() -> FBToken {
         facebookSessionService.currentToken()
     }

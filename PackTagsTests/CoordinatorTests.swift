@@ -43,6 +43,7 @@ private final class FakeAppSettings: AppSettingsProtocol {
     var openInstagramAfterCopy = false
     var instagramUsername: String?
     var pressedFBLoginButton = false
+    var setupInfoShown = false
 }
 
 private final class FakeThemeRepository: ThemeRepositoryProtocol {

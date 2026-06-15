@@ -184,6 +184,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         var openInstagramAfterCopy = false
         var instagramUsername: String?
         var pressedFBLoginButton = false
+        var setupInfoShown = false
     }
 
     @Test func setup_withoutATokenString_failsWithoutCallingTheGateway() async {

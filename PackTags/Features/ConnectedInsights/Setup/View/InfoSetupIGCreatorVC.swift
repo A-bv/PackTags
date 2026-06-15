@@ -1,9 +1,11 @@
 import UIKit
 
 final class InfoSetupIGCreatorVC: UIViewController {
+    private let appSettings: any AppSettingsProtocol
     private lazy var chrome = ModalChrome(host: self)
 
-    init() {
+    init(appSettings: any AppSettingsProtocol) {
+        self.appSettings = appSettings
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -96,7 +98,7 @@ final class InfoSetupIGCreatorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        checkIsFirstTime()
+        appSettings.setupInfoShown = true
     }
 
     // MARK: - UI Setup
@@ -174,13 +176,6 @@ final class InfoSetupIGCreatorVC: UIViewController {
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         button.bottomAnchor.constraint(
             equalTo: view.bottomAnchor, constant: Constants.openInstagramBtnBottomPadding).isActive = true
-    }
-
-    private func checkIsFirstTime() {
-        let key = SettingsKey.setupInfoShown
-        if !UserDefaults.standard.bool(forKey: key) {
-            UserDefaults.standard.set(true, forKey: key)
-        }
     }
 
     @objc private func goProfile(_ sender: Any) {

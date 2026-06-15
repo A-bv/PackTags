@@ -89,7 +89,7 @@ final class FBLoginVC: UIViewController {
 
 extension FBLoginVC {
     private func showApiGraphSetupVCIfNeeded() -> Bool {
-        if !UserDefaults.standard.bool(forKey: SettingsKey.setupInfoShown) {
+        if !viewModel.hasSeenSetupInfo {
             logLogin("Showing setup info before login.")
             showSetupScreen()
             return true
