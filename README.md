@@ -1,103 +1,112 @@
 # PackTags
 
-**A hashtag notebook for Instagram creators — shipped on the App Store.**
+**A hashtag manager for Instagram creators — shipped on the App Store.**
 
-Organize hashtags into themes and packs, copy a pack in one tap, and — with a connected Instagram Business account — generate hashtag suggestions and read post analytics straight from the Meta Graph API.
+![Platform](https://img.shields.io/badge/platform-iOS%2017%2B-blue)
+![Swift](https://img.shields.io/badge/Swift-5-orange)
+![UI](https://img.shields.io/badge/UI-UIKit%20%2B%20SwiftUI-9cf)
+![App Store](https://img.shields.io/badge/App%20Store-live-brightgreen)
 
-[App Store](https://apps.apple.com/app/id1579377025) · iOS 17+ · v1.1.6
+## Overview
 
-## What it does
+Creators reuse the same hashtags every day, but Instagram gives them nowhere to keep, clean, or reason about them. PackTags is that missing notebook: save hashtags as reusable themed packs, copy a pack in one tap, and keep every list tidy. Connect an Instagram Business account — through the **official Meta Graph API** — and it also surfaces trending hashtags and shows how your recent posts performed.
 
-- **Notebook** — group hashtags into themed packs; one tap copies a pack and optionally jumps to Instagram.
-- **Smart cleanup** — automatic de-duplication across themes, invalid-tag stripping, and chunking into packs of your chosen size.
-- **SmartG** — ranked hashtag suggestions mined from live Instagram posts for any search term.
-- **Analytics** — per-post engagement, reach and views from the Meta Graph API, with value/rate toggles.
-- **OCR import** — lift hashtags out of a screenshot with the Vision framework.
+Built with UIKit + SwiftUI on an MVVM-C architecture, fully testable and on the App Store today.
 
-## Tech stack
+## Features
 
-- **iOS 17+**, **Swift** with `SWIFT_STRICT_CONCURRENCY = complete`
-- **UIKit + SwiftUI hybrid** — UIKit notebook, SwiftUI insights bridged through `UIHostingController`
-- **Core Data** persistence · **Swift Package Manager** · **Swift Testing**
+- **Themed packs** — organize your hashtags and copy a whole pack in one tap.
+- **Import & cleanup** — lift hashtags straight out of any screenshot, then auto-remove duplicates across themes and strip invalid tags.
+- **Hashtag discovery** — find new hashtags pulled live from trending Instagram posts.
+- **Post analytics** — engagement, reach and views for your recent posts.
+
+## Screenshots
+
+| Notebook | Discovery | Analytics |
+|:---:|:---:|:---:|
+| _docs/screenshots/notebook.png_ | _docs/screenshots/discovery.png_ | _docs/screenshots/analytics.png_ |
+
+> Placeholders — drop PNGs into `docs/screenshots/` to populate.
 
 ## Architecture
 
-A layered, testable design with one responsibility per layer:
+PackTags follows **MVVM-C** — Model · View · ViewModel · Coordinator — over a Domain / Repository core, wired by a single composition root.
 
-```
-SceneDelegate → AppCoordinator → AppDependencies (composition root)
-                      │
-         ┌────────────┴───────────────┐
-   ThemeCoordinator          ConnectedInsightsCoordinator
-   (UIKit notebook)          (SwiftUI insights)
-         │                            │
-   ViewModels ──▶ Domain ──▶ Repository ──▶ Core Data
-                                       remote ──▶ InstagramGraph ──▶ Meta Graph API
-```
+<p align="center">
+  <img src="docs/architecture.svg" alt="MVVM-C architecture: a coordinator creates a View and ViewModel; the ViewModel uses the Domain layer and persists through a Repository (Core Data) or the InstagramGraph gateway (Meta Graph API); AppDependencies injects everything." width="800">
+</p>
+<p align="center"><em>Figure 1 — how one feature slice fits together.</em></p>
 
-- **Coordinator** — view controllers never present each other; all navigation lives in one place.
-- **MVVM** — view models own the decisions and receive every dependency through `init`; views render outcomes. The settings screen goes further: a pure `SettingsSections` catalog with behaviors injected as `SettingsActions`.
-- **Domain layer** — product rules (hashtag parsing, cross-theme dedup, pack chunking) as pure types with no UIKit or UserDefaults — they would survive an Android rewrite.
-- **Repository** — `ThemeRepositoryProtocol` hides Core Data behind a protocol.
-- **Constructor DI** — `AppDependencies` is assembled once and threaded down explicitly; a typed `AppSettings` wraps UserDefaults. Collaborators are injected, not reached for globally.
-- **Hybrid bridge** — the SwiftUI insights area is presented from the UIKit flow via `UIHostingController`.
+- **Coordinators own navigation.** A coordinator builds a screen's view model from the shared `AppDependencies`, injects it into the view, and performs every push/present. Views never reach for another screen.
+- **View models own the logic**, with dependencies passed through `init`. SwiftUI screens use `@Observable`, `@MainActor` view models the view drives from `.task`; the UIKit notebook uses lightweight view models that signal changes through a closure.
+- **Model.** `ThemeCD` (the Core Data entity) is the notebook's model; the insights features decode remote models — `Profile`, `InstagramPost` — and map them to presentation types.
+- **Domain holds the product rules.** Parsing, de-duplication and pack chunking are small types, free of UIKit and reaching persistence only through the `Repository` protocol.
+- **Two data sources, one shape.** Local data flows through a `Repository` over Core Data; remote data flows through the `InstagramGraph` package behind an `async` gateway. The app target contains no networking code of its own.
 
-## Modern iOS practices
+### Coordinator tree
 
-Built to current Apple guidance rather than legacy patterns:
+`AppCoordinator` lives for the app's lifetime and starts the two area coordinators — the UIKit notebook and the SwiftUI insights — each of which presents its own screens.
 
-| Area | What it uses |
+<p align="center">
+  <img src="docs/coordinators.svg" alt="Coordinator tree: AppCoordinator starts ThemeCoordinator (ThemeList, PackList, ThemeEditor, Settings, Onboarding, QuantityPicker) and ConnectedInsightsCoordinator (FBLogin, InfoSetup, SmartG, Analytics)." width="800">
+</p>
+<p align="center"><em>Figure 2 — every navigation path in the app (updated 2026-06-15).</em></p>
+
+## Engineering highlights
+
+Built on current Apple APIs rather than legacy patterns:
+
+| Concern | API |
 |---|---|
-| State | **`@Observable` + `@State`** view models — the iOS 17 model, no `ObservableObject` / `@Published` |
-| Concurrency | `async`/`await`, `@MainActor`-isolated view models, views driven from `.task`, strict-concurrency build |
-| Search | system **`UIFindInteraction`** find panel — no hand-rolled search bar |
-| Photos | **`PHPickerViewController`** — out-of-process, no photo-library permission prompt |
-| Vision | **`VNRecognizeTextRequest`** OCR for hashtag import |
-| Networking | **`NWPathMonitor`** offline detection |
-| Parsing | **Swift Regex** for hashtag extraction |
-| Caching | **`OSAllocatedUnfairLock`** guarding the shared Core Data model cache |
-| Logging | **`os.Logger`** categories — no `print()` |
-| Reviews | **StoreKit `AppStore.requestReview`** behind a launch/version policy |
-
-## Project layout
-
-```
-PackTags/
-├─ App/            launch, composition root, coordinators bootstrap
-├─ Coordinators/   all navigation (both UIKit and SwiftUI areas)
-├─ Domain/         pure product rules (parsing, dedup, chunking)
-├─ Data/           Core Data stack, repository, typed AppSettings
-├─ Features/       Notebook · ConnectedInsights · Settings · Onboarding
-├─ DesignSystem/   neumorphic styling, shared UI components
-└─ Shared/         app-wide utilities (logger, alerts, links)
-```
-
-Self-contained pieces live at the narrowest scope that fits and are promoted only on a second consumer or genuine genericization — three reusable units (`InstagramGraph`, `TapTagKit`, `TableViewControllerCoverKit`) earned their own SPM packages.
+| State (SwiftUI) | `@Observable` + `@State` — no `ObservableObject` / `@Published` |
+| Concurrency | `async`/`await`, `@MainActor` isolation; Swift 5 mode with `SWIFT_STRICT_CONCURRENCY = complete` |
+| In-text search | `UIFindInteraction` system find panel |
+| Photo picking | `PHPickerViewController` (out-of-process, no permission prompt) |
+| OCR | Vision `VNRecognizeTextRequest` |
+| Connectivity | `NWPathMonitor` |
+| Hashtag parsing | Swift Regex |
+| Reviews | StoreKit `AppStore.requestReview` behind a launch/version policy |
+| Logging | `os.Logger` categories — no `print()` |
 
 ## Dependencies
 
+Managed with Swift Package Manager (resolved automatically when you open the project).
+
 | Package | Role |
 |---|---|
-| [InstagramGraph](https://github.com/A-bv/InstagramGraph) | my own SPM package — the app's **remote data layer** wrapping the Meta Graph API |
-| [TapTagKit](https://github.com/A-bv/TapTagKit) | my own SPM package — tap-to-multi-select hashtags in any `UITextView` |
-| [TableViewControllerCoverKit](https://github.com/A-bv/TableViewControllerCoverKit) | my own SPM package — a table list over a stretchy cover image |
-| [facebook-ios-sdk](https://github.com/facebook/facebook-ios-sdk) | Meta authentication |
+| https://github.com/A-bv/InstagramGraph | remote data layer wrapping the Meta Graph API |
+| https://github.com/A-bv/TapTagKit | tap-to-select hashtags in any `UITextView` |
+| https://github.com/A-bv/TableViewControllerCoverKit | table list over a stretchy cover image |
+| https://github.com/facebook/facebook-ios-sdk | authentication |
 
-Networking was deliberately extracted into `InstagramGraph` so every Meta API call lives — and is versioned — outside the app target.
+`InstagramGraph`, `TapTagKit` and `TableViewControllerCoverKit` are first-party packages — extracted from PackTags and maintained separately, so the networking and reusable UI evolve independently of the app.
 
-## Getting started
+## Installation
 
-Requirements: a recent Xcode (iOS 17 SDK or newer).
+**Requirements:** a recent Xcode with the iOS 17 SDK.
 
 ```sh
 git clone https://github.com/A-bv/PackTags.git
-cd PackTags
-open PackTags.xcodeproj   # Xcode resolves the Swift packages on open
+open "PackTags/PackTags.xcodeproj"   # Xcode resolves the Swift packages on open
 ```
 
-Pick the **PackTags** scheme and any iOS 17+ simulator, then Run (⌘R). The notebook works fully offline; **SmartG** and **Analytics** need a Facebook login linked to an Instagram Business/Creator account.
+Run the **PackTags** scheme on any iOS 17+ simulator (⌘R). The notebook works offline; the connected features need an Instagram Business account, which the app walks you through linking.
+
+## Testing
+
+```sh
+xcodebuild -project PackTags.xcodeproj -scheme PackTags \
+  -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
+```
+
+Unit tests use **Swift Testing** and run the domain rules, the repository (on an in-memory Core Data store), view-model decisions, and coordinator wiring.
 
 ## Roadmap
 
-- Swift 6 language mode (strict concurrency is already `complete`)
-- Crash-reporting integration (vendor TBD)
+- **Crash & error reporting** — evaluating Sentry vs. Firebase Crashlytics.
+- **Swift 6 language mode** — strict concurrency is already `complete`.
+- **CI** — build + test on every push.
+
+## Author
+
+Built and maintained by [A-bv](https://github.com/A-bv).

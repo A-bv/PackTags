@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 600" font-family="-apple-system, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto-start-reverse"><path d="M0,0 L8,3 L0,6 Z" fill="#7a7a74"/></marker>
+    <marker id="ae" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#7a7a74"/></marker>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="979" height="599" rx="14" fill="#ffffff" stroke="#e6e6e6"/>
+  <text x="40" y="40" font-size="19" font-weight="600" fill="#1a1a1a">PackTags — MVVM-C architecture</text>
+  <text x="40" y="62" font-size="13" fill="#666">One feature slice: how a screen, its logic, the model, and the data layers connect.</text>
+
+  <rect x="70" y="78" width="840" height="42" rx="9" fill="#F1EFE8" stroke="#888780"/>
+  <text x="490" y="97" text-anchor="middle" font-size="13.5" font-weight="600" fill="#23231f">AppDependencies · composition root</text>
+  <text x="490" y="113" text-anchor="middle" font-size="12" fill="#5f5e5a">PersistenceController · Repository · AppSettings · InstagramGraph gateway</text>
+
+  <rect x="70" y="168" width="185" height="64" rx="10" fill="#EEEDFE" stroke="#7F77DD"/>
+  <text x="162" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="#26215C">Coordinator</text>
+  <text x="162" y="213" text-anchor="middle" font-size="11.5" fill="#534AB7">navigation + screen creation</text>
+
+  <rect x="300" y="168" width="185" height="64" rx="10" fill="#E6F1FB" stroke="#378ADD"/>
+  <text x="392" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="#042C53">View</text>
+  <text x="392" y="213" text-anchor="middle" font-size="11.5" fill="#185FA5">UIKit VC · SwiftUI</text>
+
+  <rect x="535" y="168" width="205" height="64" rx="10" fill="#E6F1FB" stroke="#378ADD"/>
+  <text x="637" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="#042C53">ViewModel</text>
+  <text x="637" y="213" text-anchor="middle" font-size="11.5" fill="#185FA5">owns logic · injected deps</text>
+
+  <rect x="120" y="300" width="175" height="58" rx="10" fill="#EAF3DE" stroke="#639922"/>
+  <text x="207" y="325" text-anchor="middle" font-size="13.5" font-weight="600" fill="#173404">Domain</text>
+  <text x="207" y="342" text-anchor="middle" font-size="11.5" fill="#3B6D11">product rules</text>
+
+  <rect x="470" y="300" width="250" height="58" rx="10" fill="#F1EFE8" stroke="#888780"/>
+  <text x="595" y="325" text-anchor="middle" font-size="13.5" font-weight="600" fill="#23231f">Model</text>
+  <text x="595" y="342" text-anchor="middle" font-size="11.5" fill="#5f5e5a">ThemeCD · Profile · InstagramPost</text>
+
+  <rect x="405" y="410" width="165" height="52" rx="10" fill="#F1EFE8" stroke="#888780"/>
+  <text x="487" y="441" text-anchor="middle" font-size="13" font-weight="600" fill="#23231f">Repository</text>
+
+  <rect x="630" y="410" width="190" height="52" rx="10" fill="#E1F5EE" stroke="#1D9E75"/>
+  <text x="725" y="441" text-anchor="middle" font-size="13" font-weight="600" fill="#04342C">InstagramGraph</text>
+
+  <g fill="#F1EFE8" stroke="#888780">
+    <path d="M407 506 A80 8 0 0 1 567 506 L567 552 A80 8 0 0 1 407 552 Z"/>
+    <ellipse cx="487" cy="506" rx="80" ry="8" fill="#e8e6dd"/>
+  </g>
+  <text x="487" y="536" text-anchor="middle" font-size="12.5" font-weight="600" fill="#23231f">Core Data</text>
+
+  <g fill="#E1F5EE" stroke="#1D9E75">
+    <path d="M640 506 A85 8 0 0 1 810 506 L810 552 A85 8 0 0 1 640 552 Z"/>
+    <ellipse cx="725" cy="506" rx="85" ry="8" fill="#d3efe4"/>
+  </g>
+  <text x="725" y="536" text-anchor="middle" font-size="12.5" font-weight="600" fill="#04342C">Meta Graph API</text>
+
+  <!-- injection + presentation (one-way) -->
+  <g stroke="#7a7a74" stroke-width="1.6" fill="none">
+    <path d="M162 120 L162 168" stroke-dasharray="5 4" marker-end="url(#ae)"/>
+    <path d="M637 120 L637 168" stroke-dasharray="5 4" marker-end="url(#ae)"/>
+    <path d="M255 200 L300 200" marker-end="url(#ae)"/>
+  </g>
+  <!-- communication (two-way) -->
+  <g stroke="#7a7a74" stroke-width="1.6" fill="none">
+    <path d="M485 200 L535 200" marker-start="url(#ah)" marker-end="url(#ah)"/>
+    <path d="M575 232 L255 305" marker-start="url(#ah)" marker-end="url(#ah)"/>
+    <path d="M637 232 L610 300" marker-start="url(#ah)" marker-end="url(#ah)"/>
+    <path d="M560 358 L500 410" marker-start="url(#ah)" marker-end="url(#ah)"/>
+    <path d="M660 358 L718 410" marker-start="url(#ah)" marker-end="url(#ah)"/>
+    <path d="M487 462 L487 504" marker-start="url(#ah)" marker-end="url(#ah)"/>
+    <path d="M725 462 L725 504" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  </g>
+  <g font-size="11" fill="#777">
+    <text x="170" y="150">injects</text>
+    <text x="645" y="150">injects</text>
+    <text x="260" y="192">presents</text>
+    <text x="492" y="192">binds</text>
+    <text x="392" y="262">applies rules</text>
+    <text x="624" y="280">maps</text>
+  </g>
+
+  <text x="40" y="584" font-size="11.5" fill="#999">View models: @Observable + @MainActor in SwiftUI; lightweight closure-based in UIKit. Domain reaches persistence only through the Repository protocol.</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" font-family="-apple-system, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#7a7a74"/></marker>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="939" height="559" rx="14" fill="#ffffff" stroke="#e6e6e6"/>
+  <text x="40" y="42" font-size="19" font-weight="600" fill="#1a1a1a">Coordinator tree</text>
+  <text x="40" y="64" font-size="13" fill="#666">Coordinators own every navigation decision; view controllers never present each other.</text>
+  <text x="900" y="545" text-anchor="end" font-size="11" fill="#aaa">Updated 2026-06-15</text>
+
+  <!-- legend -->
+  <rect x="636" y="30" width="14" height="14" rx="3" fill="#EEEDFE" stroke="#7F77DD"/><text x="656" y="42" font-size="11.5" fill="#555">coordinator</text>
+  <rect x="730" y="30" width="14" height="14" rx="3" fill="#E6F1FB" stroke="#378ADD"/><text x="750" y="42" font-size="11.5" fill="#555">UIKit</text>
+  <rect x="800" y="30" width="14" height="14" rx="3" fill="#E1F5EE" stroke="#1D9E75"/><text x="820" y="42" font-size="11.5" fill="#555">SwiftUI</text>
+
+  <!-- root -->
+  <rect x="380" y="84" width="180" height="52" rx="10" fill="#EEEDFE" stroke="#7F77DD"/>
+  <text x="470" y="110" text-anchor="middle" font-size="14" font-weight="600" fill="#26215C">AppCoordinator</text>
+  <text x="470" y="126" text-anchor="middle" font-size="11.5" fill="#534AB7">root · app lifetime</text>
+
+  <!-- coordinators -->
+  <rect x="120" y="186" width="240" height="50" rx="10" fill="#EEEDFE" stroke="#7F77DD"/>
+  <text x="240" y="217" text-anchor="middle" font-size="13.5" font-weight="600" fill="#26215C">ThemeCoordinator</text>
+
+  <rect x="560" y="186" width="300" height="50" rx="10" fill="#EEEDFE" stroke="#7F77DD"/>
+  <text x="710" y="217" text-anchor="middle" font-size="13.5" font-weight="600" fill="#26215C">ConnectedInsightsCoordinator</text>
+
+  <g stroke="#7a7a74" stroke-width="1.6" fill="none">
+    <path d="M430 136 C360 165, 300 160, 245 186" marker-end="url(#a)"/>
+    <path d="M512 136 C600 165, 660 160, 706 186" marker-end="url(#a)"/>
+  </g>
+
+  <!-- theme screens (UIKit) -->
+  <g>
+    <rect x="150" y="270" width="210" height="36" rx="8" fill="#E6F1FB" stroke="#378ADD"/><text x="255" y="293" text-anchor="middle" font-size="12.5" fill="#042C53">ThemeList</text>
+    <rect x="150" y="314" width="210" height="36" rx="8" fill="#E6F1FB" stroke="#378ADD"/><text x="255" y="337" text-anchor="middle" font-size="12.5" fill="#042C53">PackList</text>
+    <rect x="150" y="358" width="210" height="36" rx="8" fill="#E6F1FB" stroke="#378ADD"/><text x="255" y="381" text-anchor="middle" font-size="12.5" fill="#042C53">ThemeEditor</text>
+    <rect x="150" y="402" width="210" height="36" rx="8" fill="#E6F1FB" stroke="#378ADD"/><text x="255" y="425" text-anchor="middle" font-size="12.5" fill="#042C53">Settings</text>
+    <rect x="150" y="446" width="210" height="36" rx="8" fill="#E6F1FB" stroke="#378ADD"/><text x="255" y="469" text-anchor="middle" font-size="12.5" fill="#042C53">Onboarding</text>
+    <rect x="150" y="490" width="210" height="36" rx="8" fill="#E6F1FB" stroke="#378ADD"/><text x="255" y="513" text-anchor="middle" font-size="12.5" fill="#042C53">QuantityPicker</text>
+  </g>
+  <g stroke="#cfcdc6" stroke-width="1.4" fill="none">
+    <path d="M130 236 L130 508 L150 508"/>
+    <path d="M130 288 L150 288"/><path d="M130 332 L150 332"/><path d="M130 376 L150 376"/><path d="M130 420 L150 420"/><path d="M130 464 L150 464"/>
+  </g>
+
+  <!-- insights screens -->
+  <g>
+    <rect x="610" y="270" width="240" height="36" rx="8" fill="#E6F1FB" stroke="#378ADD"/><text x="730" y="293" text-anchor="middle" font-size="12.5" fill="#042C53">FBLoginVC  ·  setup</text>
+    <rect x="610" y="314" width="240" height="36" rx="8" fill="#E6F1FB" stroke="#378ADD"/><text x="730" y="337" text-anchor="middle" font-size="12.5" fill="#042C53">InfoSetupIGCreatorVC</text>
+    <rect x="610" y="358" width="240" height="36" rx="8" fill="#E1F5EE" stroke="#1D9E75"/><text x="730" y="381" text-anchor="middle" font-size="12.5" fill="#04342C">SmartG</text>
+    <rect x="610" y="402" width="240" height="36" rx="8" fill="#E1F5EE" stroke="#1D9E75"/><text x="730" y="425" text-anchor="middle" font-size="12.5" fill="#04342C">Analytics</text>
+  </g>
+  <g stroke="#cfcdc6" stroke-width="1.4" fill="none">
+    <path d="M590 236 L590 420 L610 420"/>
+    <path d="M590 288 L610 288"/><path d="M590 332 L610 332"/><path d="M590 376 L610 376"/>
+  </g>
+</svg>
