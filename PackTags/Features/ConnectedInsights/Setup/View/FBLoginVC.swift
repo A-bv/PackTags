@@ -7,19 +7,6 @@ import InstagramGraph
 // MARK: - Class
 final class FBLoginVC: UIViewController {
 
-    init(viewModel: FBLoginViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    convenience init(gateway: any ConnectedInsightsGatewayProtocol, settings: any AppSettingsProtocol) {
-        self.init(viewModel: FBLoginViewModel(gateway: gateway, settings: settings))
-    }
-
     private enum Strings {
         static let connectedAlertTitle = "Connected!".localized()
         static let accessAnalyticsConfirm = "You can now access analytics and generate hashtags.".localized()
@@ -68,6 +55,19 @@ final class FBLoginVC: UIViewController {
     private let setupSpinner = UIActivityIndicatorView(style: .large)
 
     private lazy var chrome = ModalChrome(host: self)
+
+    init(viewModel: FBLoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    convenience init(gateway: any ConnectedInsightsGatewayProtocol, settings: any AppSettingsProtocol) {
+        self.init(viewModel: FBLoginViewModel(gateway: gateway, settings: settings))
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
