@@ -1,4 +1,4 @@
-import CoreData
+@preconcurrency import CoreData
 import os
 
 /// Process-wide cache of managed object models. A model must be loaded only
