@@ -12,19 +12,23 @@ final class ThemeCoordinator: Coordinator {
     }
 
     func start() {
-        let viewModel = ThemeListViewModel(repository: dependencies.themeRepository, settings: dependencies.appSettings)
         let actions = ThemeListActions(
             selectTheme: { [weak self] theme in self?.showPackList(for: theme) },
-            createTheme: { [weak self] in self?.showNewThemeEditor { viewModel.loadThemes() } },
+            createTheme: { [weak self] onCreated in self?.showNewThemeEditor(onSave: onCreated) },
             openSettings: { [weak self] in self?.showSettings() },
             openAnalytics: { [weak self] in self?.showAnalytics() },
             openSmartG: { [weak self] in self?.showSmartG() }
         )
-        let vc = ThemeListViewController(style: .plain, viewModel: viewModel, actions: actions)
-        vc.onViewDidAppear = { [weak self] in
-            guard let self, viewModel.shouldShowOnboarding else { return }
-            self.showOnboarding { [weak self] in
-                guard let self, viewModel.consumeFirstTimeTipsAlert() else { return }
+        let viewModel = ThemeListViewModel(
+            repository: dependencies.themeRepository,
+            settings: dependencies.appSettings,
+            actions: actions)
+
+        let vc = ThemeListViewController(style: .plain, viewModel: viewModel)
+        vc.onViewDidAppear = { [weak self, weak viewModel] in
+            guard let self, let viewModel, viewModel.shouldShowOnboarding else { return }
+            self.showOnboarding { [weak self, weak viewModel] in
+                guard let self, let viewModel, viewModel.consumeFirstTimeTipsAlert() else { return }
                 Alerts.showFirstTimeTipsAlert(from: self.navigationController)
             }
         }

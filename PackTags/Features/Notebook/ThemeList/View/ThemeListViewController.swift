@@ -3,13 +3,45 @@ import CoreData
 
 final class ThemeListViewController: UITableViewController {
 
+    private enum Constants {
+        static let cellReuseID = "ThemeCell"
+        static let tableViewBottomPadding: CGFloat = 14
+        static let rowMinimumHeight: CGFloat = 164
+        static let rowsPerScreen: CGFloat = 4
+        static let rowsPerScreenCompact: CGFloat = 3
+        static let reorderPressDuration: TimeInterval = 0.8
+    }
+
+    private enum Strings {
+        static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is unreversible.".localized()
+        static let yes = "Yes".localized()
+        static let cancel = "Cancel".localized()
+    }
+
+    // MARK: - Dependencies
+
     let viewModel: ThemeListViewModel
-    let actions: ThemeListActions
+
+    // MARK: - Callbacks
+
     var onViewDidAppear: (() -> Void)?
 
-    init(style: UITableView.Style, viewModel: ThemeListViewModel, actions: ThemeListActions) {
+    // MARK: - UI
+
+    private let smartGButton = UIBarButtonItem()
+    private let settingsButton = UIBarButtonItem()
+    private let analyticsButton = UIBarButtonItem()
+
+    // MARK: - State
+
+    /// Decoded thumbnails keyed by theme id; cleared on every reload so
+    /// scrolling never re-decodes JPEG data row by row.
+    private let thumbnailCache = NSCache<NSManagedObjectID, UIImage>()
+
+    // MARK: - Init
+
+    init(style: UITableView.Style, viewModel: ThemeListViewModel) {
         self.viewModel = viewModel
-        self.actions = actions
         super.init(style: style)
     }
 
@@ -17,19 +49,7 @@ final class ThemeListViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    let smartGButton = UIBarButtonItem()
-    let settingsButton = UIBarButtonItem()
-    let analyticsButton = UIBarButtonItem()
-
-    /// Decoded thumbnails keyed by theme; cleared on every data reload so
-    /// scrolling never re-decodes JPEG data row by row.
-    private let thumbnailCache = NSCache<NSManagedObjectID, UIImage>()
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        applyThemedNavigationBarStyle()
-        tableView.reloadData()
-    }
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +67,10 @@ final class ThemeListViewController: UITableViewController {
         }
     }
 
-    func thumbnail(for theme: ThemeCD) -> UIImage? {
-        if let cached = thumbnailCache.object(forKey: theme.objectID) { return cached }
-        guard let data = theme.thumbnail, let image = UIImage(data: data) else { return nil }
-        thumbnailCache.setObject(image, forKey: theme.objectID)
-        return image
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applyThemedNavigationBarStyle()
+        tableView.reloadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -62,5 +81,167 @@ final class ThemeListViewController: UITableViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateRowHeightIfNeeded()
+    }
+
+    // MARK: - Setup
+
+    private func configureNavBar() {
+        settingsButton.image = UIImage(systemName: "gearshape.2.fill")
+        settingsButton.target = self
+        settingsButton.action = #selector(didTapSettings)
+        analyticsButton.image = UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill")
+        analyticsButton.target = self
+        analyticsButton.action = #selector(didTapAnalytics)
+        smartGButton.image = UIImage(systemName: "number.circle.fill")
+        smartGButton.target = self
+        smartGButton.action = #selector(didTapSmartG)
+
+        navigationController?.navigationBar.putShadow()
+        navigationItem.leftBarButtonItem = settingsButton
+        navigationItem.rightBarButtonItems = [analyticsButton, smartGButton]
+        updateLogo()
+    }
+
+    private func configureTableView() {
+        tableView.backgroundColor = .colorBkgd
+        tableView.register(ThemeCell.self, forCellReuseIdentifier: Constants.cellReuseID)
+        addLongPressToTableView()
+    }
+
+    private func updateLogo() {
+        let logo = DarkMode.isDarkMode() ? "logoBlack" : "logoWhite"
+        navigationItem.titleView = UIImageView(image: UIImage(named: logo))
+    }
+
+    private func addFloatingButton() {
+        let button = FloatingButtonFactory.createFloatingButton(onView: view)
+        button.addTarget(self, action: #selector(didTapCreate), for: .touchUpInside)
+    }
+
+    // MARK: - Reorder gesture
+
+    private func addLongPressToTableView() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressGesture(sender:)))
+        longPress.minimumPressDuration = Constants.reorderPressDuration
+        tableView.addGestureRecognizer(longPress)
+    }
+
+    @objc private func onLongPressGesture(sender: UILongPressGestureRecognizer) {
+        guard sender.state == .began else { return }
+        tableView.isEditing = true
+        setEditing(true, animated: false)
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+    }
+
+    // MARK: - Row height
+
+    private func cellHeight(navigationBarHeight: CGFloat) -> CGFloat {
+        let screenHeight = view.frame.height
+        let height = (screenHeight - Constants.tableViewBottomPadding - navigationBarHeight) / Constants.rowsPerScreen
+        if height <= Constants.rowMinimumHeight {
+            return (screenHeight - navigationBarHeight) / Constants.rowsPerScreenCompact
+        }
+        return height
+    }
+
+    private func updateRowHeightIfNeeded() {
+        let navigationBarHeight = currentNavBarHeight + statusBarHeight
+        let newHeight = cellHeight(navigationBarHeight: navigationBarHeight)
+        if newHeight > 0, tableView.rowHeight != newHeight {
+            tableView.rowHeight = newHeight
+            tableView.reloadData()
+        }
+    }
+
+    // MARK: - Cells
+
+    private func makeCell(at indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: Constants.cellReuseID, for: indexPath) as? ThemeCell
+        else {
+            fatalError("The dequeued cell is not an instance of ThemeCell.")
+        }
+        guard let row = viewModel.themeRow(at: indexPath.row) else { return cell }
+        cell.nameLabel.text = row.name
+        cell.themeImageView.image = decodedThumbnail(for: row)
+        return cell
+    }
+
+    private func decodedThumbnail(for row: ThemeListViewModel.ThemeRow) -> UIImage? {
+        if let cached = thumbnailCache.object(forKey: row.id) { return cached }
+        guard let data = row.thumbnail, let image = UIImage(data: data) else { return nil }
+        thumbnailCache.setObject(image, forKey: row.id)
+        return image
+    }
+
+    // MARK: - Editing
+
+    private func presentDeletionSafeAlert(indexPath: IndexPath) {
+        let deleteAction = UIAlertAction(title: Strings.yes, style: .default) { [weak self] _ in
+            self?.viewModel.deleteTheme(at: indexPath.row)
+            self?.tableView.deleteRows(at: [indexPath], with: .none)
+        }
+        let cancelAction = UIAlertAction(title: Strings.cancel, style: .cancel)
+        Alerts.show(
+            from: self,
+            title: "",
+            message: Strings.deleteConfirmationMessage,
+            actions: [deleteAction, cancelAction],
+            preferred: cancelAction)
+    }
+
+    private func updateEditButton() {
+        navigationItem.leftBarButtonItems = isEditing ? [settingsButton, editButtonItem] : [settingsButton]
+    }
+
+    // MARK: - Navigation bar actions
+
+    @objc private func didTapCreate() { viewModel.createTheme() }
+    @objc private func didTapSettings() { viewModel.openSettings() }
+    @objc private func didTapAnalytics() { viewModel.openAnalytics() }
+    @objc private func didTapSmartG() { viewModel.openSmartG() }
+}
+
+// MARK: - Table view data source & delegate
+
+extension ThemeListViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int { 1 }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.themeCount
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        makeCell(at: indexPath)
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // pushViewController updates the stack synchronously, so a second fast
+        // tap fails this guard instead of pushing the screen twice.
+        guard navigationController?.topViewController === self else { return }
+        viewModel.selectTheme(at: indexPath.row)
+    }
+
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool { true }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            presentDeletionSafeAlert(indexPath: indexPath)
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool { false }
+
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        tableView.isEditing ? .none : .delete
+    }
+
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        viewModel.reorderTheme(from: sourceIndexPath.row, to: destinationIndexPath.row)
+    }
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        updateEditButton()
     }
 }

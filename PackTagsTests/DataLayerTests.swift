@@ -100,16 +100,38 @@ import CoreData
         var setupInfoShown = false
     }
 
-    private func makeSUT() -> (viewModel: ThemeListViewModel, repository: CoreDataThemeRepository) {
+    private func noopActions(selectTheme: @escaping (ThemeCD) -> Void = { _ in }) -> ThemeListActions {
+        ThemeListActions(
+            selectTheme: selectTheme,
+            createTheme: { _ in },
+            openSettings: {},
+            openAnalytics: {},
+            openSmartG: {})
+    }
+
+    private func makeSUT(actions: ThemeListActions? = nil) -> (viewModel: ThemeListViewModel, repository: CoreDataThemeRepository) {
         let persistence = PersistenceController(inMemory: true)
         let repository = CoreDataThemeRepository(context: persistence.viewContext)
-        return (ThemeListViewModel(repository: repository, settings: FakeSettings()), repository)
+        return (ThemeListViewModel(repository: repository, settings: FakeSettings(), actions: actions ?? noopActions()), repository)
     }
 
     private func makeSUTWithSettings() -> (ThemeListViewModel, FakeSettings) {
         let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
         let settings = FakeSettings()
-        return (ThemeListViewModel(repository: repository, settings: settings), settings)
+        return (ThemeListViewModel(repository: repository, settings: settings, actions: noopActions()), settings)
+    }
+
+    private func names(_ sut: ThemeListViewModel) -> [String?] {
+        (0..<sut.themeCount).map { sut.themeRow(at: $0)?.name }
+    }
+
+    private func seedThemes(_ names: [String], in repository: CoreDataThemeRepository) {
+        for (index, name) in names.enumerated() {
+            let theme = repository.create()
+            theme.name = name
+            theme.orderIndex = Int32(index)
+        }
+        repository.save()
     }
 
     @Test func shouldShowOnboarding_followsTheSettingsFlag() {
@@ -128,22 +150,7 @@ import CoreData
         #expect(!sut.consumeFirstTimeTipsAlert())
     }
 
-    @Test func deleteTheme_withInvalidIndex_doesNothing() {
-        let (sut, _) = makeSUTWithSettings()
-        sut.deleteTheme(at: 5)
-        #expect(sut.themes.isEmpty)
-    }
-
-    private func seedThemes(_ names: [String], in repository: CoreDataThemeRepository) {
-        for (index, name) in names.enumerated() {
-            let theme = repository.create()
-            theme.name = name
-            theme.orderIndex = Int32(index)
-        }
-        repository.save()
-    }
-
-    @Test func loadThemes_populatesThemesAndNotifies() {
+    @Test func loadThemes_populatesRowsAndNotifies() {
         let (sut, repository) = makeSUT()
         seedThemes(["A", "B"], in: repository)
 
@@ -152,7 +159,36 @@ import CoreData
         sut.loadThemes()
 
         #expect(didNotify)
-        #expect(sut.themes.compactMap(\.name) == ["A", "B"])
+        #expect(names(sut) == ["A", "B"])
+    }
+
+    @Test func themeRow_exposesNameAndIsNilForStaleIndex() {
+        let (sut, repository) = makeSUT()
+        seedThemes(["A"], in: repository)
+        sut.loadThemes()
+
+        #expect(sut.themeRow(at: 0)?.name == "A")
+        #expect(sut.themeRow(at: 9) == nil)
+    }
+
+    @Test func selectTheme_atValidIndex_firesActionWithThatTheme() {
+        var selected: ThemeCD?
+        let (sut, repository) = makeSUT(actions: noopActions(selectTheme: { selected = $0 }))
+        seedThemes(["A", "B"], in: repository)
+        sut.loadThemes()
+
+        sut.selectTheme(at: 1)
+
+        #expect(selected?.name == "B")
+    }
+
+    @Test func selectTheme_atInvalidIndex_doesNotFire() {
+        var fired = false
+        let (sut, _) = makeSUT(actions: noopActions(selectTheme: { _ in fired = true }))
+
+        sut.selectTheme(at: 0)
+
+        #expect(!fired)
     }
 
     @Test func reorderTheme_persistsTheNewOrder() {
@@ -162,7 +198,7 @@ import CoreData
 
         sut.reorderTheme(from: 0, to: 2)
 
-        #expect(sut.themes.compactMap(\.name) == ["B", "C", "A"])
+        #expect(names(sut) == ["B", "C", "A"])
         #expect(repository.fetchAll().compactMap(\.name) == ["B", "C", "A"])
     }
 
@@ -173,8 +209,14 @@ import CoreData
 
         sut.deleteTheme(at: 0)
 
-        #expect(sut.themes.compactMap(\.name) == ["B"])
+        #expect(names(sut) == ["B"])
         #expect(repository.count() == 1)
+    }
+
+    @Test func deleteTheme_withInvalidIndex_doesNothing() {
+        let (sut, _) = makeSUT()
+        sut.deleteTheme(at: 5)
+        #expect(sut.themeCount == 0)
     }
 }
 
