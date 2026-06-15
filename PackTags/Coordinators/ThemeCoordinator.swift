@@ -12,6 +12,10 @@ final class ThemeCoordinator: Coordinator {
     }
 
     func start() {
+        showThemeList()
+    }
+
+    private func showThemeList() {
         let actions = ThemeListActions(
             selectTheme: { [weak self] theme in self?.showPackList(for: theme) },
             createTheme: { [weak self] onCreated in self?.showNewThemeEditor(onSave: onCreated) },
@@ -24,49 +28,49 @@ final class ThemeCoordinator: Coordinator {
             settings: dependencies.appSettings,
             actions: actions)
 
-        let vc = ThemeListViewController(style: .plain, viewModel: viewModel)
-        vc.onViewDidAppear = { [weak self, weak viewModel] in
+        let viewController = ThemeListViewController(style: .plain, viewModel: viewModel)
+        viewController.onViewDidAppear = { [weak self, weak viewModel] in
             guard let self, let viewModel, viewModel.shouldShowOnboarding else { return }
             self.showOnboarding { [weak self, weak viewModel] in
                 guard let self, let viewModel, viewModel.consumeFirstTimeTipsAlert() else { return }
                 Alerts.showFirstTimeTipsAlert(from: self.navigationController)
             }
         }
-        navigationController.setViewControllers([vc], animated: false)
+        navigationController.setViewControllers([viewController], animated: false)
     }
 
-    // MARK: - From ThemeTableVC
+    // MARK: - From ThemeList
 
-    func showPackList(for theme: ThemeCD) {
-        let vc = PackListViewController(
+    private func showPackList(for theme: ThemeCD) {
+        let viewController = PackListViewController(
             style: .plain,
             viewModel: PackListViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings)
         )
-        vc.onEditTheme = { [weak self, weak vc] pack in
+        viewController.onEditTheme = { [weak self, weak viewController] pack in
             self?.showThemeEditor(
                 for: theme,
                 fromSwipe: pack != nil,
                 chosenPack: pack ?? "",
-                onSave: { vc?.editorDidSave() },
-                onCancel: { vc?.editorDidClose() })
+                onSave: { viewController?.editorDidSave() },
+                onCancel: { viewController?.editorDidClose() })
         }
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 
-    func showNewThemeEditor(onSave: @escaping () -> Void) {
-        let vc = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: nil, repository: dependencies.themeRepository, settings: dependencies.appSettings))
-        vc.onSave = { _ in onSave() }
-        presentInNavController(vc, transition: .coverVertical)
+    private func showNewThemeEditor(onSave: @escaping () -> Void) {
+        let viewController = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: nil, repository: dependencies.themeRepository, settings: dependencies.appSettings))
+        viewController.onSave = { _ in onSave() }
+        presentInNavController(viewController, transition: .coverVertical)
     }
 
-    func showOnboarding(completion: (() -> Void)?) {
-        let vc = OnBoardingVC(appSettings: dependencies.appSettings)
-        vc.modalPresentationStyle = .fullScreen
-        vc.onDismiss = completion
-        navigationController.present(vc, animated: true)
+    private func showOnboarding(completion: (() -> Void)?) {
+        let viewController = OnBoardingVC(appSettings: dependencies.appSettings)
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.onDismiss = completion
+        navigationController.present(viewController, animated: true)
     }
 
-    func showSettings() {
+    private func showSettings() {
         let navigation = SettingsNavigation(
             openQuantityPicker: { [weak self] in self?.showQuantityPicker() },
             replayOnboarding: { [weak self] in
@@ -74,48 +78,48 @@ final class ThemeCoordinator: Coordinator {
                 self?.showOnboarding(completion: nil)
             }
         )
-        let vc = SettingsVC(
+        let viewController = SettingsVC(
             connectedInsights: dependencies.connectedInsights,
             appSettings: dependencies.appSettings,
             navigation: navigation
         )
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 
-    func showQuantityPicker() {
-        let vc = QuantityPickerVC(appSettings: dependencies.appSettings)
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        navigationController.present(vc, animated: true)
+    private func showQuantityPicker() {
+        let viewController = QuantityPickerVC(appSettings: dependencies.appSettings)
+        viewController.modalPresentationStyle = .overFullScreen
+        viewController.modalTransitionStyle = .crossDissolve
+        navigationController.present(viewController, animated: true)
     }
 
-    func showAnalytics() {
+    private func showAnalytics() {
         presentConnectedInsights(.analytics)
     }
 
-    func showSmartG() {
+    private func showSmartG() {
         presentConnectedInsights(.smartG)
     }
 
     // MARK: - From PackListViewController
 
-    func showThemeEditor(for theme: ThemeCD, fromSwipe: Bool, chosenPack: String, onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
-        let vc = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings))
-        vc.onSave = { _ in
+    private func showThemeEditor(for theme: ThemeCD, fromSwipe: Bool, chosenPack: String, onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
+        let viewController = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings))
+        viewController.onSave = { _ in
             onSave()
             ReviewPromptPolicy().promptIfEarned() // Review prompt only after updating an existing theme
         }
-        vc.onCancel = onCancel
+        viewController.onCancel = onCancel
         if fromSwipe {
-            vc.packToHighlight = chosenPack
+            viewController.packToHighlight = chosenPack
         }
-        presentInNavController(vc, transition: .crossDissolve)
+        presentInNavController(viewController, transition: .crossDissolve)
     }
 
     // MARK: - Private
 
-    private func presentInNavController(_ vc: ThemeEditorViewController, transition: UIModalTransitionStyle) {
-        let nc = UINavigationController(rootViewController: vc)
+    private func presentInNavController(_ viewController: ThemeEditorViewController, transition: UIModalTransitionStyle) {
+        let nc = UINavigationController(rootViewController: viewController)
         nc.modalPresentationStyle = .overFullScreen
         nc.modalTransitionStyle = transition
         navigationController.present(nc, animated: true)

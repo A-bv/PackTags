@@ -49,12 +49,13 @@ private final class FakeAppSettings: AppSettingsProtocol {
 private final class FakeThemeRepository: ThemeRepositoryProtocol {
     private(set) var didSave = false
     private let persistence = PersistenceController(inMemory: true)
+    var stored: [ThemeCD] = []
 
-    func fetchAll() -> [ThemeCD] { [] }
+    func fetchAll() -> [ThemeCD] { stored }
     func create() -> ThemeCD { ThemeCD(context: persistence.viewContext) }
     func save() { didSave = true }
     func delete(_ theme: ThemeCD) {}
-    func count() -> Int32 { 0 }
+    func count() -> Int32 { Int32(stored.count) }
     func tagsAlreadyStored(tags: [String]) -> [String] { [] }
 }
 
@@ -70,18 +71,6 @@ private func makeTheme(named name: String? = nil) -> ThemeCD {
     let theme = ThemeCD(context: themeFactoryPersistence.viewContext)
     theme.name = name
     return theme
-}
-
-@MainActor
-private func makeDependencies(
-    connectedInsights: ConnectedInsightsCoordinating? = nil
-) -> AppDependencies {
-    AppDependencies(
-        persistence: PersistenceController(inMemory: true),
-        themeRepository: FakeThemeRepository(),
-        appSettings: FakeAppSettings(),
-        connectedInsights: connectedInsights ?? SpyConnectedInsightsCoordinator()
-    )
 }
 
 // MARK: - AppCoordinator
@@ -108,9 +97,28 @@ private func makeDependencies(
 
 @Suite @MainActor struct ThemeCoordinatorTests {
 
-    private func makeSUT() -> (ThemeCoordinator, SpyNavigationController) {
+    private func makeSUT(
+        themes: [ThemeCD] = [],
+        connectedInsights: ConnectedInsightsCoordinating? = nil
+    ) -> (sut: ThemeCoordinator, nav: SpyNavigationController) {
         let nav = SpyNavigationController()
-        return (ThemeCoordinator(navigationController: nav, dependencies: makeDependencies()), nav)
+        let repository = FakeThemeRepository()
+        repository.stored = themes
+        let dependencies = AppDependencies(
+            persistence: PersistenceController(inMemory: true),
+            themeRepository: repository,
+            appSettings: FakeAppSettings(),
+            connectedInsights: connectedInsights ?? SpyConnectedInsightsCoordinator())
+        return (ThemeCoordinator(navigationController: nav, dependencies: dependencies), nav)
+    }
+
+    /// Starts the coordinator and returns the live theme-list root with its
+    /// themes loaded, so tests can drive navigation through its view model.
+    private func startedRoot(_ sut: ThemeCoordinator, _ nav: SpyNavigationController) -> ThemeListViewController {
+        sut.start()
+        let root = nav.setRootVC as! ThemeListViewController
+        root.viewModel.loadThemes()
+        return root
     }
 
     // MARK: start
@@ -128,141 +136,126 @@ private func makeDependencies(
         #expect(vc?.onViewDidAppear != nil)
     }
 
-    // MARK: showPackList
+    // MARK: Notebook navigation (driven through the view model's callbacks)
 
-    @Test func showPackList_pushesPackListViewController() {
-        let (sut, nav) = makeSUT()
-        sut.showPackList(for: makeTheme())
-        #expect(nav.pushedVC is PackListViewController)
-    }
-
-    @Test func showPackList_buildsTheViewModelAndWiresEditorNavigation() {
-        let (sut, nav) = makeSUT()
+    @Test func selectingTheme_pushesPackListForThatTheme() {
         let theme = makeTheme(named: "Travel")
-        sut.showPackList(for: theme)
-        let vc = nav.pushedVC as? PackListViewController
-        #expect(vc?.viewModel.title == "Travel")
-        #expect(vc?.onEditTheme != nil)
+        let (sut, nav) = makeSUT(themes: [theme])
+        let root = startedRoot(sut, nav)
+
+        root.viewModel.selectTheme(at: 0)
+
+        let pushed = nav.pushedVC as? PackListViewController
+        #expect(pushed?.viewModel.title == "Travel")
+        #expect(pushed?.onEditTheme != nil)
     }
 
-    // MARK: showNewThemeEditor
-
-    @Test func showNewThemeEditor_presentsThemeEditorViewControllerInsideNavController() {
+    @Test func creatingTheme_presentsANewThemeEditor() {
         let (sut, nav) = makeSUT()
-        sut.showNewThemeEditor(onSave: {})
-        let nc = nav.presentedVC as? UINavigationController
-        #expect(nc?.topViewController is ThemeEditorViewController)
+        let root = startedRoot(sut, nav)
+
+        root.viewModel.createTheme()
+
+        let editor = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
+        #expect(editor?.viewModel.theme == nil)
+        #expect(editor?.viewModel.isNewTheme == true)
     }
 
-    @Test func showNewThemeEditor_themeVCHasNoThemeAndIsNew() {
+    @Test func openingSettings_pushesSettings() {
         let (sut, nav) = makeSUT()
-        sut.showNewThemeEditor(onSave: {})
-        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
-        #expect(themeVC?.viewModel.theme == nil)
-        #expect(themeVC?.viewModel.isNewTheme == true)
-    }
+        let root = startedRoot(sut, nav)
 
-    // MARK: showOnboarding
+        root.viewModel.openSettings()
 
-    @Test func showOnboarding_presentsOnBoardingVC() {
-        let (sut, nav) = makeSUT()
-        sut.showOnboarding(completion: nil)
-        #expect(nav.presentedVC is OnBoardingVC)
-    }
-
-    @Test func showOnboarding_setsFullScreenPresentationStyle() {
-        let (sut, nav) = makeSUT()
-        sut.showOnboarding(completion: nil)
-        #expect(nav.presentedVC?.modalPresentationStyle == .fullScreen)
-    }
-
-    @Test func showOnboarding_wiredCompletionIsPassedAsOnDismiss() {
-        let (sut, nav) = makeSUT()
-        var fired = false
-        sut.showOnboarding(completion: { fired = true })
-        let vc = nav.presentedVC as? OnBoardingVC
-        vc?.onDismiss?()
-        #expect(fired)
-    }
-
-    // MARK: showSettings
-
-    @Test func showSettings_pushesSettingsVC() {
-        let (sut, nav) = makeSUT()
-        sut.showSettings()
         #expect(nav.pushedVC is SettingsVC)
     }
 
-    @Test func settingsQuantityPickerAction_presentsQuantityPicker() {
-        let (sut, nav) = makeSUT()
-        sut.showSettings()
-        let vc = nav.pushedVC as? SettingsVC
-        vc?.navigation.openQuantityPicker()
-        #expect(nav.presentedVC is QuantityPickerVC)
-    }
-
-    // MARK: showAnalytics
-
-    @Test func showAnalytics_routesToConnectedInsights() {
-        let nav = SpyNavigationController()
+    @Test func openingAnalytics_routesToConnectedInsights() {
         let connectedInsights = SpyConnectedInsightsCoordinator()
-        let sut = ThemeCoordinator(
-            navigationController: nav,
-            dependencies: makeDependencies(connectedInsights: connectedInsights)
-        )
+        let (sut, nav) = makeSUT(connectedInsights: connectedInsights)
+        let root = startedRoot(sut, nav)
 
-        sut.showAnalytics()
+        root.viewModel.openAnalytics()
 
         #expect(connectedInsights.openedDestination == .analytics)
         #expect(connectedInsights.presenter === nav)
     }
 
-    // MARK: showSmartG
-
-    @Test func showSmartG_routesToConnectedInsights() {
-        let nav = SpyNavigationController()
+    @Test func openingSmartG_routesToConnectedInsights() {
         let connectedInsights = SpyConnectedInsightsCoordinator()
-        let sut = ThemeCoordinator(
-            navigationController: nav,
-            dependencies: makeDependencies(connectedInsights: connectedInsights)
-        )
+        let (sut, nav) = makeSUT(connectedInsights: connectedInsights)
+        let root = startedRoot(sut, nav)
 
-        sut.showSmartG()
+        root.viewModel.openSmartG()
 
         #expect(connectedInsights.openedDestination == .smartG)
         #expect(connectedInsights.presenter === nav)
     }
 
-    // MARK: showThemeEditor
+    // MARK: Editing a theme (from the pack list)
 
-    @Test func showThemeEditor_presentsThemeEditorViewControllerInsideNavController() {
-        let (sut, nav) = makeSUT()
-        sut.showThemeEditor(for: makeTheme(), fromSwipe: false, chosenPack: "", onSave: {}, onCancel: {})
-        let nc = nav.presentedVC as? UINavigationController
-        #expect(nc?.topViewController is ThemeEditorViewController)
+    @Test func editingTheme_presentsTheEditorForThatThemeAsExisting() {
+        let theme = makeTheme(named: "Travel")
+        let (sut, nav) = makeSUT(themes: [theme])
+        let root = startedRoot(sut, nav)
+        root.viewModel.selectTheme(at: 0)
+        let packList = nav.pushedVC as? PackListViewController
+
+        packList?.onEditTheme?(nil)
+
+        let editor = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
+        #expect(editor?.viewModel.theme === theme)
+        #expect(editor?.viewModel.isNewTheme == false)
+        #expect(editor?.packToHighlight == nil)
     }
 
-    @Test func showThemeEditor_setsThemeAndMarksAsExisting() {
-        let (sut, nav) = makeSUT()
-        let theme = makeTheme()
-        sut.showThemeEditor(for: theme, fromSwipe: false, chosenPack: "", onSave: {}, onCancel: {})
-        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
-        #expect(themeVC?.viewModel.theme === theme)
-        #expect(themeVC?.viewModel.isNewTheme == false)
+    @Test func editingPackFromSwipe_highlightsThatPack() {
+        let theme = makeTheme(named: "Travel")
+        let (sut, nav) = makeSUT(themes: [theme])
+        let root = startedRoot(sut, nav)
+        root.viewModel.selectTheme(at: 0)
+        let packList = nav.pushedVC as? PackListViewController
+
+        packList?.onEditTheme?("#travel")
+
+        let editor = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
+        #expect(editor?.packToHighlight == "#travel")
     }
 
-    @Test func showThemeEditor_fromSwipe_setsPackToHighlight() {
+    // MARK: Onboarding (first appearance)
+
+    @Test func firstAppearance_presentsOnboardingFullScreen() {
         let (sut, nav) = makeSUT()
-        sut.showThemeEditor(for: makeTheme(), fromSwipe: true, chosenPack: "#travel", onSave: {}, onCancel: {})
-        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
-        #expect(themeVC?.packToHighlight == "#travel")
+        let root = startedRoot(sut, nav)
+
+        root.onViewDidAppear?()
+
+        #expect(nav.presentedVC is OnBoardingVC)
+        #expect(nav.presentedVC?.modalPresentationStyle == .fullScreen)
     }
 
-    @Test func showThemeEditor_notFromSwipe_packToHighlightIsNil() {
+    @Test func dismissingOnboarding_presentsTheFirstTimeTipsAlert() {
         let (sut, nav) = makeSUT()
-        sut.showThemeEditor(for: makeTheme(), fromSwipe: false, chosenPack: "", onSave: {}, onCancel: {})
-        let themeVC = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
-        #expect(themeVC?.packToHighlight == nil)
+        let root = startedRoot(sut, nav)
+        root.onViewDidAppear?()
+        let onboarding = nav.presentedVC as? OnBoardingVC
+
+        onboarding?.onDismiss?()
+
+        #expect(nav.presentedVC is UIAlertController)
+    }
+
+    // MARK: Settings → quantity picker
+
+    @Test func settingsQuantityPickerAction_presentsQuantityPicker() {
+        let (sut, nav) = makeSUT()
+        let root = startedRoot(sut, nav)
+        root.viewModel.openSettings()
+        let settings = nav.pushedVC as? SettingsVC
+
+        settings?.navigation.openQuantityPicker()
+
+        #expect(nav.presentedVC is QuantityPickerVC)
     }
 
 }
