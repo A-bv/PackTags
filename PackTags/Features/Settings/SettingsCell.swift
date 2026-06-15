@@ -1,6 +1,6 @@
 import UIKit
 
-class SettingsCell: UITableViewCell {
+final class SettingsCell: UITableViewCell {
     static let identifier = "SettingsCell"
     
     private enum Constants {
@@ -86,7 +86,7 @@ class SettingsCell: UITableViewCell {
         iconContainer.backgroundColor = nil
     }
     
-    public func configure(with model: SettingsOption) {
+    func configure(with model: SettingsOption) {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor

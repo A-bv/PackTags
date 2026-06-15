@@ -1,6 +1,6 @@
 import UIKit
 
-class SettingsSwitchCell: UITableViewCell {
+final class SettingsSwitchCell: UITableViewCell {
     static let identifier = "SettingsSwitchCell"
     
     private enum Constants {
@@ -95,7 +95,7 @@ class SettingsSwitchCell: UITableViewCell {
         onToggle = nil
     }
     
-    public func configure(with model: SettingsSwitchOption) {
+    func configure(with model: SettingsSwitchOption) {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor

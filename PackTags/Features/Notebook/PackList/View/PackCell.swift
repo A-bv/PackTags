@@ -1,6 +1,6 @@
 import UIKit
 
-class PackCell: UITableViewCell {
+final class PackCell: UITableViewCell {
     private enum Strings {
         static let copyLabel = "Copy".localized()
     }

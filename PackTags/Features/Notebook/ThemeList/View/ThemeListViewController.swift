@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-class ThemeListViewController: UITableViewController {
+final class ThemeListViewController: UITableViewController {
 
     let viewModel: ThemeListViewModel
     let actions: ThemeListActions

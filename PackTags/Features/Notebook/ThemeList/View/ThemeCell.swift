@@ -4,7 +4,7 @@ import UIKit
 @MainActor
 let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
 
-class ThemeCell: UITableViewCell {
+final class ThemeCell: UITableViewCell {
     private enum Constants {
         static let subLabelCornerRadius = CGFloat(5)
         static let padding5 = CGFloat(5)

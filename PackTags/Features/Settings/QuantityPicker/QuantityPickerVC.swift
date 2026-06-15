@@ -1,6 +1,6 @@
 import UIKit
 
-class QuantityPickerVC: UIViewController {
+final class QuantityPickerVC: UIViewController {
     private enum Constants {
         static let pickerNumberOfComponents = 1
         static let defaultRowIndex = 0

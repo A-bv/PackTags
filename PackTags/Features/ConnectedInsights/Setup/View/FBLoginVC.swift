@@ -5,7 +5,7 @@ import FBSDKLoginKit
 import InstagramGraph
 
 // MARK: - Class
-class FBLoginVC: UIViewController {
+final class FBLoginVC: UIViewController {
 
     init(viewModel: FBLoginViewModel) {
         self.viewModel = viewModel

@@ -21,7 +21,7 @@ private enum Constants {
     static let rowsPerScreen: CGFloat = 6
 }
 
-class PackListViewController: CoverImageTableViewController {
+final class PackListViewController: CoverImageTableViewController {
 
     let viewModel: PackListViewModel
 

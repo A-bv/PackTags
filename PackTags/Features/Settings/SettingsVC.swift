@@ -1,7 +1,7 @@
 import UIKit
 import SafariServices
 
-class SettingsVC: UIViewController {
+final class SettingsVC: UIViewController {
     private enum Strings {
         static let settingsTitle = "Settings".localized()
     }
