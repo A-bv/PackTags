@@ -24,7 +24,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Style
     private func setupAppearance() {
-        let color = customPurple
+        let color = UIColor.customPurple
         UITextView.appearance().tintColor = color
         UITextField.appearance().tintColor = color
         UISearchBar.appearance().tintColor = color

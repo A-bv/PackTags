@@ -53,7 +53,7 @@ final class SettingsVC: UIViewController {
     
     
     func configure() {
-        tableView.backgroundColor = bkgdColor
+        tableView.backgroundColor = .colorBkgd
 
         models = SettingsSections.make(actions: SettingsActions(
             editInstagramUsername: { [weak self] in self?.setInstaUserAlert() },

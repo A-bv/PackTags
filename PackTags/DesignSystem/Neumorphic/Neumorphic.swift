@@ -6,7 +6,7 @@ extension UIView {
         let darkShadow = CALayer()
         darkShadow.frame = self.layer.bounds
         darkShadow.name = "darkShadow"
-        darkShadow.backgroundColor = bkgdColor.cgColor
+        darkShadow.backgroundColor = UIColor.colorBkgd.cgColor
         darkShadow.shadowColor = UIColor.shadowColor.cgColor
         darkShadow.cornerRadius = cornerRadius
         darkShadow.shadowOpacity = 1
@@ -19,7 +19,7 @@ extension UIView {
         let lightShadow = CALayer()
         lightShadow.name = "lightShadow"
         lightShadow.frame = self.layer.bounds
-        lightShadow.backgroundColor = bkgdColor.cgColor
+        lightShadow.backgroundColor = UIColor.colorBkgd.cgColor
         lightShadow.shadowColor = UIColor.lightShadowColor.cgColor
         lightShadow.cornerRadius = cornerRadius
         lightShadow.shadowOpacity = 1
@@ -48,12 +48,12 @@ extension UIView {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + value) {
                 for item in self.layer.sublayers ?? [] where item.name == "lightShadow" {
-                    item.backgroundColor = bkgdColor.resolvedColor(with: self.traitCollection).cgColor
+                    item.backgroundColor = UIColor.colorBkgd.resolvedColor(with: self.traitCollection).cgColor
                     item.shadowColor = UIColor.lightShadowColor.resolvedColor(with: self.traitCollection).cgColor
                 }
                     
                 for item in self.layer.sublayers ?? [] where item.name == "darkShadow" {
-                    item.backgroundColor = bkgdColor.resolvedColor(with: self.traitCollection).cgColor
+                    item.backgroundColor = UIColor.colorBkgd.resolvedColor(with: self.traitCollection).cgColor
                     item.shadowColor = UIColor.shadowColor.resolvedColor(with: self.traitCollection).cgColor
                 }
             }

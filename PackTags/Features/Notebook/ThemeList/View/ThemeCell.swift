@@ -66,14 +66,14 @@ final class ThemeCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
         registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (cell: ThemeCell, _) in
-            cell.contentView.backgroundColor = bkgdColor
+            cell.contentView.backgroundColor = .colorBkgd
             cell.supportingView.addNeumorphicShadows()
         }
     }
 
 
     private func setupUI() {
-        self.contentView.backgroundColor = bkgdColor
+        self.contentView.backgroundColor = .colorBkgd
 
         containerView.addSubview(nameLabel)
         self.contentView.addSubview(containerView)

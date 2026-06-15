@@ -67,7 +67,7 @@ final class PackCell: UITableViewCell {
                 y: 0,
                 width: Constants.copyButtonWidth,
                 height: Constants.copyButtonHeight))
-        btn.setTitleColor(customTextColor, for: .normal)
+        btn.setTitleColor(.customTextColor, for: .normal)
         btn.setTitle(Strings.copyLabel, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.titleLabel?.font = UIFont(name: "PingFangTC-Semibold", size: fontSize)
@@ -111,7 +111,7 @@ final class PackCell: UITableViewCell {
     }
 
     private func setupUI() {
-        self.contentView.backgroundColor = bkgdColor
+        self.contentView.backgroundColor = .colorBkgd
 
         containerView.addSubview(cellLabel)
         containerView.addSubview(subButton)

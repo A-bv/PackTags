@@ -97,7 +97,7 @@ final class OnBoardingVC: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = welcomeScreenColor
+        view.backgroundColor = .colorOnBoardBg
 
         setupViewHierarchy()
         setupConstraints()

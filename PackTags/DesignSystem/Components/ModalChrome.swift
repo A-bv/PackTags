@@ -67,7 +67,7 @@ final class ModalChrome {
 
         let button = UIButton(type: .system, primaryAction: UIAction { _ in action() })
         button.setTitle(title, for: .normal)
-        button.setTitleColor(customPurple, for: .normal)
+        button.setTitleColor(.customPurple, for: .normal)
 
         host.view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false

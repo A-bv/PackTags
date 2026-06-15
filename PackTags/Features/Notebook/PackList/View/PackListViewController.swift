@@ -65,10 +65,10 @@ final class PackListViewController: CoverImageTableViewController {
         navigationItem.rightBarButtonItems = [composeButton, instaButton]
 
         tableView.register(PackCell.self, forCellReuseIdentifier: "PackCell")
-        tableView.backgroundColor = bkgdColor
+        tableView.backgroundColor = .colorBkgd
 
         viewModel.loadPacks()
-        barBackgroundColor = bkgdColor
+        barBackgroundColor = .colorBkgd
         setCoverImage(coverImage)
     }
 
@@ -159,7 +159,7 @@ extension PackListViewController {
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
 
-        contextItem.backgroundColor = customBarTint
+        contextItem.backgroundColor = .customBarTint
         return swipeActions
     }
 }

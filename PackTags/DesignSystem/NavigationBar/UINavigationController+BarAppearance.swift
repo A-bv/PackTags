@@ -18,8 +18,8 @@ extension UIViewController {
     /// The app's standard navigation chrome: themed background, soft shadow,
     /// brand tint. One call per screen keeps the look consistent.
     func applyThemedNavigationBarStyle() {
-        setNavBarAppearance(color: bkgdColor)
+        setNavBarAppearance(color: .colorBkgd)
         navigationController?.navigationBar.putShadow()
-        navigationController?.navigationBar.tintColor = customBarTint
+        navigationController?.navigationBar.tintColor = .customBarTint
     }
 }

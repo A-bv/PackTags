@@ -84,7 +84,7 @@ final class InfoSetupIGCreatorVC: UIViewController {
     
     private var openInstagramButton: UIButton {
         let btn = UIButton()
-        btn.setTitleColor(customPurple, for: .normal)
+        btn.setTitleColor(.customPurple, for: .normal)
         btn.setTitle(Strings.buttonTitle, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(goProfile(_:)), for: .touchUpInside)
@@ -102,7 +102,7 @@ final class InfoSetupIGCreatorVC: UIViewController {
     // MARK: - UI Setup
 
     private func setupUI() {
-        view.backgroundColor = bkgdColor
+        view.backgroundColor = .colorBkgd
         view.applyBlur()
         chrome.addBusinessSetupHelpLink()
         chrome.addCloseButton()
