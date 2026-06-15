@@ -56,8 +56,7 @@ final class ThemeCoordinator: Coordinator {
     }
 
     func showOnboarding(completion: (() -> Void)?) {
-        let vc = OnBoardingController()
-        vc.appSettings = dependencies.appSettings
+        let vc = OnBoardingVC(appSettings: dependencies.appSettings)
         vc.modalPresentationStyle = .fullScreen
         vc.onDismiss = completion
         navigationController.present(vc, animated: true)

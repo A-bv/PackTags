@@ -163,10 +163,10 @@ private func makeDependencies(
 
     // MARK: showOnboarding
 
-    @Test func showOnboarding_presentsOnBoardingController() {
+    @Test func showOnboarding_presentsOnBoardingVC() {
         let (sut, nav) = makeSUT()
         sut.showOnboarding(completion: nil)
-        #expect(nav.presentedVC is OnBoardingController)
+        #expect(nav.presentedVC is OnBoardingVC)
     }
 
     @Test func showOnboarding_setsFullScreenPresentationStyle() {
@@ -179,7 +179,7 @@ private func makeDependencies(
         let (sut, nav) = makeSUT()
         var fired = false
         sut.showOnboarding(completion: { fired = true })
-        let vc = nav.presentedVC as? OnBoardingController
+        let vc = nav.presentedVC as? OnBoardingVC
         vc?.onDismiss?()
         #expect(fired)
     }
