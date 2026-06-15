@@ -78,7 +78,7 @@ extension ThemeListViewController {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeCell", for: indexPath) as? ThemeCell
         else {
-            fatalError("The dequeued cell is not an instance of ThemeTableViewCell.")
+            fatalError("The dequeued cell is not an instance of ThemeCell.")
         }
         let theme = viewModel.themes[indexPath.row]
         cell.nameLabel.text = theme.name

@@ -1,9 +1,8 @@
 import Foundation
 
 struct TransformedProfileModel {
-    let username: String?                //. Basic: username
-    let isPrivateProfile: Bool?     //. Basic: is private?
-    let postsCount: Int?            //. Basic: post count
+    let username: String?
+    let postsCount: Int?
     
     let totalLikes: Int?
     let totalComments: Int?
@@ -17,7 +16,6 @@ struct TransformedProfileModel {
     
     init(
         username: String? = nil,
-        isPrivateProfile: Bool? = nil,
         totalLikes: Int? = nil,
         totalComments: Int? = nil,
         averageLikes: Double? = nil,
@@ -29,7 +27,6 @@ struct TransformedProfileModel {
         captions: [String?] = [nil]
     ) {
         self.username = username
-        self.isPrivateProfile = isPrivateProfile
         self.totalLikes = totalLikes
         self.totalComments = totalComments
         self.averageLikes = averageLikes

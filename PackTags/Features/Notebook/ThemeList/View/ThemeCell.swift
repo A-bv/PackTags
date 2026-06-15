@@ -6,11 +6,9 @@ let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
 
 final class ThemeCell: UITableViewCell {
     private enum Constants {
-        static let subLabelCornerRadius = CGFloat(5)
         static let padding5 = CGFloat(5)
         static let supportingViewShadowRadius = CGFloat(5)
         static let themeImageViewCornerRadius = CGFloat(10)
-        static let subLabelFontSize = CGFloat(14)
         static let supportingViewCornerRadius = CGFloat(15)
         static let nameLabelFontSize = CGFloat(19)
         @MainActor static let thumbnailDimReducedBy10 = thumbnailDim - CGFloat(10)
@@ -46,20 +44,6 @@ final class ThemeCell: UITableViewCell {
         return label
     }()
 
-    let subLabel:UILabel = {
-        let label = UILabel()
-        label.font = UIFontMetrics(forTextStyle: .footnote).scaledFont(
-            for: UIFont.boldSystemFont(ofSize: Constants.subLabelFontSize),
-            maximumPointSize: 20)
-        label.adjustsFontForContentSizeCategory = true
-        label.textColor =  .white
-        label.backgroundColor = UIColor.tagBadgeBlue
-        label.layer.cornerRadius = Constants.subLabelCornerRadius
-        label.clipsToBounds = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
     let supportingView: UIView = {
         let view = UIView()
         view.frame = CGRect(
@@ -88,7 +72,6 @@ final class ThemeCell: UITableViewCell {
         self.contentView.backgroundColor = bkgdColor
 
         containerView.addSubview(nameLabel)
-        containerView.addSubview(subLabel)
         self.contentView.addSubview(containerView)
         self.contentView.addSubview(supportingView)
         self.contentView.addSubview(themeImageView)
@@ -142,12 +125,6 @@ final class ThemeCell: UITableViewCell {
         } else {
             nameLabel.centerXAnchor.constraint(equalTo:self.containerView.centerXAnchor).isActive = true
         }
-
-        // ---------- subLabel ----------
-
-        subLabel.topAnchor.constraint(equalTo:self.nameLabel.bottomAnchor).isActive = true
-        subLabel.centerXAnchor.constraint(equalTo:self.containerView.centerXAnchor).isActive = true
-        subLabel.topAnchor.constraint(equalTo:self.nameLabel.bottomAnchor).isActive = true
     }
 }
 

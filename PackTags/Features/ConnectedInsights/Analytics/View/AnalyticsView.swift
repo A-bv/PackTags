@@ -20,7 +20,6 @@ struct AnalyticsView: View {
         static let eRR = "Engagement Rate by Reach (ERR)".localized()
         static let eRI = "Engagement Rate by Impressions (ER Impressions)".localized()
         static let analyticsTitle = "Analytics".localized()
-        static let privateProfile = "Profile is private".localized()
         static let ratioToFollower = "Per Follower".localized()
         static let ratioByReach = "By Reach".localized()
         static let ratioByImpressions = "By Impressions".localized()
@@ -90,9 +89,7 @@ struct AnalyticsView: View {
                     } else if viewModel.profile == nil {
                         LoadingView(loading: .constant(true))
                     } else {
-                        if viewModel.transformedProfile?.isPrivateProfile == true {
-                            Text(Strings.privateProfile)
-                        } else if viewModel.transformedProfile?.rates == Optional([]) {
+                        if viewModel.transformedProfile?.rates == Optional([]) {
                             // Screen when data is invalid
                             if viewModel.transformedProfile?.username != nil {
                                 Text(Strings.noMedia)

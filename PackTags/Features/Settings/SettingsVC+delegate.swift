@@ -22,7 +22,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
                 withIdentifier: SettingsCell.identifier,
                 for: indexPath
             ) as? SettingsCell else {
-                return UITableViewCell()
+                fatalError("The dequeued cell is not an instance of SettingsCell.")
             }
             cell.configure(with: model)
             cell.backgroundColor = UIColor.systemBackground
@@ -32,7 +32,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
                 withIdentifier: SettingsSwitchCell.identifier,
                 for: indexPath
             ) as? SettingsSwitchCell else {
-                return UITableViewCell()
+                fatalError("The dequeued cell is not an instance of SettingsSwitchCell.")
             }
             cell.configure(with: model)
             

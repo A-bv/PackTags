@@ -29,7 +29,6 @@ enum ProfileDataTransformer {
 
         return TransformedProfileModel(
             username: response.username,
-            isPrivateProfile: false,
             totalLikes: metrics.likeArray.reduce(0, +),
             totalComments: metrics.commentArray.reduce(0, +),
             averageLikes: averageLikes,
