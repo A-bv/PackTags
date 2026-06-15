@@ -20,14 +20,6 @@ Built with UIKit + SwiftUI on an MVVM-C architecture, fully testable and on the 
 - **Hashtag discovery** — find new hashtags pulled live from trending Instagram posts.
 - **Post analytics** — engagement, reach and views for your recent posts.
 
-## Screenshots
-
-| Notebook | Discovery | Analytics |
-|:---:|:---:|:---:|
-| _docs/screenshots/notebook.png_ | _docs/screenshots/discovery.png_ | _docs/screenshots/analytics.png_ |
-
-> Placeholders — drop PNGs into `docs/screenshots/` to populate.
-
 ## Architecture
 
 PackTags follows **MVVM-C** — Model · View · ViewModel · Coordinator — over a Domain / Repository core, wired by a single composition root.
