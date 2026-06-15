@@ -6,8 +6,8 @@ extension AnalyticsViewModel {
     /// Re-runs the transformation after the mode or raw/rate toggle changes,
     /// using the profile already in memory — no network round trip.
     func refreshFromCurrentProfile() {
-        guard let jsonOfficial else { return }
-        load(profileJson: jsonOfficial)
+        guard let profile else { return }
+        load(profileJson: profile)
     }
 
     func load() async {
@@ -20,8 +20,8 @@ extension AnalyticsViewModel {
     }
     
     private func load(profileJson: Profile) {
-        jsonOfficial = profileJson
-        processedJson = DataTransformer.ProfileDataTransformer.transform(response: profileJson, mode: mode, rawInsights: rawInsights)
+        profile = profileJson
+        transformedProfile = ProfileDataTransformer.transform(response: profileJson, metric: metric, rawInsights: rawInsights)
         updateData()
     }
     
@@ -31,7 +31,7 @@ extension AnalyticsViewModel {
     }
     
     private func fillGraphData() {
-        guard let rates = processedJson?.rates, !rates.isEmpty else {
+        guard let rates = transformedProfile?.rates, !rates.isEmpty else {
             AppLogger.insights.info("No engagement rates available.")
             return
         }
@@ -48,23 +48,23 @@ extension AnalyticsViewModel {
     }
     
     private func fillOverviewSectionData() {
-        guard let rates = processedJson?.rates, !rates.isEmpty else {
+        guard let rates = transformedProfile?.rates, !rates.isEmpty else {
             return
         }
 
-        overviewSectionData[0].value = StringFormatter.formatNum(value: processedJson?.averageLikes ?? 0)
-        overviewSectionData[1].value = StringFormatter.formatNum(value: processedJson?.averageComments ?? 0)
+        overviewSectionData[0].value = StringFormatter.formatNum(value: transformedProfile?.averageLikes ?? 0)
+        overviewSectionData[1].value = StringFormatter.formatNum(value: transformedProfile?.averageComments ?? 0)
 
         circlesData[1].value = CGFloat(rates[0] ?? 0)
         circlesData[1].maxValue = getMaxRate()
 
-        let avgEngagement: CGFloat = CGFloat(processedJson?.averageRate ?? 0)
+        let avgEngagement: CGFloat = CGFloat(transformedProfile?.averageRate ?? 0)
         circlesData[0].value = avgEngagement
         circlesData[0].maxValue = avgEngagement
     }
     
     private func getMaxRate() -> CGFloat {
-        guard let max = processedJson?.maxRate, max != 0 else { return 1 }
+        guard let max = transformedProfile?.maxRate, max != 0 else { return 1 }
         return max
     }
 }

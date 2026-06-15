@@ -47,7 +47,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func transform_profileWithoutMedia_isNil() throws {
         let profile = try makeProfile()
 
-        #expect(DataTransformer.ProfileDataTransformer.transform(response: profile) == nil)
+        #expect(ProfileDataTransformer.transform(response: profile) == nil)
     }
 
     @Test func transform_sumsAndAveragesLikesAndComments() throws {
@@ -56,7 +56,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
             (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24),
         ])
 
-        let model = try #require(DataTransformer.ProfileDataTransformer.transform(response: profile))
+        let model = try #require(ProfileDataTransformer.transform(response: profile))
 
         #expect(model.username == "packtags")
         #expect(model.totalLikes == 30)
@@ -71,8 +71,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
             (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 24),
         ])
 
-        let model = try #require(DataTransformer.ProfileDataTransformer.transform(
-            response: profile, mode: 0, rawInsights: true))
+        let model = try #require(ProfileDataTransformer.transform(
+            response: profile, metric: .engagement, rawInsights: true))
 
         #expect(model.rates == [12, 24])
         #expect(model.averageRate == 18)
@@ -85,8 +85,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
             (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 30),
         ])
 
-        let model = try #require(DataTransformer.ProfileDataTransformer.transform(
-            response: profile, mode: 0, rawInsights: false))
+        let model = try #require(ProfileDataTransformer.transform(
+            response: profile, metric: .engagement, rawInsights: false))
 
         #expect(model.rates == [5, 15]) // engagement * 100 / followers
     }
@@ -96,21 +96,10 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
             (likes: 1, comments: 1, reach: 0, impressions: 0, engagement: 10),
         ])
 
-        let model = try #require(DataTransformer.ProfileDataTransformer.transform(
-            response: profile, mode: 1, rawInsights: false))
+        let model = try #require(ProfileDataTransformer.transform(
+            response: profile, metric: .reach, rawInsights: false))
 
         #expect(model.rates == [0])
-    }
-
-    @Test func transform_outOfRangeMode_clampsToTheLastRate() throws {
-        let profile = try makeProfile(medias: [
-            (likes: 1, comments: 1, reach: 100, impressions: 200, engagement: 12),
-        ])
-
-        let model = try #require(DataTransformer.ProfileDataTransformer.transform(
-            response: profile, mode: 99, rawInsights: true))
-
-        #expect(model.rates == [200]) // clamped to the impressions slot, not a crash
     }
 }
 

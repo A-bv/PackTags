@@ -1,16 +1,10 @@
 import Foundation
 import InstagramGraph
 
-enum DataTransformer {}
-
-extension DataTransformer {
-    enum ProfileDataTransformer {}
-}
-
-extension DataTransformer.ProfileDataTransformer {
+enum ProfileDataTransformer {
     static func transform(
         response: Profile,
-        mode: Int = 0,
+        metric: AnalyticsMetric = .engagement,
         rawInsights: Bool = true
     ) -> TransformedProfileModel? {
         guard let metrics = computeMetrics(profileResponse: response, rawInsights: rawInsights) else { return nil }
@@ -31,7 +25,7 @@ extension DataTransformer.ProfileDataTransformer {
             maxRate.append(er.reduce(CGFloat.leastNormalMagnitude, { max($0, CGFloat($1)) }))
         }
 
-        let safeMode = min(mode, engagementRates.count - 1)
+        let index = metric.rawValue
 
         return TransformedProfileModel(
             username: response.username,
@@ -40,10 +34,10 @@ extension DataTransformer.ProfileDataTransformer {
             totalComments: metrics.commentArray.reduce(0, +),
             averageLikes: averageLikes,
             averageComments: averageComments,
-            rates: engagementRates[safeMode],
+            rates: engagementRates[index],
             postTimes: metrics.times,
-            averageRate: averageRate[safeMode],
-            maxRate: maxRate[safeMode],
+            averageRate: averageRate[index],
+            maxRate: maxRate[index],
             captions: metrics.captions)
     }
 
@@ -58,8 +52,8 @@ extension DataTransformer.ProfileDataTransformer {
     }
 }
 
-extension DataTransformer.ProfileDataTransformer {
-    static private func computeMetrics(profileResponse: Profile, rawInsights: Bool) -> SubTransformedProfileModel? {
+extension ProfileDataTransformer {
+    private static func computeMetrics(profileResponse: Profile, rawInsights: Bool) -> SubTransformedProfileModel? {
         var likeArray = [Int]()
         var commentArray = [Int]()
         var sumLikesCommentsArray = [CGFloat]()
@@ -67,15 +61,15 @@ extension DataTransformer.ProfileDataTransformer {
         var reachArray = [CGFloat]()
         var times = [Double?]()
         var captions = [String?]()
-    
+
         guard let numberOfMedias = profileResponse.media?.data.count else {
             AppLogger.insights.info("Profile has no media to transform.")
             return nil
         }
-        
+
         for i in 0..<numberOfMedias {
             let mediaData = profileResponse.media?.data[i]
-            
+
             likeArray.append(mediaData?.likeCount ?? 0)
             commentArray.append(mediaData?.commentsCount ?? 0)
             captions.append(mediaData?.caption ?? "")
@@ -108,17 +102,16 @@ extension DataTransformer.ProfileDataTransformer {
         let engagementRateImpressions = rates(engagement: sumLikesCommentsArray, dividedBy: impressions)
         let engagementRateReach = rates(engagement: sumLikesCommentsArray, dividedBy: reachArray)
 
-        return(
-            .init(
-                likeArray: likeArray,
-                commentArray: commentArray,
-                engagementRateFollowers: rawInsights ? sumLikesCommentsArray : engagementRateFollowers,
-                times: times,
-                captions: captions,
-                engagementRateImpressions: rawInsights ? impressions : engagementRateImpressions,
-                engagementRateReach: rawInsights ? reachArray : engagementRateReach))
+        return SubTransformedProfileModel(
+            likeArray: likeArray,
+            commentArray: commentArray,
+            engagementRateFollowers: rawInsights ? sumLikesCommentsArray : engagementRateFollowers,
+            times: times,
+            captions: captions,
+            engagementRateImpressions: rawInsights ? impressions : engagementRateImpressions,
+            engagementRateReach: rawInsights ? reachArray : engagementRateReach)
     }
-    
+
     private static func getEngagementByFollowerRates(engagementArray: [CGFloat], followersCount: Int?) -> [CGFloat] {
         guard let followersCount, followersCount != 0 else {
             return engagementArray.map { _ in 0 }

@@ -7,7 +7,7 @@ struct AnalyticsView_Previews: PreviewProvider {
     }
 }
 
-struct AnalyticsView : View {
+struct AnalyticsView: View {
     
     private enum Strings {
         static let average = "Average".localized()
@@ -27,8 +27,8 @@ struct AnalyticsView : View {
         static let engagementDefinition = "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives.".localized()
         static let reachDefinition = "Reach is the total number of people (single accounts) who saw your content.".localized()
         static let impressionsDefinition = "Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not.".localized()
-        static let eRDefiniton = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers.".localized()
-        static let eRRDefiniton = "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content.".localized()
+        static let eRDefinition = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers.".localized()
+        static let eRRDefinition = "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content.".localized()
         static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account.".localized()
         static let ok = "Ok".localized()
         static let closeAnalytics = "Close analytics".localized()
@@ -47,12 +47,11 @@ struct AnalyticsView : View {
         static let overviewCellValueFontSize: CGFloat = 22
         static let overviewCellCornerRadius: CGFloat = 15
         static let overviewCellToEdgeHorizontalPadding: CGFloat = 20
-        static let maxNumberOfModes: Int = 3  // 1 followers, 2 reach, 3 impressions
         static let graphSectionHeaderVerticalSpacing: CGFloat = 5
-        static let graphSectionHeaderTraillingPadding: CGFloat = 10
+        static let graphSectionHeaderTrailingPadding: CGFloat = 10
     }
     
-    @State var swiftUIData: AnalyticsViewModel
+    @State var viewModel: AnalyticsViewModel
     @State private var showingAlert = false
     @Environment(\.dismiss) private var dismiss
     @State private var monitor: NetworkMonitor
@@ -61,7 +60,7 @@ struct AnalyticsView : View {
     var colors = [Color("Color1"),Color("Color")]
 
     init(gateway: any ConnectedInsightsGatewayProtocol, monitor: NetworkMonitor = NetworkMonitor()) {
-        _swiftUIData = State(initialValue: AnalyticsViewModel(gateway: gateway))
+        _viewModel = State(initialValue: AnalyticsViewModel(gateway: gateway))
         _monitor = State(initialValue: monitor)
     }
 
@@ -88,14 +87,14 @@ struct AnalyticsView : View {
 
                     if !monitor.isConnected {
                         OfflineView()
-                    } else if swiftUIData.jsonOfficial == nil {
+                    } else if viewModel.profile == nil {
                         LoadingView(loading: .constant(true))
                     } else {
-                        if swiftUIData.processedJson?.isPrivateProfile == true {
+                        if viewModel.transformedProfile?.isPrivateProfile == true {
                             Text(Strings.privateProfile)
-                        } else if swiftUIData.processedJson?.rates == Optional([]) {
+                        } else if viewModel.transformedProfile?.rates == Optional([]) {
                             // Screen when data is invalid
-                            if swiftUIData.processedJson?.username != nil {
+                            if viewModel.transformedProfile?.username != nil {
                                 Text(Strings.noMedia)
                                     .multilineTextAlignment(.center)
                             } else {
@@ -115,7 +114,7 @@ struct AnalyticsView : View {
             }
         }
         .task {
-            await swiftUIData.load()
+            await viewModel.load()
         }
     }
 
@@ -124,30 +123,40 @@ struct AnalyticsView : View {
     }
 }
 
-//MARK: - Mode-dependent labels (computed from the view model, never stored)
+//MARK: - Metric-dependent labels (computed from the view model, never stored)
 extension AnalyticsView {
-    private var titles: [String] {
-        swiftUIData.rawInsights
-            ? [Strings.engagement, Strings.reach, Strings.impressions]
-            : [Strings.engagement, Strings.engagement, Strings.engagement]
+    private func title(_ metric: AnalyticsMetric) -> String {
+        guard viewModel.rawInsights else { return Strings.engagement }
+        switch metric {
+        case .engagement: return Strings.engagement
+        case .reach: return Strings.reach
+        case .impressions: return Strings.impressions
+        }
     }
 
-    private var subtitles: [String] {
-        swiftUIData.rawInsights
-            ? [" ", " ", " "]
-            : [Strings.ratioToFollower, Strings.ratioByReach, Strings.ratioByImpressions]
+    private func subtitle(_ metric: AnalyticsMetric) -> String {
+        guard !viewModel.rawInsights else { return " " }
+        switch metric {
+        case .engagement: return Strings.ratioToFollower
+        case .reach: return Strings.ratioByReach
+        case .impressions: return Strings.ratioByImpressions
+        }
     }
 
-    private var infoTitles: [String] {
-        swiftUIData.rawInsights
-            ? [Strings.engagement, Strings.reach, Strings.impressions]
-            : [Strings.eR, Strings.eRR, Strings.eRI]
+    private func infoTitle(_ metric: AnalyticsMetric) -> String {
+        switch metric {
+        case .engagement: return viewModel.rawInsights ? Strings.engagement : Strings.eR
+        case .reach: return viewModel.rawInsights ? Strings.reach : Strings.eRR
+        case .impressions: return viewModel.rawInsights ? Strings.impressions : Strings.eRI
+        }
     }
 
-    private var infoMessages: [String] {
-        swiftUIData.rawInsights
-            ? ["\n\(Strings.engagementDefinition)", "\n\(Strings.reachDefinition)", "\n\(Strings.impressionsDefinition)"]
-            : ["\n\(Strings.eRDefiniton)", "\n\(Strings.eRRDefiniton)", "\n\(Strings.eRIDefinition)"]
+    private func infoMessage(_ metric: AnalyticsMetric) -> String {
+        switch metric {
+        case .engagement: return "\n" + (viewModel.rawInsights ? Strings.engagementDefinition : Strings.eRDefinition)
+        case .reach: return "\n" + (viewModel.rawInsights ? Strings.reachDefinition : Strings.eRRDefinition)
+        case .impressions: return "\n" + (viewModel.rawInsights ? Strings.impressionsDefinition : Strings.eRIDefinition)
+        }
     }
 }
 
@@ -157,20 +166,16 @@ extension AnalyticsView {
         let impactMed = UIImpactFeedbackGenerator(style: .medium)
         impactMed.impactOccurred()
 
-        swiftUIData.rawInsights.toggle()
-        swiftUIData.refreshFromCurrentProfile()
+        viewModel.rawInsights.toggle()
+        viewModel.refreshFromCurrentProfile()
     }
 
-    private func switchInsightToRate() {
+    private func cycleMetric() {
         let impactMed = UIImpactFeedbackGenerator(style: .soft)
         impactMed.impactOccurred()
 
-        swiftUIData.mode += 1
-        if swiftUIData.mode == Constants.maxNumberOfModes {
-            swiftUIData.mode = 0
-        }
-
-        swiftUIData.refreshFromCurrentProfile()
+        viewModel.metric = viewModel.metric.next()
+        viewModel.refreshFromCurrentProfile()
     }
 }
 
@@ -178,7 +183,7 @@ extension AnalyticsView {
 extension AnalyticsView {
     var backButton: some View {
         Button(action: {
-            swiftUIData.rawInsights = true
+            viewModel.rawInsights = true
             dismiss()
         }) {
             Image(systemName: "chevron.down.circle")
@@ -195,11 +200,11 @@ extension AnalyticsView {
         }) {
             Image(systemName: "info.circle")
         }
-        .accessibilityLabel(Text(infoTitles[swiftUIData.mode]))
+        .accessibilityLabel(Text(infoTitle(viewModel.metric)))
         .alert(isPresented: $showingAlert) {
             Alert(
-                title: Text(infoTitles[swiftUIData.mode]),
-                message:Text(infoMessages[swiftUIData.mode]),
+                title: Text(infoTitle(viewModel.metric)),
+                message: Text(infoMessage(viewModel.metric)),
                 dismissButton: .default(Text(Strings.ok)))
         }
     }
@@ -211,12 +216,12 @@ extension AnalyticsView {
         }
         .accessibilityLabel(Text(Strings.toggleRawAndRates))
         .toggleStyle(DarkToggleStyle())
-        .padding(.trailing, Constants.graphSectionHeaderTraillingPadding)
-        .onChange(of: isToggled) { _ in changeInsightType() }
+        .padding(.trailing, Constants.graphSectionHeaderTrailingPadding)
+        .onChange(of: isToggled) { changeInsightType() }
     }
 
     var switchModeButton: some View {
-        Button(action: { switchInsightToRate() }) {
+        Button(action: { cycleMetric() }) {
             Image(systemName: "scale.3d")
                 .foregroundColor(Color("Color4"))
         }
@@ -236,7 +241,7 @@ extension AnalyticsView {
                     .foregroundColor(Color(UIColor.label))
                     .fontWeight(.bold)
                 
-                Text(swiftUIData.processedJson?.username ?? " ")
+                Text(viewModel.transformedProfile?.username ?? " ")
                     .font(.subheadline)
                     .foregroundColor(Color(UIColor.label))
             }
@@ -261,24 +266,24 @@ extension AnalyticsView {
                     graphSectionHeaderButtons
                 }
 
-                if let postCount = swiftUIData.processedJson?.postsCount,
-                   let average = swiftUIData.processedJson?.averageRate
+                if let postCount = viewModel.transformedProfile?.postsCount,
+                   let average = viewModel.transformedProfile?.averageRate
                 {
                     if postCount == 1 {
                         MonoCircleView(
                             monoCircleValue: Double(average),
-                            isRate: !swiftUIData.rawInsights)
+                            isRate: !viewModel.rawInsights)
                         Spacer()
                     } else {
                         CirclesView(
-                            circles: $swiftUIData.circlesData,
-                            isRate: !swiftUIData.rawInsights,
+                            circles: $viewModel.circlesData,
+                            isRate: !viewModel.rawInsights,
                             columns: columns,
                             availableWidth: availableWidth)
                         BarchartView(
                             selectedBarChartPostId: $selectedBarChartPostId,
-                            selectedBarChartPostRateValue: $swiftUIData.circlesData[1].value,
-                            barchartPostList: $swiftUIData.barChartData,
+                            selectedBarChartPostRateValue: $viewModel.circlesData[1].value,
+                            barchartPostList: $viewModel.barChartData,
                             colors: colors)
                         BarchartArrowsView(postsCount: postCount)
                     }
@@ -302,10 +307,10 @@ extension AnalyticsView {
 extension AnalyticsView {
     var overviewSection: some View{
         LazyVGrid(columns: columns) {
-            ForEach(swiftUIData.overviewSectionData) { overviewCell in
+            ForEach(viewModel.overviewSectionData) { overviewCell in
                 VStack(spacing: Constants.overviewCellHeaderToValuePadding){
                     HStack{
-                        Text(swiftUIData.processedJson?.postsCount == 1 ? "" : Strings.average)
+                        Text(viewModel.transformedProfile?.postsCount == 1 ? "" : Strings.average)
                             .font(.body)
                             .foregroundColor(Color(UIColor.label))
                         Spacer(minLength: 0)
@@ -341,12 +346,12 @@ extension AnalyticsView {
     var graphSectionHeader: some View {
         VStack(alignment: .leading, spacing: Constants.graphSectionHeaderVerticalSpacing) {
             HStack {
-                Text(titles[swiftUIData.mode])
+                Text(title(viewModel.metric))
                     .font(.title)
                     .foregroundColor(Color(UIColor.label))
                 infoButton
             }
-            Text(subtitles[swiftUIData.mode])
+            Text(subtitle(viewModel.metric))
                 .font(.subheadline)
                 .foregroundColor(Color(UIColor.label))
         }

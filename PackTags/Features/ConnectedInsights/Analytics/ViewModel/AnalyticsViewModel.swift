@@ -2,6 +2,19 @@ import Foundation
 import Observation
 import InstagramGraph
 
+/// The engagement dimension the analytics screen is showing. Replaces the old
+/// magic-`Int` mode: the raw value indexes the parallel rate arrays the
+/// transformer builds (followers / reach / impressions), so it is always valid.
+enum AnalyticsMetric: Int, CaseIterable {
+    case engagement
+    case reach
+    case impressions
+
+    func next() -> AnalyticsMetric {
+        AnalyticsMetric(rawValue: rawValue + 1) ?? .engagement
+    }
+}
+
 private enum Strings {
     static let likes = "Likes".localized()
     static let comments = "Comments".localized()
@@ -14,12 +27,13 @@ private enum Strings {
 final class AnalyticsViewModel {
     @ObservationIgnored let gateway: any ConnectedInsightsGatewayProtocol
 
-    var mode: Int = 0
-    var rawInsights: Bool = true
+    var metric: AnalyticsMetric = .engagement
+    var rawInsights = true
 
-    //MARK: - Live Variables
-    var processedJson : TransformedProfileModel?
-    var jsonOfficial : Profile? //Api Graph
+    // MARK: - Live data
+    var transformedProfile: TransformedProfileModel?
+    var profile: Profile?
+
     var overviewSectionData = [
         AnalyticsOverviewModel(
             id: 0,
@@ -47,7 +61,7 @@ final class AnalyticsViewModel {
 
     var barChartData: [BarChartPost] = [BarChartPost(id: 0, post: "", rate: 0, barHeight: 0)]
 
-    //MARK: - Init
+    // MARK: - Init
     init(gateway: any ConnectedInsightsGatewayProtocol) {
         self.gateway = gateway
     }
