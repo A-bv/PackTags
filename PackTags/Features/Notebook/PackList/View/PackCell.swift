@@ -101,6 +101,9 @@ final class PackCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
+        registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (cell: PackCell, _) in
+            cell.copyButton.addNeumorphicShadows()
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -167,13 +170,5 @@ final class PackCell: UITableViewCell {
         super.prepareForReuse()
         self.roundTopCorners(radius: 0)
         self.copyButton.addNeumorphicShadows()
-    }
-}
-
-//MARK: - Update colors when light/dark mode
-extension PackCell {
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        copyButton.addNeumorphicShadows()
     }
 }

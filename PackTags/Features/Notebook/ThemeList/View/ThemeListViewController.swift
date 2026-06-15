@@ -41,6 +41,10 @@ final class ThemeListViewController: UITableViewController {
         }
         viewModel.loadThemes()
         addFloatingButton()
+        registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (vc: ThemeListViewController, _) in
+            vc.updateLogo()
+            vc.navigationController?.navigationBar.putShadow()
+        }
     }
 
     func thumbnail(for theme: ThemeCD) -> UIImage? {
@@ -58,14 +62,5 @@ final class ThemeListViewController: UITableViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateRowHeightIfNeeded()
-    }
-}
-
-//MARK: - Update colors when light/dark mode
-extension ThemeListViewController {
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        updateLogo ()
-        navigationController?.navigationBar.putShadow()
     }
 }

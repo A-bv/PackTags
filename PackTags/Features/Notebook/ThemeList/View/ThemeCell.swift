@@ -65,6 +65,10 @@ final class ThemeCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
+        registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (cell: ThemeCell, _) in
+            cell.contentView.backgroundColor = bkgdColor
+            cell.supportingView.addNeumorphicShadows()
+        }
     }
 
 
@@ -125,14 +129,5 @@ final class ThemeCell: UITableViewCell {
         } else {
             nameLabel.centerXAnchor.constraint(equalTo:self.containerView.centerXAnchor).isActive = true
         }
-    }
-}
-
-//MARK: - Update colors when light/dark mode
-extension ThemeCell {
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        self.contentView.backgroundColor = bkgdColor
-        supportingView.addNeumorphicShadows()
     }
 }
