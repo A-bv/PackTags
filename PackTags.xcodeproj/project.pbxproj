@@ -324,7 +324,6 @@
 				AB00000000000000000000E1 /* AppSettings.swift */,
 				AB00000000000000000000C1 /* SettingsKey.swift */,
 				AB00000000000000000000B1 /* PersistenceController.swift */,
-				0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */,
 				0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */,
 			);
 			path = Data;
@@ -719,6 +718,7 @@
 				AB00000000000000000000F1 /* TagPackFormatter.swift */,
 				AB00000000000000000000F3 /* TagDeduplicator.swift */,
 				AB00000000000000000000F7 /* HashtagParser.swift */,
+				0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
