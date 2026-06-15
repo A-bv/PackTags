@@ -47,7 +47,7 @@ enum SettingsSections {
         static let account = "Account".localized()
         static let instagram = "Instagram".localized()
         static let facebookLogin = "Facebook Login".localized()
-        static let hashtags = "Hastags".localized()
+        static let hashtags = "Hashtags".localized()
         static let quantityPerPack = "Quantity Per Pack".localized()
         static let saveAndShuffle = "Save & Shuffle".localized()
         static let keepPackOrder = "Keep Packs Order".localized()

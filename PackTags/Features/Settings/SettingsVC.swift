@@ -25,6 +25,7 @@ final class SettingsVC: UIViewController {
     let navigation: SettingsNavigation
     let connectedInsights: any ConnectedInsightsCoordinating
     let appSettings: any AppSettingsProtocol
+    var models = [SettingsSection]()
 
     init(connectedInsights: any ConnectedInsightsCoordinating, appSettings: any AppSettingsProtocol, navigation: SettingsNavigation) {
         self.connectedInsights = connectedInsights
@@ -37,8 +38,6 @@ final class SettingsVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    var models = [SettingsSection]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.putShadow(false)

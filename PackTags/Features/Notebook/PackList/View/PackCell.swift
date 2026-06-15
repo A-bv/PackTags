@@ -23,14 +23,14 @@ final class PackCell: UITableViewCell {
         static let cellLabelFontSize = CGFloat(19)
     }
     
-    let containerView:UIView = {
+    let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         return view
     }()
     
-    let cellLabel:UILabel = {
+    let cellLabel: UILabel = {
         let label = UILabel()
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(
             for: UIFont.boldSystemFont(ofSize: Constants.cellLabelFontSize),
@@ -41,9 +41,9 @@ final class PackCell: UITableViewCell {
         return label
     }()
     
-    var subButtonTapCallback: () -> ()  = { }
+    var subButtonTapCallback: () -> Void = { }
     
-    let subButton :UIButton = {
+    let subButton: UIButton = {
         let btn = UIButton()
         btn.titleLabel?.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(
             for: UIFont.boldSystemFont(ofSize: Constants.subButtonFontSize),

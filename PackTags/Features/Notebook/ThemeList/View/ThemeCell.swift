@@ -17,14 +17,14 @@ final class ThemeCell: UITableViewCell {
         static let containerViewHeight = CGFloat(40)
     }
 
-    let containerView:UIView = {
+    let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         return view
     }()
 
-    let themeImageView:UIImageView = {
+    let themeImageView: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
         img.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ final class ThemeCell: UITableViewCell {
         return img
     }()
 
-    let nameLabel:UILabel = {
+    let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(
             for: UIFont.boldSystemFont(ofSize: Constants.nameLabelFontSize),
