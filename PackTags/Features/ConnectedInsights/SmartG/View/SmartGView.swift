@@ -44,8 +44,6 @@ struct SmartGView: View {
     }
 }
 
-struct SmartGView_Previews: PreviewProvider {
-    static var previews: some View {
-        SmartGView(gateway: UnavailableConnectedInsightsGateway())
-    }
+#Preview {
+    SmartGView(gateway: UnavailableConnectedInsightsGateway())
 }

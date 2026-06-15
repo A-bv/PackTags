@@ -72,7 +72,7 @@ final class InfoSetupIGCreatorVC: UIViewController {
         return textView
     }()
     
-    private var instagramIconAttachment: NSTextAttachment {
+    private func makeInstagramIconAttachment() -> NSTextAttachment {
         let icon = NSTextAttachment()
         icon.image = UIImage(named: "igColor")
         icon.bounds = Constants.iconBounds
@@ -84,7 +84,7 @@ final class InfoSetupIGCreatorVC: UIViewController {
         return stack
     }()
     
-    private var openInstagramButton: UIButton {
+    private func makeOpenInstagramButton() -> UIButton {
         let btn = UIButton()
         btn.setTitleColor(.customPurple, for: .normal)
         btn.setTitle(Strings.buttonTitle, for: .normal)
@@ -164,13 +164,13 @@ final class InfoSetupIGCreatorVC: UIViewController {
         containerStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
         let attributedString = NSMutableAttributedString(string: "")
-        attributedString.append(NSAttributedString(attachment: instagramIconAttachment))
+        attributedString.append(NSAttributedString(attachment: makeInstagramIconAttachment()))
         attributedString.append(NSAttributedString(string: "  " + Strings.topLabelText))
         topLabel.attributedText = attributedString
     }
 
     private func setupInstagramButton() {
-        let button = openInstagramButton
+        let button = makeOpenInstagramButton()
         view.addSubview(button)
         button.heightAnchor.constraint(equalToConstant: Constants.openInstagramBtnHeight).isActive = true
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

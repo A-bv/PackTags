@@ -1,10 +1,8 @@
 import SwiftUI
 import InstagramGraph
 
-struct AnalyticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnalyticsView(gateway: UnavailableConnectedInsightsGateway())
-    }
+#Preview {
+    AnalyticsView(gateway: UnavailableConnectedInsightsGateway())
 }
 
 struct AnalyticsView: View {
