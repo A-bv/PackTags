@@ -2,9 +2,13 @@ import UIKit
 import SwiftUI
 
 @MainActor
-final class ThemeCoordinator: Coordinator {
+final class NotebookCoordinator: Coordinator {
     let navigationController: UINavigationController
     let dependencies: AppDependencies
+
+    /// Child coordinators are retained while their flow is on screen.
+    private var settingsCoordinator: SettingsCoordinator?
+    private var onboardingCoordinator: OnboardingCoordinator?
 
     init(navigationController: UINavigationController, dependencies: AppDependencies) {
         self.navigationController = navigationController
@@ -16,7 +20,7 @@ final class ThemeCoordinator: Coordinator {
     }
 
     private func showThemeList() {
-        let actions = ThemeListActions(
+        let navigation = ThemeListNavigation(
             selectTheme: { [weak self] theme in self?.showPackList(for: theme) },
             createTheme: { [weak self] onCreated in self?.showNewThemeEditor(onSave: onCreated) },
             openSettings: { [weak self] in self?.showSettings() },
@@ -26,12 +30,12 @@ final class ThemeCoordinator: Coordinator {
         let viewModel = ThemeListViewModel(
             repository: dependencies.themeRepository,
             settings: dependencies.appSettings,
-            actions: actions)
+            navigation: navigation)
 
         let viewController = ThemeListViewController(style: .plain, viewModel: viewModel)
         viewController.onViewDidAppear = { [weak self, weak viewModel] in
             guard let self, let viewModel, viewModel.shouldShowOnboarding else { return }
-            self.showOnboarding { [weak self, weak viewModel] in
+            self.startOnboarding { [weak self, weak viewModel] in
                 guard let self, let viewModel, viewModel.consumeFirstTimeTipsAlert() else { return }
                 Alerts.showFirstTimeTipsAlert(from: self.navigationController)
             }
@@ -64,34 +68,24 @@ final class ThemeCoordinator: Coordinator {
         presentInNavController(viewController, transition: .coverVertical)
     }
 
-    private func showOnboarding(completion: (() -> Void)?) {
-        let viewController = OnBoardingVC(appSettings: dependencies.appSettings)
-        viewController.modalPresentationStyle = .fullScreen
-        viewController.onDismiss = completion
-        navigationController.present(viewController, animated: true)
+    private func startOnboarding(onFinish: @escaping () -> Void) {
+        let onboarding = OnboardingCoordinator(
+            navigationController: navigationController,
+            appSettings: dependencies.appSettings)
+        onboarding.onFinish = { [weak self] in
+            self?.onboardingCoordinator = nil
+            onFinish()
+        }
+        onboardingCoordinator = onboarding
+        onboarding.start()
     }
 
     private func showSettings() {
-        let navigation = SettingsNavigation(
-            openQuantityPicker: { [weak self] in self?.showQuantityPicker() },
-            replayOnboarding: { [weak self] in
-                self?.dependencies.appSettings.hasSeenOnboarding = false
-                self?.showOnboarding(completion: nil)
-            }
-        )
-        let viewController = SettingsVC(
-            connectedInsights: dependencies.connectedInsights,
-            appSettings: dependencies.appSettings,
-            navigation: navigation
-        )
-        navigationController.pushViewController(viewController, animated: true)
-    }
-
-    private func showQuantityPicker() {
-        let viewController = QuantityPickerVC(appSettings: dependencies.appSettings)
-        viewController.modalPresentationStyle = .overFullScreen
-        viewController.modalTransitionStyle = .crossDissolve
-        navigationController.present(viewController, animated: true)
+        let coordinator = SettingsCoordinator(
+            navigationController: navigationController,
+            dependencies: dependencies)
+        settingsCoordinator = coordinator
+        coordinator.start()
     }
 
     private func showAnalytics() {

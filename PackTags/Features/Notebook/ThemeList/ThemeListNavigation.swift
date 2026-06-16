@@ -1,6 +1,6 @@
 import Foundation
 
-struct ThemeListActions {
+struct ThemeListNavigation {
     let selectTheme: (ThemeCD) -> Void
     let createTheme: (_ onCreated: @escaping () -> Void) -> Void
     let openSettings: () -> Void

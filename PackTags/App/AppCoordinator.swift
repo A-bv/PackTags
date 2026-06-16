@@ -4,7 +4,7 @@ import UIKit
 final class AppCoordinator: Coordinator {
     /// View controllers hold their coordinator weakly; this reference keeps
     /// the notebook flow's coordinator alive for the app's lifetime.
-    private var themeCoordinator: ThemeCoordinator?
+    private var notebookCoordinator: NotebookCoordinator?
     let navigationController: UINavigationController
     private let window: UIWindow
     private let dependencies: AppDependencies
@@ -29,8 +29,8 @@ final class AppCoordinator: Coordinator {
     func start() {
         window.rootViewController = navigationController
 
-        let coordinator = ThemeCoordinator(navigationController: navigationController, dependencies: dependencies)
-        themeCoordinator = coordinator
+        let coordinator = NotebookCoordinator(navigationController: navigationController, dependencies: dependencies)
+        notebookCoordinator = coordinator
         coordinator.start()
     }
 }

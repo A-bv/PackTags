@@ -9,14 +9,14 @@ final class ThemeListViewModel {
 
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
-    private let actions: ThemeListActions
+    private let navigation: ThemeListNavigation
     private var themes: [ThemeCD] = []
     var onUpdate: (() -> Void)?
 
-    init(repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol, actions: ThemeListActions) {
+    init(repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol, navigation: ThemeListNavigation) {
         self.repository = repository
         self.settings = settings
-        self.actions = actions
+        self.navigation = navigation
     }
 
     // MARK: - Presentation
@@ -34,13 +34,13 @@ final class ThemeListViewModel {
 
     func selectTheme(at index: Int) {
         guard themes.indices.contains(index) else { return }
-        actions.selectTheme(themes[index])
+        navigation.selectTheme(themes[index])
     }
 
-    func createTheme() { actions.createTheme { [weak self] in self?.loadThemes() } }
-    func openSettings() { actions.openSettings() }
-    func openAnalytics() { actions.openAnalytics() }
-    func openSmartG() { actions.openSmartG() }
+    func createTheme() { navigation.createTheme { [weak self] in self?.loadThemes() } }
+    func openSettings() { navigation.openSettings() }
+    func openAnalytics() { navigation.openAnalytics() }
+    func openSmartG() { navigation.openSmartG() }
 
     // MARK: - Onboarding
 
