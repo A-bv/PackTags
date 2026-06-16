@@ -12,7 +12,7 @@
 		020621572666DBCC0072C404 /* BarChartPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* BarChartPost.swift */; };
 		0207BB852FD3736C0007F3D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB842FD3736C0007F3D3 /* Coordinator.swift */; };
 		0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */; };
-		0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */; };
+		0207BB892FD3736C0007F3D3 /* NotebookCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB882FD3736C0007F3D3 /* NotebookCoordinator.swift */; };
 		0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */; };
 		0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */; };
 		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
@@ -58,7 +58,7 @@
 		0281B98B287A007200344D3E /* UINavigationController+BarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* UINavigationController+BarAppearance.swift */; };
 		029122842B8AAF56007EB7ED /* SmartGErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029122832B8AAF56007EB7ED /* SmartGErrorStateView.swift */; };
 		029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */; };
-		0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */; };
+		0296306E2614A785000CF4E9 /* QuantityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerViewController.swift */; };
 		02998A642B43735F00B70516 /* SmartGViewModel+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */; };
 		02998A662B44104800B70516 /* Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A652B44104800B70516 /* Circles.swift */; };
 		02998A682B4611B100B70516 /* BarchartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A672B4611B000B70516 /* BarchartItemView.swift */; };
@@ -71,14 +71,11 @@
 		02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarchartView.swift */; };
 		02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */; };
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
-		02BC8D592602B79900441349 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsVC.swift */; };
-		AB0000000000000000004004 /* SettingsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000004003 /* SettingsNavigation.swift */; };
-		AB0000000000000000005002 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000005001 /* SettingsViewModel.swift */; };
+		02BC8D592602B79900441349 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsViewController.swift */; };
 		02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */; };
 		02CEFB6D25CB945000FB70E4 /* UIImage+Treatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEFB6C25CB945000FB70E4 /* UIImage+Treatment.swift */; };
 		02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */; };
 		02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BF296B606F00536E3A /* RoundedShape.swift */; };
-		02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */; };
 		02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */; };
 		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
@@ -102,16 +99,13 @@
 		02FB551624FFA2AC00174E34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551524FFA2AC00174E34 /* Assets.xcassets */; };
 		02FB551924FFA2AC00174E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551724FFA2AC00174E34 /* LaunchScreen.storyboard */; };
 		02FB552F24FFA78B00174E34 /* ThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB552E24FFA78B00174E34 /* ThemeListViewController.swift */; };
-		AB0000000000000000004002 /* ThemeListActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000004001 /* ThemeListActions.swift */; };
 		02FBAFE525A93C6100E32D73 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */; };
 		02FBAFE825A93E8400E32D73 /* PackTagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB552324FFA2AC00174E34 /* PackTagsTests.swift */; };
 		02FBAFF125A93EBD00E32D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02FB551524FFA2AC00174E34 /* Assets.xcassets */; };
-		02FD6CB026D8006400AB16E4 /* SettingsVC+RateAndReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CAF26D8006400AB16E4 /* SettingsVC+RateAndReview.swift */; };
 		02FD6CB226D8008400AB16E4 /* ReviewPromptPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */; };
 		02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */; };
 		02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9EC928DF5BF000193A15 /* FacebookCore */; };
 		02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9ECB28DF5BF000193A15 /* FacebookLogin */; };
-		02FEF5B7263304EC0001B525 /* SettingsVC+Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEF5B6263304EC0001B525 /* SettingsVC+Mail.swift */; };
 		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
 		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
@@ -123,13 +117,17 @@
 		AB0000000000000000000102 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000101 /* DomainTests.swift */; };
 		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
 		AB0000000000000000000402 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000401 /* SettingsSections.swift */; };
-		AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000403 /* SettingsVC+Alerts.swift */; };
+		AB0000000000000000005102 /* SettingsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000005101 /* SettingsNavigation.swift */; };
 		AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000907 /* KeyboardFindButton.swift */; };
 		AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000909 /* ThemeImagePicker.swift */; };
 		AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000911 /* ConnectedInsightsTests.swift */; };
 		AB0000000000000000001003 /* TapTagKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001002 /* TapTagKit */; };
 		AB0000000000000000001010 /* TableViewControllerCoverKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001009 /* TableViewControllerCoverKit */; };
 		AB0000000000000000003002 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000003001 /* PrivacyInfo.xcprivacy */; };
+		AB0000000000000000004002 /* ThemeListNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000004001 /* ThemeListNavigation.swift */; };
+		AB0000000000000000005002 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000005001 /* SettingsViewModel.swift */; };
+		AB0000000000000000006002 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000006001 /* SettingsCoordinator.swift */; };
+		AB0000000000000000007002 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000007001 /* OnboardingCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,7 +146,7 @@
 		020621562666DBCC0072C404 /* BarChartPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPost.swift; sourceTree = "<group>"; };
 		0207BB842FD3736C0007F3D3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
+		0207BB882FD3736C0007F3D3 /* NotebookCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCoordinator.swift; sourceTree = "<group>"; };
 		0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
@@ -193,7 +191,7 @@
 		0281B98A287A007200344D3E /* UINavigationController+BarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+BarAppearance.swift"; sourceTree = "<group>"; };
 		029122832B8AAF56007EB7ED /* SmartGErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGErrorStateView.swift; sourceTree = "<group>"; };
 		029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonFactory.swift; sourceTree = "<group>"; };
-		0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerVC.swift; sourceTree = "<group>"; };
+		0296306D2614A785000CF4E9 /* QuantityPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerViewController.swift; sourceTree = "<group>"; };
 		02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartGViewModel+Import.swift"; sourceTree = "<group>"; };
 		02998A652B44104800B70516 /* Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circles.swift; sourceTree = "<group>"; };
 		02998A672B4611B000B70516 /* BarchartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartItemView.swift; sourceTree = "<group>"; };
@@ -206,14 +204,11 @@
 		02B0D74C2A48B73700EF1500 /* BarchartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartView.swift; sourceTree = "<group>"; };
 		02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartArrowsView.swift; sourceTree = "<group>"; };
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
-		02BC8D582602B79900441349 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		AB0000000000000000004003 /* SettingsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigation.swift; sourceTree = "<group>"; };
-		AB0000000000000000005001 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		02BC8D582602B79900441349 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewController.swift; sourceTree = "<group>"; };
 		02CEFB6C25CB945000FB70E4 /* UIImage+Treatment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Treatment.swift"; sourceTree = "<group>"; };
 		02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsOverviewModel.swift; sourceTree = "<group>"; };
 		02D066BF296B606F00536E3A /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
-		02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+delegate.swift"; sourceTree = "<group>"; };
 		02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsView.swift; sourceTree = "<group>"; };
 		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -242,12 +237,9 @@
 		02FB552324FFA2AC00174E34 /* PackTagsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackTagsTests.swift; sourceTree = "<group>"; };
 		02FB552524FFA2AC00174E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02FB552E24FFA78B00174E34 /* ThemeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewController.swift; sourceTree = "<group>"; };
-		AB0000000000000000004001 /* ThemeListActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListActions.swift; sourceTree = "<group>"; };
 		02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
-		02FD6CAF26D8006400AB16E4 /* SettingsVC+RateAndReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+RateAndReview.swift"; sourceTree = "<group>"; };
 		02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptPolicy.swift; sourceTree = "<group>"; };
 		02FDEDCC290304E200B9BCFD /* SmartTags.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartTags.xcdatamodel; sourceTree = "<group>"; };
-		02FEF5B6263304EC0001B525 /* SettingsVC+Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Mail.swift"; sourceTree = "<group>"; };
 		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
@@ -255,15 +247,19 @@
 		AB00000000000000000000E1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F1 /* TagPackFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPackFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F3 /* TagDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeduplicator.swift; sourceTree = "<group>"; };
-		AB00000000000000000000F7 /* HashtagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashtagParser.swift"; sourceTree = "<group>"; };
+		AB00000000000000000000F7 /* HashtagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
 		AB0000000000000000000101 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
 		AB0000000000000000000401 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
-		AB0000000000000000000403 /* SettingsVC+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Alerts.swift"; sourceTree = "<group>"; };
+		AB0000000000000000005101 /* SettingsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigation.swift; sourceTree = "<group>"; };
 		AB0000000000000000000907 /* KeyboardFindButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFindButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000909 /* ThemeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePicker.swift; sourceTree = "<group>"; };
 		AB0000000000000000000911 /* ConnectedInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000003001 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		AB0000000000000000004001 /* ThemeListNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListNavigation.swift; sourceTree = "<group>"; };
+		AB0000000000000000005001 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		AB0000000000000000006001 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		AB0000000000000000007001 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,10 +290,11 @@
 			isa = PBXGroup;
 			children = (
 				0207BB842FD3736C0007F3D3 /* Coordinator.swift */,
-				0207BB882FD3736C0007F3D3 /* ThemeCoordinator.swift */,
+				0207BB882FD3736C0007F3D3 /* NotebookCoordinator.swift */,
+				AB0000000000000000006001 /* SettingsCoordinator.swift */,
+				AB0000000000000000007001 /* OnboardingCoordinator.swift */,
 				0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */,
 				0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */,
-				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -361,6 +358,33 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		02211E032FE1B3FA002FDB14 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0296306D2614A785000CF4E9 /* QuantityPickerViewController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		02211E042FE1B440002FDB14 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				02FAE29E260A9BA900324724 /* SettingsCell.swift */,
+				02FAE2A4260AC79C00324724 /* SettingsSwitchCell.swift */,
+				02BC8D582602B79900441349 /* SettingsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		02211E052FE1B44B002FDB14 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000005001 /* SettingsViewModel.swift */,
+				AB0000000000000000000401 /* SettingsSections.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		0226F19A259E0346006E086C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +444,7 @@
 			children = (
 				0281B98A287A007200344D3E /* UINavigationController+BarAppearance.swift */,
 				0281B9872879D60700344D3E /* UINavigationController+BarShadow.swift */,
+				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
 				0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */,
 			);
 			path = NavigationBar;
@@ -436,7 +461,7 @@
 		02A4235B2844002600A25067 /* ThemeList */ = {
 			isa = PBXGroup;
 			children = (
-				AB0000000000000000004001 /* ThemeListActions.swift */,
+				AB0000000000000000004001 /* ThemeListNavigation.swift */,
 				02AEA5EA25B9D2F10063076F /* View */,
 				0207BBAC2FD564080007F3D3 /* ViewModel */,
 			);
@@ -522,14 +547,6 @@
 				02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		02D709CB2A58C48C0009F7C3 /* QuantityPicker */ = {
-			isa = PBXGroup;
-			children = (
-				0296306D2614A785000CF4E9 /* QuantityPickerVC.swift */,
-			);
-			path = QuantityPicker;
 			sourceTree = "<group>";
 		};
 		02D709D32A58FCDA0009F7C3 /* SmartG */ = {
@@ -627,17 +644,10 @@
 		02FAE2AB260ADA9200324724 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				02D709CB2A58C48C0009F7C3 /* QuantityPicker */,
-				02BC8D582602B79900441349 /* SettingsVC.swift */,
-				AB0000000000000000004003 /* SettingsNavigation.swift */,
-				AB0000000000000000005001 /* SettingsViewModel.swift */,
-				AB0000000000000000000401 /* SettingsSections.swift */,
-				AB0000000000000000000403 /* SettingsVC+Alerts.swift */,
-				02FD6CAF26D8006400AB16E4 /* SettingsVC+RateAndReview.swift */,
-				02FEF5B6263304EC0001B525 /* SettingsVC+Mail.swift */,
-				02D10F0F2920FAC200287248 /* SettingsVC+delegate.swift */,
-				02FAE29E260A9BA900324724 /* SettingsCell.swift */,
-				02FAE2A4260AC79C00324724 /* SettingsSwitchCell.swift */,
+				02211E052FE1B44B002FDB14 /* ViewModel */,
+				02211E042FE1B440002FDB14 /* View */,
+				02211E032FE1B3FA002FDB14 /* Components */,
+				AB0000000000000000005101 /* SettingsNavigation.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -976,24 +986,24 @@
 				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
 				0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */,
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
-				0207BB892FD3736C0007F3D3 /* ThemeCoordinator.swift in Sources */,
+				0207BB892FD3736C0007F3D3 /* NotebookCoordinator.swift in Sources */,
+				AB0000000000000000006002 /* SettingsCoordinator.swift in Sources */,
+				AB0000000000000000007002 /* OnboardingCoordinator.swift in Sources */,
 				02998A642B43735F00B70516 /* SmartGViewModel+Import.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
 				0207BB852FD3736C0007F3D3 /* Coordinator.swift in Sources */,
 				02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */,
 				02F89B272974306F008F363D /* StoryCard.swift in Sources */,
-				02D10F102920FAC200287248 /* SettingsVC+delegate.swift in Sources */,
 				02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */,
 				02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */,
 				021044F626446AEF00408CEB /* StringFormatter.swift in Sources */,
 				AB00000000000000000000A2 /* AppLogger.swift in Sources */,
 				AB00000000000000000000C2 /* SettingsKey.swift in Sources */,
 				02FAE2A5260AC79C00324724 /* SettingsSwitchCell.swift in Sources */,
-				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
-				AB0000000000000000004004 /* SettingsNavigation.swift in Sources */,
+				02BC8D592602B79900441349 /* SettingsViewController.swift in Sources */,
 				AB0000000000000000005002 /* SettingsViewModel.swift in Sources */,
 				AB0000000000000000000402 /* SettingsSections.swift in Sources */,
-				AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */,
+				AB0000000000000000005102 /* SettingsNavigation.swift in Sources */,
 				02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */,
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
@@ -1024,7 +1034,6 @@
 				AB00000000000000000000F8 /* HashtagParser.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */,
-				02FD6CB026D8006400AB16E4 /* SettingsVC+RateAndReview.swift in Sources */,
 				021AFD5C278A1BE40008735E /* Alerts.swift in Sources */,
 				02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */,
 				026D16DD2A3E474500228DEA /* AnalyticsViewModel+Import.swift in Sources */,
@@ -1033,16 +1042,15 @@
 				02FA30732A00405D006A48CC /* StoryCardLabel.swift in Sources */,
 				026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */,
 				02FB552F24FFA78B00174E34 /* ThemeListViewController.swift in Sources */,
-				AB0000000000000000004002 /* ThemeListActions.swift in Sources */,
+				AB0000000000000000004002 /* ThemeListNavigation.swift in Sources */,
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
 				02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */,
-				02FEF5B7263304EC0001B525 /* SettingsVC+Mail.swift in Sources */,
 				02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
 				02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */,
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
-				0296306E2614A785000CF4E9 /* QuantityPickerVC.swift in Sources */,
+				0296306E2614A785000CF4E9 /* QuantityPickerViewController.swift in Sources */,
 				02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */,
 				0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */,
 				AB00000000000000000000B2 /* PersistenceController.swift in Sources */,

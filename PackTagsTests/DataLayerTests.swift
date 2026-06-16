@@ -100,8 +100,8 @@ import CoreData
         var setupInfoShown = false
     }
 
-    private func noopActions(selectTheme: @escaping (ThemeCD) -> Void = { _ in }) -> ThemeListActions {
-        ThemeListActions(
+    private func noopNavigation(selectTheme: @escaping (ThemeCD) -> Void = { _ in }) -> ThemeListNavigation {
+        ThemeListNavigation(
             selectTheme: selectTheme,
             createTheme: { _ in },
             openSettings: {},
@@ -109,16 +109,16 @@ import CoreData
             openSmartG: {})
     }
 
-    private func makeSUT(actions: ThemeListActions? = nil) -> (viewModel: ThemeListViewModel, repository: CoreDataThemeRepository) {
+    private func makeSUT(navigation: ThemeListNavigation? = nil) -> (viewModel: ThemeListViewModel, repository: CoreDataThemeRepository) {
         let persistence = PersistenceController(inMemory: true)
         let repository = CoreDataThemeRepository(context: persistence.viewContext)
-        return (ThemeListViewModel(repository: repository, settings: FakeSettings(), actions: actions ?? noopActions()), repository)
+        return (ThemeListViewModel(repository: repository, settings: FakeSettings(), navigation: navigation ?? noopNavigation()), repository)
     }
 
     private func makeSUTWithSettings() -> (ThemeListViewModel, FakeSettings) {
         let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
         let settings = FakeSettings()
-        return (ThemeListViewModel(repository: repository, settings: settings, actions: noopActions()), settings)
+        return (ThemeListViewModel(repository: repository, settings: settings, navigation: noopNavigation()), settings)
     }
 
     private func names(_ sut: ThemeListViewModel) -> [String?] {
@@ -173,7 +173,7 @@ import CoreData
 
     @Test func selectTheme_atValidIndex_firesActionWithThatTheme() {
         var selected: ThemeCD?
-        let (sut, repository) = makeSUT(actions: noopActions(selectTheme: { selected = $0 }))
+        let (sut, repository) = makeSUT(navigation: noopNavigation(selectTheme: { selected = $0 }))
         seedThemes(["A", "B"], in: repository)
         sut.loadThemes()
 
@@ -184,7 +184,7 @@ import CoreData
 
     @Test func selectTheme_atInvalidIndex_doesNotFire() {
         var fired = false
-        let (sut, _) = makeSUT(actions: noopActions(selectTheme: { _ in fired = true }))
+        let (sut, _) = makeSUT(navigation: noopNavigation(selectTheme: { _ in fired = true }))
 
         sut.selectTheme(at: 0)
 

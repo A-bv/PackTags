@@ -93,14 +93,14 @@ private func makeTheme(named name: String? = nil) -> ThemeCD {
     }
 }
 
-// MARK: - ThemeCoordinator
+// MARK: - NotebookCoordinator
 
-@Suite @MainActor struct ThemeCoordinatorTests {
+@Suite @MainActor struct NotebookCoordinatorTests {
 
     private func makeSUT(
         themes: [ThemeCD] = [],
         connectedInsights: ConnectedInsightsProtocol? = nil
-    ) -> (sut: ThemeCoordinator, nav: SpyNavigationController) {
+    ) -> (sut: NotebookCoordinator, nav: SpyNavigationController) {
         let nav = SpyNavigationController()
         let repository = FakeThemeRepository()
         repository.stored = themes
@@ -109,12 +109,12 @@ private func makeTheme(named name: String? = nil) -> ThemeCD {
             themeRepository: repository,
             appSettings: FakeAppSettings(),
             connectedInsights: connectedInsights ?? SpyConnectedInsightsCoordinator())
-        return (ThemeCoordinator(navigationController: nav, dependencies: dependencies), nav)
+        return (NotebookCoordinator(navigationController: nav, dependencies: dependencies), nav)
     }
 
     /// Starts the coordinator and returns the live theme-list root with its
     /// themes loaded, so tests can drive navigation through its view model.
-    private func startedRoot(_ sut: ThemeCoordinator, _ nav: SpyNavigationController) -> ThemeListViewController {
+    private func startedRoot(_ sut: NotebookCoordinator, _ nav: SpyNavigationController) -> ThemeListViewController {
         sut.start()
         let root = nav.setRootVC as! ThemeListViewController
         root.viewModel.loadThemes()
@@ -167,7 +167,7 @@ private func makeTheme(named name: String? = nil) -> ThemeCD {
 
         root.viewModel.openSettings()
 
-        #expect(nav.pushedVC is SettingsVC)
+        #expect(nav.pushedVC is SettingsViewController)
     }
 
     @Test func openingAnalytics_routesToConnectedInsights() {
@@ -251,11 +251,15 @@ private func makeTheme(named name: String? = nil) -> ThemeCD {
         let (sut, nav) = makeSUT()
         let root = startedRoot(sut, nav)
         root.viewModel.openSettings()
-        let settings = nav.pushedVC as? SettingsVC
+        let settings = nav.pushedVC as? SettingsViewController
 
-        settings?.navigation.openQuantityPicker()
+        guard case .staticCell(let quantityRow) = settings?.viewModel.sections[1].options[0] else {
+            Issue.record("expected the quantity-per-pack row")
+            return
+        }
+        quantityRow.handler()
 
-        #expect(nav.presentedVC is QuantityPickerVC)
+        #expect(nav.presentedVC is QuantityPickerViewController)
     }
 
 }
