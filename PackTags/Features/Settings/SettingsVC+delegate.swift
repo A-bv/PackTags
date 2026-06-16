@@ -2,20 +2,20 @@ import UIKit
 
 extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let section = models[section]
+        let section = viewModel.sections[section]
         return section.title
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return models.count
+        return viewModel.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models[section].options.count
+        return viewModel.sections[section].options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.section].options[indexPath.row]
+        let model = viewModel.sections[indexPath.section].options[indexPath.row]
         switch model {
         case .staticCell(let model):
             guard let cell = tableView.dequeueReusableCell(
@@ -44,7 +44,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if case .staticCell(let model) = models[indexPath.section].options[indexPath.row] {
+        if case .staticCell(let model) = viewModel.sections[indexPath.section].options[indexPath.row] {
             model.handler()
         }
     }

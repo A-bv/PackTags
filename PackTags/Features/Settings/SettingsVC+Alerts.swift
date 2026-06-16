@@ -9,7 +9,7 @@ extension SettingsVC {
     }
 
     func setInstaUserAlert() {
-        let username = appSettings.instagramUsername ?? ""
+        let username = viewModel.instagramUsername
         let message = username.isEmpty ? Strings.username : username
         let placeholder = username.isEmpty ? Strings.enterUsername : Strings.editUsername
 
@@ -19,7 +19,7 @@ extension SettingsVC {
             message: message,
             placeholder: placeholder
         ) { [weak self] inputName in
-            self?.appSettings.instagramUsername = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
+            self?.viewModel.saveInstagramUsername(inputName)
         }
     }
 }

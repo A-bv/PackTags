@@ -73,6 +73,7 @@
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
 		02BC8D592602B79900441349 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsVC.swift */; };
 		AB0000000000000000004004 /* SettingsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000004003 /* SettingsNavigation.swift */; };
+		AB0000000000000000005002 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000005001 /* SettingsViewModel.swift */; };
 		02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */; };
 		02CEFB6D25CB945000FB70E4 /* UIImage+Treatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CEFB6C25CB945000FB70E4 /* UIImage+Treatment.swift */; };
 		02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */; };
@@ -207,6 +208,7 @@
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
 		02BC8D582602B79900441349 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		AB0000000000000000004003 /* SettingsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigation.swift; sourceTree = "<group>"; };
+		AB0000000000000000005001 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewController.swift; sourceTree = "<group>"; };
 		02CEFB6C25CB945000FB70E4 /* UIImage+Treatment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Treatment.swift"; sourceTree = "<group>"; };
 		02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsOverviewModel.swift; sourceTree = "<group>"; };
@@ -628,6 +630,7 @@
 				02D709CB2A58C48C0009F7C3 /* QuantityPicker */,
 				02BC8D582602B79900441349 /* SettingsVC.swift */,
 				AB0000000000000000004003 /* SettingsNavigation.swift */,
+				AB0000000000000000005001 /* SettingsViewModel.swift */,
 				AB0000000000000000000401 /* SettingsSections.swift */,
 				AB0000000000000000000403 /* SettingsVC+Alerts.swift */,
 				02FD6CAF26D8006400AB16E4 /* SettingsVC+RateAndReview.swift */,
@@ -988,6 +991,7 @@
 				02FAE2A5260AC79C00324724 /* SettingsSwitchCell.swift in Sources */,
 				02BC8D592602B79900441349 /* SettingsVC.swift in Sources */,
 				AB0000000000000000004004 /* SettingsNavigation.swift in Sources */,
+				AB0000000000000000005002 /* SettingsViewModel.swift in Sources */,
 				AB0000000000000000000402 /* SettingsSections.swift in Sources */,
 				AB0000000000000000000404 /* SettingsVC+Alerts.swift in Sources */,
 				02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */,

@@ -25,7 +25,7 @@ final class SettingsVC: UIViewController {
     let navigation: SettingsNavigation
     let connectedInsights: any ConnectedInsightsCoordinating
     let appSettings: any AppSettingsProtocol
-    var models = [SettingsSection]()
+    lazy var viewModel = makeViewModel()
 
     init(connectedInsights: any ConnectedInsightsCoordinating, appSettings: any AppSettingsProtocol, navigation: SettingsNavigation) {
         self.connectedInsights = connectedInsights
@@ -41,9 +41,7 @@ final class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.putShadow(false)
-        
-        configure()
-        
+        tableView.backgroundColor = .colorBkgd
         title = Strings.settingsTitle
         view.addSubview(tableView)
         tableView.delegate = self
@@ -52,10 +50,8 @@ final class SettingsVC: UIViewController {
     }
     
     
-    func configure() {
-        tableView.backgroundColor = .colorBkgd
-
-        models = SettingsSections.make(actions: SettingsActions(
+    private func makeViewModel() -> SettingsViewModel {
+        let actions = SettingsActions(
             editInstagramUsername: { [weak self] in self?.setInstaUserAlert() },
             openFacebookSetup: { [weak self] in
                 guard let self else { return }
@@ -79,7 +75,8 @@ final class SettingsVC: UIViewController {
             shareApp: { [weak self] in self?.shareApp() },
             rateApp: { [weak self] in self?.showReviewPopUp() },
             contactSupport: { [weak self] in self?.sendEmail() }
-        ), settings: appSettings)
+        )
+        return SettingsViewModel(actions: actions, settings: appSettings)
     }
 
     private func showPage(vc: UIViewController) {
