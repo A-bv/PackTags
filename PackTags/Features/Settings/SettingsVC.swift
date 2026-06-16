@@ -23,11 +23,11 @@ final class SettingsVC: UIViewController {
     }()
     
     let navigation: SettingsNavigation
-    let connectedInsights: any ConnectedInsightsCoordinating
+    let connectedInsights: any ConnectedInsightsProtocol
     let appSettings: any AppSettingsProtocol
     lazy var viewModel = makeViewModel()
 
-    init(connectedInsights: any ConnectedInsightsCoordinating, appSettings: any AppSettingsProtocol, navigation: SettingsNavigation) {
+    init(connectedInsights: any ConnectedInsightsProtocol, appSettings: any AppSettingsProtocol, navigation: SettingsNavigation) {
         self.connectedInsights = connectedInsights
         self.appSettings = appSettings
         self.navigation = navigation

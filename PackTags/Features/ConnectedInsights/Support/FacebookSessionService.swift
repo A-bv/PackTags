@@ -1,12 +1,12 @@
 import Foundation
 import FBSDKLoginKit
 
-protocol FacebookSessionServicing {
+protocol FacebookSessionServiceProtocol {
     func currentToken() -> FBToken
     func resetSession()
 }
 
-final class FacebookSessionService: FacebookSessionServicing {
+final class FacebookSessionService: FacebookSessionServiceProtocol {
     func currentToken() -> FBToken {
         FBToken()
     }

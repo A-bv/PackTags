@@ -9,7 +9,7 @@ enum ConnectedInsightsDestination {
 }
 
 @MainActor
-protocol ConnectedInsightsCoordinating: AnyObject {
+protocol ConnectedInsightsProtocol: AnyObject {
     func open(_ destination: ConnectedInsightsDestination, from presenter: UIViewController)
 }
 

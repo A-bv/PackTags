@@ -169,7 +169,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         }
     }
 
-    private final class FakeSession: FacebookSessionServicing {
+    private final class FakeSession: FacebookSessionServiceProtocol {
         var resetCount = 0
         func currentToken() -> FBToken { FBToken() }
         func resetSession() { resetCount += 1 }

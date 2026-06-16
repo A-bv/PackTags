@@ -3,7 +3,7 @@ import SwiftUI
 import InstagramGraph
 
 @MainActor
-final class ConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
+final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
     private let gateway: any ConnectedInsightsGatewayProtocol
     private let settings: any AppSettingsProtocol
     private lazy var smartTagsPersistence = PersistenceController(modelName: "SmartTags")

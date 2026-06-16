@@ -5,12 +5,12 @@ import InstagramGraph
 final class FBLoginViewModel {
     private let gateway: any ConnectedInsightsGatewayProtocol
     private let settings: any AppSettingsProtocol
-    private let facebookSessionService: any FacebookSessionServicing
+    private let facebookSessionService: any FacebookSessionServiceProtocol
 
     init(
         gateway: any ConnectedInsightsGatewayProtocol,
         settings: any AppSettingsProtocol,
-        facebookSessionService: any FacebookSessionServicing = FacebookSessionService()
+        facebookSessionService: any FacebookSessionServiceProtocol = FacebookSessionService()
     ) {
         self.gateway = gateway
         self.settings = settings

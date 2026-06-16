@@ -24,7 +24,7 @@ private final class SpyNavigationController: UINavigationController {
     }
 }
 
-private final class SpyConnectedInsightsCoordinator: ConnectedInsightsCoordinating {
+private final class SpyConnectedInsightsCoordinator: ConnectedInsightsProtocol {
     private(set) var openedDestination: ConnectedInsightsDestination?
     private(set) var presenter: UIViewController?
 
@@ -99,7 +99,7 @@ private func makeTheme(named name: String? = nil) -> ThemeCD {
 
     private func makeSUT(
         themes: [ThemeCD] = [],
-        connectedInsights: ConnectedInsightsCoordinating? = nil
+        connectedInsights: ConnectedInsightsProtocol? = nil
     ) -> (sut: ThemeCoordinator, nav: SpyNavigationController) {
         let nav = SpyNavigationController()
         let repository = FakeThemeRepository()
