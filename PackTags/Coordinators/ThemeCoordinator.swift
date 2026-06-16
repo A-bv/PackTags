@@ -42,10 +42,10 @@ final class ThemeCoordinator: Coordinator {
     // MARK: - From ThemeList
 
     private func showPackList(for theme: ThemeCD) {
+        let viewModel = PackListViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings)
         let viewController = PackListViewController(
             style: .plain,
-            viewModel: PackListViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings)
-        )
+            viewModel: viewModel)
         viewController.onEditTheme = { [weak self, weak viewController] pack in
             self?.showThemeEditor(
                 for: theme,
@@ -58,7 +58,8 @@ final class ThemeCoordinator: Coordinator {
     }
 
     private func showNewThemeEditor(onSave: @escaping () -> Void) {
-        let viewController = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: nil, repository: dependencies.themeRepository, settings: dependencies.appSettings))
+        let viewModel = ThemeEditorViewModel(theme: nil, repository: dependencies.themeRepository, settings: dependencies.appSettings)
+        let viewController = ThemeEditorViewController(viewModel: viewModel)
         viewController.onSave = { _ in onSave() }
         presentInNavController(viewController, transition: .coverVertical)
     }
@@ -103,7 +104,13 @@ final class ThemeCoordinator: Coordinator {
 
     // MARK: - From PackListViewController
 
-    private func showThemeEditor(for theme: ThemeCD, fromSwipe: Bool, chosenPack: String, onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
+    private func showThemeEditor(
+        for theme: ThemeCD,
+        fromSwipe: Bool,
+        chosenPack: String,
+        onSave: @escaping () -> Void,
+        onCancel: @escaping () -> Void
+    ) {
         let viewController = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings))
         viewController.onSave = { _ in
             onSave()
