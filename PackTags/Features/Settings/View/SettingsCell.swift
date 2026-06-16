@@ -31,17 +31,18 @@ final class SettingsCell: UITableViewCell {
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "gearshape")
         imageView.tintColor = Constants.iconImageViewTintColor
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(label)
         contentView.addSubview(iconContainer)
         contentView.addSubview(iconImageView)
-        
+
         contentView.clipsToBounds = true
         accessoryType = Constants.disclosureIndicatorType
     }
@@ -81,14 +82,12 @@ final class SettingsCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        iconImageView.image = nil
         label.text = nil
         iconContainer.backgroundColor = nil
     }
-    
+
     func configure(with model: SettingsOption) {
         label.text = model.title
-        iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
     }
 }

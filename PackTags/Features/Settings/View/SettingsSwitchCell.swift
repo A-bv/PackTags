@@ -37,6 +37,7 @@ final class SettingsSwitchCell: UITableViewCell {
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "gearshape")
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -88,7 +89,6 @@ final class SettingsSwitchCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        iconImageView.image = nil
         label.text = nil
         iconContainer.backgroundColor = nil
         mySwitch.isOn = false
@@ -97,7 +97,6 @@ final class SettingsSwitchCell: UITableViewCell {
     
     func configure(with model: SettingsSwitchOption) {
         label.text = model.title
-        iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
         mySwitch.isOn = model.isOn
         onToggle = model.onToggle

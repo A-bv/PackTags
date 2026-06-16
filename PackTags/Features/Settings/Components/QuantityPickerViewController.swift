@@ -1,6 +1,6 @@
 import UIKit
 
-final class QuantityPickerVC: UIViewController {
+final class QuantityPickerViewController: UIViewController {
     private enum Constants {
         static let pickerNumberOfComponents = 1
         static let defaultRowIndex = 0
@@ -40,7 +40,7 @@ final class QuantityPickerVC: UIViewController {
     }
 }
 
-extension QuantityPickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
+extension QuantityPickerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         Constants.pickerNumberOfComponents
     }

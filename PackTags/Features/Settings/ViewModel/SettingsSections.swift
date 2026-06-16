@@ -12,14 +12,12 @@ enum SettingsOptionType {
 
 struct SettingsOption {
     let title: String
-    let icon: UIImage?
     let iconBackgroundColor: UIColor
     let handler: (() -> Void)
 }
 
 struct SettingsSwitchOption {
     let title: String
-    let icon: UIImage?
     let iconBackgroundColor: UIColor
     var isOn: Bool
     let onToggle: (Bool) -> Void
@@ -45,6 +43,8 @@ struct SettingsActions {
 enum SettingsSections {
     private enum Strings {
         static let account = "Account".localized()
+        // Row label. Coincidentally equal to the alert title in SettingsViewController,
+        // but a different role — kept separate so renaming one never silently moves the other.
         static let instagram = "Instagram".localized()
         static let facebookLogin = "Facebook Login".localized()
         static let hashtags = "Hashtags".localized()
@@ -74,36 +74,29 @@ enum SettingsSections {
     }
 
     static func make(actions: SettingsActions, settings: any AppSettingsProtocol) -> [SettingsSection] {
-        let icon = UIImage(systemName: "gearshape")!
-
         return [
             SettingsSection(title: Strings.account, options: [
                 .staticCell(model: SettingsOption(
                     title: Strings.instagram,
-                    icon: icon,
                     iconBackgroundColor: .systemRed,
                     handler: actions.editInstagramUsername)),
                 .staticCell(model: SettingsOption(
                     title: Strings.facebookLogin,
-                    icon: icon,
                     iconBackgroundColor: .systemOrange,
                     handler: actions.openFacebookSetup)),
             ]),
             SettingsSection(title: Strings.hashtags, options: [
                 .staticCell(model: SettingsOption(
                     title: Strings.quantityPerPack,
-                    icon: icon,
                     iconBackgroundColor: .systemPink,
                     handler: actions.showQuantityPicker)),
                 .switchCell(model: SettingsSwitchOption(
                     title: Strings.saveAndShuffle,
-                    icon: icon,
                     iconBackgroundColor: .systemYellow,
                     isOn: settings.saveAndShuffle,
                     onToggle: { settings.saveAndShuffle = $0 })),
                 .switchCell(model: SettingsSwitchOption(
                     title: Strings.keepPackOrder,
-                    icon: icon,
                     iconBackgroundColor: .systemRed,
                     isOn: settings.keepPacksOrder,
                     onToggle: { settings.keepPacksOrder = $0 })),
@@ -111,56 +104,46 @@ enum SettingsSections {
             SettingsSection(title: Strings.help, options: [
                 .staticCell(model: SettingsOption(
                     title: Strings.onBoard,
-                    icon: icon,
                     iconBackgroundColor: .systemTeal,
                     handler: actions.replayOnboarding)),
                 .staticCell(model: SettingsOption(
                     title: Strings.tricksAndTips,
-                    icon: icon,
                     iconBackgroundColor: .systemBlue,
                     handler: { actions.openWebPage(Links.tricksAndTips) })),
                 .staticCell(model: SettingsOption(
                     title: Strings.instaSetup,
-                    icon: icon,
                     iconBackgroundColor: .systemPurple,
                     handler: actions.openSetupInfo)),
             ]),
             SettingsSection(title: Strings.aboutUs, options: [
                 .staticCell(model: SettingsOption(
                     title: Strings.ourInstagram,
-                    icon: icon,
                     iconBackgroundColor: .systemPink,
                     handler: actions.openOurInstagram)),
                 .staticCell(model: SettingsOption(
                     title: Strings.share,
-                    icon: icon,
                     iconBackgroundColor: .systemGreen,
                     handler: actions.shareApp)),
                 .staticCell(model: SettingsOption(
                     title: Strings.rateAndReview,
-                    icon: icon,
                     iconBackgroundColor: .systemYellow,
                     handler: actions.rateApp)),
                 .staticCell(model: SettingsOption(
                     title: Strings.contactUs,
-                    icon: icon,
                     iconBackgroundColor: .systemOrange,
                     handler: actions.contactSupport)),
             ]),
             SettingsSection(title: Strings.legal, options: [
                 .staticCell(model: SettingsOption(
                     title: Strings.privacy,
-                    icon: icon,
                     iconBackgroundColor: .systemPurple,
                     handler: { actions.openWebPage(Links.privacyPolicy) })),
                 .staticCell(model: SettingsOption(
                     title: Strings.termsAndConditions,
-                    icon: icon,
                     iconBackgroundColor: .systemYellow,
                     handler: { actions.openWebPage(Links.termsAndConditions) })),
                 .staticCell(model: SettingsOption(
                     title: Strings.disclaimer,
-                    icon: icon,
                     iconBackgroundColor: .systemRed,
                     handler: { actions.openWebPage(Links.disclaimer) })),
             ]),
