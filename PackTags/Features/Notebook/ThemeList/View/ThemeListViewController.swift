@@ -4,7 +4,6 @@ import CoreData
 final class ThemeListViewController: UITableViewController {
 
     private enum Constants {
-        static let cellReuseID = "ThemeCell"
         static let tableViewBottomPadding: CGFloat = 14
         static let rowMinimumHeight: CGFloat = 164
         static let rowsPerScreen: CGFloat = 4
@@ -104,7 +103,7 @@ final class ThemeListViewController: UITableViewController {
 
     private func configureTableView() {
         tableView.backgroundColor = .colorBkgd
-        tableView.register(ThemeCell.self, forCellReuseIdentifier: Constants.cellReuseID)
+        tableView.register(ThemeCell.self)
         addLongPressToTableView()
     }
 
@@ -156,11 +155,7 @@ final class ThemeListViewController: UITableViewController {
     // MARK: - Cells
 
     private func makeCell(at indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: Constants.cellReuseID, for: indexPath) as? ThemeCell
-        else {
-            fatalError("The dequeued cell is not an instance of ThemeCell.")
-        }
+        let cell = tableView.dequeue(ThemeCell.self, for: indexPath)
         guard let row = viewModel.themeRow(at: indexPath.row) else { return cell }
         cell.nameLabel.text = row.name
         cell.themeImageView.image = decodedThumbnail(for: row)

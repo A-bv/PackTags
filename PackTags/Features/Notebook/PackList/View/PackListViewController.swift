@@ -64,7 +64,7 @@ final class PackListViewController: CoverImageTableViewController {
 
         navigationItem.rightBarButtonItems = [composeButton, instaButton]
 
-        tableView.register(PackCell.self, forCellReuseIdentifier: "PackCell")
+        tableView.register(PackCell.self)
         tableView.backgroundColor = .colorBkgd
 
         viewModel.loadPacks()
@@ -122,11 +122,7 @@ extension PackListViewController {
 // MARK: - Cell configuration & swipe
 extension PackListViewController {
     private func configureCell(indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "PackCell", for: indexPath) as? PackCell
-        else {
-            fatalError("The dequeued cell is not an instance of PackCell.")
-        }
+        let cell = tableView.dequeue(PackCell.self, for: indexPath)
 
         let pack = self.packs[indexPath.row]
         let row = viewModel.packRow(at: indexPath.row)
