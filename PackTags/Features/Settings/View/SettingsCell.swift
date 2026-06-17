@@ -1,8 +1,6 @@
 import UIKit
 
-final class SettingsCell: UITableViewCell {
-    static let identifier = "SettingsCell"
-    
+final class SettingsCell: UITableViewCell, ReusableCell {
     private enum Constants {
         static let iconContainerX: CGFloat = 15
         static let iconContainerY: CGFloat = 6

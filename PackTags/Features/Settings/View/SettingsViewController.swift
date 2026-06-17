@@ -18,16 +18,7 @@ final class SettingsViewController: UIViewController {
 
     let viewModel: SettingsViewModel
 
-    private let tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .grouped)
-        table.register(
-            SettingsCell.self,
-            forCellReuseIdentifier: SettingsCell.identifier)
-        table.register(
-            SettingsSwitchCell.self,
-            forCellReuseIdentifier: SettingsSwitchCell.identifier)
-        return table
-    }()
+    private let tableView = UITableView(frame: .zero, style: .grouped)
 
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -43,8 +34,10 @@ final class SettingsViewController: UIViewController {
         navigationController?.navigationBar.putShadow(false)
         tableView.backgroundColor = .colorBkgd
         title = Strings.settingsTitle
-        tableView.delegate = self
+        tableView.register(SettingsCell.self)
+        tableView.register(SettingsSwitchCell.self)
         tableView.dataSource = self
+        tableView.delegate = self
         viewModel.onViewEvent = { [weak self] event in self?.handle(event) }
         view.addSubview(tableView)
         tableView.frame = view.bounds
@@ -133,13 +126,9 @@ private extension SettingsViewController {
     }
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
+// MARK: - UITableViewDataSource, UITableViewDelegate
 
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        viewModel.sections[section].title
-    }
-
+extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.sections.count
     }
@@ -148,27 +137,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         viewModel.sections[section].options.count
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        viewModel.sections[section].title
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = viewModel.sections[indexPath.section].options[indexPath.row]
-        switch model {
-        case .staticCell(let model):
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SettingsCell.identifier,
-                for: indexPath
-            ) as? SettingsCell else {
-                fatalError("The dequeued cell is not an instance of SettingsCell.")
-            }
-            cell.configure(with: model)
+        switch viewModel.sections[indexPath.section].options[indexPath.row] {
+        case .staticCell(let option):
+            let cell = tableView.dequeue(SettingsCell.self, for: indexPath)
+            cell.configure(with: option)
             cell.backgroundColor = .systemBackground
             return cell
-        case .switchCell(let model):
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SettingsSwitchCell.identifier,
-                for: indexPath
-            ) as? SettingsSwitchCell else {
-                fatalError("The dequeued cell is not an instance of SettingsSwitchCell.")
-            }
-            cell.configure(with: model)
+        case .switchCell(let option):
+            let cell = tableView.dequeue(SettingsSwitchCell.self, for: indexPath)
+            cell.configure(with: option)
             cell.backgroundColor = .systemBackground
             return cell
         }

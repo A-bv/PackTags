@@ -1,8 +1,6 @@
 import UIKit
 
-final class SettingsSwitchCell: UITableViewCell {
-    static let identifier = "SettingsSwitchCell"
-    
+final class SettingsSwitchCell: UITableViewCell, ReusableCell {
     private enum Constants {
         static let cornerRadius: CGFloat = 8
         static let containerX: CGFloat = 15
