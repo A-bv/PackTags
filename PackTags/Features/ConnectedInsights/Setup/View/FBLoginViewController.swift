@@ -17,29 +17,20 @@ final class FBLoginViewController: UIViewController {
         static let resetLoginMessage = "This will clear the current Facebook session and Instagram setup for this app.".localized()
         static let reset = "Reset".localized()
         static let cancel = "Cancel".localized()
-    }
-
-    private enum Permissions {
-        static let list = [
-            "instagram_basic",
-            "pages_show_list",
-            "instagram_manage_insights",
-            "business_management"
-        ]
+        static let ok = "Ok"
     }
 
     var onSetupComplete: (() -> Void)?
     var onShowSetupInfo: (() -> Void)?
 
     private let viewModel: FBLoginViewModel
-    private var hasStartedSetupValidation = false
+    private var hasValidatedOnAppear = false
+    private var isValidating = false
 
     private let loginButton: FBLoginButton = {
         let button = FBLoginButton()
-        button.permissions = Permissions.list
-        // Business permissions (instagram_manage_insights, business_management)
-        // require a classic AccessToken; Limited Login only yields an OIDC
-        // AuthenticationToken, which the Instagram Graph calls can't use.
+        // Business permissions require a classic AccessToken; Limited Login only yields
+        // an OIDC AuthenticationToken the Instagram Graph calls can't use.
         button.loginTracking = .enabled
         return button
     }()
@@ -53,7 +44,6 @@ final class FBLoginViewController: UIViewController {
     }()
 
     private let setupSpinner = UIActivityIndicatorView(style: .large)
-
     private lazy var chrome = ModalChrome(host: self)
 
     init(viewModel: FBLoginViewModel) {
@@ -71,63 +61,81 @@ final class FBLoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        logLogin("FBLoginViewController viewDidLoad.")
-        setupFBLoginViewController()
+        loginButton.permissions = viewModel.loginPermissions
+        setupUI()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        logLogin("FBLoginViewController viewDidAppear.")
-        if showApiGraphSetupVCIfNeeded() {
-            return
-        }
-        if validateExistingFacebookSessionIfNeeded() {
-            return
-        }
-    }
-}
-
-extension FBLoginViewController {
-    private func showApiGraphSetupVCIfNeeded() -> Bool {
-        if !viewModel.hasSeenSetupInfo {
-            logLogin("Showing setup info before login.")
-            showSetupScreen()
-            return true
-        }
-        return false
+        handleAppear()
     }
 
-    private func validateExistingFacebookSessionIfNeeded() -> Bool {
-        guard !hasStartedSetupValidation else {
-            return true
+    private func handleAppear() {
+        switch viewModel.onAppear() {
+        case .showSetupInfo:
+            onShowSetupInfo?()
+        case .validateExistingSession:
+            guard !hasValidatedOnAppear else { return }
+            hasValidatedOnAppear = true
+            runValidation(markLoginAttempt: false)
+        case .idle:
+            break
         }
-
-        let token = viewModel.getToken()
-        logLogin(token.diagnostic)
-        guard token.isValid else {
-            logLogin("No valid existing Facebook access token.")
-            return false
-        }
-
-        logLogin("Valid existing Facebook access token found; validating setup.")
-        hasStartedSetupValidation = true
-        performConnectedInsightsSetup(source: "existing session")
-        return true
     }
 
+    private func runValidation(markLoginAttempt: Bool) {
+        guard !isValidating else { return }
+        isValidating = true
+        setValidationInProgress(true)
+        Task {
+            let result = await viewModel.validateSetup(markLoginAttempt: markLoginAttempt)
+            isValidating = false
+            setValidationInProgress(false)
+            handle(result)
+        }
+    }
+
+    private func handle(_ result: FBLoginViewModel.SetupResult) {
+        switch result {
+        case .connected:
+            presentConnectedAlert()
+        case .sessionExpired:
+            // The view model already cleared the stale session; the plain message tells
+            // the user to log in again, and the login button is ready.
+            presentSetupHelpAlert(detail: nil)
+        case .failed(let message):
+            presentSetupHelpAlert(detail: message)
+        }
+    }
 }
 
 // MARK: - UI
-extension FBLoginViewController: @preconcurrency LoginButtonDelegate {
-    private func setupFBLoginViewController () {
-        self.view.applyBlur()
+extension FBLoginViewController {
+    private func setupUI() {
+        view.applyBlur()
         chrome.addCloseButton()
         chrome.addFacebookSetupHelpButton { [weak self] in
-            self?.showSetupScreen()
+            self?.onShowSetupInfo?()
         }
-        self.placeFBLogingButton()
-        self.placeResetLoginButton()
-        self.placeSetupSpinner()
+        placeLoginButton()
+        placeResetLoginButton()
+        placeSetupSpinner()
+    }
+
+    private func placeLoginButton() {
+        loginButton.delegate = self
+        loginButton.center = view.center
+        view.addSubview(loginButton)
+    }
+
+    private func placeResetLoginButton() {
+        resetLoginButton.addTarget(self, action: #selector(didTapResetLoginButton), for: .touchUpInside)
+        resetLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(resetLoginButton)
+        NSLayoutConstraint.activate([
+            resetLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            resetLoginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+        ])
     }
 
     private func placeSetupSpinner() {
@@ -144,98 +152,31 @@ extension FBLoginViewController: @preconcurrency LoginButtonDelegate {
         loginButton.isEnabled = !inProgress
         resetLoginButton.isEnabled = !inProgress
     }
-
-    private func placeFBLogingButton() {
-        loginButton.delegate = self
-        loginButton.center = view.center
-        view.addSubview(loginButton)
-    }
-
-    private func placeResetLoginButton() {
-        resetLoginButton.addTarget(
-            self,
-            action: #selector(didTapResetLoginButton(_:)),
-            for: .touchUpInside)
-        resetLoginButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(resetLoginButton)
-
-        NSLayoutConstraint.activate([
-            resetLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            resetLoginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
-        ])
-    }
-
 }
 
-// MARK: - Delegates
-extension FBLoginViewController {
+// MARK: - LoginButtonDelegate
+extension FBLoginViewController: @preconcurrency LoginButtonDelegate {
     func loginButton(
         _ loginButton: FBLoginButton,
         didCompleteWith result: LoginManagerLoginResult?,
         error: Error?
     ) {
         if let error {
-            logLogin("Facebook Login failed: \(error.localizedDescription)")
-            showTroubleshootingAlert(detail: "Facebook Login failed: \(error.localizedDescription)")
+            presentSetupHelpAlert(detail: "Facebook Login failed: \(error.localizedDescription)")
             return
         }
-
-        if result?.isCancelled == true {
-            logLogin("Facebook Login was cancelled.")
-            return
-        }
-
-        if let result {
-            logLogin("Granted permissions: \(Array(result.grantedPermissions).sorted())")
-            logLogin("Declined permissions: \(Array(result.declinedPermissions).sorted())")
-            logLogin("Login result token diagnostic: \(FBToken().diagnostic)")
-        } else {
-            logLogin("Facebook Login completed without a result object.")
-        }
-
-        performConnectedInsightsSetup(source: "Facebook Login callback", markLoginAttempt: true)
+        guard result?.isCancelled != true else { return }
+        runValidation(markLoginAttempt: true)
     }
 
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {}
 }
 
-// MARK: - Actions
+// MARK: - Alerts & actions
 extension FBLoginViewController {
-    private func performConnectedInsightsSetup(
-        source: String,
-        markLoginAttempt: Bool = false
-    ) {
-        hasStartedSetupValidation = true
-        let token = viewModel.getToken()
-        logLogin("Token check from \(source): \(token.diagnostic), isValid=\(token.isValid)")
-        guard token.isValid else {
-            showTroubleshootingAlert(detail: "No valid Facebook access token from \(source). \(token.diagnostic)")
-            return
-        }
-
-        if markLoginAttempt {
-            viewModel.markLoginButtonPressed()
-        }
-
-        logLogin("Valid Facebook access token from \(source); starting Graph setup validation.")
-        setValidationInProgress(true)
-        Task {
-            do {
-                try await viewModel.setup(with: token)
-                setValidationInProgress(false)
-                showSuccessfulSetupAlert()
-            } catch {
-                setValidationInProgress(false)
-                showTroubleshootingAlert(detail: error.localizedDescription)
-            }
-        }
-    }
-
-    private func showSuccessfulSetupAlert() {
+    private func presentConnectedAlert() {
         let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            self?.dismiss(animated: true) {
-                self?.onSetupComplete?()
-            }
+            self?.dismiss(animated: true) { self?.onSetupComplete?() }
         }
         Alerts.show(
             from: self,
@@ -244,50 +185,27 @@ extension FBLoginViewController {
             actions: [ok])
     }
 
-    private func showTroubleshootingAlert(detail: String? = nil) {
-        if let detail {
-            logLogin("Showing troubleshooting alert. Detail: \(detail)")
-        } else {
-            logLogin("Showing troubleshooting alert.")
-        }
-
-        let message = [
-            Strings.troubleShootingAlertMessage,
-            detail
-        ]
+    private func presentSetupHelpAlert(detail: String?) {
+        let message = [Strings.troubleShootingAlertMessage, detail]
             .compactMap { $0 }
             .joined(separator: "\n\n")
-
         Alerts.show(
             from: self,
             title: Strings.editYourSetup,
             message: message,
-            actions: [UIAlertAction(title: "Ok", style: .cancel)])
+            actions: [UIAlertAction(title: Strings.ok, style: .cancel)])
     }
 
-    private func showSetupScreen() {
-        onShowSetupInfo?()
-    }
-
-    @objc private func didTapResetLoginButton(_ sender: Any) {
+    @objc private func didTapResetLoginButton() {
         let cancel = UIAlertAction(title: Strings.cancel, style: .cancel)
         let reset = UIAlertAction(title: Strings.reset, style: .destructive) { [weak self] _ in
-            self?.resetFacebookLogin()
+            self?.viewModel.resetFacebookSession()
+            self?.hasValidatedOnAppear = false
         }
         Alerts.show(
             from: self,
             title: Strings.resetLoginTitle,
             message: Strings.resetLoginMessage,
             actions: [cancel, reset])
-    }
-
-    private func resetFacebookLogin() {
-        hasStartedSetupValidation = false
-        viewModel.resetFacebookSession()
-        logLogin("AccessToken after reset: \(FBToken().diagnostic)")
-    }
-
-    private func logLogin(_ message: String) {
-        AppLogger.login.info("\(message, privacy: .public)")
     }
 }

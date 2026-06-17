@@ -159,9 +159,13 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     private final class FakeGateway: ConnectedInsightsGatewayProtocol {
         var setupTokens: [String] = []
         var resetCount = 0
+        var setupError: Error?
 
         func accessState() -> ConnectedInsightsAccessState { .needsSetup(.setupRequired) }
-        func setup(facebookToken: String) async throws { setupTokens.append(facebookToken) }
+        func setup(facebookToken: String) async throws {
+            setupTokens.append(facebookToken)
+            if let setupError { throw setupError }
+        }
         func reset() { resetCount += 1 }
         func searchHashtag(searchedHashtag: String) async throws -> [InstagramPost] { [] }
         func loadProfileForAnalytics(mediaLimit: Int?) async throws -> Profile {
@@ -170,8 +174,9 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     private final class FakeSession: FacebookSessionServiceProtocol {
+        var token = FBToken(tokenString: nil)
         var resetCount = 0
-        func currentToken() -> FBToken { FBToken() }
+        func currentToken() -> FBToken { token }
         func resetSession() { resetCount += 1 }
     }
 
@@ -187,31 +192,96 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         var setupInfoShown = false
     }
 
-    @Test func setup_withoutATokenString_failsWithoutCallingTheGateway() async {
+    private func makeSUT(
+        token: FBToken = FBToken(tokenString: nil),
+        setupError: Error? = nil,
+        setupInfoShown: Bool = true
+    ) -> (sut: FBLoginViewModel, gateway: FakeGateway, session: FakeSession, settings: FakeSettings) {
         let gateway = FakeGateway()
-        let sut = FBLoginViewModel(gateway: gateway, settings: FakeSettings(), facebookSessionService: FakeSession())
-
-        await #expect(throws: (any Error).self) {
-            try await sut.setup(with: FBToken(tokenString: nil))
-        }
-        #expect(gateway.setupTokens.isEmpty)
+        gateway.setupError = setupError
+        let session = FakeSession()
+        session.token = token
+        let settings = FakeSettings()
+        settings.setupInfoShown = setupInfoShown
+        let sut = FBLoginViewModel(gateway: gateway, settings: settings, facebookSessionService: session)
+        return (sut, gateway, session, settings)
     }
 
-    @Test func setup_passesTheTokenToTheGateway() async throws {
-        let gateway = FakeGateway()
-        let sut = FBLoginViewModel(gateway: gateway, settings: FakeSettings(), facebookSessionService: FakeSession())
+    private let oauthError = InstagramGraphServiceError.graphHTTPError(
+        statusCode: 400,
+        body: #"{"error":{"message":"Invalid OAuth access token","type":"OAuthException","code":190}}"#)
 
-        try await sut.setup(with: FBToken(tokenString: "token-123"))
+    // MARK: onAppear
 
+    @Test func onAppear_showsSetupInfo_whenNotSeenYet() {
+        let (sut, _, _, _) = makeSUT(setupInfoShown: false)
+        #expect(sut.onAppear() == .showSetupInfo)
+    }
+
+    @Test func onAppear_isIdle_whenNoToken() {
+        let (sut, _, _, _) = makeSUT(token: FBToken(tokenString: nil))
+        #expect(sut.onAppear() == .idle)
+    }
+
+    @Test func onAppear_validates_whenTokenPresent() {
+        let (sut, _, _, _) = makeSUT(token: FBToken(tokenString: "token-123"))
+        #expect(sut.onAppear() == .validateExistingSession)
+    }
+
+    // MARK: validateSetup
+
+    @Test func validateSetup_connects_whenGatewaySucceeds() async {
+        let (sut, gateway, _, _) = makeSUT(token: FBToken(tokenString: "token-123"))
+
+        let result = await sut.validateSetup()
+
+        #expect(result == .connected)
         #expect(gateway.setupTokens == ["token-123"])
     }
 
+    @Test func validateSetup_sessionExpired_andResets_whenNoToken() async {
+        let (sut, gateway, session, _) = makeSUT(token: FBToken(tokenString: nil))
+
+        let result = await sut.validateSetup()
+
+        #expect(result == .sessionExpired)
+        #expect(gateway.setupTokens.isEmpty)   // never reached the Graph
+        #expect(session.resetCount == 1)       // stale session cleared
+    }
+
+    @Test func validateSetup_sessionExpired_andResets_onInvalidToken() async {
+        let (sut, _, session, _) = makeSUT(token: FBToken(tokenString: "stale"), setupError: oauthError)
+
+        let result = await sut.validateSetup()
+
+        #expect(result == .sessionExpired)
+        #expect(session.resetCount == 1)       // self-heals the code-190 case
+    }
+
+    @Test func validateSetup_fails_withoutResetting_onNonAuthError() async {
+        let (sut, _, session, _) = makeSUT(
+            token: FBToken(tokenString: "token-123"),
+            setupError: InstagramGraphServiceError.instagramAccountNotFound)
+
+        let result = await sut.validateSetup()
+
+        if case .failed = result {} else { Issue.record("expected .failed, got \(result)") }
+        #expect(session.resetCount == 0)       // not an auth problem — keep the session
+    }
+
+    @Test func validateSetup_marksLoginAttempt_whenRequested() async {
+        let (sut, _, _, settings) = makeSUT(token: FBToken(tokenString: "token-123"))
+
+        _ = await sut.validateSetup(markLoginAttempt: true)
+
+        #expect(settings.pressedFBLoginButton)
+    }
+
+    // MARK: reset / flags
+
     @Test func resetFacebookSession_resetsSessionGatewayAndFlag() {
-        let gateway = FakeGateway()
-        let session = FakeSession()
-        let settings = FakeSettings()
+        let (sut, gateway, session, settings) = makeSUT()
         settings.pressedFBLoginButton = true
-        let sut = FBLoginViewModel(gateway: gateway, settings: settings, facebookSessionService: session)
 
         sut.resetFacebookSession()
 
@@ -221,8 +291,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func markLoginButtonPressed_setsTheFlag() {
-        let settings = FakeSettings()
-        let sut = FBLoginViewModel(gateway: FakeGateway(), settings: settings, facebookSessionService: FakeSession())
+        let (sut, _, _, settings) = makeSUT()
 
         sut.markLoginButtonPressed()
 
