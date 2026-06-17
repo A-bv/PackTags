@@ -19,7 +19,7 @@ final class ThemeListViewController: UITableViewController {
 
     // MARK: - Dependencies
 
-    let viewModel: ThemeListViewModel
+    private let viewModel: ThemeListViewModel
 
     // MARK: - Callbacks
 

@@ -100,13 +100,19 @@ import CoreData
         var setupInfoShown = false
     }
 
-    private func noopNavigation(selectTheme: @escaping (ThemeCD) -> Void = { _ in }) -> ThemeListNavigation {
+    private func noopNavigation(
+        selectTheme: @escaping (ThemeCD) -> Void = { _ in },
+        createTheme: @escaping (@escaping () -> Void) -> Void = { _ in },
+        openSettings: @escaping () -> Void = {},
+        openAnalytics: @escaping () -> Void = {},
+        openSmartG: @escaping () -> Void = {}
+    ) -> ThemeListNavigation {
         ThemeListNavigation(
             selectTheme: selectTheme,
-            createTheme: { _ in },
-            openSettings: {},
-            openAnalytics: {},
-            openSmartG: {})
+            createTheme: createTheme,
+            openSettings: openSettings,
+            openAnalytics: openAnalytics,
+            openSmartG: openSmartG)
     }
 
     private func makeSUT(navigation: ThemeListNavigation? = nil) -> (viewModel: ThemeListViewModel, repository: CoreDataThemeRepository) {
@@ -189,6 +195,42 @@ import CoreData
         sut.selectTheme(at: 0)
 
         #expect(!fired)
+    }
+
+    @Test func createTheme_firesNavigation() {
+        var fired = false
+        let (sut, _) = makeSUT(navigation: noopNavigation(createTheme: { _ in fired = true }))
+
+        sut.createTheme()
+
+        #expect(fired)
+    }
+
+    @Test func openSettings_firesNavigation() {
+        var fired = false
+        let (sut, _) = makeSUT(navigation: noopNavigation(openSettings: { fired = true }))
+
+        sut.openSettings()
+
+        #expect(fired)
+    }
+
+    @Test func openAnalytics_firesNavigation() {
+        var fired = false
+        let (sut, _) = makeSUT(navigation: noopNavigation(openAnalytics: { fired = true }))
+
+        sut.openAnalytics()
+
+        #expect(fired)
+    }
+
+    @Test func openSmartG_firesNavigation() {
+        var fired = false
+        let (sut, _) = makeSUT(navigation: noopNavigation(openSmartG: { fired = true }))
+
+        sut.openSmartG()
+
+        #expect(fired)
     }
 
     @Test func reorderTheme_persistsTheNewOrder() {
@@ -420,6 +462,66 @@ import CoreData
         }
 
         #expect(openedURLs.count == 3)
+    }
+}
+
+// MARK: - SettingsViewModel
+
+@Suite @MainActor struct SettingsViewModelTests {
+
+    private final class FakeSettings: AppSettingsProtocol {
+        var hasSeenOnboarding = false
+        var tipsAlertShown = false
+        var tagsPerPack = 30
+        var saveAndShuffle = false
+        var keepPacksOrder = false
+        var openInstagramAfterCopy = false
+        var instagramUsername: String?
+        var pressedFBLoginButton = false
+        var setupInfoShown = false
+    }
+
+    private func navigation(openQuantityPicker: @escaping () -> Void = {}) -> SettingsNavigation {
+        SettingsNavigation(
+            openQuantityPicker: openQuantityPicker,
+            replayOnboarding: {},
+            openFacebookSetup: {},
+            openSetupInfo: {})
+    }
+
+    private func staticHandler(_ vm: SettingsViewModel, section: Int, row: Int) -> (() -> Void)? {
+        guard case .staticCell(let model) = vm.sections[section].options[row] else { return nil }
+        return model.handler
+    }
+
+    @Test func quantityRow_routesThroughNavigation() {
+        var fired = false
+        let vm = SettingsViewModel(settings: FakeSettings(), navigation: navigation(openQuantityPicker: { fired = true }))
+
+        staticHandler(vm, section: 1, row: 0)?()
+
+        #expect(fired)
+    }
+
+    @Test func shareRow_emitsShareAppEvent() {
+        let vm = SettingsViewModel(settings: FakeSettings(), navigation: navigation())
+        var event: SettingsViewModel.ViewEvent?
+        vm.onViewEvent = { event = $0 }
+
+        staticHandler(vm, section: 3, row: 1)?()
+
+        if case .shareApp = event {} else {
+            Issue.record("expected a shareApp event, got \(String(describing: event))")
+        }
+    }
+
+    @Test func saveInstagramUsername_trimsWhitespace() {
+        let settings = FakeSettings()
+        let vm = SettingsViewModel(settings: settings, navigation: navigation())
+
+        vm.saveInstagramUsername("  packtags  ")
+
+        #expect(settings.instagramUsername == "packtags")
     }
 }
 

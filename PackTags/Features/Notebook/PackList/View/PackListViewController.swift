@@ -23,7 +23,7 @@ private enum Constants {
 
 final class PackListViewController: CoverImageTableViewController {
 
-    let viewModel: PackListViewModel
+    private let viewModel: PackListViewModel
 
     /// Wired by the coordinator: opens the theme editor, highlighting the
     /// given pack when non-nil.

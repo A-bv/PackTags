@@ -16,7 +16,7 @@ final class SettingsViewController: UIViewController {
         static let mailRecipient = "packtagsapp@gmail.com"
     }
 
-    let viewModel: SettingsViewModel
+    private let viewModel: SettingsViewModel
 
     private let tableView = UITableView(frame: .zero, style: .grouped)
 

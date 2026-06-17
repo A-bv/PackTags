@@ -24,7 +24,7 @@ final class ThemeEditorViewController: UIViewController {
 
     //MARK: - Dependencies
 
-    let viewModel: ThemeEditorViewModel
+    private let viewModel: ThemeEditorViewModel
 
     //MARK: - UI
 
