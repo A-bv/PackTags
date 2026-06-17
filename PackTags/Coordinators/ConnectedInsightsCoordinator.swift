@@ -58,7 +58,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
         let vc: UIViewController
         switch destination {
         case .setup:
-            let loginVC = FBLoginVC(gateway: gateway, settings: settings)
+            let loginVC = FBLoginViewController(gateway: gateway, settings: settings)
             loginVC.onSetupComplete = onComplete
             loginVC.onShowSetupInfo = { [weak self, weak loginVC] in
                 guard let self, let loginVC else { return }
@@ -66,7 +66,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
             }
             vc = loginVC
         case .setupInfo:
-            let infoVC = InfoSetupIGCreatorVC(appSettings: settings)
+            let infoVC = InfoSetupIGCreatorViewController(appSettings: settings)
             infoVC.modalPresentationStyle = .overFullScreen
             infoVC.modalTransitionStyle = .crossDissolve
             presenter.present(infoVC, animated: true)

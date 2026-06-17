@@ -16,7 +16,7 @@ final class OnboardingCoordinator: Coordinator {
     }
 
     func start() {
-        let viewController = OnBoardingVC(appSettings: appSettings)
+        let viewController = OnboardingViewController(appSettings: appSettings)
         viewController.modalPresentationStyle = .fullScreen
         viewController.onDismiss = { [weak self] in self?.onFinish?() }
         navigationController.present(viewController, animated: true)

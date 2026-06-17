@@ -1,6 +1,6 @@
 import UIKit
 
-final class OnBoardingVC: UIViewController, UIScrollViewDelegate {
+final class OnboardingViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: - UI
 
@@ -236,7 +236,7 @@ final class OnBoardingVC: UIViewController, UIScrollViewDelegate {
 
 // MARK: - Scrolling & actions
 
-extension OnBoardingVC {
+extension OnboardingViewController {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         setIndicatorForCurrentPage()
     }

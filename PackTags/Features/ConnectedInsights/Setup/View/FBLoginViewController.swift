@@ -5,7 +5,7 @@ import FBSDKLoginKit
 import InstagramGraph
 
 // MARK: - Class
-final class FBLoginVC: UIViewController {
+final class FBLoginViewController: UIViewController {
 
     private enum Strings {
         static let connectedAlertTitle = "Connected!".localized()
@@ -71,13 +71,13 @@ final class FBLoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        logLogin("FBLoginVC viewDidLoad.")
-        setupFBLoginVC()
+        logLogin("FBLoginViewController viewDidLoad.")
+        setupFBLoginViewController()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        logLogin("FBLoginVC viewDidAppear.")
+        logLogin("FBLoginViewController viewDidAppear.")
         if showApiGraphSetupVCIfNeeded() {
             return
         }
@@ -87,7 +87,7 @@ final class FBLoginVC: UIViewController {
     }
 }
 
-extension FBLoginVC {
+extension FBLoginViewController {
     private func showApiGraphSetupVCIfNeeded() -> Bool {
         if !viewModel.hasSeenSetupInfo {
             logLogin("Showing setup info before login.")
@@ -118,8 +118,8 @@ extension FBLoginVC {
 }
 
 // MARK: - UI
-extension FBLoginVC: @preconcurrency LoginButtonDelegate {
-    private func setupFBLoginVC () {
+extension FBLoginViewController: @preconcurrency LoginButtonDelegate {
+    private func setupFBLoginViewController () {
         self.view.applyBlur()
         chrome.addCloseButton()
         chrome.addFacebookSetupHelpButton { [weak self] in
@@ -168,7 +168,7 @@ extension FBLoginVC: @preconcurrency LoginButtonDelegate {
 }
 
 // MARK: - Delegates
-extension FBLoginVC {
+extension FBLoginViewController {
     func loginButton(
         _ loginButton: FBLoginButton,
         didCompleteWith result: LoginManagerLoginResult?,
@@ -200,7 +200,7 @@ extension FBLoginVC {
 }
 
 // MARK: - Actions
-extension FBLoginVC {
+extension FBLoginViewController {
     private func performConnectedInsightsSetup(
         source: String,
         markLoginAttempt: Bool = false

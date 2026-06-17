@@ -230,7 +230,7 @@ private func makeTheme(named name: String? = nil) -> ThemeCD {
 
         root.onViewDidAppear?()
 
-        #expect(nav.presentedVC is OnBoardingVC)
+        #expect(nav.presentedVC is OnboardingViewController)
         #expect(nav.presentedVC?.modalPresentationStyle == .fullScreen)
     }
 
@@ -238,7 +238,7 @@ private func makeTheme(named name: String? = nil) -> ThemeCD {
         let (sut, nav) = makeSUT()
         let root = startedRoot(sut, nav)
         root.onViewDidAppear?()
-        let onboarding = nav.presentedVC as? OnBoardingVC
+        let onboarding = nav.presentedVC as? OnboardingViewController
 
         onboarding?.onDismiss?()
 

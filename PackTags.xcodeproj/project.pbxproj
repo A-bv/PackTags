@@ -44,7 +44,7 @@
 		023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B962A4D085E006E2D35 /* LoadingView.swift */; };
 		023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B982A4D0A5E006E2D35 /* OfflineView.swift */; };
 		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
-		02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */; };
+		02491C5926779A4900F98E17 /* InfoSetupIGCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* InfoSetupIGCreatorViewController.swift */; };
 		02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */; };
 		02491C692680883800F98E17 /* UIColors+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C682680883700F98E17 /* UIColors+AppColors.swift */; };
 		025479DF26C7EEA000E28724 /* SeedData in Resources */ = {isa = PBXBuildFile; fileRef = 025479DE26C7EEA000E28724 /* SeedData */; };
@@ -63,7 +63,7 @@
 		02998A642B43735F00B70516 /* SmartGViewModel+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */; };
 		02998A662B44104800B70516 /* Circles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A652B44104800B70516 /* Circles.swift */; };
 		02998A682B4611B100B70516 /* BarchartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A672B4611B000B70516 /* BarchartItemView.swift */; };
-		029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnBoardingVC.swift */; };
+		029FDDC1264E75600063DF1D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnboardingViewController.swift */; };
 		02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* ModalChrome.swift */; };
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
@@ -78,7 +78,7 @@
 		02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */; };
 		02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D066BF296B606F00536E3A /* RoundedShape.swift */; };
 		02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */; };
-		02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginVC.swift */; };
+		02E451B1265D5B4600582025 /* FBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginViewController.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
 		02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */; };
@@ -178,7 +178,7 @@
 		023D2B962A4D085E006E2D35 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		023D2B982A4D0A5E006E2D35 /* OfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
 		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
-		02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSetupIGCreatorVC.swift; sourceTree = "<group>"; };
+		02491C5826779A4900F98E17 /* InfoSetupIGCreatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSetupIGCreatorViewController.swift; sourceTree = "<group>"; };
 		02491C66267E3FED00F98E17 /* NeumorphicSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicSwiftUI.swift; sourceTree = "<group>"; };
 		02491C682680883700F98E17 /* UIColors+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColors+AppColors.swift"; sourceTree = "<group>"; };
 		025479DE26C7EEA000E28724 /* SeedData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SeedData; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 		02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartGViewModel+Import.swift"; sourceTree = "<group>"; };
 		02998A652B44104800B70516 /* Circles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circles.swift; sourceTree = "<group>"; };
 		02998A672B4611B000B70516 /* BarchartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartItemView.swift; sourceTree = "<group>"; };
-		029FDDC0264E75600063DF1D /* OnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingVC.swift; sourceTree = "<group>"; };
+		029FDDC0264E75600063DF1D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		02AD94A829A5936500D893E5 /* ModalChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalChrome.swift; sourceTree = "<group>"; };
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 		02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsOverviewModel.swift; sourceTree = "<group>"; };
 		02D066BF296B606F00536E3A /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsView.swift; sourceTree = "<group>"; };
-		02E451B0265D5B4600582025 /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
+		02E451B0265D5B4600582025 /* FBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewController.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGLayer+Performance.swift"; sourceTree = "<group>"; };
@@ -455,7 +455,7 @@
 		02A4235A2843FFF300A25067 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				029FDDC0264E75600063DF1D /* OnBoardingVC.swift */,
+				029FDDC0264E75600063DF1D /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -815,8 +815,8 @@
 		AB0000000000000000000601 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				02E451B0265D5B4600582025 /* FBLoginVC.swift */,
-				02491C5826779A4900F98E17 /* InfoSetupIGCreatorVC.swift */,
+				02E451B0265D5B4600582025 /* FBLoginViewController.swift */,
+				02491C5826779A4900F98E17 /* InfoSetupIGCreatorViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1010,7 +1010,7 @@
 				02FA307D2A004804006A48CC /* CollectionView+functions.swift in Sources */,
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
-				02491C5926779A4900F98E17 /* InfoSetupIGCreatorVC.swift in Sources */,
+				02491C5926779A4900F98E17 /* InfoSetupIGCreatorViewController.swift in Sources */,
 				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
 				0207BBB12FD564090007F3D3 /* PackListViewModel.swift in Sources */,
 				0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */,
@@ -1028,7 +1028,7 @@
 				023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */,
 				02FA307A2A004441006A48CC /* TagView.swift in Sources */,
 				0281B98B287A007200344D3E /* UINavigationController+BarAppearance.swift in Sources */,
-				02E451B1265D5B4600582025 /* FBLoginVC.swift in Sources */,
+				02E451B1265D5B4600582025 /* FBLoginViewController.swift in Sources */,
 				0264B817264A7CE900E1EEFA /* AnalyticsViewModel.swift in Sources */,
 				0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */,
 				AB00000000000000000000E2 /* AppSettings.swift in Sources */,
@@ -1051,7 +1051,7 @@
 				02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				AB0000000000000000008002 /* UITableView+Reusable.swift in Sources */,
-				029FDDC1264E75600063DF1D /* OnBoardingVC.swift in Sources */,
+				029FDDC1264E75600063DF1D /* OnboardingViewController.swift in Sources */,
 				02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */,
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
 				0296306E2614A785000CF4E9 /* QuantityPickerViewController.swift in Sources */,

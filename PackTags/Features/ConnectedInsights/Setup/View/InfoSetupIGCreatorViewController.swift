@@ -1,6 +1,6 @@
 import UIKit
 
-final class InfoSetupIGCreatorVC: UIViewController {
+final class InfoSetupIGCreatorViewController: UIViewController {
     private let appSettings: any AppSettingsProtocol
     private lazy var chrome = ModalChrome(host: self)
 
