@@ -1,2 +1,8 @@
 
 *.xcuserstate
+
+# Secrets — never commit real credentials (Facebook App ID / Client Token, etc.)
+Secrets.xcconfig
+*.secret.xcconfig
+.env
+.env.*
