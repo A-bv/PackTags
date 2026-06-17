@@ -10,23 +10,43 @@ final class NotebookCoordinator: Coordinator {
     private var settingsCoordinator: SettingsCoordinator?
     private var onboardingCoordinator: OnboardingCoordinator?
 
-    init(navigationController: UINavigationController, dependencies: AppDependencies) {
+    /// How the theme editor is built. Injectable so tests can verify the coordinator
+    /// passes the right theme (nil = new) without reaching into the view model.
+    private let makeThemeEditor: (ThemeCD?) -> ThemeEditorViewController
+
+    init(
+        navigationController: UINavigationController,
+        dependencies: AppDependencies,
+        makeThemeEditor: ((ThemeCD?) -> ThemeEditorViewController)? = nil
+    ) {
         self.navigationController = navigationController
         self.dependencies = dependencies
+        self.makeThemeEditor = makeThemeEditor ?? { theme in
+            ThemeEditorViewController(viewModel: ThemeEditorViewModel(
+                theme: theme,
+                repository: dependencies.themeRepository,
+                settings: dependencies.appSettings))
+        }
     }
 
     func start() {
         showThemeList()
     }
 
-    private func showThemeList() {
-        let navigation = ThemeListNavigation(
+    /// The navigation seam handed to the theme-list view model. Exposed so tests can
+    /// invoke the callbacks directly and assert what the coordinator routes to.
+    func makeThemeListNavigation() -> ThemeListNavigation {
+        ThemeListNavigation(
             selectTheme: { [weak self] theme in self?.showPackList(for: theme) },
             createTheme: { [weak self] onCreated in self?.showNewThemeEditor(onSave: onCreated) },
             openSettings: { [weak self] in self?.showSettings() },
             openAnalytics: { [weak self] in self?.showAnalytics() },
             openSmartG: { [weak self] in self?.showSmartG() }
         )
+    }
+
+    private func showThemeList() {
+        let navigation = makeThemeListNavigation()
         let viewModel = ThemeListViewModel(
             repository: dependencies.themeRepository,
             settings: dependencies.appSettings,
@@ -62,8 +82,7 @@ final class NotebookCoordinator: Coordinator {
     }
 
     private func showNewThemeEditor(onSave: @escaping () -> Void) {
-        let viewModel = ThemeEditorViewModel(theme: nil, repository: dependencies.themeRepository, settings: dependencies.appSettings)
-        let viewController = ThemeEditorViewController(viewModel: viewModel)
+        let viewController = makeThemeEditor(nil)
         viewController.onSave = { _ in onSave() }
         presentInNavController(viewController, transition: .coverVertical)
     }
@@ -105,7 +124,7 @@ final class NotebookCoordinator: Coordinator {
         onSave: @escaping () -> Void,
         onCancel: @escaping () -> Void
     ) {
-        let viewController = ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings))
+        let viewController = makeThemeEditor(theme)
         viewController.onSave = { _ in
             onSave()
             ReviewPromptPolicy().promptIfEarned() // Review prompt only after updating an existing theme

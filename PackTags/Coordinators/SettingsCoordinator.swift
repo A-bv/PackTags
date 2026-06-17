@@ -15,15 +15,20 @@ final class SettingsCoordinator: Coordinator {
     }
 
     func start() {
-        let navigation = SettingsNavigation(
+        let viewModel = SettingsViewModel(settings: dependencies.appSettings, navigation: makeSettingsNavigation())
+        let viewController = SettingsViewController(viewModel: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    /// The navigation seam handed to the settings view model. Exposed so tests can
+    /// invoke the callbacks directly and assert what the coordinator routes to.
+    func makeSettingsNavigation() -> SettingsNavigation {
+        SettingsNavigation(
             openQuantityPicker: { [weak self] in self?.showQuantityPicker() },
             replayOnboarding: { [weak self] in self?.replayOnboarding() },
             openFacebookSetup: { [weak self] in self?.presentConnectedInsights(.setup) },
             openSetupInfo: { [weak self] in self?.presentConnectedInsights(.setupInfo) }
         )
-        let viewModel = SettingsViewModel(settings: dependencies.appSettings, navigation: navigation)
-        let viewController = SettingsViewController(viewModel: viewModel)
-        navigationController.pushViewController(viewController, animated: true)
     }
 
     private func showQuantityPicker() {
