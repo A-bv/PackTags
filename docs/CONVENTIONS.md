@@ -85,15 +85,25 @@ can be anything fulfilling it (a repository, a service, a coordinator, a test mo
   the coordinator through **injected closures** (no delegate-to-coordinator references).
 - **SwiftUI view models** use `@Observable` + `@MainActor`.
 - Logic lives in the view model; the view controller only does view setup + binding.
+- The view controller holds its view model **`private`** — built by the coordinator and
+  injected through `init`. Don't widen it to `internal` for tests; exercise the view
+  model standalone instead (see §6).
 
 ---
 
 ## 6. Coordinators
 
 - Own navigation. `start()` plus private `show…` / `present…` methods.
-- Navigation methods are **`private`** and tested **through the injected callbacks**,
-  not by calling them directly (`@testable import` reaches `internal`, not `private`).
 - The view model exposes navigation **intents**; the coordinator fulfills them.
+- **Test through seams, never by reaching into a view controller's view model.** Because
+  view models are `private` (§5), each layer is verified at its own boundary:
+  - **Navigation** — expose `make…Navigation()` returning the closure seam; a test
+    invokes a callback and asserts what the coordinator pushes/presents.
+  - **View-model logic** (which theme an index picks, which callback an intent fires,
+    which event a row emits) — tested standalone with a recording **spy** navigation.
+  - **Construction** (did the coordinator build the screen with the right input?) —
+    inject a screen **factory** the test can mock, or assert the built screen's *public*
+    surface (e.g. its `title`).
 
 ---
 
