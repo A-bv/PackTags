@@ -5,23 +5,28 @@ import InstagramGraph
 @MainActor
 final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
     private let gateway: any ConnectedInsightsGatewayProtocol
-    private let settings: any AppSettingsProtocol
+    private let fbLogin: FBLoginCoordinator
     private lazy var smartTagsPersistence = PersistenceController(modelName: "SmartTags")
 
-    init(settings: any AppSettingsProtocol, gateway: (any ConnectedInsightsGatewayProtocol)? = nil) {
-        self.settings = settings
-        self.gateway = gateway ?? ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider())
+    init(settings: any AppSettingsProtocol) {
+        let gateway = ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider())
+        self.gateway = gateway
+        self.fbLogin = FBLoginCoordinator(gateway: gateway, settings: settings)
     }
 
     func open(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
         switch destination {
         case .analytics, .smartG:
             openFeature(destination, from: presenter)
-        case .setup, .setupInfo:
-            presentSetupScreen(destination, from: presenter, onComplete: nil)
+        case .setup:
+            fbLogin.start(from: presenter, dismissWhenAlreadyConnected: false)
+        case .setupInfo:
+            fbLogin.showInfo(from: presenter)
         }
     }
 
+    /// Features gate on token validity: `.ready` shows the feature; `.needsSetup` runs
+    /// the login flow (owned by `FBLoginCoordinator`), then the feature.
     private func openFeature(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
         switch gateway.accessState() {
         case .ready:
@@ -29,53 +34,29 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
             presentFeature(destination, from: presenter)
         case .needsSetup(let error):
             AppLogger.insights.info("\(error.localizedDescription, privacy: .public) Presenting setup flow for \(String(describing: destination), privacy: .public).")
-            presentSetupScreen(.setup, from: presenter) { [weak self] in
+            fbLogin.start(from: presenter) { [weak self] in
                 self?.presentFeature(destination, from: presenter)
             }
         }
     }
 
     private func presentFeature(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
-        let vc: UIViewController
         switch destination {
         case .analytics:
-            vc = UIHostingController(rootView: AnalyticsView(gateway: gateway))
+            present(AnalyticsView(gateway: gateway), from: presenter)
         case .smartG:
-            vc = UIHostingController(rootView: SmartGViewContainer(gateway: gateway, context: smartTagsPersistence.viewContext))
+            present(
+                SmartGViewContainer(gateway: gateway, context: smartTagsPersistence.viewContext),
+                from: presenter)
         default:
             return
         }
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .coverVertical
-        presenter.present(vc, animated: true)
     }
 
-    private func presentSetupScreen(
-        _ destination: ConnectedInsightsDestination,
-        from presenter: UIViewController,
-        onComplete: (() -> Void)?
-    ) {
-        let vc: UIViewController
-        switch destination {
-        case .setup:
-            let loginVC = FBLoginViewController(gateway: gateway, settings: settings)
-            loginVC.onSetupComplete = onComplete
-            loginVC.onShowSetupInfo = { [weak self, weak loginVC] in
-                guard let self, let loginVC else { return }
-                self.presentSetupScreen(.setupInfo, from: loginVC, onComplete: nil)
-            }
-            vc = loginVC
-        case .setupInfo:
-            let infoVC = InfoSetupIGCreatorViewController(appSettings: settings)
-            infoVC.modalPresentationStyle = .overFullScreen
-            infoVC.modalTransitionStyle = .crossDissolve
-            presenter.present(infoVC, animated: true)
-            return
-        default:
-            return
-        }
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .coverVertical
-        presenter.present(vc, animated: true)
+    private func present(_ view: some View, from presenter: UIViewController) {
+        let host = UIHostingController(rootView: view)
+        host.modalPresentationStyle = .overFullScreen
+        host.modalTransitionStyle = .coverVertical
+        presenter.present(host, animated: true)
     }
 }

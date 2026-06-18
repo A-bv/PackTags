@@ -192,6 +192,17 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         var setupInfoShown = false
     }
 
+    @MainActor
+    private final class FakeTracking: AppTrackingAuthorizing {
+        var authorized: Bool
+        private(set) var requestCount = 0
+        private(set) var promptCount = 0
+        init(authorized: Bool) { self.authorized = authorized }
+        var isAuthorized: Bool { authorized }
+        func requestIfNeeded() async -> Bool { requestCount += 1; return authorized }
+        func promptOrOpenSettings() async { promptCount += 1 }
+    }
+
     private func makeSUT(
         token: FBToken = FBToken(tokenString: nil),
         setupError: Error? = nil,
@@ -211,21 +222,13 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         statusCode: 400,
         body: #"{"error":{"message":"Invalid OAuth access token","type":"OAuthException","code":190}}"#)
 
-    // MARK: onAppear
+    // MARK: setup info
 
-    @Test func onAppear_showsSetupInfo_whenNotSeenYet() {
-        let (sut, _, _, _) = makeSUT(setupInfoShown: false)
-        #expect(sut.onAppear() == .showSetupInfo)
-    }
-
-    @Test func onAppear_isIdle_whenNoToken() {
-        let (sut, _, _, _) = makeSUT(token: FBToken(tokenString: nil))
-        #expect(sut.onAppear() == .idle)
-    }
-
-    @Test func onAppear_validates_whenTokenPresent() {
-        let (sut, _, _, _) = makeSUT(token: FBToken(tokenString: "token-123"))
-        #expect(sut.onAppear() == .validateExistingSession)
+    @Test func hasSeenSetupInfo_reflectsSettings() {
+        let (seen, _, _, _) = makeSUT(setupInfoShown: true)
+        #expect(seen.hasSeenSetupInfo)
+        let (unseen, _, _, _) = makeSUT(setupInfoShown: false)
+        #expect(!unseen.hasSeenSetupInfo)
     }
 
     // MARK: validateSetup
@@ -233,18 +236,18 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func validateSetup_connects_whenGatewaySucceeds() async {
         let (sut, gateway, _, _) = makeSUT(token: FBToken(tokenString: "token-123"))
 
-        let result = await sut.validateSetup()
+        await sut.validateSetup()
 
-        #expect(result == .connected)
+        #expect(sut.result == .connected)
         #expect(gateway.setupTokens == ["token-123"])
     }
 
     @Test func validateSetup_sessionExpired_andResets_whenNoToken() async {
         let (sut, gateway, session, _) = makeSUT(token: FBToken(tokenString: nil))
 
-        let result = await sut.validateSetup()
+        await sut.validateSetup()
 
-        #expect(result == .sessionExpired)
+        #expect(sut.result == .sessionExpired)
         #expect(gateway.setupTokens.isEmpty)   // never reached the Graph
         #expect(session.resetCount == 1)       // stale session cleared
     }
@@ -252,9 +255,9 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func validateSetup_sessionExpired_andResets_onInvalidToken() async {
         let (sut, _, session, _) = makeSUT(token: FBToken(tokenString: "stale"), setupError: oauthError)
 
-        let result = await sut.validateSetup()
+        await sut.validateSetup()
 
-        #expect(result == .sessionExpired)
+        #expect(sut.result == .sessionExpired)
         #expect(session.resetCount == 1)       // self-heals the code-190 case
     }
 
@@ -263,21 +266,52 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
             token: FBToken(tokenString: "token-123"),
             setupError: InstagramGraphServiceError.instagramAccountNotFound)
 
-        let result = await sut.validateSetup()
+        await sut.validateSetup()
 
-        if case .failed = result {} else { Issue.record("expected .failed, got \(result)") }
+        if case .failed = sut.result {} else { Issue.record("expected .failed, got \(String(describing: sut.result))") }
         #expect(session.resetCount == 0)       // not an auth problem — keep the session
     }
 
     @Test func validateSetup_marksLoginAttempt_whenRequested() async {
         let (sut, _, _, settings) = makeSUT(token: FBToken(tokenString: "token-123"))
 
-        _ = await sut.validateSetup(markLoginAttempt: true)
+        await sut.validateSetup(markLoginAttempt: true)
 
         #expect(settings.pressedFBLoginButton)
     }
 
-    // MARK: reset / flags
+    @Test func validateSetup_flagsLogin_whenConnectedViaLoginAttempt() async {
+        let (sut, _, _, _) = makeSUT(token: FBToken(tokenString: "token-123"))
+
+        await sut.validateSetup(markLoginAttempt: true)
+
+        #expect(sut.result == .connected)
+        #expect(sut.connectedViaLogin)   // active login → confirm with "Connected!"
+    }
+
+    @Test func validateSetup_doesNotFlagLogin_onPassiveRevalidation() async {
+        let (sut, _, _, _) = makeSUT(token: FBToken(tokenString: "token-123"))
+
+        await sut.validateSetup(markLoginAttempt: false)
+
+        #expect(sut.result == .connected)
+        #expect(!sut.connectedViaLogin)  // passive re-validation → no alert
+    }
+
+    @Test func didCompleteLogin_connectsAndFlagsLogin_onSuccess() async {
+        let session = FakeSession()
+        session.token = FBToken(tokenString: "token-123")
+        let sut = FBLoginViewModel(
+            gateway: FakeGateway(), settings: FakeSettings(),
+            facebookSessionService: session)
+
+        await sut.didCompleteLogin(error: nil)
+
+        #expect(sut.result == .connected)
+        #expect(sut.connectedViaLogin)
+    }
+
+    // MARK: reset
 
     @Test func resetFacebookSession_resetsSessionGatewayAndFlag() {
         let (sut, gateway, session, settings) = makeSUT()
@@ -290,11 +324,44 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         #expect(!settings.pressedFBLoginButton)
     }
 
-    @Test func markLoginButtonPressed_setsTheFlag() {
-        let (sut, _, _, settings) = makeSUT()
+    // MARK: tracking (ATT)
 
-        sut.markLoginButtonPressed()
+    @Test func onAppear_promptsTracking_andValidatesWhenAuthorizedWithToken() async {
+        let session = FakeSession()
+        session.token = FBToken(tokenString: "token-123")
+        let tracking = FakeTracking(authorized: true)
+        let sut = FBLoginViewModel(
+            gateway: FakeGateway(), settings: FakeSettings(),
+            facebookSessionService: session, tracking: tracking)
 
-        #expect(settings.pressedFBLoginButton)
+        await sut.onAppear()
+
+        #expect(tracking.requestCount == 1)
+        #expect(sut.isTrackingAuthorized)
+        #expect(sut.result == .connected)
+    }
+
+    @Test func handleTrackingTap_routesToTheAuthorizer() async {
+        let tracking = FakeTracking(authorized: false)
+        let sut = FBLoginViewModel(
+            gateway: FakeGateway(), settings: FakeSettings(),
+            facebookSessionService: FakeSession(), tracking: tracking)
+
+        await sut.handleTrackingTap()
+
+        #expect(tracking.promptCount == 1)
+        #expect(!sut.isTrackingAuthorized)
+    }
+
+    @Test func didCompleteLogin_failsOnError() async {
+        let sut = FBLoginViewModel(
+            gateway: FakeGateway(), settings: FakeSettings(),
+            facebookSessionService: FakeSession())
+
+        await sut.didCompleteLogin(error: oauthError)
+
+        if case .failed = sut.result {} else {
+            Issue.record("expected .failed, got \(String(describing: sut.result))")
+        }
     }
 }
