@@ -11,7 +11,7 @@
 
 Creators reuse the same hashtags every day, but Instagram gives them nowhere to keep, clean, or reason about them. PackTags is that missing notebook: save hashtags as reusable themed packs, copy a pack in one tap, and keep every list tidy. Connect an Instagram Business account — through the **official Meta Graph API** — and it also surfaces trending hashtags and shows how your recent posts performed.
 
-Built with UIKit + SwiftUI on an MVVM-C architecture, fully testable and on the App Store today.
+Built with UIKit + SwiftUI on an MVVM-C architecture, fully testable.
 
 ## Features
 
