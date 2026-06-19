@@ -5,13 +5,32 @@
 ![Platform](https://img.shields.io/badge/platform-iOS%2017%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5-orange)
 ![UI](https://img.shields.io/badge/UI-UIKit%20%2B%20SwiftUI-9cf)
-![App Store](https://img.shields.io/badge/App%20Store-live-brightgreen)
+![App Store](https://img.shields.io/badge/App%20Store-shipped-blue)
+![CI](https://github.com/A-bv/PackTags/actions/workflows/ci.yml/badge.svg)
 
 ## Overview
 
 Creators reuse the same hashtags every day, but Instagram gives them nowhere to keep, clean, or reason about them. PackTags is that missing notebook: save hashtags as reusable themed packs, copy a pack in one tap, and keep every list tidy. Connect an Instagram Business account — through the **official Meta Graph API** — and it also surfaces trending hashtags and shows how your recent posts performed.
 
 Built with UIKit + SwiftUI on an MVVM-C architecture, fully testable.
+
+## Screenshots
+
+*Themed packs, the tap-to-select hashtag editor, dark mode, post analytics, and Smart Hashtags discovery.*
+
+<p align="center">
+  <img src="docs/screenshots/overview.png" width="720" alt="PackTags: post analytics, the hashtag editor, a themed pack, and the theme list">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/dark-mode.png" width="330" alt="A themed hashtag pack in dark mode">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/editor.png" width="330" alt="The tap-to-select hashtag editor over a themed pack">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/smart-hashtags.png" width="560" alt="Smart Hashtags — discover tags from any topic, ranked by post engagement">
+</p>
 
 ## Features
 
@@ -60,6 +79,16 @@ Built on current Apple APIs rather than legacy patterns:
 | Reviews | StoreKit `AppStore.requestReview` behind a launch/version policy |
 | Logging | `os.Logger` categories — no `print()` |
 
+## Case study — diagnosing the Connected Insights / ATT regression
+
+After upgrading the Facebook SDK (9 → 18), Instagram analytics silently stopped loading: the access token looked valid, but the Graph API rejected it with `Cannot parse access token`. Rather than guess, I instrumented the login flow and ran a controlled **on-device test matrix** — allow vs. deny App Tracking Transparency, each followed by a live `/me` probe — and proved the root cause:
+
+> **FBSDK 17+ ties the classic Graph token's validity to ATT consent.** Deny tracking and the SDK silently issues an unusable Limited-Login token; forcing the in-app advertiser flag doesn't help, because the OS ATT status wins.
+
+The fix ships the constraint *honestly*: a SwiftUI setup flow (`FBLoginView`) that surfaces the tracking state, routes the user to the one place iOS lets them change it, and **degrades gracefully** — deny tracking and you lose only the analytics feature, not the app. The full investigation, the alternatives weighed (classic Facebook Login vs. the newer Instagram Login), and the decision to defer the migration are written up as an architecture decision record:
+
+📄 **[docs/CONNECTED_INSIGHTS_ATT.md](docs/CONNECTED_INSIGHTS_ATT.md)**
+
 ## Dependencies
 
 Managed with Swift Package Manager (resolved automatically when you open the project).
@@ -97,7 +126,6 @@ Unit tests use **Swift Testing** and run the domain rules, the repository (on an
 
 - **Crash & error reporting** — evaluating Sentry vs. Firebase Crashlytics.
 - **Swift 6 language mode** — strict concurrency is already `complete`.
-- **CI** — build + test on every push.
 
 ## Author
 

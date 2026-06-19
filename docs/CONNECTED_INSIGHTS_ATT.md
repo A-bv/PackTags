@@ -1,6 +1,6 @@
 # Connected Insights: Facebook Login vs. Instagram Login
 
-**Status:** Accepted (2026-06-18) — keep Facebook Login + the Instagram Graph API, gated behind App Tracking Transparency (phase 1). Migrating to Instagram Login is deferred to phase 2.
+**Status:** Accepted (2026-06-18); phase 1 shipped 2026-06-19 — keep Facebook Login + the Instagram Graph API, gated behind App Tracking Transparency. Migrating to Instagram Login is deferred to phase 2.
 
 ---
 
@@ -76,5 +76,5 @@ Option B remains the long-term escape from the ATT wall and the better onboardin
 
 ## Consequences
 
-- `AppTrackingAuthorizer` detects ATT conformity; `ConnectedInsightsCoordinator` gates the feature on it and presents a "Meta limitation" alert with an Open Settings shortcut on every blocked attempt. `Info.plist` declares `NSUserTrackingUsageDescription`.
+- The setup flow is SwiftUI: `FBLoginView` (driven by an `@Observable FBLoginViewModel`) surfaces the live ATT state and routes the user to iOS Settings — the only place the flag can change — through an injected `AppTrackingAuthorizing` seam, degrading gracefully (deny tracking and only the analytics feature is unavailable). A dedicated `FBLoginCoordinator`, child of `ConnectedInsightsCoordinator`, presents it from both the features and Settings; the parent routes `.analytics`/`.smartG` on `gateway.accessState()`. `Info.plist` declares `NSUserTrackingUsageDescription`, localized via `InfoPlist.strings`.
 - Reusable analytics code (models, `ProfileDataTransformer`, charts, MVVM-C structure) is path-agnostic and would survive a future migration; only the auth/networking plumbing is Facebook-specific.
