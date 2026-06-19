@@ -42,17 +42,13 @@ Tap \"Setup\" for more information.";
 /* Connected Insights — App Tracking */
 "App tracking on" = "App tracking on";
 "App tracking off" = "App tracking off";
-"Instagram analytics needs it. Turn on Allow Tracking in Settings." = "Instagram analytics needs it. Turn on Allow Tracking in Settings.";
 "Manage" = "Manage";
 "Why tracking?" = "Why tracking?";
 "Enable Tracking" = "Enable Tracking";
 "Setup" = "Setup";
-"Instagram analytics needs app tracking allowed. This is a limitation imposed by Meta — Facebook only issues a usable analytics token when tracking is on. Everything else in PackTags works without it." = "Instagram analytics needs app tracking allowed. This is a limitation imposed by Meta — Facebook only issues a usable analytics token when tracking is on. Everything else in PackTags works without it.";
 "Meta features are only available to Creator/Business Instagram accounts connected to a Facebook page." = "Meta features are only available to Creator/Business Instagram accounts connected to a Facebook page.";
 "If you do not have a connected page:" = "If you do not have a connected page:";
 "Meta features need app tracking. Turn on Allow Tracking in Settings." = "Meta features need app tracking. Turn on Allow Tracking in Settings.";
 "Get Started" = "Get Started";
-"Meta features require app tracking — a limitation Meta introduced in their SDK 17.0. The rest of PackTags works without it. You can change this anytime in Settings → Apps → PackTags." = "Meta features require app tracking — a limitation Meta introduced in their SDK 17.0. The rest of PackTags works without it. You can change this anytime in Settings → Apps → PackTags.";
 "trackingInfoMessage" = "Meta requires it for these features. Change this anytime in Settings → Apps → PackTags.";
 "Creator /Business account:" = "Creator /Business account:";
-"If you do not have a connected page:" = "If you do not have a connected page:";

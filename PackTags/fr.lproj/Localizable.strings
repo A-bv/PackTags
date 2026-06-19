@@ -50,8 +50,6 @@
 "Rename" = "Renommer";
 "Edit picture" = "Modifier l'image";
 "Text Recognition" = "Reconnaissance de texte";
-"Smart hashtags" = "Smart hashtags";
-"Search hashtags" = "Recherche d'hashtags";
 "Shuffle hashtags" = "Mélanger les hashtags";
 "Edit..." = "Modifier...";
 "Import..." = "Importer...";
@@ -77,7 +75,6 @@
 ⭑ Créez/Liez une page Facebook.
 ";
 
-"If your page is not linked:" = "Si votre page n'est pas liée:";
 "Open Instagram" = "Ouvrir Instagram";
  
 // FB LoginVC
@@ -105,7 +102,6 @@
 "Engagement Rate by Impressions (ER Impressions)" = "Taux d'engagement par impressions (ER Impressions)";
 "Analytics" = "Analyses";
 "Not connected" = "Non connecté";
-"Profile is private" = "Le profil est privé";
 "Per Follower" = "Par follower";
 "By Reach" = "Par portée";
 "By Impressions" = "Par impressions";
@@ -124,7 +120,6 @@
 "Top 10 hashtags copied!" = "Top 10 hashtags copiés!";
 "The most used hashtags of the page were copied into the clipboard." = "Les hashtags les plus utilisés de la page on été copiés dans le presse-papier.";
 "Enter a hashtag" = "Entrez un hashtag";
-"Saved hashtags" = "HASHTAGS SAUVEGARDÉS";
 "Instagram allows only 30 saved hashtags per week." = "Instagram limite la sauvegrade d'hashtags à 30 par semaine.";
 "Oups! Could not find hashtags.\nCheck your entry." = "Oups! Aucun hashtag trouvé.\nVérifiez votre saisie.";
 
@@ -196,18 +191,14 @@ Appuyez sur \"Configuration\" pour plus d'informations.";
 /* Connected Insights — App Tracking */
 "App tracking on" = "Suivi activé";
 "App tracking off" = "Suivi désactivé";
-"Instagram analytics needs it. Turn on Allow Tracking in Settings." = "Les analytics Instagram en ont besoin. Activez « Autoriser le suivi » dans Réglages.";
 "Manage" = "Gérer";
 "Why tracking?" = "Pourquoi le suivi ?";
 "Enable Tracking" = "Activer le suivi";
 "Setup" = "Configuration";
-"Instagram analytics needs app tracking allowed. This is a limitation imposed by Meta — Facebook only issues a usable analytics token when tracking is on. Everything else in PackTags works without it." = "Les analytics Instagram nécessitent l'autorisation de suivi. C'est une limitation imposée par Meta — Facebook ne délivre un token exploitable que si le suivi est activé. Tout le reste de PackTags fonctionne sans.";
 "Reset Facebook Login" = "Réinitialiser la connexion Facebook";
 "Meta features are only available to Creator/Business Instagram accounts connected to a Facebook page." = "Les fonctionnalités Meta sont réservées aux comptes Instagram Créateur/Entreprise connectés à une page Facebook.";
 "If you do not have a connected page:" = "Si vous n'avez pas de page liée :";
 "Meta features need app tracking. Turn on Allow Tracking in Settings." = "Les fonctionnalités Meta nécessitent le suivi de l'app. Activez « Autoriser le suivi » dans Réglages.";
 "Get Started" = "Commencer";
-"Meta features require app tracking — a limitation Meta introduced in their SDK 17.0. The rest of PackTags works without it. You can change this anytime in Settings → Apps → PackTags." = "Les fonctionnalités Meta nécessitent le suivi de l'app — une limitation introduite par Meta dans son SDK 17.0. Le reste de PackTags fonctionne sans. Vous pouvez modifier cette option à tout moment dans Réglages → Apps → PackTags.";
 "trackingInfoMessage" = "Meta l'exige pour ces fonctionnalités. Modifiez ce choix à tout moment dans Réglages → Apps → PackTags.";
 "Creator /Business account:" = "Compte Créateur /Entreprise :";
-"If you do not have a connected page:" = "Si vous n'avez pas de page liée :";
