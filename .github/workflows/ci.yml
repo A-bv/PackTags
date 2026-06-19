@@ -12,6 +12,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create placeholder Secrets.xcconfig
+        # Secrets.xcconfig is gitignored (real Facebook credentials live there) and is
+        # the project's base configuration. CI only builds & tests with fakes, so a
+        # placeholder is enough to satisfy the build and let the host app launch.
+        run: |
+          cat > Secrets.xcconfig <<'EOF'
+          FACEBOOK_APP_ID = 000000000000000
+          FACEBOOK_CLIENT_TOKEN = ci_placeholder_token
+          EOF
+
       - name: Show toolchain
         run: xcodebuild -version
 
