@@ -12,7 +12,7 @@ struct LoadingView: View {
             Color.bgFillColor
                 .edgesIgnoringSafeArea(.all)
 
-            ActivityIndicatorView(isVisible: $loading, type: .rotatingDots)
+            ActivityIndicatorView(isVisible: $loading)
                 .foregroundColor(Constants.indicatorColor)
                 .frame(
                     width: Constants.loadingIndicatorFrame,
