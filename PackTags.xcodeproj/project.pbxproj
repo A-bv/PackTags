@@ -30,7 +30,7 @@
 		AB0000000000000000010012 /* ConnectedInsightsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010011 /* ConnectedInsightsProtocol.swift */; };
 		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
-		020621572666DBCC0072C404 /* BarChartPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* BarChartPost.swift */; };
+		020621572666DBCC0072C404 /* BarChartPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* BarChartPostModel.swift */; };
 		0207BB852FD3736C0007F3D3 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB842FD3736C0007F3D3 /* CoordinatorProtocol.swift */; };
 		0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */; };
 		0207BB892FD3736C0007F3D3 /* NotebookCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB882FD3736C0007F3D3 /* NotebookCoordinator.swift */; };
@@ -83,7 +83,7 @@
 		AB0000000000000000008002 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000008001 /* UITableView+Reusable.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerViewController.swift */; };
 		02998A642B43735F00B70516 /* SmartGViewModel+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */; };
-		02998A662B44104800B70516 /* CircleGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A652B44104800B70516 /* CircleGauge.swift */; };
+		02998A662B44104800B70516 /* CircleGaugeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A652B44104800B70516 /* CircleGaugeModel.swift */; };
 		02998A682B4611B100B70516 /* BarChartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A672B4611B000B70516 /* BarChartItemView.swift */; };
 		029FDDC1264E75600063DF1D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnboardingViewController.swift */; };
 		02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* ModalChrome.swift */; };
@@ -187,7 +187,7 @@
 		AB0000000000000000010011 /* ConnectedInsightsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsProtocol.swift; sourceTree = "<group>"; };
 		020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		020584D4284D715D00020FB8 /* UIView+BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BlurView.swift"; sourceTree = "<group>"; };
-		020621562666DBCC0072C404 /* BarChartPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPost.swift; sourceTree = "<group>"; };
+		020621562666DBCC0072C404 /* BarChartPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPostModel.swift; sourceTree = "<group>"; };
 		0207BB842FD3736C0007F3D3 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0207BB882FD3736C0007F3D3 /* NotebookCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCoordinator.swift; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 		AB0000000000000000008001 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerViewController.swift; sourceTree = "<group>"; };
 		02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartGViewModel+Import.swift"; sourceTree = "<group>"; };
-		02998A652B44104800B70516 /* CircleGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGauge.swift; sourceTree = "<group>"; };
+		02998A652B44104800B70516 /* CircleGaugeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGaugeModel.swift; sourceTree = "<group>"; };
 		02998A672B4611B000B70516 /* BarChartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartItemView.swift; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		02AD94A829A5936500D893E5 /* ModalChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalChrome.swift; sourceTree = "<group>"; };
@@ -680,9 +680,9 @@
 			isa = PBXGroup;
 			children = (
 				02D066BD296B4B5000536E3A /* AnalyticsOverviewModel.swift */,
-				020621562666DBCC0072C404 /* BarChartPost.swift */,
+				020621562666DBCC0072C404 /* BarChartPostModel.swift */,
 				AB0000000000000000010301 /* AnalyticsMetric.swift */,
-				02998A652B44104800B70516 /* CircleGauge.swift */,
+				02998A652B44104800B70516 /* CircleGaugeModel.swift */,
 				021D761F275A99D500F54054 /* TransformedProfileModel.swift */,
 				02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */,
 			);
@@ -1065,7 +1065,7 @@
 				02B0D74F2A48B74600EF1500 /* BarChartArrowsView.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */,
 				02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */,
-				02998A662B44104800B70516 /* CircleGauge.swift in Sources */,
+				02998A662B44104800B70516 /* CircleGaugeModel.swift in Sources */,
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* ReviewPromptPolicy.swift in Sources */,
 				AB0000000000000000010052 /* ReviewPromptStore.swift in Sources */,
@@ -1124,7 +1124,7 @@
 				AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */,
 				AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */,
 				02491C692680883800F98E17 /* UIColor+AppColors.swift in Sources */,
-				020621572666DBCC0072C404 /* BarChartPost.swift in Sources */,
+				020621572666DBCC0072C404 /* BarChartPostModel.swift in Sources */,
 				AB0000000000000000010302 /* AnalyticsMetric.swift in Sources */,
 				02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */,
 				0281B9882879D60700344D3E /* UINavigationBar+Shadow.swift in Sources */,

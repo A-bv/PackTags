@@ -10,7 +10,7 @@ struct BarChartItemView: View {
     @Binding var selectedPostId: Int
     @Binding var selectedPostRate: CGFloat
     var colors: [Color]
-    var post: BarChartPost
+    var post: BarChartPostModel
     
     private var fillGradient: LinearGradient {
         LinearGradient(

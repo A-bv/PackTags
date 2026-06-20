@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CirclesView: View {
-    @Binding var circles: [CircleGauge]
+    @Binding var circles: [CircleGaugeModel]
     var isRate: Bool
     let columns: [GridItem]
     let availableWidth: CGFloat
@@ -70,8 +70,8 @@ struct CirclesView: View {
         VStack() {
             CirclesView(
                 circles: .constant([
-                    CircleGauge(id: 0, title: "Average", value: 203.1, maxValue: 7),
-                    CircleGauge(id: 1, title: "Selection", value: 133.3, maxValue: 80)
+                    CircleGaugeModel(id: 0, title: "Average", value: 203.1, maxValue: 7),
+                    CircleGaugeModel(id: 1, title: "Selection", value: 133.3, maxValue: 80)
                 ]),
                 isRate: true,
                 columns: [gridItem],

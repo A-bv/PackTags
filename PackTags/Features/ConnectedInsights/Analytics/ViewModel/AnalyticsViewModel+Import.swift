@@ -39,7 +39,7 @@ extension AnalyticsViewModel {
         let maxRate = getMaxRate()
         barChartData = rates.enumerated().map { index, rate in
             let rate = rate ?? 0
-            return BarChartPost(
+            return BarChartPostModel(
                 id: index,
                 post: "\(index + 1)",
                 rate: rate,

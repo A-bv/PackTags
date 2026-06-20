@@ -34,19 +34,19 @@ final class AnalyticsViewModel {
             systemImageName: "text.bubble.fill")]
 
     var circlesData = [
-        CircleGauge(
+        CircleGaugeModel(
             id: 0,
             title: Strings.average,
             value: 0,
             maxValue: 0),
-        CircleGauge(
+        CircleGaugeModel(
             id: 1,
             title: Strings.selection,
             value: 0,
             maxValue: 0)
     ]
 
-    var barChartData: [BarChartPost] = [BarChartPost(id: 0, post: "", rate: 0, barHeight: 0)]
+    var barChartData: [BarChartPostModel] = [BarChartPostModel(id: 0, post: "", rate: 0, barHeight: 0)]
 
     // MARK: - Init
     init(gateway: any ConnectedInsightsGatewayProtocol) {
