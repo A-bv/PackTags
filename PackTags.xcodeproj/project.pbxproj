@@ -133,7 +133,7 @@
 		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
 		AB00000000000000000000D2 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000D1 /* DataLayerTests.swift */; };
-		AB00000000000000000000E2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* AppSettings.swift */; };
+		AB00000000000000000000E2 /* UserDefaultsAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* UserDefaultsAppSettings.swift */; };
 		AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F1 /* TagPackFormatter.swift */; };
 		AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F3 /* TagDeduplicator.swift */; };
 		AB00000000000000000000F8 /* HashtagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F7 /* HashtagParser.swift */; };
@@ -291,7 +291,7 @@
 		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
 		AB00000000000000000000D1 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
-		AB00000000000000000000E1 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		AB00000000000000000000E1 /* UserDefaultsAppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppSettings.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F1 /* TagPackFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPackFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F3 /* TagDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeduplicator.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F7 /* HashtagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
@@ -376,7 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0000000000000000000201 /* Model */,
-				AB00000000000000000000E1 /* AppSettings.swift */,
+				AB00000000000000000000E1 /* UserDefaultsAppSettings.swift */,
 				AB00000000000000000000C1 /* SettingsKey.swift */,
 				AB00000000000000000000B1 /* PersistenceController.swift */,
 				0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */,
@@ -1119,7 +1119,7 @@
 				AB0000000000000000000916 /* FacebookLoginButton.swift in Sources */,
 				0264B817264A7CE900E1EEFA /* AnalyticsViewModel.swift in Sources */,
 				0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */,
-				AB00000000000000000000E2 /* AppSettings.swift in Sources */,
+				AB00000000000000000000E2 /* UserDefaultsAppSettings.swift in Sources */,
 				AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */,
 				AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */,
 				AB00000000000000000000F8 /* HashtagParser.swift in Sources */,
