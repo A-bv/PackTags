@@ -38,7 +38,7 @@ struct StoryCardCarousel: View {
             StoryCard(
                 url: url,
                 comments: String(commentsCount),
-                likes: StringFormatter.formatNum(value: Double(likeCount), noDecimal: true),
+                likes: MetricFormatter.compact(Double(likeCount), noDecimal: true),
                 hashtagsCount: hashtagsCount(at: index),
                 cardWidth: Constants.cardWidth,
                 cardHeight: Constants.cardHeight,

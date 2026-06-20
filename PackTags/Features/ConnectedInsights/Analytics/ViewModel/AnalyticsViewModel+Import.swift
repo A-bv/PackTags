@@ -52,8 +52,8 @@ extension AnalyticsViewModel {
             return
         }
 
-        overviewSectionData[0].value = StringFormatter.formatNum(value: transformedProfile?.averageLikes ?? 0)
-        overviewSectionData[1].value = StringFormatter.formatNum(value: transformedProfile?.averageComments ?? 0)
+        overviewSectionData[0].value = MetricFormatter.compact(transformedProfile?.averageLikes ?? 0)
+        overviewSectionData[1].value = MetricFormatter.compact(transformedProfile?.averageComments ?? 0)
 
         circlesData[1].value = CGFloat(rates[0] ?? 0)
         circlesData[1].maxValue = getMaxRate()

@@ -46,7 +46,7 @@
 		0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */; };
 		0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */; };
 		AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000913 /* AppTrackingAuthorizer.swift */; };
-		021044F626446AEF00408CEB /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* StringFormatter.swift */; };
+		021044F626446AEF00408CEB /* MetricFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* MetricFormatter.swift */; };
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
 		021D76172759A00D00F54054 /* SmartGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartGView.swift */; };
 		021D7620275A99D500F54054 /* TransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D761F275A99D500F54054 /* TransformedProfileModel.swift */; };
@@ -202,7 +202,7 @@
 		AB0000000000000000000917 /* FBLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginCoordinator.swift; sourceTree = "<group>"; };
 		0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionService.swift; sourceTree = "<group>"; };
 		AB0000000000000000000913 /* AppTrackingAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrackingAuthorizer.swift; sourceTree = "<group>"; };
-		021044F526446AEF00408CEB /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
+		021044F526446AEF00408CEB /* MetricFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricFormatter.swift; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		021D76162759A00D00F54054 /* SmartGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGView.swift; sourceTree = "<group>"; };
 		021D761F275A99D500F54054 /* TransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformedProfileModel.swift; sourceTree = "<group>"; };
@@ -882,7 +882,7 @@
 				AB0000000000000000000913 /* AppTrackingAuthorizer.swift */,
 				AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
-				021044F526446AEF00408CEB /* StringFormatter.swift */,
+				021044F526446AEF00408CEB /* MetricFormatter.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -1085,7 +1085,7 @@
 				02F89B272974306F008F363D /* StoryCard.swift in Sources */,
 				02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */,
 				02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */,
-				021044F626446AEF00408CEB /* StringFormatter.swift in Sources */,
+				021044F626446AEF00408CEB /* MetricFormatter.swift in Sources */,
 				AB00000000000000000000A2 /* AppLogger.swift in Sources */,
 				AB00000000000000000000C2 /* SettingsKey.swift in Sources */,
 				02FAE2A5260AC79C00324724 /* SettingsSwitchCell.swift in Sources */,

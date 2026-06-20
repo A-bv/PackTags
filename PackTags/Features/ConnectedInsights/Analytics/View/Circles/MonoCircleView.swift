@@ -12,8 +12,7 @@ struct MonoCircleView: View {
     
     var body: some View {
         VStack {
-            let text = StringFormatter.formatValueToText(
-                with: monoCircleValue, isRate: isRate)
+            let text = MetricFormatter.text(for: monoCircleValue, isRate: isRate)
             Text(text)
                 .font(.title2)
                 .fontWeight(.bold)

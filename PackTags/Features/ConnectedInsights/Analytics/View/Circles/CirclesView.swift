@@ -50,9 +50,7 @@ struct CirclesView: View {
                             .frame(width: innerDiameter, height: innerDiameter)
 
                         Text(
-                            StringFormatter.formatValueToText(
-                                with: circle.value,
-                                isRate: isRate))
+                            MetricFormatter.text(for: circle.value, isRate: isRate))
                             .font(.title3)
                             .fontWeight(.bold)
                             .foregroundColor(.blue)
