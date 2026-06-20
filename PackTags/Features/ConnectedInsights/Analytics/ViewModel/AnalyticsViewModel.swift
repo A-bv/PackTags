@@ -34,12 +34,12 @@ final class AnalyticsViewModel {
             systemImageName: "text.bubble.fill")]
 
     var circlesData = [
-        Circles(
+        CircleGauge(
             id: 0,
             title: Strings.average,
             value: 0,
             maxValue: 0),
-        Circles(
+        CircleGauge(
             id: 1,
             title: Strings.selection,
             value: 0,

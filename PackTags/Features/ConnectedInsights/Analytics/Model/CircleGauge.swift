@@ -1,6 +1,6 @@
 import CoreGraphics
 
-struct Circles: Identifiable {
+struct CircleGauge: Identifiable {
     var id: Int
     var title: String
     var value: CGFloat
