@@ -73,7 +73,6 @@
 		026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */; };
 		0264B817264A7CE900E1EEFA /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* AnalyticsViewModel.swift */; };
 		026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */; };
-		026D16DD2A3E474500228DEA /* AnalyticsViewModel+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */; };
 		0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */; };
 		0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */; };
 		0281B9882879D60700344D3E /* UINavigationBar+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* UINavigationBar+Shadow.swift */; };
@@ -82,7 +81,6 @@
 		029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */; };
 		AB0000000000000000008002 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000008001 /* UITableView+Reusable.swift */; };
 		0296306E2614A785000CF4E9 /* QuantityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerViewController.swift */; };
-		02998A642B43735F00B70516 /* SmartGViewModel+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */; };
 		02998A662B44104800B70516 /* CircleGaugeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A652B44104800B70516 /* CircleGaugeModel.swift */; };
 		02998A682B4611B100B70516 /* BarChartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A672B4611B000B70516 /* BarChartItemView.swift */; };
 		029FDDC1264E75600063DF1D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnboardingViewController.swift */; };
@@ -230,7 +228,6 @@
 		026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0264B816264A7CE900E1EEFA /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
 		026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
-		026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnalyticsViewModel+Import.swift"; sourceTree = "<group>"; };
 		0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBarDimensions.swift"; sourceTree = "<group>"; };
 		0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Seed.swift"; sourceTree = "<group>"; };
 		0281B9872879D60700344D3E /* UINavigationBar+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Shadow.swift"; sourceTree = "<group>"; };
@@ -239,7 +236,6 @@
 		029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonFactory.swift; sourceTree = "<group>"; };
 		AB0000000000000000008001 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		0296306D2614A785000CF4E9 /* QuantityPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerViewController.swift; sourceTree = "<group>"; };
-		02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartGViewModel+Import.swift"; sourceTree = "<group>"; };
 		02998A652B44104800B70516 /* CircleGaugeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGaugeModel.swift; sourceTree = "<group>"; };
 		02998A672B4611B000B70516 /* BarChartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartItemView.swift; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -482,7 +478,6 @@
 			children = (
 				026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */,
 				0264B816264A7CE900E1EEFA /* AnalyticsViewModel.swift */,
-				026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -584,7 +579,6 @@
 			isa = PBXGroup;
 			children = (
 				02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */,
-				02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1094,7 +1088,6 @@
 				AB0000000000000000010012 /* ConnectedInsightsProtocol.swift in Sources */,
 				AB0000000000000000006002 /* SettingsCoordinator.swift in Sources */,
 				AB0000000000000000007002 /* OnboardingCoordinator.swift in Sources */,
-				02998A642B43735F00B70516 /* SmartGViewModel+Import.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
 				0207BB852FD3736C0007F3D3 /* CoordinatorProtocol.swift in Sources */,
 				02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */,
@@ -1149,7 +1142,6 @@
 				AB0000000000000000010312 /* SettingsSection.swift in Sources */,
 				AB0000000000000000010292 /* ClosureTapGestureRecognizer.swift in Sources */,
 				02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */,
-				026D16DD2A3E474500228DEA /* AnalyticsViewModel+Import.swift in Sources */,
 				02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */,
 				02FA30812A004C7D006A48CC /* InteractionBarView.swift in Sources */,
 				02FA30732A00405D006A48CC /* StoryCardLabel.swift in Sources */,
