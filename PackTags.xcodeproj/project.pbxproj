@@ -50,7 +50,7 @@
 		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
 		021D76172759A00D00F54054 /* SmartGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartGView.swift */; };
 		021D7620275A99D500F54054 /* TransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D761F275A99D500F54054 /* TransformedProfileModel.swift */; };
-		021EB81428846AD100463B42 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB81328846AD100463B42 /* Localizable.swift */; };
+		021EB81428846AD100463B42 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB81328846AD100463B42 /* String+Localized.swift */; };
 		021EB81828846FDE00463B42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 021EB81A28846FDE00463B42 /* Localizable.strings */; };
 		AB0000000000000000000922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000921 /* InfoPlist.strings */; };
 		02211DD02FD7074D002FDB14 /* InstagramGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 02211DCF2FD7074D002FDB14 /* InstagramGraph */; };
@@ -76,8 +76,8 @@
 		026D16DD2A3E474500228DEA /* AnalyticsViewModel+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */; };
 		0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */; };
 		0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */; };
-		0281B9882879D60700344D3E /* UINavigationController+BarShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* UINavigationController+BarShadow.swift */; };
-		0281B98B287A007200344D3E /* UINavigationController+BarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* UINavigationController+BarAppearance.swift */; };
+		0281B9882879D60700344D3E /* UINavigationBar+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* UINavigationBar+Shadow.swift */; };
+		0281B98B287A007200344D3E /* UIViewController+NavBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* UIViewController+NavBarAppearance.swift */; };
 		029122842B8AAF56007EB7ED /* SmartGErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029122832B8AAF56007EB7ED /* SmartGErrorStateView.swift */; };
 		029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */; };
 		AB0000000000000000008002 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000008001 /* UITableView+Reusable.swift */; };
@@ -104,7 +104,7 @@
 		AB0000000000000000000916 /* FacebookLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000915 /* FacebookLoginButton.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
-		02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */; };
+		02E4F63E28A9330800B9CF2E /* CALayer+Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63D28A9330800B9CF2E /* CALayer+Performance.swift */; };
 		02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */; };
 		02F89B272974306F008F363D /* StoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B262974306F008F363D /* StoryCard.swift */; };
 		02F89B2929743EF9008F363D /* SmartGViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B2829743EF9008F363D /* SmartGViewContainer.swift */; };
@@ -206,7 +206,7 @@
 		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		021D76162759A00D00F54054 /* SmartGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGView.swift; sourceTree = "<group>"; };
 		021D761F275A99D500F54054 /* TransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformedProfileModel.swift; sourceTree = "<group>"; };
-		021EB81328846AD100463B42 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		021EB81328846AD100463B42 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		021EB81928846FDE00463B42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		021EB81B28846FEE00463B42 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AB0000000000000000000919 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -233,8 +233,8 @@
 		026D16D62A3E474500228DEA /* AnalyticsViewModel+Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnalyticsViewModel+Import.swift"; sourceTree = "<group>"; };
 		0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBarDimensions.swift"; sourceTree = "<group>"; };
 		0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Seed.swift"; sourceTree = "<group>"; };
-		0281B9872879D60700344D3E /* UINavigationController+BarShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+BarShadow.swift"; sourceTree = "<group>"; };
-		0281B98A287A007200344D3E /* UINavigationController+BarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+BarAppearance.swift"; sourceTree = "<group>"; };
+		0281B9872879D60700344D3E /* UINavigationBar+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Shadow.swift"; sourceTree = "<group>"; };
+		0281B98A287A007200344D3E /* UIViewController+NavBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavBarAppearance.swift"; sourceTree = "<group>"; };
 		029122832B8AAF56007EB7ED /* SmartGErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGErrorStateView.swift; sourceTree = "<group>"; };
 		029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonFactory.swift; sourceTree = "<group>"; };
 		AB0000000000000000008001 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
@@ -261,7 +261,7 @@
 		AB0000000000000000000915 /* FacebookLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginButton.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGLayer+Performance.swift"; sourceTree = "<group>"; };
+		02E4F63D28A9330800B9CF2E /* CALayer+Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Performance.swift"; sourceTree = "<group>"; };
 		02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsCell.swift; sourceTree = "<group>"; };
 		02F89B262974306F008F363D /* StoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCard.swift; sourceTree = "<group>"; };
 		02F89B2829743EF9008F363D /* SmartGViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewContainer.swift; sourceTree = "<group>"; };
@@ -498,7 +498,7 @@
 				021AFD5B278A1BE40008735E /* Alerts.swift */,
 				AB0000000000000000010291 /* ClosureTapGestureRecognizer.swift */,
 				02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */,
-				021EB81328846AD100463B42 /* Localizable.swift */,
+				021EB81328846AD100463B42 /* String+Localized.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -506,8 +506,8 @@
 		0281B98F287A344C00344D3E /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				0281B98A287A007200344D3E /* UINavigationController+BarAppearance.swift */,
-				0281B9872879D60700344D3E /* UINavigationController+BarShadow.swift */,
+				0281B98A287A007200344D3E /* UIViewController+NavBarAppearance.swift */,
+				0281B9872879D60700344D3E /* UINavigationBar+Shadow.swift */,
 				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
 				0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */,
 			);
@@ -831,7 +831,7 @@
 				02491C682680883700F98E17 /* UIColor+AppColors.swift */,
 				020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */,
 				020584D4284D715D00020FB8 /* UIView+BlurView.swift */,
-				02E4F63D28A9330800B9CF2E /* CGLayer+Performance.swift */,
+				02E4F63D28A9330800B9CF2E /* CALayer+Performance.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -1040,7 +1040,7 @@
 				AB0000000000000000010212 /* DarkToggleStyle.swift in Sources */,
 				AB0000000000000000010202 /* ColorfulButtonStyle.swift in Sources */,
 				0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */,
-				02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */,
+				02E4F63E28A9330800B9CF2E /* CALayer+Performance.swift in Sources */,
 				023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */,
 				02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */,
 				0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */,
@@ -1111,10 +1111,10 @@
 				020621572666DBCC0072C404 /* BarChartPost.swift in Sources */,
 				AB0000000000000000010302 /* AnalyticsMetric.swift in Sources */,
 				02D066BE296B4B5000536E3A /* AnalyticsOverviewModel.swift in Sources */,
-				0281B9882879D60700344D3E /* UINavigationController+BarShadow.swift in Sources */,
+				0281B9882879D60700344D3E /* UINavigationBar+Shadow.swift in Sources */,
 				023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */,
 				02FA307A2A004441006A48CC /* TagView.swift in Sources */,
-				0281B98B287A007200344D3E /* UINavigationController+BarAppearance.swift in Sources */,
+				0281B98B287A007200344D3E /* UIViewController+NavBarAppearance.swift in Sources */,
 				02E451B1265D5B4600582025 /* FBLoginView.swift in Sources */,
 				AB0000000000000000000916 /* FacebookLoginButton.swift in Sources */,
 				0264B817264A7CE900E1EEFA /* AnalyticsViewModel.swift in Sources */,
@@ -1153,7 +1153,7 @@
 				02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */,
 				0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */,
 				AB00000000000000000000B2 /* PersistenceController.swift in Sources */,
-				021EB81428846AD100463B42 /* Localizable.swift in Sources */,
+				021EB81428846AD100463B42 /* String+Localized.swift in Sources */,
 				02998A682B4611B100B70516 /* BarchartItemView.swift in Sources */,
 				02211DD42FD75F76002FDB14 /* ActivityIndicatorView.swift in Sources */,
 				AB0000000000000000010262 /* VisualEffectBlur.swift in Sources */,
