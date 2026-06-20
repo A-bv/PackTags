@@ -16,20 +16,13 @@ Built with UIKit + SwiftUI on an MVVM-C architecture, fully testable.
 
 ## Screenshots
 
-*Themed packs, the tap-to-select hashtag editor, dark mode, post analytics, and Smart Hashtags discovery.*
+*The notebook in light and dark mode, the hashtag editor, post analytics, and Smart Hashtags discovery.*
 
 <p align="center">
-  <img src="docs/screenshots/overview.png" width="720" alt="PackTags: post analytics, the hashtag editor, a themed pack, and the theme list">
-</p>
-
-<p align="center">
-  <img src="docs/screenshots/dark-mode.png" width="330" alt="A themed hashtag pack in dark mode">
-  &nbsp;&nbsp;
-  <img src="docs/screenshots/editor.png" width="330" alt="The tap-to-select hashtag editor over a themed pack">
-</p>
-
-<p align="center">
-  <img src="docs/screenshots/smart-hashtags.png" width="560" alt="Smart Hashtags — discover tags from any topic, ranked by post engagement">
+  <img src="docs/screenshots/overview.png" width="185" alt="Post analytics, the hashtag editor, a themed pack, and the theme list">
+  <img src="docs/screenshots/dark-mode.png" width="185" alt="A themed pack in dark mode">
+  <img src="docs/screenshots/editor.png" width="185" alt="The tap-to-select hashtag editor over a themed pack">
+  <img src="docs/screenshots/smart-hashtags.png" width="185" alt="Smart Hashtags — discover tags from any topic, ranked by post engagement">
 </p>
 
 ## Features
