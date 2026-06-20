@@ -275,12 +275,12 @@ extension AnalyticsView {
                             isRate: !viewModel.rawInsights,
                             columns: columns,
                             availableWidth: availableWidth)
-                        BarchartView(
+                        BarChartView(
                             selectedBarChartPostId: $selectedBarChartPostId,
                             selectedBarChartPostRateValue: $viewModel.circlesData[1].value,
                             barchartPostList: $viewModel.barChartData,
                             colors: colors)
-                        BarchartArrowsView(postsCount: postCount)
+                        BarChartArrowsView(postsCount: postCount)
                     }
                 }
             }

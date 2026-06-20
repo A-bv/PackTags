@@ -84,15 +84,15 @@
 		0296306E2614A785000CF4E9 /* QuantityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0296306D2614A785000CF4E9 /* QuantityPickerViewController.swift */; };
 		02998A642B43735F00B70516 /* SmartGViewModel+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */; };
 		02998A662B44104800B70516 /* CircleGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A652B44104800B70516 /* CircleGauge.swift */; };
-		02998A682B4611B100B70516 /* BarchartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A672B4611B000B70516 /* BarchartItemView.swift */; };
+		02998A682B4611B100B70516 /* BarChartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A672B4611B000B70516 /* BarChartItemView.swift */; };
 		029FDDC1264E75600063DF1D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnboardingViewController.swift */; };
 		02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* ModalChrome.swift */; };
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
 		02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */; };
 		02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */; };
-		02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarchartView.swift */; };
-		02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */; };
+		02B0D74D2A48B73700EF1500 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74C2A48B73700EF1500 /* BarChartView.swift */; };
+		02B0D74F2A48B74600EF1500 /* BarChartArrowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B0D74E2A48B74600EF1500 /* BarChartArrowsView.swift */; };
 		02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */; };
 		02BC8D592602B79900441349 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BC8D582602B79900441349 /* SettingsViewController.swift */; };
 		02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */; };
@@ -241,15 +241,15 @@
 		0296306D2614A785000CF4E9 /* QuantityPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerViewController.swift; sourceTree = "<group>"; };
 		02998A632B43735F00B70516 /* SmartGViewModel+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SmartGViewModel+Import.swift"; sourceTree = "<group>"; };
 		02998A652B44104800B70516 /* CircleGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGauge.swift; sourceTree = "<group>"; };
-		02998A672B4611B000B70516 /* BarchartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartItemView.swift; sourceTree = "<group>"; };
+		02998A672B4611B000B70516 /* BarChartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartItemView.swift; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		02AD94A829A5936500D893E5 /* ModalChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalChrome.swift; sourceTree = "<group>"; };
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
 		02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
 		02B0D72A2A44B2E700EF1500 /* MonoCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoCircleView.swift; sourceTree = "<group>"; };
-		02B0D74C2A48B73700EF1500 /* BarchartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartView.swift; sourceTree = "<group>"; };
-		02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarchartArrowsView.swift; sourceTree = "<group>"; };
+		02B0D74C2A48B73700EF1500 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		02B0D74E2A48B74600EF1500 /* BarChartArrowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartArrowsView.swift; sourceTree = "<group>"; };
 		02B104A627697B6C00C9EC6C /* SmartGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGViewModel.swift; sourceTree = "<group>"; };
 		02BC8D582602B79900441349 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		02CAC9B6259105B400BE5E57 /* ThemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewController.swift; sourceTree = "<group>"; };
@@ -598,14 +598,14 @@
 			path = Neumorphic;
 			sourceTree = "<group>";
 		};
-		02B0D7582A48E9EB00EF1500 /* Barchart */ = {
+		02B0D7582A48E9EB00EF1500 /* BarChart */ = {
 			isa = PBXGroup;
 			children = (
-				02B0D74C2A48B73700EF1500 /* BarchartView.swift */,
-				02998A672B4611B000B70516 /* BarchartItemView.swift */,
-				02B0D74E2A48B74600EF1500 /* BarchartArrowsView.swift */,
+				02B0D74C2A48B73700EF1500 /* BarChartView.swift */,
+				02998A672B4611B000B70516 /* BarChartItemView.swift */,
+				02B0D74E2A48B74600EF1500 /* BarChartArrowsView.swift */,
 			);
-			path = Barchart;
+			path = BarChart;
 			sourceTree = "<group>";
 		};
 		02CAC9B82591061B00BE5E57 /* View */ = {
@@ -725,7 +725,7 @@
 			children = (
 				02FBAFE425A93C6100E32D73 /* AnalyticsView.swift */,
 				023D2B952A48F101006E2D35 /* Circles */,
-				02B0D7582A48E9EB00EF1500 /* Barchart */,
+				02B0D7582A48E9EB00EF1500 /* BarChart */,
 				02D066BF296B606F00536E3A /* RoundedShape.swift */,
 			);
 			path = View;
@@ -1046,7 +1046,7 @@
 				0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */,
 				02FA30772A004254006A48CC /* StoryCardCarousel.swift in Sources */,
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
-				02B0D74F2A48B74600EF1500 /* BarchartArrowsView.swift in Sources */,
+				02B0D74F2A48B74600EF1500 /* BarChartArrowsView.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */,
 				02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */,
 				02998A662B44104800B70516 /* CircleGauge.swift in Sources */,
@@ -1062,7 +1062,7 @@
 				021D76172759A00D00F54054 /* SmartGView.swift in Sources */,
 				0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */,
 				029122842B8AAF56007EB7ED /* SmartGErrorStateView.swift in Sources */,
-				02B0D74D2A48B73700EF1500 /* BarchartView.swift in Sources */,
+				02B0D74D2A48B73700EF1500 /* BarChartView.swift in Sources */,
 				02CEFB6D25CB945000FB70E4 /* UIImage+Treatment.swift in Sources */,
 				02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */,
 				0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */,
@@ -1154,7 +1154,7 @@
 				0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */,
 				AB00000000000000000000B2 /* PersistenceController.swift in Sources */,
 				021EB81428846AD100463B42 /* String+Localized.swift in Sources */,
-				02998A682B4611B100B70516 /* BarchartItemView.swift in Sources */,
+				02998A682B4611B100B70516 /* BarChartItemView.swift in Sources */,
 				02211DD42FD75F76002FDB14 /* ActivityIndicatorView.swift in Sources */,
 				AB0000000000000000010262 /* VisualEffectBlur.swift in Sources */,
 				AB0000000000000000010252 /* RotatingDotsIndicatorItemView.swift in Sources */,

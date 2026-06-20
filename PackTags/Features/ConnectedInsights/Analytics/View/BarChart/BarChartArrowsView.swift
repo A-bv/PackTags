@@ -1,7 +1,7 @@
 import SwiftUI
 
-// BarchartArrows
-struct BarchartArrowsView: View {
+// BarChartArrows
+struct BarChartArrowsView: View {
     let postsCount: Int
     
     private enum Constants {
@@ -38,6 +38,6 @@ struct BarchartArrowsView: View {
 }
 
 #Preview {
-    BarchartArrowsView(postsCount: 3)
+    BarChartArrowsView(postsCount: 3)
         .padding()
 }
