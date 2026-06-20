@@ -2,7 +2,7 @@ import AppTrackingTransparency
 import UIKit
 
 @MainActor
-protocol AppTrackingAuthorizing {
+protocol AppTrackingAuthorizerProtocol {
     var isAuthorized: Bool { get }
     func requestIfNeeded() async -> Bool
     func promptOrOpenSettings() async
@@ -11,7 +11,7 @@ protocol AppTrackingAuthorizing {
 /// Facebook's classic AccessToken is only accepted by the Graph API once tracking is
 /// authorized (FBSDK 17+). iOS won't let the app flip ATT itself, so we can only
 /// present the one-shot prompt or route the user to the app's Settings page.
-struct AppTrackingAuthorizer: AppTrackingAuthorizing {
+struct AppTrackingAuthorizer: AppTrackingAuthorizerProtocol {
     var isAuthorized: Bool {
         ATTrackingManager.trackingAuthorizationStatus == .authorized
     }

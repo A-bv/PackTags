@@ -2,7 +2,7 @@ import UIKit
 import SwiftUI
 
 @MainActor
-final class NotebookCoordinator: Coordinator {
+final class NotebookCoordinator: CoordinatorProtocol {
     let navigationController: UINavigationController
     let dependencies: AppDependencies
 

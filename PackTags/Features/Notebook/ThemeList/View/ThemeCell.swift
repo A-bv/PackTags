@@ -4,7 +4,7 @@ import UIKit
 @MainActor
 let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
 
-final class ThemeCell: UITableViewCell, ReusableCell {
+final class ThemeCell: UITableViewCell, ReusableCellProtocol {
     private enum Constants {
         static let padding5 = CGFloat(5)
         static let supportingViewShadowRadius = CGFloat(5)

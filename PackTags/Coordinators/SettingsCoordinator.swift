@@ -4,7 +4,7 @@ import UIKit
 /// (quantity picker, onboarding replay, Facebook setup). Started as a child of
 /// NotebookCoordinator so that coordinator no longer knows Settings' internals.
 @MainActor
-final class SettingsCoordinator: Coordinator {
+final class SettingsCoordinator: CoordinatorProtocol {
     let navigationController: UINavigationController
     private let dependencies: AppDependencies
     private var onboardingCoordinator: OnboardingCoordinator?

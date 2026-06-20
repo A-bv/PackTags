@@ -1,18 +1,6 @@
-import UIKit
 import InstagramGraph
 
-enum ConnectedInsightsDestination {
-    case analytics
-    case smartG
-    case setup
-    case setupInfo
-}
-
-@MainActor
-protocol ConnectedInsightsProtocol: AnyObject {
-    func open(_ destination: ConnectedInsightsDestination, from presenter: UIViewController)
-}
-
+/// The previews/tests fake gateway: every Connected Insights call reports "needs setup".
 struct UnavailableConnectedInsightsGateway: ConnectedInsightsGatewayProtocol {
     nonisolated init() {}
     func accessState() -> ConnectedInsightsAccessState { .needsSetup(.setupRequired) }

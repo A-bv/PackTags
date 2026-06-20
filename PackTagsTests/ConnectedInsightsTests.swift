@@ -193,7 +193,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @MainActor
-    private final class FakeTracking: AppTrackingAuthorizing {
+    private final class FakeTracking: AppTrackingAuthorizerProtocol {
         var authorized: Bool
         private(set) var requestCount = 0
         private(set) var promptCount = 0

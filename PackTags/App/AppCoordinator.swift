@@ -1,7 +1,7 @@
 import UIKit
 
 @MainActor
-final class AppCoordinator: Coordinator {
+final class AppCoordinator: CoordinatorProtocol {
     /// View controllers hold their coordinator weakly; this reference keeps
     /// the notebook flow's coordinator alive for the app's lifetime.
     private var notebookCoordinator: NotebookCoordinator?

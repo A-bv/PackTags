@@ -3,7 +3,7 @@ import UIKit
 /// Presents the onboarding flow. Shared by first launch (NotebookCoordinator) and the
 /// "replay onboarding" action in Settings, so the presentation lives in one place.
 @MainActor
-final class OnboardingCoordinator: Coordinator {
+final class OnboardingCoordinator: CoordinatorProtocol {
     let navigationController: UINavigationController
     private let appSettings: any AppSettingsProtocol
 

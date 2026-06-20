@@ -1,7 +1,7 @@
 import UIKit
 
 @MainActor
-protocol Coordinator: AnyObject {
+protocol CoordinatorProtocol: AnyObject {
     var navigationController: UINavigationController { get }
     func start()
 }

@@ -35,7 +35,7 @@ final class FBLoginViewModel {
     private let gateway: any ConnectedInsightsGatewayProtocol
     private let settings: any AppSettingsProtocol
     private let facebookSessionService: any FacebookSessionServiceProtocol
-    private let tracking: any AppTrackingAuthorizing
+    private let tracking: any AppTrackingAuthorizerProtocol
 
     var hasSeenSetupInfo: Bool { settings.setupInfoShown }
 
@@ -43,7 +43,7 @@ final class FBLoginViewModel {
         gateway: any ConnectedInsightsGatewayProtocol,
         settings: any AppSettingsProtocol,
         facebookSessionService: any FacebookSessionServiceProtocol = FacebookSessionService(),
-        tracking: any AppTrackingAuthorizing = AppTrackingAuthorizer()
+        tracking: any AppTrackingAuthorizerProtocol = AppTrackingAuthorizer()
     ) {
         self.gateway = gateway
         self.settings = settings

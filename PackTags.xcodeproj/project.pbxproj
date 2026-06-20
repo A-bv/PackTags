@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0000000000000000010052 /* ReviewPromptStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010051 /* ReviewPromptStore.swift */; };
+		AB0000000000000000010042 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010041 /* ReusableCellProtocol.swift */; };
+		AB0000000000000000010032 /* UnavailableConnectedInsightsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */; };
+		AB0000000000000000010022 /* ConnectedInsightsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010021 /* ConnectedInsightsDestination.swift */; };
+		AB0000000000000000010012 /* ConnectedInsightsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010011 /* ConnectedInsightsProtocol.swift */; };
 		020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */; };
 		020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020584D4284D715D00020FB8 /* UIView+BlurView.swift */; };
 		020621572666DBCC0072C404 /* BarChartPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020621562666DBCC0072C404 /* BarChartPost.swift */; };
-		0207BB852FD3736C0007F3D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB842FD3736C0007F3D3 /* Coordinator.swift */; };
+		0207BB852FD3736C0007F3D3 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB842FD3736C0007F3D3 /* CoordinatorProtocol.swift */; };
 		0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */; };
 		0207BB892FD3736C0007F3D3 /* NotebookCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB882FD3736C0007F3D3 /* NotebookCoordinator.swift */; };
 		0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */; };
 		0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */; };
 		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
 		0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */; };
-		0207BB982FD5F0000007F3D3 /* ConnectedInsightsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */; };
 		0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */; };
 		0207BBB12FD564090007F3D3 /* PackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB02FD564090007F3D3 /* PackListViewModel.swift */; };
 		0207BBB42FD5640A0007F3D3 /* ThemeEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */; };
@@ -146,17 +150,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB0000000000000000010051 /* ReviewPromptStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptStore.swift; sourceTree = "<group>"; };
+		AB0000000000000000010041 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
+		AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableConnectedInsightsGateway.swift; sourceTree = "<group>"; };
+		AB0000000000000000010021 /* ConnectedInsightsDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsDestination.swift; sourceTree = "<group>"; };
+		AB0000000000000000010011 /* ConnectedInsightsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsProtocol.swift; sourceTree = "<group>"; };
 		020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
 		020584D4284D715D00020FB8 /* UIView+BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BlurView.swift"; sourceTree = "<group>"; };
 		020621562666DBCC0072C404 /* BarChartPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPost.swift; sourceTree = "<group>"; };
-		0207BB842FD3736C0007F3D3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		0207BB842FD3736C0007F3D3 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		0207BB862FD3736C0007F3D3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0207BB882FD3736C0007F3D3 /* NotebookCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookCoordinator.swift; sourceTree = "<group>"; };
 		0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
 		0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
-		0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsModule.swift; sourceTree = "<group>"; };
 		0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewModel.swift; sourceTree = "<group>"; };
 		0207BBB02FD564090007F3D3 /* PackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewModel.swift; sourceTree = "<group>"; };
 		0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewModel.swift; sourceTree = "<group>"; };
@@ -301,13 +309,14 @@
 		0207BB832FD372660007F3D3 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				0207BB842FD3736C0007F3D3 /* Coordinator.swift */,
+				0207BB842FD3736C0007F3D3 /* CoordinatorProtocol.swift */,
 				0207BB882FD3736C0007F3D3 /* NotebookCoordinator.swift */,
+				AB0000000000000000010021 /* ConnectedInsightsDestination.swift */,
+				AB0000000000000000010011 /* ConnectedInsightsProtocol.swift */,
 				AB0000000000000000006001 /* SettingsCoordinator.swift */,
 				AB0000000000000000007001 /* OnboardingCoordinator.swift */,
 				0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */,
 				AB0000000000000000000917 /* FBLoginCoordinator.swift */,
-				0207BB992FD5F0000007F3D3 /* ConnectedInsightsModule.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -727,6 +736,7 @@
 			isa = PBXGroup;
 			children = (
 				02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */,
+				AB0000000000000000010051 /* ReviewPromptStore.swift */,
 			);
 			path = AppStoreRating;
 			sourceTree = "<group>";
@@ -785,6 +795,7 @@
 				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
 				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
 				AB0000000000000000008001 /* UITableView+Reusable.swift */,
+				AB0000000000000000010041 /* ReusableCellProtocol.swift */,
 				02AD94A829A5936500D893E5 /* ModalChrome.swift */,
 				02CEFB6C25CB945000FB70E4 /* UIImage+Treatment.swift */,
 				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
@@ -817,6 +828,7 @@
 			isa = PBXGroup;
 			children = (
 				0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */,
+				AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */,
 				AB0000000000000000000913 /* AppTrackingAuthorizer.swift */,
 				AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
@@ -977,7 +989,6 @@
 				02E4F63E28A9330800B9CF2E /* CGLayer+Performance.swift in Sources */,
 				023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */,
 				02F89B2B29743FE4008F363D /* SmartGHeader.swift in Sources */,
-				0207BB982FD5F0000007F3D3 /* ConnectedInsightsModule.swift in Sources */,
 				0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */,
 				02491C67267E3FED00F98E17 /* NeumorphicSwiftUI.swift in Sources */,
 				02FA30772A004254006A48CC /* CollectionView.swift in Sources */,
@@ -988,6 +999,7 @@
 				02998A662B44104800B70516 /* Circles.swift in Sources */,
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* ReviewPromptPolicy.swift in Sources */,
+				AB0000000000000000010052 /* ReviewPromptStore.swift in Sources */,
 				02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */,
 				023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */,
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,
@@ -1001,16 +1013,19 @@
 				02CEFB6D25CB945000FB70E4 /* UIImage+Treatment.swift in Sources */,
 				02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */,
 				0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */,
+				AB0000000000000000010032 /* UnavailableConnectedInsightsGateway.swift in Sources */,
 				AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */,
 				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
 				0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */,
 				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
 				0207BB892FD3736C0007F3D3 /* NotebookCoordinator.swift in Sources */,
+				AB0000000000000000010022 /* ConnectedInsightsDestination.swift in Sources */,
+				AB0000000000000000010012 /* ConnectedInsightsProtocol.swift in Sources */,
 				AB0000000000000000006002 /* SettingsCoordinator.swift in Sources */,
 				AB0000000000000000007002 /* OnboardingCoordinator.swift in Sources */,
 				02998A642B43735F00B70516 /* SmartGViewModel+Import.swift in Sources */,
 				026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */,
-				0207BB852FD3736C0007F3D3 /* Coordinator.swift in Sources */,
+				0207BB852FD3736C0007F3D3 /* CoordinatorProtocol.swift in Sources */,
 				02FAE29F260A9BA900324724 /* SettingsCell.swift in Sources */,
 				02F89B272974306F008F363D /* StoryCard.swift in Sources */,
 				02FB550C24FFA2AA00174E34 /* SceneDelegate.swift in Sources */,
@@ -1069,6 +1084,7 @@
 				02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				AB0000000000000000008002 /* UITableView+Reusable.swift in Sources */,
+				AB0000000000000000010042 /* ReusableCellProtocol.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnboardingViewController.swift in Sources */,
 				02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */,
 				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
