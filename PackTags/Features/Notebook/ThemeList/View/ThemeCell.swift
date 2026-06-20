@@ -2,7 +2,7 @@ import UIKit
 
 /// Thumbnail edge length for theme covers; fixed per device class.
 @MainActor
-let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
+private let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
 
 final class ThemeCell: UITableViewCell, ReusableCellProtocol {
     private enum Constants {

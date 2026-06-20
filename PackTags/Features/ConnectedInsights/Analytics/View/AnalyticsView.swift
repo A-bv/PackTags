@@ -119,7 +119,7 @@ struct AnalyticsView: View {
 }
 
 //MARK: - Metric-dependent labels (computed from the view model, never stored)
-extension AnalyticsView {
+private extension AnalyticsView {
     private func title(_ metric: AnalyticsMetric) -> String {
         guard viewModel.rawInsights else { return Strings.engagement }
         switch metric {
@@ -156,7 +156,7 @@ extension AnalyticsView {
 }
 
 //MARK: - Functions
-extension AnalyticsView {
+private extension AnalyticsView {
     private func changeInsightType() {
         let impactMed = UIImpactFeedbackGenerator(style: .medium)
         impactMed.impactOccurred()
@@ -175,7 +175,7 @@ extension AnalyticsView {
 }
 
 //MARK: - Buttons
-extension AnalyticsView {
+private extension AnalyticsView {
     var backButton: some View {
         Button(action: {
             viewModel.rawInsights = true
@@ -227,7 +227,7 @@ extension AnalyticsView {
 
 //MARK: - Elements
 // Header
-extension AnalyticsView {
+private extension AnalyticsView {
     var header: some View {
         HStack {
             VStack(alignment: .leading, spacing: Constants.headerVerticalSpacing) {
@@ -248,7 +248,7 @@ extension AnalyticsView {
 }
 
 // Scrollview
-extension AnalyticsView {
+private extension AnalyticsView {
     func scrollView(graphPadding: CGFloat, availableWidth: CGFloat) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             //MARK: - Graph part
@@ -299,7 +299,7 @@ extension AnalyticsView {
 }
 
 // Overview
-extension AnalyticsView {
+private extension AnalyticsView {
     var overviewSection: some View{
         LazyVGrid(columns: columns) {
             ForEach(viewModel.overviewSectionData) { overviewCell in
@@ -337,7 +337,7 @@ extension AnalyticsView {
 }
 
 // GraphsHeader
-extension AnalyticsView {
+private extension AnalyticsView {
     var graphSectionHeader: some View {
         VStack(alignment: .leading, spacing: Constants.graphSectionHeaderVerticalSpacing) {
             HStack {

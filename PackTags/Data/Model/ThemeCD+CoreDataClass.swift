@@ -2,6 +2,6 @@ import Foundation
 import CoreData
 
 
-public class ThemeCD: NSManagedObject {
+class ThemeCD: NSManagedObject {
 
 }

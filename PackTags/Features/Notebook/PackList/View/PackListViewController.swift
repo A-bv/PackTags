@@ -175,7 +175,7 @@ extension PackListViewController {
 
 // MARK: - Instagram redirect
 extension PackListViewController {
-    func goInsta(packIdx: Int) {
+    private func goInsta(packIdx: Int) {
         Task { [weak self] in
             try? await Task.sleep(for: .seconds(Constants.afterCopy))
             guard let self else { return }

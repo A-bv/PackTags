@@ -3,13 +3,13 @@ import CoreData
 
 extension ThemeCD {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ThemeCD> {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<ThemeCD> {
         return NSFetchRequest<ThemeCD>(entityName: "ThemeCD")
     }
 
-    @NSManaged public var orderIndex: Int32
-    @NSManaged public var content: String?
-    @NSManaged public var image: Data?
-    @NSManaged public var name: String?
-    @NSManaged public var thumbnail: Data?
+    @NSManaged var orderIndex: Int32
+    @NSManaged var content: String?
+    @NSManaged var image: Data?
+    @NSManaged var name: String?
+    @NSManaged var thumbnail: Data?
 }

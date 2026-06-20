@@ -22,7 +22,7 @@ private func sharedModel(named name: String) -> NSManagedObjectModel? {
 }
 
 final class PersistenceController {
-    let container: NSPersistentContainer
+    private let container: NSPersistentContainer
 
     var viewContext: NSManagedObjectContext { container.viewContext }
 
