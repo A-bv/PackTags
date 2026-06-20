@@ -27,8 +27,6 @@ struct MonoCircleView: View {
     }
 }
 
-struct MonoCircleView_Previews: PreviewProvider {
-    static var previews: some View {
-        MonoCircleView(monoCircleValue: 12.1, isRate: false)
-    }
+#Preview {
+    MonoCircleView(monoCircleValue: 12.1, isRate: false)
 }

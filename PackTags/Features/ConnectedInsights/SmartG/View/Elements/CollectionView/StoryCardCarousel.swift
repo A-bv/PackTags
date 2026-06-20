@@ -52,8 +52,6 @@ struct StoryCardCarousel: View {
     }
 }
 
-struct StoryCardCarousel_Previews: PreviewProvider {
-    static var previews: some View {
-        StoryCardCarousel(viewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
-    }
+#Preview {
+    StoryCardCarousel(viewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
 }

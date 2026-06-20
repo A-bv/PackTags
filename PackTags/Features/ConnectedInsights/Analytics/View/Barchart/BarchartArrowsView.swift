@@ -37,9 +37,7 @@ struct BarchartArrowsView: View {
     }
 }
 
-struct BarchartArrowsView_Previews: PreviewProvider {
-    static var previews: some View {
-        BarchartArrowsView(postsCount: 3)
-            .padding()
-    }
+#Preview {
+    BarchartArrowsView(postsCount: 3)
+        .padding()
 }

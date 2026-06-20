@@ -91,12 +91,10 @@ struct InteractionBarView: View {
     }
 }
 
-struct InteractionBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        InteractionBarView(
-            smartGViewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
-        .padding()
-    }
+#Preview {
+    InteractionBarView(
+        smartGViewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
+    .padding()
 }
 
 // MARK: - Functions

@@ -29,9 +29,7 @@ struct SmartGErrorStateView: View {
     }
 }
 
-struct SmartGErrorStateView_Previews: PreviewProvider {
-    static var previews: some View {
-        SmartGErrorStateView()
-    }
+#Preview {
+    SmartGErrorStateView()
 }
 

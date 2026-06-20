@@ -65,24 +65,20 @@ struct CirclesView: View {
     }
 }
 
-struct CirclesView_Previews: PreviewProvider {
-    @State static var circles: [Circles] = [
-        Circles(id: 0, title: "Average", value: 203.1, maxValue: 7),
-        Circles(id: 1, title: "Selection", value: 133.3, maxValue: 80)
-    ]
-    
-    static var previews: some View {
-        let gridItem = GridItem(.flexible())
-        ZStack {
-            Color.bgFillColor.ignoresSafeArea()
-            VStack() {
-                CirclesView(
-                    circles: $circles,
-                    isRate: true,
-                    columns: [gridItem],
-                    availableWidth: 390)
-            }
-            .padding(50)
+#Preview {
+    let gridItem = GridItem(.flexible())
+    return ZStack {
+        Color.bgFillColor.ignoresSafeArea()
+        VStack() {
+            CirclesView(
+                circles: .constant([
+                    Circles(id: 0, title: "Average", value: 203.1, maxValue: 7),
+                    Circles(id: 1, title: "Selection", value: 133.3, maxValue: 80)
+                ]),
+                isRate: true,
+                columns: [gridItem],
+                availableWidth: 390)
         }
+        .padding(50)
     }
 }

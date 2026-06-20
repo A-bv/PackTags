@@ -23,21 +23,19 @@ struct BarchartView: View {
     }
 }
 
-struct BarchartView_Previews: PreviewProvider {
-    static var previews: some View {
-        let data = [
-            BarChartPost(id: 1, post: "Post1", rate: CGFloat(0), barHeight: CGFloat(32.5)),
-            BarChartPost(id: 2, post: "Post2", rate: CGFloat(0), barHeight: CGFloat(43.75)),
-            BarChartPost(id: 3, post: "Post3", rate: CGFloat(0), barHeight: CGFloat(22.5)),
-            BarChartPost(id: 1, post: "Post1", rate: CGFloat(0), barHeight: CGFloat(32.5)),
-            BarChartPost(id: 2, post: "Post2", rate: CGFloat(0), barHeight: CGFloat(43.75)),
-            BarChartPost(id: 3, post: "Post3", rate: CGFloat(0), barHeight: CGFloat(22.5))
-        ]
-        BarchartView(
-            selectedBarChartPostId: .constant(2),
-            selectedBarChartPostRateValue: .constant(0.0),
-            barchartPostList: .constant(data),
-            colors: [.blue, .green])
-        .padding()
-    }
+#Preview {
+    let data = [
+        BarChartPost(id: 1, post: "Post1", rate: CGFloat(0), barHeight: CGFloat(32.5)),
+        BarChartPost(id: 2, post: "Post2", rate: CGFloat(0), barHeight: CGFloat(43.75)),
+        BarChartPost(id: 3, post: "Post3", rate: CGFloat(0), barHeight: CGFloat(22.5)),
+        BarChartPost(id: 1, post: "Post1", rate: CGFloat(0), barHeight: CGFloat(32.5)),
+        BarChartPost(id: 2, post: "Post2", rate: CGFloat(0), barHeight: CGFloat(43.75)),
+        BarChartPost(id: 3, post: "Post3", rate: CGFloat(0), barHeight: CGFloat(22.5))
+    ]
+    return BarchartView(
+        selectedBarChartPostId: .constant(2),
+        selectedBarChartPostRateValue: .constant(0.0),
+        barchartPostList: .constant(data),
+        colors: [.blue, .green])
+    .padding()
 }

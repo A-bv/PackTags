@@ -101,36 +101,13 @@ struct SmartGSavedTagsView: View {
     }
 }
 
-struct SmartGSavedTagsView_Previews: PreviewProvider {
-    static var persistence: PersistenceController = {
-        let persistence = PersistenceController(modelName: "SmartTags", inMemory: true)
-        let context = persistence.viewContext
-
-        let hashtagTitles = [
-            "Example Hashtag 1",
-            "Example Hashtag 2",
-            "Example Hashtag 3"
-        ]
-        for title in hashtagTitles {
-            let hashtag = Hashtag(context: context)
-            hashtag.title = title
-            hashtag.addDate = Date()
-        }
-
-        return persistence
-    }()
-
-    static var previews: some View {
-        Group {
-            SmartGSavedTagsView(isPresented: .constant(true))
-                .previewDisplayName("Hashtags Preview")
-                .environment(\.managedObjectContext, persistence.viewContext)
-                .preferredColorScheme(.light)
-
-            SmartGSavedTagsView(isPresented: .constant(true))
-                .previewDisplayName("Hashtags Preview")
-                .environment(\.managedObjectContext, persistence.viewContext)
-                .preferredColorScheme(.dark)
-        }
+#Preview {
+    let persistence = PersistenceController(modelName: "SmartTags", inMemory: true)
+    for title in ["Example Hashtag 1", "Example Hashtag 2", "Example Hashtag 3"] {
+        let hashtag = Hashtag(context: persistence.viewContext)
+        hashtag.title = title
+        hashtag.addDate = Date()
     }
+    return SmartGSavedTagsView(isPresented: .constant(true))
+        .environment(\.managedObjectContext, persistence.viewContext)
 }
