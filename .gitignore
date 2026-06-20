@@ -1,5 +1,7 @@
 
+# Per-user Xcode state (breakpoints, scheme ordering, find scopes, etc.)
 *.xcuserstate
+xcuserdata/
 
 # Secrets — never commit real credentials (Facebook App ID / Client Token, etc.)
 Secrets.xcconfig
