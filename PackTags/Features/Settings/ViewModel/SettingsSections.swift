@@ -1,43 +1,5 @@
 import UIKit
 
-struct SettingsSection {
-    let title: String
-    let options: [SettingsOptionType]
-}
-
-enum SettingsOptionType {
-    case staticCell(model: SettingsOption)
-    case switchCell(model: SettingsSwitchOption)
-}
-
-struct SettingsOption {
-    let title: String
-    let iconBackgroundColor: UIColor
-    let handler: (() -> Void)
-}
-
-struct SettingsSwitchOption {
-    let title: String
-    let iconBackgroundColor: UIColor
-    var isOn: Bool
-    let onToggle: (Bool) -> Void
-}
-
-/// Behaviors the settings list can trigger. The view controller supplies the
-/// implementations; the catalog below stays free of view and navigation code.
-struct SettingsActions {
-    let editInstagramUsername: () -> Void
-    let openFacebookSetup: () -> Void
-    let showQuantityPicker: () -> Void
-    let replayOnboarding: () -> Void
-    let openSetupInfo: () -> Void
-    let openWebPage: (String) -> Void
-    let openOurInstagram: () -> Void
-    let shareApp: () -> Void
-    let rateApp: () -> Void
-    let contactSupport: () -> Void
-}
-
 /// The full settings catalog: section order, titles, colors, and which action
 /// each row triggers.
 enum SettingsSections {

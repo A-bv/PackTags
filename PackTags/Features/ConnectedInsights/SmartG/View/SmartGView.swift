@@ -28,7 +28,7 @@ struct SmartGView: View {
                         ScrollView{
                             VStack {
                                 FloatingListView(viewModel: self.smartGViewModel)
-                                collection
+                                StoryCardCarousel(viewModel: smartGViewModel)
                                     .padding(.vertical)
                             }
                         }

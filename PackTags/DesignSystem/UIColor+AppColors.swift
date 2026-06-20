@@ -1,27 +1,5 @@
 import UIKit
-import SwiftUI
 
-//MARK: - Analytics colors
-extension Color {
-    static let mphStart = Color("Color-BkgdGrad1")
-    static let mphEnd = Color("Color-BkgdGrad2")
-
-    // Shadows
-    static let lowerShadow = Color((UIColor(named: "Color-BkgdSh1")?.withAlphaComponent(0.5))!)
-    static let upperShadow = Color(UIColor(named: "Color-BkgdSh2")!)
-
-    // Fill background
-    static let bgFillColor = Color(UIColor.colorBkgd)
-    static let statsFillColor = bgFillColor
-}
-
-extension LinearGradient {
-    init(_ colors: Color...) {
-        self.init(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
-    }
-}
-
-//MARK: - Neumorphic colors
 extension UIColor {
     static let shadowDark1 = UIColor(red: 45/255, green: 45/255, blue: 45/255, alpha: 1)
 
