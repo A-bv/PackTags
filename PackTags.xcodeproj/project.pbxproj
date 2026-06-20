@@ -334,6 +334,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB00000000000000000103C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				029FDDC0264E75600063DF1D /* OnboardingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AB00000000000000000103B0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,7 +535,7 @@
 		02A4235A2843FFF300A25067 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				029FDDC0264E75600063DF1D /* OnboardingViewController.swift */,
+				AB00000000000000000103C0 /* View */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
