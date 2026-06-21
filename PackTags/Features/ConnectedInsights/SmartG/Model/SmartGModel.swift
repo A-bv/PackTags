@@ -1,6 +1,6 @@
 import Foundation
 
-struct SmartGModel: Hashable, Decodable {
+struct SmartGModel: Hashable {
     let hashtags: [String]
     
     init(hashtags: [String] = []) {
