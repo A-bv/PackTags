@@ -33,7 +33,7 @@
 		02211DD42FD75F76002FDB14 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */; };
 		02211DD62FD75F76002FDB14 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD52FD75F76002FDB14 /* TextRecognizer.swift */; };
 		022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688922624F9B1007DBD98 /* ThemeCell.swift */; };
-		0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* Neumorphic.swift */; };
+		0226889D2626F332007DBD98 /* UIView+Neumorphism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* UIView+Neumorphism.swift */; };
 		0226F19C259EAB93006E086C /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19B259EAB93006E086C /* PackCell.swift */; };
 		0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19D259EABB4006E086C /* PackListViewController.swift */; };
 		0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* SmartGModel.swift */; };
@@ -186,7 +186,7 @@
 		02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		02211DD52FD75F76002FDB14 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		022688922624F9B1007DBD98 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
-		0226889C2626F332007DBD98 /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
+		0226889C2626F332007DBD98 /* UIView+Neumorphism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Neumorphism.swift"; sourceTree = "<group>"; };
 		0226F19B259EAB93006E086C /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
 		0226F19D259EABB4006E086C /* PackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewController.swift; sourceTree = "<group>"; };
 		0229864127BD9CBA0048F9E9 /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
@@ -571,7 +571,7 @@
 		02B0D7292A3F08C000EF1500 /* Neumorphic */ = {
 			isa = PBXGroup;
 			children = (
-				0226889C2626F332007DBD98 /* Neumorphic.swift */,
+				0226889C2626F332007DBD98 /* UIView+Neumorphism.swift */,
 				AB0000000000000000010231 /* Shape+Neumorphism.swift */,
 				AB0000000000000000010221 /* ColorfulBackgroundView.swift */,
 				AB0000000000000000010211 /* DarkToggleStyle.swift */,
@@ -1058,7 +1058,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */,
+				0226889D2626F332007DBD98 /* UIView+Neumorphism.swift in Sources */,
 				AB0000000000000000010232 /* Shape+Neumorphism.swift in Sources */,
 				AB0000000000000000010222 /* ColorfulBackgroundView.swift in Sources */,
 				AB0000000000000000010212 /* DarkToggleStyle.swift in Sources */,
