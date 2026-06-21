@@ -4,7 +4,7 @@ import InstagramGraph
 @MainActor
 @Observable
 final class SmartGViewModel {
-    @ObservationIgnored let gateway: any ConnectedInsightsGatewayProtocol
+    @ObservationIgnored private let gateway: any ConnectedInsightsGatewayProtocol
 
     private enum Strings {
         static let defaultHashtag = "travel"

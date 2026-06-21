@@ -12,7 +12,7 @@ private enum Strings {
 @MainActor
 @Observable
 final class AnalyticsViewModel {
-    @ObservationIgnored let gateway: any ConnectedInsightsGatewayProtocol
+    @ObservationIgnored private let gateway: any ConnectedInsightsGatewayProtocol
 
     var metric: AnalyticsMetric = .engagement
     var rawInsights = true

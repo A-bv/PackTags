@@ -15,7 +15,7 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
         static let containerViewHeight = CGFloat(40)
     }
 
-    let containerView: UIView = {
+    private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
@@ -42,7 +42,7 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
         return label
     }()
 
-    let supportingView: UIView = {
+    private let supportingView: UIView = {
         let view = UIView()
         view.frame = CGRect(
             x: 0,

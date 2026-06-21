@@ -23,7 +23,7 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         static let cellLabelFontSize = CGFloat(19)
     }
     
-    let containerView: UIView = {
+    private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
@@ -59,7 +59,7 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
     
     var buttonTapCallback: () -> Void = { }
         
-    let copyButton: UIButton = {
+    private let copyButton: UIButton = {
         let fontSize = Constants.copyButtonFontSize
         let btn = UIButton(
             frame: CGRect(
@@ -84,7 +84,7 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         sender.addNeumorphicShadows(isButtonViewHeld: true, updateAfterShortDelay:true)
     }
     
-    @objc func didTapButton(sender: UIButton) {
+    @objc private func didTapButton(sender: UIButton) {
         sender.addNeumorphicShadows(updateAfterShortDelay:true)
         buttonTapCallback()
     }
