@@ -1,6 +1,6 @@
 import Foundation
 
-struct SettingsSection {
+struct SettingsSectionModel {
     let title: String
     let options: [SettingsOptionType]
 }

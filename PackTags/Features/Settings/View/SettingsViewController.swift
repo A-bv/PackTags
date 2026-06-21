@@ -6,7 +6,7 @@ final class SettingsViewController: UIViewController {
     private enum Strings {
         static let settingsTitle = "Settings".localized()
         // Alert title. Deliberately not shared with the catalog's "Instagram" row label
-        // (SettingsSections) — coincidentally the same word, but a different role.
+        // (in SettingsViewModel) — coincidentally the same word, but a different role.
         static let instagram = "Instagram".localized()
         static let rateAndReviewYourFeedback = "Your feedback".localized()
         static let rateAndReviewEnjoyingQuestion = "Are you enjoying PackTags?".localized()

@@ -93,7 +93,7 @@ final class SettingsSwitchCell: UITableViewCell, ReusableCellProtocol {
         onToggle = nil
     }
     
-    func configure(with model: SettingsSwitchOption) {
+    func configure(with model: SettingsSwitchOptionModel) {
         label.text = model.title
         iconContainer.backgroundColor = model.iconBackgroundColor
         mySwitch.isOn = model.isOn

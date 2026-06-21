@@ -402,9 +402,9 @@ import CoreData
     }
 }
 
-// MARK: - Settings catalog
+// MARK: - Settings catalog (built by SettingsViewModel)
 
-@Suite @MainActor struct SettingsSectionsTests {
+@Suite @MainActor struct SettingsCatalogTests {
 
     private final class FakeSettings: AppSettingsProtocol {
         var hasSeenOnboarding = false
@@ -418,50 +418,47 @@ import CoreData
         var setupInfoShown = false
     }
 
-    private func makeActions(
-        onInstagram: @escaping () -> Void = {},
-        onWebPage: @escaping (String) -> Void = { _ in }
-    ) -> SettingsActions {
-        SettingsActions(
-            editInstagramUsername: onInstagram,
-            openFacebookSetup: {},
-            showQuantityPicker: {},
-            replayOnboarding: {},
-            openSetupInfo: {},
-            openWebPage: onWebPage,
-            openOurInstagram: {},
-            shareApp: {},
-            rateApp: {},
-            contactSupport: {}
-        )
+    private func makeSUT() -> SettingsViewModel {
+        SettingsViewModel(
+            settings: FakeSettings(),
+            navigation: SettingsNavigation(
+                openQuantityPicker: {},
+                replayOnboarding: {},
+                openFacebookSetup: {},
+                openSetupInfo: {}))
     }
 
-    @Test func make_buildsTheFiveSections() {
-        #expect(SettingsSections.make(actions: makeActions(), settings: FakeSettings()).count == 5)
+    @Test func catalog_hasFiveSections() {
+        #expect(makeSUT().sections.count == 5)
     }
 
-    @Test func firstAccountRow_editsTheInstagramUsername() {
-        var fired = false
-        let sections = SettingsSections.make(actions: makeActions(onInstagram: { fired = true }), settings: FakeSettings())
+    @Test func firstAccountRow_emitsEditInstagram() {
+        let sut = makeSUT()
+        var event: SettingsViewModel.ViewEvent?
+        sut.onViewEvent = { event = $0 }
 
-        guard case .staticCell(let option) = sections[0].options[0] else {
+        guard case .staticCell(let option) = sut.sections[0].options[0] else {
             Issue.record("expected a static cell")
             return
         }
         option.handler()
 
-        #expect(fired)
+        guard case .editInstagram = event else {
+            Issue.record("expected an editInstagram event")
+            return
+        }
     }
 
     @Test func legalSection_opensAWebPagePerRow() {
-        var openedURLs: [String] = []
-        let sections = SettingsSections.make(actions: makeActions(onWebPage: { openedURLs.append($0) }), settings: FakeSettings())
+        let sut = makeSUT()
+        var openedCount = 0
+        sut.onViewEvent = { if case .openWebPage = $0 { openedCount += 1 } }
 
-        for option in sections[4].options {
+        for option in sut.sections[4].options {
             if case .staticCell(let model) = option { model.handler() }
         }
 
-        #expect(openedURLs.count == 3)
+        #expect(openedCount == 3)
     }
 }
 

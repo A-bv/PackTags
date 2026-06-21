@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AB0000000000000000010352 /* SettingsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010351 /* SettingsActions.swift */; };
-		AB0000000000000000010342 /* SettingsSwitchOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010341 /* SettingsSwitchOption.swift */; };
-		AB0000000000000000010332 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010331 /* SettingsOption.swift */; };
+		AB0000000000000000010342 /* SettingsSwitchOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010341 /* SettingsSwitchOptionModel.swift */; };
+		AB0000000000000000010332 /* SettingsOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010331 /* SettingsOptionModel.swift */; };
 		AB0000000000000000010322 /* SettingsOptionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010321 /* SettingsOptionType.swift */; };
-		AB0000000000000000010312 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010311 /* SettingsSection.swift */; };
+		AB0000000000000000010312 /* SettingsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010311 /* SettingsSectionModel.swift */; };
 		AB0000000000000000010302 /* AnalyticsMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010301 /* AnalyticsMetric.swift */; };
 		AB0000000000000000010292 /* ClosureTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010291 /* ClosureTapGestureRecognizer.swift */; };
 		AB0000000000000000010282 /* LinearGradient+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010281 /* LinearGradient+Init.swift */; };
@@ -137,7 +137,6 @@
 		AB00000000000000000000F8 /* HashtagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F7 /* HashtagParser.swift */; };
 		AB0000000000000000000102 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000101 /* DomainTests.swift */; };
 		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
-		AB0000000000000000000402 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000401 /* SettingsSections.swift */; };
 		AB0000000000000000005102 /* SettingsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000005101 /* SettingsNavigation.swift */; };
 		AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000907 /* KeyboardFindButton.swift */; };
 		AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000909 /* ThemeImagePicker.swift */; };
@@ -163,10 +162,10 @@
 
 /* Begin PBXFileReference section */
 		AB0000000000000000010351 /* SettingsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActions.swift; sourceTree = "<group>"; };
-		AB0000000000000000010341 /* SettingsSwitchOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchOption.swift; sourceTree = "<group>"; };
-		AB0000000000000000010331 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
+		AB0000000000000000010341 /* SettingsSwitchOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchOptionModel.swift; sourceTree = "<group>"; };
+		AB0000000000000000010331 /* SettingsOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionModel.swift; sourceTree = "<group>"; };
 		AB0000000000000000010321 /* SettingsOptionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionType.swift; sourceTree = "<group>"; };
-		AB0000000000000000010311 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		AB0000000000000000010311 /* SettingsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionModel.swift; sourceTree = "<group>"; };
 		AB0000000000000000010301 /* AnalyticsMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsMetric.swift; sourceTree = "<group>"; };
 		AB0000000000000000010291 /* ClosureTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		AB0000000000000000010281 /* LinearGradient+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+Init.swift"; sourceTree = "<group>"; };
@@ -293,7 +292,6 @@
 		AB00000000000000000000F7 /* HashtagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
 		AB0000000000000000000101 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
-		AB0000000000000000000401 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
 		AB0000000000000000005101 /* SettingsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigation.swift; sourceTree = "<group>"; };
 		AB0000000000000000000907 /* KeyboardFindButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFindButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000909 /* ThemeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePicker.swift; sourceTree = "<group>"; };
@@ -350,11 +348,10 @@
 		AB00000000000000000103A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AB0000000000000000010311 /* SettingsSection.swift */,
+				AB0000000000000000010311 /* SettingsSectionModel.swift */,
 				AB0000000000000000010321 /* SettingsOptionType.swift */,
-				AB0000000000000000010331 /* SettingsOption.swift */,
-				AB0000000000000000010341 /* SettingsSwitchOption.swift */,
-				AB0000000000000000010351 /* SettingsActions.swift */,
+				AB0000000000000000010331 /* SettingsOptionModel.swift */,
+				AB0000000000000000010341 /* SettingsSwitchOptionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -454,7 +451,6 @@
 			isa = PBXGroup;
 			children = (
 				AB0000000000000000005001 /* SettingsViewModel.swift */,
-				AB0000000000000000000401 /* SettingsSections.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -727,6 +723,7 @@
 			isa = PBXGroup;
 			children = (
 				02211E052FE1B44B002FDB14 /* ViewModel */,
+				AB0000000000000000010351 /* SettingsActions.swift */,
 				AB00000000000000000103A0 /* Model */,
 				02211E042FE1B440002FDB14 /* View */,
 				02211E032FE1B3FA002FDB14 /* Components */,
@@ -1100,7 +1097,6 @@
 				02FAE2A5260AC79C00324724 /* SettingsSwitchCell.swift in Sources */,
 				02BC8D592602B79900441349 /* SettingsViewController.swift in Sources */,
 				AB0000000000000000005002 /* SettingsViewModel.swift in Sources */,
-				AB0000000000000000000402 /* SettingsSections.swift in Sources */,
 				AB0000000000000000005102 /* SettingsNavigation.swift in Sources */,
 				02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */,
 				020584D5284D715D00020FB8 /* UIView+BlurView.swift in Sources */,
@@ -1136,10 +1132,10 @@
 				02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */,
 				021AFD5C278A1BE40008735E /* AlertPresenter.swift in Sources */,
 				AB0000000000000000010352 /* SettingsActions.swift in Sources */,
-				AB0000000000000000010342 /* SettingsSwitchOption.swift in Sources */,
-				AB0000000000000000010332 /* SettingsOption.swift in Sources */,
+				AB0000000000000000010342 /* SettingsSwitchOptionModel.swift in Sources */,
+				AB0000000000000000010332 /* SettingsOptionModel.swift in Sources */,
 				AB0000000000000000010322 /* SettingsOptionType.swift in Sources */,
-				AB0000000000000000010312 /* SettingsSection.swift in Sources */,
+				AB0000000000000000010312 /* SettingsSectionModel.swift in Sources */,
 				AB0000000000000000010292 /* ClosureTapGestureRecognizer.swift in Sources */,
 				02CAC9B7259105B400BE5E57 /* ThemeEditorViewController.swift in Sources */,
 				02B104A727697B6C00C9EC6C /* SmartGViewModel.swift in Sources */,

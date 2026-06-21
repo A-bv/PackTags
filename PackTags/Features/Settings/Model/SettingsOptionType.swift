@@ -1,6 +1,6 @@
 import Foundation
 
 enum SettingsOptionType {
-    case staticCell(model: SettingsOption)
-    case switchCell(model: SettingsSwitchOption)
+    case staticCell(model: SettingsOptionModel)
+    case switchCell(model: SettingsSwitchOptionModel)
 }

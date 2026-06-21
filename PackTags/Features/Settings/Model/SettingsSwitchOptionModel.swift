@@ -1,6 +1,6 @@
 import UIKit
 
-struct SettingsSwitchOption {
+struct SettingsSwitchOptionModel {
     let title: String
     let iconBackgroundColor: UIColor
     var isOn: Bool

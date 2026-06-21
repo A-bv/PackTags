@@ -84,7 +84,7 @@ final class SettingsCell: UITableViewCell, ReusableCellProtocol {
         iconContainer.backgroundColor = nil
     }
 
-    func configure(with model: SettingsOption) {
+    func configure(with model: SettingsOptionModel) {
         label.text = model.title
         iconContainer.backgroundColor = model.iconBackgroundColor
     }

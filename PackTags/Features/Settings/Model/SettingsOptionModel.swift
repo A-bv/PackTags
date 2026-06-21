@@ -1,6 +1,6 @@
 import UIKit
 
-struct SettingsOption {
+struct SettingsOptionModel {
     let title: String
     let iconBackgroundColor: UIColor
     let handler: (() -> Void)
