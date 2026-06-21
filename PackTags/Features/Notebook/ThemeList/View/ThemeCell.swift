@@ -1,11 +1,9 @@
 import UIKit
 
-/// Thumbnail edge length for theme covers; fixed per device class.
-@MainActor
-private let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
-
 final class ThemeCell: UITableViewCell, ReusableCellProtocol {
     private enum Constants {
+        /// Thumbnail edge length for theme covers; fixed per device class.
+        @MainActor static let thumbnailDim: CGFloat = UIScreen.main.bounds.width <= 320 ? 115 : 132
         static let padding5 = CGFloat(5)
         static let supportingViewShadowRadius = CGFloat(5)
         static let themeImageViewCornerRadius = CGFloat(10)
@@ -49,8 +47,8 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
         view.frame = CGRect(
             x: 0,
             y: 0,
-            width: thumbnailDim,
-            height: thumbnailDim)
+            width: Constants.thumbnailDim,
+            height: Constants.thumbnailDim)
         view.neumorphism(
             cornerRadius: Constants.supportingViewCornerRadius,
             shadowRadius: Constants.supportingViewShadowRadius)
