@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0000000000000000010502 /* UIViewController+ModalCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010501 /* UIViewController+ModalCloseButton.swift */; };
 		AB0000000000000000010352 /* SettingsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010351 /* SettingsActions.swift */; };
 		AB0000000000000000010342 /* SettingsSwitchOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010341 /* SettingsSwitchOptionModel.swift */; };
 		AB0000000000000000010332 /* SettingsOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010331 /* SettingsOptionModel.swift */; };
@@ -66,7 +67,7 @@
 		023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B932A48EC60006E2D35 /* CirclesView.swift */; };
 		023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B962A4D085E006E2D35 /* LoadingView.swift */; };
 		023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B982A4D0A5E006E2D35 /* OfflineView.swift */; };
-		0247E586257FEFB900C65245 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* DarkMode.swift */; };
+		0247E586257FEFB900C65245 /* UITraitCollection+DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* UITraitCollection+DarkMode.swift */; };
 		02491C5926779A4900F98E17 /* SetupInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* SetupInfoView.swift */; };
 		02491C692680883800F98E17 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C682680883700F98E17 /* UIColor+AppColors.swift */; };
 		025479DF26C7EEA000E28724 /* SeedData in Resources */ = {isa = PBXBuildFile; fileRef = 025479DE26C7EEA000E28724 /* SeedData */; };
@@ -84,7 +85,6 @@
 		02998A662B44104800B70516 /* CircleGaugeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A652B44104800B70516 /* CircleGaugeModel.swift */; };
 		02998A682B4611B100B70516 /* BarChartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02998A672B4611B000B70516 /* BarChartItemView.swift */; };
 		029FDDC1264E75600063DF1D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029FDDC0264E75600063DF1D /* OnboardingViewController.swift */; };
-		02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94A829A5936500D893E5 /* ModalChrome.swift */; };
 		02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */; };
 		02AD94B129AC078E00D893E5 /* FBLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B029AC078E00D893E5 /* FBLoginModel.swift */; };
 		02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */; };
@@ -161,6 +161,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB0000000000000000010501 /* UIViewController+ModalCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ModalCloseButton.swift"; sourceTree = "<group>"; };
 		AB0000000000000000010351 /* SettingsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActions.swift; sourceTree = "<group>"; };
 		AB0000000000000000010341 /* SettingsSwitchOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchOptionModel.swift; sourceTree = "<group>"; };
 		AB0000000000000000010331 /* SettingsOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionModel.swift; sourceTree = "<group>"; };
@@ -220,7 +221,7 @@
 		023D2B932A48EC60006E2D35 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
 		023D2B962A4D085E006E2D35 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		023D2B982A4D0A5E006E2D35 /* OfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
-		0247E585257FEFB900C65245 /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
+		0247E585257FEFB900C65245 /* UITraitCollection+DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+DarkMode.swift"; sourceTree = "<group>"; };
 		02491C5826779A4900F98E17 /* SetupInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupInfoView.swift; sourceTree = "<group>"; };
 		02491C682680883700F98E17 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		025479DE26C7EEA000E28724 /* SeedData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SeedData; sourceTree = "<group>"; };
@@ -238,7 +239,6 @@
 		02998A652B44104800B70516 /* CircleGaugeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGaugeModel.swift; sourceTree = "<group>"; };
 		02998A672B4611B000B70516 /* BarChartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartItemView.swift; sourceTree = "<group>"; };
 		029FDDC0264E75600063DF1D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		02AD94A829A5936500D893E5 /* ModalChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalChrome.swift; sourceTree = "<group>"; };
 		02AD94AE29A9820400D893E5 /* SubTransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTransformedProfileModel.swift; sourceTree = "<group>"; };
 		02AD94B029AC078E00D893E5 /* FBLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginModel.swift; sourceTree = "<group>"; };
 		02AD94B229AC080100D893E5 /* FBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginViewModel.swift; sourceTree = "<group>"; };
@@ -838,7 +838,7 @@
 				AB0000000000000000000204 /* Components */,
 				02B0D7292A3F08C000EF1500 /* Neumorphic */,
 				0281B98F287A344C00344D3E /* NavigationBar */,
-				0247E585257FEFB900C65245 /* DarkMode.swift */,
+				0247E585257FEFB900C65245 /* UITraitCollection+DarkMode.swift */,
 				AB0000000000000000010281 /* LinearGradient+Init.swift */,
 				AB0000000000000000010271 /* Color+AppColors.swift */,
 				02491C682680883700F98E17 /* UIColor+AppColors.swift */,
@@ -855,9 +855,9 @@
 				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
 				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
 				AB0000000000000000010041 /* ReusableCellProtocol.swift */,
-				02AD94A829A5936500D893E5 /* ModalChrome.swift */,
 				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
 				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
+				AB0000000000000000010501 /* UIViewController+ModalCloseButton.swift */,
 				AB0000000000000000010261 /* VisualEffectBlurView.swift */,
 				AB0000000000000000010251 /* RotatingDotsIndicatorItemView.swift */,
 				AB0000000000000000010241 /* RotatingDotsIndicatorView.swift */,
@@ -1077,7 +1077,7 @@
 				AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */,
 				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
 				0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */,
-				0247E586257FEFB900C65245 /* DarkMode.swift in Sources */,
+				0247E586257FEFB900C65245 /* UITraitCollection+DarkMode.swift in Sources */,
 				AB0000000000000000010282 /* LinearGradient+Init.swift in Sources */,
 				AB0000000000000000010272 /* Color+AppColors.swift in Sources */,
 				0207BB892FD3736C0007F3D3 /* NotebookCoordinator.swift in Sources */,
@@ -1146,7 +1146,6 @@
 				AB0000000000000000004002 /* ThemeListNavigation.swift in Sources */,
 				02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */,
 				02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */,
-				02AD94A929A5936500D893E5 /* ModalChrome.swift in Sources */,
 				029122862B8B3FA5007EB7ED /* FloatingButtonFactory.swift in Sources */,
 				AB0000000000000000008002 /* UITableView+Reusable.swift in Sources */,
 				AB0000000000000000010042 /* ReusableCellProtocol.swift in Sources */,
@@ -1160,6 +1159,7 @@
 				021EB81428846AD100463B42 /* String+Localized.swift in Sources */,
 				02998A682B4611B100B70516 /* BarChartItemView.swift in Sources */,
 				02211DD42FD75F76002FDB14 /* ActivityIndicatorView.swift in Sources */,
+				AB0000000000000000010502 /* UIViewController+ModalCloseButton.swift in Sources */,
 				AB0000000000000000010262 /* VisualEffectBlurView.swift in Sources */,
 				AB0000000000000000010252 /* RotatingDotsIndicatorItemView.swift in Sources */,
 				AB0000000000000000010242 /* RotatingDotsIndicatorView.swift in Sources */,

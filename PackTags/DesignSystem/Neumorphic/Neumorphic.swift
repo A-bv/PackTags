@@ -37,7 +37,7 @@ extension UIView {
         if isButtonViewHeld {
             for item in self.layer.sublayers ?? [] where item.name == "lightShadow" {
                 item.backgroundColor = UIColor.shadowColor.resolvedColor(with: self.traitCollection).cgColor
-                item.shadowColor = DarkMode.isDarkMode() ? UIColor.shadowColor.resolvedColor(with: self.traitCollection).cgColor : UIColor.shadowColor.withAlphaComponent(0.50).resolvedColor(with: self.traitCollection).cgColor
+                item.shadowColor = UITraitCollection.isDarkMode ? UIColor.shadowColor.resolvedColor(with: self.traitCollection).cgColor : UIColor.shadowColor.withAlphaComponent(0.50).resolvedColor(with: self.traitCollection).cgColor
             }
                 
             for item in self.layer.sublayers ?? [] where item.name == "darkShadow" {

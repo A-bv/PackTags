@@ -108,7 +108,7 @@ final class ThemeListViewController: UITableViewController {
     }
 
     private func updateLogo() {
-        let logo = DarkMode.isDarkMode() ? "logoBlack" : "logoWhite"
+        let logo = UITraitCollection.isDarkMode ? "logoBlack" : "logoWhite"
         navigationItem.titleView = UIImageView(image: UIImage(named: logo))
     }
 

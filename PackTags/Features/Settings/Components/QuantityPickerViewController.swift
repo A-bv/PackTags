@@ -8,7 +8,6 @@ final class QuantityPickerViewController: UIViewController {
     }
 
     private let appSettings: any AppSettingsProtocol
-    private lazy var chrome = ModalChrome(host: self)
 
     init(appSettings: any AppSettingsProtocol) {
         self.appSettings = appSettings
@@ -27,7 +26,7 @@ final class QuantityPickerViewController: UIViewController {
     
     private func setupUI() {
         self.view.applyBlur()
-        chrome.addCloseButton()
+        addModalCloseButton()
         
         let pickerView = UIPickerView()
         pickerView.delegate = self

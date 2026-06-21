@@ -8,11 +8,11 @@ extension UIColor {
     }
 
     static var lightShadowColor: UIColor {
-        DarkMode.isDarkMode() ? shadowDark1 : .white
+        UITraitCollection.isDarkMode ? shadowDark1 : .white
     }
 
     static var bottomColor: UIColor {
-        DarkMode.isDarkMode() ? .black : .white
+        UITraitCollection.isDarkMode ? .black : .white
     }
 
     /// The blue badge behind pack sizes (pack list).
