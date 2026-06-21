@@ -20,10 +20,8 @@ extension UIImage {
             draw(in: CGRect(origin: middle, size: resizeSize))
         }
     }
-}
 
-// Avoid upside down image
-extension UIImage {
+    // Avoid upside down image
     func upOrientationImage() -> UIImage? {
         switch imageOrientation {
         case .up:
