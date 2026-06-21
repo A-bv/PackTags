@@ -123,19 +123,23 @@ App/            Composition root: AppDelegate, SceneDelegate, AppCoordinator, Ap
 Coordinators/   Coordinators + the Coordinator protocol
 Data/           Persistence (Core Data, UserDefaults), repositories, settings, CD models
 Domain/         Pure business rules (no UIKit)
-DesignSystem/   App-wide UI: Components, colors, navigation bar, neumorphic
-Shared/         Non-UI utilities reused across features (Alerts, logger, links, review)
+DesignSystem/   App-wide UI: Views (reusable views), Components (non-view helpers,
+                e.g. factories), colors, navigation bar, neumorphic, view extensions
+Shared/         Non-UI utilities reused across features (alerts, logger, links, review)
 Features/<Name>/
     <Name>Navigation.swift     coordinator seam (closures the coordinator injects)
-    View/                      view controllers + cells
+    View/                      the screen + every view it owns (controllers, cells, subviews)
     ViewModel/                 view models + presentation models + catalogs
-    Components/                feature-local reusable UI
-    Support/                   feature-local non-UI helpers (services, utilities)
+    Model/                     feature models
+    Services/                  feature-local non-UI helpers (recognition, pickers, session)
+    Components/                feature-local helpers that are NOT a model, view, VM, or service
     <SubScreen>/View|ViewModel sub-screens get their own View/ViewModel folders
 ```
 
-A coordinator-presented screen is a **screen** (its own folder). A reusable, non-screen
-piece is a **component** (UI) or **support** (helper) — never put a screen in `Components`.
+A coordinator-presented screen is a **screen** (its own folder, e.g. `QuantityPicker/View/`).
+`Components/` **never holds views** — it is the bucket for feature-scoped things that are not a
+model, view, view model, or service and can't move to `Shared/` (they're scoped to one feature).
+Views, including a screen's reusable subviews, live under `View/`.
 
 ---
 
