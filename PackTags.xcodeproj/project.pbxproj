@@ -328,6 +328,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB0000000000000000010600 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		AB00000000000000000103C0 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,7 +480,6 @@
 		0231AB1126849DFA007F4FC8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */,
 				0264B816264A7CE900E1EEFA /* AnalyticsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -686,6 +693,7 @@
 			children = (
 				02EE53B3284CCB86004E7D5C /* Model */,
 				0231AB1126849DFA007F4FC8 /* ViewModel */,
+				AB0000000000000000010600 /* Services */,
 				02FB530C25AD3DD00063038C /* View */,
 			);
 			path = Analytics;
