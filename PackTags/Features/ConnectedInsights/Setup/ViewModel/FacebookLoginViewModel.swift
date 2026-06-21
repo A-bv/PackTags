@@ -3,7 +3,7 @@ import InstagramGraph
 
 @Observable
 @MainActor
-final class FBLoginViewModel {
+final class FacebookLoginViewModel {
     /// The outcome of attempting Graph setup with the current Facebook token.
     enum SetupResult: Equatable {
         case connected

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FBLoginView: View {
+struct FacebookLoginView: View {
     private enum Strings {
         static let trackingOn = "App tracking on".localized()
         static let trackingOff = "App tracking off".localized()
@@ -18,7 +18,7 @@ struct FBLoginView: View {
         static let trackingInfoMessage = "trackingInfoMessage".localized()
     }
 
-    @State private var viewModel: FBLoginViewModel
+    @State private var viewModel: FacebookLoginViewModel
     private let appSettings: any AppSettingsProtocol
     private let onConnected: () -> Void
     private let onClose: () -> Void
@@ -32,7 +32,7 @@ struct FBLoginView: View {
     @State private var showConnected = false
 
     init(
-        viewModel: FBLoginViewModel,
+        viewModel: FacebookLoginViewModel,
         appSettings: any AppSettingsProtocol,
         dismissWhenAlreadyConnected: Bool = true,
         onConnected: @escaping () -> Void,

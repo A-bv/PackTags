@@ -7,7 +7,7 @@ import InstagramGraph
 /// flips the very access state the features read. Reached from the features (on
 /// needs-setup) and from Settings, both through `ConnectedInsightsProtocol`.
 @MainActor
-final class FBLoginCoordinator {
+final class FacebookLoginCoordinator {
     private let gateway: any ConnectedInsightsGatewayProtocol
     private let settings: any AppSettingsProtocol
 
@@ -22,8 +22,8 @@ final class FBLoginCoordinator {
         dismissWhenAlreadyConnected: Bool = true,
         onConnected: (() -> Void)? = nil
     ) {
-        let viewModel = FBLoginViewModel(gateway: gateway, settings: settings)
-        let view = FBLoginView(
+        let viewModel = FacebookLoginViewModel(gateway: gateway, settings: settings)
+        let view = FacebookLoginView(
             viewModel: viewModel,
             appSettings: settings,
             dismissWhenAlreadyConnected: dismissWhenAlreadyConnected,

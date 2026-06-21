@@ -5,13 +5,13 @@ import InstagramGraph
 @MainActor
 final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
     private let gateway: any ConnectedInsightsGatewayProtocol
-    private let fbLogin: FBLoginCoordinator
+    private let fbLogin: FacebookLoginCoordinator
     private lazy var smartTagsPersistence = PersistenceController(modelName: "SmartTags")
 
     init(settings: any AppSettingsProtocol) {
         let gateway = ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider())
         self.gateway = gateway
-        self.fbLogin = FBLoginCoordinator(gateway: gateway, settings: settings)
+        self.fbLogin = FacebookLoginCoordinator(gateway: gateway, settings: settings)
     }
 
     func open(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
@@ -26,7 +26,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
     }
 
     /// Features gate on token validity: `.ready` shows the feature; `.needsSetup` runs
-    /// the login flow (owned by `FBLoginCoordinator`), then the feature.
+    /// the login flow (owned by `FacebookLoginCoordinator`), then the feature.
     private func openFeature(_ destination: ConnectedInsightsDestination, from presenter: UIViewController) {
         switch gateway.accessState() {
         case .ready:

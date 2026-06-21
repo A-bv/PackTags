@@ -151,10 +151,10 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 }
 
-// MARK: - FBLoginViewModel
+// MARK: - FacebookLoginViewModel
 
 @MainActor
-@Suite struct FBLoginViewModelTests {
+@Suite struct FacebookLoginViewModelTests {
 
     private final class FakeGateway: ConnectedInsightsGatewayProtocol {
         var setupTokens: [String] = []
@@ -174,9 +174,9 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     private final class FakeSession: FacebookSessionServiceProtocol {
-        var token = FBToken(tokenString: nil)
+        var token = FacebookToken(tokenString: nil)
         var resetCount = 0
-        func currentToken() -> FBToken { token }
+        func currentToken() -> FacebookToken { token }
         func resetSession() { resetCount += 1 }
     }
 
@@ -204,17 +204,17 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     private func makeSUT(
-        token: FBToken = FBToken(tokenString: nil),
+        token: FacebookToken = FacebookToken(tokenString: nil),
         setupError: Error? = nil,
         setupInfoShown: Bool = true
-    ) -> (sut: FBLoginViewModel, gateway: FakeGateway, session: FakeSession, settings: FakeSettings) {
+    ) -> (sut: FacebookLoginViewModel, gateway: FakeGateway, session: FakeSession, settings: FakeSettings) {
         let gateway = FakeGateway()
         gateway.setupError = setupError
         let session = FakeSession()
         session.token = token
         let settings = FakeSettings()
         settings.setupInfoShown = setupInfoShown
-        let sut = FBLoginViewModel(gateway: gateway, settings: settings, facebookSessionService: session)
+        let sut = FacebookLoginViewModel(gateway: gateway, settings: settings, facebookSessionService: session)
         return (sut, gateway, session, settings)
     }
 
@@ -234,7 +234,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     // MARK: validateSetup
 
     @Test func validateSetup_connects_whenGatewaySucceeds() async {
-        let (sut, gateway, _, _) = makeSUT(token: FBToken(tokenString: "token-123"))
+        let (sut, gateway, _, _) = makeSUT(token: FacebookToken(tokenString: "token-123"))
 
         await sut.validateSetup()
 
@@ -243,7 +243,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func validateSetup_sessionExpired_andResets_whenNoToken() async {
-        let (sut, gateway, session, _) = makeSUT(token: FBToken(tokenString: nil))
+        let (sut, gateway, session, _) = makeSUT(token: FacebookToken(tokenString: nil))
 
         await sut.validateSetup()
 
@@ -253,7 +253,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func validateSetup_sessionExpired_andResets_onInvalidToken() async {
-        let (sut, _, session, _) = makeSUT(token: FBToken(tokenString: "stale"), setupError: oauthError)
+        let (sut, _, session, _) = makeSUT(token: FacebookToken(tokenString: "stale"), setupError: oauthError)
 
         await sut.validateSetup()
 
@@ -263,7 +263,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func validateSetup_fails_withoutResetting_onNonAuthError() async {
         let (sut, _, session, _) = makeSUT(
-            token: FBToken(tokenString: "token-123"),
+            token: FacebookToken(tokenString: "token-123"),
             setupError: InstagramGraphServiceError.instagramAccountNotFound)
 
         await sut.validateSetup()
@@ -273,7 +273,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func validateSetup_marksLoginAttempt_whenRequested() async {
-        let (sut, _, _, settings) = makeSUT(token: FBToken(tokenString: "token-123"))
+        let (sut, _, _, settings) = makeSUT(token: FacebookToken(tokenString: "token-123"))
 
         await sut.validateSetup(markLoginAttempt: true)
 
@@ -281,7 +281,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func validateSetup_flagsLogin_whenConnectedViaLoginAttempt() async {
-        let (sut, _, _, _) = makeSUT(token: FBToken(tokenString: "token-123"))
+        let (sut, _, _, _) = makeSUT(token: FacebookToken(tokenString: "token-123"))
 
         await sut.validateSetup(markLoginAttempt: true)
 
@@ -290,7 +290,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func validateSetup_doesNotFlagLogin_onPassiveRevalidation() async {
-        let (sut, _, _, _) = makeSUT(token: FBToken(tokenString: "token-123"))
+        let (sut, _, _, _) = makeSUT(token: FacebookToken(tokenString: "token-123"))
 
         await sut.validateSetup(markLoginAttempt: false)
 
@@ -300,8 +300,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func didCompleteLogin_connectsAndFlagsLogin_onSuccess() async {
         let session = FakeSession()
-        session.token = FBToken(tokenString: "token-123")
-        let sut = FBLoginViewModel(
+        session.token = FacebookToken(tokenString: "token-123")
+        let sut = FacebookLoginViewModel(
             gateway: FakeGateway(), settings: FakeSettings(),
             facebookSessionService: session)
 
@@ -328,9 +328,9 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func onAppear_promptsTracking_andValidatesWhenAuthorizedWithToken() async {
         let session = FakeSession()
-        session.token = FBToken(tokenString: "token-123")
+        session.token = FacebookToken(tokenString: "token-123")
         let tracking = FakeTracking(authorized: true)
-        let sut = FBLoginViewModel(
+        let sut = FacebookLoginViewModel(
             gateway: FakeGateway(), settings: FakeSettings(),
             facebookSessionService: session, tracking: tracking)
 
@@ -343,7 +343,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func handleTrackingTap_routesToTheAuthorizer() async {
         let tracking = FakeTracking(authorized: false)
-        let sut = FBLoginViewModel(
+        let sut = FacebookLoginViewModel(
             gateway: FakeGateway(), settings: FakeSettings(),
             facebookSessionService: FakeSession(), tracking: tracking)
 
@@ -354,7 +354,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func didCompleteLogin_failsOnError() async {
-        let sut = FBLoginViewModel(
+        let sut = FacebookLoginViewModel(
             gateway: FakeGateway(), settings: FakeSettings(),
             facebookSessionService: FakeSession())
 

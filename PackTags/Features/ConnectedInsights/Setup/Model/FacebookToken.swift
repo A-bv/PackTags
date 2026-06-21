@@ -1,6 +1,6 @@
 import FBSDKLoginKit
 
-struct FBToken {
+struct FacebookToken {
     let tokenString: String?
     let diagnostic: String
 
