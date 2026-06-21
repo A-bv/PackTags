@@ -42,7 +42,7 @@ struct SetupInfoView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                VisualEffectBlur().ignoresSafeArea()
+                VisualEffectBlurView().ignoresSafeArea()
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: Constants.sectionSpacing) {

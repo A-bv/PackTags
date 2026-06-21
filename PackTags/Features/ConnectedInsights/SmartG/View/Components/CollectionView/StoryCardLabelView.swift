@@ -4,7 +4,7 @@ private enum Constants {
     static let cardLabelFontSize: CGFloat = 12
 }
 
-struct StoryCardLabel: View {
+struct StoryCardLabelView: View {
     let comments: String
     let likes: String
     let hashtagsCount: String

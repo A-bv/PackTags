@@ -8,7 +8,7 @@ struct DarkToggleStyle: ToggleStyle {
                 .contentShape(Circle())
         }
         .background(
-            ColorfulBackground(
+            ColorfulBackgroundView(
                 isHighlighted: configuration.isOn,
                 shape: RoundedRectangle(cornerRadius: 10))
         )

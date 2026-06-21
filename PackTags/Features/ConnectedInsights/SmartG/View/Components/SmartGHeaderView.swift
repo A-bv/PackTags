@@ -11,7 +11,7 @@ private enum Constants {
     static let headerBottomPadding: CGFloat = 15
 }
 
-struct SmartGHeader: View {
+struct SmartGHeaderView: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         HStack {

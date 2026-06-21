@@ -17,7 +17,7 @@ struct SmartGView: View {
                 OfflineView()
             } else {
                 VStack() {
-                    SmartGHeader()
+                    SmartGHeaderView()
                     InteractionBarView(smartGViewModel: smartGViewModel)
                     Spacer()
                     if smartGViewModel.loading {
@@ -28,7 +28,7 @@ struct SmartGView: View {
                         ScrollView{
                             VStack {
                                 FloatingListView(viewModel: self.smartGViewModel)
-                                StoryCardCarousel(viewModel: smartGViewModel)
+                                StoryCardCarouselView(viewModel: smartGViewModel)
                                     .padding(.vertical)
                             }
                         }

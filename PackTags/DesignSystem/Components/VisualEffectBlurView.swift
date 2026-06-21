@@ -2,7 +2,7 @@ import SwiftUI
 
 /// A `UIVisualEffectView` blur for use as a SwiftUI background. The host controller's
 /// view must be transparent for the content behind to blur through.
-struct VisualEffectBlur: UIViewRepresentable {
+struct VisualEffectBlurView: UIViewRepresentable {
     var style: UIBlurEffect.Style = .systemThinMaterial
 
     func makeUIView(context: Context) -> UIVisualEffectView {

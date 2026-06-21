@@ -4,7 +4,7 @@ private enum Strings {
     static let loading3Dots = "Loading...".localized()
 }
 
-struct StoryCard: View {
+struct StoryCardView: View {
     let url: URL
     let comments: String
     let likes: String
@@ -20,7 +20,7 @@ struct StoryCard: View {
                 .frame(width: cardWidth, height: cardHeight)
                 .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius))
             
-            StoryCardLabel(
+            StoryCardLabelView(
                 comments: comments,
                 likes: likes,
                 hashtagsCount: hashtagsCount)

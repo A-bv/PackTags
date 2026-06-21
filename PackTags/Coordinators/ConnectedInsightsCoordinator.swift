@@ -46,7 +46,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
             present(AnalyticsView(gateway: gateway), from: presenter)
         case .smartG:
             present(
-                SmartGViewContainer(gateway: gateway, context: smartTagsPersistence.viewContext),
+                SmartGContainerView(gateway: gateway, context: smartTagsPersistence.viewContext),
                 from: presenter)
         default:
             return

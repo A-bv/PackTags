@@ -48,7 +48,7 @@ struct FBLoginView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                VisualEffectBlur().ignoresSafeArea()
+                VisualEffectBlurView().ignoresSafeArea()
 
                 VStack {
                     trackingRow

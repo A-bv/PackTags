@@ -2,7 +2,7 @@ import SwiftUI
 import CoreData
 import InstagramGraph
 
-struct SmartGViewContainer: View {
+struct SmartGContainerView: View {
     private let gateway: any ConnectedInsightsGatewayProtocol
     private let context: NSManagedObjectContext
 

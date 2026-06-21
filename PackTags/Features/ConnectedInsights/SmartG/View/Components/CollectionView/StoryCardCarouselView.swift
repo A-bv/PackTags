@@ -10,7 +10,7 @@ private enum Constants {
     static let cardCornerRadius: CGFloat = 12
 }
 
-struct StoryCardCarousel: View {
+struct StoryCardCarouselView: View {
     let viewModel: SmartGViewModel
 
     var body: some View {
@@ -35,7 +35,7 @@ struct StoryCardCarousel: View {
         if let url = media.mediaUrl,
            let likeCount = media.likeCount,
            let commentsCount = media.commentsCount {
-            StoryCard(
+            StoryCardView(
                 url: url,
                 comments: String(commentsCount),
                 likes: MetricFormatter.compact(Double(likeCount), noDecimal: true),
@@ -53,5 +53,5 @@ struct StoryCardCarousel: View {
 }
 
 #Preview {
-    StoryCardCarousel(viewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
+    StoryCardCarouselView(viewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
 }

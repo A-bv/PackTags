@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ColorfulBackground<S: Shape>: View {
+struct ColorfulBackgroundView<S: Shape>: View {
     var isHighlighted: Bool
     var shape: S
 
