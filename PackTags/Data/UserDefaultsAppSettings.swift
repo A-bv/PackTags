@@ -8,7 +8,7 @@ protocol AppSettingsProtocol: AnyObject {
     var keepPacksOrder: Bool { get set }
     var openInstagramAfterCopy: Bool { get set }
     var instagramUsername: String? { get set }
-    var pressedFBLoginButton: Bool { get set }
+    var pressedFacebookLoginButton: Bool { get set }
     var setupInfoShown: Bool { get set }
 }
 
@@ -33,9 +33,9 @@ final class UserDefaultsAppSettings: AppSettingsProtocol {
         set { defaults.set(newValue, forKey: SettingsKey.tipsAlertShown) }
     }
 
-    var pressedFBLoginButton: Bool {
-        get { defaults.bool(forKey: SettingsKey.pressedFBLoginButton) }
-        set { defaults.set(newValue, forKey: SettingsKey.pressedFBLoginButton) }
+    var pressedFacebookLoginButton: Bool {
+        get { defaults.bool(forKey: SettingsKey.pressedFacebookLoginButton) }
+        set { defaults.set(newValue, forKey: SettingsKey.pressedFacebookLoginButton) }
     }
 
     var setupInfoShown: Bool {

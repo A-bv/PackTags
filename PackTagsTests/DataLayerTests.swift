@@ -96,7 +96,7 @@ import CoreData
         var keepPacksOrder = false
         var openInstagramAfterCopy = false
         var instagramUsername: String?
-        var pressedFBLoginButton = false
+        var pressedFacebookLoginButton = false
         var setupInfoShown = false
     }
 
@@ -274,7 +274,7 @@ import CoreData
         var keepPacksOrder = false
         var openInstagramAfterCopy = false
         var instagramUsername: String?
-        var pressedFBLoginButton = false
+        var pressedFacebookLoginButton = false
         var setupInfoShown = false
     }
 
@@ -383,7 +383,7 @@ import CoreData
         #expect(SettingsKey.keepPacksOrder == "Keep Packs Order")
         #expect(SettingsKey.saveAndShuffle == "Save & Shuffle")
         #expect(SettingsKey.setupInfoShown == "setupInfoShown")
-        #expect(SettingsKey.pressedFBLoginButton == "pressedFBLoginButton")
+        #expect(SettingsKey.pressedFacebookLoginButton == "pressedFBLoginButton")
         #expect(SettingsKey.quantityOfTagsPerPack == "QuantityOfTagsPerPack")
         #expect(SettingsKey.timesLaunched == "numberOfTimesLaunched")
         #expect(SettingsKey.lastVersionPromptedForReview == "lastVersion")
@@ -414,7 +414,7 @@ import CoreData
         var keepPacksOrder = false
         var openInstagramAfterCopy = false
         var instagramUsername: String?
-        var pressedFBLoginButton = false
+        var pressedFacebookLoginButton = false
         var setupInfoShown = false
     }
 
@@ -474,7 +474,7 @@ import CoreData
         var keepPacksOrder = false
         var openInstagramAfterCopy = false
         var instagramUsername: String?
-        var pressedFBLoginButton = false
+        var pressedFacebookLoginButton = false
         var setupInfoShown = false
     }
 
@@ -534,7 +534,7 @@ import CoreData
         var keepPacksOrder = false
         var openInstagramAfterCopy = false
         var instagramUsername: String?
-        var pressedFBLoginButton = false
+        var pressedFacebookLoginButton = false
         var setupInfoShown = false
     }
 

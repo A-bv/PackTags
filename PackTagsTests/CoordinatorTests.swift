@@ -61,7 +61,7 @@ private final class FakeAppSettings: AppSettingsProtocol {
     var keepPacksOrder = false
     var openInstagramAfterCopy = false
     var instagramUsername: String?
-    var pressedFBLoginButton = false
+    var pressedFacebookLoginButton = false
     var setupInfoShown = false
 }
 

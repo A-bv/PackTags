@@ -188,7 +188,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         var keepPacksOrder = false
         var openInstagramAfterCopy = false
         var instagramUsername: String?
-        var pressedFBLoginButton = false
+        var pressedFacebookLoginButton = false
         var setupInfoShown = false
     }
 
@@ -277,7 +277,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
         await sut.validateSetup(markLoginAttempt: true)
 
-        #expect(settings.pressedFBLoginButton)
+        #expect(settings.pressedFacebookLoginButton)
     }
 
     @Test func validateSetup_flagsLogin_whenConnectedViaLoginAttempt() async {
@@ -315,13 +315,13 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func resetFacebookSession_resetsSessionGatewayAndFlag() {
         let (sut, gateway, session, settings) = makeSUT()
-        settings.pressedFBLoginButton = true
+        settings.pressedFacebookLoginButton = true
 
         sut.resetFacebookSession()
 
         #expect(session.resetCount == 1)
         #expect(gateway.resetCount == 1)
-        #expect(!settings.pressedFBLoginButton)
+        #expect(!settings.pressedFacebookLoginButton)
     }
 
     // MARK: tracking (ATT)

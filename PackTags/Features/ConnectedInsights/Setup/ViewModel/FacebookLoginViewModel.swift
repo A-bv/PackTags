@@ -80,7 +80,7 @@ final class FacebookLoginViewModel {
     /// classifies the outcome. On a recoverable auth failure the stale session is
     /// cleared so the next login starts clean.
     func validateSetup(markLoginAttempt: Bool = false) async {
-        if markLoginAttempt { settings.pressedFBLoginButton = true }
+        if markLoginAttempt { settings.pressedFacebookLoginButton = true }
         isValidating = true
         defer { isValidating = false }
 
@@ -109,7 +109,7 @@ final class FacebookLoginViewModel {
     func resetFacebookSession() {
         facebookSessionService.resetSession()
         gateway.reset()
-        settings.pressedFBLoginButton = false
+        settings.pressedFacebookLoginButton = false
         AppLogger.login.info("Facebook SDK session and connected insights setup were reset.")
     }
 

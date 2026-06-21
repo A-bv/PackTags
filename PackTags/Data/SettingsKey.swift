@@ -10,7 +10,7 @@ enum SettingsKey {
     static let keepPacksOrder = "Keep Packs Order"
     static let saveAndShuffle = "Save & Shuffle"
     static let setupInfoShown = "setupInfoShown"
-    static let pressedFBLoginButton = "pressedFBLoginButton"
+    static let pressedFacebookLoginButton = "pressedFBLoginButton"
     static let quantityOfTagsPerPack = "QuantityOfTagsPerPack"
     static let timesLaunched = "numberOfTimesLaunched"
     static let lastVersionPromptedForReview = "lastVersion"
