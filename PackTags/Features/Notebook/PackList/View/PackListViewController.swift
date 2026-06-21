@@ -1,27 +1,26 @@
 import UIKit
 import TableViewControllerCoverKit
 
-private enum Strings {
-    static let instagram = "Instagram".localized()
-    static let username = "Username".localized()
-    static let enterUsername = "Enter Username".localized()
-    static let redirectionAlertMessage = "PackTags will redirect you to this account each, time the copy button is tapped.".localized()
-    static let stopRedirectionAlertMessage = "PackTags will stop redirecting you to this account, each time the copy button is tapped.".localized()
-    static let undoRedirection = "Tap the button again to undo.".localized()
-    static let tapPencil = "Tap the Pencil button to add Hashtags.".localized()
-    static let show = "Show".localized()
-}
-
-private enum Constants {
-    /// Leaves the copy feedback visible before the app switches to Instagram.
-    static let afterCopy: TimeInterval = 0.8
-    /// Lets the Instagram transition start before reordering the table.
-    static let afterReorder: TimeInterval = 0.5
-    /// Each row is a sixth of the visible table.
-    static let rowsPerScreen: CGFloat = 6
-}
-
 final class PackListViewController: CoverImageTableViewController {
+    private enum Strings {
+        static let instagram = "Instagram".localized()
+        static let username = "Username".localized()
+        static let enterUsername = "Enter Username".localized()
+        static let redirectionAlertMessage = "PackTags will redirect you to this account each, time the copy button is tapped.".localized()
+        static let stopRedirectionAlertMessage = "PackTags will stop redirecting you to this account, each time the copy button is tapped.".localized()
+        static let undoRedirection = "Tap the button again to undo.".localized()
+        static let tapPencil = "Tap the Pencil button to add Hashtags.".localized()
+        static let show = "Show".localized()
+    }
+
+    private enum Constants {
+        /// Leaves the copy feedback visible before the app switches to Instagram.
+        static let afterCopy: TimeInterval = 0.8
+        /// Lets the Instagram transition start before reordering the table.
+        static let afterReorder: TimeInterval = 0.5
+        /// Each row is a sixth of the visible table.
+        static let rowsPerScreen: CGFloat = 6
+    }
 
     private let viewModel: PackListViewModel
 

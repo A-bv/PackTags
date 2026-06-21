@@ -1,10 +1,10 @@
 import SwiftUI
 
-private enum Strings {
-    static let loading3Dots = "Loading...".localized()
-}
-
 struct StoryCardView: View {
+    private enum Strings {
+        static let loading3Dots = "Loading...".localized()
+    }
+
     let url: URL
     let comments: String
     let likes: String

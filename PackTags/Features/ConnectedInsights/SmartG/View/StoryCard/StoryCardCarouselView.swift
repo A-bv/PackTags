@@ -1,16 +1,16 @@
 import SwiftUI
 import InstagramGraph
 
-private enum Constants {
-    static let interMediasPadding: CGFloat = 20
-    static let leadingPadding: CGFloat = 20
-    static let bottomPadding: CGFloat = 20
-    static let cardWidth: CGFloat = 190
-    static let cardHeight: CGFloat = 220
-    static let cardCornerRadius: CGFloat = 12
-}
-
 struct StoryCardCarouselView: View {
+    private enum Constants {
+        static let interMediasPadding: CGFloat = 20
+        static let leadingPadding: CGFloat = 20
+        static let bottomPadding: CGFloat = 20
+        static let cardWidth: CGFloat = 190
+        static let cardHeight: CGFloat = 220
+        static let cardCornerRadius: CGFloat = 12
+    }
+
     let viewModel: SmartGViewModel
 
     var body: some View {

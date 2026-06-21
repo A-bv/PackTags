@@ -1,17 +1,17 @@
 import SwiftUI
 
-private enum Strings {
-    static let smartHashtags = "Smart Hashtags".localized()
-    static let hashtagsPageSearch = "Hashtag page search".localized()
-}
-
-private enum Constants {
-    static let headerHorizontalEdgePadding: CGFloat = 20
-    static let headerInterTitlesPadding: CGFloat = 5
-    static let headerBottomPadding: CGFloat = 15
-}
-
 struct SmartGHeaderView: View {
+    private enum Strings {
+        static let smartHashtags = "Smart Hashtags".localized()
+        static let hashtagsPageSearch = "Hashtag page search".localized()
+    }
+
+    private enum Constants {
+        static let headerHorizontalEdgePadding: CGFloat = 20
+        static let headerInterTitlesPadding: CGFloat = 5
+        static let headerBottomPadding: CGFloat = 15
+    }
+
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         HStack {

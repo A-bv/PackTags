@@ -2,16 +2,16 @@ import Foundation
 import Observation
 import InstagramGraph
 
-private enum Strings {
-    static let likes = "Likes".localized()
-    static let comments = "Comments".localized()
-    static let average = "Average".localized()
-    static let selection = "Selection".localized()
-}
-
 @MainActor
 @Observable
 final class AnalyticsViewModel {
+    private enum Strings {
+        static let likes = "Likes".localized()
+        static let comments = "Comments".localized()
+        static let average = "Average".localized()
+        static let selection = "Selection".localized()
+    }
+
     @ObservationIgnored private let gateway: any ConnectedInsightsGatewayProtocol
 
     var metric: AnalyticsMetric = .engagement

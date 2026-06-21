@@ -1,11 +1,11 @@
 import UIKit
 
-private enum Constants {
-    static let paddingDivisor: CGFloat = 10
-    static let buttonSize: CGFloat = 22
-}
-
 extension UIViewController {
+    private enum Constants {
+        static let paddingDivisor: CGFloat = 10
+        static let buttonSize: CGFloat = 22
+    }
+
     /// Adds a circular close button in the top-right corner that dismisses the screen.
     /// For modally presented screens that supply their own chrome.
     func addModalCloseButton() {

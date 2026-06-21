@@ -1,10 +1,10 @@
 import SwiftUI
 
-private enum Constants {
-    static let cardLabelFontSize: CGFloat = 12
-}
-
 struct StoryCardLabelView: View {
+    private enum Constants {
+        static let cardLabelFontSize: CGFloat = 12
+    }
+
     let comments: String
     let likes: String
     let hashtagsCount: String

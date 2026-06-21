@@ -1,12 +1,12 @@
 import Foundation
 
-private enum Strings {
-    static let oneHashtag = "1 Hashtag".localized()
-    static let zeroHashtags = "0 Hashtags".localized()
-    static let more = "more".localized()
-}
-
 final class PackListViewModel {
+    private enum Strings {
+        static let oneHashtag = "1 Hashtag".localized()
+        static let zeroHashtags = "0 Hashtags".localized()
+        static let more = "more".localized()
+    }
+
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
     private let theme: ThemeEntity

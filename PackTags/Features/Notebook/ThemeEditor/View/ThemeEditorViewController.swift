@@ -1,26 +1,25 @@
 import UIKit
 import TapTagKit
 
-private enum Constants {
-    static let contentInset: CGFloat = 8
-    static let coverImageSize = CGSize(width: 600, height: 600)
-    static let thumbnailSize = CGSize(width: 135.333, height: 135.333)
-    static let jpegQuality: CGFloat = 0.8
-    static let highlightAlpha: CGFloat = 0.3
-}
-
-private enum Strings {
-    static let rename = "Rename".localized()
-    static let editPicture = "Edit picture".localized()
-    static let textRecognition = "Text Recognition".localized()
-    static let shuffleHashtags = "Shuffle hashtags".localized()
-    static let menuSectionEdit = "Edit...".localized()
-    static let menuSectionImport = "Import...".localized()
-    static let menuSectionManage = "Manage...".localized()
-    static let themeOptions = "Theme options".localized()
-}
-
 final class ThemeEditorViewController: UIViewController {
+    private enum Constants {
+        static let contentInset: CGFloat = 8
+        static let coverImageSize = CGSize(width: 600, height: 600)
+        static let thumbnailSize = CGSize(width: 135.333, height: 135.333)
+        static let jpegQuality: CGFloat = 0.8
+        static let highlightAlpha: CGFloat = 0.3
+    }
+
+    private enum Strings {
+        static let rename = "Rename".localized()
+        static let editPicture = "Edit picture".localized()
+        static let textRecognition = "Text Recognition".localized()
+        static let shuffleHashtags = "Shuffle hashtags".localized()
+        static let menuSectionEdit = "Edit...".localized()
+        static let menuSectionImport = "Import...".localized()
+        static let menuSectionManage = "Manage...".localized()
+        static let themeOptions = "Theme options".localized()
+    }
 
     //MARK: - Dependencies
 

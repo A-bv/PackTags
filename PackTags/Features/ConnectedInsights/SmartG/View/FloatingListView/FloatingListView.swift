@@ -1,16 +1,16 @@
 import SwiftUI
 
-private enum Constants {
-    static let numberOfTags = 10
-    static let tagSpacing: CGFloat = 30
-    static let tagListHeight: CGFloat = 330
-    static let tagListPadding: CGFloat = 20
-    static let tagColor = Color("Color4").opacity(0.7)
-    static let tagPadding: CGFloat = 10
-    static let tagCornerRadius: CGFloat = 10
-}
-
 struct FloatingListView: View {
+    private enum Constants {
+        static let numberOfTags = 10
+        static let tagSpacing: CGFloat = 30
+        static let tagListHeight: CGFloat = 330
+        static let tagListPadding: CGFloat = 20
+        static let tagColor = Color("Color4").opacity(0.7)
+        static let tagPadding: CGFloat = 10
+        static let tagCornerRadius: CGFloat = 10
+    }
+
     let viewModel: SmartGViewModel
     @State private var childSizes = [CGSize](repeating: .zero, count: Constants.numberOfTags)
     @State private var tagYPos = [CGFloat](repeating: .zero, count: Constants.numberOfTags)
