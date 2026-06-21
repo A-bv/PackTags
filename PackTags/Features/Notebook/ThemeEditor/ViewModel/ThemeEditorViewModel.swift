@@ -6,7 +6,7 @@ final class ThemeEditorViewModel {
     private let deduplicator: TagDeduplicator
     private(set) var theme: ThemeEntity?
     var themeTitle: String
-    var numTagsPerPack: Int { settings.tagsPerPack }
+    var tagsPerPack: Int { settings.tagsPerPack }
     var isNewTheme: Bool { theme == nil }
     var canSave: Bool { !themeTitle.isEmpty }
 
@@ -20,7 +20,7 @@ final class ThemeEditorViewModel {
 
     func contentForDisplay() -> String? {
         guard let content = theme?.content else { return nil }
-        return TagPackFormatter.format(content, tagsPerPack: numTagsPerPack)
+        return TagPackFormatter.format(content, tagsPerPack: tagsPerPack)
     }
 
     // MARK: - Naming
@@ -77,6 +77,6 @@ final class ThemeEditorViewModel {
 
     func shuffleContent(rawText: String) -> String {
         let cleaned = deduplicator.sanitize(rawText: rawText, currentTheme: theme, shuffle: true)
-        return TagPackFormatter.format(cleaned, tagsPerPack: numTagsPerPack)
+        return TagPackFormatter.format(cleaned, tagsPerPack: tagsPerPack)
     }
 }

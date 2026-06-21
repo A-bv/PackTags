@@ -61,21 +61,21 @@ extension AnalyticsViewModel {
     /// using the profile already in memory — no network round trip.
     func refreshFromCurrentProfile() {
         guard let profile else { return }
-        load(profileJson: profile)
+        load(profile: profile)
     }
 
     func load() async {
         do {
-            let profileJson = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
-            load(profileJson: profileJson)
+            let profile = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
+            load(profile: profile)
         } catch {
             AppLogger.insights.error("Failed to load analytics profile: \(error.localizedDescription, privacy: .public)")
         }
     }
 
-    private func load(profileJson: Profile) {
-        profile = profileJson
-        transformedProfile = ProfileDataTransformer.transform(response: profileJson, metric: metric, rawInsights: rawInsights)
+    private func load(profile: Profile) {
+        self.profile = profile
+        transformedProfile = ProfileDataTransformer.transform(response: profile, metric: metric, rawInsights: rawInsights)
         updateData()
     }
 
