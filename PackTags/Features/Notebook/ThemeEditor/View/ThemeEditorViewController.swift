@@ -261,7 +261,7 @@ extension ThemeEditorViewController {
             guard let self else { return }
             self.spinner.startAnimating()
             Task {
-                let text = await TextRecognitionUtility.recognizeText(image: image)
+                let text = await TextRecognizer.recognizeText(image: image)
                 if !text.isEmpty {
                     self.themeTextView.text = self.viewModel.contentByPrepending(
                         recognizedText: text,
@@ -279,7 +279,7 @@ extension ThemeEditorViewController {
 
     private func showNameThemeAlert() {
         let alert = viewModel.nameAlert
-        Alerts.showTextInputAlert(
+        AlertPresenter.showTextInputAlert(
             from: self,
             title: alert.title,
             message: alert.message,

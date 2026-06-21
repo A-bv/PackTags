@@ -72,7 +72,7 @@ final class SettingsViewController: UIViewController {
 
 private extension SettingsViewController {
     func presentInstagramAlert(message: String, placeholder: String) {
-        Alerts.showTextInputAlert(
+        AlertPresenter.showTextInputAlert(
             from: self,
             title: Strings.instagram,
             message: message,
@@ -90,7 +90,7 @@ private extension SettingsViewController {
         let tellUsWhy = UIAlertAction(title: Strings.rateAndReviewTellUsWhyQuestion, style: .default) { [weak self] _ in
             self?.sendSupportEmail()
         }
-        Alerts.show(
+        AlertPresenter.show(
             from: self,
             title: Strings.rateAndReviewYourFeedback,
             message: Strings.rateAndReviewEnjoyingQuestion,

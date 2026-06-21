@@ -2,7 +2,7 @@ import UIKit
 import SafariServices
 
 @MainActor
-enum Alerts {
+enum AlertPresenter {
     private enum Links {
         static let settingsTricksAndTipsUrl = "https://sites.google.com/view/packtags-tricks-tips/accueil"
     }

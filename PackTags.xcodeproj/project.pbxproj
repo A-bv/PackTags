@@ -47,7 +47,7 @@
 		0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */; };
 		AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000913 /* AppTrackingAuthorizer.swift */; };
 		021044F626446AEF00408CEB /* MetricFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* MetricFormatter.swift */; };
-		021AFD5C278A1BE40008735E /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* Alerts.swift */; };
+		021AFD5C278A1BE40008735E /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* AlertPresenter.swift */; };
 		021D76172759A00D00F54054 /* SmartGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartGView.swift */; };
 		021D7620275A99D500F54054 /* TransformedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D761F275A99D500F54054 /* TransformedProfileModel.swift */; };
 		021EB81428846AD100463B42 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021EB81328846AD100463B42 /* String+Localized.swift */; };
@@ -55,7 +55,7 @@
 		AB0000000000000000000922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000921 /* InfoPlist.strings */; };
 		02211DD02FD7074D002FDB14 /* InstagramGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 02211DCF2FD7074D002FDB14 /* InstagramGraph */; };
 		02211DD42FD75F76002FDB14 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */; };
-		02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */; };
+		02211DD62FD75F76002FDB14 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD52FD75F76002FDB14 /* TextRecognizer.swift */; };
 		022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688922624F9B1007DBD98 /* ThemeCell.swift */; };
 		0226889D2626F332007DBD98 /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* Neumorphic.swift */; };
 		0226F19C259EAB93006E086C /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19B259EAB93006E086C /* PackCell.swift */; };
@@ -201,7 +201,7 @@
 		0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionService.swift; sourceTree = "<group>"; };
 		AB0000000000000000000913 /* AppTrackingAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrackingAuthorizer.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* MetricFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricFormatter.swift; sourceTree = "<group>"; };
-		021AFD5B278A1BE40008735E /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		021AFD5B278A1BE40008735E /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		021D76162759A00D00F54054 /* SmartGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGView.swift; sourceTree = "<group>"; };
 		021D761F275A99D500F54054 /* TransformedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformedProfileModel.swift; sourceTree = "<group>"; };
 		021EB81328846AD100463B42 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		AB0000000000000000000919 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB0000000000000000000920 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
-		02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionUtility.swift; sourceTree = "<group>"; };
+		02211DD52FD75F76002FDB14 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		022688922624F9B1007DBD98 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		0226889C2626F332007DBD98 /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
 		0226F19B259EAB93006E086C /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0000000000000000000909 /* ThemeImagePicker.swift */,
-				02211DD52FD75F76002FDB14 /* TextRecognitionUtility.swift */,
+				02211DD52FD75F76002FDB14 /* TextRecognizer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -506,7 +506,7 @@
 			children = (
 				02FD6CB326D8178800AB16E4 /* AppStoreRating */,
 				AB00000000000000000000A1 /* AppLogger.swift */,
-				021AFD5B278A1BE40008735E /* Alerts.swift */,
+				021AFD5B278A1BE40008735E /* AlertPresenter.swift */,
 				02CEFB6C25CB945000FB70E4 /* UIImage+Treatment.swift */,
 				AB0000000000000000008001 /* UITableView+Reusable.swift */,
 				026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */,
@@ -1058,7 +1058,7 @@
 				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
 				02B0D74F2A48B74600EF1500 /* BarChartArrowsView.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */,
-				02211DD62FD75F76002FDB14 /* TextRecognitionUtility.swift in Sources */,
+				02211DD62FD75F76002FDB14 /* TextRecognizer.swift in Sources */,
 				02998A662B44104800B70516 /* CircleGaugeModel.swift in Sources */,
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* ReviewPromptPolicy.swift in Sources */,
@@ -1134,7 +1134,7 @@
 				AB00000000000000000000F8 /* HashtagParser.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				02AD94B329AC080100D893E5 /* FBLoginViewModel.swift in Sources */,
-				021AFD5C278A1BE40008735E /* Alerts.swift in Sources */,
+				021AFD5C278A1BE40008735E /* AlertPresenter.swift in Sources */,
 				AB0000000000000000010352 /* SettingsActions.swift in Sources */,
 				AB0000000000000000010342 /* SettingsSwitchOption.swift in Sources */,
 				AB0000000000000000010332 /* SettingsOption.swift in Sources */,

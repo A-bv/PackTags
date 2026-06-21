@@ -1,7 +1,7 @@
 import UIKit
 import Vision
 
-enum TextRecognitionUtility {
+enum TextRecognizer {
     /// Recognizes text in `image` off the main thread. Returns an empty
     /// string when nothing could be recognized, so callers can reliably
     /// stop progress UI.

@@ -57,7 +57,7 @@ final class NotebookCoordinator: CoordinatorProtocol {
             guard let self, let viewModel, viewModel.shouldShowOnboarding else { return }
             self.startOnboarding { [weak self, weak viewModel] in
                 guard let self, let viewModel, viewModel.consumeFirstTimeTipsAlert() else { return }
-                Alerts.showFirstTimeTipsAlert(from: self.navigationController)
+                AlertPresenter.showFirstTimeTipsAlert(from: self.navigationController)
             }
         }
         navigationController.setViewControllers([viewController], animated: false)

@@ -177,7 +177,7 @@ final class ThemeListViewController: UITableViewController {
             self?.tableView.deleteRows(at: [indexPath], with: .none)
         }
         let cancelAction = UIAlertAction(title: Strings.cancel, style: .cancel)
-        Alerts.show(
+        AlertPresenter.show(
             from: self,
             title: "",
             message: Strings.deleteConfirmationMessage,
