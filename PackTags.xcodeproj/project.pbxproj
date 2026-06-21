@@ -845,6 +845,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0000000000000000000204 /* Components */,
+				AB0000000000000000000208 /* Views */,
 				02B0D7292A3F08C000EF1500 /* Neumorphic */,
 				0281B98F287A344C00344D3E /* NavigationBar */,
 				0247E585257FEFB900C65245 /* UITraitCollection+DarkMode.swift */,
@@ -854,21 +855,28 @@
 				020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */,
 				020584D4284D715D00020FB8 /* UIView+BlurView.swift */,
 				02E4F63D28A9330800B9CF2E /* CALayer+Performance.swift */,
+				AB0000000000000000010501 /* UIViewController+ModalCloseButton.swift */,
 			);
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000208 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
+				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
+				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
+				AB0000000000000000010241 /* RotatingDotsIndicatorView.swift */,
+				AB0000000000000000010251 /* RotatingDotsIndicatorItemView.swift */,
+				AB0000000000000000010261 /* VisualEffectBlurView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AB0000000000000000000204 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				023D2B962A4D085E006E2D35 /* LoadingView.swift */,
 				029122852B8B3FA5007EB7ED /* FloatingButtonFactory.swift */,
-				023D2B982A4D0A5E006E2D35 /* OfflineView.swift */,
-				02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */,
-				AB0000000000000000010501 /* UIViewController+ModalCloseButton.swift */,
-				AB0000000000000000010261 /* VisualEffectBlurView.swift */,
-				AB0000000000000000010251 /* RotatingDotsIndicatorItemView.swift */,
-				AB0000000000000000010241 /* RotatingDotsIndicatorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
