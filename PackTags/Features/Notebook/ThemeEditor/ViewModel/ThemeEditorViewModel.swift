@@ -4,13 +4,13 @@ final class ThemeEditorViewModel {
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
     private let deduplicator: TagDeduplicator
-    private(set) var theme: ThemeCD?
+    private(set) var theme: ThemeEntity?
     var themeTitle: String
     var numTagsPerPack: Int { settings.tagsPerPack }
     var isNewTheme: Bool { theme == nil }
     var canSave: Bool { !themeTitle.isEmpty }
 
-    init(theme: ThemeCD?, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
+    init(theme: ThemeEntity?, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
         self.theme = theme
         self.repository = repository
         self.settings = settings

@@ -7,8 +7,8 @@ final class CoreDataThemeRepository: ThemeRepositoryProtocol {
         self.context = context
     }
 
-    func fetchAll() -> [ThemeCD] {
-        let request = NSFetchRequest<ThemeCD>(entityName: "ThemeCD")
+    func fetchAll() -> [ThemeEntity] {
+        let request = NSFetchRequest<ThemeEntity>(entityName: "ThemeCD")
         request.sortDescriptors = [NSSortDescriptor(key: "orderIndex", ascending: true)]
 
         do {
@@ -19,8 +19,8 @@ final class CoreDataThemeRepository: ThemeRepositoryProtocol {
         }
     }
 
-    func create() -> ThemeCD {
-        ThemeCD(context: context)
+    func create() -> ThemeEntity {
+        ThemeEntity(context: context)
     }
 
     func save() {
@@ -33,13 +33,13 @@ final class CoreDataThemeRepository: ThemeRepositoryProtocol {
         }
     }
 
-    func delete(_ theme: ThemeCD) {
+    func delete(_ theme: ThemeEntity) {
         context.delete(theme)
         save()
     }
 
     func count() -> Int32 {
-        let request = NSFetchRequest<ThemeCD>(entityName: "ThemeCD")
+        let request = NSFetchRequest<ThemeEntity>(entityName: "ThemeCD")
 
         do {
             return Int32(try context.count(for: request))
@@ -53,7 +53,7 @@ final class CoreDataThemeRepository: ThemeRepositoryProtocol {
         guard !tags.isEmpty else { return [] }
 
         let escaped = tags.map { NSRegularExpression.escapedPattern(for: $0) }.joined(separator: "|")
-        let request = NSFetchRequest<ThemeCD>(entityName: "ThemeCD")
+        let request = NSFetchRequest<ThemeEntity>(entityName: "ThemeCD")
         request.predicate = NSPredicate(format: "content MATCHES %@", ".*(\(escaped))\\b.*")
 
         do {

@@ -38,7 +38,7 @@ private final class SpyConnectedInsightsCoordinator: ConnectedInsightsProtocol {
 /// so construction can be verified without reaching into the editor's view model.
 @MainActor
 private final class SpyThemeEditorFactory {
-    private(set) var capturedThemes: [ThemeCD?] = []
+    private(set) var capturedThemes: [ThemeEntity?] = []
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
 
@@ -47,7 +47,7 @@ private final class SpyThemeEditorFactory {
         self.settings = settings
     }
 
-    func make(_ theme: ThemeCD?) -> ThemeEditorViewController {
+    func make(_ theme: ThemeEntity?) -> ThemeEditorViewController {
         capturedThemes.append(theme)
         return ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: repository, settings: settings))
     }
@@ -68,12 +68,12 @@ private final class FakeAppSettings: AppSettingsProtocol {
 private final class FakeThemeRepository: ThemeRepositoryProtocol {
     private(set) var didSave = false
     private let persistence = PersistenceController(inMemory: true)
-    var stored: [ThemeCD] = []
+    var stored: [ThemeEntity] = []
 
-    func fetchAll() -> [ThemeCD] { stored }
-    func create() -> ThemeCD { ThemeCD(context: persistence.viewContext) }
+    func fetchAll() -> [ThemeEntity] { stored }
+    func create() -> ThemeEntity { ThemeEntity(context: persistence.viewContext) }
     func save() { didSave = true }
-    func delete(_ theme: ThemeCD) {}
+    func delete(_ theme: ThemeEntity) {}
     func count() -> Int32 { Int32(stored.count) }
     func tagsAlreadyStored(tags: [String]) -> [String] { [] }
 }
@@ -86,8 +86,8 @@ private final class FakeThemeRepository: ThemeRepositoryProtocol {
 private let themeFactoryPersistence = PersistenceController(inMemory: true)
 
 @MainActor
-private func makeTheme(named name: String? = nil) -> ThemeCD {
-    let theme = ThemeCD(context: themeFactoryPersistence.viewContext)
+private func makeTheme(named name: String? = nil) -> ThemeEntity {
+    let theme = ThemeEntity(context: themeFactoryPersistence.viewContext)
     theme.name = name
     return theme
 }
@@ -117,7 +117,7 @@ private func makeTheme(named name: String? = nil) -> ThemeCD {
 @Suite @MainActor struct NotebookCoordinatorTests {
 
     private func makeSUT(
-        themes: [ThemeCD] = [],
+        themes: [ThemeEntity] = [],
         connectedInsights: ConnectedInsightsProtocol? = nil
     ) -> (sut: NotebookCoordinator, nav: SpyNavigationController, editorFactory: SpyThemeEditorFactory) {
         let nav = SpyNavigationController()

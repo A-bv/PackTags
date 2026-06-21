@@ -101,7 +101,7 @@ import CoreData
     }
 
     private func noopNavigation(
-        selectTheme: @escaping (ThemeCD) -> Void = { _ in },
+        selectTheme: @escaping (ThemeEntity) -> Void = { _ in },
         createTheme: @escaping (@escaping () -> Void) -> Void = { _ in },
         openSettings: @escaping () -> Void = {},
         openAnalytics: @escaping () -> Void = {},
@@ -178,7 +178,7 @@ import CoreData
     }
 
     @Test func selectTheme_atValidIndex_firesActionWithThatTheme() {
-        var selected: ThemeCD?
+        var selected: ThemeEntity?
         let (sut, repository) = makeSUT(navigation: noopNavigation(selectTheme: { selected = $0 }))
         seedThemes(["A", "B"], in: repository)
         sut.loadThemes()
@@ -538,7 +538,7 @@ import CoreData
         var setupInfoShown = false
     }
 
-    private func makeSUT(theme: ThemeCD? = nil) -> ThemeEditorViewModel {
+    private func makeSUT(theme: ThemeEntity? = nil) -> ThemeEditorViewModel {
         let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
         return ThemeEditorViewModel(theme: theme, repository: repository, settings: FakeSettings())
     }

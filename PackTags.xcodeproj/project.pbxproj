@@ -100,8 +100,8 @@
 		02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */; };
 		02E451B1265D5B4600582025 /* FBLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FBLoginView.swift */; };
 		AB0000000000000000000916 /* FacebookLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000915 /* FacebookLoginButton.swift */; };
-		02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */; };
-		02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */; };
+		02E4B9E025CF66F500949213 /* ThemeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeEntity+CoreDataClass.swift */; };
+		02E4B9E125CF66F500949213 /* ThemeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeEntity+CoreDataProperties.swift */; };
 		02E4F63E28A9330800B9CF2E /* CALayer+Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63D28A9330800B9CF2E /* CALayer+Performance.swift */; };
 		02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */; };
 		02F89B272974306F008F363D /* StoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B262974306F008F363D /* StoryCardView.swift */; };
@@ -254,8 +254,8 @@
 		02D709D82A59940E0009F7C3 /* SmartGSavedTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsView.swift; sourceTree = "<group>"; };
 		02E451B0265D5B4600582025 /* FBLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginView.swift; sourceTree = "<group>"; };
 		AB0000000000000000000915 /* FacebookLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginButton.swift; sourceTree = "<group>"; };
-		02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataClass.swift"; sourceTree = "<group>"; };
-		02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		02E4B9DE25CF66F500949213 /* ThemeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		02E4B9DF25CF66F500949213 /* ThemeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02E4F63D28A9330800B9CF2E /* CALayer+Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Performance.swift"; sourceTree = "<group>"; };
 		02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsCell.swift; sourceTree = "<group>"; };
 		02F89B262974306F008F363D /* StoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCardView.swift; sourceTree = "<group>"; };
@@ -820,8 +820,8 @@
 		AB0000000000000000000201 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				02E4B9DE25CF66F500949213 /* ThemeCD+CoreDataClass.swift */,
-				02E4B9DF25CF66F500949213 /* ThemeCD+CoreDataProperties.swift */,
+				02E4B9DE25CF66F500949213 /* ThemeEntity+CoreDataClass.swift */,
+				02E4B9DF25CF66F500949213 /* ThemeEntity+CoreDataProperties.swift */,
 				02FB551224FFA2AA00174E34 /* PackTags.xcdatamodeld */,
 				02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */,
 			);
@@ -1060,7 +1060,7 @@
 				02F89B2B29743FE4008F363D /* SmartGHeaderView.swift in Sources */,
 				0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */,
 				02FA30772A004254006A48CC /* StoryCardCarouselView.swift in Sources */,
-				02E4B9E125CF66F500949213 /* ThemeCD+CoreDataProperties.swift in Sources */,
+				02E4B9E125CF66F500949213 /* ThemeEntity+CoreDataProperties.swift in Sources */,
 				02B0D74F2A48B74600EF1500 /* BarChartArrowsView.swift in Sources */,
 				0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */,
 				02211DD62FD75F76002FDB14 /* TextRecognizer.swift in Sources */,
@@ -1159,7 +1159,7 @@
 				AB0000000000000000010042 /* ReusableCellProtocol.swift in Sources */,
 				029FDDC1264E75600063DF1D /* OnboardingViewController.swift in Sources */,
 				02FB551424FFA2AA00174E34 /* PackTags.xcdatamodeld in Sources */,
-				02E4B9E025CF66F500949213 /* ThemeCD+CoreDataClass.swift in Sources */,
+				02E4B9E025CF66F500949213 /* ThemeEntity+CoreDataClass.swift in Sources */,
 				0296306E2614A785000CF4E9 /* QuantityPickerViewController.swift in Sources */,
 				02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */,
 				0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */,

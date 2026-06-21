@@ -18,7 +18,7 @@ struct SmartGSavedTagsView: View {
     }
     
     @Binding var isPresented: Bool
-    @FetchRequest(entity: Hashtag.entity(), sortDescriptors: []) var hashtags: FetchedResults<Hashtag>
+    @FetchRequest(entity: HashtagEntity.entity(), sortDescriptors: []) var hashtags: FetchedResults<HashtagEntity>
     @Environment(\.managedObjectContext) var moc
     
     private var button: some View {
@@ -67,7 +67,7 @@ struct SmartGSavedTagsView: View {
     }
     
     private func makeCell(
-        hashtag: FetchedResults<Hashtag>.Element
+        hashtag: FetchedResults<HashtagEntity>.Element
     ) -> SmartGSavedTagsCell? {
         guard
             let title = hashtag.title,
@@ -104,7 +104,7 @@ struct SmartGSavedTagsView: View {
 #Preview {
     let persistence = PersistenceController(modelName: "SmartTags", inMemory: true)
     for title in ["Example Hashtag 1", "Example Hashtag 2", "Example Hashtag 3"] {
-        let hashtag = Hashtag(context: persistence.viewContext)
+        let hashtag = HashtagEntity(context: persistence.viewContext)
         hashtag.title = title
         hashtag.addDate = Date()
     }

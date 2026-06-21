@@ -10,7 +10,7 @@ final class ThemeListViewModel {
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
     private let navigation: ThemeListNavigation
-    private var themes: [ThemeCD] = []
+    private var themes: [ThemeEntity] = []
     var onUpdate: (() -> Void)?
 
     init(repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol, navigation: ThemeListNavigation) {

@@ -12,12 +12,12 @@ final class NotebookCoordinator: CoordinatorProtocol {
 
     /// How the theme editor is built. Injectable so tests can verify the coordinator
     /// passes the right theme (nil = new) without reaching into the view model.
-    private let makeThemeEditor: (ThemeCD?) -> ThemeEditorViewController
+    private let makeThemeEditor: (ThemeEntity?) -> ThemeEditorViewController
 
     init(
         navigationController: UINavigationController,
         dependencies: AppDependencies,
-        makeThemeEditor: ((ThemeCD?) -> ThemeEditorViewController)? = nil
+        makeThemeEditor: ((ThemeEntity?) -> ThemeEditorViewController)? = nil
     ) {
         self.navigationController = navigationController
         self.dependencies = dependencies
@@ -65,7 +65,7 @@ final class NotebookCoordinator: CoordinatorProtocol {
 
     // MARK: - From ThemeList
 
-    private func showPackList(for theme: ThemeCD) {
+    private func showPackList(for theme: ThemeEntity) {
         let viewModel = PackListViewModel(theme: theme, repository: dependencies.themeRepository, settings: dependencies.appSettings)
         let viewController = PackListViewController(
             style: .plain,
@@ -118,7 +118,7 @@ final class NotebookCoordinator: CoordinatorProtocol {
     // MARK: - From PackListViewController
 
     private func showThemeEditor(
-        for theme: ThemeCD,
+        for theme: ThemeEntity,
         fromSwipe: Bool,
         chosenPack: String,
         onSave: @escaping () -> Void,

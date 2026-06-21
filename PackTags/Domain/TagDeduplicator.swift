@@ -7,7 +7,7 @@ struct TagDeduplicator {
         self.repository = repository
     }
 
-    func sanitize(rawText: String, currentTheme: ThemeCD?, shuffle: Bool) -> String {
+    func sanitize(rawText: String, currentTheme: ThemeEntity?, shuffle: Bool) -> String {
         var cleanTags = deduplicated(HashtagParser.parse(rawText))
 
         if !cleanTags.isEmpty {
@@ -22,7 +22,7 @@ struct TagDeduplicator {
         return cleanTags.joined(separator: " ")
     }
 
-    private func tagsAlreadyStored(among tags: [String], excluding theme: ThemeCD?) -> [String] {
+    private func tagsAlreadyStored(among tags: [String], excluding theme: ThemeEntity?) -> [String] {
         guard let content = theme?.content, !content.isEmpty else {
             return repository.tagsAlreadyStored(tags: tags)
         }

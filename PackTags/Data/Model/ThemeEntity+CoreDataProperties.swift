@@ -1,10 +1,10 @@
 import Foundation
 import CoreData
 
-extension ThemeCD {
+extension ThemeEntity {
 
-    @nonobjc class func fetchRequest() -> NSFetchRequest<ThemeCD> {
-        return NSFetchRequest<ThemeCD>(entityName: "ThemeCD")
+    @nonobjc class func fetchRequest() -> NSFetchRequest<ThemeEntity> {
+        return NSFetchRequest<ThemeEntity>(entityName: "ThemeCD")
     }
 
     @NSManaged var orderIndex: Int32

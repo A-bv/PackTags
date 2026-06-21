@@ -6,8 +6,8 @@ struct InteractionBarView: View {
     @Environment(\.managedObjectContext) var moc
     @FocusState private var showKeyBoard: Bool
 
-    @FetchRequest(entity: Hashtag.entity(), sortDescriptors: [])
-    var hashtags: FetchedResults<Hashtag>
+    @FetchRequest(entity: HashtagEntity.entity(), sortDescriptors: [])
+    var hashtags: FetchedResults<HashtagEntity>
 
     private enum Constants {
         static let textFieldCornerRadius: CGFloat = 15
@@ -107,7 +107,7 @@ extension InteractionBarView {
     }
 
     private func saveHashtag(hastagTitle: String) {
-        let hashtag = Hashtag(context: moc)
+        let hashtag = HashtagEntity(context: moc)
         hashtag.id = UUID()
         hashtag.title = "\(hastagTitle)"
         hashtag.addDate = Date()
