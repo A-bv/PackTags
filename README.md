@@ -91,9 +91,11 @@ Managed with Swift Package Manager (resolved automatically when you open the pro
 | https://github.com/A-bv/InstagramGraph | remote data layer wrapping the Meta Graph API |
 | https://github.com/A-bv/TapTagKit | tap-to-select hashtags in any `UITextView` |
 | https://github.com/A-bv/TableViewControllerCoverKit | table list over a stretchy cover image |
+| https://github.com/A-bv/NeumorphicUIKit | neumorphic surfaces for UIKit views |
+| https://github.com/A-bv/NeumorphicSwiftUI | neumorphic button/toggle/shadow styles for SwiftUI |
 | https://github.com/facebook/facebook-ios-sdk | authentication |
 
-`InstagramGraph`, `TapTagKit` and `TableViewControllerCoverKit` are first-party packages — extracted from PackTags and maintained separately, so the networking and reusable UI evolve independently of the app.
+`InstagramGraph`, `TapTagKit`, `TableViewControllerCoverKit`, `NeumorphicUIKit` and `NeumorphicSwiftUI` are first-party packages — extracted from PackTags and maintained separately, so the networking, theme, and reusable UI evolve independently of the app.
 
 ## Installation
 
