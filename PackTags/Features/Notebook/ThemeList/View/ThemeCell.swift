@@ -1,4 +1,5 @@
 import UIKit
+import NeumorphicUIKit
 
 final class ThemeCell: UITableViewCell, ReusableCellProtocol {
     private enum Constants {

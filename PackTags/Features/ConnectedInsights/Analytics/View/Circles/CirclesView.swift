@@ -1,4 +1,5 @@
 import SwiftUI
+import NeumorphicSwiftUI
 
 struct CirclesView: View {
     @Binding var circles: [CircleGaugeModel]

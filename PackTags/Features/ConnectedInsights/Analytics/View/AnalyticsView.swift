@@ -1,5 +1,6 @@
 import SwiftUI
 import InstagramGraph
+import NeumorphicSwiftUI
 
 #Preview {
     AnalyticsView(gateway: UnavailableConnectedInsightsGateway())

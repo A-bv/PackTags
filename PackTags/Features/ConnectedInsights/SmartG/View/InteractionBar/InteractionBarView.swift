@@ -1,4 +1,5 @@
 import SwiftUI
+import NeumorphicSwiftUI
 
 struct InteractionBarView: View {
     @Bindable var smartGViewModel: SmartGViewModel

@@ -1,4 +1,5 @@
 import UIKit
+import NeumorphicUIKit
 
 final class PackCell: UITableViewCell, ReusableCellProtocol {
     private enum Strings {

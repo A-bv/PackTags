@@ -33,7 +33,6 @@
 		02211DD42FD75F76002FDB14 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */; };
 		02211DD62FD75F76002FDB14 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02211DD52FD75F76002FDB14 /* TextRecognizer.swift */; };
 		022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022688922624F9B1007DBD98 /* ThemeCell.swift */; };
-		0226889D2626F332007DBD98 /* UIView+Neumorphism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226889C2626F332007DBD98 /* UIView+Neumorphism.swift */; };
 		0226F19C259EAB93006E086C /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19B259EAB93006E086C /* PackCell.swift */; };
 		0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19D259EABB4006E086C /* PackListViewController.swift */; };
 		0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* SmartGModel.swift */; };
@@ -75,7 +74,6 @@
 		02E451B1265D5B4600582025 /* FacebookLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E451B0265D5B4600582025 /* FacebookLoginView.swift */; };
 		02E4B9E025CF66F500949213 /* ThemeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DE25CF66F500949213 /* ThemeEntity.swift */; };
 		02E4B9E125CF66F500949213 /* ThemeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4B9DF25CF66F500949213 /* ThemeEntity+CoreDataProperties.swift */; };
-		02E4F63E28A9330800B9CF2E /* CALayer+Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F63D28A9330800B9CF2E /* CALayer+Performance.swift */; };
 		02F89B2429729993008F363D /* SmartGSavedTagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */; };
 		02F89B272974306F008F363D /* StoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B262974306F008F363D /* StoryCardView.swift */; };
 		02F89B2929743EF9008F363D /* SmartGContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F89B2829743EF9008F363D /* SmartGContainerView.swift */; };
@@ -119,6 +117,8 @@
 		AB0000000000000000000922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000921 /* InfoPlist.strings */; };
 		AB0000000000000000001003 /* TapTagKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001002 /* TapTagKit */; };
 		AB0000000000000000001010 /* TableViewControllerCoverKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001009 /* TableViewControllerCoverKit */; };
+		AB0000000000000000002003 /* NeumorphicUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000002002 /* NeumorphicUIKit */; };
+		AB0000000000000000002013 /* NeumorphicSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000002012 /* NeumorphicSwiftUI */; };
 		AB0000000000000000003002 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000003001 /* PrivacyInfo.xcprivacy */; };
 		AB0000000000000000004002 /* ThemeListNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000004001 /* ThemeListNavigation.swift */; };
 		AB0000000000000000005002 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000005001 /* SettingsViewModel.swift */; };
@@ -131,10 +131,6 @@
 		AB0000000000000000010032 /* UnavailableConnectedInsightsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */; };
 		AB0000000000000000010042 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010041 /* ReusableCellProtocol.swift */; };
 		AB0000000000000000010052 /* ReviewPromptStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010051 /* ReviewPromptStore.swift */; };
-		AB0000000000000000010202 /* ColorfulButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010201 /* ColorfulButtonStyle.swift */; };
-		AB0000000000000000010212 /* DarkToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010211 /* DarkToggleStyle.swift */; };
-		AB0000000000000000010222 /* ColorfulBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010221 /* ColorfulBackgroundView.swift */; };
-		AB0000000000000000010232 /* Shape+Neumorphism.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010231 /* Shape+Neumorphism.swift */; };
 		AB0000000000000000010242 /* RotatingDotsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010241 /* RotatingDotsIndicatorView.swift */; };
 		AB0000000000000000010252 /* RotatingDotsIndicatorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010251 /* RotatingDotsIndicatorItemView.swift */; };
 		AB0000000000000000010262 /* VisualEffectBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010261 /* VisualEffectBlurView.swift */; };
@@ -186,7 +182,6 @@
 		02211DD32FD75F76002FDB14 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		02211DD52FD75F76002FDB14 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		022688922624F9B1007DBD98 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
-		0226889C2626F332007DBD98 /* UIView+Neumorphism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Neumorphism.swift"; sourceTree = "<group>"; };
 		0226F19B259EAB93006E086C /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
 		0226F19D259EABB4006E086C /* PackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewController.swift; sourceTree = "<group>"; };
 		0229864127BD9CBA0048F9E9 /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
@@ -228,7 +223,6 @@
 		02E451B0265D5B4600582025 /* FacebookLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginView.swift; sourceTree = "<group>"; };
 		02E4B9DE25CF66F500949213 /* ThemeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEntity.swift"; sourceTree = "<group>"; };
 		02E4B9DF25CF66F500949213 /* ThemeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		02E4F63D28A9330800B9CF2E /* CALayer+Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Performance.swift"; sourceTree = "<group>"; };
 		02F89B2329729993008F363D /* SmartGSavedTagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGSavedTagsCell.swift; sourceTree = "<group>"; };
 		02F89B262974306F008F363D /* StoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCardView.swift; sourceTree = "<group>"; };
 		02F89B2829743EF9008F363D /* SmartGContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGContainerView.swift; sourceTree = "<group>"; };
@@ -285,10 +279,6 @@
 		AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableConnectedInsightsGateway.swift; sourceTree = "<group>"; };
 		AB0000000000000000010041 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
 		AB0000000000000000010051 /* ReviewPromptStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptStore.swift; sourceTree = "<group>"; };
-		AB0000000000000000010201 /* ColorfulButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulButtonStyle.swift; sourceTree = "<group>"; };
-		AB0000000000000000010211 /* DarkToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkToggleStyle.swift; sourceTree = "<group>"; };
-		AB0000000000000000010221 /* ColorfulBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulBackgroundView.swift; sourceTree = "<group>"; };
-		AB0000000000000000010231 /* Shape+Neumorphism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+Neumorphism.swift"; sourceTree = "<group>"; };
 		AB0000000000000000010241 /* RotatingDotsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingDotsIndicatorView.swift; sourceTree = "<group>"; };
 		AB0000000000000000010251 /* RotatingDotsIndicatorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingDotsIndicatorItemView.swift; sourceTree = "<group>"; };
 		AB0000000000000000010261 /* VisualEffectBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectBlurView.swift; sourceTree = "<group>"; };
@@ -315,6 +305,8 @@
 				0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */,
 				AB0000000000000000001003 /* TapTagKit in Frameworks */,
 				AB0000000000000000001010 /* TableViewControllerCoverKit in Frameworks */,
+				AB0000000000000000002003 /* NeumorphicUIKit in Frameworks */,
+				AB0000000000000000002013 /* NeumorphicSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,18 +560,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		02B0D7292A3F08C000EF1500 /* Neumorphic */ = {
-			isa = PBXGroup;
-			children = (
-				0226889C2626F332007DBD98 /* UIView+Neumorphism.swift */,
-				AB0000000000000000010231 /* Shape+Neumorphism.swift */,
-				AB0000000000000000010221 /* ColorfulBackgroundView.swift */,
-				AB0000000000000000010211 /* DarkToggleStyle.swift */,
-				AB0000000000000000010201 /* ColorfulButtonStyle.swift */,
-			);
-			path = Neumorphic;
-			sourceTree = "<group>";
-		};
 		02B0D7582A48E9EB00EF1500 /* BarChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,7 +799,6 @@
 			children = (
 				AB0000000000000000000204 /* Components */,
 				AB0000000000000000000208 /* Views */,
-				02B0D7292A3F08C000EF1500 /* Neumorphic */,
 				0281B98F287A344C00344D3E /* NavigationBar */,
 				0247E585257FEFB900C65245 /* UITraitCollection+DarkMode.swift */,
 				AB0000000000000000010281 /* LinearGradient+Init.swift */,
@@ -827,7 +806,6 @@
 				02491C682680883700F98E17 /* UIColor+AppColors.swift */,
 				020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */,
 				020584D4284D715D00020FB8 /* UIView+BlurView.swift */,
-				02E4F63D28A9330800B9CF2E /* CALayer+Performance.swift */,
 				AB0000000000000000010501 /* UIViewController+ModalCloseButton.swift */,
 			);
 			path = DesignSystem;
@@ -960,6 +938,8 @@
 				02211DCF2FD7074D002FDB14 /* InstagramGraph */,
 				AB0000000000000000001002 /* TapTagKit */,
 				AB0000000000000000001009 /* TableViewControllerCoverKit */,
+				AB0000000000000000002002 /* NeumorphicUIKit */,
+				AB0000000000000000002012 /* NeumorphicSwiftUI */,
 			);
 			productName = PackTags;
 			productReference = 02FB550624FFA2AA00174E34 /* PackTags.app */;
@@ -1018,6 +998,8 @@
 				02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */,
 				AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */,
 				AB0000000000000000001008 /* XCRemoteSwiftPackageReference "TableViewControllerCoverKit" */,
+				AB0000000000000000002001 /* XCRemoteSwiftPackageReference "NeumorphicUIKit" */,
+				AB0000000000000000002011 /* XCRemoteSwiftPackageReference "NeumorphicSwiftUI" */,
 			);
 			productRefGroup = 02FB550724FFA2AA00174E34 /* Products */;
 			projectDirPath = "";
@@ -1058,13 +1040,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0226889D2626F332007DBD98 /* UIView+Neumorphism.swift in Sources */,
-				AB0000000000000000010232 /* Shape+Neumorphism.swift in Sources */,
-				AB0000000000000000010222 /* ColorfulBackgroundView.swift in Sources */,
-				AB0000000000000000010212 /* DarkToggleStyle.swift in Sources */,
-				AB0000000000000000010202 /* ColorfulButtonStyle.swift in Sources */,
 				0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */,
-				02E4F63E28A9330800B9CF2E /* CALayer+Performance.swift in Sources */,
 				023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */,
 				02F89B2B29743FE4008F363D /* SmartGHeaderView.swift in Sources */,
 				0207BB872FD3736C0007F3D3 /* AppCoordinator.swift in Sources */,
@@ -1486,6 +1462,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AB0000000000000000002001 /* XCRemoteSwiftPackageReference "NeumorphicUIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/A-bv/NeumorphicUIKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		AB0000000000000000002011 /* XCRemoteSwiftPackageReference "NeumorphicSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/A-bv/NeumorphicSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/A-bv/InstagramGraph";
@@ -1549,6 +1541,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB0000000000000000001008 /* XCRemoteSwiftPackageReference "TableViewControllerCoverKit" */;
 			productName = TableViewControllerCoverKit;
+		};
+		AB0000000000000000002002 /* NeumorphicUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0000000000000000002001 /* XCRemoteSwiftPackageReference "NeumorphicUIKit" */;
+			productName = NeumorphicUIKit;
+		};
+		AB0000000000000000002012 /* NeumorphicSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0000000000000000002011 /* XCRemoteSwiftPackageReference "NeumorphicSwiftUI" */;
+			productName = NeumorphicSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 

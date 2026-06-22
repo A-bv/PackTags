@@ -1,5 +1,8 @@
 import UIKit
+import SwiftUI
 import FBSDKCoreKit
+import NeumorphicUIKit
+import NeumorphicSwiftUI
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -9,6 +12,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if !UserDefaultsAppSettings().hasSeenOnboarding { seedData() }
 
+        configureNeumorphicTheme()
         setupAppearance()
 
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -30,6 +34,24 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         UISearchBar.appearance().tintColor = color
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = color
         UITableView.appearance().tintColor = color //Cell buttons
+    }
+
+    // MARK: - Theme
+    /// Injects the app's palette into the neumorphic packages. Runs before any styled view appears.
+    private func configureNeumorphicTheme() {
+        Neumorphism.configure(NeumorphicColors(
+            surface: .colorBkgd,
+            darkShadow: .shadowColor,
+            lightShadow: .lightShadowColor,
+            bottom: .bottomColor))
+        NeumorphicTheme.configure(NeumorphicPalette(
+            gradientStart: .mphStart,
+            gradientEnd: .mphEnd,
+            lowerShadow: .lowerShadow,
+            upperShadow: .upperShadow,
+            highlightStroke: Color("Color4"),
+            baseStroke: Color("Color1"),
+            background: Color("Color-Bkgd")))
     }
     
     // MARK: - UISceneSession Lifecycle
