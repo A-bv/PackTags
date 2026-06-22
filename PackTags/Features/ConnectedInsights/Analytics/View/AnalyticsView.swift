@@ -47,27 +47,22 @@ struct AnalyticsView: View {
         static let overviewCellToEdgeHorizontalPadding: CGFloat = 20
         static let graphSectionHeaderVerticalSpacing: CGFloat = 5
         static let graphSectionHeaderTrailingPadding: CGFloat = 10
+        static let barGradientColors: [Color] = [.brandAccentDeep, .brandAccentLight]
+        static let overviewColumns = Array(
+            repeating: GridItem(.flexible(), spacing: overviewSectionColumnsSpacing),
+            count: overviewSectionColumnsCount)
     }
     
     @State var viewModel: AnalyticsViewModel
     @State private var showingAlert = false
     @Environment(\.dismiss) private var dismiss
     @State private var monitor: NetworkMonitor
-    @State var selectedBarChartPostId = 0
-
-    var colors = [Color("Color1"),Color("Color")]
+    @State private var selectedBarChartPostId = 0
 
     init(gateway: any ConnectedInsightsGatewayProtocol, monitor: NetworkMonitor = NetworkMonitor()) {
         _viewModel = State(initialValue: AnalyticsViewModel(gateway: gateway))
         _monitor = State(initialValue: monitor)
     }
-
-    var columns = Array(
-        repeating:
-            GridItem(
-                .flexible(),
-                spacing: Constants.overviewSectionColumnsSpacing),
-        count: Constants.overviewSectionColumnsCount)
 
     //Toggle button
     @State private var isToggled = false
@@ -208,7 +203,7 @@ private extension AnalyticsView {
     var insightsRatesToggleButton: some View {
         Toggle(isOn: $isToggled) {
             Image(systemName: "point.fill.topleft.down.curvedto.point.fill.bottomright.up")
-                .foregroundColor(Color("Color4"))
+                .foregroundColor(.brandAccent)
         }
         .accessibilityLabel(Text(Strings.toggleRawAndRates))
         .toggleStyle(DarkToggleStyle())
@@ -219,7 +214,7 @@ private extension AnalyticsView {
     var switchModeButton: some View {
         Button(action: { cycleMetric() }) {
             Image(systemName: "scale.3d")
-                .foregroundColor(Color("Color4"))
+                .foregroundColor(.brandAccent)
         }
         .accessibilityLabel(Text(Strings.nextMetric))
         .buttonStyle(ColorfulButtonStyle())
@@ -274,13 +269,13 @@ private extension AnalyticsView {
                         CirclesView(
                             circles: $viewModel.circlesData,
                             isRate: !viewModel.rawInsights,
-                            columns: columns,
+                            columns: Constants.overviewColumns,
                             availableWidth: availableWidth)
                         BarChartView(
                             selectedBarChartPostId: $selectedBarChartPostId,
                             selectedBarChartPostRateValue: $viewModel.circlesData[1].value,
                             barchartPostList: $viewModel.barChartData,
-                            colors: colors)
+                            colors: Constants.barGradientColors)
                         BarChartArrowsView(postsCount: postCount)
                     }
                 }
@@ -302,7 +297,7 @@ private extension AnalyticsView {
 // Overview
 private extension AnalyticsView {
     var overviewSection: some View{
-        LazyVGrid(columns: columns) {
+        LazyVGrid(columns: Constants.overviewColumns) {
             ForEach(viewModel.overviewSectionData) { overviewCell in
                 VStack(spacing: Constants.overviewCellHeaderToValuePadding){
                     HStack{
