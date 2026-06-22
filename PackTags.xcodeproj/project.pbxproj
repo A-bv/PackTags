@@ -760,12 +760,20 @@
 			path = AppStoreRating;
 			sourceTree = "<group>";
 		};
+		AB000000000000000000020B /* Hashtags */ = {
+			isa = PBXGroup;
+			children = (
+				AB00000000000000000000F7 /* HashtagParser.swift */,
+				AB00000000000000000000F1 /* TagPackFormatter.swift */,
+				AB00000000000000000000F3 /* TagDeduplicator.swift */,
+			);
+			path = Hashtags;
+			sourceTree = "<group>";
+		};
 		AB00000000000000000000D0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				AB00000000000000000000F1 /* TagPackFormatter.swift */,
-				AB00000000000000000000F3 /* TagDeduplicator.swift */,
-				AB00000000000000000000F7 /* HashtagParser.swift */,
+				AB000000000000000000020B /* Hashtags */,
 				0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */,
 			);
 			path = Domain;
