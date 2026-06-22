@@ -1463,7 +1463,7 @@
 			repositoryURL = "https://github.com/A-bv/NeumorphicUIKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.1;
+				minimumVersion = 2.1.2;
 			};
 		};
 		AB0000000000000000002011 /* XCRemoteSwiftPackageReference "NeumorphicSwiftUI" */ = {
