@@ -54,7 +54,7 @@ struct InteractionBarView: View {
 
             } label: {
                 Image(systemName: "paperplane.circle")
-                    .foregroundColor(Color("Color4"))
+                    .foregroundColor(.brandAccent)
             }
             .buttonStyle(ColorfulButtonStyle())
             .alert(isPresented: $smartGViewModel.showingAlert) {
@@ -70,7 +70,7 @@ struct InteractionBarView: View {
                 smartGViewModel.showingPopover = true
             } label: {
                 Image(systemName: "info.circle")
-                    .foregroundColor(Color("Color4"))
+                    .foregroundColor(.brandAccent)
             }
             .buttonStyle(ColorfulButtonStyle())
             .popover(isPresented: $smartGViewModel.showingPopover) {

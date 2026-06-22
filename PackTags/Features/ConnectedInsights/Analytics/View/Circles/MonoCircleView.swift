@@ -4,7 +4,7 @@ import NeumorphicSwiftUI
 struct MonoCircleView: View {
     private enum Constants {
         static let padding: CGFloat = 50
-        static let textColor: Color = Color("Color4")
+        static let textColor: Color = .brandAccent
         static let circlePaddingRadius: CGFloat = 100
     }
     

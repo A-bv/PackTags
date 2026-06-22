@@ -13,8 +13,8 @@ struct CirclesView: View {
         static let circleLineWidth: CGFloat = 10
         static let circleTrimStart: CGFloat = 0
         static let circleTrimEnd: CGFloat = 1
-        static let gradientStartColor = Color("Color4")
-        static let gradientEndColor = Color("Color1")
+        static let gradientStartColor = Color.brandAccent
+        static let gradientEndColor = Color.brandAccentDeep
         static let valueRotationDegrees: Double = 90
         static let circleStartRotationDegrees: Double = -90
     }

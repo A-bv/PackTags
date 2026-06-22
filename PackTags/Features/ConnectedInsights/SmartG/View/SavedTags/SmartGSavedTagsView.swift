@@ -14,7 +14,7 @@ struct SmartGSavedTagsView: View {
     private enum Constants {
         static let sevenDays: Int = 7
         static let headerHeight: CGFloat = 50
-        static let tintColor = Color("Color4")
+        static let tintColor = Color.brandAccent
     }
     
     @Binding var isPresented: Bool

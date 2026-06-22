@@ -49,9 +49,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             gradientEnd: .mphEnd,
             lowerShadow: .lowerShadow,
             upperShadow: .upperShadow,
-            highlightStroke: Color("Color4"),
-            baseStroke: Color("Color1"),
-            background: Color("Color-Bkgd")))
+            highlightStroke: .brandAccent,
+            baseStroke: .brandAccentDeep,
+            background: .bgFillColor))
     }
     
     // MARK: - UISceneSession Lifecycle

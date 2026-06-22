@@ -6,7 +6,7 @@ struct FloatingListView: View {
         static let tagSpacing: CGFloat = 30
         static let tagListHeight: CGFloat = 330
         static let tagListPadding: CGFloat = 20
-        static let tagColor = Color("Color4").opacity(0.7)
+        static let tagColor = Color.brandAccent.opacity(0.7)
         static let tagPadding: CGFloat = 10
         static let tagCornerRadius: CGFloat = 10
     }
