@@ -141,6 +141,8 @@
 		AB0000000000000000010342 /* SettingsSwitchOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010341 /* SettingsSwitchOptionModel.swift */; };
 		AB0000000000000000010352 /* SettingsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010351 /* SettingsActions.swift */; };
 		AB0000000000000000010502 /* UIViewController+ModalCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010501 /* UIViewController+ModalCloseButton.swift */; };
+		5A0000000000000000000003 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0000000000000000000002 /* SnapshotTesting */; };
+		5A0000000000000000000012 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000011 /* SnapshotTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +257,7 @@
 		AB0000000000000000000907 /* KeyboardFindButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFindButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000909 /* ThemeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePicker.swift; sourceTree = "<group>"; };
 		AB0000000000000000000911 /* ConnectedInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsTests.swift; sourceTree = "<group>"; };
+		5A0000000000000000000011 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000000913 /* AppTrackingAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrackingAuthorizer.swift; sourceTree = "<group>"; };
 		AB0000000000000000000915 /* FacebookLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000917 /* FacebookLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginCoordinator.swift; sourceTree = "<group>"; };
@@ -308,6 +311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A0000000000000000000003 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +744,7 @@
 				AB00000000000000000000D1 /* DataLayerTests.swift */,
 				AB0000000000000000000911 /* ConnectedInsightsTests.swift */,
 				AB0000000000000000000101 /* DomainTests.swift */,
+				5A0000000000000000000011 /* SnapshotTests.swift */,
 			);
 			path = PackTagsTests;
 			sourceTree = "<group>";
@@ -957,6 +962,9 @@
 			dependencies = (
 				02FB552124FFA2AC00174E34 /* PBXTargetDependency */,
 			);
+			packageProductDependencies = (
+				5A0000000000000000000002 /* SnapshotTesting */,
+			);
 			name = PackTagsTests;
 			productName = PackTagsTests;
 			productReference = 02FB551F24FFA2AC00174E34 /* PackTagsTests.xctest */;
@@ -999,6 +1007,7 @@
 				AB0000000000000000001008 /* XCRemoteSwiftPackageReference "TableViewControllerCoverKit" */,
 				AB0000000000000000002001 /* XCRemoteSwiftPackageReference "NeumorphicUIKit" */,
 				AB0000000000000000002011 /* XCRemoteSwiftPackageReference "NeumorphicSwiftUI" */,
+				5A0000000000000000000001 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 02FB550724FFA2AA00174E34 /* Products */;
 			projectDirPath = "";
@@ -1163,6 +1172,7 @@
 				0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */,
 				AB00000000000000000000D2 /* DataLayerTests.swift in Sources */,
 				AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */,
+				5A0000000000000000000012 /* SnapshotTests.swift in Sources */,
 				AB0000000000000000000102 /* DomainTests.swift in Sources */,
 				02FBAFE825A93E8400E32D73 /* PackTagsTests.swift in Sources */,
 			);
@@ -1506,6 +1516,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		5A0000000000000000000001 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.18.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1547,6 +1565,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB0000000000000000002011 /* XCRemoteSwiftPackageReference "NeumorphicSwiftUI" */;
 			productName = NeumorphicSwiftUI;
+		};
+		5A0000000000000000000002 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A0000000000000000000001 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 
