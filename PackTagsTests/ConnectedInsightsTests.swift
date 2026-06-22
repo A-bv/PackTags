@@ -365,3 +365,84 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         }
     }
 }
+
+// MARK: - AnalyticsViewModel
+
+@MainActor
+@Suite struct AnalyticsViewModelTests {
+
+    /// Returns whatever profile it's seeded with, so the VM's transform/fill pipeline
+    /// can be exercised without networking.
+    private final class StubGateway: ConnectedInsightsGatewayProtocol {
+        let profile: Profile
+        init(profile: Profile) { self.profile = profile }
+        func accessState() -> ConnectedInsightsAccessState { .needsSetup(.setupRequired) }
+        func setup(facebookToken: String) async throws {}
+        func reset() {}
+        func searchHashtag(searchedHashtag: String) async throws -> [InstagramPost] { [] }
+        func loadProfileForAnalytics(mediaLimit: Int?) async throws -> Profile { profile }
+    }
+
+    private func makeSUT(profile: Profile) -> AnalyticsViewModel {
+        AnalyticsViewModel(gateway: StubGateway(profile: profile))
+    }
+
+    private func twoPostProfile() throws -> Profile {
+        try makeProfile(followers: 1000, medias: [
+            (likes: 10, comments: 2, reach: 100, impressions: 200, engagement: 12),
+            (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24),
+        ])
+    }
+
+    @Test func load_buildsOneBarPerPost() async throws {
+        let sut = makeSUT(profile: try twoPostProfile())
+
+        await sut.load()
+
+        #expect(sut.profile != nil)
+        #expect(sut.barChartData.count == 2)
+        #expect(sut.barChartData.map(\.post) == ["1", "2"])
+    }
+
+    @Test func load_fillsOverviewWithFormattedAverages() async throws {
+        let sut = makeSUT(profile: try twoPostProfile())
+
+        await sut.load()
+
+        let averageLikes = try #require(sut.transformedProfile?.averageLikes)
+        let averageComments = try #require(sut.transformedProfile?.averageComments)
+        #expect(sut.overviewSectionData[0].value == MetricFormatter.compact(averageLikes))
+        #expect(sut.overviewSectionData[1].value == MetricFormatter.compact(averageComments))
+    }
+
+    @Test func load_withoutMedia_leavesDefaultsUntouched() async throws {
+        let sut = makeSUT(profile: try makeProfile())
+
+        await sut.load()
+
+        #expect(sut.transformedProfile == nil)
+        #expect(sut.overviewSectionData[0].value == "0")
+        #expect(sut.barChartData.count == 1)   // the seeded placeholder bar
+    }
+
+    @Test func refreshFromCurrentProfile_withoutLoad_isNoOp() throws {
+        let sut = makeSUT(profile: try twoPostProfile())
+
+        sut.refreshFromCurrentProfile()
+
+        #expect(sut.transformedProfile == nil)
+        #expect(sut.barChartData.count == 1)
+    }
+
+    @Test func refreshFromCurrentProfile_afterMetricChange_recomputesFromMemory() async throws {
+        let sut = makeSUT(profile: try twoPostProfile())
+        await sut.load()
+
+        sut.metric = .reach
+        sut.refreshFromCurrentProfile()
+
+        #expect(sut.metric == .reach)
+        #expect(sut.barChartData.count == 2)
+        #expect(sut.transformedProfile != nil)
+    }
+}
