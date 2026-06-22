@@ -134,18 +134,17 @@ final class ThemeListViewController: UITableViewController {
 
     // MARK: - Row height
 
-    private func cellHeight(navigationBarHeight: CGFloat) -> CGFloat {
+    private func cellHeight(topInset: CGFloat) -> CGFloat {
         let screenHeight = view.frame.height
-        let height = (screenHeight - Constants.tableViewBottomPadding - navigationBarHeight) / Constants.rowsPerScreen
+        let height = (screenHeight - Constants.tableViewBottomPadding - topInset) / Constants.rowsPerScreen
         if height <= Constants.rowMinimumHeight {
-            return (screenHeight - navigationBarHeight) / Constants.rowsPerScreenCompact
+            return (screenHeight - topInset) / Constants.rowsPerScreenCompact
         }
         return height
     }
 
     private func updateRowHeightIfNeeded() {
-        let navigationBarHeight = currentNavBarHeight + statusBarHeight
-        let newHeight = cellHeight(navigationBarHeight: navigationBarHeight)
+        let newHeight = cellHeight(topInset: view.safeAreaInsets.top)
         if newHeight > 0, tableView.rowHeight != newHeight {
             tableView.rowHeight = newHeight
             tableView.reloadData()

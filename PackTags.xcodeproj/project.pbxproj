@@ -47,7 +47,6 @@
 		026472AC2693AFB3008BCFE5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */; };
 		0264B817264A7CE900E1EEFA /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264B816264A7CE900E1EEFA /* AnalyticsViewModel.swift */; };
 		026D16DC2A3E474500228DEA /* ProfileDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */; };
-		0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */; };
 		0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */; };
 		0281B9882879D60700344D3E /* UINavigationBar+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B9872879D60700344D3E /* UINavigationBar+Shadow.swift */; };
 		0281B98B287A007200344D3E /* UIViewController+NavBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281B98A287A007200344D3E /* UIViewController+NavBarAppearance.swift */; };
@@ -195,7 +194,6 @@
 		026472AB2693AFB3008BCFE5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0264B816264A7CE900E1EEFA /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
 		026D16D52A3E474500228DEA /* ProfileDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataTransformer.swift; sourceTree = "<group>"; };
-		0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBarDimensions.swift"; sourceTree = "<group>"; };
 		0281B9842879CDC600344D3E /* AppDelegate+Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Seed.swift"; sourceTree = "<group>"; };
 		0281B9872879D60700344D3E /* UINavigationBar+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Shadow.swift"; sourceTree = "<group>"; };
 		0281B98A287A007200344D3E /* UIViewController+NavBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavBarAppearance.swift"; sourceTree = "<group>"; };
@@ -482,7 +480,6 @@
 				0281B98A287A007200344D3E /* UIViewController+NavBarAppearance.swift */,
 				0281B9872879D60700344D3E /* UINavigationBar+Shadow.swift */,
 				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
-				0281B9792879877C00344D3E /* UIViewController+NavigationBarDimensions.swift */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
@@ -1074,7 +1071,6 @@
 				AB0000000000000000010032 /* UnavailableConnectedInsightsGateway.swift in Sources */,
 				AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */,
 				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
-				0281B97A2879877C00344D3E /* UIViewController+NavigationBarDimensions.swift in Sources */,
 				0247E586257FEFB900C65245 /* UITraitCollection+DarkMode.swift in Sources */,
 				AB0000000000000000010282 /* LinearGradient+Init.swift in Sources */,
 				AB0000000000000000010272 /* Color+AppColors.swift in Sources */,
