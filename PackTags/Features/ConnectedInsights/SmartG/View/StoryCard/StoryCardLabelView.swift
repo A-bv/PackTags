@@ -28,3 +28,9 @@ struct StoryCardLabelView: View {
         }
     }
 }
+
+#Preview {
+    StoryCardLabelView(comments: "12", likes: "340", hashtagsCount: "8")
+        .padding()
+        .background(.black)
+}

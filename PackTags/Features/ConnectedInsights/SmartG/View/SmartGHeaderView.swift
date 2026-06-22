@@ -39,3 +39,7 @@ struct SmartGHeaderView: View {
         .padding(.bottom, Constants.headerBottomPadding)
     }
 }
+
+#Preview {
+    SmartGHeaderView()
+}

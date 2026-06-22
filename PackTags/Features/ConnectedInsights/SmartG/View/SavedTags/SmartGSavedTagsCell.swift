@@ -13,3 +13,8 @@ struct SmartGSavedTagsCell: View {
         }
     }
 }
+
+#Preview {
+    SmartGSavedTagsCell(title: "#example", date: "5 days left")
+        .padding()
+}

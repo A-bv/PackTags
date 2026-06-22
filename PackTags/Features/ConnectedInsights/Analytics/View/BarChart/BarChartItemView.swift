@@ -47,3 +47,11 @@ struct BarChartItemView: View {
         }
     }
 }
+
+#Preview {
+    BarChartItemView(
+        selectedPostId: .constant(0),
+        selectedPostRate: .constant(0),
+        colors: [.brandAccentDeep, .brandAccentLight],
+        post: BarChartPostModel(id: 0, post: "1", rate: 5, barHeight: 40))
+}

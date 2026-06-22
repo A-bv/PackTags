@@ -36,3 +36,14 @@ struct StoryCardView: View {
         }
     }
 }
+
+#Preview {
+    StoryCardView(
+        url: URL(string: "https://picsum.photos/300/500")!,
+        comments: "12",
+        likes: "340",
+        hashtagsCount: "8",
+        cardWidth: 250,
+        cardHeight: 400,
+        cardCornerRadius: 20)
+}

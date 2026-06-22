@@ -16,3 +16,9 @@ struct SmartGContainerView: View {
             .environment(\.managedObjectContext, context)
     }
 }
+
+#Preview {
+    SmartGContainerView(
+        gateway: UnavailableConnectedInsightsGateway(),
+        context: PersistenceController(modelName: "SmartTags", inMemory: true).viewContext)
+}

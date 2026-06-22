@@ -28,3 +28,8 @@ struct RotatingDotsIndicatorItemView: View {
             }
     }
 }
+
+#Preview {
+    RotatingDotsIndicatorItemView(index: 0, size: CGSize(width: 70, height: 70))
+        .foregroundColor(.brandPurple)
+}

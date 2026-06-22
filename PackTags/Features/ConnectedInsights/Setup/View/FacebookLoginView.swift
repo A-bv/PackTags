@@ -182,3 +182,13 @@ struct FacebookLoginView: View {
         return Strings.troubleshooting
     }
 }
+
+#Preview {
+    FacebookLoginView(
+        viewModel: FacebookLoginViewModel(
+            gateway: UnavailableConnectedInsightsGateway(),
+            settings: UserDefaultsAppSettings()),
+        appSettings: UserDefaultsAppSettings(),
+        onConnected: {},
+        onClose: {})
+}

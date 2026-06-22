@@ -12,3 +12,9 @@ struct RotatingDotsIndicatorView: View {
         }
     }
 }
+
+#Preview {
+    RotatingDotsIndicatorView()
+        .frame(width: 70, height: 70)
+        .foregroundColor(.brandPurple)
+}

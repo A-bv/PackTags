@@ -31,3 +31,15 @@ struct TagView: View {
         .offset(x: x, y: y)
     }
 }
+
+#Preview {
+    TagView(
+        color: .brandAccent,
+        index: 0,
+        item: "#example",
+        childSizes: .constant([.zero]),
+        x: 0,
+        y: 0,
+        tagPadding: 10,
+        tagCornerRadius: 10)
+}

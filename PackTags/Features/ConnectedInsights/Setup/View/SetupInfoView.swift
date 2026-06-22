@@ -121,3 +121,7 @@ struct SetupInfoView: View {
             .filter { !$0.isEmpty }
     }
 }
+
+#Preview {
+    SetupInfoView(appSettings: UserDefaultsAppSettings(), onClose: {})
+}
