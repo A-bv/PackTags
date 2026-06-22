@@ -1,7 +1,9 @@
 import UIKit
 import TableViewControllerCoverKit
 
-final class PackListViewController: CoverImageTableViewController {
+final class PackListViewController: UITableViewController {
+    private lazy var cover = CoverImageController(tableView: tableView, host: self)
+
     private enum Strings {
         static let instagram = "Instagram".localized()
         static let username = "Username".localized()
@@ -67,9 +69,16 @@ final class PackListViewController: CoverImageTableViewController {
         tableView.backgroundColor = .colorBkgd
 
         viewModel.loadPacks()
-        barBackgroundColor = .colorBkgd
-        setCoverImage(coverImage)
+        cover.barBackgroundColor = .colorBkgd
+        cover.setCoverImage(coverImage)
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cover.applyBarAppearance()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle { cover.preferredStatusBarStyle }
 
     @objc private func didTapInstagram() {
         statusAutoDirectToInstagram()
@@ -82,12 +91,12 @@ extension PackListViewController {
         viewModel.loadPacks()
         tableView.reloadData()
         navigationItem.title = viewModel.title
-        setCoverImage(coverImage)
-        suspendsCoverStatusBarStyle = false
+        cover.setCoverImage(coverImage)
+        cover.suspendsCoverStatusBarStyle = false
     }
 
     func editorDidClose() {
-        suspendsCoverStatusBarStyle = false
+        cover.suspendsCoverStatusBarStyle = false
     }
 }
 
@@ -141,7 +150,7 @@ extension PackListViewController {
         }
 
         if indexPath.row == 0 {
-            cell.roundTopCorners(radius: coverCornerRadius)
+            cell.roundTopCorners(radius: cover.coverCornerRadius)
         }
 
         return cell
@@ -167,7 +176,7 @@ extension PackListViewController {
 
     /// Opens the editor; a non-nil pack gets highlighted there.
     private func presentThemeVC(showingPack pack: String?) {
-        suspendsCoverStatusBarStyle = true
+        cover.suspendsCoverStatusBarStyle = true
         onEditTheme?(pack)
     }
 }
