@@ -80,6 +80,10 @@ final class PackListViewController: UITableViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle { cover.preferredStatusBarStyle }
 
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        cover.scrollViewDidScroll()
+    }
+
     @objc private func didTapInstagram() {
         statusAutoDirectToInstagram()
     }
