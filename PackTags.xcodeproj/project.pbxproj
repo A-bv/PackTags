@@ -40,7 +40,6 @@
 		023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B932A48EC60006E2D35 /* CirclesView.swift */; };
 		023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B962A4D085E006E2D35 /* LoadingView.swift */; };
 		023D2B992A4D0A5E006E2D35 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B982A4D0A5E006E2D35 /* OfflineView.swift */; };
-		0247E586257FEFB900C65245 /* UITraitCollection+DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247E585257FEFB900C65245 /* UITraitCollection+DarkMode.swift */; };
 		02491C5926779A4900F98E17 /* SetupInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C5826779A4900F98E17 /* SetupInfoView.swift */; };
 		02491C692680883800F98E17 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02491C682680883700F98E17 /* UIColor+AppColors.swift */; };
 		025479DF26C7EEA000E28724 /* SeedData in Resources */ = {isa = PBXBuildFile; fileRef = 025479DE26C7EEA000E28724 /* SeedData */; };
@@ -187,7 +186,6 @@
 		023D2B932A48EC60006E2D35 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
 		023D2B962A4D085E006E2D35 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		023D2B982A4D0A5E006E2D35 /* OfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
-		0247E585257FEFB900C65245 /* UITraitCollection+DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+DarkMode.swift"; sourceTree = "<group>"; };
 		02491C5826779A4900F98E17 /* SetupInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupInfoView.swift; sourceTree = "<group>"; };
 		02491C682680883700F98E17 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		025479DE26C7EEA000E28724 /* SeedData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SeedData; sourceTree = "<group>"; };
@@ -803,7 +801,6 @@
 				AB0000000000000000000204 /* Components */,
 				AB0000000000000000000208 /* Views */,
 				0281B98F287A344C00344D3E /* NavigationBar */,
-				0247E585257FEFB900C65245 /* UITraitCollection+DarkMode.swift */,
 				AB0000000000000000010281 /* LinearGradient+Init.swift */,
 				AB0000000000000000010271 /* Color+AppColors.swift */,
 				02491C682680883700F98E17 /* UIColor+AppColors.swift */,
@@ -1071,7 +1068,6 @@
 				AB0000000000000000010032 /* UnavailableConnectedInsightsGateway.swift in Sources */,
 				AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */,
 				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
-				0247E586257FEFB900C65245 /* UITraitCollection+DarkMode.swift in Sources */,
 				AB0000000000000000010282 /* LinearGradient+Init.swift in Sources */,
 				AB0000000000000000010272 /* Color+AppColors.swift in Sources */,
 				0207BB892FD3736C0007F3D3 /* NotebookCoordinator.swift in Sources */,

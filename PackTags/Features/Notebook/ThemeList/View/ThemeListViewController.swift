@@ -108,8 +108,7 @@ final class ThemeListViewController: UITableViewController {
     }
 
     private func updateLogo() {
-        let logo = UITraitCollection.isDarkMode ? "logoBlack" : "logoWhite"
-        navigationItem.titleView = UIImageView(image: UIImage(named: logo))
+        navigationItem.titleView = UIImageView(image: UIImage(named: "logo"))
     }
 
     private func addFloatingButton() {

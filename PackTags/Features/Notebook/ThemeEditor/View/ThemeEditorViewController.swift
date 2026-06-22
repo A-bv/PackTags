@@ -64,7 +64,7 @@ final class ThemeEditorViewController: UIViewController {
 
     //MARK: - State
 
-    private var themeImage = UITraitCollection.isDarkMode ? UIImage(named: "Logo-BlackLong") : UIImage(named: "Logo-PurpleLong")
+    private var themeImage = UIImage(named: "logoLong")
 
     /// Set by the coordinator when this editor opens from a pack's "show"
     /// action; that pack gets highlighted and scrolled into view.
