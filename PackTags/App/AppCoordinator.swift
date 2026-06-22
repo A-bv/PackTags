@@ -11,7 +11,7 @@ final class AppCoordinator: CoordinatorProtocol {
 
     init(window: UIWindow) {
         self.window = window
-        self.navigationController = ThemeNavigationController()
+        self.navigationController = StatusBarForwardingNavigationController()
         let persistence = PersistenceController()
         let appSettings = UserDefaultsAppSettings()
         self.dependencies = AppDependencies(

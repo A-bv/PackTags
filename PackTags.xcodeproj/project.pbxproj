@@ -35,7 +35,7 @@
 		0226F19C259EAB93006E086C /* PackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19B259EAB93006E086C /* PackCell.swift */; };
 		0226F19E259EABB4006E086C /* PackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0226F19D259EABB4006E086C /* PackListViewController.swift */; };
 		0229864227BD9CBA0048F9E9 /* SmartGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229864127BD9CBA0048F9E9 /* SmartGModel.swift */; };
-		0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */; };
+		0234E7BB287ADE8E00D7A2AF /* StatusBarForwardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234E7BA287ADE8E00D7A2AF /* StatusBarForwardingNavigationController.swift */; };
 		02385E082A64430E0050FFDE /* ExternalLinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */; };
 		023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B932A48EC60006E2D35 /* CirclesView.swift */; };
 		023D2B972A4D085E006E2D35 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D2B962A4D085E006E2D35 /* LoadingView.swift */; };
@@ -182,7 +182,7 @@
 		0226F19B259EAB93006E086C /* PackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackCell.swift; sourceTree = "<group>"; };
 		0226F19D259EABB4006E086C /* PackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewController.swift; sourceTree = "<group>"; };
 		0229864127BD9CBA0048F9E9 /* SmartGModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGModel.swift; sourceTree = "<group>"; };
-		0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeNavigationController.swift; sourceTree = "<group>"; };
+		0234E7BA287ADE8E00D7A2AF /* StatusBarForwardingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarForwardingNavigationController.swift; sourceTree = "<group>"; };
 		02385E072A64430E0050FFDE /* ExternalLinkOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLinkOpener.swift; sourceTree = "<group>"; };
 		023D2B932A48EC60006E2D35 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
 		023D2B962A4D085E006E2D35 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -479,7 +479,7 @@
 			children = (
 				0281B98A287A007200344D3E /* UIViewController+NavBarAppearance.swift */,
 				0281B9872879D60700344D3E /* UINavigationBar+Shadow.swift */,
-				0234E7BA287ADE8E00D7A2AF /* ThemeNavigationController.swift */,
+				0234E7BA287ADE8E00D7A2AF /* StatusBarForwardingNavigationController.swift */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
@@ -1102,7 +1102,7 @@
 				02F89B2929743EF9008F363D /* SmartGContainerView.swift in Sources */,
 				0207BBB62FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift in Sources */,
 				AB0000000000000000000918 /* FacebookLoginCoordinator.swift in Sources */,
-				0234E7BB287ADE8E00D7A2AF /* ThemeNavigationController.swift in Sources */,
+				0234E7BB287ADE8E00D7A2AF /* StatusBarForwardingNavigationController.swift in Sources */,
 				02D709D92A59940E0009F7C3 /* SmartGSavedTagsView.swift in Sources */,
 				AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */,
 				AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */,
