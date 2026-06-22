@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/NeumorphicSwiftUI",
       "state" : {
-        "revision" : "18ca87d4043926c30c2040454f476e1aa0d279ce",
-        "version" : "1.0.0"
+        "revision" : "5fcb367f8cc01e508f0b455ba8c1d3aa5d1af818",
+        "version" : "2.0.0"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/NeumorphicUIKit",
       "state" : {
-        "revision" : "2fb876ad7bcd15898d47dc9c39b666b68df22648",
-        "version" : "1.0.0"
+        "revision" : "38067daf61ca8ddf5272c474925603e3bf3655ff",
+        "version" : "2.0.0"
       }
     },
     {

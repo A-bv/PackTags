@@ -22,7 +22,7 @@ struct MonoCircleView: View {
         .padding(Constants.circlePaddingRadius)
         .background(
             Circle()
-                .outerNeumorphism(Color.statsFillColor)
+                .fill(Color.statsFillColor).neumorphicShadow()
         )
     }
 }

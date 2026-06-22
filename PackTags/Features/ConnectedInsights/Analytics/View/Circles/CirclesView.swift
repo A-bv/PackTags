@@ -40,7 +40,7 @@ struct CirclesView: View {
                             .frame(width: outerDiameter, height: outerDiameter)
                             .background(
                                 Circle()
-                                    .outerNeumorphism(Color.statsFillColor)
+                                    .fill(Color.statsFillColor).neumorphicShadow()
                                     .rotationEffect(.degrees(Constants.valueRotationDegrees)))
                         
                         Circle()

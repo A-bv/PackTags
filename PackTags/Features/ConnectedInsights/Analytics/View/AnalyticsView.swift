@@ -325,7 +325,7 @@ private extension AnalyticsView {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: Constants.overviewCellCornerRadius)
-                        .outerNeumorphism(Color.statsFillColor))
+                        .fill(Color.statsFillColor).neumorphicShadow())
             }
         }
         .padding(

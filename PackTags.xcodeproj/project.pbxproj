@@ -1467,7 +1467,7 @@
 			repositoryURL = "https://github.com/A-bv/NeumorphicUIKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 2.0.0;
 			};
 		};
 		AB0000000000000000002011 /* XCRemoteSwiftPackageReference "NeumorphicSwiftUI" */ = {
@@ -1475,7 +1475,7 @@
 			repositoryURL = "https://github.com/A-bv/NeumorphicSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 2.0.0;
 			};
 		};
 		02211DCE2FD7074D002FDB14 /* XCRemoteSwiftPackageReference "InstagramGraph" */ = {
