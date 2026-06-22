@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/NeumorphicSwiftUI",
       "state" : {
-        "revision" : "5fcb367f8cc01e508f0b455ba8c1d3aa5d1af818",
-        "version" : "2.0.0"
+        "revision" : "aab2af5c6cdef0a0052f8ac8a1a4dff954a075fb",
+        "version" : "2.1.0"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/NeumorphicUIKit",
       "state" : {
-        "revision" : "38067daf61ca8ddf5272c474925603e3bf3655ff",
-        "version" : "2.0.0"
+        "revision" : "0003d15a32c0ebe28560f9b7f747eeea3633df98",
+        "version" : "2.1.0"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/TableViewControllerCoverKit",
       "state" : {
-        "revision" : "a36bf49feae8e5f5a955e9df9a111d796db00f41",
-        "version" : "5.0.0"
+        "revision" : "0ff2025c73061f916f851ec5fd6e7c57601dc620",
+        "version" : "5.1.0"
       }
     },
     {
