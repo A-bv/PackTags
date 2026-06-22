@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/TableViewControllerCoverKit",
       "state" : {
-        "revision" : "b9c4903385ce738e0caecf056fbd9db484c5b657",
-        "version" : "4.0.0"
+        "revision" : "a36bf49feae8e5f5a955e9df9a111d796db00f41",
+        "version" : "5.0.0"
       }
     },
     {
