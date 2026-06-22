@@ -15,12 +15,12 @@ extension Color {
     // MARK: - Neumorphic gradient
     static let mphStart = Color("Color-BkgdGrad1")
     static let mphEnd = Color("Color-BkgdGrad2")
+    static let upperShadow = Color("Color-BkgdSh2")
 
-    // Shadows
-    static let lowerShadow = Color((UIColor(named: "Color-BkgdSh1")?.withAlphaComponent(0.5))!)
-    static let upperShadow = Color(UIColor(named: "Color-BkgdSh2")!)
+    // `facebookBlue` and `lowerShadow` are semantically-named color assets, reached
+    // through their generated `Color` symbols — no alias is needed here.
 
-    // Fill background
+    // MARK: - Fill background
     static let bgFillColor = Color(UIColor.colorBkgd)
     static let statsFillColor = bgFillColor
 }

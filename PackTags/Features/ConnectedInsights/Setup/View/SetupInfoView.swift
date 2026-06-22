@@ -21,7 +21,6 @@ struct SetupInfoView: View {
         static let iconTitleSpacing: CGFloat = 8
         static let bulletTextSpacing: CGFloat = 10
         static let bulletSize: CGFloat = 5
-        static let facebookBlue = Color(red: 24 / 255, green: 119 / 255, blue: 242 / 255)
         /// Steps indent so they line up under the title text, past the icon column.
         static let stepsIndent = iconSize + iconTitleSpacing
     }
@@ -107,7 +106,7 @@ struct SetupInfoView: View {
             // Facebook blue. Swap for an `fbColor` asset if one is added.
             Image(systemName: "link")
                 .font(.system(size: Constants.iconSize * 0.6))
-                .foregroundStyle(Constants.facebookBlue)
+                .foregroundStyle(.facebookBlue)
                 .frame(width: Constants.iconSize, height: Constants.iconSize)
         }
     }
