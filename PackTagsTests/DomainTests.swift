@@ -49,7 +49,7 @@ import Testing
     @Test func sanitize_removesDuplicateTagsWithinInput() {
         let sut = TagDeduplicator(repository: makeRepository())
 
-        let result = sut.sanitize(rawText: "#a #a #b some text #b", currentTheme: nil, shuffle: false)
+        let result = sut.sanitize(rawText: "#a #a #b some text #b", currentThemeContent: nil, shuffle: false)
 
         #expect(result == "#a #b")
     }
@@ -61,7 +61,7 @@ import Testing
         repository.save()
         let sut = TagDeduplicator(repository: repository)
 
-        let result = sut.sanitize(rawText: "#stored #fresh", currentTheme: nil, shuffle: false)
+        let result = sut.sanitize(rawText: "#stored #fresh", currentThemeContent: nil, shuffle: false)
 
         #expect(result == "#fresh")
     }
@@ -75,7 +75,7 @@ import Testing
         repository.save()
         let sut = TagDeduplicator(repository: repository)
 
-        let result = sut.sanitize(rawText: "#mine #also #stored #fresh", currentTheme: currentTheme, shuffle: false)
+        let result = sut.sanitize(rawText: "#mine #also #stored #fresh", currentThemeContent: currentTheme.content, shuffle: false)
 
         #expect(result == "#mine #also #fresh")
     }
@@ -83,7 +83,7 @@ import Testing
     @Test func sanitize_shuffle_preservesTheTagSet() {
         let sut = TagDeduplicator(repository: makeRepository())
 
-        let result = sut.sanitize(rawText: "#a #b #c #d", currentTheme: nil, shuffle: true)
+        let result = sut.sanitize(rawText: "#a #b #c #d", currentThemeContent: nil, shuffle: true)
 
         #expect(Set(result.components(separatedBy: " ")) == Set(["#a", "#b", "#c", "#d"]))
     }

@@ -53,7 +53,7 @@ final class ThemeEditorViewModel {
     func save(rawText: String, imageData: Data?, thumbnailData: Data?) {
         let text = deduplicator.sanitize(
             rawText: rawText,
-            currentTheme: theme,
+            currentThemeContent: theme?.content,
             shuffle: settings.saveAndShuffle)
 
         if let theme = theme {
@@ -76,7 +76,7 @@ final class ThemeEditorViewModel {
     }
 
     func shuffleContent(rawText: String) -> String {
-        let cleaned = deduplicator.sanitize(rawText: rawText, currentTheme: theme, shuffle: true)
+        let cleaned = deduplicator.sanitize(rawText: rawText, currentThemeContent: theme?.content, shuffle: true)
         return TagPackFormatter.format(cleaned, tagsPerPack: tagsPerPack)
     }
 }
