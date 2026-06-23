@@ -28,9 +28,10 @@ Built with UIKit + SwiftUI on an MVVM-C architecture, fully testable.
 ## Features
 
 - **Themed packs** — organize your hashtags and copy a whole pack in one tap.
-- **Import & cleanup** — lift hashtags straight out of any screenshot, then auto-remove duplicates across themes and strip invalid tags.
+- **Import & cleanup** — lift hashtags straight out of any screenshot; it keeps only well-formed `#tags` and drops duplicates across your themes.
 - **Hashtag discovery** — find new hashtags pulled live from trending Instagram posts.
 - **Post analytics** — engagement, reach and views for your recent posts.
+- **English & French** — the whole app is fully localized in both languages.
 
 ## Architecture
 
@@ -44,7 +45,7 @@ PackTags follows **MVVM-C** — Model · View · ViewModel · Coordinator — ov
 - **Coordinators own navigation.** A coordinator builds a screen's view model from the shared `AppDependencies`, injects it into the view, and performs every push/present. Views never reach for another screen.
 - **View models own the logic**, with dependencies passed through `init`. SwiftUI screens use `@Observable`, `@MainActor` view models the view drives from `.task`; the UIKit notebook uses lightweight view models that signal changes through a closure.
 - **Model.** `ThemeCD` (the Core Data entity) is the notebook's model; the insights features decode remote models — `Profile`, `InstagramPost` — and map them to presentation types.
-- **Domain holds the product rules.** Parsing, de-duplication and pack chunking are small types, free of UIKit and reaching persistence only through the `Repository` protocol.
+- **Domain holds the product rules.** Parsing and pack-chunking are pure value types — no UIKit, no persistence; de-duplication is the one tied to storage, reaching already-saved tags through the `Repository` protocol.
 - **Two data sources, one shape.** Local data flows through a `Repository` over Core Data; remote data flows through the `InstagramGraph` package behind an `async` gateway. The app target contains no networking code of its own.
 
 ### Coordinator tree
