@@ -82,16 +82,16 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
     }()
     
     @objc private func startTap(sender: UIButton) {
-        sender.addNeumorphicShadows(isButtonViewHeld: true, updateAfterShortDelay:true)
+        sender.pressDown()
     }
-    
+
     @objc private func didTapButton(sender: UIButton) {
-        sender.addNeumorphicShadows(updateAfterShortDelay:true)
+        sender.pressUp(settle: true)
         buttonTapCallback()
     }
-    
+
     @objc private func dragOutButton(sender: UIButton) {
-        sender.addNeumorphicShadows()
+        sender.pressUp()
     }
     
     @objc private func showMore(sender: UIButton) {
@@ -102,9 +102,6 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
-        registerForTraitChanges([UITraitUserInterfaceStyle.self]) { (cell: PackCell, _) in
-            cell.copyButton.addNeumorphicShadows()
-        }
     }
 
     required init?(coder: NSCoder) {
@@ -170,6 +167,6 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.roundTopCorners(radius: 0)
-        self.copyButton.addNeumorphicShadows()
+        self.copyButton.pressUp()
     }
 }

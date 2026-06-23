@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/NeumorphicUIKit",
       "state" : {
-        "revision" : "a029e0b7ca86eeb5f703d8862c70ff43b623a34e",
-        "version" : "2.1.2"
+        "revision" : "bdc90275d8aba1f6fa2bb50b140769d815867776",
+        "version" : "3.0.0"
       }
     },
     {
