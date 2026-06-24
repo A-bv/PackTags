@@ -23,6 +23,7 @@
 		0207BBB62FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */; };
 		0207BBBD2FD6B08E0007F3D3 /* InstagramGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 0207BBBC2FD6B08E0007F3D3 /* InstagramGraph */; };
 		0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */; };
+		5A0000000000000000000042 /* FacebookSessionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000041 /* FacebookSessionServiceProtocol.swift */; };
 		021044F626446AEF00408CEB /* MetricFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021044F526446AEF00408CEB /* MetricFormatter.swift */; };
 		021AFD5C278A1BE40008735E /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021AFD5B278A1BE40008735E /* AlertPresenter.swift */; };
 		021D76172759A00D00F54054 /* SmartGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021D76162759A00D00F54054 /* SmartGView.swift */; };
@@ -100,6 +101,7 @@
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
 		AB00000000000000000000D2 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000D1 /* DataLayerTests.swift */; };
 		AB00000000000000000000E2 /* UserDefaultsAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* UserDefaultsAppSettings.swift */; };
+		5A0000000000000000000022 /* AppSettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000021 /* AppSettingsProtocol.swift */; };
 		AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F1 /* TagPackFormatter.swift */; };
 		AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F3 /* TagDeduplicator.swift */; };
 		AB00000000000000000000F8 /* HashtagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F7 /* HashtagParser.swift */; };
@@ -109,6 +111,7 @@
 		AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000909 /* ThemeImagePicker.swift */; };
 		AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000911 /* ConnectedInsightsTests.swift */; };
 		AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000913 /* AppTrackingAuthorizer.swift */; };
+		5A0000000000000000000032 /* AppTrackingAuthorizerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000031 /* AppTrackingAuthorizerProtocol.swift */; };
 		AB0000000000000000000916 /* FacebookLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000915 /* FacebookLoginButton.swift */; };
 		AB0000000000000000000918 /* FacebookLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000917 /* FacebookLoginCoordinator.swift */; };
 		AB0000000000000000000922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000921 /* InfoPlist.strings */; };
@@ -128,6 +131,7 @@
 		AB0000000000000000010032 /* UnavailableConnectedInsightsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */; };
 		AB0000000000000000010042 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010041 /* ReusableCellProtocol.swift */; };
 		AB0000000000000000010052 /* ReviewPromptStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010051 /* ReviewPromptStore.swift */; };
+		5A0000000000000000000052 /* ReviewPromptStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000051 /* ReviewPromptStoreProtocol.swift */; };
 		AB0000000000000000010242 /* RotatingDotsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010241 /* RotatingDotsIndicatorView.swift */; };
 		AB0000000000000000010252 /* RotatingDotsIndicatorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010251 /* RotatingDotsIndicatorItemView.swift */; };
 		AB0000000000000000010262 /* VisualEffectBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010261 /* VisualEffectBlurView.swift */; };
@@ -171,6 +175,7 @@
 		0207BBB32FD5640A0007F3D3 /* ThemeEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEditorViewModel.swift; sourceTree = "<group>"; };
 		0207BBB52FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsCoordinator.swift; sourceTree = "<group>"; };
 		0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionService.swift; sourceTree = "<group>"; };
+		5A0000000000000000000041 /* FacebookSessionServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionServiceProtocol.swift; sourceTree = "<group>"; };
 		021044F526446AEF00408CEB /* MetricFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricFormatter.swift; sourceTree = "<group>"; };
 		021AFD5B278A1BE40008735E /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		021D76162759A00D00F54054 /* SmartGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartGView.swift; sourceTree = "<group>"; };
@@ -249,6 +254,7 @@
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
 		AB00000000000000000000D1 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
 		AB00000000000000000000E1 /* UserDefaultsAppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppSettings.swift; sourceTree = "<group>"; };
+		5A0000000000000000000021 /* AppSettingsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsProtocol.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F1 /* TagPackFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPackFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F3 /* TagDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeduplicator.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F7 /* HashtagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
@@ -259,6 +265,7 @@
 		AB0000000000000000000911 /* ConnectedInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsTests.swift; sourceTree = "<group>"; };
 		5A0000000000000000000011 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000000913 /* AppTrackingAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrackingAuthorizer.swift; sourceTree = "<group>"; };
+		5A0000000000000000000031 /* AppTrackingAuthorizerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrackingAuthorizerProtocol.swift; sourceTree = "<group>"; };
 		AB0000000000000000000915 /* FacebookLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000917 /* FacebookLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginCoordinator.swift; sourceTree = "<group>"; };
 		AB0000000000000000000919 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -276,6 +283,7 @@
 		AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableConnectedInsightsGateway.swift; sourceTree = "<group>"; };
 		AB0000000000000000010041 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
 		AB0000000000000000010051 /* ReviewPromptStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptStore.swift; sourceTree = "<group>"; };
+		5A0000000000000000000051 /* ReviewPromptStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptStoreProtocol.swift; sourceTree = "<group>"; };
 		AB0000000000000000010241 /* RotatingDotsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingDotsIndicatorView.swift; sourceTree = "<group>"; };
 		AB0000000000000000010251 /* RotatingDotsIndicatorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingDotsIndicatorItemView.swift; sourceTree = "<group>"; };
 		AB0000000000000000010261 /* VisualEffectBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectBlurView.swift; sourceTree = "<group>"; };
@@ -349,6 +357,7 @@
 			children = (
 				AB0000000000000000000201 /* Model */,
 				AB00000000000000000000E1 /* UserDefaultsAppSettings.swift */,
+				5A0000000000000000000021 /* AppSettingsProtocol.swift */,
 				AB00000000000000000000C1 /* SettingsKey.swift */,
 				AB00000000000000000000B1 /* PersistenceController.swift */,
 				0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */,
@@ -754,6 +763,7 @@
 			children = (
 				02FD6CB126D8008400AB16E4 /* ReviewPromptPolicy.swift */,
 				AB0000000000000000010051 /* ReviewPromptStore.swift */,
+				5A0000000000000000000051 /* ReviewPromptStoreProtocol.swift */,
 			);
 			path = AppStoreRating;
 			sourceTree = "<group>";
@@ -838,8 +848,10 @@
 			isa = PBXGroup;
 			children = (
 				0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */,
+				5A0000000000000000000041 /* FacebookSessionServiceProtocol.swift */,
 				AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */,
 				AB0000000000000000000913 /* AppTrackingAuthorizer.swift */,
+				5A0000000000000000000031 /* AppTrackingAuthorizerProtocol.swift */,
 				AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */,
 			);
 			path = Services;
@@ -1061,6 +1073,7 @@
 				02FA30752A004145006A48CC /* FloatingListView.swift in Sources */,
 				02FD6CB226D8008400AB16E4 /* ReviewPromptPolicy.swift in Sources */,
 				AB0000000000000000010052 /* ReviewPromptStore.swift in Sources */,
+				5A0000000000000000000052 /* ReviewPromptStoreProtocol.swift in Sources */,
 				02D066C0296B606F00536E3A /* RoundedShape.swift in Sources */,
 				023D2B942A48EC60006E2D35 /* CirclesView.swift in Sources */,
 				022688932624F9B1007DBD98 /* ThemeCell.swift in Sources */,
@@ -1074,8 +1087,10 @@
 				02CEFB6D25CB945000FB70E4 /* UIImage+Treatment.swift in Sources */,
 				02AD94B129AC078E00D893E5 /* FacebookToken.swift in Sources */,
 				0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */,
+				5A0000000000000000000042 /* FacebookSessionServiceProtocol.swift in Sources */,
 				AB0000000000000000010032 /* UnavailableConnectedInsightsGateway.swift in Sources */,
 				AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */,
+				5A0000000000000000000032 /* AppTrackingAuthorizerProtocol.swift in Sources */,
 				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
 				AB0000000000000000010282 /* LinearGradient+Init.swift in Sources */,
 				AB0000000000000000010272 /* Color+AppColors.swift in Sources */,
@@ -1124,6 +1139,7 @@
 				0264B817264A7CE900E1EEFA /* AnalyticsViewModel.swift in Sources */,
 				0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */,
 				AB00000000000000000000E2 /* UserDefaultsAppSettings.swift in Sources */,
+				5A0000000000000000000022 /* AppSettingsProtocol.swift in Sources */,
 				AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */,
 				AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */,
 				AB00000000000000000000F8 /* HashtagParser.swift in Sources */,
