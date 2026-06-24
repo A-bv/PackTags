@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/facebook/facebook-ios-sdk",
       "state" : {
-        "revision" : "8c90832bf2302d9ecd0d23cb63b81f1fb9a36497",
-        "version" : "18.0.3"
+        "revision" : "3818dd2ccb6547c6d320ff68a1bd599789c3a44f",
+        "version" : "18.1.0"
       }
     },
     {
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/TableViewControllerCoverKit",
       "state" : {
-        "revision" : "0ff2025c73061f916f851ec5fd6e7c57601dc620",
-        "version" : "5.1.0"
+        "revision" : "565e8d535b3d315dede509bd8f9a7bb8e131fcc0",
+        "version" : "5.3.1"
       }
     },
     {

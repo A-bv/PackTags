@@ -1513,7 +1513,7 @@
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 18.0.0;
+				minimumVersion = 18.1.0;
 			};
 		};
 		AB0000000000000000001001 /* XCRemoteSwiftPackageReference "TapTagKit" */ = {
@@ -1529,7 +1529,7 @@
 			repositoryURL = "https://github.com/A-bv/TableViewControllerCoverKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				minimumVersion = 5.3.1;
 			};
 		};
 		5A0000000000000000000001 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
