@@ -8,11 +8,6 @@ final class SettingsViewController: UIViewController {
         // Alert title. Deliberately not shared with the catalog's "Instagram" row label
         // (in SettingsViewModel) — coincidentally the same word, but a different role.
         static let instagram = "Instagram".localized()
-        static let rateAndReviewYourFeedback = "Your feedback".localized()
-        static let rateAndReviewEnjoyingQuestion = "Are you enjoying PackTags?".localized()
-        static let rateAndReviewDismiss = "Dismiss".localized()
-        static let rateAndReviewRateUsOnAppStore = "Yes! Rate us on the App Store.".localized()
-        static let rateAndReviewTellUsWhyQuestion = "No! Tell us why.".localized()
         static let mailRecipient = "packtagsapp@gmail.com"
         static let contactUs = "Contact Us".localized()
         static let ok = "Ok".localized()
@@ -52,7 +47,10 @@ final class SettingsViewController: UIViewController {
         case let .shareApp(url):
             presentShareSheet(for: url)
         case let .rateApp(writeReviewURL):
-            presentReviewPrompt(writeReviewURL: writeReviewURL)
+            // Open the App Store review page directly. We don't pre-screen by sentiment
+            // (the "enjoying? yes→store / no→email" funnel Apple discourages, §5.6);
+            // "Contact Us" is its own row for feedback.
+            UIApplication.shared.open(writeReviewURL)
         case let .openWebPage(url):
             presentWebPage(url)
         case .contactSupport:
@@ -82,21 +80,6 @@ private extension SettingsViewController {
         ) { [weak self] inputName in
             self?.viewModel.saveInstagramUsername(inputName)
         }
-    }
-
-    func presentReviewPrompt(writeReviewURL: URL) {
-        let dismiss = UIAlertAction(title: Strings.rateAndReviewDismiss, style: .cancel)
-        let rate = UIAlertAction(title: Strings.rateAndReviewRateUsOnAppStore, style: .default) { _ in
-            UIApplication.shared.open(writeReviewURL)
-        }
-        let tellUsWhy = UIAlertAction(title: Strings.rateAndReviewTellUsWhyQuestion, style: .default) { [weak self] _ in
-            self?.sendSupportEmail()
-        }
-        AlertPresenter.show(
-            from: self,
-            title: Strings.rateAndReviewYourFeedback,
-            message: Strings.rateAndReviewEnjoyingQuestion,
-            actions: [dismiss, rate, tellUsWhy])
     }
 
     func presentShareSheet(for url: URL) {

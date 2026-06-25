@@ -45,6 +45,11 @@ struct BarChartItemView: View {
                 .font(.caption2)
                 .foregroundColor(Color(UIColor.label))
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(post.post))
+        .accessibilityValue(Text(MetricFormatter.compact(Double(post.rate))))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction { handleTapGesture() }
     }
 }
 

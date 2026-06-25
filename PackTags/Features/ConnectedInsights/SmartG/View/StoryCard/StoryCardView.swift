@@ -29,9 +29,7 @@ struct StoryCardView: View {
     }
     
     private func asyncImage() -> some View {
-        AsyncImage(url: url) { image in
-            image.resizable()
-        } placeholder: {
+        CachedAsyncImage(url: url) {
             Text(Strings.loading3Dots)
         }
     }

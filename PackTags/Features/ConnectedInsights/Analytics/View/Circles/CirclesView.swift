@@ -59,6 +59,9 @@ struct CirclesView: View {
                     }
                     .rotationEffect(.init(degrees: Constants.circleStartRotationDegrees))
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(Text(circle.title))
+                .accessibilityValue(Text(MetricFormatter.text(for: circle.value, isRate: isRate)))
             }
         }
     }

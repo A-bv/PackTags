@@ -19,6 +19,7 @@ final class ThemeEditorViewController: UIViewController {
         static let menuSectionImport = "Import...".localized()
         static let menuSectionManage = "Manage...".localized()
         static let themeOptions = "Theme options".localized()
+        static let noTextRecognized = "No text found in the photo.".localized()
     }
 
     //MARK: - Dependencies
@@ -261,12 +262,14 @@ extension ThemeEditorViewController {
             self.spinner.startAnimating()
             Task {
                 let text = await TextRecognizer.recognizeText(image: image)
-                if !text.isEmpty {
-                    self.themeTextView.text = self.viewModel.contentByPrepending(
-                        recognizedText: text,
-                        to: self.themeTextView.text ?? "")
-                }
                 self.spinner.stopAnimating()
+                guard !text.isEmpty else {
+                    AlertPresenter.tapToDismiss(from: self, title: "", message: Strings.noTextRecognized)
+                    return
+                }
+                self.themeTextView.text = self.viewModel.contentByPrepending(
+                    recognizedText: text,
+                    to: self.themeTextView.text ?? "")
             }
         }
     }

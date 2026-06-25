@@ -108,10 +108,20 @@ extension InteractionBarView {
     }
 
     private func saveHashtag(hastagTitle: String) {
+        pruneExpiredHashtags()
         let hashtag = HashtagEntity(context: moc)
         hashtag.id = UUID()
-        hashtag.title = "\(hastagTitle)"
+        hashtag.title = hastagTitle
         hashtag.addDate = Date()
         try? moc.save()
+    }
+
+    /// Drops entries past Instagram's 7-day window so the saved list stays bounded and
+    /// every remaining row still has time left on its countdown.
+    private func pruneExpiredHashtags() {
+        let cutoff = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+        for hashtag in hashtags where (hashtag.addDate ?? Date()) < cutoff {
+            moc.delete(hashtag)
+        }
     }
 }

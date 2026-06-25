@@ -22,7 +22,7 @@ enum ProfileDataTransformer {
 
         for er in engagementRates {
             averageRate.append(averageCGFloat(er))
-            maxRate.append(er.reduce(CGFloat.leastNormalMagnitude, { max($0, CGFloat($1)) }))
+            maxRate.append(er.max() ?? 0)
         }
 
         let index = metric.rawValue

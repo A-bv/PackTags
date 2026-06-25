@@ -138,6 +138,10 @@
 //Accessibility
 "Shows the pack's hashtags" = "Affiche les hashtags du pack";
 
+//Empty / feedback states
+"No themes yet.\nTap + to create your first pack." = "Aucun thème pour l'instant.\nAppuyez sur + pour créer votre premier pack.";
+"No text found in the photo." = "Aucun texte trouvé dans la photo.";
+
 //OnBoardingVc
 "WELCOME TO PACKTAGS" = "BIENVENUE SUR PACKTAGS";
 "UNIQUE PACKS" = "DES PACKS UNIQUES";

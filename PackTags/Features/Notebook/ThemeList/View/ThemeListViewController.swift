@@ -15,6 +15,7 @@ final class ThemeListViewController: UITableViewController {
         static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is irreversible.".localized()
         static let yes = "Yes".localized()
         static let cancel = "Cancel".localized()
+        static let emptyState = "No themes yet.\nTap + to create your first pack.".localized()
     }
 
     // MARK: - Dependencies
@@ -57,6 +58,7 @@ final class ThemeListViewController: UITableViewController {
         viewModel.onUpdate = { [weak self] in
             self?.thumbnailCache.removeAllObjects()
             self?.tableView.reloadData()
+            self?.updateEmptyState()
         }
         viewModel.loadThemes()
         addFloatingButton()
@@ -73,6 +75,7 @@ final class ThemeListViewController: UITableViewController {
         // decoded thumbnails so the visible rows re-read the latest image data.
         thumbnailCache.removeAllObjects()
         tableView.reloadData()
+        updateEmptyState()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -174,12 +177,29 @@ final class ThemeListViewController: UITableViewController {
         return image
     }
 
+    /// Shows a hint instead of a blank table once every theme has been deleted.
+    private func updateEmptyState() {
+        guard viewModel.themeCount == 0 else {
+            tableView.backgroundView = nil
+            return
+        }
+        let label = UILabel()
+        label.text = Strings.emptyState
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .secondaryLabel
+        label.font = .preferredFont(forTextStyle: .body)
+        label.adjustsFontForContentSizeCategory = true
+        tableView.backgroundView = label
+    }
+
     // MARK: - Editing
 
     private func presentDeletionSafeAlert(indexPath: IndexPath) {
         let deleteAction = UIAlertAction(title: Strings.yes, style: .default) { [weak self] _ in
             self?.viewModel.deleteTheme(at: indexPath.row)
             self?.tableView.deleteRows(at: [indexPath], with: .none)
+            self?.updateEmptyState()
         }
         let cancelAction = UIAlertAction(title: Strings.cancel, style: .cancel)
         AlertPresenter.show(
