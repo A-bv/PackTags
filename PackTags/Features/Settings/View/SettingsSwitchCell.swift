@@ -98,6 +98,12 @@ final class SettingsSwitchCell: UITableViewCell, ReusableCellProtocol {
         iconContainer.backgroundColor = model.iconBackgroundColor
         mySwitch.isOn = model.isOn
         onToggle = model.onToggle
+
+        // VoiceOver: expose the switch as the cell's element and name what it
+        // toggles, so it reads "<title>, switch button, on/off" — not a bare "on".
+        isAccessibilityElement = false
+        accessibilityElements = [mySwitch]
+        mySwitch.accessibilityLabel = model.title
     }
 
     @objc private func valueChanged(sender: UISwitch) {

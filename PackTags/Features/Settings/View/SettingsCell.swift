@@ -87,5 +87,10 @@ final class SettingsCell: UITableViewCell, ReusableCellProtocol {
     func configure(with model: SettingsOptionModel) {
         label.text = model.title
         iconContainer.backgroundColor = model.iconBackgroundColor
+
+        // VoiceOver: read the row as a button (it navigates), not bare static text.
+        isAccessibilityElement = true
+        accessibilityLabel = model.title
+        accessibilityTraits = .button
     }
 }

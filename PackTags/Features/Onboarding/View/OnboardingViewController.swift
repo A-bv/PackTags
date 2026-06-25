@@ -221,6 +221,11 @@ final class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         slide.addSubview(subtitle)
         slide.addSubview(title)
 
+        // VoiceOver reads each page as one element (the illustration is decorative);
+        // the page control announces "page x of y".
+        slide.isAccessibilityElement = true
+        slide.accessibilityLabel = "\(titles[index]). \(captions[index])"
+
         return slide
     }
 
