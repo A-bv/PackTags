@@ -18,7 +18,7 @@ struct InteractionBarView: View {
         static let popoverTitle = "Top 10 hashtags copied!".localized()
         static let popoverMessage =
             "The most used hashtags of the page were copied into the clipboard.".localized()
-        static let popoverDismissButton = "Ok"
+        static let popoverDismissButton = "Ok".localized()
         static let enterHashtagPlaceholder = "Enter a hashtag".localized()
     }
 

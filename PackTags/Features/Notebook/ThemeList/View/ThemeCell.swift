@@ -70,6 +70,12 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
     private func setupUI() {
         self.contentView.backgroundColor = .colorBkgd
 
+        // The row is one VoiceOver element labelled with the theme name (set per-row);
+        // the cover image is decorative and shouldn't be focused on its own.
+        isAccessibilityElement = true
+        accessibilityTraits = .button
+        themeImageView.isAccessibilityElement = false
+
         containerView.addSubview(nameLabel)
         self.contentView.addSubview(containerView)
         self.contentView.addSubview(supportingView)

@@ -127,6 +127,7 @@ extension PackListViewController {
 
         cell.cellLabel.text = row?.firstTag
         cell.subButton.setTitle(row?.badge, for: .normal)
+        cell.configureAccessibility(firstTag: row?.firstTag)
 
         cell.buttonTapCallback = { [weak self] in
             self?.pasteboard.string = pack

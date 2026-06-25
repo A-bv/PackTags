@@ -20,6 +20,9 @@ final class AnalyticsViewModel {
     // MARK: - Live data
     var transformedProfile: TransformedProfileModel?
     var profile: Profile?
+    /// True when the last `load()` threw; the view shows an error + retry instead of
+    /// spinning forever.
+    var loadFailed = false
 
     var overviewSectionData = [
         AnalyticsOverviewModel(
@@ -65,11 +68,13 @@ extension AnalyticsViewModel {
     }
 
     func load() async {
+        loadFailed = false
         do {
             let profile = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
             load(profile: profile)
         } catch {
             AppLogger.insights.error("Failed to load analytics profile: \(error.localizedDescription, privacy: .public)")
+            loadFailed = true
         }
     }
 

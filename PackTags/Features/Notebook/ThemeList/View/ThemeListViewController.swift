@@ -12,7 +12,7 @@ final class ThemeListViewController: UITableViewController {
     }
 
     private enum Strings {
-        static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is unreversible.".localized()
+        static let deleteConfirmationMessage = "Delete this theme?\n\nThis action is irreversible.".localized()
         static let yes = "Yes".localized()
         static let cancel = "Cancel".localized()
     }
@@ -69,6 +69,9 @@ final class ThemeListViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyThemedNavigationBarStyle()
+        // A theme's cover may have been edited while we were on another screen; drop the
+        // decoded thumbnails so the visible rows re-read the latest image data.
+        thumbnailCache.removeAllObjects()
         tableView.reloadData()
     }
 
@@ -157,6 +160,10 @@ final class ThemeListViewController: UITableViewController {
         guard let row = viewModel.themeRow(at: indexPath.row) else { return cell }
         cell.nameLabel.text = row.name
         cell.themeImageView.image = decodedThumbnail(for: row)
+        // VoiceOver reads the theme name and announces the row as a navigable button;
+        // the cover image is decorative (hidden from a11y inside the cell).
+        cell.accessibilityLabel = row.name
+        cell.accessibilityTraits = .button
         return cell
     }
 

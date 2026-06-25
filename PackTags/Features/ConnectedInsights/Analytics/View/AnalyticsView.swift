@@ -32,6 +32,8 @@ struct AnalyticsView: View {
         static let closeAnalytics = "Close analytics".localized()
         static let toggleRawAndRates = "Switch between values and rates".localized()
         static let nextMetric = "Next metric".localized()
+        static let loadError = "Couldn't load analytics.\nCheck your connection and try again.".localized()
+        static let retry = "Retry".localized()
     }
     
     private enum Constants {
@@ -80,6 +82,8 @@ struct AnalyticsView: View {
 
                     if !monitor.isConnected {
                         OfflineView()
+                    } else if viewModel.loadFailed {
+                        errorRetryView
                     } else if viewModel.profile == nil {
                         LoadingView(loading: .constant(true))
                     } else {
@@ -111,6 +115,22 @@ struct AnalyticsView: View {
 
     private func graphPadding(forWidth width: CGFloat) -> CGFloat {
         width < Constants.smallScreenWidthLimit ? 0 : Constants.graphSectionHorizontalPadding
+    }
+
+    private var errorRetryView: some View {
+        VStack(spacing: 16) {
+            Text(Strings.loadError)
+                .multilineTextAlignment(.center)
+                .foregroundColor(Color(UIColor.label))
+            Button {
+                Task { await viewModel.load() }
+            } label: {
+                Text(Strings.retry)
+                    .foregroundColor(.brandAccent)
+            }
+            .buttonStyle(ColorfulButtonStyle())
+        }
+        .padding()
     }
 }
 

@@ -4,6 +4,7 @@ import NeumorphicUIKit
 final class PackCell: UITableViewCell, ReusableCellProtocol {
     private enum Strings {
         static let copyLabel = "Copy".localized()
+        static let showHashtagsHint = "Shows the pack's hashtags".localized()
     }
     
     private enum Constants {
@@ -71,7 +72,9 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         btn.setTitleColor(.customTextColor, for: .normal)
         btn.setTitle(Strings.copyLabel, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.titleLabel?.font = UIFont(name: "PingFangTC-Semibold", size: fontSize)
+        btn.titleLabel?.font = UIFontMetrics(forTextStyle: .headline).scaledFont(
+            for: .systemFont(ofSize: fontSize, weight: .semibold),
+            maximumPointSize: 24)
         btn.titleLabel?.adjustsFontForContentSizeCategory = true
         
         btn.neumorphism(
@@ -168,5 +171,14 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         super.prepareForReuse()
         self.roundTopCorners(radius: 0)
         self.copyButton.pressUp()
+    }
+
+    /// Gives VoiceOver context for the two custom buttons: the copy button announces
+    /// *which* pack it copies, and the badge explains that it reveals the hashtags.
+    func configureAccessibility(firstTag: String?) {
+        let tag = firstTag ?? ""
+        copyButton.accessibilityLabel = "\(Strings.copyLabel) \(tag)"
+            .trimmingCharacters(in: .whitespaces)
+        subButton.accessibilityHint = Strings.showHashtagsHint
     }
 }

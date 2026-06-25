@@ -4,11 +4,16 @@ struct SmartGSavedTagsView: View {
     private enum Strings {
         static let smartGSavedTagsFooter = "Instagram allows only 30 saved hashtags per week.".localized()
         static func savedHashtagCount(count: Int) -> String {
-            return "Count: \(count)"
+            String(format: "Saved: %d".localized(), count)
         }
-        static let savedHashtagsHeadline: String = "Saved Hashtags".localized()
-        static let left = "left"
-        static let days = "days"
+        static let savedHashtagsHeadline = "Saved Hashtags".localized()
+        static func daysLeft(_ days: Int) -> String {
+            switch days {
+            case ...0: return "Expired".localized()
+            case 1: return "1 day left".localized()
+            default: return String(format: "%d days left".localized(), days)
+            }
+        }
     }
     
     private enum Constants {
@@ -83,21 +88,15 @@ struct SmartGSavedTagsView: View {
     }
     
     private func timeLeft(date: Date) -> String? {
-        let currentDate = Date()
         let calendar = Calendar.current
-        
+
         guard let futureDate = calendar.date(byAdding: .day, value: Constants.sevenDays, to: date) else {
             return nil
         }
-        
-        let components = calendar.dateComponents([.day], from: currentDate, to: futureDate)
-        
-        if let days = components.day {
-            let daysString = String(days)
-            return "\(daysString) \(Strings.days) \(Strings.left)"
-        }
-        
-        return nil
+
+        let components = calendar.dateComponents([.day], from: Date(), to: futureDate)
+        guard let days = components.day else { return nil }
+        return Strings.daysLeft(days)
     }
 }
 

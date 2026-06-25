@@ -16,4 +16,8 @@ final class NetworkMonitor {
         }
         monitor.start(queue: DispatchQueue(label: "Monitor"))
     }
+
+    deinit {
+        monitor.cancel()
+    }
 }

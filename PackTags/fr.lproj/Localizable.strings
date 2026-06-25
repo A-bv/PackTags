@@ -23,7 +23,7 @@
 
 
 //TTVC
-"Delete this theme?\n\nThis action is unreversible." = "Supprimer ce thème?\n\nCette action est irréversible.";
+"Delete this theme?\n\nThis action is irreversible." = "Supprimer ce thème?\n\nCette action est irréversible.";
 "Yes" = "Oui";
 "Cancel" = "Annuler";
 
@@ -122,6 +122,21 @@
 "Enter a hashtag" = "Entrez un hashtag";
 "Instagram allows only 30 saved hashtags per week." = "Instagram limite la sauvegrade d'hashtags à 30 par semaine.";
 "Oups! Could not find hashtags.\nCheck your entry." = "Oups! Aucun hashtag trouvé.\nVérifiez votre saisie.";
+"Ok" = "OK";
+
+//SmartG saved tags
+"Saved Hashtags" = "Hashtags enregistrés";
+"Saved: %d" = "Enregistrés : %d";
+"Expired" = "Expiré";
+"1 day left" = "1 jour restant";
+"%d days left" = "%d jours restants";
+
+//Analytics load failure
+"Couldn't load analytics.\nCheck your connection and try again." = "Impossible de charger les analyses.\nVérifiez votre connexion et réessayez.";
+"Retry" = "Réessayer";
+
+//Accessibility
+"Shows the pack's hashtags" = "Affiche les hashtags du pack";
 
 //OnBoardingVc
 "WELCOME TO PACKTAGS" = "BIENVENUE SUR PACKTAGS";

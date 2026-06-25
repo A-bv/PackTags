@@ -14,6 +14,8 @@ final class SettingsViewController: UIViewController {
         static let rateAndReviewRateUsOnAppStore = "Yes! Rate us on the App Store.".localized()
         static let rateAndReviewTellUsWhyQuestion = "No! Tell us why.".localized()
         static let mailRecipient = "packtagsapp@gmail.com"
+        static let contactUs = "Contact Us".localized()
+        static let ok = "Ok".localized()
     }
 
     private let viewModel: SettingsViewModel
@@ -115,7 +117,9 @@ private extension SettingsViewController {
 
     func sendSupportEmail() {
         guard MFMailComposeViewController.canSendMail() else {
-            AppLogger.ui.info("No email account configured on this device.")
+            // Mail.app isn't set up — hand off to any other mail handler, or, failing
+            // that, surface the address so the tap never silently does nothing.
+            presentMailFallback()
             return
         }
         let mail = MFMailComposeViewController()
@@ -123,6 +127,19 @@ private extension SettingsViewController {
         mail.mailComposeDelegate = self
         mail.setToRecipients([Strings.mailRecipient])
         present(mail, animated: true)
+    }
+
+    func presentMailFallback() {
+        if let url = URL(string: "mailto:\(Strings.mailRecipient)"),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+            return
+        }
+        AlertPresenter.show(
+            from: self,
+            title: Strings.contactUs,
+            message: Strings.mailRecipient,
+            actions: [UIAlertAction(title: Strings.ok, style: .default)])
     }
 }
 
