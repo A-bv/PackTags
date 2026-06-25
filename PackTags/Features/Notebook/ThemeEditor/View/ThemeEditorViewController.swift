@@ -30,12 +30,9 @@ final class ThemeEditorViewController: UIViewController {
 
     private let themeTextView: TapTextView = {
         let textView = TapTextView()
-        textView.configuration = .init(
-            toolbarInfoTitle: "Actions on selected hashtags".localized(),
-            toolbarInfoMessage: "tapTextViewToolBarDescriptionMessage".localized(),
-            selectButtonAccessibilityLabel: "Select hashtags".localized(),
-            placeholder: "Paste or enter your hashtags...".localized(),
-            avoidsKeyboard: true)
+        var configuration = TapTextView.Configuration()
+        configuration.accessibility.selectButtonLabel = "Select hashtags".localized()
+        textView.configuration = configuration
         textView.font = .preferredFont(forTextStyle: .body)
         textView.adjustsFontForContentSizeCategory = true
         textView.textColor = .label
@@ -99,7 +96,6 @@ final class ThemeEditorViewController: UIViewController {
         setupConstraints()
         setupNavigationItems()
         setupSpinner()
-        configureTextView()
         findButton.attach(to: themeTextView, in: view)
 
         loadEntries()
@@ -146,11 +142,6 @@ final class ThemeEditorViewController: UIViewController {
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
-    }
-
-    private func configureTextView() {
-        themeTextView.tagDelegate = self
-        themeTextView.addTagSelectorToolBar(viewController: self)
     }
 
     private func loadEntries() {
@@ -318,15 +309,3 @@ extension ThemeEditorViewController {
     }
 }
 
-//MARK: - TapTextViewDelegate
-
-extension ThemeEditorViewController: @preconcurrency TapTextViewDelegate {
-
-    func tapTextViewDidStartSelection(_ textView: TapTextView) {
-        navigationController?.setToolbarHidden(false, animated: false)
-    }
-
-    func tapTextViewDidFinishSelection(_ textView: TapTextView) {
-        navigationController?.setToolbarHidden(true, animated: false)
-    }
-}
