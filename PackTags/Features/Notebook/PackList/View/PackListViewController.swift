@@ -30,6 +30,9 @@ final class PackListViewController: CoverImageTableViewController {
     private let composeButton = UIBarButtonItem()
     private let instaButton = UIBarButtonItem()
     private let pasteboard = UIPasteboard.general
+    /// The delayed copy → Instagram-redirect → reorder work. Held so it can be
+    /// cancelled when the user leaves this screen, instead of firing later.
+    private var instagramRedirectTask: Task<Void, Never>?
 
     private var packs: [String] { viewModel.packs }
 
@@ -46,7 +49,16 @@ final class PackListViewController: CoverImageTableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        instagramRedirectTask?.cancel()
+    }
+
     // MARK: - Lifecycle
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        instagramRedirectTask?.cancel()
+    }
 
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -175,9 +187,10 @@ extension PackListViewController {
 // MARK: - Instagram redirect
 extension PackListViewController {
     private func goInsta(packIdx: Int) {
-        Task { [weak self] in
+        instagramRedirectTask?.cancel()
+        instagramRedirectTask = Task { [weak self] in
             try? await Task.sleep(for: .seconds(Constants.afterCopy))
-            guard let self else { return }
+            guard !Task.isCancelled, let self else { return }
             let action = self.viewModel.postCopyAction()
 
             if let appURL = action.instagramAppURL, let webURL = action.instagramWebURL {
@@ -185,6 +198,7 @@ extension PackListViewController {
             }
             if action.shouldMovePackToBottom {
                 try? await Task.sleep(for: .seconds(Constants.afterReorder))
+                guard !Task.isCancelled else { return }
                 self.viewModel.movePack(at: packIdx)
                 self.tableView.reloadData()
             }
