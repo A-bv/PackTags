@@ -9,7 +9,6 @@ final class PackListViewController: CoverImageTableViewController {
         static let redirectionAlertMessage = "PackTags will redirect you to this account each, time the copy button is tapped.".localized()
         static let stopRedirectionAlertMessage = "PackTags will stop redirecting you to this account, each time the copy button is tapped.".localized()
         static let undoRedirection = "Tap the button again to undo.".localized()
-        static let tapPencil = "Tap the Pencil button to add Hashtags.".localized()
         static let show = "Show".localized()
     }
 
@@ -134,10 +133,10 @@ extension PackListViewController {
             self?.goInsta(packIdx: indexPath.row)
         }
 
+        let detail = viewModel.packDetail(at: indexPath.row)
         cell.subButtonTapCallback = { [weak self] in
             guard let self else { return }
-            let message = pack.isEmpty ? Strings.tapPencil : pack
-            AlertPresenter.tapToDismiss(from: self, title: "", message: message)
+            AlertPresenter.tapToDismiss(from: self, title: "", message: detail)
         }
 
         if indexPath.row == 0 {

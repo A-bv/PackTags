@@ -5,6 +5,7 @@ final class PackListViewModel {
         static let oneHashtag = "1 Hashtag".localized()
         static let zeroHashtags = "0 Hashtags".localized()
         static let more = "more".localized()
+        static let emptyPackHint = "Tap the Pencil button to add Hashtags.".localized()
     }
 
     private let repository: any ThemeRepositoryProtocol
@@ -46,6 +47,14 @@ final class PackListViewModel {
         case let count: badge = " + \(count - 1) \(Strings.more) "
         }
         return PackRow(firstTag: tags.first, badge: badge)
+    }
+
+    /// Message shown when a pack's detail button is tapped: the pack's hashtags, or a
+    /// hint to add some when the pack is empty.
+    func packDetail(at index: Int) -> String {
+        guard packs.indices.contains(index) else { return "" }
+        let pack = packs[index]
+        return pack.isEmpty ? Strings.emptyPackHint : pack
     }
 
     struct PostCopyAction {

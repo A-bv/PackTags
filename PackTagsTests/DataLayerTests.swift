@@ -309,6 +309,19 @@ import CoreData
         #expect(sut.packRow(at: 9) == nil)
     }
 
+    @Test func packDetail_returnsThePackContents() {
+        let (sut, _) = makeSUT()
+        sut.loadPacks()
+        #expect(sut.packDetail(at: 0) == "#a #b")
+        #expect(sut.packDetail(at: 1) == "#c")
+    }
+
+    @Test func packDetail_whenThePackIsEmpty_returnsTheHint() {
+        let (sut, _) = makeSUT(content: "")
+        sut.loadPacks()
+        #expect(sut.packDetail(at: 0) == "Tap the Pencil button to add Hashtags.".localized())
+    }
+
     @Test func postCopyAction_respectsKeepPacksOrderAndRedirectSettings() {
         let (sut, settings) = makeSUT()
         settings.keepPacksOrder = true
