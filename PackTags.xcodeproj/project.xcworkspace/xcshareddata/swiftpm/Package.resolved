@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/A-bv/TapTagKit",
       "state" : {
-        "revision" : "85ed94bbe26b440d0ed13a1f99ecc1da8faa0868",
-        "version" : "1.1.0"
+        "revision" : "6614992df5425be33cecfad3bdb57e757ebe556c",
+        "version" : "2.1.0"
       }
     },
     {
