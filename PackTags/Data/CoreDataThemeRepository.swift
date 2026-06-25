@@ -14,7 +14,7 @@ final class CoreDataThemeRepository: ThemeRepositoryProtocol {
         do {
             return try context.fetch(request)
         } catch {
-            AppLogger.persistence.error("Failed to fetch themes: \(error.localizedDescription, privacy: .public)")
+            AppLogger.persistence.error("Failed to fetch themes: \(error.localizedDescription, privacy: .private)")
             return []
         }
     }
@@ -29,7 +29,7 @@ final class CoreDataThemeRepository: ThemeRepositoryProtocol {
         do {
             try context.save()
         } catch {
-            AppLogger.persistence.error("Failed to save themes: \(error.localizedDescription, privacy: .public)")
+            AppLogger.persistence.error("Failed to save themes: \(error.localizedDescription, privacy: .private)")
         }
     }
 
@@ -44,7 +44,7 @@ final class CoreDataThemeRepository: ThemeRepositoryProtocol {
         do {
             return Int32(try context.count(for: request))
         } catch {
-            AppLogger.persistence.error("Failed to count themes: \(error.localizedDescription, privacy: .public)")
+            AppLogger.persistence.error("Failed to count themes: \(error.localizedDescription, privacy: .private)")
             return 0
         }
     }
@@ -66,7 +66,7 @@ final class CoreDataThemeRepository: ThemeRepositoryProtocol {
             }
             return Array(matchedTags)
         } catch {
-            AppLogger.persistence.error("Failed to match stored tags: \(error.localizedDescription, privacy: .public)")
+            AppLogger.persistence.error("Failed to match stored tags: \(error.localizedDescription, privacy: .private)")
             return []
         }
     }

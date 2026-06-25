@@ -58,7 +58,7 @@ extension SmartGViewModel {
             processSmartGModel()
             return false
         } catch {
-            AppLogger.insights.error("Hashtag search failed: \(error.localizedDescription, privacy: .public)")
+            AppLogger.insights.error("Hashtag search failed: \(error.localizedDescription, privacy: .private)")
             return true
         }
     }

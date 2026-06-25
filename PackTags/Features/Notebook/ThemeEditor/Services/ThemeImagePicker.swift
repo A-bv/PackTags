@@ -39,7 +39,7 @@ extension ThemeImagePicker: PHPickerViewControllerDelegate {
             Task { @MainActor [weak self] in
                 defer { self?.completion = nil }
                 guard let image else {
-                    AppLogger.ui.error("Photo picker failed to load the image: \(String(describing: error), privacy: .public).")
+                    AppLogger.ui.error("Photo picker failed to load the image: \(String(describing: error), privacy: .private).")
                     return
                 }
                 self?.completion?(image.upOrientationImage() ?? image)

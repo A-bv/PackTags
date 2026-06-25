@@ -33,7 +33,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
             AppLogger.insights.info("Access ready; presenting \(String(describing: destination), privacy: .public).")
             presentFeature(destination, from: presenter)
         case .needsSetup(let error):
-            AppLogger.insights.info("\(error.localizedDescription, privacy: .public) Presenting setup flow for \(String(describing: destination), privacy: .public).")
+            AppLogger.insights.info("\(error.localizedDescription, privacy: .private) Presenting setup flow for \(String(describing: destination), privacy: .public).")
             fbLogin.start(from: presenter) { [weak self] in
                 self?.presentFeature(destination, from: presenter)
             }

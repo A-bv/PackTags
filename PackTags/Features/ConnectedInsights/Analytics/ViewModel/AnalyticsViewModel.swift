@@ -101,7 +101,7 @@ extension AnalyticsViewModel {
         } catch is CancellationError {
             // Parent cancelled (the screen was dismissed) — leave state untouched.
         } catch {
-            AppLogger.insights.error("Failed to load analytics profile: \(error.localizedDescription, privacy: .public)")
+            AppLogger.insights.error("Failed to load analytics profile: \(error.localizedDescription, privacy: .private)")
             loadFailed = true
         }
     }

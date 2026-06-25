@@ -46,7 +46,7 @@ final class PersistenceController {
         loadError = encounteredError
 
         if let encounteredError {
-            AppLogger.persistence.fault("Failed to load persistent store '\(modelName, privacy: .public)': \(encounteredError.localizedDescription, privacy: .public)")
+            AppLogger.persistence.fault("Failed to load persistent store '\(modelName, privacy: .public)': \(encounteredError.localizedDescription, privacy: .private)")
         }
     }
 
@@ -59,7 +59,7 @@ final class PersistenceController {
             try context.save()
             return true
         } catch {
-            AppLogger.persistence.error("Failed to save view context: \(error.localizedDescription, privacy: .public)")
+            AppLogger.persistence.error("Failed to save view context: \(error.localizedDescription, privacy: .private)")
             return false
         }
     }

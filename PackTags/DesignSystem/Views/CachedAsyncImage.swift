@@ -36,7 +36,7 @@ struct CachedAsyncImage<Placeholder: View>: View {
             imageMemoryCache.setObject(decoded, forKey: url as NSURL)
             image = decoded
         } catch {
-            AppLogger.ui.error("Image load failed: \(error.localizedDescription, privacy: .public)")
+            AppLogger.ui.error("Image load failed: \(error.localizedDescription, privacy: .private)")
         }
     }
 }

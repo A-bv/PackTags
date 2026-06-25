@@ -19,7 +19,7 @@ enum TextRecognizer {
                 do {
                     try handler.perform([request])
                 } catch {
-                    AppLogger.ui.error("Text recognition failed: \(error.localizedDescription, privacy: .public)")
+                    AppLogger.ui.error("Text recognition failed: \(error.localizedDescription, privacy: .private)")
                     continuation.resume(returning: "")
                     return
                 }

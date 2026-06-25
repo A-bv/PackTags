@@ -85,7 +85,7 @@ final class FacebookLoginViewModel {
         defer { isValidating = false }
 
         let token = facebookSessionService.currentToken()
-        AppLogger.login.info("Setup token check: \(token.diagnostic, privacy: .public)")
+        AppLogger.login.info("Setup token check: \(token.diagnostic, privacy: .private)")
         guard let tokenString = token.tokenString else {
             resetFacebookSession()
             result = .sessionExpired
@@ -96,7 +96,7 @@ final class FacebookLoginViewModel {
             connectedViaLogin = markLoginAttempt
             result = .connected
         } catch {
-            AppLogger.login.info("Setup failed: \(error.localizedDescription, privacy: .public)")
+            AppLogger.login.info("Setup failed: \(error.localizedDescription, privacy: .private)")
             if Self.isRecoverableAuthFailure(error) {
                 resetFacebookSession()
                 result = .sessionExpired

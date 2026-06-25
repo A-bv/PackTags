@@ -24,7 +24,7 @@ extension AppDelegate {
                 try fileManager.copyItem(at: seedFile, to: applicationSupportURL.appendingPathComponent(seedFile.lastPathComponent))
             }
         } catch {
-            AppLogger.lifecycle.error("Failed to seed sample data: \(error.localizedDescription, privacy: .public)")
+            AppLogger.lifecycle.error("Failed to seed sample data: \(error.localizedDescription, privacy: .private)")
         }
     }
 }
