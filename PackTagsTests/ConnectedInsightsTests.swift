@@ -383,8 +383,47 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         func loadProfileForAnalytics(mediaLimit: Int?) async throws -> Profile { profile }
     }
 
+    /// Sleeps before returning, so timeout and cancellation can be exercised.
+    private final class DelayedGateway: ConnectedInsightsGatewayProtocol {
+        let profile: Profile
+        let delay: Duration
+        init(profile: Profile, delay: Duration) { self.profile = profile; self.delay = delay }
+        func accessState() -> ConnectedInsightsAccessState { .needsSetup(.setupRequired) }
+        func setup(facebookToken: String) async throws {}
+        func reset() {}
+        func searchHashtag(searchedHashtag: String) async throws -> [InstagramPost] { [] }
+        func loadProfileForAnalytics(mediaLimit: Int?) async throws -> Profile {
+            try await Task.sleep(for: delay)
+            return profile
+        }
+    }
+
     private func makeSUT(profile: Profile) -> AnalyticsViewModel {
         AnalyticsViewModel(gateway: StubGateway(profile: profile))
+    }
+
+    @Test func load_timesOut_andFlagsError_whenTheRequestHangs() async throws {
+        let sut = AnalyticsViewModel(
+            gateway: DelayedGateway(profile: try twoPostProfile(), delay: .seconds(60)),
+            loadTimeout: 0.05)
+
+        await sut.load()
+
+        #expect(sut.loadFailed == true)
+        #expect(sut.profile == nil)
+    }
+
+    @Test func load_whenCancelled_doesNotMutateState() async throws {
+        let sut = AnalyticsViewModel(
+            gateway: DelayedGateway(profile: try twoPostProfile(), delay: .seconds(60)))
+
+        let task = Task { await sut.load() }
+        task.cancel()
+        await task.value
+
+        // Parent cancellation propagated: no late mutation, no false error.
+        #expect(sut.profile == nil)
+        #expect(sut.loadFailed == false)
     }
 
     private func twoPostProfile() throws -> Profile {

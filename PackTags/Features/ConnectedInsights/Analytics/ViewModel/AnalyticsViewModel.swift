@@ -12,7 +12,14 @@ final class AnalyticsViewModel {
         static let selection = "Selection".localized()
     }
 
+    private enum Constants {
+        /// Caps a stalled request (e.g. connectivity lost mid-load) so the screen falls
+        /// back to the error + retry state instead of spinning indefinitely.
+        static let loadTimeout: Double = 15
+    }
+
     @ObservationIgnored private let gateway: any ConnectedInsightsGatewayProtocol
+    @ObservationIgnored private let loadTimeout: Double
 
     var metric: AnalyticsMetric = .engagement
     var rawInsights = true
@@ -52,8 +59,9 @@ final class AnalyticsViewModel {
     var barChartData: [BarChartPostModel] = [BarChartPostModel(id: 0, post: "", rate: 0, barHeight: 0)]
 
     // MARK: - Init
-    init(gateway: any ConnectedInsightsGatewayProtocol) {
+    init(gateway: any ConnectedInsightsGatewayProtocol, loadTimeout: Double = Constants.loadTimeout) {
         self.gateway = gateway
+        self.loadTimeout = loadTimeout
     }
 }
 
@@ -69,14 +77,36 @@ extension AnalyticsViewModel {
 
     func load() async {
         loadFailed = false
+
+        // Race the request against a timeout in a structured group: a stalled load
+        // falls back to the error state, and because the group is structured, the
+        // parent (e.g. SwiftUI `.task`) cancelling propagates here — a cancelled
+        // load can't mutate the view model after the screen is gone. The request
+        // child is `@MainActor`, so the non-Sendable Profile never crosses an
+        // isolation boundary; the group's result is `Void`, which is `Sendable`.
         do {
-            let profile = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
-            load(profile: profile)
+            try await withThrowingTaskGroup(of: Void.self) { group in
+                group.addTask { @MainActor [self] in
+                    let profile = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
+                    try Task.checkCancellation()
+                    load(profile: profile)
+                }
+                group.addTask { [loadTimeout] in
+                    try await Task.sleep(for: .seconds(loadTimeout))
+                    throw LoadTimedOut()
+                }
+                try await group.next()   // whichever finishes first wins
+                group.cancelAll()        // cancel the loser
+            }
+        } catch is CancellationError {
+            // Parent cancelled (the screen was dismissed) — leave state untouched.
         } catch {
             AppLogger.insights.error("Failed to load analytics profile: \(error.localizedDescription, privacy: .public)")
             loadFailed = true
         }
     }
+
+    private struct LoadTimedOut: Error {}
 
     private func load(profile: Profile) {
         self.profile = profile
