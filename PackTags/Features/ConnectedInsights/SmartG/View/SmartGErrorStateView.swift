@@ -10,11 +10,17 @@ struct SmartGErrorStateView: View {
         static let interPadding: CGFloat = 30
         static let illustrationShadow: CGFloat = 0.8
     }
-    
+
+    /// The illustration, with an SF Symbol fallback so a missing asset degrades
+    /// to a sensible icon instead of crashing.
+    private static let illustration = UIImage(named: "SearchingIllustration")
+        ?? UIImage(systemName: "magnifyingglass")
+        ?? UIImage()
+
     var body: some View {
-        
+
         VStack(spacing: Constants.interPadding) {
-            Image(uiImage: UIImage(named: "SearchingIllustration")!)
+            Image(uiImage: Self.illustration)
                 .resizable()
                 .scaledToFit()
                 .frame(
