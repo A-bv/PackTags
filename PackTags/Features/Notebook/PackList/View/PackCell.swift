@@ -10,6 +10,9 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
     private enum Constants {
         static let subButtonCornerRadius = CGFloat(5)
         static let subButtonFontSize = CGFloat(12)
+        // Keeps the blue badge from stretching to the full container height, so it
+        // reads as a compact tag rather than a block nearly as tall as the title.
+        static let subButtonBottomInset = CGFloat(8)
         
         static let copyButtonShadowRadius = CGFloat(7)
         static let copyButtonFontSize = CGFloat(17)
@@ -152,7 +155,8 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         subButton.leadingAnchor.constraint(
             equalTo: self.containerView.leadingAnchor).isActive = true
         subButton.bottomAnchor.constraint(
-            equalTo: self.containerView.bottomAnchor).isActive = true
+            equalTo: self.containerView.bottomAnchor,
+            constant: -Constants.subButtonBottomInset).isActive = true
         
         // ---------- copyButton ----------
         
