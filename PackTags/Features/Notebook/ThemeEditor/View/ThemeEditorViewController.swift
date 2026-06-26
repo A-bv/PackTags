@@ -20,6 +20,7 @@ final class ThemeEditorViewController: UIViewController {
         static let menuSectionManage = "Manage...".localized()
         static let themeOptions = "Theme options".localized()
         static let noTextRecognized = "No text found in the photo.".localized()
+        static let imageSelected = "Image selected! Save to update.".localized()
     }
 
     //MARK: - Dependencies
@@ -243,7 +244,9 @@ extension ThemeEditorViewController {
 
     private func pickCoverImage() {
         imagePicker.present(from: self) { [weak self] image in
-            self?.themeImage = image.resized(to: Constants.coverImageSize)
+            guard let self else { return }
+            self.themeImage = image.resized(to: Constants.coverImageSize)
+            AlertPresenter.tapToDismiss(from: self, title: "", message: Strings.imageSelected)
         }
     }
 

@@ -141,6 +141,7 @@
 //Empty / feedback states
 "No themes yet.\nTap + to create your first pack." = "Aucun thème pour l'instant.\nAppuyez sur + pour créer votre premier pack.";
 "No text found in the photo." = "Aucun texte trouvé dans la photo.";
+"Image selected! Save to update." = "Image sélectionnée ! Enregistrez pour mettre à jour.";
 
 //OnBoardingVc
 "WELCOME TO PACKTAGS" = "BIENVENUE SUR PACKTAGS";
