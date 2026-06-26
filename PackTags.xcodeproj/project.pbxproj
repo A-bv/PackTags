@@ -115,6 +115,7 @@
 		AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000909 /* ThemeImagePicker.swift */; };
 		AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000911 /* ConnectedInsightsTests.swift */; };
 		AB0000000000000000000932 /* SettingsAccessibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000931 /* SettingsAccessibilityTests.swift */; };
+		AB0000000000000000000942 /* ThemeImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000941 /* ThemeImagePickerTests.swift */; };
 		AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000913 /* AppTrackingAuthorizer.swift */; };
 		AB0000000000000000000916 /* FacebookLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000915 /* FacebookLoginButton.swift */; };
 		AB0000000000000000000918 /* FacebookLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000917 /* FacebookLoginCoordinator.swift */; };
@@ -269,6 +270,7 @@
 		AB0000000000000000000909 /* ThemeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePicker.swift; sourceTree = "<group>"; };
 		AB0000000000000000000911 /* ConnectedInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000000931 /* SettingsAccessibilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccessibilityTests.swift; sourceTree = "<group>"; };
+		AB0000000000000000000941 /* ThemeImagePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePickerTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000000913 /* AppTrackingAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrackingAuthorizer.swift; sourceTree = "<group>"; };
 		AB0000000000000000000915 /* FacebookLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000917 /* FacebookLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginCoordinator.swift; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 				AB00000000000000000000D1 /* DataLayerTests.swift */,
 				AB0000000000000000000911 /* ConnectedInsightsTests.swift */,
 				AB0000000000000000000931 /* SettingsAccessibilityTests.swift */,
+				AB0000000000000000000941 /* ThemeImagePickerTests.swift */,
 				AB0000000000000000000101 /* DomainTests.swift */,
 				5A0000000000000000000011 /* SnapshotTests.swift */,
 			);
@@ -1196,6 +1199,7 @@
 				AB00000000000000000000D2 /* DataLayerTests.swift in Sources */,
 				AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */,
 				AB0000000000000000000932 /* SettingsAccessibilityTests.swift in Sources */,
+				AB0000000000000000000942 /* ThemeImagePickerTests.swift in Sources */,
 				5A0000000000000000000012 /* SnapshotTests.swift in Sources */,
 				AB0000000000000000000102 /* DomainTests.swift in Sources */,
 				02FBAFE825A93E8400E32D73 /* PackTagsTests.swift in Sources */,
