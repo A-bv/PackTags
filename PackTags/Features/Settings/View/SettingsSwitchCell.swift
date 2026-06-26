@@ -9,6 +9,10 @@ final class SettingsSwitchCell: UITableViewCell, ReusableCellProtocol {
         static let labelXOffset: CGFloat = 25
         static let labelWidthOffset: CGFloat = 20
         static let sizeOffset: CGFloat = 12
+        // Default UILabel body size; scaled for Dynamic Type, capped so it stays
+        // within the fixed row height (matching PackCell / ThemeCell).
+        static let labelFontSize: CGFloat = 17
+        static let labelMaxFontSize: CGFloat = 24
     }
     
     private var onToggle: ((Bool) -> Void)?
@@ -24,9 +28,13 @@ final class SettingsSwitchCell: UITableViewCell, ReusableCellProtocol {
     private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.font = UIFontMetrics(forTextStyle: .body).scaledFont(
+            for: UIFont.systemFont(ofSize: Constants.labelFontSize),
+            maximumPointSize: Constants.labelMaxFontSize)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
-    
+
     private let mySwitch: UISwitch = {
         let mySwitch = UISwitch(frame: .zero)
         mySwitch.onTintColor = .systemGreen

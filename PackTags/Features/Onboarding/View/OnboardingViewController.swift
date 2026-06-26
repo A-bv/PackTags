@@ -80,6 +80,10 @@ final class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         @MainActor static let adaptiveImageViewLength = screenWidth <= smallScreenWidthLimit ? 200 : 300
         @MainActor static let fontSize1: CGFloat = screenWidth <= smallScreenWidthLimit ? 15.0 : 20.0
         @MainActor static let fontSize2: CGFloat = fontSize1 - 2
+        // Dynamic Type ceilings (~1.4x of the base sizes, in line with the rest
+        // of the app). The slide frames grow to fit, so larger text never clips.
+        static let titleMaxFontSize: CGFloat = 28
+        static let subtitleMaxFontSize: CGFloat = 24
     }
 
     // MARK: - Init
@@ -175,6 +179,14 @@ final class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
     }
 
+    /// Height the label needs for its (possibly Dynamic-Type-scaled) text, never
+    /// below the design's baseline height so default appearance is unchanged.
+    private func heightToFit(_ label: UILabel, width: CGFloat, minimum: CGFloat) -> CGFloat {
+        let fitted = label.sizeThatFits(
+            CGSize(width: width, height: .greatestFiniteMagnitude)).height
+        return max(minimum, ceil(fitted))
+    }
+
     private func makeSlide(index: Int) -> UIView {
         let imageViewFrame = CGRect(
             x: 0,
@@ -190,26 +202,35 @@ final class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         imageView.contentMode = .scaleAspectFit
         imageView.center = imageViewCenter
 
-        let titleFrame = CGRect(
+        let labelWidth = scrollWidth - Constants.scrollWidthPadding
+
+        let title = UILabel()
+        title.textAlignment = .center
+        title.numberOfLines = 0
+        title.font = UIFontMetrics(forTextStyle: .title2).scaledFont(
+            for: UIFont.boldSystemFont(ofSize: Constants.fontSize1),
+            maximumPointSize: Constants.titleMaxFontSize)
+        title.adjustsFontForContentSizeCategory = true
+        title.text = titles[index]
+        title.frame = CGRect(
             x: Constants.labelsXPadding,
             y: imageView.frame.maxY + Constants.spacing30,
-            width: scrollWidth - Constants.scrollWidthPadding,
-            height: Constants.titleHeight)
-        let title = UILabel(frame: titleFrame)
-        title.textAlignment = .center
-        title.font = UIFont.boldSystemFont(ofSize: Constants.fontSize1)
-        title.text = titles[index]
+            width: labelWidth,
+            height: heightToFit(title, width: labelWidth, minimum: Constants.titleHeight))
 
-        let subtitleFrame = CGRect(
+        let subtitle = UILabel()
+        subtitle.textAlignment = .center
+        subtitle.numberOfLines = Constants.subtitleNumberOfLines
+        subtitle.font = UIFontMetrics(forTextStyle: .body).scaledFont(
+            for: UIFont.systemFont(ofSize: Constants.fontSize2),
+            maximumPointSize: Constants.subtitleMaxFontSize)
+        subtitle.adjustsFontForContentSizeCategory = true
+        subtitle.text = captions[index]
+        subtitle.frame = CGRect(
             x: Constants.labelsXPadding,
             y: title.frame.maxY + Constants.spacing10,
-            width: scrollWidth - Constants.scrollWidthPadding,
-            height: Constants.subtitleHeight)
-        let subtitle = UILabel(frame: subtitleFrame)
-        subtitle.textAlignment = .center
-        subtitle.font = UIFont.systemFont(ofSize: Constants.fontSize2)
-        subtitle.text = captions[index]
-        subtitle.numberOfLines = Constants.subtitleNumberOfLines
+            width: labelWidth,
+            height: heightToFit(subtitle, width: labelWidth, minimum: Constants.subtitleHeight))
 
         let slideFrame = CGRect(
             x: scrollWidth * CGFloat(index),

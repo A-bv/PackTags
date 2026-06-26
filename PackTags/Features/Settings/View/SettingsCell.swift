@@ -11,6 +11,10 @@ final class SettingsCell: UITableViewCell, ReusableCellProtocol {
         static let labelWidthOffset: CGFloat = 20
         static let contentViewHeightOffset: CGFloat = 12
         static let disclosureIndicatorType: UITableViewCell.AccessoryType = .disclosureIndicator
+        // Default UILabel body size; scaled for Dynamic Type, capped so it stays
+        // within the fixed row height (matching PackCell / ThemeCell).
+        static let labelFontSize: CGFloat = 17
+        static let labelMaxFontSize: CGFloat = 24
     }
     
     private let iconContainer: UIView = {
@@ -24,9 +28,13 @@ final class SettingsCell: UITableViewCell, ReusableCellProtocol {
     private let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.font = UIFontMetrics(forTextStyle: .body).scaledFont(
+            for: UIFont.systemFont(ofSize: Constants.labelFontSize),
+            maximumPointSize: Constants.labelMaxFontSize)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
-    
+
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "gearshape")

@@ -28,4 +28,24 @@ import UIKit
         #expect(element?.accessibilityLabel == "Save & shuffle")
         #expect(element?.isOn == true)
     }
+
+    // MARK: - Dynamic Type
+
+    @Test func settingsCell_labelSupportsDynamicType() {
+        let cell = SettingsCell(style: .default, reuseIdentifier: nil)
+        cell.configure(with: SettingsOptionModel(
+            title: "Manage", iconBackgroundColor: .systemBlue, handler: {}))
+
+        let label = cell.contentView.subviews.compactMap { $0 as? UILabel }.first
+        #expect(label?.adjustsFontForContentSizeCategory == true)
+    }
+
+    @Test func settingsSwitchCell_labelSupportsDynamicType() {
+        let cell = SettingsSwitchCell(style: .default, reuseIdentifier: nil)
+        cell.configure(with: SettingsSwitchOptionModel(
+            title: "Save & shuffle", iconBackgroundColor: .systemGreen, isOn: true, onToggle: { _ in }))
+
+        let label = cell.contentView.subviews.compactMap { $0 as? UILabel }.first
+        #expect(label?.adjustsFontForContentSizeCategory == true)
+    }
 }
