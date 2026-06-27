@@ -28,15 +28,21 @@ final class PersistenceController {
 
     private(set) var loadError: Error?
 
-    init(modelName: String = "PackTags", inMemory: Bool = false) {
+    init(modelName: String = "PackTags", inMemory: Bool = false, storeURL: URL? = nil) {
         if let model = sharedModel(named: modelName) {
             container = NSPersistentContainer(name: modelName, managedObjectModel: model)
         } else {
             container = NSPersistentContainer(name: modelName)
         }
 
-        if inMemory, let description = container.persistentStoreDescriptions.first {
-            description.url = URL(fileURLWithPath: "/dev/null")
+        if let description = container.persistentStoreDescriptions.first {
+            if inMemory {
+                description.url = URL(fileURLWithPath: "/dev/null")
+            } else if let storeURL {
+                // Injectable so tests can exercise a real on-disk store (e.g. `destroyStore`)
+                // without touching the app's standard store location.
+                description.url = storeURL
+            }
         }
 
         var encounteredError: Error?
@@ -47,6 +53,18 @@ final class PersistenceController {
 
         if let encounteredError {
             AppLogger.persistence.fault("Failed to load persistent store '\(modelName, privacy: .public)': \(encounteredError.localizedDescription, privacy: .private)")
+        }
+    }
+
+    /// Removes the on-disk store so the next launch rebuilds a clean one. The recovery path
+    /// when the store fails to load (typically corruption): destructive — saved data is lost —
+    /// so it's only reachable behind an explicit confirmation.
+    func destroyStore() {
+        guard let url = container.persistentStoreDescriptions.first?.url else { return }
+        do {
+            try container.persistentStoreCoordinator.destroyPersistentStore(at: url, type: .sqlite)
+        } catch {
+            AppLogger.persistence.error("Failed to destroy store: \(error.localizedDescription, privacy: .private)")
         }
     }
 

@@ -32,5 +32,22 @@ final class AppCoordinator: CoordinatorProtocol {
         let coordinator = NotebookCoordinator(navigationController: navigationController, dependencies: dependencies)
         notebookCoordinator = coordinator
         coordinator.start()
+
+        if dependencies.persistence.loadError != nil {
+            presentStoreLoadError()
+        }
+    }
+
+    /// Surfaces a store-load failure once the window is live (the scene makes it key after
+    /// `start()` returns, so presenting must wait for the next run loop).
+    private func presentStoreLoadError() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            AlertPresenter.showStoreLoadError(from: self.navigationController) { [weak self] in
+                guard let self else { return }
+                self.dependencies.persistence.destroyStore()
+                AlertPresenter.showStoreResetConfirmation(from: self.navigationController)
+            }
+        }
     }
 }

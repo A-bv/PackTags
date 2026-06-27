@@ -17,6 +17,30 @@ import CoreData
         #expect(persistence.loadError == nil)
     }
 
+    @Test func destroyStore_wipesPersistedData() {
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("PackTagsDestroyTest-\(UUID().uuidString).sqlite")
+        defer {
+            for suffix in ["", "-wal", "-shm"] {
+                try? FileManager.default.removeItem(at: URL(fileURLWithPath: url.path + suffix))
+            }
+        }
+
+        // Seed a theme into a real on-disk store.
+        let persistence = PersistenceController(storeURL: url)
+        #expect(persistence.loadError == nil)
+        let repo = CoreDataThemeRepository(context: persistence.viewContext)
+        repo.create().name = "Doomed"
+        repo.save()
+        #expect(repo.count() == 1)
+
+        persistence.destroyStore()
+
+        // Reopening the same location must yield a fresh, empty store.
+        let reopened = PersistenceController(storeURL: url)
+        #expect(CoreDataThemeRepository(context: reopened.viewContext).count() == 0)
+    }
+
     @Test func create_thenSave_isReturnedByFetchAll() {
         let sut = makeSUT()
 

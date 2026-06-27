@@ -14,6 +14,12 @@ enum AlertPresenter {
         static let viewLater = "View later".localized()
         static let letsGo = "Let's go!".localized()
         static let tricksAndTips = "Tricks & Tips".localized()
+        static let ok = "Ok".localized()
+        static let storeErrorTitle = "Couldn't open your data".localized()
+        static let storeErrorMessage = "Your saved packs couldn't be loaded. You can reset the app's data to recover — this permanently removes saved packs — or close this and try again later.".localized()
+        static let resetData = "Reset data".localized()
+        static let storeResetTitle = "Data reset".localized()
+        static let storeResetMessage = "Please reopen PackTags to start fresh.".localized()
     }
 
     static func show(
@@ -67,6 +73,29 @@ enum AlertPresenter {
             message: "\n" + Strings.discoverPacktagsWithTricksAndTips,
             actions: [viewLater, letsGo],
             preferred: letsGo)
+    }
+
+    /// Surfaces a Core Data store-load failure instead of leaving the user in a silently
+    /// empty app. `onReset` is the destructive recovery (wipe the store); it's the only way
+    /// back from a corrupt store, so it's styled destructive and gated behind this alert.
+    static func showStoreLoadError(from presenter: UIViewController, onReset: @escaping () -> Void) {
+        let reset = UIAlertAction(title: Strings.resetData, style: .destructive) { _ in onReset() }
+        let cancel = UIAlertAction(title: Strings.cancel, style: .cancel)
+        show(
+            from: presenter,
+            title: Strings.storeErrorTitle,
+            message: Strings.storeErrorMessage,
+            actions: [cancel, reset])
+    }
+
+    /// Confirms the store was wiped and asks the user to relaunch (the in-memory container
+    /// can't be rebuilt mid-session; a fresh launch creates a clean store).
+    static func showStoreResetConfirmation(from presenter: UIViewController) {
+        show(
+            from: presenter,
+            title: Strings.storeResetTitle,
+            message: Strings.storeResetMessage,
+            actions: [UIAlertAction(title: Strings.ok, style: .default)])
     }
 
     static func tapToDismiss(from presenter: UIViewController, title: String, message: String) {
