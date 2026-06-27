@@ -7,6 +7,7 @@ struct SmartGSavedTagsView: View {
             String(format: "Saved: %d".localized(), count)
         }
         static let savedHashtagsHeadline = "Saved Hashtags".localized()
+        static let close = "Close".localized()
         static func daysLeft(_ days: Int) -> String {
             switch days {
             case ...0: return "Expired".localized()
@@ -35,6 +36,7 @@ struct SmartGSavedTagsView: View {
                 .foregroundColor(Constants.tintColor)
                 .padding(.top)
         }
+        .accessibilityLabel(Text(Strings.close))
     }
     
     private var header: some View {

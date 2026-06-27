@@ -20,6 +20,8 @@ struct InteractionBarView: View {
             "The most used hashtags of the page were copied into the clipboard.".localized()
         static let popoverDismissButton = "Ok".localized()
         static let enterHashtagPlaceholder = "Enter a hashtag".localized()
+        static let copyTopHashtags = "Copy top hashtags".localized()
+        static let savedHashtags = "Saved Hashtags".localized()
     }
 
     var textField: some View {
@@ -57,6 +59,7 @@ struct InteractionBarView: View {
                     .foregroundColor(.brandAccent)
             }
             .buttonStyle(ColorfulButtonStyle())
+            .accessibilityLabel(Text(Strings.copyTopHashtags))
             .alert(isPresented: $smartGViewModel.showingAlert) {
                 Alert(
                     title: Text(Strings.popoverTitle),
@@ -73,6 +76,7 @@ struct InteractionBarView: View {
                     .foregroundColor(.brandAccent)
             }
             .buttonStyle(ColorfulButtonStyle())
+            .accessibilityLabel(Text(Strings.savedHashtags))
             .popover(isPresented: $smartGViewModel.showingPopover) {
                 SmartGSavedTagsView(isPresented: $smartGViewModel.showingPopover)
             }
@@ -84,6 +88,9 @@ struct InteractionBarView: View {
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         let entry = smartGViewModel.hashtagEntry
         showKeyBoard = false
+        // Fire-and-forget is safe here: the view model tags each search with a generation and
+        // drops superseded results, so an overlapping or post-dismissal completion can't
+        // corrupt state — it only persists the searched hashtag, which is the desired outcome.
         Task {
             if await smartGViewModel.submitSearch() {
                 updateHashtag(entry: entry)

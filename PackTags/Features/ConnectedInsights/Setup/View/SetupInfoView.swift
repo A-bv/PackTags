@@ -10,6 +10,7 @@ struct SetupInfoView: View {
         static let bottomLabel = "If you do not have a connected page:".localized()
         static let bottomText = "bottomTextViewText".localized()
         static let openInstagram = "Open Instagram".localized()
+        static let close = "Close".localized()
     }
 
     private enum Constants {
@@ -59,6 +60,7 @@ struct SetupInfoView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: onClose) { Image(systemName: "xmark") }
+                        .accessibilityLabel(Text(Strings.close))
                 }
             }
             .toolbarBackground(.hidden, for: .navigationBar)

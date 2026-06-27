@@ -4,6 +4,7 @@ struct SmartGHeaderView: View {
     private enum Strings {
         static let smartHashtags = "Smart Hashtags".localized()
         static let hashtagsPageSearch = "Hashtag page search".localized()
+        static let close = "Close".localized()
     }
 
     private enum Constants {
@@ -34,6 +35,7 @@ struct SmartGHeaderView: View {
                     .font(Font.system(.title))
                     .foregroundColor(Color(UIColor.label))
             }
+            .accessibilityLabel(Text(Strings.close))
         }
         .padding(.horizontal, Constants.headerHorizontalEdgePadding)
         .padding(.bottom, Constants.headerBottomPadding)

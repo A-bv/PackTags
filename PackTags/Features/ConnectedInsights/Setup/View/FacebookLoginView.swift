@@ -16,6 +16,7 @@ struct FacebookLoginView: View {
         static let connectedMessage = "You can now access analytics and generate hashtags.".localized()
         static let trackingInfoTitle = "Why tracking?".localized()
         static let trackingInfoMessage = "trackingInfoMessage".localized()
+        static let close = "Close".localized()
     }
 
     @State private var viewModel: FacebookLoginViewModel
@@ -77,6 +78,7 @@ struct FacebookLoginView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: onClose) { Image(systemName: "xmark") }
+                        .accessibilityLabel(Text(Strings.close))
                 }
             }
             .toolbarBackground(.hidden, for: .navigationBar)
@@ -151,6 +153,7 @@ struct FacebookLoginView: View {
                 Button { showTrackingInfo = true } label: {
                     Image(systemName: "info.circle")
                 }
+                .accessibilityLabel(Text(Strings.trackingInfoTitle))
             }
             if !viewModel.isTrackingAuthorized {
                 Text(Strings.trackingOffDetail)
