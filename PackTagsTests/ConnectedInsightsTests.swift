@@ -1,6 +1,7 @@
 import Testing
 import Foundation
 import CoreGraphics
+import os
 @testable import PackTags
 import InstagramGraph
 
@@ -148,6 +149,57 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
         sut.hashtagEntry = "sea" // identical once the # is stripped
         #expect(await !sut.submitSearch())
+    }
+
+    @Test func newerSearchWins_whenAnEarlierSlowSearchCompletesLater() async {
+        let gateway = DelayedRecordingGateway(slowHashtag: "slow")
+        let sut = SmartGViewModel(gateway: gateway, searchTimeout: 5)
+
+        // Start a slow search and let it reach the gateway before the next one begins.
+        sut.hashtagEntry = "slow"
+        async let slowSearch: Bool = sut.submitSearch()
+        while gateway.requested.isEmpty { await Task.yield() }
+
+        // A newer, fast search overtakes while the slow one is still in flight.
+        sut.hashtagEntry = "fast"
+        _ = await sut.submitSearch()
+        #expect(sut.topHashtags == ["#fast"])
+
+        // The slow search finishes last but must not overwrite the newer results.
+        _ = await slowSearch
+        #expect(sut.topHashtags == ["#fast"])
+        #expect(!sut.loading)
+        // Each request kept its own hashtag rather than reusing a shared mutable value.
+        #expect(gateway.requested.contains("slow"))
+        #expect(gateway.requested.contains("fast"))
+    }
+}
+
+/// Records every hashtag requested and delays the configured `slowHashtag`, so a test can
+/// keep one search in flight while a newer one overtakes it.
+private final class DelayedRecordingGateway: ConnectedInsightsGatewayProtocol, @unchecked Sendable {
+    private let requestedLog = OSAllocatedUnfairLock(initialState: [String]())
+    private let slowHashtag: String
+    private let slowDelay: Duration
+
+    var requested: [String] { requestedLog.withLock { $0 } }
+
+    init(slowHashtag: String, slowDelay: Duration = .milliseconds(100)) {
+        self.slowHashtag = slowHashtag
+        self.slowDelay = slowDelay
+    }
+
+    func accessState() -> ConnectedInsightsAccessState { .needsSetup(.setupRequired) }
+    func setup(facebookToken: String) async throws {}
+    func reset() {}
+    func loadProfileForAnalytics(mediaLimit: Int?) async throws -> Profile {
+        throw ConnectedInsightsError.setupRequired
+    }
+
+    func searchHashtag(searchedHashtag: String) async throws -> [InstagramPost] {
+        requestedLog.withLock { $0.append(searchedHashtag) }
+        if searchedHashtag == slowHashtag { try? await Task.sleep(for: slowDelay) }
+        return (try? makePosts(captions: ["#\(searchedHashtag)"])) ?? []
     }
 }
 

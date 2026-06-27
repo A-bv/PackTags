@@ -1,7 +1,13 @@
 import SwiftUI
 import InstagramGraph
+import NeumorphicSwiftUI
 
 struct SmartGView: View {
+    private enum Strings {
+        static let loadError = "Couldn't load hashtags.\nCheck your connection and try again.".localized()
+        static let retry = "Retry".localized()
+    }
+
     @State var smartGViewModel: SmartGViewModel
     @State private var monitor: NetworkMonitor
 
@@ -23,6 +29,8 @@ struct SmartGView: View {
                     if smartGViewModel.loading {
                         LoadingView(loading: .constant(true)).opacity(0.8)
                     } else if smartGViewModel.isErrorState {
+                        failureRetryView
+                    } else if smartGViewModel.hasNoResults {
                         SmartGErrorStateView()
                     } else {
                         ScrollView{
@@ -41,6 +49,25 @@ struct SmartGView: View {
         .task {
             await smartGViewModel.loadDefaultFeed()
         }
+    }
+
+    /// Shown when a search throws (network / server / timeout): a clear message plus a
+    /// retry that replays the last search — distinct from `SmartGErrorStateView`, which
+    /// handles a successful search that simply found nothing.
+    private var failureRetryView: some View {
+        VStack(spacing: 16) {
+            Text(Strings.loadError)
+                .multilineTextAlignment(.center)
+                .foregroundColor(Color(UIColor.label))
+            Button {
+                Task { await smartGViewModel.retry() }
+            } label: {
+                Text(Strings.retry)
+                    .foregroundColor(.brandAccent)
+            }
+            .buttonStyle(ColorfulButtonStyle())
+        }
+        .padding()
     }
 }
 

@@ -5,9 +5,16 @@ import InstagramGraph
 @Observable
 final class SmartGViewModel {
     @ObservationIgnored private let gateway: any ConnectedInsightsGatewayProtocol
+    @ObservationIgnored private let searchTimeout: Double
 
     private enum Strings {
         static let defaultHashtag = "travel"
+    }
+
+    private enum Constants {
+        /// Caps a stalled search (e.g. connectivity lost mid-load) so the screen falls
+        /// back to the failure + retry state instead of spinning indefinitely.
+        static let searchTimeout: Double = 15
     }
 
     var dataMedias: [InstagramPost] = []
@@ -17,22 +24,36 @@ final class SmartGViewModel {
 
     // UI state shared by SmartGView and the interaction bar.
     var loading = true
+    /// True when the last search threw (network / server / timeout). The view shows a
+    /// failure + retry state — distinct from a successful search that found nothing.
     var isErrorState = false
     var showingPopover = false
     var showingAlert = false
     var hashtagEntry = ""
 
-    private var searchedHashtag = ""
+    /// True once a search has completed, so the view can tell an empty *result* apart
+    /// from the initial pre-load state.
+    private(set) var hasSearched = false
 
-    init(gateway: any ConnectedInsightsGatewayProtocol) {
+    /// A search succeeded but returned nothing to show — the user likely mistyped the
+    /// hashtag, as opposed to a request failure.
+    var hasNoResults: Bool { hasSearched && !isErrorState && computedData.isEmpty }
+
+    private var searchedHashtag = ""
+    /// The hashtag of the most recent search, replayed by `retry()`.
+    private var lastSearchedHashtag = Strings.defaultHashtag
+    /// Bumped on every search; lets a slow earlier search detect it has been superseded and
+    /// drop its (now stale) results instead of overwriting a newer search.
+    private var searchGeneration = 0
+
+    init(gateway: any ConnectedInsightsGatewayProtocol, searchTimeout: Double = Constants.searchTimeout) {
         self.gateway = gateway
+        self.searchTimeout = searchTimeout
     }
 
     /// The initial feed shown before the user searches anything.
     func loadDefaultFeed() async {
-        loading = true
-        isErrorState = await fetch(hashtag: Strings.defaultHashtag)
-        loading = false
+        await runSearch(hashtag: Strings.defaultHashtag)
     }
 
     /// Runs a search when the entry differs from the last one searched.
@@ -42,25 +63,60 @@ final class SmartGViewModel {
         guard searchedHashtag != newEntry else { return false }
 
         searchedHashtag = newEntry
-        loading = true
-        isErrorState = await fetch(hashtag: newEntry)
-        loading = false
+        await runSearch(hashtag: newEntry)
         return true
+    }
+
+    /// Re-runs the most recent search after a failure.
+    func retry() async {
+        await runSearch(hashtag: lastSearchedHashtag)
     }
 }
 
 extension SmartGViewModel {
-    /// Loads posts for the hashtag and recomputes the model.
-    /// Returns true when the search failed and the error state should show.
-    private func fetch(hashtag: String) async -> Bool {
+    /// Runs a search behind `withThrowingTimeout`, so a stalled request falls back to the
+    /// failure state and a parent `.task` cancelling stops it cleanly. Tags the run with a
+    /// generation so a slow earlier search can't overwrite a newer one's results or state.
+    private func runSearch(hashtag: String) async {
+        searchGeneration += 1
+        let generation = searchGeneration
+        lastSearchedHashtag = hashtag
+        loading = true
+        isErrorState = false
+
         do {
-            dataMedias = try await gateway.searchHashtag(searchedHashtag: hashtag)
-            processSmartGModel()
-            return false
+            try await withThrowingTimeout(seconds: searchTimeout) { [self] in
+                try await loadPosts(hashtag: hashtag, generation: generation)
+            }
+        } catch is CancellationError {
+            // Parent cancelled (the screen was dismissed) — leave state untouched.
+            return
         } catch {
+            guard generation == searchGeneration else { return } // a newer search supersedes us
             AppLogger.insights.error("Hashtag search failed: \(error.localizedDescription, privacy: .private)")
-            return true
+            isErrorState = true
+            hasSearched = true
         }
+        guard generation == searchGeneration else { return } // a newer search owns `loading`
+        loading = false
+    }
+
+    /// Fetches and applies posts for `hashtag`. Takes the hashtag as an immutable parameter
+    /// (not the shared `lastSearchedHashtag`) so overlapping searches each request their own
+    /// term, and drops the result if a newer search has started since. Kept as a plain
+    /// `@MainActor` method — not inlined in the task-group child — so the non-Sendable
+    /// `[InstagramPost]` stays out of that child closure's region analysis; inlining a
+    /// non-Sendable *collection* there trips the region-based isolation checker.
+    private func loadPosts(hashtag: String, generation: Int) async throws {
+        let interval = AppLogger.signposter.beginInterval("HashtagSearch")
+        defer { AppLogger.signposter.endInterval("HashtagSearch", interval) }
+
+        let posts = try await gateway.searchHashtag(searchedHashtag: hashtag)
+        try Task.checkCancellation()
+        guard generation == searchGeneration else { return } // superseded — drop stale results
+        dataMedias = posts
+        processSmartGModel()
+        hasSearched = true
     }
 
     func processSmartGModel() {
