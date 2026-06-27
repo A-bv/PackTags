@@ -15,7 +15,7 @@ final class ViewSnapshotTests: XCTestCase {
 
     private func assertLightAndDark<V: View>(
         _ view: V,
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         testName: String = #function,
         line: UInt = #line
     ) {
@@ -71,7 +71,7 @@ final class ViewSnapshotTests: XCTestCase {
     private func assertCellLightAndDark(
         width: CGFloat,
         height: CGFloat,
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         testName: String = #function,
         line: UInt = #line,
         _ make: () -> UITableViewCell

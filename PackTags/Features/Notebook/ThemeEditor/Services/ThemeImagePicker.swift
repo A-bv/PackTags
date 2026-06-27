@@ -22,11 +22,15 @@ final class ThemeImagePicker: NSObject {
     /// Injectable so tests can drive presentation synchronously. The default
     /// defers to the next run loop so the spinner paints before the picker's
     /// first-launch hitch blocks the main thread.
-    var presentPicker: (_ presenter: UIViewController,
-                        _ picker: UIViewController,
-                        _ onPresented: @escaping () -> Void) -> Void
+    var presentPicker: @MainActor (_ presenter: UIViewController,
+                                   _ picker: UIViewController,
+                                   _ onPresented: @escaping () -> Void) -> Void
         = { presenter, picker, onPresented in
-            DispatchQueue.main.async {
+            // Defer to the next run loop so the loading overlay paints before the picker's
+            // first-launch hitch blocks the main thread. A `@MainActor` Task stays on the
+            // main actor (no Sendable hop, unlike `DispatchQueue.main.async`) while still
+            // yielding the current run-loop turn.
+            Task { @MainActor in
                 presenter.present(picker, animated: true, completion: onPresented)
             }
         }
