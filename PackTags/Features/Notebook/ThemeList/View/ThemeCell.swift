@@ -97,12 +97,35 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
 
         // ---------- supporting View ----------
 
+        // The neumorphic backing renders from its creation-time frame, but Auto Layout
+        // needs an explicit size too — without width/height it has only a leading+top
+        // anchor, leaving its layout size ambiguous (the engine logs an ambiguous-height
+        // warning and the laid-out bounds collapse to zero).
         supportingView.leadingAnchor.constraint(
             equalTo:themeImageView.leadingAnchor,
             constant: -Constants.padding5
         ).isActive = true
         supportingView.topAnchor.constraint(
             equalTo:themeImageView.topAnchor,
+            constant: -Constants.padding5
+        ).isActive = true
+        supportingView.widthAnchor.constraint(
+            equalToConstant: Constants.thumbnailDim
+        ).isActive = true
+        supportingView.heightAnchor.constraint(
+            equalToConstant: Constants.thumbnailDim
+        ).isActive = true
+        // Pin the tallest element to the content view's top and bottom so the cell can
+        // derive a non-zero height on its own. Without this, every subview is only
+        // centerY-anchored and the content view's height is ambiguous (UIKit logs an
+        // "ambiguously suggests a height of zero" warning and falls back to standard
+        // height). Production rows are taller than this minimum, so the slack is absorbed.
+        supportingView.topAnchor.constraint(
+            greaterThanOrEqualTo: self.contentView.topAnchor,
+            constant: Constants.padding5
+        ).isActive = true
+        supportingView.bottomAnchor.constraint(
+            lessThanOrEqualTo: self.contentView.bottomAnchor,
             constant: -Constants.padding5
         ).isActive = true
 
