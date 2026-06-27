@@ -133,10 +133,20 @@
 
 //Analytics load failure
 "Couldn't load analytics.\nCheck your connection and try again." = "Impossible de charger les analyses.\nVérifiez votre connexion et réessayez.";
+"Couldn't load hashtags.\nCheck your connection and try again." = "Impossible de charger les hashtags.\nVérifiez votre connexion et réessayez.";
 "Retry" = "Réessayer";
+
+//Data store failure
+"Couldn't open your data" = "Impossible d'ouvrir vos données";
+"Your saved packs couldn't be loaded. You can reset the app's data to recover — this permanently removes saved packs — or close this and try again later." = "Vos packs enregistrés n'ont pas pu être chargés. Vous pouvez réinitialiser les données de l'app pour récupérer — cela supprime définitivement les packs enregistrés — ou fermer et réessayer plus tard.";
+"Reset data" = "Réinitialiser les données";
+"Data reset" = "Données réinitialisées";
+"Please reopen PackTags to start fresh." = "Veuillez rouvrir PackTags pour repartir de zéro.";
 
 //Accessibility
 "Shows the pack's hashtags" = "Affiche les hashtags du pack";
+"Close" = "Fermer";
+"Copy top hashtags" = "Copier les meilleurs hashtags";
 
 //Empty / feedback states
 "No themes yet.\nTap + to create your first pack." = "Aucun thème pour l'instant.\nAppuyez sur + pour créer votre premier pack.";
