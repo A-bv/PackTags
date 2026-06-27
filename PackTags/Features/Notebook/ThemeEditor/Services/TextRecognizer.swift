@@ -11,6 +11,9 @@ enum TextRecognizer {
             return ""
         }
 
+        let interval = AppLogger.signposter.beginInterval("TextRecognition")
+        defer { AppLogger.signposter.endInterval("TextRecognition", interval) }
+
         return await withCheckedContinuation { continuation in
             DispatchQueue.global(qos: .userInitiated).async {
                 let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])

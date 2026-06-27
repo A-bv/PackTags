@@ -9,4 +9,8 @@ enum AppLogger {
     static let login = Logger(subsystem: subsystem, category: "login")
     static let insights = Logger(subsystem: subsystem, category: "insights")
     static let ui = Logger(subsystem: subsystem, category: "ui")
+
+    /// Signpost intervals for hot paths (OCR, hashtag search, analytics load) so they show
+    /// up as measurable regions in Instruments' os_signpost track.
+    static let signposter = OSSignposter(subsystem: subsystem, category: .pointsOfInterest)
 }

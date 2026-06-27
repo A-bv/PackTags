@@ -78,25 +78,9 @@ extension AnalyticsViewModel {
     func load() async {
         loadFailed = false
 
-        // Race the request against a timeout in a structured group: a stalled load
-        // falls back to the error state, and because the group is structured, the
-        // parent (e.g. SwiftUI `.task`) cancelling propagates here — a cancelled
-        // load can't mutate the view model after the screen is gone. The request
-        // child is `@MainActor`, so the non-Sendable Profile never crosses an
-        // isolation boundary; the group's result is `Void`, which is `Sendable`.
         do {
-            try await withThrowingTaskGroup(of: Void.self) { group in
-                group.addTask { @MainActor [self] in
-                    let profile = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
-                    try Task.checkCancellation()
-                    load(profile: profile)
-                }
-                group.addTask { [loadTimeout] in
-                    try await Task.sleep(for: .seconds(loadTimeout))
-                    throw LoadTimedOut()
-                }
-                try await group.next()   // whichever finishes first wins
-                group.cancelAll()        // cancel the loser
+            try await withThrowingTimeout(seconds: loadTimeout) { [self] in
+                try await fetchProfile()
             }
         } catch is CancellationError {
             // Parent cancelled (the screen was dismissed) — leave state untouched.
@@ -106,7 +90,16 @@ extension AnalyticsViewModel {
         }
     }
 
-    private struct LoadTimedOut: Error {}
+    /// Fetches the profile (the request child, `@MainActor` so the non-Sendable `Profile`
+    /// never crosses an isolation boundary) and applies it.
+    private func fetchProfile() async throws {
+        let interval = AppLogger.signposter.beginInterval("AnalyticsLoad")
+        defer { AppLogger.signposter.endInterval("AnalyticsLoad", interval) }
+
+        let profile = try await gateway.loadProfileForAnalytics(mediaLimit: 12)
+        try Task.checkCancellation()
+        load(profile: profile)
+    }
 
     private func load(profile: Profile) {
         self.profile = profile

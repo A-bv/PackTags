@@ -102,6 +102,7 @@
 		5A0000000000000000000042 /* FacebookSessionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000041 /* FacebookSessionServiceProtocol.swift */; };
 		5A0000000000000000000052 /* ReviewPromptStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000051 /* ReviewPromptStoreProtocol.swift */; };
 		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
+		AB0000000000000000CA0002 /* TaskTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000CA0001 /* TaskTimeout.swift */; };
 		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
 		AB00000000000000000000D2 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000D1 /* DataLayerTests.swift */; };
@@ -257,6 +258,7 @@
 		5A0000000000000000000041 /* FacebookSessionServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionServiceProtocol.swift; sourceTree = "<group>"; };
 		5A0000000000000000000051 /* ReviewPromptStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptStoreProtocol.swift; sourceTree = "<group>"; };
 		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		AB0000000000000000CA0001 /* TaskTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimeout.swift; sourceTree = "<group>"; };
 		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
 		AB00000000000000000000D1 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 			children = (
 				02FD6CB326D8178800AB16E4 /* AppStoreRating */,
 				AB00000000000000000000A1 /* AppLogger.swift */,
+				AB0000000000000000CA0001 /* TaskTimeout.swift */,
 				021AFD5B278A1BE40008735E /* AlertPresenter.swift */,
 				02CEFB6C25CB945000FB70E4 /* UIImage+Treatment.swift */,
 				AB0000000000000000008001 /* UITableView+Reusable.swift */,
@@ -1117,6 +1120,7 @@
 				02AD94AF29A9820400D893E5 /* SubTransformedProfileModel.swift in Sources */,
 				021044F626446AEF00408CEB /* MetricFormatter.swift in Sources */,
 				AB00000000000000000000A2 /* AppLogger.swift in Sources */,
+				AB0000000000000000CA0002 /* TaskTimeout.swift in Sources */,
 				AB00000000000000000000C2 /* SettingsKey.swift in Sources */,
 				02FAE2A5260AC79C00324724 /* SettingsSwitchCell.swift in Sources */,
 				02BC8D592602B79900441349 /* SettingsViewController.swift in Sources */,
