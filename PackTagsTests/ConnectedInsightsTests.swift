@@ -173,6 +173,18 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         #expect(gateway.requested.contains("slow"))
         #expect(gateway.requested.contains("fast"))
     }
+
+    @Test func emptyResult_showsNoResults_notFailure() async {
+        // A successful-but-empty search (e.g. a hashtag that doesn't exist) is "no results"
+        // — the view shows "check your entry", NOT the network failure + retry state.
+        let sut = SmartGViewModel(gateway: EmptyHashtagGateway())
+
+        await sut.loadDefaultFeed()
+
+        #expect(!sut.loading)
+        #expect(!sut.isErrorState)
+        #expect(sut.hasNoResults)
+    }
 }
 
 /// Records every hashtag requested and delays the configured `slowHashtag`, so a test can
@@ -200,6 +212,18 @@ private final class DelayedRecordingGateway: ConnectedInsightsGatewayProtocol, @
         requestedLog.withLock { $0.append(searchedHashtag) }
         if searchedHashtag == slowHashtag { try? await Task.sleep(for: slowDelay) }
         return (try? makePosts(captions: ["#\(searchedHashtag)"])) ?? []
+    }
+}
+
+/// Always returns an empty result — simulates a hashtag with no matches (post-3.0.3 the
+/// InstagramGraph gateway reports "not found" as `[]` rather than throwing).
+private struct EmptyHashtagGateway: ConnectedInsightsGatewayProtocol {
+    func accessState() -> ConnectedInsightsAccessState { .needsSetup(.setupRequired) }
+    func setup(facebookToken: String) async throws {}
+    func reset() {}
+    func searchHashtag(searchedHashtag: String) async throws -> [InstagramPost] { [] }
+    func loadProfileForAnalytics(mediaLimit: Int?) async throws -> Profile {
+        throw ConnectedInsightsError.setupRequired
     }
 }
 
