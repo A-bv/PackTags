@@ -138,8 +138,11 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         containerView.trailingAnchor.constraint(
             equalTo:self.copyButton.leadingAnchor,
             constant: -Constants.value10).isActive = true
+        // Minimum, not fixed: keeps the resting layout but lets the label + badge grow at
+        // large Dynamic Type sizes instead of clipping their descenders (the row is far
+        // taller than this, so there's room).
         containerView.heightAnchor.constraint(
-            equalToConstant: Constants.value55).isActive = true
+            greaterThanOrEqualToConstant: Constants.value55).isActive = true
         
         // ---------- cellLabel ----------
         
