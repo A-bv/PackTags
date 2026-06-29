@@ -94,11 +94,37 @@ extension SmartGViewModel {
         } catch {
             guard generation == searchGeneration else { return } // a newer search supersedes us
             AppLogger.insights.error("Hashtag search failed: \(error.localizedDescription, privacy: .private)")
-            isErrorState = true
             hasSearched = true
+            if Self.isConnectivityFailure(error) {
+                isErrorState = true   // couldn't reach Instagram → "check your connection" + retry
+            } else {
+                // The request reached Instagram but the hashtag couldn't be resolved (unknown
+                // tag, API or decoding error). Present it as "no results", not a connection
+                // problem, so the user is told to check their entry.
+                resetResults()
+            }
         }
         guard generation == searchGeneration else { return } // a newer search owns `loading`
         loading = false
+    }
+
+    /// True only for failures that mean we couldn't reach Instagram (no network, or our own
+    /// timeout) — the case that warrants "check your connection" + retry. Any other thrown
+    /// error means the request got through but the hashtag couldn't be resolved, which the
+    /// view presents as "no results / check your entry".
+    private static func isConnectivityFailure(_ error: Error) -> Bool {
+        if error is TimedOutError { return true }
+        if case InstagramGraphServiceError.networkError = error { return true }
+        return false
+    }
+
+    /// Clears the displayed results so the "check your entry" state shows after a failed
+    /// search, rather than leaving a previous search's results on screen.
+    private func resetResults() {
+        dataMedias = []
+        computedData = []
+        topHashtags = []
+        topHashtagsCount = []
     }
 
     /// Fetches and applies posts for `hashtag`. Takes the hashtag as an immutable parameter

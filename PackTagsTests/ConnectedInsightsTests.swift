@@ -131,12 +131,25 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         #expect(sut.topHashtags.count == 3)
     }
 
-    @Test func loadDefaultFeed_flagsTheErrorState_whenTheGatewayFails() async {
-        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+    @Test func loadDefaultFeed_flagsConnectionError_whenOffline() async {
+        let sut = SmartGViewModel(
+            gateway: ThrowingGateway(error: InstagramGraphServiceError.networkError(URLError(.notConnectedToInternet))))
 
         await sut.loadDefaultFeed()
 
-        #expect(sut.isErrorState)
+        #expect(sut.isErrorState)   // couldn't reach Instagram → "check your connection" + retry
+        #expect(!sut.hasNoResults)
+        #expect(!sut.loading)
+    }
+
+    @Test func search_whenServerRejectsHashtag_showsNoResultsNotConnectionError() async {
+        let sut = SmartGViewModel(
+            gateway: ThrowingGateway(error: InstagramGraphServiceError.graphHTTPError(statusCode: 400, body: "")))
+
+        await sut.loadDefaultFeed()
+
+        #expect(!sut.isErrorState)  // reached Instagram, hashtag unresolved → "check your entry"
+        #expect(sut.hasNoResults)
         #expect(!sut.loading)
     }
 
@@ -222,6 +235,19 @@ private struct EmptyHashtagGateway: ConnectedInsightsGatewayProtocol {
     func setup(facebookToken: String) async throws {}
     func reset() {}
     func searchHashtag(searchedHashtag: String) async throws -> [InstagramPost] { [] }
+    func loadProfileForAnalytics(mediaLimit: Int?) async throws -> Profile {
+        throw ConnectedInsightsError.setupRequired
+    }
+}
+
+/// Throws a fixed error from `searchHashtag` — used to verify how the view model classifies
+/// connectivity failures vs other (server / unresolved-hashtag) failures.
+private struct ThrowingGateway: ConnectedInsightsGatewayProtocol {
+    let error: Error
+    func accessState() -> ConnectedInsightsAccessState { .needsSetup(.setupRequired) }
+    func setup(facebookToken: String) async throws {}
+    func reset() {}
+    func searchHashtag(searchedHashtag: String) async throws -> [InstagramPost] { throw error }
     func loadProfileForAnalytics(mediaLimit: Int?) async throws -> Profile {
         throw ConnectedInsightsError.setupRequired
     }
