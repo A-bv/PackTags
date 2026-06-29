@@ -3,6 +3,11 @@
 *.xcuserstate
 xcuserdata/
 
+# Build output — only appears when a command-line build targets the repo
+# (e.g. xcodebuild -derivedDataPath build/...); Xcode's GUI builds go elsewhere.
+build/
+DerivedData/
+
 # Secrets — never commit real credentials (Facebook App ID / Client Token, etc.)
 Secrets.xcconfig
 *.secret.xcconfig
