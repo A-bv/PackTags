@@ -95,6 +95,7 @@
 		02FDEDCD290304E200B9BCFD /* SmartTags.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02FDEDCB290304E200B9BCFD /* SmartTags.xcdatamodeld */; };
 		02FE9ECA28DF5BF000193A15 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9EC928DF5BF000193A15 /* FacebookCore */; };
 		02FE9ECC28DF5BF000193A15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02FE9ECB28DF5BF000193A15 /* FacebookLogin */; };
+		44A43042F207A59B6A1FF707 /* PackTagsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC02E307B9C389341623AFF /* PackTagsUITests.swift */; };
 		5A0000000000000000000003 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0000000000000000000002 /* SnapshotTesting */; };
 		5A0000000000000000000012 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000011 /* SnapshotTests.swift */; };
 		5A0000000000000000000022 /* AppSettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000021 /* AppSettingsProtocol.swift */; };
@@ -102,8 +103,6 @@
 		5A0000000000000000000042 /* FacebookSessionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000041 /* FacebookSessionServiceProtocol.swift */; };
 		5A0000000000000000000052 /* ReviewPromptStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0000000000000000000051 /* ReviewPromptStoreProtocol.swift */; };
 		AB00000000000000000000A2 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000A1 /* AppLogger.swift */; };
-		AB0000000000000000CA0004 /* MetricsReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000CA0003 /* MetricsReporter.swift */; };
-		AB0000000000000000CA0002 /* TaskTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000CA0001 /* TaskTimeout.swift */; };
 		AB00000000000000000000B2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000B1 /* PersistenceController.swift */; };
 		AB00000000000000000000C2 /* SettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000C1 /* SettingsKey.swift */; };
 		AB00000000000000000000D2 /* DataLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000D1 /* DataLayerTests.swift */; };
@@ -116,12 +115,12 @@
 		AB0000000000000000000908 /* KeyboardFindButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000907 /* KeyboardFindButton.swift */; };
 		AB0000000000000000000910 /* ThemeImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000909 /* ThemeImagePicker.swift */; };
 		AB0000000000000000000912 /* ConnectedInsightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000911 /* ConnectedInsightsTests.swift */; };
-		AB0000000000000000000932 /* SettingsAccessibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000931 /* SettingsAccessibilityTests.swift */; };
-		AB0000000000000000000942 /* ThemeImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000941 /* ThemeImagePickerTests.swift */; };
 		AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000913 /* AppTrackingAuthorizer.swift */; };
 		AB0000000000000000000916 /* FacebookLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000915 /* FacebookLoginButton.swift */; };
 		AB0000000000000000000918 /* FacebookLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000917 /* FacebookLoginCoordinator.swift */; };
 		AB0000000000000000000922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000921 /* InfoPlist.strings */; };
+		AB0000000000000000000932 /* SettingsAccessibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000931 /* SettingsAccessibilityTests.swift */; };
+		AB0000000000000000000942 /* ThemeImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000941 /* ThemeImagePickerTests.swift */; };
 		AB0000000000000000001003 /* TapTagKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001002 /* TapTagKit */; };
 		AB0000000000000000001010 /* TableViewControllerCoverKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000001009 /* TableViewControllerCoverKit */; };
 		AB0000000000000000002003 /* NeumorphicUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000002002 /* NeumorphicUIKit */; };
@@ -152,10 +151,20 @@
 		AB0000000000000000010352 /* SettingsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010351 /* SettingsActions.swift */; };
 		AB0000000000000000010502 /* UIViewController+ModalCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010501 /* UIViewController+ModalCloseButton.swift */; };
 		AB00000000000000000C0002 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000C0001 /* CachedAsyncImage.swift */; };
+		AB0000000000000000CA0002 /* TaskTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000CA0001 /* TaskTimeout.swift */; };
+		AB0000000000000000CA0004 /* MetricsReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000CA0003 /* MetricsReporter.swift */; };
+		B77E2E50EAB41C73F52131FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7C6F55EE9E6B6634104B935 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		02FB552024FFA2AC00174E34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02FB54FE24FFA2AA00174E34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02FB550524FFA2AA00174E34;
+			remoteInfo = PackTags;
+		};
+		CB871B401DE744BBC32C9174 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 02FB54FE24FFA2AA00174E34 /* Project object */;
 			proxyType = 1;
@@ -259,8 +268,6 @@
 		5A0000000000000000000041 /* FacebookSessionServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSessionServiceProtocol.swift; sourceTree = "<group>"; };
 		5A0000000000000000000051 /* ReviewPromptStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptStoreProtocol.swift; sourceTree = "<group>"; };
 		AB00000000000000000000A1 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
-		AB0000000000000000CA0003 /* MetricsReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsReporter.swift; sourceTree = "<group>"; };
-		AB0000000000000000CA0001 /* TaskTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimeout.swift; sourceTree = "<group>"; };
 		AB00000000000000000000B1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AB00000000000000000000C1 /* SettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKey.swift; sourceTree = "<group>"; };
 		AB00000000000000000000D1 /* DataLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTests.swift; sourceTree = "<group>"; };
@@ -273,13 +280,13 @@
 		AB0000000000000000000907 /* KeyboardFindButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFindButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000909 /* ThemeImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePicker.swift; sourceTree = "<group>"; };
 		AB0000000000000000000911 /* ConnectedInsightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsTests.swift; sourceTree = "<group>"; };
-		AB0000000000000000000931 /* SettingsAccessibilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccessibilityTests.swift; sourceTree = "<group>"; };
-		AB0000000000000000000941 /* ThemeImagePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePickerTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000000913 /* AppTrackingAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrackingAuthorizer.swift; sourceTree = "<group>"; };
 		AB0000000000000000000915 /* FacebookLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginButton.swift; sourceTree = "<group>"; };
 		AB0000000000000000000917 /* FacebookLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginCoordinator.swift; sourceTree = "<group>"; };
 		AB0000000000000000000919 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB0000000000000000000920 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AB0000000000000000000931 /* SettingsAccessibilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccessibilityTests.swift; sourceTree = "<group>"; };
+		AB0000000000000000000941 /* ThemeImagePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImagePickerTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000003001 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AB0000000000000000004001 /* ThemeListNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListNavigation.swift; sourceTree = "<group>"; };
 		AB0000000000000000005001 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -307,6 +314,11 @@
 		AB0000000000000000010351 /* SettingsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActions.swift; sourceTree = "<group>"; };
 		AB0000000000000000010501 /* UIViewController+ModalCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ModalCloseButton.swift"; sourceTree = "<group>"; };
 		AB00000000000000000C0001 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
+		AB0000000000000000CA0001 /* TaskTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimeout.swift; sourceTree = "<group>"; };
+		AB0000000000000000CA0003 /* MetricsReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsReporter.swift; sourceTree = "<group>"; };
+		BDC8A1BB48E16160D6E56763 /* PackTagsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PackTagsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDC02E307B9C389341623AFF /* PackTagsUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PackTagsUITests.swift; sourceTree = "<group>"; };
+		D7C6F55EE9E6B6634104B935 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +342,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A0000000000000000000003 /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56F723DA820EF6A973082ACE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B77E2E50EAB41C73F52131FB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +733,8 @@
 				02FB552224FFA2AC00174E34 /* PackTagsTests */,
 				02FB550724FFA2AA00174E34 /* Products */,
 				021BA8F92FE889A50076416E /* Recovered References */,
+				7A81E2DDD7CF6115A0FF8057 /* Frameworks */,
+				5ACECFD023759EC3615BF3E8 /* PackTagsUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -721,6 +743,7 @@
 			children = (
 				02FB550624FFA2AA00174E34 /* PackTags.app */,
 				02FB551F24FFA2AC00174E34 /* PackTagsTests.xctest */,
+				BDC8A1BB48E16160D6E56763 /* PackTagsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -764,6 +787,31 @@
 				5A0000000000000000000051 /* ReviewPromptStoreProtocol.swift */,
 			);
 			path = AppStoreRating;
+			sourceTree = "<group>";
+		};
+		5ACECFD023759EC3615BF3E8 /* PackTagsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CDC02E307B9C389341623AFF /* PackTagsUITests.swift */,
+			);
+			name = PackTagsUITests;
+			path = PackTagsUITests;
+			sourceTree = "<group>";
+		};
+		7A81E2DDD7CF6115A0FF8057 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9ED99BC91D38E5F2074DBB20 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9ED99BC91D38E5F2074DBB20 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D7C6F55EE9E6B6634104B935 /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		AB00000000000000000000D0 /* Domain */ = {
@@ -997,6 +1045,24 @@
 			productReference = 02FB551F24FFA2AC00174E34 /* PackTagsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		52ED49D60EB0E36EB348B67E /* PackTagsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F328A871CDAAAD3085F80F7E /* Build configuration list for PBXNativeTarget "PackTagsUITests" */;
+			buildPhases = (
+				A6024694AB40E70B40D10B5B /* Sources */,
+				56F723DA820EF6A973082ACE /* Frameworks */,
+				18F4AB5C0F982F9D7BA6B657 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7667417E8E168A3EEF277204 /* PBXTargetDependency */,
+			);
+			name = PackTagsUITests;
+			productName = PackTagsUITests;
+			productReference = BDC8A1BB48E16160D6E56763 /* PackTagsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1042,6 +1108,7 @@
 			targets = (
 				02FB550524FFA2AA00174E34 /* PackTags */,
 				02FB551E24FFA2AC00174E34 /* PackTagsTests */,
+				52ED49D60EB0E36EB348B67E /* PackTagsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1065,6 +1132,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				02FBAFF125A93EBD00E32D73 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F4AB5C0F982F9D7BA6B657 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1214,6 +1288,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A6024694AB40E70B40D10B5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44A43042F207A59B6A1FF707 /* PackTagsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1221,6 +1303,12 @@
 			isa = PBXTargetDependency;
 			target = 02FB550524FFA2AA00174E34 /* PackTags */;
 			targetProxy = 02FB552024FFA2AC00174E34 /* PBXContainerItemProxy */;
+		};
+		7667417E8E168A3EEF277204 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PackTags;
+			target = 02FB550524FFA2AA00174E34 /* PackTags */;
+			targetProxy = CB871B401DE744BBC32C9174 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1471,6 +1559,45 @@
 			};
 			name = Release;
 		};
+		5F26905B12D829E34ABF3283 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PackTags.NordkappUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PackTags;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E2F6FE18C72CD3B4524AC2A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PackTags.NordkappUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PackTags;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1497,6 +1624,15 @@
 			buildConfigurations = (
 				02FB552C24FFA2AC00174E34 /* Debug */,
 				02FB552D24FFA2AC00174E34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F328A871CDAAAD3085F80F7E /* Build configuration list for PBXNativeTarget "PackTagsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F26905B12D829E34ABF3283 /* Release */,
+				E2F6FE18C72CD3B4524AC2A5 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

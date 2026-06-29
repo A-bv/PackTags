@@ -11,7 +11,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private let metricsReporter = MetricsReporter()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if !UserDefaultsAppSettings().hasSeenOnboarding { seedData() }
+        // UI tests launch with `-uitests` to get a deterministic start: sample themes seeded
+        // and onboarding skipped, so the notebook flow is reachable without tapping through it.
+        let uiTesting = ProcessInfo.processInfo.arguments.contains("-uitests")
+        if uiTesting || !UserDefaultsAppSettings().hasSeenOnboarding { seedData() }
+        if uiTesting { UserDefaultsAppSettings().hasSeenOnboarding = true }
 
         configureNeumorphicTheme()
         setupAppearance()
