@@ -35,9 +35,10 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(
-            for: UIFont.boldSystemFont(ofSize: Constants.nameLabelFontSize),
-            maximumPointSize: 28)
+            for: UIFont.boldSystemFont(ofSize: Constants.nameLabelFontSize))
         label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -132,8 +133,10 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
         // ---------- containerView ----------
 
         containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
+        // A floor, not a fixed height: the container grows with the (uncapped) name at large
+        // Dynamic Type sizes instead of clipping it. The row is taller, so there's room.
         containerView.heightAnchor.constraint(
-            equalToConstant: Constants.containerViewHeight
+            greaterThanOrEqualToConstant: Constants.containerViewHeight
         ).isActive = true
         containerView.leadingAnchor.constraint(
             equalTo: self.themeImageView.trailingAnchor,
@@ -146,12 +149,11 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
 
         // ---------- nameLabel ----------
 
-        nameLabel.topAnchor.constraint(equalTo:self.containerView.topAnchor).isActive = true
-        //
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            nameLabel.centerXAnchor.constraint(equalTo:self.centerXAnchor).isActive = true
-        } else {
-            nameLabel.centerXAnchor.constraint(equalTo:self.containerView.centerXAnchor).isActive = true
-        }
+        // Pinned to all four edges so it wraps within the container's width and drives the
+        // container's (floored) height — keeping the centred look via `textAlignment`.
+        nameLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        nameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        nameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
     }
 }

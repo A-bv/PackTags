@@ -38,9 +38,9 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
     let cellLabel: UILabel = {
         let label = UILabel()
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(
-            for: UIFont.boldSystemFont(ofSize: Constants.cellLabelFontSize),
-            maximumPointSize: 28)
+            for: UIFont.boldSystemFont(ofSize: Constants.cellLabelFontSize))
         label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
         label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -51,8 +51,7 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
     let subButton: UIButton = {
         let btn = UIButton()
         btn.titleLabel?.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(
-            for: UIFont.boldSystemFont(ofSize: Constants.subButtonFontSize),
-            maximumPointSize: 18)
+            for: UIFont.boldSystemFont(ofSize: Constants.subButtonFontSize))
         btn.titleLabel?.adjustsFontForContentSizeCategory = true
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.backgroundColor = UIColor.tagBadgeBlue
@@ -76,14 +75,18 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         btn.setTitle(Strings.copyLabel, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.titleLabel?.font = UIFontMetrics(forTextStyle: .headline).scaledFont(
-            for: .systemFont(ofSize: fontSize, weight: .semibold),
-            maximumPointSize: 24)
+            for: .systemFont(ofSize: fontSize, weight: .semibold))
         btn.titleLabel?.adjustsFontForContentSizeCategory = true
-        
+        btn.titleLabel?.numberOfLines = 0
+        // Hug the title so the button sizes to "Copy" (down to its minimum) and grows with
+        // Dynamic Type, rather than stretching to fill the available width.
+        btn.setContentHuggingPriority(.required, for: .horizontal)
+        btn.setContentHuggingPriority(.required, for: .vertical)
+
         btn.neumorphism(
             cornerRadius: Constants.copyButtonCornerRadius,
             shadowRadius: Constants.copyButtonShadowRadius)
-        
+
         return btn
     }()
     
@@ -160,13 +163,17 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         subButton.bottomAnchor.constraint(
             equalTo: self.containerView.bottomAnchor,
             constant: -Constants.subButtonBottomInset).isActive = true
+        subButton.trailingAnchor.constraint(
+            lessThanOrEqualTo: self.containerView.trailingAnchor).isActive = true
         
         // ---------- copyButton ----------
         
+        // Minimums, not fixed: the button keeps its resting size but grows with its title at
+        // large Dynamic Type sizes (its shadow is resized to match in `layoutSubviews`).
         copyButton.widthAnchor.constraint(
-            equalToConstant: Constants.copyButtonWidth).isActive = true
+            greaterThanOrEqualToConstant: Constants.copyButtonWidth).isActive = true
         copyButton.heightAnchor.constraint(
-            equalToConstant: Constants.copyButtonHeight).isActive = true
+            greaterThanOrEqualToConstant: Constants.copyButtonHeight).isActive = true
         copyButton.trailingAnchor.constraint(
             equalTo:self.contentView.trailingAnchor,
             constant: -Constants.copyButtonRightPadding).isActive = true
@@ -174,6 +181,13 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
             equalTo:self.contentView.centerYAnchor).isActive = true
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // The Copy button grows with Dynamic Type; its neumorphic shadow is baked at the
+        // creation-time size, so resize it to the current bounds and pill radius.
+        copyButton.resizeNeumorphicShadows(cornerRadius: copyButton.bounds.height / 2)
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         self.roundTopCorners(radius: 0)
