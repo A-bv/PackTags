@@ -628,5 +628,59 @@ import CoreData
     @Test func contentByPrepending_ontoExistingText_separatesWithABlankLine() {
         #expect(makeSUT().contentByPrepending(recognizedText: "#sun", to: "#sea") == "#sun\n\n#sea")
     }
+
+    @Test func save_updatesAnExistingTheme_withoutCreatingANewOne() {
+        let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
+        let existing = repository.create()
+        existing.name = "Old"
+        existing.content = "#old"
+        repository.save()
+
+        let sut = ThemeEditorViewModel(theme: existing, repository: repository, settings: FakeSettings())
+        sut.themeTitle = "Updated"
+        sut.save(rawText: "#new #new", imageData: nil, thumbnailData: nil)
+
+        #expect(repository.count() == 1)            // updated in place, not duplicated
+        #expect(sut.theme?.name == "Updated")
+        #expect(sut.theme?.content == "#new")
+    }
+
+    @Test func save_storesImageAndThumbnailData() {
+        let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
+        let sut = ThemeEditorViewModel(theme: nil, repository: repository, settings: FakeSettings())
+        sut.themeTitle = "Travel"
+        let image = Data([0x01, 0x02])
+        let thumbnail = Data([0x03])
+
+        sut.save(rawText: "#sea", imageData: image, thumbnailData: thumbnail)
+
+        #expect(sut.theme?.image == image)
+        #expect(sut.theme?.thumbnail == thumbnail)
+    }
+
+    @Test func shuffleContent_dedupesAndPreservesTheTagSet() {
+        let sut = makeSUT()
+
+        let result = sut.shuffleContent(rawText: "#sea #sea #sun")
+
+        let tags = Set(result.split(whereSeparator: { $0 == " " || $0 == "\n" }).map(String.init))
+        #expect(tags == ["#sea", "#sun"])   // shuffle order varies; the set must not
+    }
+
+    @Test func contentForDisplay_withNoTheme_isNil() {
+        #expect(makeSUT().contentForDisplay() == nil)
+    }
+
+    @Test func contentForDisplay_groupsTheContentIntoPacks() {
+        let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
+        let theme = repository.create()
+        theme.content = "#a #b #c #d"
+        repository.save()
+        let settings = FakeSettings()
+        settings.tagsPerPack = 2
+        let sut = ThemeEditorViewModel(theme: theme, repository: repository, settings: settings)
+
+        #expect(sut.contentForDisplay() == "#a #b\n\n#c #d")
+    }
 }
 
