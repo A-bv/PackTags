@@ -8,12 +8,14 @@ import NeumorphicSwiftUI
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+    private let metricsReporter = MetricsReporter()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if !UserDefaultsAppSettings().hasSeenOnboarding { seedData() }
 
         configureNeumorphicTheme()
         setupAppearance()
+        metricsReporter.start()
 
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
