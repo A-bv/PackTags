@@ -147,6 +147,8 @@
 "Shows the pack's hashtags" = "Affiche les hashtags du pack";
 "Close" = "Fermer";
 "Copy top hashtags" = "Copier les meilleurs hashtags";
+"Edit theme" = "Modifier le thème";
+"Instagram redirect" = "Redirection Instagram";
 
 //Empty / feedback states
 "No themes yet.\nTap + to create your first pack." = "Aucun thème pour l'instant.\nAppuyez sur + pour créer votre premier pack.";

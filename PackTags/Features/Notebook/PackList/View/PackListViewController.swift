@@ -10,6 +10,8 @@ final class PackListViewController: CoverImageTableViewController {
         static let stopRedirectionAlertMessage = "PackTags will stop redirecting you to this account, each time the copy button is tapped.".localized()
         static let undoRedirection = "Tap the button again to undo.".localized()
         static let show = "Show".localized()
+        static let editTheme = "Edit theme".localized()
+        static let instagramRedirect = "Instagram redirect".localized()
     }
 
     private enum Constants {
@@ -67,10 +69,12 @@ final class PackListViewController: CoverImageTableViewController {
         composeButton.image = UIImage(named: "EditPic")
         composeButton.target = self
         composeButton.action = #selector(didTapCompose)
+        composeButton.accessibilityLabel = Strings.editTheme
 
         instaButton.image = UIImage(named: "insta2")
         instaButton.target = self
         instaButton.action = #selector(didTapInstagram)
+        instaButton.accessibilityLabel = Strings.instagramRedirect
 
         navigationItem.rightBarButtonItems = [composeButton, instaButton]
 

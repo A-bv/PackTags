@@ -16,6 +16,9 @@ final class ThemeListViewController: UITableViewController {
         static let yes = "Yes".localized()
         static let cancel = "Cancel".localized()
         static let emptyState = "No themes yet.\nTap + to create your first pack.".localized()
+        static let settings = "Settings".localized()
+        static let analytics = "Analytics".localized()
+        static let smartHashtags = "Smart Hashtags".localized()
     }
 
     // MARK: - Dependencies
@@ -94,12 +97,15 @@ final class ThemeListViewController: UITableViewController {
         settingsButton.image = UIImage(systemName: "gearshape.2.fill")
         settingsButton.target = self
         settingsButton.action = #selector(didTapSettings)
+        settingsButton.accessibilityLabel = Strings.settings
         analyticsButton.image = UIImage(systemName: "chart.line.uptrend.xyaxis.circle.fill")
         analyticsButton.target = self
         analyticsButton.action = #selector(didTapAnalytics)
+        analyticsButton.accessibilityLabel = Strings.analytics
         smartGButton.image = UIImage(systemName: "number.circle.fill")
         smartGButton.target = self
         smartGButton.action = #selector(didTapSmartG)
+        smartGButton.accessibilityLabel = Strings.smartHashtags
 
         navigationController?.navigationBar.putShadow()
         navigationItem.leftBarButtonItem = settingsButton
