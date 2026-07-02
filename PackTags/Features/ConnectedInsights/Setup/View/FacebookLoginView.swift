@@ -56,18 +56,20 @@ struct FacebookLoginView: View {
                     Spacer()
                     FacebookLoginButton(
                         permissions: viewModel.loginPermissions,
+                        onWillLogin: { viewModel.loginWillStart() },
                         onComplete: { error in
                             Task { await viewModel.didCompleteLogin(error: error) }
                         },
+                        onCancel: { viewModel.loginDidCancel() },
                         onLogOut: { viewModel.resetFacebookSession() })
                     .fixedSize()
-                    .disabled(viewModel.isValidating)
+                    .disabled(viewModel.isBusy)
                     Spacer()
                     resetButton
                 }
                 .padding()
 
-                if viewModel.isValidating {
+                if viewModel.isBusy {
                     ProgressView().scaleEffect(1.4)
                 }
             }
@@ -171,7 +173,7 @@ struct FacebookLoginView: View {
         Button(Strings.reset) { viewModel.resetFacebookSession() }
             .font(.footnote)
             .tint(.secondary)
-            .disabled(viewModel.isValidating)
+            .disabled(viewModel.isBusy)
     }
 
     private var wrongSetupMessage: String {

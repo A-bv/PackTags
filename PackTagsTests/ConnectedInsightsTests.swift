@@ -400,6 +400,37 @@ private struct ThrowingGateway: ConnectedInsightsGatewayProtocol {
         #expect(!sut.connectedViaLogin)  // passive re-validation → no alert
     }
 
+    // MARK: login spinner
+
+    @Test func loginWillStart_showsSpinnerImmediately() {
+        let (sut, _, _, _) = makeSUT()
+
+        sut.loginWillStart()
+
+        #expect(sut.isLoggingIn)
+        #expect(sut.isBusy)   // button tap → feedback before Facebook's sheet appears
+    }
+
+    @Test func loginDidCancel_hidesSpinner() {
+        let (sut, _, _, _) = makeSUT()
+        sut.loginWillStart()
+
+        sut.loginDidCancel()
+
+        #expect(!sut.isLoggingIn)
+        #expect(!sut.isBusy)   // backed out of the sheet → no stuck spinner
+    }
+
+    @Test func didCompleteLogin_clearsLoginSpinner() async {
+        let (sut, _, _, _) = makeSUT(token: FacebookToken(tokenString: "token-123"))
+        sut.loginWillStart()
+
+        await sut.didCompleteLogin(error: nil)
+
+        #expect(!sut.isLoggingIn)
+        #expect(!sut.isBusy)   // validation finished → spinner cleared
+    }
+
     @Test func didCompleteLogin_connectsAndFlagsLogin_onSuccess() async {
         let session = FakeSession()
         session.token = FacebookToken(tokenString: "token-123")

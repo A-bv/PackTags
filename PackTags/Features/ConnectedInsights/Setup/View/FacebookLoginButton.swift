@@ -7,7 +7,11 @@ import FBSDKLoginKit
 /// validates the resulting token against the Graph.
 struct FacebookLoginButton: UIViewRepresentable {
     let permissions: [String]
+    /// Fires the instant the button starts its login flow (before the consent sheet) —
+    /// the only chance to show feedback while the SDK spins up.
+    let onWillLogin: () -> Void
     let onComplete: (Error?) -> Void
+    let onCancel: () -> Void
     let onLogOut: () -> Void
 
     func makeUIView(context: Context) -> FBLoginButton {
@@ -23,16 +27,31 @@ struct FacebookLoginButton: UIViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(onComplete: onComplete, onLogOut: onLogOut)
+        Coordinator(onWillLogin: onWillLogin, onComplete: onComplete, onCancel: onCancel, onLogOut: onLogOut)
     }
 
     final class Coordinator: NSObject, @preconcurrency LoginButtonDelegate {
+        private let onWillLogin: () -> Void
         private let onComplete: (Error?) -> Void
+        private let onCancel: () -> Void
         private let onLogOut: () -> Void
 
-        init(onComplete: @escaping (Error?) -> Void, onLogOut: @escaping () -> Void) {
+        init(
+            onWillLogin: @escaping () -> Void,
+            onComplete: @escaping (Error?) -> Void,
+            onCancel: @escaping () -> Void,
+            onLogOut: @escaping () -> Void
+        ) {
+            self.onWillLogin = onWillLogin
             self.onComplete = onComplete
+            self.onCancel = onCancel
             self.onLogOut = onLogOut
+        }
+
+        @MainActor
+        func loginButtonWillLogin(_ loginButton: FBLoginButton) -> Bool {
+            onWillLogin()
+            return true
         }
 
         @MainActor
@@ -41,7 +60,7 @@ struct FacebookLoginButton: UIViewRepresentable {
             didCompleteWith result: LoginManagerLoginResult?,
             error: Error?
         ) {
-            guard result?.isCancelled != true else { return }
+            guard result?.isCancelled != true else { return onCancel() }
             onComplete(error)
         }
 

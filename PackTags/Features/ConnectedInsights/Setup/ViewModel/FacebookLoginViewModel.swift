@@ -23,6 +23,10 @@ final class FacebookLoginViewModel {
     ]
 
     private(set) var isValidating = false
+    /// True from the button tap until Facebook's login flow either presents its sheet,
+    /// completes, or is cancelled — the only window where the SDK gives us nothing else
+    /// to show feedback for.
+    private(set) var isLoggingIn = false
     /// Set when a setup attempt finishes; the view consumes it (alert / dismiss) and
     /// calls `clearResult()`.
     private(set) var result: SetupResult?
@@ -38,6 +42,9 @@ final class FacebookLoginViewModel {
     private let tracking: any AppTrackingAuthorizerProtocol
 
     var hasSeenSetupInfo: Bool { settings.setupInfoShown }
+    /// True while any login work is in flight — the SDK spinning up its login flow
+    /// (between tap and consent sheet) or the post-login Graph validation.
+    var isBusy: Bool { isLoggingIn || isValidating }
 
     init(
         gateway: any ConnectedInsightsGatewayProtocol,
@@ -60,8 +67,20 @@ final class FacebookLoginViewModel {
         await validateSetup(markLoginAttempt: false)
     }
 
+    /// The button is about to start its login flow — show feedback immediately, since the
+    /// SDK gives no further signal until the consent sheet appears or the flow finishes.
+    func loginWillStart() {
+        isLoggingIn = true
+    }
+
+    /// The user backed out of Facebook's sheet — no completion fires, so clear the spinner.
+    func loginDidCancel() {
+        isLoggingIn = false
+    }
+
     /// Called when the Facebook login button finishes (not on cancel).
     func didCompleteLogin(error: Error?) async {
+        isLoggingIn = false
         if let error {
             result = .failed(message: "Facebook Login failed: \(error.localizedDescription)")
             return
