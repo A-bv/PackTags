@@ -82,7 +82,8 @@ final class FacebookLoginViewModel {
     func didCompleteLogin(error: Error?) async {
         isLoggingIn = false
         if let error {
-            result = .failed(message: "Facebook Login failed: \(error.localizedDescription)")
+            AppLogger.login.error("Facebook login failed: \(error.localizedDescription, privacy: .private)")
+            result = .failed(message: error.localizedDescription)
             return
         }
         await validateSetup(markLoginAttempt: true)
