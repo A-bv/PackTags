@@ -44,7 +44,6 @@ struct AnalyticsView: View {
         static let smallScreenWidthLimit: CGFloat = 375 // iPhone 13 mini / SE
         static let graphSectionHorizontalPadding: CGFloat = 17.5
         static let overviewCellHeaderToValuePadding: CGFloat = 20
-        static let overviewCellValueFontSize: CGFloat = 22
         static let overviewCellCornerRadius: CGFloat = 15
         static let overviewCellToEdgeHorizontalPadding: CGFloat = 20
         static let graphSectionHeaderVerticalSpacing: CGFloat = 5
@@ -329,7 +328,7 @@ private extension AnalyticsView {
                             .font(Font.system(.title2))
                     }
                     Text(overviewCell.value)
-                        .font(.system(size: Constants.overviewCellValueFontSize))
+                        .font(.title2) // was a fixed 22pt; .title2 matches it and tracks Dynamic Type
                         .foregroundColor(Color(UIColor.label))
                         .fontWeight(.bold)
                     Text(overviewCell.title)
