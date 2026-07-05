@@ -11,7 +11,7 @@ class PackTagsTests: XCTestCase {
             gateway: UnavailableConnectedInsightsGateway(),
             hashtagRepository: CoreDataHashtagRepository(
                 context: PersistenceController(modelName: "SmartTags", inMemory: true).viewContext))
-        let mediaResponse = """
+        let mediaResponse = Data("""
         {
           "data": [
             {
@@ -31,7 +31,7 @@ class PackTagsTests: XCTestCase {
             }
           ]
         }
-        """.data(using: .utf8)!
+        """.utf8)
         let media = try JSONDecoder().decode(Media.self, from: mediaResponse)
         sut.dataMedias = media.data.compactMap { $0 }
 

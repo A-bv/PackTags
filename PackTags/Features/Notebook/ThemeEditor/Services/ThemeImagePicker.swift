@@ -45,7 +45,7 @@ final class ThemeImagePicker: NSObject {
         overlay.addSubview(spinner)
         NSLayoutConstraint.activate([
             spinner.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: overlay.centerYAnchor),
+            spinner.centerYAnchor.constraint(equalTo: overlay.centerYAnchor)
         ])
         return overlay
     }()
@@ -78,7 +78,7 @@ final class ThemeImagePicker: NSObject {
             loadingOverlay.topAnchor.constraint(equalTo: view.topAnchor),
             loadingOverlay.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             loadingOverlay.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loadingOverlay.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingOverlay.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 }

@@ -17,12 +17,12 @@ struct SmartGView: View {
     }
 
     var body: some View {
-        ZStack{
+        ZStack {
             Color.bgFillColor.ignoresSafeArea()
             if !monitor.isConnected {
                 OfflineView()
             } else {
-                VStack() {
+                VStack {
                     SmartGHeaderView()
                     InteractionBarView(smartGViewModel: smartGViewModel)
                     Spacer()
@@ -33,7 +33,7 @@ struct SmartGView: View {
                     } else if smartGViewModel.hasNoResults {
                         SmartGErrorStateView()
                     } else {
-                        ScrollView{
+                        ScrollView {
                             VStack {
                                 FloatingListView(viewModel: self.smartGViewModel)
                                 StoryCardCarouselView(viewModel: smartGViewModel)

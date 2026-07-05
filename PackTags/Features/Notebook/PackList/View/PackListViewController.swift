@@ -64,7 +64,7 @@ final class PackListViewController: CoverImageTableViewController {
         instagramRedirectTask?.cancel()
     }
 
-    override func viewDidLoad(){
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.title = viewModel.title
 
@@ -169,7 +169,7 @@ extension PackListViewController {
     }
 
     private func addSCellSwipeAccessory(indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let contextItem = UIContextualAction(style: .normal, title: Strings.show) { [weak self] (contextualAction, view, boolValue) in
+        let contextItem = UIContextualAction(style: .normal, title: Strings.show) { [weak self] (_, _, _) in
             guard let self else { return }
             self.presentThemeVC(showingPack: self.packs[indexPath.row])
         }

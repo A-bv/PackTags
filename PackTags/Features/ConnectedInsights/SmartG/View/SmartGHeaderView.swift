@@ -28,9 +28,9 @@ struct SmartGHeaderView: View {
                 
             }
             Spacer()
-            Button(action: {
+            Button {
                 dismiss()
-            }) {
+            } label: {
                 Image(systemName: "chevron.down.circle")
                     .font(Font.system(.title))
                     .foregroundColor(Color(UIColor.label))

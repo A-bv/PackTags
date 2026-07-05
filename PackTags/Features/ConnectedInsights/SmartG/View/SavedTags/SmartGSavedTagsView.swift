@@ -28,9 +28,9 @@ struct SmartGSavedTagsView: View {
     @Environment(\.managedObjectContext) var moc
     
     private var button: some View {
-        Button(action: {
+        Button {
             isPresented = false
-        }) {
+        } label: {
             Image(systemName: "chevron.down")
                 .font(.system(size: 24))
                 .foregroundColor(Constants.tintColor)

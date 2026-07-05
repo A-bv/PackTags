@@ -19,7 +19,7 @@ final class FacebookLoginViewModel {
         "instagram_basic",
         "pages_show_list",
         "instagram_manage_insights",
-        "business_management",
+        "business_management"
     ]
 
     private(set) var isValidating = false

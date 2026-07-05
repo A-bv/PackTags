@@ -38,4 +38,3 @@ struct SmartGErrorStateView: View {
 #Preview {
     SmartGErrorStateView()
 }
-

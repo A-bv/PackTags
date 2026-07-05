@@ -11,6 +11,7 @@ import InstagramGraph
 /// Decodable-only, so tests construct them the way production does.
 private func makeProfile(
     followers: Int? = nil,
+    // swiftlint:disable:next large_tuple - named per-post metrics, readable at call sites
     medias: [(likes: Int, comments: Int, reach: Int, impressions: Int, engagement: Int)]? = nil
 ) throws -> Profile {
     var profile: [String: Any] = ["id": "1", "username": "packtags"]
@@ -24,8 +25,8 @@ private func makeProfile(
                 "insights": ["data": [
                     ["name": "reach", "values": [["value": media.reach]]],
                     ["name": "views", "values": [["value": media.impressions]]],
-                    ["name": "total_interactions", "values": [["value": media.engagement]]],
-                ]],
+                    ["name": "total_interactions", "values": [["value": media.engagement]]]
+                ]]
             ]
         }]
     }
@@ -54,7 +55,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func transform_sumsAndAveragesLikesAndComments() throws {
         let profile = try makeProfile(medias: [
             (likes: 10, comments: 2, reach: 100, impressions: 200, engagement: 12),
-            (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24),
+            (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24)
         ])
 
         let model = try #require(ProfileDataTransformer.transform(response: profile))
@@ -69,7 +70,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func transform_rawInsights_exposesEngagementValuesUntouched() throws {
         let profile = try makeProfile(medias: [
             (likes: 1, comments: 1, reach: 100, impressions: 200, engagement: 12),
-            (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 24),
+            (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 24)
         ])
 
         let model = try #require(ProfileDataTransformer.transform(
@@ -83,7 +84,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func transform_computedRates_arePercentagesOfFollowers() throws {
         let profile = try makeProfile(followers: 200, medias: [
             (likes: 1, comments: 1, reach: 100, impressions: 200, engagement: 10),
-            (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 30),
+            (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 30)
         ])
 
         let model = try #require(ProfileDataTransformer.transform(
@@ -94,7 +95,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func transform_zeroDenominators_produceZeroRatesInsteadOfNaN() throws {
         let profile = try makeProfile(followers: 0, medias: [
-            (likes: 1, comments: 1, reach: 0, impressions: 0, engagement: 10),
+            (likes: 1, comments: 1, reach: 0, impressions: 0, engagement: 10)
         ])
 
         let model = try #require(ProfileDataTransformer.transform(
@@ -333,6 +334,7 @@ private struct ThrowingGateway: ConnectedInsightsGatewayProtocol {
         token: FacebookToken = FacebookToken(tokenString: nil),
         setupError: Error? = nil,
         setupInfoShown: Bool = true
+        // swiftlint:disable:next large_tuple - named fixture, destructured at every call site
     ) -> (sut: FacebookLoginViewModel, gateway: FakeGateway, session: FakeSession, settings: FakeSettings) {
         let gateway = FakeGateway()
         gateway.setupError = setupError
@@ -586,7 +588,7 @@ private struct ThrowingGateway: ConnectedInsightsGatewayProtocol {
     private func twoPostProfile() throws -> Profile {
         try makeProfile(followers: 1000, medias: [
             (likes: 10, comments: 2, reach: 100, impressions: 200, engagement: 12),
-            (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24),
+            (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24)
         ])
     }
 

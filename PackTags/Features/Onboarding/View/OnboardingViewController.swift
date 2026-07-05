@@ -147,7 +147,7 @@ final class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             getStartedBtn.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: 20),
             getStartedBtn.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
             getStartedBtn.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -32),
-            safeArea.bottomAnchor.constraint(equalTo: getStartedBtn.bottomAnchor, constant: 35),
+            safeArea.bottomAnchor.constraint(equalTo: getStartedBtn.bottomAnchor, constant: 35)
         ])
     }
 
@@ -187,21 +187,22 @@ final class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         return max(minimum, ceil(fitted))
     }
 
-    private func makeSlide(index: Int) -> UIView {
-        let imageViewFrame = CGRect(
+    private func makeIllustration(index: Int) -> UIImageView {
+        let imageView = UIImageView(image: UIImage(named: illustrations[index]))
+        imageView.frame = CGRect(
             x: 0,
             y: 0,
             width: Constants.adaptiveImageViewLength,
             height: Constants.adaptiveImageViewLength)
-        let imageViewCenter = CGPoint(
+        imageView.contentMode = .scaleAspectFit
+        imageView.center = CGPoint(
             x: scrollWidth / 2,
             y: scrollHeight / 2 + Constants.imageViewCenterPositionYAdjustment)
+        return imageView
+    }
 
-        let imageView = UIImageView(image: UIImage(named: illustrations[index]))
-        imageView.frame = imageViewFrame
-        imageView.contentMode = .scaleAspectFit
-        imageView.center = imageViewCenter
-
+    private func makeSlide(index: Int) -> UIView {
+        let imageView = makeIllustration(index: index)
         let labelWidth = scrollWidth - Constants.scrollWidthPadding
 
         let title = UILabel()

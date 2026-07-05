@@ -11,9 +11,9 @@ struct TagView: View {
     let tagCornerRadius: CGFloat
     
     var body: some View {
-        Button(action: {
+        Button {
             UIPasteboard.general.string = item
-        }) {
+        } label: {
             Text("\(item)")
                 .background(
                     GeometryReader { geometry in

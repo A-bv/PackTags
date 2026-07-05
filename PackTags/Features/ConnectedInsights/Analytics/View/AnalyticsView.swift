@@ -196,10 +196,10 @@ private extension AnalyticsView {
 // MARK: - Buttons
 private extension AnalyticsView {
     var backButton: some View {
-        Button(action: {
+        Button {
             viewModel.rawInsights = true
             dismiss()
-        }) {
+        } label: {
             Image(systemName: "chevron.down.circle")
                 .font(Font.system(.title))
                 .foregroundColor(Color(UIColor.label))
@@ -208,10 +208,10 @@ private extension AnalyticsView {
     }
 
     var infoButton: some View {
-        Button(action: {
+        Button {
             showingAlert = true
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-        }) {
+        } label: {
             Image(systemName: "info.circle")
         }
         .accessibilityLabel(Text(infoTitle(viewModel.metric)))
@@ -235,7 +235,7 @@ private extension AnalyticsView {
     }
 
     var switchModeButton: some View {
-        Button(action: { cycleMetric() }) {
+        Button { cycleMetric() } label: {
             Image(systemName: "scale.3d")
                 .foregroundColor(.brandAccent)
         }
@@ -274,7 +274,7 @@ private extension AnalyticsView {
             VStack(
                 spacing: Constants.scrollViewVerticalSpacing
             ) {
-                HStack{
+                HStack {
                     graphSectionHeader
                     Spacer()
                     graphSectionHeaderButtons
@@ -319,11 +319,11 @@ private extension AnalyticsView {
 
 // Overview
 private extension AnalyticsView {
-    var overviewSection: some View{
+    var overviewSection: some View {
         LazyVGrid(columns: Constants.overviewColumns) {
             ForEach(viewModel.overviewSectionData) { overviewCell in
-                VStack(spacing: Constants.overviewCellHeaderToValuePadding){
-                    HStack{
+                VStack(spacing: Constants.overviewCellHeaderToValuePadding) {
+                    HStack {
                         Text(viewModel.transformedProfile?.postsCount == 1 ? "" : Strings.average)
                             .font(.body)
                             .foregroundColor(Color(UIColor.label))

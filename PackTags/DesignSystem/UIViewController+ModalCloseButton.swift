@@ -25,7 +25,7 @@ extension UIViewController {
             button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             button.heightAnchor.constraint(equalToConstant: Constants.buttonSize),
-            button.widthAnchor.constraint(equalTo: button.heightAnchor),
+            button.widthAnchor.constraint(equalTo: button.heightAnchor)
         ])
     }
 }

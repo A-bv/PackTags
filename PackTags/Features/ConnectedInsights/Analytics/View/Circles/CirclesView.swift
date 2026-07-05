@@ -71,7 +71,7 @@ struct CirclesView: View {
     let gridItem = GridItem(.flexible())
     return ZStack {
         Color.bgFillColor.ignoresSafeArea()
-        VStack() {
+        VStack {
             CirclesView(
                 circles: .constant([
                     CircleGaugeModel(id: 0, title: "Average", value: 203.1, maxValue: 7),

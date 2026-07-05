@@ -688,4 +688,3 @@ import CoreData
         #expect(sut.contentForDisplay() == "#a #b\n\n#c #d")
     }
 }
-

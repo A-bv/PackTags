@@ -126,7 +126,7 @@ final class ThemeEditorViewController: UIViewController {
             themeTextView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: Constants.contentInset),
             themeTextView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: Constants.contentInset),
             themeTextView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -Constants.contentInset),
-            themeTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -Constants.contentInset),
+            themeTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -Constants.contentInset)
         ])
     }
 
@@ -141,7 +141,7 @@ final class ThemeEditorViewController: UIViewController {
         view.addSubview(spinner)
         NSLayoutConstraint.activate([
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 
@@ -294,7 +294,7 @@ extension ThemeEditorViewController {
     private func highlight(_ pack: String) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            self.themeTextView.text = self.themeTextView.text + "\n" // Last for highlight
+            self.themeTextView.text = (self.themeTextView.text ?? "") + "\n" // Last for highlight
             guard let match = self.themeTextView.text.range(of: pack + "\n") else { return }
 
             // Assigning attributedText forces a clean relayout; mutating
@@ -311,4 +311,3 @@ extension ThemeEditorViewController {
         }
     }
 }
-
