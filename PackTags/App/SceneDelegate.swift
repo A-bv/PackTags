@@ -6,7 +6,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     private var appCoordinator: AppCoordinator?
 
-    //Fb login
+    // Fb login
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let context = URLContexts.first else { return }
 

@@ -7,6 +7,8 @@ final class PackListViewController: CoverImageTableViewController {
         static let username = "Username".localized()
         static let enterUsername = "Enter Username".localized()
         static let redirectionAlertMessage = "PackTags will redirect you to this account each, time the copy button is tapped.".localized()
+        // The English sentence is the localization key, so the line can't wrap.
+        // swiftlint:disable:next line_length
         static let stopRedirectionAlertMessage = "PackTags will stop redirecting you to this account, each time the copy button is tapped.".localized()
         static let undoRedirection = "Tap the button again to undo.".localized()
         static let show = "Show".localized()
@@ -112,9 +114,12 @@ extension PackListViewController {
         return configureCell(indexPath: indexPath)
     }
     
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-      return addSCellSwipeAccessory(indexPath: indexPath)
-  }
+    override func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        return addSCellSwipeAccessory(indexPath: indexPath)
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

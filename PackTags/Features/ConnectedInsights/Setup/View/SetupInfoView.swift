@@ -4,6 +4,8 @@ import SwiftUI
 /// the former `InfoSetupIGCreatorViewController`.
 struct SetupInfoView: View {
     private enum Strings {
+        // The English sentence is the localization key, so the line can't wrap.
+        // swiftlint:disable:next line_length
         static let intro = "Meta features are only available to Creator/Business Instagram accounts connected to a Facebook page.".localized()
         static let topLabel = "Creator /Business account:".localized()
         static let topText = "topTextViewText".localized()

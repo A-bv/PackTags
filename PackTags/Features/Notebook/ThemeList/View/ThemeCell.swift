@@ -67,7 +67,6 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
         setupUI()
     }
 
-
     private func setupUI() {
         self.contentView.backgroundColor = .colorBkgd
 

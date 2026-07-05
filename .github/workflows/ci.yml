@@ -6,6 +6,17 @@ on:
   pull_request:
 
 jobs:
+  lint:
+    name: SwiftLint
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/realm/swiftlint:0.57.0
+    steps:
+      - uses: actions/checkout@v5
+      - name: Lint
+        # Errors fail the job; warnings surface as inline annotations.
+        run: swiftlint lint --reporter github-actions-logging
+
   test:
     name: Build & Test
     runs-on: macos-latest

@@ -1,0 +1,41 @@
+# SwiftLint — enforced by the "SwiftLint" job in .github/workflows/ci.yml.
+# Default rule set; every deviation below is deliberate and explained.
+
+excluded:
+  - .build
+  - DerivedData
+
+line_length:
+  warning: 140
+  error: 300
+  ignores_comments: true
+  ignores_urls: true
+  ignores_interpolated_strings: true
+  # Localization keys are full English sentences (the key doubles as the
+  # English copy — see docs/CONVENTIONS.md), so a handful of key literals
+  # can't wrap; those carry a swiftlint:disable with a rationale in place.
+
+trailing_whitespace:
+  ignores_empty_lines: true
+
+identifier_name:
+  excluded:
+    - i
+    - x
+    - y
+    - id
+    - ok
+    - vm
+    - vc
+    - nc
+    - ui
+    - it
+    - eR # Instagram's "Engagement Rate" metric
+
+file_length:
+  warning: 700 # the two largest test suites sit just under; app files stay far below
+  error: 1000
+
+type_body_length:
+  warning: 250
+  error: 350

@@ -142,7 +142,12 @@ import CoreData
     private func makeSUT(navigation: ThemeListNavigation? = nil) -> (viewModel: ThemeListViewModel, repository: CoreDataThemeRepository) {
         let persistence = PersistenceController(inMemory: true)
         let repository = CoreDataThemeRepository(context: persistence.viewContext)
-        return (ThemeListViewModel(repository: repository, settings: FakeSettings(), navigation: navigation ?? noopNavigation()), repository)
+        return (
+            ThemeListViewModel(
+                repository: repository,
+                settings: FakeSettings(),
+                navigation: navigation ?? noopNavigation()),
+            repository)
     }
 
     private func makeSUTWithSettings() -> (ThemeListViewModel, FakeSettings) {

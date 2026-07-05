@@ -16,6 +16,8 @@ enum AlertPresenter {
         static let tricksAndTips = "Tricks & Tips".localized()
         static let ok = "Ok".localized()
         static let storeErrorTitle = "Couldn't open your data".localized()
+        // The English sentence is the localization key, so the line can't wrap.
+        // swiftlint:disable:next line_length
         static let storeErrorMessage = "Your saved packs couldn't be loaded. You can reset the app's data to recover — this permanently removes saved packs — or close this and try again later.".localized()
         static let resetData = "Reset data".localized()
         static let storeResetTitle = "Data reset".localized()
