@@ -1,10 +1,6 @@
 import SwiftUI
 
 struct StoryCardLabelView: View {
-    private enum Constants {
-        static let cardLabelFontSize: CGFloat = 12
-    }
-
     let comments: String
     let likes: String
     let hashtagsCount: String
@@ -24,7 +20,7 @@ struct StoryCardLabelView: View {
         if count != "0" {
             Image(systemName: icon)
             Text(count)
-                .font(.system(size: Constants.cardLabelFontSize, weight: .semibold))
+                .font(.caption.weight(.semibold))
         }
     }
 }

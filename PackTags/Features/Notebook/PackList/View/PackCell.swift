@@ -133,13 +133,13 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         
         // ---------- containerView ----------
         
-        containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
+        containerView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         containerView.leadingAnchor.constraint(
-            equalTo:self.contentView.leadingAnchor,
+            equalTo: self.contentView.leadingAnchor,
             constant: Constants.copyButtonRightPadding).isActive = true
         
         containerView.trailingAnchor.constraint(
-            equalTo:self.copyButton.leadingAnchor,
+            equalTo: self.copyButton.leadingAnchor,
             constant: -Constants.value10).isActive = true
         // Minimum, not fixed: keeps the resting layout but lets the label + badge grow at
         // large Dynamic Type sizes instead of clipping their descenders (the row is far
@@ -149,9 +149,9 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         
         // ---------- cellLabel ----------
         
-        cellLabel.topAnchor.constraint(equalTo:self.containerView.topAnchor).isActive = true
-        cellLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
-        cellLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true
+        cellLabel.topAnchor.constraint(equalTo: self.containerView.topAnchor).isActive = true
+        cellLabel.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor).isActive = true
+        cellLabel.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor).isActive = true
         
         // ---------- subLabel ----------
         
@@ -175,10 +175,10 @@ final class PackCell: UITableViewCell, ReusableCellProtocol {
         copyButton.heightAnchor.constraint(
             greaterThanOrEqualToConstant: Constants.copyButtonHeight).isActive = true
         copyButton.trailingAnchor.constraint(
-            equalTo:self.contentView.trailingAnchor,
+            equalTo: self.contentView.trailingAnchor,
             constant: -Constants.copyButtonRightPadding).isActive = true
         copyButton.centerYAnchor.constraint(
-            equalTo:self.contentView.centerYAnchor).isActive = true
+            equalTo: self.contentView.centerYAnchor).isActive = true
     }
     
     override func layoutSubviews() {

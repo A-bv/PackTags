@@ -23,11 +23,11 @@ final class ThemeEditorViewController: UIViewController {
         static let imageSelected = "Image selected! Save to update.".localized()
     }
 
-    //MARK: - Dependencies
+    // MARK: - Dependencies
 
     private let viewModel: ThemeEditorViewModel
 
-    //MARK: - UI
+    // MARK: - UI
 
     private let themeTextView: TapTextView = {
         let textView = TapTextView()
@@ -61,7 +61,7 @@ final class ThemeEditorViewController: UIViewController {
 
     private let spinner = UIActivityIndicatorView()
 
-    //MARK: - State
+    // MARK: - State
 
     private var themeImage = UIImage(named: "logoLong")
 
@@ -71,12 +71,12 @@ final class ThemeEditorViewController: UIViewController {
 
     private let imagePicker = ThemeImagePicker()
 
-    //MARK: - Callbacks
+    // MARK: - Callbacks
 
     var onSave: ((ThemeEntity?) -> Void)?
     var onCancel: (() -> Void)?
 
-    //MARK: - Init
+    // MARK: - Init
 
     init(viewModel: ThemeEditorViewModel) {
         self.viewModel = viewModel
@@ -87,7 +87,7 @@ final class ThemeEditorViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: - Lifecycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +114,7 @@ final class ThemeEditorViewController: UIViewController {
         view.endEditing(true)
     }
 
-    //MARK: - Setup
+    // MARK: - Setup
 
     private func setupViewHierarchy() {
         view.addSubview(themeTextView)
@@ -126,7 +126,7 @@ final class ThemeEditorViewController: UIViewController {
             themeTextView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: Constants.contentInset),
             themeTextView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: Constants.contentInset),
             themeTextView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -Constants.contentInset),
-            themeTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -Constants.contentInset),
+            themeTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -Constants.contentInset)
         ])
     }
 
@@ -141,7 +141,7 @@ final class ThemeEditorViewController: UIViewController {
         view.addSubview(spinner)
         NSLayoutConstraint.activate([
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 
@@ -156,7 +156,7 @@ final class ThemeEditorViewController: UIViewController {
 
     private func updateSaveButtonState() { saveButton.isEnabled = viewModel.canSave }
 
-    //MARK: - Save
+    // MARK: - Save
 
     @objc private func save() {
         let imageData = themeImage?.jpegData(compressionQuality: Constants.jpegQuality)
@@ -169,7 +169,7 @@ final class ThemeEditorViewController: UIViewController {
         }
     }
 
-    //MARK: - Cancel
+    // MARK: - Cancel
 
     // The coordinator always presents this editor modally (inside its own
     // navigation controller), so dismissal is the only exit.
@@ -180,7 +180,7 @@ final class ThemeEditorViewController: UIViewController {
     }
 }
 
-//MARK: - Options menu
+// MARK: - Options menu
 
 extension ThemeEditorViewController {
 
@@ -238,7 +238,7 @@ extension ThemeEditorViewController {
     }
 }
 
-//MARK: - Cover image & text recognition
+// MARK: - Cover image & text recognition
 
 extension ThemeEditorViewController {
 
@@ -269,7 +269,7 @@ extension ThemeEditorViewController {
     }
 }
 
-//MARK: - Theme name alert
+// MARK: - Theme name alert
 
 extension ThemeEditorViewController {
 
@@ -287,14 +287,14 @@ extension ThemeEditorViewController {
     }
 }
 
-//MARK: - Pack highlight (PackList "Show" flow)
+// MARK: - Pack highlight (PackList "Show" flow)
 
 extension ThemeEditorViewController {
 
     private func highlight(_ pack: String) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            self.themeTextView.text = self.themeTextView.text + "\n" // Last for highlight
+            self.themeTextView.text = (self.themeTextView.text ?? "") + "\n" // Last for highlight
             guard let match = self.themeTextView.text.range(of: pack + "\n") else { return }
 
             // Assigning attributedText forces a clean relayout; mutating
@@ -311,4 +311,3 @@ extension ThemeEditorViewController {
         }
     }
 }
-

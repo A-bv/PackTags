@@ -5,6 +5,7 @@ import InstagramGraph
 @Observable
 final class SmartGViewModel {
     @ObservationIgnored private let gateway: any ConnectedInsightsGatewayProtocol
+    @ObservationIgnored private let hashtagRepository: any HashtagRepositoryProtocol
     @ObservationIgnored private let searchTimeout: Double
 
     private enum Strings {
@@ -38,8 +39,13 @@ final class SmartGViewModel {
     /// overwrite a newer one.
     private var searchGeneration = 0
 
-    init(gateway: any ConnectedInsightsGatewayProtocol, searchTimeout: Double = Constants.searchTimeout) {
+    init(
+        gateway: any ConnectedInsightsGatewayProtocol,
+        hashtagRepository: any HashtagRepositoryProtocol,
+        searchTimeout: Double = Constants.searchTimeout
+    ) {
         self.gateway = gateway
+        self.hashtagRepository = hashtagRepository
         self.searchTimeout = searchTimeout
     }
 
@@ -48,11 +54,15 @@ final class SmartGViewModel {
     }
 
     /// Returns false when the entry is unchanged and its results are already showing.
+    /// A new entry is recorded to the saved-hashtags store as typed, whatever the
+    /// search outcome, so the weekly quota tracking matches what the user searched.
     func submitSearch() async -> Bool {
-        let newEntry = hashtagEntry.filter { $0 != "#" }
+        let rawEntry = hashtagEntry
+        let newEntry = rawEntry.filter { $0 != "#" }
         guard searchedHashtag != newEntry else { return false }
 
         searchedHashtag = newEntry
+        hashtagRepository.recordSearch(rawEntry)
         await runSearch(hashtag: newEntry)
         return true
     }

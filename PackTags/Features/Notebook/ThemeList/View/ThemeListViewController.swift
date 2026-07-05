@@ -120,7 +120,11 @@ final class ThemeListViewController: UITableViewController {
     }
 
     private func updateLogo() {
-        navigationItem.titleView = UIImageView(image: UIImage(named: "logo"))
+        let logoView = UIImageView(image: UIImage(named: "logo"))
+        logoView.isAccessibilityElement = true
+        logoView.accessibilityLabel = "PackTags" // brand name — identical in every locale
+        logoView.accessibilityTraits = .header
+        navigationItem.titleView = logoView
     }
 
     private func addFloatingButton() {

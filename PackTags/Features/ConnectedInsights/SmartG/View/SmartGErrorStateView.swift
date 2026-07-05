@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SmartGErrorStateView: View {    
+struct SmartGErrorStateView: View {
     private enum Strings {
         static let errorState = "Oups! Could not find hashtags.\nCheck your entry.".localized()
     }
@@ -38,4 +38,3 @@ struct SmartGErrorStateView: View {
 #Preview {
     SmartGErrorStateView()
 }
-

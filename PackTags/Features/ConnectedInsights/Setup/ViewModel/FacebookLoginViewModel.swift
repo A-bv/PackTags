@@ -19,7 +19,7 @@ final class FacebookLoginViewModel {
         "instagram_basic",
         "pages_show_list",
         "instagram_manage_insights",
-        "business_management",
+        "business_management"
     ]
 
     private(set) var isValidating = false
@@ -82,7 +82,8 @@ final class FacebookLoginViewModel {
     func didCompleteLogin(error: Error?) async {
         isLoggingIn = false
         if let error {
-            result = .failed(message: "Facebook Login failed: \(error.localizedDescription)")
+            AppLogger.login.error("Facebook login failed: \(error.localizedDescription, privacy: .private)")
+            result = .failed(message: error.localizedDescription)
             return
         }
         await validateSetup(markLoginAttempt: true)

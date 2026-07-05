@@ -67,7 +67,6 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
         setupUI()
     }
 
-
     private func setupUI() {
         self.contentView.backgroundColor = .colorBkgd
 
@@ -82,9 +81,14 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
         self.contentView.addSubview(supportingView)
         self.contentView.addSubview(themeImageView)
 
-        // ---------- themeImageView ----------
+        setupThemeImageViewConstraints()
+        setupSupportingViewConstraints()
+        setupContainerViewConstraints()
+        setupNameLabelConstraints()
+    }
 
-        themeImageView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
+    private func setupThemeImageViewConstraints() {
+        themeImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         themeImageView.leadingAnchor.constraint(
             equalTo: self.contentView.leadingAnchor,
             constant: Constants.themeImageViewLeadingPadding
@@ -96,18 +100,19 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
             equalToConstant: Constants.thumbnailDimReducedBy10
         ).isActive = true
 
-        // ---------- supporting View ----------
+    }
 
+    private func setupSupportingViewConstraints() {
         // The neumorphic backing renders from its creation-time frame, but Auto Layout
         // needs an explicit size too — without width/height it has only a leading+top
         // anchor, leaving its layout size ambiguous (the engine logs an ambiguous-height
         // warning and the laid-out bounds collapse to zero).
         supportingView.leadingAnchor.constraint(
-            equalTo:themeImageView.leadingAnchor,
+            equalTo: themeImageView.leadingAnchor,
             constant: -Constants.padding5
         ).isActive = true
         supportingView.topAnchor.constraint(
-            equalTo:themeImageView.topAnchor,
+            equalTo: themeImageView.topAnchor,
             constant: -Constants.padding5
         ).isActive = true
         supportingView.widthAnchor.constraint(
@@ -130,9 +135,10 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
             constant: -Constants.padding5
         ).isActive = true
 
-        // ---------- containerView ----------
+    }
 
-        containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
+    private func setupContainerViewConstraints() {
+        containerView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         // A floor, not a fixed height: the container grows with the (uncapped) name at large
         // Dynamic Type sizes instead of clipping it. The row is taller, so there's room.
         containerView.heightAnchor.constraint(
@@ -143,12 +149,13 @@ final class ThemeCell: UITableViewCell, ReusableCellProtocol {
             constant: Constants.padding20
         ).isActive = true
         containerView.trailingAnchor.constraint(
-            equalTo:self.contentView.trailingAnchor,
+            equalTo: self.contentView.trailingAnchor,
             constant: -Constants.padding20
         ).isActive = true
 
-        // ---------- nameLabel ----------
+    }
 
+    private func setupNameLabelConstraints() {
         // Pinned to all four edges so it wraps within the container's width and drives the
         // container's (floored) height — keeping the centred look via `textAlignment`.
         nameLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true

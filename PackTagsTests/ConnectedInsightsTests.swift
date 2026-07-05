@@ -11,6 +11,7 @@ import InstagramGraph
 /// Decodable-only, so tests construct them the way production does.
 private func makeProfile(
     followers: Int? = nil,
+    // swiftlint:disable:next large_tuple - named per-post metrics, readable at call sites
     medias: [(likes: Int, comments: Int, reach: Int, impressions: Int, engagement: Int)]? = nil
 ) throws -> Profile {
     var profile: [String: Any] = ["id": "1", "username": "packtags"]
@@ -24,8 +25,8 @@ private func makeProfile(
                 "insights": ["data": [
                     ["name": "reach", "values": [["value": media.reach]]],
                     ["name": "views", "values": [["value": media.impressions]]],
-                    ["name": "total_interactions", "values": [["value": media.engagement]]],
-                ]],
+                    ["name": "total_interactions", "values": [["value": media.engagement]]]
+                ]]
             ]
         }]
     }
@@ -54,7 +55,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func transform_sumsAndAveragesLikesAndComments() throws {
         let profile = try makeProfile(medias: [
             (likes: 10, comments: 2, reach: 100, impressions: 200, engagement: 12),
-            (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24),
+            (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24)
         ])
 
         let model = try #require(ProfileDataTransformer.transform(response: profile))
@@ -69,7 +70,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func transform_rawInsights_exposesEngagementValuesUntouched() throws {
         let profile = try makeProfile(medias: [
             (likes: 1, comments: 1, reach: 100, impressions: 200, engagement: 12),
-            (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 24),
+            (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 24)
         ])
 
         let model = try #require(ProfileDataTransformer.transform(
@@ -83,7 +84,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func transform_computedRates_arePercentagesOfFollowers() throws {
         let profile = try makeProfile(followers: 200, medias: [
             (likes: 1, comments: 1, reach: 100, impressions: 200, engagement: 10),
-            (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 30),
+            (likes: 1, comments: 1, reach: 300, impressions: 400, engagement: 30)
         ])
 
         let model = try #require(ProfileDataTransformer.transform(
@@ -94,7 +95,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func transform_zeroDenominators_produceZeroRatesInsteadOfNaN() throws {
         let profile = try makeProfile(followers: 0, medias: [
-            (likes: 1, comments: 1, reach: 0, impressions: 0, engagement: 10),
+            (likes: 1, comments: 1, reach: 0, impressions: 0, engagement: 10)
         ])
 
         let model = try #require(ProfileDataTransformer.transform(
@@ -110,7 +111,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 @Suite struct SmartGViewModelTests {
 
     @Test func processSmartGModel_extractsHashtagsPerPost() throws {
-        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+        let sut = SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(), hashtagRepository: SpyHashtagRepository())
         sut.dataMedias = try makePosts(captions: ["#sea #sun day", nil, "#sea"])
 
         sut.processSmartGModel()
@@ -121,7 +123,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func processSmartGModel_ranksTopHashtagsByFrequency() throws {
-        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+        let sut = SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(), hashtagRepository: SpyHashtagRepository())
         sut.dataMedias = try makePosts(captions: ["#sea #sun", "#sea #sky", "#sea #sun"])
 
         sut.processSmartGModel()
@@ -133,7 +136,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func loadDefaultFeed_flagsConnectionError_whenOffline() async {
         let sut = SmartGViewModel(
-            gateway: ThrowingGateway(error: InstagramGraphServiceError.networkError(URLError(.notConnectedToInternet))))
+            gateway: ThrowingGateway(error: InstagramGraphServiceError.networkError(URLError(.notConnectedToInternet))),
+            hashtagRepository: SpyHashtagRepository())
 
         await sut.loadDefaultFeed()
 
@@ -144,7 +148,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func search_whenServerRejectsHashtag_showsNoResultsNotConnectionError() async {
         let sut = SmartGViewModel(
-            gateway: ThrowingGateway(error: InstagramGraphServiceError.graphHTTPError(statusCode: 400, body: "")))
+            gateway: ThrowingGateway(error: InstagramGraphServiceError.graphHTTPError(statusCode: 400, body: "")),
+            hashtagRepository: SpyHashtagRepository())
 
         await sut.loadDefaultFeed()
 
@@ -154,7 +159,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func submitSearch_runsOncePerDistinctEntry() async {
-        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+        let sut = SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(), hashtagRepository: SpyHashtagRepository())
 
         sut.hashtagEntry = "#sea"
         #expect(await sut.submitSearch())
@@ -164,9 +170,21 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         #expect(await !sut.submitSearch())
     }
 
+    @Test func submitSearch_persistsANewEntryAsTyped_exactlyOnce() async {
+        let store = SpyHashtagRepository()
+        let sut = SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(), hashtagRepository: store)
+
+        sut.hashtagEntry = "#sea"
+        _ = await sut.submitSearch()
+        _ = await sut.submitSearch() // unchanged entry is not re-recorded
+
+        #expect(store.recorded == ["#sea"])
+    }
+
     @Test func newerSearchWins_whenAnEarlierSlowSearchCompletesLater() async {
         let gateway = DelayedRecordingGateway(slowHashtag: "slow")
-        let sut = SmartGViewModel(gateway: gateway, searchTimeout: 5)
+        let sut = SmartGViewModel(gateway: gateway, hashtagRepository: SpyHashtagRepository(), searchTimeout: 5)
 
         // Start a slow search and let it reach the gateway before the next one begins.
         sut.hashtagEntry = "slow"
@@ -190,7 +208,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func emptyResult_showsNoResults_notFailure() async {
         // A successful-but-empty search (e.g. a hashtag that doesn't exist) is "no results"
         // — the view shows "check your entry", NOT the network failure + retry state.
-        let sut = SmartGViewModel(gateway: EmptyHashtagGateway())
+        let sut = SmartGViewModel(gateway: EmptyHashtagGateway(), hashtagRepository: SpyHashtagRepository())
 
         await sut.loadDefaultFeed()
 
@@ -198,6 +216,13 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         #expect(!sut.isErrorState)
         #expect(sut.hasNoResults)
     }
+}
+
+/// Records saved hashtags so tests can assert the view model persists each new search.
+/// Plain (non-Sendable) class: created and used only on the main actor by the tests.
+private final class SpyHashtagRepository: HashtagRepositoryProtocol {
+    private(set) var recorded: [String] = []
+    func recordSearch(_ hashtag: String) { recorded.append(hashtag) }
 }
 
 /// Records every hashtag requested and delays the configured `slowHashtag`, so a test can
@@ -309,6 +334,7 @@ private struct ThrowingGateway: ConnectedInsightsGatewayProtocol {
         token: FacebookToken = FacebookToken(tokenString: nil),
         setupError: Error? = nil,
         setupInfoShown: Bool = true
+        // swiftlint:disable:next large_tuple - named fixture, destructured at every call site
     ) -> (sut: FacebookLoginViewModel, gateway: FakeGateway, session: FakeSession, settings: FakeSettings) {
         let gateway = FakeGateway()
         gateway.setupError = setupError
@@ -562,7 +588,7 @@ private struct ThrowingGateway: ConnectedInsightsGatewayProtocol {
     private func twoPostProfile() throws -> Profile {
         try makeProfile(followers: 1000, medias: [
             (likes: 10, comments: 2, reach: 100, impressions: 200, engagement: 12),
-            (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24),
+            (likes: 20, comments: 4, reach: 300, impressions: 400, engagement: 24)
         ])
     }
 

@@ -80,81 +80,101 @@ final class SettingsViewModel {
     /// The full settings catalog: section order, titles, colors, and which action each row triggers.
     private func buildSections() -> [SettingsSectionModel] {
         let actions = makeActions()
-        let settings = self.settings
         return [
-            SettingsSectionModel(title: Strings.account, options: [
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.instagram,
-                    iconBackgroundColor: .systemRed,
-                    handler: actions.editInstagramUsername)),
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.facebookLogin,
-                    iconBackgroundColor: .systemOrange,
-                    handler: actions.openFacebookSetup)),
-            ]),
-            SettingsSectionModel(title: Strings.hashtags, options: [
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.quantityPerPack,
-                    iconBackgroundColor: .systemPink,
-                    handler: actions.showQuantityPicker)),
-                .switchCell(model: SettingsSwitchOptionModel(
-                    title: Strings.saveAndShuffle,
-                    iconBackgroundColor: .systemYellow,
-                    isOn: settings.saveAndShuffle,
-                    onToggle: { settings.saveAndShuffle = $0 })),
-                .switchCell(model: SettingsSwitchOptionModel(
-                    title: Strings.keepPackOrder,
-                    iconBackgroundColor: .systemRed,
-                    isOn: settings.keepPacksOrder,
-                    onToggle: { settings.keepPacksOrder = $0 })),
-            ]),
-            SettingsSectionModel(title: Strings.help, options: [
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.onBoard,
-                    iconBackgroundColor: .systemTeal,
-                    handler: actions.replayOnboarding)),
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.tricksAndTips,
-                    iconBackgroundColor: .systemBlue,
-                    handler: { actions.openWebPage(Links.tricksAndTips) })),
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.instaSetup,
-                    iconBackgroundColor: .systemPurple,
-                    handler: actions.openSetupInfo)),
-            ]),
-            SettingsSectionModel(title: Strings.aboutUs, options: [
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.ourInstagram,
-                    iconBackgroundColor: .systemPink,
-                    handler: actions.openOurInstagram)),
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.share,
-                    iconBackgroundColor: .systemGreen,
-                    handler: actions.shareApp)),
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.rateAndReview,
-                    iconBackgroundColor: .systemYellow,
-                    handler: actions.rateApp)),
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.contactUs,
-                    iconBackgroundColor: .systemOrange,
-                    handler: actions.contactSupport)),
-            ]),
-            SettingsSectionModel(title: Strings.legal, options: [
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.privacy,
-                    iconBackgroundColor: .systemPurple,
-                    handler: { actions.openWebPage(Links.privacyPolicy) })),
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.termsAndConditions,
-                    iconBackgroundColor: .systemYellow,
-                    handler: { actions.openWebPage(Links.termsAndConditions) })),
-                .staticCell(model: SettingsOptionModel(
-                    title: Strings.disclaimer,
-                    iconBackgroundColor: .systemRed,
-                    handler: { actions.openWebPage(Links.disclaimer) })),
-            ]),
+            accountSection(actions),
+            hashtagsSection(actions),
+            helpSection(actions),
+            aboutSection(actions),
+            legalSection(actions)
         ]
+    }
+
+    private func accountSection(_ actions: SettingsActions) -> SettingsSectionModel {
+        return SettingsSectionModel(title: Strings.account, options: [
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.instagram,
+                iconBackgroundColor: .systemRed,
+                handler: actions.editInstagramUsername)),
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.facebookLogin,
+                iconBackgroundColor: .systemOrange,
+                handler: actions.openFacebookSetup))
+        ])
+    }
+
+    private func hashtagsSection(_ actions: SettingsActions) -> SettingsSectionModel {
+        let settings = self.settings // captured by the toggle closures instead of self
+        return SettingsSectionModel(title: Strings.hashtags, options: [
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.quantityPerPack,
+                iconBackgroundColor: .systemPink,
+                handler: actions.showQuantityPicker)),
+            .switchCell(model: SettingsSwitchOptionModel(
+                title: Strings.saveAndShuffle,
+                iconBackgroundColor: .systemYellow,
+                isOn: settings.saveAndShuffle,
+                onToggle: { settings.saveAndShuffle = $0 })),
+            .switchCell(model: SettingsSwitchOptionModel(
+                title: Strings.keepPackOrder,
+                iconBackgroundColor: .systemRed,
+                isOn: settings.keepPacksOrder,
+                onToggle: { settings.keepPacksOrder = $0 }))
+        ])
+    }
+
+    private func helpSection(_ actions: SettingsActions) -> SettingsSectionModel {
+        return SettingsSectionModel(title: Strings.help, options: [
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.onBoard,
+                iconBackgroundColor: .systemTeal,
+                handler: actions.replayOnboarding)),
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.tricksAndTips,
+                iconBackgroundColor: .systemBlue,
+                handler: { actions.openWebPage(Links.tricksAndTips) })),
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.instaSetup,
+                iconBackgroundColor: .systemPurple,
+                handler: actions.openSetupInfo))
+        ])
+    }
+
+    private func aboutSection(_ actions: SettingsActions) -> SettingsSectionModel {
+        return SettingsSectionModel(title: Strings.aboutUs, options: [
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.ourInstagram,
+                iconBackgroundColor: .systemPink,
+                handler: actions.openOurInstagram)),
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.share,
+                iconBackgroundColor: .systemGreen,
+                handler: actions.shareApp)),
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.rateAndReview,
+                iconBackgroundColor: .systemYellow,
+                handler: actions.rateApp)),
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.contactUs,
+                iconBackgroundColor: .systemOrange,
+                handler: actions.contactSupport))
+        ])
+    }
+
+    private func legalSection(_ actions: SettingsActions) -> SettingsSectionModel {
+        return SettingsSectionModel(title: Strings.legal, options: [
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.privacy,
+                iconBackgroundColor: .systemPurple,
+                handler: { actions.openWebPage(Links.privacyPolicy) })),
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.termsAndConditions,
+                iconBackgroundColor: .systemYellow,
+                handler: { actions.openWebPage(Links.termsAndConditions) })),
+            .staticCell(model: SettingsOptionModel(
+                title: Strings.disclaimer,
+                iconBackgroundColor: .systemRed,
+                handler: { actions.openWebPage(Links.disclaimer) }))
+        ])
     }
 
     private func makeActions() -> SettingsActions {

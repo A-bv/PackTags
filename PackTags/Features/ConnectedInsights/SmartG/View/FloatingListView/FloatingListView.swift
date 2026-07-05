@@ -52,5 +52,8 @@ struct FloatingListView: View {
 }
 
 #Preview {
-    FloatingListView(viewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
+    FloatingListView(viewModel: SmartGViewModel(
+        gateway: UnavailableConnectedInsightsGateway(),
+        hashtagRepository: CoreDataHashtagRepository(
+            context: PersistenceController(modelName: "SmartTags", inMemory: true).viewContext)))
 }

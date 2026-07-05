@@ -90,12 +90,13 @@ struct FacebookLoginView: View {
             .onAppear {
                 if !viewModel.hasSeenSetupInfo && !showInfo { showInfo = true }
             }
-            .fullScreenCover(isPresented: $showInfo, onDismiss: {
-                Task { await viewModel.onAppear() }
-            }) {
-                SetupInfoView(appSettings: appSettings, onClose: { showInfo = false })
-                    .presentationBackground(.clear)
-            }
+            .fullScreenCover(
+                isPresented: $showInfo,
+                onDismiss: { Task { await viewModel.onAppear() } },
+                content: {
+                    SetupInfoView(appSettings: appSettings, onClose: { showInfo = false })
+                        .presentationBackground(.clear)
+                })
             .onChange(of: viewModel.result) { _, result in
                 switch result {
                 case .connected:

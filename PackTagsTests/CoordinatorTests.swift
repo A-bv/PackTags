@@ -119,6 +119,7 @@ private func makeTheme(named name: String? = nil) -> ThemeEntity {
     private func makeSUT(
         themes: [ThemeEntity] = [],
         connectedInsights: ConnectedInsightsProtocol? = nil
+        // swiftlint:disable:next large_tuple - named fixture, destructured at every call site
     ) -> (sut: NotebookCoordinator, nav: SpyNavigationController, editorFactory: SpyThemeEditorFactory) {
         let nav = SpyNavigationController()
         let repository = FakeThemeRepository()
@@ -137,9 +138,11 @@ private func makeTheme(named name: String? = nil) -> ThemeEntity {
         return (sut, nav, editorFactory)
     }
 
-    private func startedRoot(_ sut: NotebookCoordinator, _ nav: SpyNavigationController) -> ThemeListViewController {
+    private func startedRoot(
+        _ sut: NotebookCoordinator, _ nav: SpyNavigationController
+    ) throws -> ThemeListViewController {
         sut.start()
-        return nav.setRootVC as! ThemeListViewController
+        return try #require(nav.setRootVC as? ThemeListViewController)
     }
 
     // MARK: start
@@ -238,9 +241,9 @@ private func makeTheme(named name: String? = nil) -> ThemeEntity {
 
     // MARK: Onboarding (first appearance)
 
-    @Test func firstAppearance_presentsOnboardingFullScreen() {
+    @Test func firstAppearance_presentsOnboardingFullScreen() throws {
         let (sut, nav, _) = makeSUT()
-        let root = startedRoot(sut, nav)
+        let root = try startedRoot(sut, nav)
 
         root.onViewDidAppear?()
 
@@ -248,9 +251,9 @@ private func makeTheme(named name: String? = nil) -> ThemeEntity {
         #expect(nav.presentedVC?.modalPresentationStyle == .fullScreen)
     }
 
-    @Test func dismissingOnboarding_presentsTheFirstTimeTipsAlert() {
+    @Test func dismissingOnboarding_presentsTheFirstTimeTipsAlert() throws {
         let (sut, nav, _) = makeSUT()
-        let root = startedRoot(sut, nav)
+        let root = try startedRoot(sut, nav)
         root.onViewDidAppear?()
         let onboarding = nav.presentedVC as? OnboardingViewController
 

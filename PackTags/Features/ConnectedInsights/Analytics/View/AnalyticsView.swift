@@ -22,12 +22,16 @@ struct AnalyticsView: View {
         static let ratioToFollower = "Per Follower".localized()
         static let ratioByReach = "By Reach".localized()
         static let ratioByImpressions = "By Impressions".localized()
+        // The metric definitions below use the English sentence as the localization key,
+        // so their lines can't wrap.
+        // swiftlint:disable line_length
         static let engagementDefinition = "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives.".localized()
         static let reachDefinition = "Reach is the total number of people (single accounts) who saw your content.".localized()
         static let impressionsDefinition = "Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not.".localized()
         static let eRDefinition = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers.".localized()
         static let eRRDefinition = "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content.".localized()
         static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account.".localized()
+        // swiftlint:enable line_length
         static let ok = "Ok".localized()
         static let closeAnalytics = "Close analytics".localized()
         static let toggleRawAndRates = "Switch between values and rates".localized()
@@ -44,7 +48,6 @@ struct AnalyticsView: View {
         static let smallScreenWidthLimit: CGFloat = 375 // iPhone 13 mini / SE
         static let graphSectionHorizontalPadding: CGFloat = 17.5
         static let overviewCellHeaderToValuePadding: CGFloat = 20
-        static let overviewCellValueFontSize: CGFloat = 22
         static let overviewCellCornerRadius: CGFloat = 15
         static let overviewCellToEdgeHorizontalPadding: CGFloat = 20
         static let graphSectionHeaderVerticalSpacing: CGFloat = 5
@@ -66,7 +69,7 @@ struct AnalyticsView: View {
         _monitor = State(initialValue: monitor)
     }
 
-    //Toggle button
+    // Toggle button
     @State private var isToggled = false
     
     var body: some View {
@@ -134,7 +137,7 @@ struct AnalyticsView: View {
     }
 }
 
-//MARK: - Metric-dependent labels (computed from the view model, never stored)
+// MARK: - Metric-dependent labels (computed from the view model, never stored)
 private extension AnalyticsView {
     private func title(_ metric: AnalyticsMetric) -> String {
         guard viewModel.rawInsights else { return Strings.engagement }
@@ -171,7 +174,7 @@ private extension AnalyticsView {
     }
 }
 
-//MARK: - Functions
+// MARK: - Functions
 private extension AnalyticsView {
     private func changeInsightType() {
         let impactMed = UIImpactFeedbackGenerator(style: .medium)
@@ -190,13 +193,13 @@ private extension AnalyticsView {
     }
 }
 
-//MARK: - Buttons
+// MARK: - Buttons
 private extension AnalyticsView {
     var backButton: some View {
-        Button(action: {
+        Button {
             viewModel.rawInsights = true
             dismiss()
-        }) {
+        } label: {
             Image(systemName: "chevron.down.circle")
                 .font(Font.system(.title))
                 .foregroundColor(Color(UIColor.label))
@@ -205,10 +208,10 @@ private extension AnalyticsView {
     }
 
     var infoButton: some View {
-        Button(action: {
+        Button {
             showingAlert = true
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-        }) {
+        } label: {
             Image(systemName: "info.circle")
         }
         .accessibilityLabel(Text(infoTitle(viewModel.metric)))
@@ -232,7 +235,7 @@ private extension AnalyticsView {
     }
 
     var switchModeButton: some View {
-        Button(action: { cycleMetric() }) {
+        Button { cycleMetric() } label: {
             Image(systemName: "scale.3d")
                 .foregroundColor(.brandAccent)
         }
@@ -241,7 +244,7 @@ private extension AnalyticsView {
     }
 }
 
-//MARK: - Elements
+// MARK: - Elements
 // Header
 private extension AnalyticsView {
     var header: some View {
@@ -267,11 +270,11 @@ private extension AnalyticsView {
 private extension AnalyticsView {
     func scrollView(graphPadding: CGFloat, availableWidth: CGFloat) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
-            //MARK: - Graph part
+            // MARK: - Graph part
             VStack(
                 spacing: Constants.scrollViewVerticalSpacing
             ) {
-                HStack{
+                HStack {
                     graphSectionHeader
                     Spacer()
                     graphSectionHeaderButtons
@@ -308,7 +311,7 @@ private extension AnalyticsView {
                     bottom: 0,
                     trailing: graphPadding))
                
-            //MARK: - Overview part
+            // MARK: - Overview part
             overviewSection
         }
     }
@@ -316,11 +319,11 @@ private extension AnalyticsView {
 
 // Overview
 private extension AnalyticsView {
-    var overviewSection: some View{
+    var overviewSection: some View {
         LazyVGrid(columns: Constants.overviewColumns) {
             ForEach(viewModel.overviewSectionData) { overviewCell in
-                VStack(spacing: Constants.overviewCellHeaderToValuePadding){
-                    HStack{
+                VStack(spacing: Constants.overviewCellHeaderToValuePadding) {
+                    HStack {
                         Text(viewModel.transformedProfile?.postsCount == 1 ? "" : Strings.average)
                             .font(.body)
                             .foregroundColor(Color(UIColor.label))
@@ -329,7 +332,7 @@ private extension AnalyticsView {
                             .font(Font.system(.title2))
                     }
                     Text(overviewCell.value)
-                        .font(.system(size: Constants.overviewCellValueFontSize))
+                        .font(.title2)
                         .foregroundColor(Color(UIColor.label))
                         .fontWeight(.bold)
                     Text(overviewCell.title)

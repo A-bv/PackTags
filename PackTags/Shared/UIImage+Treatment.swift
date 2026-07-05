@@ -1,4 +1,4 @@
-//https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
+// https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
 
 import UIKit
 // Downsampling UIKIT

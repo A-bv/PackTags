@@ -31,7 +31,7 @@ final class KeyboardFindButton: UIButton {
         host.addSubview(self)
         NSLayoutConstraint.activate([
             trailingAnchor.constraint(equalTo: host.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            bottomAnchor.constraint(equalTo: host.keyboardLayoutGuide.topAnchor, constant: -8),
+            bottomAnchor.constraint(equalTo: host.keyboardLayoutGuide.topAnchor, constant: -8)
         ])
         NotificationCenter.default.addObserver(
             self, selector: #selector(keyboardDidShow),
