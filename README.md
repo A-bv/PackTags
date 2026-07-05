@@ -3,7 +3,7 @@
 **A hashtag manager for Instagram creators — shipped on the App Store.**
 
 ![Platform](https://img.shields.io/badge/platform-iOS%2017%2B-blue)
-![Swift](https://img.shields.io/badge/Swift-5-orange)
+![Swift](https://img.shields.io/badge/Swift-6-orange)
 ![UI](https://img.shields.io/badge/UI-UIKit%20%2B%20SwiftUI-9cf)
 ![App Store](https://img.shields.io/badge/App%20Store-shipped-blue)
 ![CI](https://github.com/A-bv/PackTags/actions/workflows/ci.yml/badge.svg)
@@ -44,7 +44,7 @@ PackTags follows **MVVM-C** — Model · View · ViewModel · Coordinator — ov
 
 - **Coordinators own navigation.** A coordinator builds a screen's view model from the shared `AppDependencies`, injects it into the view, and performs every push/present. Views never reach for another screen.
 - **View models own the logic**, with dependencies passed through `init`. SwiftUI screens use `@Observable`, `@MainActor` view models the view drives from `.task`; the UIKit notebook uses lightweight view models that signal changes through a closure.
-- **Model.** `ThemeCD` (the Core Data entity) is the notebook's model; the insights features decode remote models — `Profile`, `InstagramPost` — and map them to presentation types.
+- **Model.** `ThemeEntity` (the Core Data class behind the `ThemeCD` entity) is the notebook's model; the insights features decode remote models — `Profile`, `InstagramPost` — and map them to presentation types.
 - **Domain holds the product rules.** Parsing and pack-chunking are pure value types — no UIKit, no persistence; de-duplication is the one tied to storage, reaching already-saved tags through the `Repository` protocol.
 - **Two data sources, one shape.** Local data flows through a `Repository` over Core Data; remote data flows through the `InstagramGraph` package behind an `async` gateway. The app target contains no networking code of its own.
 
@@ -53,9 +53,9 @@ PackTags follows **MVVM-C** — Model · View · ViewModel · Coordinator — ov
 `AppCoordinator` lives for the app's lifetime and starts the two area coordinators — the UIKit notebook and the SwiftUI insights — each of which presents its own screens.
 
 <p align="center">
-  <img src="docs/coordinators.svg" alt="Coordinator tree: AppCoordinator starts ThemeCoordinator (ThemeList, PackList, ThemeEditor, Settings, Onboarding, QuantityPicker) and ConnectedInsightsCoordinator (FBLogin, InfoSetup, SmartG, Analytics)." width="800">
+  <img src="docs/coordinators.svg" alt="Coordinator tree: AppCoordinator starts NotebookCoordinator (ThemeList, PackList, ThemeEditor, Settings, Onboarding, QuantityPicker) and ConnectedInsightsCoordinator (FBLogin, InfoSetup, SmartG, Analytics)." width="800">
 </p>
-<p align="center"><em>Figure 2 — every navigation path in the app (updated 2026-06-15).</em></p>
+<p align="center"><em>Figure 2 — every navigation path in the app (updated 2026-07-05).</em></p>
 
 ## Engineering highlights
 
@@ -64,7 +64,7 @@ Built on current Apple APIs rather than legacy patterns:
 | Concern | API |
 |---|---|
 | State (SwiftUI) | `@Observable` + `@State` — no `ObservableObject` / `@Published` |
-| Concurrency | `async`/`await`, `@MainActor` isolation; Swift 5 mode with `SWIFT_STRICT_CONCURRENCY = complete` |
+| Concurrency | `async`/`await`, `@MainActor` isolation; Swift 6 language mode with strict concurrency checking |
 | In-text search | `UIFindInteraction` system find panel |
 | Photo picking | `PHPickerViewController` (out-of-process, no permission prompt) |
 | OCR | Vision `VNRecognizeTextRequest` |
@@ -72,6 +72,7 @@ Built on current Apple APIs rather than legacy patterns:
 | Hashtag parsing | Swift Regex |
 | Reviews | StoreKit `AppStore.requestReview` behind a launch/version policy |
 | Logging | `os.Logger` categories — no `print()` |
+| Linting | SwiftLint, enforced on every PR by CI |
 
 ## Case study — diagnosing the Connected Insights / ATT regression
 
@@ -116,12 +117,12 @@ xcodebuild -project PackTags.xcodeproj -scheme PackTags \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-Unit tests use **Swift Testing** and run the domain rules, the repository (on an in-memory Core Data store), view-model decisions, and coordinator wiring.
+Unit tests use **Swift Testing** and run the domain rules, the repository (on an in-memory Core Data store), view-model decisions, and coordinator wiring. Snapshot tests pin the design-system components in light and dark mode, and the UI test suite runs Xcode's automated **accessibility audits** over the primary flow plus a cold-launch performance baseline.
 
 ## Roadmap
 
 - **Crash & error reporting** — evaluating Sentry vs. Firebase Crashlytics.
-- **Swift 6 language mode** — strict concurrency is already `complete`.
+- **String Catalog migration** — move the `.strings` tables to `Localizable.xcstrings` so missing or stale translations fail at build time.
 
 ## Author
 
