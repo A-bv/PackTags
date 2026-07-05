@@ -53,5 +53,8 @@ struct StoryCardCarouselView: View {
 }
 
 #Preview {
-    StoryCardCarouselView(viewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
+    StoryCardCarouselView(viewModel: SmartGViewModel(
+        gateway: UnavailableConnectedInsightsGateway(),
+        hashtagRepository: CoreDataHashtagRepository(
+            context: PersistenceController(modelName: "SmartTags", inMemory: true).viewContext)))
 }

@@ -3,16 +3,20 @@ import CoreData
 import InstagramGraph
 
 struct SmartGContainerView: View {
-    private let gateway: any ConnectedInsightsGatewayProtocol
+    private let viewModel: SmartGViewModel
     private let context: NSManagedObjectContext
 
     init(gateway: any ConnectedInsightsGatewayProtocol, context: NSManagedObjectContext) {
-        self.gateway = gateway
+        self.viewModel = SmartGViewModel(
+            gateway: gateway,
+            hashtagRepository: CoreDataHashtagRepository(context: context))
         self.context = context
     }
 
     var body: some View {
-        SmartGView(gateway: gateway)
+        SmartGView(viewModel: viewModel)
+            // The saved-tags sheet reads the store reactively through @FetchRequest;
+            // all writes go through the view model's HashtagRepository.
             .environment(\.managedObjectContext, context)
     }
 }

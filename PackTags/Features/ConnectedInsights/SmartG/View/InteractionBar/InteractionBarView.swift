@@ -4,11 +4,7 @@ import NeumorphicSwiftUI
 struct InteractionBarView: View {
     @Bindable var smartGViewModel: SmartGViewModel
 
-    @Environment(\.managedObjectContext) var moc
     @FocusState private var showKeyBoard: Bool
-
-    @FetchRequest(entity: HashtagEntity.entity(), sortDescriptors: [])
-    var hashtags: FetchedResults<HashtagEntity>
 
     private enum Constants {
         static let textFieldCornerRadius: CGFloat = 15
@@ -86,58 +82,19 @@ struct InteractionBarView: View {
 
     private func refresh() {
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-        let entry = smartGViewModel.hashtagEntry
         showKeyBoard = false
-        // Fire-and-forget is safe here: the view model tags each search with a generation and
-        // drops superseded results, so an overlapping or post-dismissal completion can't
-        // corrupt state — it only persists the searched hashtag, which is the desired outcome.
-        Task {
-            if await smartGViewModel.submitSearch() {
-                updateHashtag(entry: entry)
-            }
-        }
+        // Fire-and-forget is safe here: the view model tags each search with a generation
+        // and drops superseded results, so an overlapping or post-dismissal completion
+        // can't corrupt state. Persisting the searched hashtag is the view model's job.
+        Task { _ = await smartGViewModel.submitSearch() }
     }
 }
 
 #Preview {
     InteractionBarView(
-        smartGViewModel: SmartGViewModel(gateway: UnavailableConnectedInsightsGateway()))
+        smartGViewModel: SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(),
+            hashtagRepository: CoreDataHashtagRepository(
+                context: PersistenceController(modelName: "SmartTags", inMemory: true).viewContext)))
     .padding()
-}
-
-// MARK: - Functions
-extension InteractionBarView {
-    private func updateHashtag (entry: String) {
-        if let index = hashtags.firstIndex(where: { $0.title == entry }) {
-            moc.delete(hashtags[index])
-        }
-        saveHashtag(hastagTitle: entry)
-    }
-
-    private func saveHashtag(hastagTitle: String) {
-        pruneExpiredHashtags()
-        let hashtag = HashtagEntity(context: moc)
-        hashtag.id = UUID()
-        hashtag.title = hastagTitle
-        hashtag.addDate = Date()
-        do {
-            try moc.save()
-        } catch {
-            // Roll back so the failed insert/deletes don't linger as dirty state and
-            // poison the next save. This context is the dedicated SmartTags store's
-            // view context, used only by this flow, so nothing else is reverted.
-            moc.rollback()
-            AppLogger.persistence.error(
-                "Saving a searched hashtag failed: \(error.localizedDescription, privacy: .public)")
-        }
-    }
-
-    /// Drops entries past Instagram's 7-day window so the saved list stays bounded and
-    /// every remaining row still has time left on its countdown.
-    private func pruneExpiredHashtags() {
-        let cutoff = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
-        for hashtag in hashtags where (hashtag.addDate ?? Date()) < cutoff {
-            moc.delete(hashtag)
-        }
-    }
 }

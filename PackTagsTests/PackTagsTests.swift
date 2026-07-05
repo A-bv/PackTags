@@ -7,7 +7,10 @@ class PackTagsTests: XCTestCase {
 
     @MainActor
     func testSmartGProcessing_whenFirstMediaHasNoCaption_keepsMediaAlignment() throws {
-        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+        let sut = SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(),
+            hashtagRepository: CoreDataHashtagRepository(
+                context: PersistenceController(modelName: "SmartTags", inMemory: true).viewContext))
         let mediaResponse = """
         {
           "data": [

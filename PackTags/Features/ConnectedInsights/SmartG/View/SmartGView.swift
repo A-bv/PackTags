@@ -11,8 +11,8 @@ struct SmartGView: View {
     @State var smartGViewModel: SmartGViewModel
     @State private var monitor: NetworkMonitor
 
-    init(gateway: any ConnectedInsightsGatewayProtocol, monitor: NetworkMonitor = NetworkMonitor()) {
-        _smartGViewModel = State(initialValue: SmartGViewModel(gateway: gateway))
+    init(viewModel: SmartGViewModel, monitor: NetworkMonitor = NetworkMonitor()) {
+        _smartGViewModel = State(initialValue: viewModel)
         _monitor = State(initialValue: monitor)
     }
 
@@ -72,5 +72,8 @@ struct SmartGView: View {
 }
 
 #Preview {
-    SmartGView(gateway: UnavailableConnectedInsightsGateway())
+    SmartGView(viewModel: SmartGViewModel(
+        gateway: UnavailableConnectedInsightsGateway(),
+        hashtagRepository: CoreDataHashtagRepository(
+            context: PersistenceController(modelName: "SmartTags", inMemory: true).viewContext)))
 }

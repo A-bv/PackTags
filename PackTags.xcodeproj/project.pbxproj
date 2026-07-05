@@ -16,6 +16,8 @@
 		0207BB8B2FD45A0C0007F3D3 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */; };
 		0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */; };
 		0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */; };
+		0207BBA22FD4AC010007F3D3 /* HashtagRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBA12FD4AC010007F3D3 /* HashtagRepositoryProtocol.swift */; };
+		0207BBA42FD4AC020007F3D3 /* CoreDataHashtagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBA32FD4AC020007F3D3 /* CoreDataHashtagRepository.swift */; };
 		0207BB972FD4ABDB0007F3D3 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */; };
 		0207BBAE2FD564080007F3D3 /* ThemeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */; };
 		0207BBB12FD564090007F3D3 /* PackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0207BBB02FD564090007F3D3 /* PackListViewModel.swift */; };
@@ -183,6 +185,8 @@
 		0207BB8A2FD45A0C0007F3D3 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataThemeRepository.swift; sourceTree = "<group>"; };
+		0207BBA12FD4AC010007F3D3 /* HashtagRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagRepositoryProtocol.swift; sourceTree = "<group>"; };
+		0207BBA32FD4AC020007F3D3 /* CoreDataHashtagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHashtagRepository.swift; sourceTree = "<group>"; };
 		0207BB962FD4ABDB0007F3D3 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		0207BBAD2FD564080007F3D3 /* ThemeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeListViewModel.swift; sourceTree = "<group>"; };
 		0207BBB02FD564090007F3D3 /* PackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackListViewModel.swift; sourceTree = "<group>"; };
@@ -391,6 +395,7 @@
 				AB00000000000000000000C1 /* SettingsKey.swift */,
 				AB00000000000000000000B1 /* PersistenceController.swift */,
 				0207BB932FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift */,
+				0207BBA32FD4AC020007F3D3 /* CoreDataHashtagRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -819,6 +824,7 @@
 			children = (
 				AB000000000000000000020B /* Hashtags */,
 				0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */,
+				0207BBA12FD4AC010007F3D3 /* HashtagRepositoryProtocol.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1210,6 +1216,7 @@
 				020584D1284D6F8100020FB8 /* UIView+RoundedCorners.swift in Sources */,
 				0207BBB12FD564090007F3D3 /* PackListViewModel.swift in Sources */,
 				0207BB922FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift in Sources */,
+				0207BBA22FD4AC010007F3D3 /* HashtagRepositoryProtocol.swift in Sources */,
 				02FBAFE525A93C6100E32D73 /* AnalyticsView.swift in Sources */,
 				02F89B2929743EF9008F363D /* SmartGContainerView.swift in Sources */,
 				0207BBB62FD56F320007F3D3 /* ConnectedInsightsCoordinator.swift in Sources */,
@@ -1262,6 +1269,7 @@
 				0296306E2614A785000CF4E9 /* QuantityPickerViewController.swift in Sources */,
 				02B0D72B2A44B2E700EF1500 /* MonoCircleView.swift in Sources */,
 				0207BB942FD4ABDB0007F3D3 /* CoreDataThemeRepository.swift in Sources */,
+				0207BBA42FD4AC020007F3D3 /* CoreDataHashtagRepository.swift in Sources */,
 				AB00000000000000000000B2 /* PersistenceController.swift in Sources */,
 				021EB81428846AD100463B42 /* String+Localized.swift in Sources */,
 				02998A682B4611B100B70516 /* BarChartItemView.swift in Sources */,

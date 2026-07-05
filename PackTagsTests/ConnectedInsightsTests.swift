@@ -110,7 +110,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 @Suite struct SmartGViewModelTests {
 
     @Test func processSmartGModel_extractsHashtagsPerPost() throws {
-        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+        let sut = SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(), hashtagRepository: SpyHashtagRepository())
         sut.dataMedias = try makePosts(captions: ["#sea #sun day", nil, "#sea"])
 
         sut.processSmartGModel()
@@ -121,7 +122,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func processSmartGModel_ranksTopHashtagsByFrequency() throws {
-        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+        let sut = SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(), hashtagRepository: SpyHashtagRepository())
         sut.dataMedias = try makePosts(captions: ["#sea #sun", "#sea #sky", "#sea #sun"])
 
         sut.processSmartGModel()
@@ -133,7 +135,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func loadDefaultFeed_flagsConnectionError_whenOffline() async {
         let sut = SmartGViewModel(
-            gateway: ThrowingGateway(error: InstagramGraphServiceError.networkError(URLError(.notConnectedToInternet))))
+            gateway: ThrowingGateway(error: InstagramGraphServiceError.networkError(URLError(.notConnectedToInternet))),
+            hashtagRepository: SpyHashtagRepository())
 
         await sut.loadDefaultFeed()
 
@@ -144,7 +147,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
 
     @Test func search_whenServerRejectsHashtag_showsNoResultsNotConnectionError() async {
         let sut = SmartGViewModel(
-            gateway: ThrowingGateway(error: InstagramGraphServiceError.graphHTTPError(statusCode: 400, body: "")))
+            gateway: ThrowingGateway(error: InstagramGraphServiceError.graphHTTPError(statusCode: 400, body: "")),
+            hashtagRepository: SpyHashtagRepository())
 
         await sut.loadDefaultFeed()
 
@@ -154,7 +158,8 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     }
 
     @Test func submitSearch_runsOncePerDistinctEntry() async {
-        let sut = SmartGViewModel(gateway: UnavailableConnectedInsightsGateway())
+        let sut = SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(), hashtagRepository: SpyHashtagRepository())
 
         sut.hashtagEntry = "#sea"
         #expect(await sut.submitSearch())
@@ -164,9 +169,21 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         #expect(await !sut.submitSearch())
     }
 
+    @Test func submitSearch_persistsANewEntryAsTyped_exactlyOnce() async {
+        let store = SpyHashtagRepository()
+        let sut = SmartGViewModel(
+            gateway: UnavailableConnectedInsightsGateway(), hashtagRepository: store)
+
+        sut.hashtagEntry = "#sea"
+        _ = await sut.submitSearch()
+        _ = await sut.submitSearch() // unchanged entry is not re-recorded
+
+        #expect(store.recorded == ["#sea"])
+    }
+
     @Test func newerSearchWins_whenAnEarlierSlowSearchCompletesLater() async {
         let gateway = DelayedRecordingGateway(slowHashtag: "slow")
-        let sut = SmartGViewModel(gateway: gateway, searchTimeout: 5)
+        let sut = SmartGViewModel(gateway: gateway, hashtagRepository: SpyHashtagRepository(), searchTimeout: 5)
 
         // Start a slow search and let it reach the gateway before the next one begins.
         sut.hashtagEntry = "slow"
@@ -190,7 +207,7 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
     @Test func emptyResult_showsNoResults_notFailure() async {
         // A successful-but-empty search (e.g. a hashtag that doesn't exist) is "no results"
         // — the view shows "check your entry", NOT the network failure + retry state.
-        let sut = SmartGViewModel(gateway: EmptyHashtagGateway())
+        let sut = SmartGViewModel(gateway: EmptyHashtagGateway(), hashtagRepository: SpyHashtagRepository())
 
         await sut.loadDefaultFeed()
 
@@ -198,6 +215,13 @@ private func makePosts(captions: [String?]) throws -> [InstagramPost] {
         #expect(!sut.isErrorState)
         #expect(sut.hasNoResults)
     }
+}
+
+/// Records saved hashtags so tests can assert the view model persists each new search.
+/// Plain (non-Sendable) class: created and used only on the main actor by the tests.
+private final class SpyHashtagRepository: HashtagRepositoryProtocol {
+    private(set) var recorded: [String] = []
+    func recordSearch(_ hashtag: String) { recorded.append(hashtag) }
 }
 
 /// Records every hashtag requested and delays the configured `slowHashtag`, so a test can
