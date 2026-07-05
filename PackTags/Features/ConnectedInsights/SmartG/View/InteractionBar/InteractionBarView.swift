@@ -124,7 +124,8 @@ extension InteractionBarView {
             try moc.save()
         } catch {
             // Roll back so the failed insert/deletes don't linger as dirty state and
-            // poison the next save of this shared context.
+            // poison the next save. This context is the dedicated SmartTags store's
+            // view context, used only by this flow, so nothing else is reverted.
             moc.rollback()
             AppLogger.persistence.error(
                 "Saving a searched hashtag failed: \(error.localizedDescription, privacy: .public)")

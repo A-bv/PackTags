@@ -332,7 +332,7 @@ private extension AnalyticsView {
                             .font(Font.system(.title2))
                     }
                     Text(overviewCell.value)
-                        .font(.title2) // was a fixed 22pt; .title2 matches it and tracks Dynamic Type
+                        .font(.title2)
                         .foregroundColor(Color(UIColor.label))
                         .fontWeight(.bold)
                     Text(overviewCell.title)

@@ -20,7 +20,7 @@ struct StoryCardLabelView: View {
         if count != "0" {
             Image(systemName: icon)
             Text(count)
-                .font(.caption.weight(.semibold)) // was a fixed 12pt; .caption matches it and tracks Dynamic Type
+                .font(.caption.weight(.semibold))
         }
     }
 }

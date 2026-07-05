@@ -53,7 +53,7 @@ PackTags follows **MVVM-C** — Model · View · ViewModel · Coordinator — ov
 `AppCoordinator` lives for the app's lifetime and starts the two area coordinators — the UIKit notebook and the SwiftUI insights — each of which presents its own screens.
 
 <p align="center">
-  <img src="docs/coordinators.svg" alt="Coordinator tree: AppCoordinator starts NotebookCoordinator (ThemeList, PackList, ThemeEditor, Settings, Onboarding, QuantityPicker) and ConnectedInsightsCoordinator (FBLogin, InfoSetup, SmartG, Analytics)." width="800">
+  <img src="docs/coordinators.svg" alt="Coordinator tree: AppCoordinator starts NotebookCoordinator (ThemeList, PackList, ThemeEditor; children SettingsCoordinator with Settings and QuantityPicker, and OnboardingCoordinator with Onboarding) and ConnectedInsightsCoordinator (SmartG, Analytics; child FacebookLoginCoordinator with FacebookLoginView and SetupInfoView)." width="800">
 </p>
 <p align="center"><em>Figure 2 — every navigation path in the app (updated 2026-07-05).</em></p>
 
@@ -80,7 +80,7 @@ After upgrading the Facebook SDK (9 → 18), Instagram analytics silently stoppe
 
 > **FBSDK 17+ ties the classic Graph token's validity to ATT consent.** Deny tracking and the SDK silently issues an unusable Limited-Login token; forcing the in-app advertiser flag doesn't help, because the OS ATT status wins.
 
-The fix ships the constraint *honestly*: a SwiftUI setup flow (`FBLoginView`) that surfaces the tracking state, routes the user to the one place iOS lets them change it, and **degrades gracefully** — deny tracking and you lose only the analytics feature, not the app. The full investigation, the alternatives weighed (classic Facebook Login vs. the newer Instagram Login), and the decision to defer the migration are written up as an architecture decision record:
+The fix ships the constraint *honestly*: a SwiftUI setup flow (`FacebookLoginView`) that surfaces the tracking state, routes the user to the one place iOS lets them change it, and **degrades gracefully** — deny tracking and you lose only the analytics feature, not the app. The full investigation, the alternatives weighed (classic Facebook Login vs. the newer Instagram Login), and the decision to defer the migration are written up as an architecture decision record:
 
 📄 **[docs/CONNECTED_INSIGHTS_ATT.md](docs/CONNECTED_INSIGHTS_ATT.md)**
 
