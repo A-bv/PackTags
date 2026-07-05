@@ -2,7 +2,7 @@
 "Settings" = "Réglages";
 "Account" = "Compte";
 "Instagram" = "Instagram";
-"Facebook Login" = "Connection à Facebook";
+"Facebook Login" = "Connexion à Facebook";
 "Hashtags" = "Hashtags";
 "Quantity Per Pack" = "Quantité par pack";
 "Save & Shuffle" = "Enregistrer puis mélanger";
@@ -36,9 +36,8 @@
 
 "Show" = "Montrer";
 
-"Instagram" = "Instagram";
 "Username" = "Nom d'utilisateur";
-"Enter Username" = "Entrer votre nom d'utilisateur";
+"Enter Username" = "Entrez votre nom d'utilisateur";
 "PackTags will redirect you to this account each, time the copy button is tapped." = "PackTags vous redirigera vers ce compte à chaque fois que vous appuierez sur le bouton de copie.";
 "PackTags will stop redirecting you to this account, each time the copy button is tapped." = "PackTags cessera de vous rediriger vers ce compte à chaque fois que vous appuierez sur le bouton de copie.";
 "Tap the button again to undo." = "Appuyez à nouveau sur le bouton pour annuler.";
@@ -58,7 +57,6 @@
 "results" = "résultats";
  
 // InfoSetupIGCreatorVC()
-"Creator /Business account" = "Compte Créateur /Entreprise:";
 "topTextViewText" =
 "
 ✶ Allez sur votre page Instagram.
@@ -85,10 +83,9 @@
 "Likes" = "Likes";
 "Comments" = "Coms";
 "Average" = "Moyenne";
-"Selection" = "Selection";
+"Selection" = "Sélection";
 
 //AnalyticsNew
-"Average" = "Moyenne";
 "Previous posts" = "Posts précédents";
 "Previous post" = "Post précédent";
 "Latest post" = "Dernier post";
@@ -118,9 +115,9 @@
 "Smart Hashtags" = "Smart Hashtags";
 "Hashtag page search" = "Page de recherche d'hashtags";
 "Top 10 hashtags copied!" = "Top 10 hashtags copiés!";
-"The most used hashtags of the page were copied into the clipboard." = "Les hashtags les plus utilisés de la page on été copiés dans le presse-papier.";
+"The most used hashtags of the page were copied into the clipboard." = "Les hashtags les plus utilisés de la page ont été copiés dans le presse-papier.";
 "Enter a hashtag" = "Entrez un hashtag";
-"Instagram allows only 30 saved hashtags per week." = "Instagram limite la sauvegrade d'hashtags à 30 par semaine.";
+"Instagram allows only 30 saved hashtags per week." = "Instagram limite la sauvegarde d'hashtags à 30 par semaine.";
 "Oups! Could not find hashtags.\nCheck your entry." = "Oups! Aucun hashtag trouvé.\nVérifiez votre saisie.";
 "Ok" = "OK";
 
@@ -144,6 +141,12 @@
 "Please reopen PackTags to start fresh." = "Veuillez rouvrir PackTags pour repartir de zéro.";
 
 //Accessibility
+"Search" = "Rechercher";
+"Close analytics" = "Fermer les analyses";
+"Next metric" = "Indicateur suivant";
+"Select hashtags" = "Sélectionner les hashtags";
+"Switch between values and rates" = "Basculer entre valeurs et taux";
+"Theme options" = "Options du thème";
 "Shows the pack's hashtags" = "Affiche les hashtags du pack";
 "Close" = "Fermer";
 "Copy top hashtags" = "Copier les meilleurs hashtags";
@@ -194,7 +197,6 @@ Vous voudrez peut-être faire une sauvegarde avant d'utiliser cette fonction.
 "Setup" = "Configuration";
 
 //Alerts
-"Cancel" = "Annuler";
 "Done" = "Terminé";
 "Edit Your Setup" = "Modifiez votre configuration";
 "troubleShootingAlertMessage" = "
@@ -203,22 +205,19 @@ Connectez-vous à nouveau et modifiez vos paramètres :
             
 • Un compte Instagram Creator/Business est nécessaire.
             
-• Sélectionnez uniquement la page Facebook qui est lié à votre compte Instagram.
+• Sélectionnez uniquement la page Facebook qui est liée à votre compte Instagram.
             
 Appuyez sur \"Configuration\" pour plus d'informations.";
-"Discover PackTags and its features with \"Tricks & Tips\" in settings." = "Découvrez PackTags et ses fonctionalités avec \"Trucs et astuces\" dans paramètres.";
+"Discover PackTags and its features with \"Tricks & Tips\" in settings." = "Découvrez PackTags et ses fonctionnalités avec \"Trucs et astuces\" dans paramètres.";
 "View later" = "Plus tard";
 "Let's go!" = "C'est parti!";
-"Tricks & Tips" = "Trucs et astuces";
 
-"Username" = "Nom d'utilisateur";
-"Enter Username" = "Entrez votre nom d'utilisateur";
 "Edit Username" = "Modifiez votre nom d'utilisateur";
 
 "Edit Name" = "Renommer";
 "Enter Name" = "Entrer nom";
 "Enter New Name" = "Entrer nouveau nom";
-"New Theme" = "Nouveau theme";
+"New Theme" = "Nouveau thème";
 
 /* Connected Insights — App Tracking */
 "App tracking on" = "Suivi activé";
@@ -226,7 +225,6 @@ Appuyez sur \"Configuration\" pour plus d'informations.";
 "Manage" = "Gérer";
 "Why tracking?" = "Pourquoi le suivi ?";
 "Enable Tracking" = "Activer le suivi";
-"Setup" = "Configuration";
 "Reset Facebook Login" = "Réinitialiser la connexion Facebook";
 "Meta features are only available to Creator/Business Instagram accounts connected to a Facebook page." = "Les fonctionnalités Meta sont réservées aux comptes Instagram Créateur/Entreprise connectés à une page Facebook.";
 "If you do not have a connected page:" = "Si vous n'avez pas de page liée :";
