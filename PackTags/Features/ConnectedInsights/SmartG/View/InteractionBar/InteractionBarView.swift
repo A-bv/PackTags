@@ -120,7 +120,15 @@ extension InteractionBarView {
         hashtag.id = UUID()
         hashtag.title = hastagTitle
         hashtag.addDate = Date()
-        try? moc.save()
+        do {
+            try moc.save()
+        } catch {
+            // Roll back so the failed insert/deletes don't linger as dirty state and
+            // poison the next save of this shared context.
+            moc.rollback()
+            AppLogger.persistence.error(
+                "Saving a searched hashtag failed: \(error.localizedDescription, privacy: .public)")
+        }
     }
 
     /// Drops entries past Instagram's 7-day window so the saved list stays bounded and
