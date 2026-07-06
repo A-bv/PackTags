@@ -32,7 +32,7 @@ A production iOS app built to a senior bar. Every technique below is verifiable 
 - **Protocol-driven DI from a single composition root.** No app singletons; every dependency arrives through `init`, so every unit test runs against fakes.
 - **Pure domain layer.** Hashtag parsing and pack-chunking are value types with no UIKit and no persistence import.
 - **Repository pattern over Core Data**, behind protocols, on in-memory stores in tests.
-- **Modular by extraction.** Networking, tag editing, and the reusable UI live in five first-party Swift packages (`InstagramGraph`, `TapTagKit`, and three more) maintained separately from the app.
+- **Modular by extraction.** Networking, tag editing, and the reusable UI live in five first-party Swift packages ([`InstagramGraph`](https://github.com/A-bv/InstagramGraph), [`TapTagKit`](https://github.com/A-bv/TapTagKit), [`TableViewControllerCoverKit`](https://github.com/A-bv/TableViewControllerCoverKit), [`NeumorphicUIKit`](https://github.com/A-bv/NeumorphicUIKit), [`NeumorphicSwiftUI`](https://github.com/A-bv/NeumorphicSwiftUI)) maintained separately from the app.
 
 **Production quality**
 - **Observability:** `os.Logger` categories (no `print`), `OSSignposter` intervals on hot paths for Instruments, and **MetricKit** capture of crashes, hangs, and launch time.
