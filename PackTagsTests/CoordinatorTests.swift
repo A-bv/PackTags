@@ -38,7 +38,7 @@ private final class SpyConnectedInsightsCoordinator: ConnectedInsightsProtocol {
 /// so construction can be verified without reaching into the editor's view model.
 @MainActor
 private final class SpyThemeEditorFactory {
-    private(set) var capturedThemes: [ThemeEntity?] = []
+    private(set) var capturedThemes: [Theme?] = []
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
 
@@ -47,7 +47,7 @@ private final class SpyThemeEditorFactory {
         self.settings = settings
     }
 
-    func make(_ theme: ThemeEntity?) -> ThemeEditorViewController {
+    func make(_ theme: Theme?) -> ThemeEditorViewController {
         capturedThemes.append(theme)
         return ThemeEditorViewController(viewModel: ThemeEditorViewModel(theme: theme, repository: repository, settings: settings))
     }
@@ -67,29 +67,37 @@ private final class FakeAppSettings: AppSettingsProtocol {
 
 private final class FakeThemeRepository: ThemeRepositoryProtocol {
     private(set) var didSave = false
-    private let persistence = PersistenceController(inMemory: true)
-    var stored: [ThemeEntity] = []
+    var stored: [Theme] = []
 
-    func fetchAll() -> [ThemeEntity] { stored }
-    func create() -> ThemeEntity { ThemeEntity(context: persistence.viewContext) }
-    func save() { didSave = true }
-    func delete(_ theme: ThemeEntity) {}
-    func count() -> Int32 { Int32(stored.count) }
+    func fetchAll() -> [Theme] { stored }
+
+    @discardableResult
+    func add(name: String?, content: String?, image: Data?, thumbnail: Data?) -> Theme {
+        let theme = makeTheme(named: name)
+        stored.append(theme)
+        return theme
+    }
+
+    func update(_ theme: Theme) {
+        didSave = true
+        if let index = stored.firstIndex(where: { $0.id == theme.id }) { stored[index] = theme }
+    }
+
+    func delete(_ theme: Theme) { stored.removeAll { $0.id == theme.id } }
+    func reorder(_ orderedThemes: [Theme]) { stored = orderedThemes }
     func tagsAlreadyStored(tags: [String]) -> [String] { [] }
 }
 
 // MARK: - Helpers
 
-/// Kept alive for the whole suite: a theme whose context has deallocated
-/// reads all its properties back as nil.
-@MainActor
-private let themeFactoryPersistence = PersistenceController(inMemory: true)
-
-@MainActor
-private func makeTheme(named name: String? = nil) -> ThemeEntity {
-    let theme = ThemeEntity(context: themeFactoryPersistence.viewContext)
-    theme.name = name
-    return theme
+private func makeTheme(named name: String? = nil) -> Theme {
+    Theme(
+        id: ThemeID(rawValue: URL(string: "packtags://theme/\(UUID().uuidString)")!),
+        name: name,
+        content: nil,
+        image: nil,
+        thumbnail: nil,
+        orderIndex: 0)
 }
 
 // MARK: - AppCoordinator
@@ -117,7 +125,7 @@ private func makeTheme(named name: String? = nil) -> ThemeEntity {
 @Suite @MainActor struct NotebookCoordinatorTests {
 
     private func makeSUT(
-        themes: [ThemeEntity] = [],
+        themes: [Theme] = [],
         connectedInsights: ConnectedInsightsProtocol? = nil
         // swiftlint:disable:next large_tuple - named fixture, destructured at every call site
     ) -> (sut: NotebookCoordinator, nav: SpyNavigationController, editorFactory: SpyThemeEditorFactory) {
@@ -222,7 +230,7 @@ private func makeTheme(named name: String? = nil) -> ThemeEntity {
 
         packList?.onEditTheme?(nil)
 
-        #expect(editorFactory.capturedThemes.last! === theme)
+        #expect(editorFactory.capturedThemes.last! == theme)
         let editor = (nav.presentedVC as? UINavigationController)?.topViewController as? ThemeEditorViewController
         #expect(editor?.packToHighlight == nil)
     }

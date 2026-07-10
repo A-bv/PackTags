@@ -111,6 +111,7 @@
 		AB00000000000000000000E2 /* UserDefaultsAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000E1 /* UserDefaultsAppSettings.swift */; };
 		AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F1 /* TagPackFormatter.swift */; };
 		AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F3 /* TagDeduplicator.swift */; };
+		ABCDEF00000000000000DA02 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDEF00000000000000DA01 /* Theme.swift */; };
 		AB00000000000000000000F8 /* HashtagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000000000000000000F7 /* HashtagParser.swift */; };
 		AB0000000000000000000102 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000101 /* DomainTests.swift */; };
 		AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */; };
@@ -278,6 +279,7 @@
 		AB00000000000000000000E1 /* UserDefaultsAppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppSettings.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F1 /* TagPackFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPackFormatter.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F3 /* TagDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeduplicator.swift; sourceTree = "<group>"; };
+		ABCDEF00000000000000DA01 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AB00000000000000000000F7 /* HashtagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagParser.swift; sourceTree = "<group>"; };
 		AB0000000000000000000101 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAccessTokenProvider.swift; sourceTree = "<group>"; };
@@ -823,6 +825,7 @@
 			isa = PBXGroup;
 			children = (
 				AB000000000000000000020B /* Hashtags */,
+				ABCDEF00000000000000DA01 /* Theme.swift */,
 				0207BB912FD4ABDA0007F3D3 /* ThemeRepositoryProtocol.swift */,
 				0207BBA12FD4AC010007F3D3 /* HashtagRepositoryProtocol.swift */,
 			);
@@ -1241,6 +1244,7 @@
 				5A0000000000000000000022 /* AppSettingsProtocol.swift in Sources */,
 				AB00000000000000000000F2 /* TagPackFormatter.swift in Sources */,
 				AB00000000000000000000F4 /* TagDeduplicator.swift in Sources */,
+				ABCDEF00000000000000DA02 /* Theme.swift in Sources */,
 				AB00000000000000000000F8 /* HashtagParser.swift in Sources */,
 				0281B9852879CDC600344D3E /* AppDelegate+Seed.swift in Sources */,
 				02AD94B329AC080100D893E5 /* FacebookLoginViewModel.swift in Sources */,

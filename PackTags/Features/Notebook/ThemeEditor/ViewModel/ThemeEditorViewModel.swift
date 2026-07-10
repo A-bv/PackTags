@@ -4,13 +4,13 @@ final class ThemeEditorViewModel {
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
     private let deduplicator: TagDeduplicator
-    private(set) var theme: ThemeEntity?
+    private(set) var theme: Theme?
     var themeTitle: String
     var tagsPerPack: Int { settings.tagsPerPack }
     var isNewTheme: Bool { theme == nil }
     var canSave: Bool { !themeTitle.isEmpty }
 
-    init(theme: ThemeEntity?, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
+    init(theme: Theme?, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
         self.theme = theme
         self.repository = repository
         self.settings = settings
@@ -56,22 +56,15 @@ final class ThemeEditorViewModel {
             currentThemeContent: theme?.content,
             shuffle: settings.saveAndShuffle)
 
-        if let theme = theme {
-            theme.name = themeTitle
-            theme.content = text
-            theme.image = imageData
-            theme.thumbnail = thumbnailData
-            repository.save()
+        if var edited = theme {
+            edited.name = themeTitle
+            edited.content = text
+            edited.image = imageData
+            edited.thumbnail = thumbnailData
+            repository.update(edited)
+            theme = edited
         } else {
-            let index = repository.count()
-            let newTheme = repository.create()
-            newTheme.name = themeTitle
-            newTheme.content = text
-            newTheme.image = imageData
-            newTheme.thumbnail = thumbnailData
-            newTheme.orderIndex = index
-            repository.save()
-            self.theme = newTheme
+            theme = repository.add(name: themeTitle, content: text, image: imageData, thumbnail: thumbnailData)
         }
     }
 

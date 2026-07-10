@@ -1,8 +1,8 @@
-import CoreData
+import Foundation
 
 final class ThemeListViewModel {
     struct ThemeRow {
-        let id: NSManagedObjectID
+        let id: ThemeID
         let name: String?
         let thumbnail: Data?
     }
@@ -10,7 +10,7 @@ final class ThemeListViewModel {
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
     private let navigation: ThemeListNavigation
-    private var themes: [ThemeEntity] = []
+    private var themes: [Theme] = []
     var onUpdate: (() -> Void)?
 
     init(repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol, navigation: ThemeListNavigation) {
@@ -27,7 +27,7 @@ final class ThemeListViewModel {
     func themeRow(at index: Int) -> ThemeRow? {
         guard themes.indices.contains(index) else { return nil }
         let theme = themes[index]
-        return ThemeRow(id: theme.objectID, name: theme.name, thumbnail: theme.thumbnail)
+        return ThemeRow(id: theme.id, name: theme.name, thumbnail: theme.thumbnail)
     }
 
     // MARK: - Navigation intents
@@ -66,10 +66,7 @@ final class ThemeListViewModel {
         guard themes.indices.contains(sourceIndex), themes.indices.contains(destinationIndex) else { return }
         let moved = themes.remove(at: sourceIndex)
         themes.insert(moved, at: destinationIndex)
-        for (i, theme) in themes.enumerated() {
-            theme.orderIndex = Int32(i)
-        }
-        repository.save()
+        repository.reorder(themes)
     }
 
     func deleteTheme(at index: Int) {

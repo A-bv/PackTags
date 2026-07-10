@@ -10,13 +10,13 @@ final class PackListViewModel {
 
     private let repository: any ThemeRepositoryProtocol
     private let settings: any AppSettingsProtocol
-    private let theme: ThemeEntity
+    private var theme: Theme
     private(set) var packs: [String] = []
 
     var title: String { theme.name ?? "" }
     var coverImageData: Data? { theme.image }
 
-    init(theme: ThemeEntity, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
+    init(theme: Theme, repository: any ThemeRepositoryProtocol, settings: any AppSettingsProtocol) {
         self.theme = theme
         self.repository = repository
         self.settings = settings
@@ -99,6 +99,6 @@ final class PackListViewModel {
         let element = packs.remove(at: index)
         packs.append(element)
         theme.content = packs.joined(separator: " ")
-        repository.save()
+        repository.update(theme)
     }
 }

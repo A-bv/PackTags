@@ -30,24 +30,20 @@ import CoreData
         let persistence = PersistenceController(storeURL: url)
         #expect(persistence.loadError == nil)
         let repo = CoreDataThemeRepository(context: persistence.viewContext)
-        repo.create().name = "Doomed"
-        repo.save()
-        #expect(repo.count() == 1)
+        repo.add(name: "Doomed", content: nil, image: nil, thumbnail: nil)
+        #expect(repo.fetchAll().count == 1)
 
         persistence.destroyStore()
 
         // Reopening the same location must yield a fresh, empty store.
         let reopened = PersistenceController(storeURL: url)
-        #expect(CoreDataThemeRepository(context: reopened.viewContext).count() == 0)
+        #expect(CoreDataThemeRepository(context: reopened.viewContext).fetchAll().isEmpty)
     }
 
-    @Test func create_thenSave_isReturnedByFetchAll() {
+    @Test func add_thenFetchAll_returnsTheStoredTheme() {
         let sut = makeSUT()
 
-        let theme = sut.create()
-        theme.name = "Travel"
-        theme.content = "#travel #sunset"
-        sut.save()
+        sut.add(name: "Travel", content: "#travel #sunset", image: nil, thumbnail: nil)
 
         let fetched = sut.fetchAll()
         #expect(fetched.count == 1)
@@ -57,45 +53,35 @@ import CoreData
     @Test func fetchAll_sortsByOrderIndex() {
         let sut = makeSUT()
 
-        let second = sut.create()
-        second.name = "B"
-        second.orderIndex = 1
-        let first = sut.create()
-        first.name = "A"
-        first.orderIndex = 0
-        sut.save()
+        let first = sut.add(name: "A", content: nil, image: nil, thumbnail: nil)
+        let second = sut.add(name: "B", content: nil, image: nil, thumbnail: nil)
+        sut.reorder([second, first])
 
-        #expect(sut.fetchAll().compactMap(\.name) == ["A", "B"])
+        #expect(sut.fetchAll().compactMap(\.name) == ["B", "A"])
     }
 
     @Test func delete_removesThemeFromStore() {
         let sut = makeSUT()
-        let theme = sut.create()
-        theme.name = "Doomed"
-        sut.save()
+        let theme = sut.add(name: "Doomed", content: nil, image: nil, thumbnail: nil)
 
         sut.delete(theme)
 
         #expect(sut.fetchAll().isEmpty)
-        #expect(sut.count() == 0)
     }
 
-    @Test func count_reflectsNumberOfStoredThemes() {
+    @Test func add_appendsEachThemeToTheStore() {
         let sut = makeSUT()
-        #expect(sut.count() == 0)
+        #expect(sut.fetchAll().isEmpty)
 
-        sut.create().name = "One"
-        sut.create().name = "Two"
-        sut.save()
+        sut.add(name: "One", content: nil, image: nil, thumbnail: nil)
+        sut.add(name: "Two", content: nil, image: nil, thumbnail: nil)
 
-        #expect(sut.count() == 2)
+        #expect(sut.fetchAll().compactMap(\.name) == ["One", "Two"])
     }
 
     @Test func tagsAlreadyStored_returnsOnlyTagsPresentInThemeContent() {
         let sut = makeSUT()
-        let theme = sut.create()
-        theme.content = "#sunset #beach"
-        sut.save()
+        sut.add(name: nil, content: "#sunset #beach", image: nil, thumbnail: nil)
 
         let matched = sut.tagsAlreadyStored(tags: ["#sunset", "#mountain"])
 
@@ -125,7 +111,7 @@ import CoreData
     }
 
     private func noopNavigation(
-        selectTheme: @escaping (ThemeEntity) -> Void = { _ in },
+        selectTheme: @escaping (Theme) -> Void = { _ in },
         createTheme: @escaping (@escaping () -> Void) -> Void = { _ in },
         openSettings: @escaping () -> Void = {},
         openAnalytics: @escaping () -> Void = {},
@@ -161,12 +147,9 @@ import CoreData
     }
 
     private func seedThemes(_ names: [String], in repository: CoreDataThemeRepository) {
-        for (index, name) in names.enumerated() {
-            let theme = repository.create()
-            theme.name = name
-            theme.orderIndex = Int32(index)
+        for name in names {
+            repository.add(name: name, content: nil, image: nil, thumbnail: nil)
         }
-        repository.save()
     }
 
     @Test func shouldShowOnboarding_followsTheSettingsFlag() {
@@ -207,7 +190,7 @@ import CoreData
     }
 
     @Test func selectTheme_atValidIndex_firesActionWithThatTheme() {
-        var selected: ThemeEntity?
+        var selected: Theme?
         let (sut, repository) = makeSUT(navigation: noopNavigation(selectTheme: { selected = $0 }))
         seedThemes(["A", "B"], in: repository)
         sut.loadThemes()
@@ -281,7 +264,7 @@ import CoreData
         sut.deleteTheme(at: 0)
 
         #expect(names(sut) == ["B"])
-        #expect(repository.count() == 1)
+        #expect(repository.fetchAll().count == 1)
     }
 
     @Test func deleteTheme_withInvalidIndex_doesNothing() {
@@ -309,9 +292,7 @@ import CoreData
 
     private func makeSUT(content: String? = "#a #b #c") -> (PackListViewModel, FakeSettings) {
         let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
-        let theme = repository.create()
-        theme.content = content
-        repository.save()
+        let theme = repository.add(name: nil, content: content, image: nil, thumbnail: nil)
         let settings = FakeSettings()
         return (PackListViewModel(theme: theme, repository: repository, settings: settings), settings)
     }
@@ -580,7 +561,7 @@ import CoreData
         var setupInfoShown = false
     }
 
-    private func makeSUT(theme: ThemeEntity? = nil) -> ThemeEditorViewModel {
+    private func makeSUT(theme: Theme? = nil) -> ThemeEditorViewModel {
         let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
         return ThemeEditorViewModel(theme: theme, repository: repository, settings: FakeSettings())
     }
@@ -600,7 +581,7 @@ import CoreData
 
         sut.save(rawText: "#sea #sea and some #sun", imageData: nil, thumbnailData: nil)
 
-        #expect(repository.count() == 1)
+        #expect(repository.fetchAll().count == 1)
         #expect(sut.theme?.name == "Travel")
         #expect(sut.theme?.content == "#sea #sun")
     }
@@ -636,16 +617,13 @@ import CoreData
 
     @Test func save_updatesAnExistingTheme_withoutCreatingANewOne() {
         let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
-        let existing = repository.create()
-        existing.name = "Old"
-        existing.content = "#old"
-        repository.save()
+        let existing = repository.add(name: "Old", content: "#old", image: nil, thumbnail: nil)
 
         let sut = ThemeEditorViewModel(theme: existing, repository: repository, settings: FakeSettings())
         sut.themeTitle = "Updated"
         sut.save(rawText: "#new #new", imageData: nil, thumbnailData: nil)
 
-        #expect(repository.count() == 1)            // updated in place, not duplicated
+        #expect(repository.fetchAll().count == 1)            // updated in place, not duplicated
         #expect(sut.theme?.name == "Updated")
         #expect(sut.theme?.content == "#new")
     }
@@ -678,9 +656,7 @@ import CoreData
 
     @Test func contentForDisplay_groupsTheContentIntoPacks() {
         let repository = CoreDataThemeRepository(context: PersistenceController(inMemory: true).viewContext)
-        let theme = repository.create()
-        theme.content = "#a #b #c #d"
-        repository.save()
+        let theme = repository.add(name: nil, content: "#a #b #c #d", image: nil, thumbnail: nil)
         let settings = FakeSettings()
         settings.tagsPerPack = 2
         let sut = ThemeEditorViewModel(theme: theme, repository: repository, settings: settings)

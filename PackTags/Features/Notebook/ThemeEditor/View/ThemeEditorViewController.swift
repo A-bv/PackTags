@@ -73,7 +73,7 @@ final class ThemeEditorViewController: UIViewController {
 
     // MARK: - Callbacks
 
-    var onSave: ((ThemeEntity?) -> Void)?
+    var onSave: ((Theme?) -> Void)?
     var onCancel: (() -> Void)?
 
     // MARK: - Init

@@ -56,9 +56,7 @@ import Testing
 
     @Test func sanitize_removesTagsAlreadyStoredInOtherThemes() {
         let repository = makeRepository()
-        let otherTheme = repository.create()
-        otherTheme.content = "#stored"
-        repository.save()
+        repository.add(name: nil, content: "#stored", image: nil, thumbnail: nil)
         let sut = TagDeduplicator(repository: repository)
 
         let result = sut.sanitize(rawText: "#stored #fresh", currentThemeContent: nil, shuffle: false)
@@ -68,11 +66,8 @@ import Testing
 
     @Test func sanitize_keepsTagsBelongingToTheCurrentTheme() {
         let repository = makeRepository()
-        let currentTheme = repository.create()
-        currentTheme.content = "#mine #also"
-        let otherTheme = repository.create()
-        otherTheme.content = "#stored"
-        repository.save()
+        let currentTheme = repository.add(name: nil, content: "#mine #also", image: nil, thumbnail: nil)
+        repository.add(name: nil, content: "#stored", image: nil, thumbnail: nil)
         let sut = TagDeduplicator(repository: repository)
 
         let result = sut.sanitize(rawText: "#mine #also #stored #fresh", currentThemeContent: currentTheme.content, shuffle: false)

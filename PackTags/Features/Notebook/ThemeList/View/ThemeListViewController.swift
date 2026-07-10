@@ -1,5 +1,4 @@
 import UIKit
-import CoreData
 
 final class ThemeListViewController: UITableViewController {
 
@@ -39,7 +38,7 @@ final class ThemeListViewController: UITableViewController {
 
     /// Decoded thumbnails keyed by theme id; cleared on every reload so
     /// scrolling never re-decodes JPEG data row by row.
-    private let thumbnailCache = NSCache<NSManagedObjectID, UIImage>()
+    private let thumbnailCache = NSCache<NSURL, UIImage>()
 
     // MARK: - Init
 
@@ -181,9 +180,10 @@ final class ThemeListViewController: UITableViewController {
     }
 
     private func decodedThumbnail(for row: ThemeListViewModel.ThemeRow) -> UIImage? {
-        if let cached = thumbnailCache.object(forKey: row.id) { return cached }
+        let key = row.id.rawValue as NSURL
+        if let cached = thumbnailCache.object(forKey: key) { return cached }
         guard let data = row.thumbnail, let image = UIImage(data: data) else { return nil }
-        thumbnailCache.setObject(image, forKey: row.id)
+        thumbnailCache.setObject(image, forKey: key)
         return image
     }
 
