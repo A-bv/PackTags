@@ -144,6 +144,7 @@
 		AB0000000000000000010252 /* RotatingDotsIndicatorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010251 /* RotatingDotsIndicatorItemView.swift */; };
 		AB0000000000000000010262 /* VisualEffectBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010261 /* VisualEffectBlurView.swift */; };
 		AB0000000000000000010272 /* Color+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010271 /* Color+AppColors.swift */; };
+		ABCDEF00000000000000DB02 /* NeumorphicPalette+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDEF00000000000000DB01 /* NeumorphicPalette+App.swift */; };
 		AB0000000000000000010282 /* LinearGradient+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010281 /* LinearGradient+Init.swift */; };
 		AB0000000000000000010292 /* ClosureTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010291 /* ClosureTapGestureRecognizer.swift */; };
 		AB0000000000000000010302 /* AnalyticsMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010301 /* AnalyticsMetric.swift */; };
@@ -310,6 +311,7 @@
 		AB0000000000000000010251 /* RotatingDotsIndicatorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingDotsIndicatorItemView.swift; sourceTree = "<group>"; };
 		AB0000000000000000010261 /* VisualEffectBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectBlurView.swift; sourceTree = "<group>"; };
 		AB0000000000000000010271 /* Color+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+AppColors.swift"; sourceTree = "<group>"; };
+		ABCDEF00000000000000DB01 /* NeumorphicPalette+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NeumorphicPalette+App.swift"; sourceTree = "<group>"; };
 		AB0000000000000000010281 /* LinearGradient+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+Init.swift"; sourceTree = "<group>"; };
 		AB0000000000000000010291 /* ClosureTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		AB0000000000000000010301 /* AnalyticsMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsMetric.swift; sourceTree = "<group>"; };
@@ -863,6 +865,7 @@
 				0281B98F287A344C00344D3E /* NavigationBar */,
 				AB0000000000000000010281 /* LinearGradient+Init.swift */,
 				AB0000000000000000010271 /* Color+AppColors.swift */,
+				ABCDEF00000000000000DB01 /* NeumorphicPalette+App.swift */,
 				02491C682680883700F98E17 /* UIColor+AppColors.swift */,
 				020584D0284D6F8100020FB8 /* UIView+RoundedCorners.swift */,
 				020584D4284D715D00020FB8 /* UIView+BlurView.swift */,
@@ -1193,6 +1196,7 @@
 				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
 				AB0000000000000000010282 /* LinearGradient+Init.swift in Sources */,
 				AB0000000000000000010272 /* Color+AppColors.swift in Sources */,
+				ABCDEF00000000000000DB02 /* NeumorphicPalette+App.swift in Sources */,
 				0207BB892FD3736C0007F3D3 /* NotebookCoordinator.swift in Sources */,
 				AB0000000000000000010022 /* ConnectedInsightsDestination.swift in Sources */,
 				AB0000000000000000010012 /* ConnectedInsightsProtocol.swift in Sources */,
@@ -1705,7 +1709,7 @@
 			repositoryURL = "https://github.com/A-bv/NeumorphicSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
+				minimumVersion = 3.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

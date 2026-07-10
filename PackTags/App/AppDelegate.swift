@@ -2,7 +2,6 @@ import UIKit
 import SwiftUI
 import FBSDKCoreKit
 import NeumorphicUIKit
-import NeumorphicSwiftUI
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -62,14 +61,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             darkShadow: .shadowColor,
             lightShadow: .lightShadowColor,
             bottom: .bottomColor))
-        NeumorphicTheme.configure(NeumorphicPalette(
-            gradientStart: .mphStart,
-            gradientEnd: .mphEnd,
-            lowerShadow: .lowerShadow,
-            upperShadow: .upperShadow,
-            highlightStroke: .brandAccent,
-            baseStroke: .brandAccentDeep,
-            background: .bgFillColor))
+        // The SwiftUI palette (NeumorphicPalette.app) is injected per-screen via
+        // `.neumorphicTheme(_:)` at each SwiftUI root; 3.x reads it from the environment.
     }
     
     // MARK: - UISceneSession Lifecycle

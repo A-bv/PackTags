@@ -54,7 +54,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
     }
 
     private func present(_ view: some View, from presenter: UIViewController) {
-        let host = UIHostingController(rootView: view)
+        let host = UIHostingController(rootView: view.neumorphicTheme(.app))
         host.modalPresentationStyle = .overFullScreen
         host.modalTransitionStyle = .coverVertical
         presenter.present(host, animated: true)

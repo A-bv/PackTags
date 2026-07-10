@@ -1,6 +1,7 @@
 import XCTest
 import SwiftUI
 import SnapshotTesting
+import NeumorphicSwiftUI
 @testable import PackTags
 
 /// Reference-image tests: render key views in light + dark so appearance regressions
@@ -29,7 +30,7 @@ final class ViewSnapshotTests: XCTestCase {
     }
 
     private func render<V: View>(_ view: V, style: UIUserInterfaceStyle) -> UIImage {
-        let host = UIHostingController(rootView: view)
+        let host = UIHostingController(rootView: view.neumorphicTheme(.app))
         host.overrideUserInterfaceStyle = style
         host.view.backgroundColor = .systemBackground
         let size = host.sizeThatFits(in: CGSize(width: 600, height: 2000))

@@ -45,7 +45,7 @@ final class FacebookLoginCoordinator {
     }
 
     private func present(_ view: some View, from presenter: UIViewController) {
-        let host = UIHostingController(rootView: view)
+        let host = UIHostingController(rootView: view.neumorphicTheme(.app))
         host.view.backgroundColor = .clear   // the SwiftUI view supplies a blur over what's behind
         host.modalPresentationStyle = .overFullScreen
         host.modalTransitionStyle = .coverVertical
