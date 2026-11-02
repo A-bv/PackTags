@@ -11,10 +11,10 @@
 Save hashtags as reusable themed packs, copy a pack in one tap, and lift tags straight out of a screenshot. Connect an Instagram Business account through the official Meta Graph API and PackTags also finds live hashtags for any topic and reports how your recent posts performed.
 
 <p align="center">
-  <img src="docs/screenshots/overview.png" width="185" alt="Post analytics, the hashtag editor, a themed pack, and the theme list">
-  <img src="docs/screenshots/dark-mode.png" width="185" alt="A themed pack in dark mode">
-  <img src="docs/screenshots/editor.png" width="185" alt="The tap-to-select hashtag editor over a themed pack">
-  <img src="docs/screenshots/smart-hashtags.png" width="185" alt="Smart Hashtags: discover tags for any topic, ranked by frequency in recent posts">
+  <a href="docs/screenshots/overview.png"><img src="docs/screenshots/overview.png" width="185" alt="Post analytics, the hashtag editor, a themed pack, and the theme list"></a>
+  <a href="docs/screenshots/dark-mode.png"><img src="docs/screenshots/dark-mode.png" width="185" alt="A themed pack in dark mode"></a>
+  <a href="docs/screenshots/editor.png"><img src="docs/screenshots/editor.png" width="185" alt="The tap-to-select hashtag editor over a themed pack"></a>
+  <a href="docs/screenshots/smart-hashtags.png"><img src="docs/screenshots/smart-hashtags.png" width="185" alt="Smart Hashtags: discover tags for any topic, ranked by frequency in recent posts"></a>
 </p>
 
 ## Engineering
@@ -32,11 +32,11 @@ The highlights are below; the full breakdown — every concurrency, testing, obs
 MVVM-C (Model, View, ViewModel, Coordinator) over a Domain / Repository core, wired by one composition root. Two data sources share one shape: local data flows through repositories over Core Data; remote data is decoded into value models by the `InstagramGraph` package behind an `async` gateway, so the app target contains no networking code of its own.
 
 <p align="center">
-  <img src="docs/architecture.svg" alt="MVVM-C architecture: a coordinator creates a View and ViewModel; the ViewModel uses the Domain layer and persists through a Repository (Core Data) or the InstagramGraph gateway (Meta Graph API); AppDependencies injects everything." width="800">
+  <a href="docs/architecture.svg"><img src="docs/architecture.svg" alt="MVVM-C architecture: a coordinator creates a View and ViewModel; the ViewModel uses the Domain layer and persists through a Repository (Core Data) or the InstagramGraph gateway (Meta Graph API); AppDependencies injects everything." width="100%"></a>
 </p>
 
 <p align="center">
-  <img src="docs/coordinators.svg" alt="Coordinator tree: AppCoordinator starts NotebookCoordinator (ThemeList, PackList, ThemeEditor; children SettingsCoordinator with Settings and QuantityPicker, and OnboardingCoordinator with Onboarding) and ConnectedInsightsCoordinator (SmartG, Analytics; child FacebookLoginCoordinator with FacebookLoginView and SetupInfoView)." width="800">
+  <a href="docs/coordinators.svg"><img src="docs/coordinators.svg" alt="Coordinator tree: AppCoordinator starts NotebookCoordinator (ThemeList, PackList, ThemeEditor; children SettingsCoordinator with Settings and QuantityPicker, and OnboardingCoordinator with Onboarding) and ConnectedInsightsCoordinator (SmartG, Analytics; child FacebookLoginCoordinator with FacebookLoginView and SetupInfoView)." width="100%"></a>
 </p>
 
 The conventions the codebase holds to (layering, DI, naming, who presents what) are documented in **[docs/CONVENTIONS.md](docs/CONVENTIONS.md)**.
