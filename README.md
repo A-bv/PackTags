@@ -64,7 +64,7 @@ xcodebuild test -scheme PackTags \
 
 ## Author
 
-Built and maintained by [A-bv](https://github.com/A-bv).
+Built and maintained by [A-bv](https://github.com/A-bv) · [LinkedIn](https://www.linkedin.com/in/bba4).
 
 ## License
 
