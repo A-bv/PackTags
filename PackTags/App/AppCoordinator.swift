@@ -1,4 +1,5 @@
 import UIKit
+import InstagramGraph
 
 @MainActor
 final class AppCoordinator: CoordinatorProtocol {
@@ -18,7 +19,9 @@ final class AppCoordinator: CoordinatorProtocol {
             persistence: persistence,
             themeRepository: CoreDataThemeRepository(context: persistence.viewContext),
             appSettings: appSettings,
-            connectedInsights: ConnectedInsightsCoordinator(settings: appSettings)
+            connectedInsights: ConnectedInsightsCoordinator(
+                settings: appSettings,
+                gateway: ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider()))
         )
     }
 

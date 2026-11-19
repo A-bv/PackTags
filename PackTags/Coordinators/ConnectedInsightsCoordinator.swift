@@ -8,8 +8,7 @@ final class ConnectedInsightsCoordinator: ConnectedInsightsProtocol {
     private let fbLogin: FacebookLoginCoordinator
     private lazy var smartTagsPersistence = PersistenceController(modelName: "SmartTags")
 
-    init(settings: any AppSettingsProtocol) {
-        let gateway = ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider())
+    init(settings: any AppSettingsProtocol, gateway: any ConnectedInsightsGatewayProtocol) {
         self.gateway = gateway
         self.fbLogin = FacebookLoginCoordinator(gateway: gateway, settings: settings)
     }
