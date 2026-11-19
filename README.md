@@ -1,14 +1,14 @@
 # PackTags
 
-**The notebook for Instagram hashtags. [Shipped on the App Store](https://apps.apple.com/app/id1579377025).**
+**The notebook for Instagram hashtags. Shipped on the App Store (temporarily removed, relisting in progress).**
 
 [![CI](https://github.com/A-bv/PackTags/actions/workflows/ci.yml/badge.svg)](https://github.com/A-bv/PackTags/actions/workflows/ci.yml)
 ![Swift 6](https://img.shields.io/badge/Swift-6-F05138?logo=swift&logoColor=white)
 ![iOS 17+](https://img.shields.io/badge/iOS-17%2B-007AFF?logo=apple&logoColor=white)
 ![UIKit + SwiftUI](https://img.shields.io/badge/UI-UIKit%20%2B%20SwiftUI-8E44AD)
-![App Store](https://img.shields.io/badge/App%20Store-shipped-2ECC71)
+![App Store](https://img.shields.io/badge/App%20Store-shipped%20(temporarily%20removed)-lightgrey)
 
-Save hashtags as reusable themed packs, copy a pack in one tap, and lift tags straight out of a screenshot. Connect an Instagram Business account through the official Meta Graph API and PackTags also finds live hashtags for any topic and reports how your recent posts performed.
+PackTags is built to grow your social-media engagement through better hashtag management. Keep your hashtags as reusable packs in a fast offline notebook, then connect an Instagram Business account through the official Meta Graph API to find live tags for any topic and see how your posts perform.
 
 <p align="center">
   <a href="docs/screenshots/overview.png"><img src="docs/screenshots/overview.png" width="185" alt="Post analytics, the hashtag editor, a themed pack, and the theme list"></a>
@@ -17,9 +17,21 @@ Save hashtags as reusable themed packs, copy a pack in one tap, and lift tags st
   <a href="docs/screenshots/smart-hashtags.png"><img src="docs/screenshots/smart-hashtags.png" width="185" alt="Smart Hashtags: discover tags for any topic, ranked by frequency in recent posts"></a>
 </p>
 
+## Features
+
+**Notebook (offline, no account):**
+
+- Save hashtags as reusable **themed packs** and copy a pack in one tap.
+- **Lift tags from a screenshot** with on-device text recognition.
+
+**Connected insights (Instagram Business account):**
+
+- **Smart Hashtags**: live tags for any topic, ranked by frequency in recent posts.
+- **Analytics**: how your recent posts performed.
+
 ## Engineering
 
-The highlights are below; the full breakdown — every concurrency, testing, observability, and platform-API technique — is in **[docs/ENGINEERING.md](docs/ENGINEERING.md)**.
+The highlights are below; the full breakdown (every concurrency, testing, observability, and platform-API technique) is in **[docs/ENGINEERING.md](docs/ENGINEERING.md)**.
 
 - Swift 6 language mode with `SWIFT_STRICT_CONCURRENCY = complete`: the whole target compiles under full data-race checking, not the opt-in minimal mode.
 - Structured concurrency with real cancellation: a custom `withThrowingTimeout` that races work against `Task.sleep` in a task group and cancels the loser, plus generation-token guards that discard superseded searches.
@@ -57,7 +69,7 @@ open PackTags.xcodeproj                          # SPM resolves packages on open
 Run the **PackTags** scheme on any iOS 17+ simulator. The notebook works offline out of the box; the connected features additionally need real Facebook credentials in `Secrets.xcconfig` and an Instagram Business account, which the app walks you through linking.
 
 ```sh
-# tests — any iOS 17+ simulator works; swap the name below for one you have
+# tests: any iOS 17+ simulator works; swap the name below for one you have
 xcodebuild test -scheme PackTags \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 ```
