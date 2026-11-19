@@ -65,7 +65,7 @@ struct SmartGView: View {
                 Text(Strings.retry)
                     .foregroundColor(.brandAccent)
             }
-            .buttonStyle(ColorfulButtonStyle())
+            .buttonStyle(NeumorphicButtonStyle())
         }
         .padding()
     }

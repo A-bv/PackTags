@@ -54,7 +54,7 @@ struct InteractionBarView: View {
                 Image(systemName: "paperplane.circle")
                     .foregroundColor(.brandAccent)
             }
-            .buttonStyle(ColorfulButtonStyle())
+            .buttonStyle(NeumorphicButtonStyle())
             .accessibilityLabel(Text(Strings.copyTopHashtags))
             .alert(isPresented: $smartGViewModel.showingAlert) {
                 Alert(
@@ -71,7 +71,7 @@ struct InteractionBarView: View {
                 Image(systemName: "info.circle")
                     .foregroundColor(.brandAccent)
             }
-            .buttonStyle(ColorfulButtonStyle())
+            .buttonStyle(NeumorphicButtonStyle())
             .accessibilityLabel(Text(Strings.savedHashtags))
             .popover(isPresented: $smartGViewModel.showingPopover) {
                 SmartGSavedTagsView(isPresented: $smartGViewModel.showingPopover)

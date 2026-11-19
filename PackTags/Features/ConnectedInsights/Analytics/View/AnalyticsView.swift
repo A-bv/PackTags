@@ -131,7 +131,7 @@ struct AnalyticsView: View {
                 Text(Strings.retry)
                     .foregroundColor(.brandAccent)
             }
-            .buttonStyle(ColorfulButtonStyle())
+            .buttonStyle(NeumorphicButtonStyle())
         }
         .padding()
     }
@@ -229,7 +229,7 @@ private extension AnalyticsView {
                 .foregroundColor(.brandAccent)
         }
         .accessibilityLabel(Text(Strings.toggleRawAndRates))
-        .toggleStyle(DarkToggleStyle())
+        .toggleStyle(NeumorphicToggleStyle())
         .padding(.trailing, Constants.graphSectionHeaderTrailingPadding)
         .onChange(of: isToggled) { changeInsightType() }
     }
@@ -240,7 +240,7 @@ private extension AnalyticsView {
                 .foregroundColor(.brandAccent)
         }
         .accessibilityLabel(Text(Strings.nextMetric))
-        .buttonStyle(ColorfulButtonStyle())
+        .buttonStyle(NeumorphicButtonStyle())
     }
 }
 
