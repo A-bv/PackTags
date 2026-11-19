@@ -15,13 +15,17 @@ final class AppCoordinator: CoordinatorProtocol {
         self.navigationController = StatusBarForwardingNavigationController()
         let persistence = PersistenceController()
         let appSettings = UserDefaultsAppSettings()
+        // `-uitests` runs the connected features against canned sample data, so UI tests
+        // and screenshots work without a real Instagram account.
+        let insightsGateway: any ConnectedInsightsGatewayProtocol =
+            ProcessInfo.processInfo.arguments.contains("-uitests")
+            ? DemoConnectedInsightsGateway()
+            : ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider())
         self.dependencies = AppDependencies(
             persistence: persistence,
             themeRepository: CoreDataThemeRepository(context: persistence.viewContext),
             appSettings: appSettings,
-            connectedInsights: ConnectedInsightsCoordinator(
-                settings: appSettings,
-                gateway: ConnectedInsightsGateway(tokenProvider: FacebookAccessTokenProvider()))
+            connectedInsights: ConnectedInsightsCoordinator(settings: appSettings, gateway: insightsGateway)
         )
     }
 

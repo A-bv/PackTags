@@ -138,6 +138,7 @@
 		AB0000000000000000010012 /* ConnectedInsightsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010011 /* ConnectedInsightsProtocol.swift */; };
 		AB0000000000000000010022 /* ConnectedInsightsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010021 /* ConnectedInsightsDestination.swift */; };
 		AB0000000000000000010032 /* UnavailableConnectedInsightsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */; };
+		AB0000000000000000019902 /* DemoConnectedInsightsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000019901 /* DemoConnectedInsightsGateway.swift */; };
 		AB0000000000000000010042 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010041 /* ReusableCellProtocol.swift */; };
 		AB0000000000000000010052 /* ReviewPromptStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010051 /* ReviewPromptStore.swift */; };
 		AB0000000000000000010242 /* RotatingDotsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000010241 /* RotatingDotsIndicatorView.swift */; };
@@ -305,6 +306,7 @@
 		AB0000000000000000010011 /* ConnectedInsightsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsProtocol.swift; sourceTree = "<group>"; };
 		AB0000000000000000010021 /* ConnectedInsightsDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedInsightsDestination.swift; sourceTree = "<group>"; };
 		AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableConnectedInsightsGateway.swift; sourceTree = "<group>"; };
+		AB0000000000000000019901 /* DemoConnectedInsightsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoConnectedInsightsGateway.swift; sourceTree = "<group>"; };
 		AB0000000000000000010041 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
 		AB0000000000000000010051 /* ReviewPromptStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptStore.swift; sourceTree = "<group>"; };
 		AB0000000000000000010241 /* RotatingDotsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingDotsIndicatorView.swift; sourceTree = "<group>"; };
@@ -898,6 +900,7 @@
 				0207BBC32FD5B0000007F3D3 /* FacebookSessionService.swift */,
 				5A0000000000000000000041 /* FacebookSessionServiceProtocol.swift */,
 				AB0000000000000000010031 /* UnavailableConnectedInsightsGateway.swift */,
+				AB0000000000000000019901 /* DemoConnectedInsightsGateway.swift */,
 				AB0000000000000000000913 /* AppTrackingAuthorizer.swift */,
 				5A0000000000000000000031 /* AppTrackingAuthorizerProtocol.swift */,
 				AB0000000000000000000301 /* FacebookAccessTokenProvider.swift */,
@@ -1191,6 +1194,7 @@
 				0207BBC42FD5B0000007F3D3 /* FacebookSessionService.swift in Sources */,
 				5A0000000000000000000042 /* FacebookSessionServiceProtocol.swift in Sources */,
 				AB0000000000000000010032 /* UnavailableConnectedInsightsGateway.swift in Sources */,
+				AB0000000000000000019902 /* DemoConnectedInsightsGateway.swift in Sources */,
 				AB0000000000000000000914 /* AppTrackingAuthorizer.swift in Sources */,
 				5A0000000000000000000032 /* AppTrackingAuthorizerProtocol.swift in Sources */,
 				AB0000000000000000000302 /* FacebookAccessTokenProvider.swift in Sources */,
