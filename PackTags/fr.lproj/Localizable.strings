@@ -93,21 +93,21 @@
 "Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account" = "Données indisponibles\n\nOu\n\nProbablement pas de nouvelles publications\npar un compte Business/Creator";
 "Engagement" = "Engagement";
 "Reach" = "Portée";
-"Impressions" = "Impressions";
+"Views" = "Vues";
 "Engagement Rate (ER)" = "Taux d'engagement (ER)";
 "Engagement Rate by Reach (ERR)" = "Taux d'engagement en fonction de la portée (ERR)";
-"Engagement Rate by Impressions (ER Impressions)" = "Taux d'engagement par impressions (ER Impressions)";
+"Engagement Rate by Views (ER Views)" = "Taux d'engagement par vues (ER Vues)";
 "Analytics" = "Analyses";
 "Not connected" = "Non connecté";
 "Per Follower" = "Par follower";
 "By Reach" = "Par portée";
-"By Impressions" = "Par impressions";
+"By Views" = "Par vues";
 "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives." = "Engagement = Likes + Commentaires\n\nL'engagement est une mesure utilisée pour déterminer le nombre d'interactions que votre contenu reçoit." ;
 "Reach is the total number of people (single accounts) who saw your content." = "La portée est le nombre total de personnes (comptes uniques) qui ont vu votre contenu.";
-"Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not." = "Les impressions représentent le nombre de fois que votre contenu est apparu sur un écran, qu'il ait été cliqué ou non.";
+"Views is how many times your content was played or shown. It is Instagram's metric that replaced the old Impressions, and it is counted separately from Reach, so it can be higher or lower than Reach." = "Les vues correspondent au nombre de fois où votre contenu a été lu ou affiché. C'est la métrique d'Instagram qui a remplacé les anciennes impressions ; elle est comptée séparément de la portée, elle peut donc être supérieure ou inférieure à la portée.";
 "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers." = "ER = Likes et Commentaires / Followers * 100\n\nLe taux d'engagement est une mesure utilisée pour déterminer le nombre d'interactions que votre contenu reçoit, par rapport à vos followers.";
 "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content." = "ERR = likes et commentaires / Portée * 100\n\nLe taux d'engagement par portée est une mesure utilisée pour déterminer le nombre d'interactions que votre contenu reçoit, par rapport à chaque compte unique qui a vu votre contenu.";
-"ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account." = "ER Impressions = Likes et Commentaires / Impressions *100\n\nSi votre ER impressions est inférieur à votre ERR, alors c'est bon signe, car votre contenu est vu plusieurs fois par un seul compte.";
+"ER Views = Likes and Comments / Views * 100\n\nEngagement Rate by Views measures interactions against how often your content was shown. Views and Reach are counted differently, so ER Views can be higher or lower than your ERR." = "ER Vues = Likes et Commentaires / Vues *100\n\nLe taux d'engagement par vues mesure les interactions par rapport au nombre de fois où votre contenu a été affiché. Les vues et la portée étant comptées différemment, l'ER Vues peut être supérieur ou inférieur à votre ERR.";
 
 
 //SmargIGView

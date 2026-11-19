@@ -14,23 +14,23 @@ struct AnalyticsView: View {
         static let dataUnavailable = "Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account".localized()
         static let engagement = "Engagement".localized()
         static let reach = "Reach".localized()
-        static let impressions = "Impressions".localized()
+        static let impressions = "Views".localized()
         static let eR = "Engagement Rate (ER)".localized()
         static let eRR = "Engagement Rate by Reach (ERR)".localized()
-        static let eRI = "Engagement Rate by Impressions (ER Impressions)".localized()
+        static let eRI = "Engagement Rate by Views (ER Views)".localized()
         static let analyticsTitle = "Analytics".localized()
         static let ratioToFollower = "Per Follower".localized()
         static let ratioByReach = "By Reach".localized()
-        static let ratioByImpressions = "By Impressions".localized()
+        static let ratioByImpressions = "By Views".localized()
         // The metric definitions below use the English sentence as the localization key,
         // so their lines can't wrap.
         // swiftlint:disable line_length
         static let engagementDefinition = "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives.".localized()
         static let reachDefinition = "Reach is the total number of people (single accounts) who saw your content.".localized()
-        static let impressionsDefinition = "Impressions represents how many times your content appeared on a screen, no matter if it was clicked or not.".localized()
+        static let impressionsDefinition = "Views is how many times your content was played or shown. It is Instagram's metric that replaced the old Impressions, and it is counted separately from Reach, so it can be higher or lower than Reach.".localized()
         static let eRDefinition = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers.".localized()
         static let eRRDefinition = "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content.".localized()
-        static let eRIDefinition = "ER impressions = Likes and Comments / Impressions *100\n\nIf your ER impressions is lower than your ERR, then it is a good sign, as your content is viewed multiple times by a single account.".localized()
+        static let eRIDefinition = "ER Views = Likes and Comments / Views * 100\n\nEngagement Rate by Views measures interactions against how often your content was shown. Views and Reach are counted differently, so ER Views can be higher or lower than your ERR.".localized()
         // swiftlint:enable line_length
         static let ok = "Ok".localized()
         static let closeAnalytics = "Close analytics".localized()
