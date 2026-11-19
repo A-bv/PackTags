@@ -14,23 +14,23 @@ struct AnalyticsView: View {
         static let dataUnavailable = "Data unavailable\n\nOr\n\nLikely no new posts\nas a Business/Creator account".localized()
         static let engagement = "Engagement".localized()
         static let reach = "Reach".localized()
-        static let impressions = "Views".localized()
+        static let views = "Views".localized()
         static let eR = "Engagement Rate (ER)".localized()
         static let eRR = "Engagement Rate by Reach (ERR)".localized()
-        static let eRI = "Engagement Rate by Views (ER Views)".localized()
+        static let eRV = "Engagement Rate by Views (ER Views)".localized()
         static let analyticsTitle = "Analytics".localized()
         static let ratioToFollower = "Per Follower".localized()
         static let ratioByReach = "By Reach".localized()
-        static let ratioByImpressions = "By Views".localized()
+        static let ratioByViews = "By Views".localized()
         // The metric definitions below use the English sentence as the localization key,
         // so their lines can't wrap.
         // swiftlint:disable line_length
         static let engagementDefinition = "Engagement = Likes + Comments\n\nEngagement is a metric used to determine the number of interactions your content receives.".localized()
         static let reachDefinition = "Reach is the total number of people (single accounts) who saw your content.".localized()
-        static let impressionsDefinition = "Views is how many times your content was played or shown. It is Instagram's metric that replaced the old Impressions, and it is counted separately from Reach, so it can be higher or lower than Reach.".localized()
+        static let viewsDefinition = "Views is how many times your content was played or shown. It is Instagram's metric that replaced the old Impressions, and it is counted separately from Reach, so it can be higher or lower than Reach.".localized()
         static let eRDefinition = "ER = Likes and Comments / Followers * 100\n\nEngagement Rate is a metric used to determine the number of interactions your content receives, relatively to your followers.".localized()
         static let eRRDefinition = "ERR = Likes and Comments / Reach * 100\n\nEngagement Rate by Reach is a metric used to determine the number of interactions your content receives, relatively to each single account who saw your content.".localized()
-        static let eRIDefinition = "ER Views = Likes and Comments / Views * 100\n\nEngagement Rate by Views measures interactions against how often your content was shown. Views and Reach are counted differently, so ER Views can be higher or lower than your ERR.".localized()
+        static let eRVDefinition = "ER Views = Likes and Comments / Views * 100\n\nEngagement Rate by Views measures interactions against how often your content was shown. Views and Reach are counted differently, so ER Views can be higher or lower than your ERR.".localized()
         // swiftlint:enable line_length
         static let ok = "Ok".localized()
         static let closeAnalytics = "Close analytics".localized()
@@ -141,7 +141,7 @@ private extension AnalyticsView {
         switch metric {
         case .engagement: return Strings.engagement
         case .reach: return Strings.reach
-        case .impressions: return Strings.impressions
+        case .views: return Strings.views
         }
     }
 
@@ -150,7 +150,7 @@ private extension AnalyticsView {
         switch metric {
         case .engagement: return Strings.ratioToFollower
         case .reach: return Strings.ratioByReach
-        case .impressions: return Strings.ratioByImpressions
+        case .views: return Strings.ratioByViews
         }
     }
 
@@ -158,7 +158,7 @@ private extension AnalyticsView {
         switch metric {
         case .engagement: return viewModel.rawInsights ? Strings.engagement : Strings.eR
         case .reach: return viewModel.rawInsights ? Strings.reach : Strings.eRR
-        case .impressions: return viewModel.rawInsights ? Strings.impressions : Strings.eRI
+        case .views: return viewModel.rawInsights ? Strings.views : Strings.eRV
         }
     }
 
@@ -166,7 +166,7 @@ private extension AnalyticsView {
         switch metric {
         case .engagement: return "\n" + (viewModel.rawInsights ? Strings.engagementDefinition : Strings.eRDefinition)
         case .reach: return "\n" + (viewModel.rawInsights ? Strings.reachDefinition : Strings.eRRDefinition)
-        case .impressions: return "\n" + (viewModel.rawInsights ? Strings.impressionsDefinition : Strings.eRIDefinition)
+        case .views: return "\n" + (viewModel.rawInsights ? Strings.viewsDefinition : Strings.eRVDefinition)
         }
     }
 }

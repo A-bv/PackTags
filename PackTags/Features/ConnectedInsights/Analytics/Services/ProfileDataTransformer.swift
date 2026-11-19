@@ -15,7 +15,7 @@ enum ProfileDataTransformer {
         let engagementRates = [
             metrics.engagementRateFollowers,
             metrics.engagementRateReach,
-            metrics.engagementRateImpressions]
+            metrics.engagementRateViews]
 
         var averageRate = [CGFloat?]()
         var maxRate = [CGFloat?]()
@@ -56,7 +56,7 @@ extension ProfileDataTransformer {
         var likeArray = [Int]()
         var commentArray = [Int]()
         var sumLikesCommentsArray = [CGFloat]()
-        var impressions = [CGFloat]()
+        var viewsArray = [CGFloat]()
         var reachArray = [CGFloat]()
         var times = [Double?]()
         var captions = [String?]()
@@ -75,9 +75,8 @@ extension ProfileDataTransformer {
 
             // Look metrics up by name, not array position: the Graph response
             // may reorder or omit metrics. "views" is Meta's replacement for the
-            // deprecated "impressions" metric (still surfaced as Impressions in
-            // the UI). All three must be present to keep the parallel arrays
-            // aligned.
+            // deprecated "impressions" metric. All three must be present to keep
+            // the parallel arrays aligned.
             let metrics = mediaData?.insights?.data ?? []
             func metricValue(_ name: String) -> CGFloat? {
                 metrics.first { $0.name == name }.map { CGFloat($0.values.first?.value ?? 0) }
@@ -87,7 +86,7 @@ extension ProfileDataTransformer {
                let views = metricValue("views"),
                let interactions = metricValue("total_interactions") {
                 reachArray.append(reach)
-                impressions.append(views)
+                viewsArray.append(views)
                 sumLikesCommentsArray.append(interactions)
             } else {
                 AppLogger.insights.debug("Media item missing reach/views/total_interactions insights.")
@@ -98,7 +97,7 @@ extension ProfileDataTransformer {
 
         let engagementRateFollowers = getEngagementByFollowerRates(
             engagementArray: sumLikesCommentsArray, followersCount: profileResponse.followersCount)
-        let engagementRateImpressions = rates(engagement: sumLikesCommentsArray, dividedBy: impressions)
+        let engagementRateViews = rates(engagement: sumLikesCommentsArray, dividedBy: viewsArray)
         let engagementRateReach = rates(engagement: sumLikesCommentsArray, dividedBy: reachArray)
 
         return SubTransformedProfileModel(
@@ -107,7 +106,7 @@ extension ProfileDataTransformer {
             engagementRateFollowers: rawInsights ? sumLikesCommentsArray : engagementRateFollowers,
             times: times,
             captions: captions,
-            engagementRateImpressions: rawInsights ? impressions : engagementRateImpressions,
+            engagementRateViews: rawInsights ? viewsArray : engagementRateViews,
             engagementRateReach: rawInsights ? reachArray : engagementRateReach)
     }
 

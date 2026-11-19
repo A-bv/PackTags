@@ -6,6 +6,6 @@ struct SubTransformedProfileModel {
     let engagementRateFollowers: [CGFloat]
     let times: [Double?]
     let captions: [String?]
-    let engagementRateImpressions: [CGFloat]
+    let engagementRateViews: [CGFloat]
     let engagementRateReach: [CGFloat]
 }
