@@ -69,7 +69,6 @@ struct AnalyticsView: View {
         _monitor = State(initialValue: monitor)
     }
 
-    // Toggle button
     @State private var isToggled = false
     
     var body: some View {
@@ -91,7 +90,6 @@ struct AnalyticsView: View {
                         LoadingView(loading: .constant(true))
                     } else {
                         if viewModel.transformedProfile?.rates == Optional([]) {
-                            // Screen when data is invalid
                             if viewModel.transformedProfile?.username != nil {
                                 Text(Strings.noMedia)
                                     .multilineTextAlignment(.center)
@@ -100,7 +98,6 @@ struct AnalyticsView: View {
                                     .multilineTextAlignment(.center)
                             }
                         } else {
-                            // Screen when data is available
                             scrollView(
                                 graphPadding: graphPadding(forWidth: geometry.size.width),
                                 availableWidth: geometry.size.width)
@@ -245,7 +242,6 @@ private extension AnalyticsView {
 }
 
 // MARK: - Elements
-// Header
 private extension AnalyticsView {
     var header: some View {
         HStack {
@@ -266,7 +262,6 @@ private extension AnalyticsView {
     }
 }
 
-// Scrollview
 private extension AnalyticsView {
     func scrollView(graphPadding: CGFloat, availableWidth: CGFloat) -> some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -317,7 +312,6 @@ private extension AnalyticsView {
     }
 }
 
-// Overview
 private extension AnalyticsView {
     var overviewSection: some View {
         LazyVGrid(columns: Constants.overviewColumns) {
@@ -355,7 +349,6 @@ private extension AnalyticsView {
     }
 }
 
-// GraphsHeader
 private extension AnalyticsView {
     var graphSectionHeader: some View {
         VStack(alignment: .leading, spacing: Constants.graphSectionHeaderVerticalSpacing) {
