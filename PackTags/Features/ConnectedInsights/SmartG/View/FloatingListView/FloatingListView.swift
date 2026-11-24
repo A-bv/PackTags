@@ -39,6 +39,9 @@ struct FloatingListView: View {
             .padding(.horizontal, Constants.tagListPadding)
         }
         .frame(height: Constants.tagListHeight)
+        // The cloud positions tags at fixed offsets, so unbounded text piles them into an
+        // unreadable mass; cap the size to keep the scattered layout legible.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility1)
         .onAppear {
             tagYPos = generateTagYPos()
         }

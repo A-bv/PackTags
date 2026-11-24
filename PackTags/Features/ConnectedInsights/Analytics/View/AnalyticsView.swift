@@ -61,6 +61,7 @@ struct AnalyticsView: View {
     @State var viewModel: AnalyticsViewModel
     @State private var showingAlert = false
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var monitor: NetworkMonitor
     @State private var selectedBarChartPostId = 0
 
@@ -270,10 +271,20 @@ private extension AnalyticsView {
             VStack(
                 spacing: Constants.scrollViewVerticalSpacing
             ) {
-                HStack {
-                    graphSectionHeader
-                    Spacer()
-                    graphSectionHeaderButtons
+                // At accessibility text sizes the title + controls can't share a row without
+                // the title wrapping one letter per line, so stack them vertically instead.
+                if dynamicTypeSize.isAccessibilitySize {
+                    VStack(alignment: .leading, spacing: Constants.graphSectionHeaderVerticalSpacing) {
+                        graphSectionHeader
+                        graphSectionHeaderButtons
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                } else {
+                    HStack {
+                        graphSectionHeader
+                        Spacer()
+                        graphSectionHeaderButtons
+                    }
                 }
 
                 if let postCount = viewModel.transformedProfile?.postsCount,
@@ -357,6 +368,7 @@ private extension AnalyticsView {
                 Text(title(viewModel.metric))
                     .font(.title)
                     .foregroundColor(Color(UIColor.label))
+                    .fixedSize(horizontal: false, vertical: true)
                 infoButton
             }
             Text(subtitle(viewModel.metric))

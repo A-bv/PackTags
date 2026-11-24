@@ -33,16 +33,14 @@ struct InteractionBarView: View {
         .padding(10)
         .foregroundColor(.white)
         .font(.headline)
+        .frame(maxWidth: .infinity)
         .background(Color(UIColor.lightGray).opacity(0.5))
         .cornerRadius(Constants.textFieldCornerRadius)
     }
 
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
             textField
-
-            Spacer()
-            Spacer()
 
             Button {
                 let impactMed = UIImpactFeedbackGenerator(style: .soft)
@@ -78,6 +76,9 @@ struct InteractionBarView: View {
             }
         }
         .padding(.horizontal)
+        // The search field + icon buttons are a single-line control row; cap the text size so
+        // the "Enter a hashtag" placeholder stays readable instead of clipping at larger sizes.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
     }
 
     private func refresh() {
