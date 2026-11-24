@@ -210,6 +210,7 @@ private extension AnalyticsView {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         } label: {
             Image(systemName: "info.circle")
+                .frame(minWidth: 44, minHeight: 44)
         }
         .accessibilityLabel(Text(infoTitle(viewModel.metric)))
         .alert(isPresented: $showingAlert) {
